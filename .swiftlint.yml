@@ -1,0 +1,32 @@
+disabled_rules:
+ - trailing_comma
+
+opt_in_rules:
+  - empty_count
+  - explicit_init
+  - closure_spacing
+  - redundant_nil_coalescing
+  - private_outlet
+  - nimble_operator
+  - attributes
+  - operator_usage_whitespace
+  - closure_end_indentation
+  - first_where
+  - object_literal
+  - number_separator
+  - missing_docs
+  - force_cast
+  - switch_case_on_newline
+  - conditional_returns_on_newline
+
+line_length:
+  error: 120
+  warning: 120
+
+file_length:
+  warning: 300
+  error: 400
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Pods

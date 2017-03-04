@@ -1,0 +1,6 @@
+framework module Pods_Jasmine {
+  umbrella header "Pods-Jasmine-umbrella.h"
+
+  export *
+  module * { export * }
+}

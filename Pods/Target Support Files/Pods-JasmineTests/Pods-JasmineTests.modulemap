@@ -1,0 +1,6 @@
+framework module Pods_JasmineTests {
+  umbrella header "Pods-JasmineTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
