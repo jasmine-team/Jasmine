@@ -1,0 +1,3 @@
+class TetrisGameData: GameData {
+
+}
