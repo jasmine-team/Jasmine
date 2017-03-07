@@ -9,43 +9,33 @@
 /* Begin PBXBuildFile section */
 		0CF9D2BB3EBC822ACB7FF766 /* Pods_Jasmine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */; };
 		4EA886212AABEB7ED888C04C /* Pods_JasmineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */; };
-		505E07381E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E07371E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift */; };
-		505E073A1E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E07391E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift */; };
-		505E073C1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E073B1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift */; };
-		507A215D1E7C046200C815B9 /* GeometryUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A215C1E7C046200C815B9 /* GeometryUtilsTest.swift */; };
 		50989DD51E6D8B16009A86C8 /* TetrisGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DB41E6D8B16009A86C8 /* TetrisGameData.swift */; };
+		50989DD61E6D8B16009A86C8 /* TetrisGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DB61E6D8B16009A86C8 /* TetrisGameView.swift */; };
 		50989DD71E6D8B16009A86C8 /* TetrisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DB81E6D8B16009A86C8 /* TetrisViewModel.swift */; };
 		50989DD81E6D8B16009A86C8 /* GridGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DBB1E6D8B16009A86C8 /* GridGameData.swift */; };
+		50989DD91E6D8B16009A86C8 /* GridGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DBD1E6D8B16009A86C8 /* GridGameView.swift */; };
 		50989DDA1E6D8B16009A86C8 /* GridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DBF1E6D8B16009A86C8 /* GridViewModel.swift */; };
 		50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC21E6D8B16009A86C8 /* Constants.swift */; };
 		50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC31E6D8B16009A86C8 /* SoundService.swift */; };
 		50989DDD1E6D8B16009A86C8 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC51E6D8B16009A86C8 /* GameData.swift */; };
 		50989DDE1E6D8B16009A86C8 /* GameDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC61E6D8B16009A86C8 /* GameDataProtocol.swift */; };
 		50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC71E6D8B16009A86C8 /* Phrase.swift */; };
-		50989DE01E6D8B16009A86C8 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC91E6D8B16009A86C8 /* HomeScreenViewController.swift */; };
+		50989DE01E6D8B16009A86C8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC91E6D8B16009A86C8 /* HomeView.swift */; };
 		50989DE11E6D8B16009A86C8 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DCB1E6D8B16009A86C8 /* GameViewModel.swift */; };
 		50989DE21E6D8B16009A86C8 /* FlappyGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DCE1E6D8B16009A86C8 /* FlappyGameData.swift */; };
+		50989DE31E6D8B16009A86C8 /* FlappyGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DD01E6D8B16009A86C8 /* FlappyGameView.swift */; };
 		50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DD21E6D8B16009A86C8 /* FlappyViewModel.swift */; };
 		50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */; };
-		50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */; };
+		A2187E661E6E9FCB0033FC5B /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E651E6E9FCB0033FC5B /* PlayerTests.swift */; };
+		A2187E681E6EA0A20033FC5B /* GameDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E671E6EA0A20033FC5B /* GameDataTests.swift */; };
+		A2187E6A1E6EA35C0033FC5B /* RealmTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E691E6EA35C0033FC5B /* RealmTestCase.swift */; };
 		A260C6261E6AB30400782103 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6241E6AB30400782103 /* Main.storyboard */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
 		A260C62B1E6AB30400782103 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6291E6AB30400782103 /* LaunchScreen.storyboard */; };
+		A260C6361E6AB30400782103 /* JasmineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260C6351E6AB30400782103 /* JasmineTests.swift */; };
 		A260C6411E6AB30400782103 /* JasmineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260C6401E6AB30400782103 /* JasmineUITests.swift */; };
+		A260C65F1E6E916800782103 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260C65E1E6E916800782103 /* Player.swift */; };
 		BD025B06A527CD03DA811285 /* Pods_JasmineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */; };
-		DF2D21EA1E743BC500094381 /* GridStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */; };
-		DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D21EB1E743C8700094381 /* GridGameViewController.swift */; };
-		DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */; };
-		DFB3426D1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */; };
-		DFB3426F1E77E77900D2FE09 /* BaseGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426E1E77E77900D2FE09 /* BaseGameEngineProtocol.swift */; };
-		DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342701E77EB6700D2FE09 /* Coordinate.swift */; };
-		DFB342751E77F06400D2FE09 /* BaseGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342741E77F06400D2FE09 /* BaseGameViewControllerDelegate.swift */; };
-		DFB342771E77F5F200D2FE09 /* FlappyGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342761E77F5F200D2FE09 /* FlappyGameEngineProtocol.swift */; };
-		DFB95A061E785D2E005EE2A4 /* TetrisGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB95A051E785D2E005EE2A4 /* TetrisGameEngineProtocol.swift */; };
-		DFCA8C1A1E753E0100A9C9B5 /* GeometryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCA8C191E753E0100A9C9B5 /* GeometryUtils.swift */; };
-		DFE427BF1E744D3D00A837BD /* SquareTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE427BE1E744D3D00A837BD /* SquareTextViewCell.swift */; };
-		DFE427C11E74F78600A837BD /* SquareTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE427C01E74F78600A837BD /* SquareTextView.swift */; };
-		DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,52 +59,42 @@
 		3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasmine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
 		379F12059637B53A50B97F3B /* Pods-JasmineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineUITests/Pods-JasmineUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		505E07371E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewControllerDelegate.swift; sourceTree = "<group>"; };
-		505E07391E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewControllerDelegate.swift; sourceTree = "<group>"; };
-		505E073B1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyGameViewControllerDelegate.swift; sourceTree = "<group>"; };
-		507A215C1E7C046200C815B9 /* GeometryUtilsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryUtilsTest.swift; sourceTree = "<group>"; };
 		50989DB41E6D8B16009A86C8 /* TetrisGameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameData.swift; sourceTree = "<group>"; };
+		50989DB61E6D8B16009A86C8 /* TetrisGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameView.swift; sourceTree = "<group>"; };
 		50989DB81E6D8B16009A86C8 /* TetrisViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisViewModel.swift; sourceTree = "<group>"; };
 		50989DBB1E6D8B16009A86C8 /* GridGameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameData.swift; sourceTree = "<group>"; };
+		50989DBD1E6D8B16009A86C8 /* GridGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameView.swift; sourceTree = "<group>"; };
 		50989DBF1E6D8B16009A86C8 /* GridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
 		50989DC21E6D8B16009A86C8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		50989DC31E6D8B16009A86C8 /* SoundService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundService.swift; sourceTree = "<group>"; };
 		50989DC51E6D8B16009A86C8 /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		50989DC61E6D8B16009A86C8 /* GameDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataProtocol.swift; sourceTree = "<group>"; };
 		50989DC71E6D8B16009A86C8 /* Phrase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Phrase.swift; sourceTree = "<group>"; };
-		50989DC91E6D8B16009A86C8 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		50989DC91E6D8B16009A86C8 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		50989DCB1E6D8B16009A86C8 /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		50989DCE1E6D8B16009A86C8 /* FlappyGameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyGameData.swift; sourceTree = "<group>"; };
+		50989DD01E6D8B16009A86C8 /* FlappyGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyGameView.swift; sourceTree = "<group>"; };
 		50989DD21E6D8B16009A86C8 /* FlappyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyViewModel.swift; sourceTree = "<group>"; };
 		50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50989DE61E6D8BBD009A86C8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateTests.swift; sourceTree = "<group>"; };
 		5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2187E651E6E9FCB0033FC5B /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
+		A2187E671E6EA0A20033FC5B /* GameDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataTests.swift; sourceTree = "<group>"; };
+		A2187E691E6EA35C0033FC5B /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
 		A260C61D1E6AB30400782103 /* Jasmine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jasmine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6251E6AB30400782103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A260C6271E6AB30400782103 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A260C6271E6AB30400782103 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		A260C62A1E6AB30400782103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A260C6311E6AB30400782103 /* JasmineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JasmineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A260C6351E6AB30400782103 /* JasmineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JasmineTests.swift; sourceTree = "<group>"; };
 		A260C6371E6AB30400782103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A260C63C1E6AB30400782103 /* JasmineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JasmineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6401E6AB30400782103 /* JasmineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JasmineUITests.swift; sourceTree = "<group>"; };
 		A260C6421E6AB30400782103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A260C65E1E6E916800782103 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		B0F92A417FF0A33A2C39DC68 /* Pods-JasmineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineUITests/Pods-JasmineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF6F46CAE49685937742BCB /* Pods-JasmineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.debug.xcconfig"; sourceTree = "<group>"; };
-		DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GridStoryboard.storyboard; sourceTree = "<group>"; };
-		DF2D21EB1E743C8700094381 /* GridGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewController.swift; sourceTree = "<group>"; };
-		DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TetrisStoryboard.storyboard; sourceTree = "<group>"; };
-		DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameEngineProtocol.swift; sourceTree = "<group>"; };
-		DFB3426E1E77E77900D2FE09 /* BaseGameEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGameEngineProtocol.swift; sourceTree = "<group>"; };
-		DFB342701E77EB6700D2FE09 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
-		DFB342741E77F06400D2FE09 /* BaseGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGameViewControllerDelegate.swift; sourceTree = "<group>"; };
-		DFB342761E77F5F200D2FE09 /* FlappyGameEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyGameEngineProtocol.swift; sourceTree = "<group>"; };
-		DFB95A051E785D2E005EE2A4 /* TetrisGameEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameEngineProtocol.swift; sourceTree = "<group>"; };
-		DFCA8C191E753E0100A9C9B5 /* GeometryUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryUtils.swift; sourceTree = "<group>"; };
-		DFE427BE1E744D3D00A837BD /* SquareTextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareTextViewCell.swift; sourceTree = "<group>"; };
-		DFE427C01E74F78600A837BD /* SquareTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareTextView.swift; sourceTree = "<group>"; };
-		DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
 		FC0AD02B711C61B2492AE255 /* Pods-Jasmine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.release.xcconfig"; sourceTree = "<group>"; };
 		FF297B9535BBD99F827421B6 /* Pods-JasmineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,8 +148,7 @@
 		50989DB71E6D8B16009A86C8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				505E07371E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift */,
-				DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */,
+				50989DB61E6D8B16009A86C8 /* TetrisGameView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -177,7 +156,6 @@
 		50989DB91E6D8B16009A86C8 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				DFB95A051E785D2E005EE2A4 /* TetrisGameEngineProtocol.swift */,
 				50989DB81E6D8B16009A86C8 /* TetrisViewModel.swift */,
 			);
 			path = ViewModels;
@@ -204,9 +182,7 @@
 		50989DBE1E6D8B16009A86C8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DF2D21EB1E743C8700094381 /* GridGameViewController.swift */,
-				505E07391E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift */,
-				DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */,
+				50989DBD1E6D8B16009A86C8 /* GridGameView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -214,7 +190,6 @@
 		50989DC01E6D8B16009A86C8 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */,
 				50989DBF1E6D8B16009A86C8 /* GridViewModel.swift */,
 			);
 			path = ViewModels;
@@ -226,7 +201,6 @@
 				50989DBC1E6D8B16009A86C8 /* Models */,
 				50989DBE1E6D8B16009A86C8 /* ViewControllers */,
 				50989DC01E6D8B16009A86C8 /* ViewModels */,
-				DFE427BD1E744CFE00A837BD /* Views */,
 			);
 			path = Grid;
 			sourceTree = "<group>";
@@ -234,7 +208,6 @@
 		50989DC41E6D8B16009A86C8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				DFCA8C191E753E0100A9C9B5 /* GeometryUtils.swift */,
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
 			);
 			path = Helpers;
@@ -243,11 +216,10 @@
 		50989DC81E6D8B16009A86C8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DFB342701E77EB6700D2FE09 /* Coordinate.swift */,
 				50989DC51E6D8B16009A86C8 /* GameData.swift */,
 				50989DC61E6D8B16009A86C8 /* GameDataProtocol.swift */,
-				DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */,
 				50989DC71E6D8B16009A86C8 /* Phrase.swift */,
+				A260C65E1E6E916800782103 /* Player.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,8 +227,7 @@
 		50989DCA1E6D8B16009A86C8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DFB342741E77F06400D2FE09 /* BaseGameViewControllerDelegate.swift */,
-				50989DC91E6D8B16009A86C8 /* HomeScreenViewController.swift */,
+				50989DC91E6D8B16009A86C8 /* HomeView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -264,7 +235,6 @@
 		50989DCC1E6D8B16009A86C8 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				DFB3426E1E77E77900D2FE09 /* BaseGameEngineProtocol.swift */,
 				50989DCB1E6D8B16009A86C8 /* GameViewModel.swift */,
 			);
 			path = ViewModels;
@@ -273,16 +243,16 @@
 		50989DCD1E6D8B16009A86C8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				50989DC21E6D8B16009A86C8 /* Constants.swift */,
+				50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */,
+				50989DE61E6D8BBD009A86C8 /* Info.plist */,
+				A260C6241E6AB30400782103 /* Main.storyboard */,
+				A260C6271E6AB30400782103 /* Assets.xcassets */,
+				A260C6291E6AB30400782103 /* LaunchScreen.storyboard */,
 				50989DC41E6D8B16009A86C8 /* Helpers */,
 				50989DC81E6D8B16009A86C8 /* Models */,
 				50989DCA1E6D8B16009A86C8 /* ViewControllers */,
 				50989DCC1E6D8B16009A86C8 /* ViewModels */,
-				50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */,
-				A260C6271E6AB30400782103 /* Assets.xcassets */,
-				50989DC21E6D8B16009A86C8 /* Constants.swift */,
-				50989DE61E6D8BBD009A86C8 /* Info.plist */,
-				A260C6291E6AB30400782103 /* LaunchScreen.storyboard */,
-				A260C6241E6AB30400782103 /* Main.storyboard */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -298,7 +268,7 @@
 		50989DD11E6D8B16009A86C8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				505E073B1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift */,
+				50989DD01E6D8B16009A86C8 /* FlappyGameView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -306,7 +276,6 @@
 		50989DD31E6D8B16009A86C8 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				DFB342761E77F5F200D2FE09 /* FlappyGameEngineProtocol.swift */,
 				50989DD21E6D8B16009A86C8 /* FlappyViewModel.swift */,
 			);
 			path = ViewModels;
@@ -335,149 +304,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		50F191A61E7ADC3D00EE9A75 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				50F191A71E7ADC4500EE9A75 /* Helpers */,
-				50F191A81E7ADC4800EE9A75 /* Models */,
-				50F191A91E7ADC4C00EE9A75 /* ViewControllers */,
-				50F191AA1E7ADC5000EE9A75 /* ViewModels */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		50F191A71E7ADC4500EE9A75 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				507A215C1E7C046200C815B9 /* GeometryUtilsTest.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		50F191A81E7ADC4800EE9A75 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		50F191A91E7ADC4C00EE9A75 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		50F191AA1E7ADC5000EE9A75 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		50F191AB1E7ADC6D00EE9A75 /* Tetris */ = {
-			isa = PBXGroup;
-			children = (
-				50F191AE1E7ADC8600EE9A75 /* Models */,
-				50F191AD1E7ADC8000EE9A75 /* ViewControllers */,
-				50F191AC1E7ADC7A00EE9A75 /* ViewModels */,
-			);
-			path = Tetris;
-			sourceTree = "<group>";
-		};
-		50F191AC1E7ADC7A00EE9A75 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		50F191AD1E7ADC8000EE9A75 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		50F191AE1E7ADC8600EE9A75 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		50F191B01E7ADCA200EE9A75 /* Grid */ = {
-			isa = PBXGroup;
-			children = (
-				50F191B41E7ADCB700EE9A75 /* Models */,
-				50F191B31E7ADCB200EE9A75 /* ViewControllers */,
-				50F191B21E7ADCAE00EE9A75 /* ViewModels */,
-			);
-			path = Grid;
-			sourceTree = "<group>";
-		};
-		50F191B11E7ADCA600EE9A75 /* Flappy */ = {
-			isa = PBXGroup;
-			children = (
-				50F191B71E7ADCC800EE9A75 /* Models */,
-				50F191B61E7ADCC200EE9A75 /* ViewControllers */,
-				50F191B51E7ADCBE00EE9A75 /* ViewModels */,
-			);
-			path = Flappy;
-			sourceTree = "<group>";
-		};
-		50F191B21E7ADCAE00EE9A75 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		50F191B31E7ADCB200EE9A75 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		50F191B41E7ADCB700EE9A75 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		50F191B51E7ADCBE00EE9A75 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		50F191B61E7ADCC200EE9A75 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		50F191B71E7ADCC800EE9A75 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		A260C6141E6AB30400782103 = {
 			isa = PBXGroup;
 			children = (
-				4F925529F1FCEF5E5A4CE750 /* Frameworks */,
 				A260C61F1E6AB30400782103 /* Jasmine */,
 				A260C6341E6AB30400782103 /* JasmineTests */,
 				A260C63F1E6AB30400782103 /* JasmineUITests */,
-				50BB58D66BC620D2B41E2E2D /* Pods */,
 				A260C61E1E6AB30400782103 /* Products */,
+				50BB58D66BC620D2B41E2E2D /* Pods */,
+				4F925529F1FCEF5E5A4CE750 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -495,9 +330,9 @@
 			isa = PBXGroup;
 			children = (
 				50989DCD1E6D8B16009A86C8 /* Common */,
-				50989DD41E6D8B16009A86C8 /* Flappy */,
-				50989DC11E6D8B16009A86C8 /* Grid */,
 				50989DBA1E6D8B16009A86C8 /* Tetris */,
+				50989DC11E6D8B16009A86C8 /* Grid */,
+				50989DD41E6D8B16009A86C8 /* Flappy */,
 			);
 			path = Jasmine;
 			sourceTree = "<group>";
@@ -505,10 +340,10 @@
 		A260C6341E6AB30400782103 /* JasmineTests */ = {
 			isa = PBXGroup;
 			children = (
-				50F191A61E7ADC3D00EE9A75 /* Common */,
-				50F191B11E7ADCA600EE9A75 /* Flappy */,
-				50F191B01E7ADCA200EE9A75 /* Grid */,
-				50F191AB1E7ADC6D00EE9A75 /* Tetris */,
+				A2187E691E6EA35C0033FC5B /* RealmTestCase.swift */,
+				A2187E671E6EA0A20033FC5B /* GameDataTests.swift */,
+				A2187E651E6E9FCB0033FC5B /* PlayerTests.swift */,
+				A260C6351E6AB30400782103 /* JasmineTests.swift */,
 				A260C6371E6AB30400782103 /* Info.plist */,
 			);
 			path = JasmineTests;
@@ -517,19 +352,10 @@
 		A260C63F1E6AB30400782103 /* JasmineUITests */ = {
 			isa = PBXGroup;
 			children = (
-				A260C6421E6AB30400782103 /* Info.plist */,
 				A260C6401E6AB30400782103 /* JasmineUITests.swift */,
+				A260C6421E6AB30400782103 /* Info.plist */,
 			);
 			path = JasmineUITests;
-			sourceTree = "<group>";
-		};
-		DFE427BD1E744CFE00A837BD /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				DFE427C01E74F78600A837BD /* SquareTextView.swift */,
-				DFE427BE1E744D3D00A837BD /* SquareTextViewCell.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -540,13 +366,12 @@
 			buildConfigurationList = A260C6451E6AB30400782103 /* Build configuration list for PBXNativeTarget "Jasmine" */;
 			buildPhases = (
 				7E0A70CF6F2BAA3DCED4965E /* [CP] Check Pods Manifest.lock */,
-				505E073D1E7BE7CE00CEE8BF /* Synx */,
-				A260C64E1E6AB3DC00782103 /* Swiftlint Autocorrect */,
 				A260C6191E6AB30400782103 /* Sources */,
 				A260C61A1E6AB30400782103 /* Frameworks */,
 				A260C61B1E6AB30400782103 /* Resources */,
 				3243BD3D7E2F5F45E4E56D47 /* [CP] Embed Pods Frameworks */,
 				154757E62370A1C8EAF1512D /* [CP] Copy Pods Resources */,
+				A260C64E1E6AB3DC00782103 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -611,12 +436,10 @@
 				TargetAttributes = {
 					A260C61C1E6AB30400782103 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = W76H98A34A;
 						ProvisioningStyle = Automatic;
 					};
 					A260C6301E6AB30400782103 = {
 						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A260C61C1E6AB30400782103;
 					};
@@ -653,9 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A260C62B1E6AB30400782103 /* LaunchScreen.storyboard in Resources */,
-				DF2D21EA1E743BC500094381 /* GridStoryboard.storyboard in Resources */,
 				A260C6281E6AB30400782103 /* Assets.xcassets in Resources */,
-				DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */,
 				A260C6261E6AB30400782103 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -722,20 +543,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		505E073D1E7BE7CE00CEE8BF /* Synx */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Synx;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which synx > /dev/null; then\n    synx \"$PROJECT_FILE_PATH\"\nelse\n    echo \"Synx is not installed!\"\nfi";
-		};
 		6C30C7D33289147D19E045E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -781,14 +588,13 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A260C64E1E6AB3DC00782103 /* Swiftlint Autocorrect */ = {
+		A260C64E1E6AB3DC00782103 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Swiftlint Autocorrect";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -847,34 +653,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50989DE31E6D8B16009A86C8 /* FlappyGameView.swift in Sources */,
+				50989DD91E6D8B16009A86C8 /* GridGameView.swift in Sources */,
 				50989DDD1E6D8B16009A86C8 /* GameData.swift in Sources */,
-				50989DE01E6D8B16009A86C8 /* HomeScreenViewController.swift in Sources */,
+				50989DE01E6D8B16009A86C8 /* HomeView.swift in Sources */,
 				50989DD51E6D8B16009A86C8 /* TetrisGameData.swift in Sources */,
-				DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */,
-				505E07381E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift in Sources */,
 				50989DDA1E6D8B16009A86C8 /* GridViewModel.swift in Sources */,
-				DFE427C11E74F78600A837BD /* SquareTextView.swift in Sources */,
 				50989DDE1E6D8B16009A86C8 /* GameDataProtocol.swift in Sources */,
 				50989DE11E6D8B16009A86C8 /* GameViewModel.swift in Sources */,
 				50989DE21E6D8B16009A86C8 /* FlappyGameData.swift in Sources */,
-				DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */,
-				DFB3426F1E77E77900D2FE09 /* BaseGameEngineProtocol.swift in Sources */,
-				DFB342771E77F5F200D2FE09 /* FlappyGameEngineProtocol.swift in Sources */,
+				50989DD61E6D8B16009A86C8 /* TetrisGameView.swift in Sources */,
 				50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */,
-				DFE427BF1E744D3D00A837BD /* SquareTextViewCell.swift in Sources */,
 				50989DD81E6D8B16009A86C8 /* GridGameData.swift in Sources */,
-				DFB95A061E785D2E005EE2A4 /* TetrisGameEngineProtocol.swift in Sources */,
 				50989DD71E6D8B16009A86C8 /* TetrisViewModel.swift in Sources */,
-				DFB342751E77F06400D2FE09 /* BaseGameViewControllerDelegate.swift in Sources */,
 				50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */,
 				50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */,
-				DFCA8C1A1E753E0100A9C9B5 /* GeometryUtils.swift in Sources */,
-				505E073A1E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift in Sources */,
 				50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */,
+				A260C65F1E6E916800782103 /* Player.swift in Sources */,
 				50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */,
-				505E073C1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift in Sources */,
-				DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */,
-				DFB3426D1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -882,8 +678,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
-				507A215D1E7C046200C815B9 /* GeometryUtilsTest.swift in Sources */,
+				A2187E661E6E9FCB0033FC5B /* PlayerTests.swift in Sources */,
+				A260C6361E6AB30400782103 /* JasmineTests.swift in Sources */,
+				A2187E681E6EA0A20033FC5B /* GameDataTests.swift in Sources */,
+				A2187E6A1E6EA35C0033FC5B /* RealmTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -917,7 +715,7 @@
 				A260C6251E6AB30400782103 /* Base */,
 			);
 			name = Main.storyboard;
-			path = .;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		A260C6291E6AB30400782103 /* LaunchScreen.storyboard */ = {
@@ -926,7 +724,7 @@
 				A260C62A1E6AB30400782103 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			path = .;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1030,7 +828,6 @@
 			baseConfigurationReference = 35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = "$(SRCROOT)/Jasmine/Common/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.Jasmine;
@@ -1044,7 +841,6 @@
 			baseConfigurationReference = FC0AD02B711C61B2492AE255 /* Pods-Jasmine.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = "$(SRCROOT)/Jasmine/Common/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.Jasmine;
@@ -1059,12 +855,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = JasmineTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.JasmineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jasmine.app/Jasmine";
 			};
@@ -1076,7 +870,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = JasmineTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.JasmineTests;
