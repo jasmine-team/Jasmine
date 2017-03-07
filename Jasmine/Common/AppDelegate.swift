@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  Jasmine
-//
-//  Created by Li Kai on 4/3/17.
-//  Copyright © 2017 nus.cs3217. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

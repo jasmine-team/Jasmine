@@ -1,0 +1,3 @@
+class FlappyGameData: GameData {
+
+}
