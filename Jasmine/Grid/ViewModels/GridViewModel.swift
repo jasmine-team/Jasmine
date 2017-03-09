@@ -1,19 +1,13 @@
 import Foundation
 
 class GridViewModel: GameViewModel {
-    private var grid: [IndexPath: Character] = [:]
-
-    /// Returns the grid of the current game
-    ///
-    /// - Returns: the grid
-    public func getGrid() -> [IndexPath: Character] {
-        return grid
-    }
+    /// The grid of the current game.
+    private(set) var grid: [IndexPath: Character] = [:]
 
     /// Populates the grid according to the specified game type.
     ///
     /// - Parameter type: the game type
-    public func populateGrid(type: GameType) {
+    internal func populateGrid(type: GameType) {
         var characters: [[Character]] = []
 
         // TODO: Don't hardcore these characters
@@ -39,6 +33,9 @@ class GridViewModel: GameViewModel {
     private func loadGrid(from characters: [[Character]]) {
         let rows = characters.count
         let cols = characters.first?.count ?? 0
+        assert(rows > 0 && cols > 0, "Number of rows and columns should be > 0")
+        assert(Set(characters.map { $0.count }).count == 1, "All rows should have the same length")
+
         var allChars = Array(characters.joined())
 
         // Shuffle allChars
@@ -64,7 +61,7 @@ class GridViewModel: GameViewModel {
     /// - Parameters:
     ///   - firstLocation: first location of the grid to be swapped
     ///   - secondLocation: second location of the grid to be swapped
-    public func swapTiles(_ firstLocation: IndexPath, _ secondLocation: IndexPath) {
+    internal func swapTiles(_ firstLocation: IndexPath, _ secondLocation: IndexPath) {
         swap(&grid[firstLocation], &grid[secondLocation])
     }
 }

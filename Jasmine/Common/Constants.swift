@@ -1,5 +1,6 @@
-struct Constants {
-    struct grid {
-        static let size = 4
+enum Constants {
+    enum Grid {
+        static let rows = 4
+        static let columns = 4
     }
 }
