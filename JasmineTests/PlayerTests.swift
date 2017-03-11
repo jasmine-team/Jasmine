@@ -50,4 +50,33 @@ class PlayerTests: RealmTestCase {
         XCTAssertEqual(player.totalScore, incrementAmount, "Total score is incremented")
     }
 
+    func testPlayer_flappyPlayCount_increment() {
+        let noIncrement = 0
+        XCTAssertEqual(player.flappyPlayCount, noIncrement, "Flappy play count is not incremented")
+        XCTAssertEqual(player.totalPlayCount, noIncrement, "Total play count is not incremented")
+        let incrementAmount = 1
+        player.incrementFlappyPlayCount()
+        XCTAssertEqual(player.flappyPlayCount, incrementAmount, "Flappy play count is incremented")
+        XCTAssertEqual(player.totalPlayCount, incrementAmount, "Total play count is incremented")
+    }
+
+    func testPlayer_gridPlayCount_increment() {
+        let noIncrement = 0
+        XCTAssertEqual(player.gridPlayCount, noIncrement, "Grid play count is not incremented")
+        XCTAssertEqual(player.totalPlayCount, noIncrement, "Total play count is not incremented")
+        let incrementAmount = 1
+        player.incrementGridPlayCount()
+        XCTAssertEqual(player.gridPlayCount, incrementAmount, "Grid play count is incremented")
+        XCTAssertEqual(player.totalPlayCount, incrementAmount, "Total play count is incremented")
+    }
+
+    func testPlayer_tetrisPlayCount_increment() {
+        let noIncrement = 0
+        XCTAssertEqual(player.tetrisPlayCount, noIncrement, "Tetris play count is not incremented")
+        XCTAssertEqual(player.totalPlayCount, noIncrement, "Total play count is not incremented")
+        let incrementAmount = 1
+        player.incrementTetrisPlayCount()
+        XCTAssertEqual(player.tetrisPlayCount, incrementAmount, "Tetris play count is incremented")
+        XCTAssertEqual(player.totalPlayCount, incrementAmount, "Total play count is incremented")
+    }
 }
