@@ -7,7 +7,7 @@ class GameDataTests: RealmTestCase {
 
     override func setUp() {
         super.setUp()
-        gameData = GameData()
+        gameData = GameData(instance: realm)
     }
 
     override func tearDown() {

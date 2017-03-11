@@ -5,15 +5,12 @@ class GameData: Object {
 
     dynamic var score: Int = 0
     dynamic var difficulty: Int = 0
+    var phrases: Results<Phrase>!
 
-    lazy var phrases: Results<Phrase> = {
-        do {
-            let realm = try Realm()
-            return realm.objects(Phrase.self)
-        } catch {
-            fatalError("realm could not be instantiated")
-        }
-    }()
+    convenience init(instance: Realm) {
+        self.init()
+        self.phrases = instance.objects(Phrase.self)
+    }
 
     override static func ignoredProperties() -> [String] {
         return ["phrases"]
