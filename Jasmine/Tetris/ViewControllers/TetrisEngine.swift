@@ -2,12 +2,21 @@ import Foundation
 
 protocol TetrisViewDelegate: class {
 
+    /// Updates the position and content of the moving tile
     func updateMovingTile(_ movingTile: TetrisTile)
+
+    /// Settle the moving tile on the grid after it has collided
     func placeMovingTile()
+
+    /// Destroys the tile on the grid after phrase is matched
     func destroyTile(at indexPath: IndexPath)
+
+    /// Shift the tile down by 1 row as the tile below is destroyed
     func shiftTileDown(at indexPath: IndexPath)
 
 }
+
+/// The game engine for Tetris
 
 class TetrisEngine {
 
@@ -17,29 +26,33 @@ class TetrisEngine {
 
     init(viewDelegate: TetrisViewDelegate) {
         self.viewDelegate = viewDelegate
-        _ = Timer.scheduledTimer(timeInterval: Constants.Tetris.updateInterval, target: self,
-                                 selector: #selector(updateState), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(withTimeInterval: Constants.Tetris.updateInterval,
+                             repeats: true) { _ in
+            self.updateState()
+        }
     }
 
+    /// Moves the moving tile towards the indexPath (left or right) by 1 unit
     func moveTile(towards indexPath: IndexPath) {
         guard let movingTile = movingTile else {
             return
         }
         let currentCol = movingTile.indexPath.row
         let tappedCol = indexPath.row
-        if currentCol == tappedCol {
+        guard currentCol != tappedCol else {
             return
         }
         let newRow = movingTile.indexPath.row + (currentCol < tappedCol ? 1 : -1)
-        if tetrisGrid.hasTile(at: IndexPath(row: newRow, section: movingTile.indexPath.section)) {
+        guard !tetrisGrid.hasTile(at: IndexPath(row: newRow, section: movingTile.indexPath.section)) else {
             return
         }
         movingTile.indexPath.row = newRow
         viewDelegate?.updateMovingTile(movingTile)
     }
 
-    // shifting of moving tile downwards must be done after checking if tile collided 
-    // to avoid tile crashing into existing tile due to movement by gestures
+    /// Checks if moving tile has collided and updates its position.
+    /// Shifting of moving tile downwards must be done after checking if tile collided
+    /// to avoid tile crashing into existing tile due to movement by gestures
     @objc
     private func updateState() {
         if hasTileCollided() {
@@ -50,6 +63,8 @@ class TetrisEngine {
         updateMovingTile()
     }
 
+    /// Updates the position of the moving tile. 
+    /// Creates a new moving tile it doesn't exist (when first initialized or after a collision)
     private func updateMovingTile() {
         if let movingTile = movingTile {
             movingTile.indexPath = getNextPosition(movingTile.indexPath)
@@ -64,13 +79,16 @@ class TetrisEngine {
         viewDelegate?.updateMovingTile(movingTile)
     }
 
+    /// Checks if the moving tile reached bottom or there is a tile below it
+    /// if true, settle the tile on the grid
     private func hasTileCollided() -> Bool {
         guard let movingTile = movingTile else {
             return false
         }
 
         let nextPosition = getNextPosition(movingTile.indexPath)
-        if nextPosition.section < Constants.Tetris.rows && !tetrisGrid.hasTile(at: nextPosition) {
+        guard nextPosition.section == Constants.Tetris.rows ||
+              tetrisGrid.hasTile(at: nextPosition) else {
             return false
         }
 
@@ -88,6 +106,8 @@ class TetrisEngine {
         }
     }
 
+    /// Checkes for and returns indexes of matching phrase, row/col-wise as specify by byRow
+    /// Concatenate the words row by row or col by col to check if a phrase is contained in them
     private func getDestroyedIndexes(byRow: Bool) -> Set<IndexPath>? {
         var destroyedIndexes: Set<IndexPath> = []
         let maxIndex = byRow ? Constants.Tetris.rows : Constants.Tetris.columns
@@ -121,10 +141,13 @@ class TetrisEngine {
         return nil
     }
 
+    /// Gets the word at the row and section 
+    /// returns " " if no word is present so that phrases separated by gaps don't get matched
     private func getWord(row: Int, section: Int) -> Character {
         return tetrisGrid.get(at: IndexPath(row: row, section: section))?.word ?? " "
     }
 
+    /// Shifts all the tiles above the indexes 1 cell down
     private func shiftDownTiles(_ indexes: Set<IndexPath>) {
         for indexPath in indexes {
             for section in (0..<indexPath.section).reversed() {
@@ -140,7 +163,7 @@ class TetrisEngine {
         }
     }
 
-    // todo: fetch from database to match valid phrase
+    // TODO: fetch from database to match valid phrase
     private func getValidPhraseRange(_ line: [Character]) -> CountableRange<Int>? {
         let phrases = ["先发制人"]
         for phrase in phrases {
@@ -159,7 +182,7 @@ class TetrisEngine {
         return IndexPath(row: indexPath.row, section: indexPath.section + 1)
     }
 
-    // todo: generate from database, base on existing grid
+    // TODO: generate from database, base on existing grid
     private func getRandomWord() -> Character {
         let words = "先发制人"
         return words[words.index(words.startIndex,

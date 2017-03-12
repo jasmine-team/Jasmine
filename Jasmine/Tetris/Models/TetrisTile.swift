@@ -1,5 +1,7 @@
 import Foundation
 
+/// Tile Model to store word and position on the grid
+
 class TetrisTile {
 
     let word: Character

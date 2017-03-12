@@ -1,5 +1,7 @@
 import Foundation
 
+/// Manages the tiles on the grid
+
 class TetrisGrid {
 
     private var tiles: [IndexPath: TetrisTile] = [:]
@@ -17,7 +19,7 @@ class TetrisGrid {
     }
 
     func remove(at indexPath: IndexPath) {
-        tiles.removeValue(forKey: indexPath)
+        tiles[indexPath] = nil
     }
 
 }

@@ -1,6 +1,8 @@
 import UIKit
 
-class TetrisViewController: HomeView {
+/// Main view controller for Tetris
+
+class TetrisViewController: UIViewController {
 
     @IBOutlet private var gridCollectionView: UICollectionView!
     @IBOutlet private var upcomingCollectionView: UICollectionView!
@@ -22,6 +24,7 @@ class TetrisViewController: HomeView {
         setupTapGesture()
     }
 
+    // Engine is initialized here as updates to UICollectionViewCell is only possible after this
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -47,6 +50,7 @@ class TetrisViewController: HomeView {
 
 }
 
+/// MARK: - TetrisViewDelegate
 extension TetrisViewController: TetrisViewDelegate {
 
     func updateMovingTile(_ movingTile: TetrisTile) {
@@ -57,6 +61,9 @@ extension TetrisViewController: TetrisViewDelegate {
         movingTileView = currentMovingTileView
     }
 
+    /// Settle the moving tile on the grid after it has collided.
+    /// Since it's already set to the correct position by updateMovingTile, 
+    /// we simply remove the reference to it here so that a new moving tile view will be created
     func placeMovingTile() {
         movingTileView = nil
     }
@@ -71,6 +78,7 @@ extension TetrisViewController: TetrisViewDelegate {
 
 }
 
+/// MARK: - UICollectionViewDataSource
 extension TetrisViewController: UICollectionViewDataSource {
 
     // every section comprises a row of tiles,
@@ -102,6 +110,7 @@ extension TetrisViewController: UICollectionViewDataSource {
 
 }
 
+/// MARK: - UICollectionViewDelegateFlowLayout
 extension TetrisViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView,
