@@ -51,8 +51,8 @@ class TetrisEngine {
     }
 
     /// Checks if moving tile has collided and updates its position.
-    /// Shifting of moving tile downwards must be done after checking if tile collided
-    /// to avoid tile crashing into existing tile due to movement by gestures
+    /// Shifting of moving tile downwards must be done after checking if the tile has collided
+    /// to avoid the tile crashing into existing tile on the grid due to movement by gestures
     @objc
     private func updateState() {
         if hasTileCollided() {
@@ -64,7 +64,7 @@ class TetrisEngine {
     }
 
     /// Updates the position of the moving tile. 
-    /// Creates a new moving tile it doesn't exist (when first initialized or after a collision)
+    /// Creates a new moving tile if it doesn't exist (when first initialized or after a collision)
     private func updateMovingTile() {
         if let movingTile = movingTile {
             movingTile.indexPath = getNextPosition(movingTile.indexPath)
