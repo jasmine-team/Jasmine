@@ -16,5 +16,4 @@ extension MutableCollection where Indices.Iterator.Element == Index {
             }
         }
     }
-
 }

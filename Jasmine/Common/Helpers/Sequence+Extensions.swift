@@ -6,5 +6,4 @@ extension Sequence {
         result.shuffle()
         return result
     }
-
 }
