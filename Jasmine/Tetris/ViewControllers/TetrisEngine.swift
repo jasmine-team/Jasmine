@@ -1,5 +1,7 @@
 import Foundation
 
+/// TetrisEngine will invoke TetrisViewController's methods specified by this protocol
+
 protocol TetrisViewDelegate: class {
 
     /// Updates the position and content of the moving tile
@@ -16,9 +18,20 @@ protocol TetrisViewDelegate: class {
 
 }
 
+
+/// TetrisViewController will invoke TetrisEngine's methods specified by this protocol
+
+protocol TetrisEngineProtocol {
+
+    /// Moves the moving tile towards the indexPath (left or right) by 1 cell
+    func moveTile(towards indexPath: IndexPath)
+
+}
+
+
 /// The game engine for Tetris
 
-class TetrisEngine {
+class TetrisEngine: TetrisEngineProtocol {
 
     private weak var viewDelegate: TetrisViewDelegate?
     private var tetrisGrid = TetrisGrid()
@@ -32,7 +45,6 @@ class TetrisEngine {
         }
     }
 
-    /// Moves the moving tile towards the indexPath (left or right) by 1 unit
     func moveTile(towards indexPath: IndexPath) {
         guard let movingTile = movingTile else {
             return

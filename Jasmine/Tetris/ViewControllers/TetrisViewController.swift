@@ -9,7 +9,7 @@ class TetrisViewController: UIViewController {
 
     // initialize in viewDidLoad
     fileprivate var gridView: TetrisGridView!
-    private var engine: TetrisEngine!
+    private var engine: TetrisEngineProtocol!
     fileprivate var cellSize: CGFloat!
 
     fileprivate var movingTileView: TetrisView?
