@@ -86,8 +86,8 @@ extension TetrisViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Tetris.cellIdentifier,
-                                                      for: indexPath)
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: Constants.Tetris.cellIdentifier, for: indexPath)
 
         // todo: remove these temp code (for visualization only)
         cell.layer.borderWidth = 1.0
