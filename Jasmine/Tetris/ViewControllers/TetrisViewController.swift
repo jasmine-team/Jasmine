@@ -41,7 +41,7 @@ class TetrisViewController: HomeView {
     private func tapHandler(_ recognizer: UITapGestureRecognizer) {
         let location = recognizer.location(in: gridCollectionView)
         if let indexPath = gridCollectionView.indexPathForItem(at: location) {
-        	engine.moveTile(towards: indexPath)
+            engine.moveTile(towards: indexPath)
         }
     }
 
@@ -73,6 +73,8 @@ extension TetrisViewController: TetrisViewDelegate {
 
 extension TetrisViewController: UICollectionViewDataSource {
 
+    // every section comprises a row of tiles,
+    // while the column index of the tile is given by IndexPath.row
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         return Constants.Tetris.columns
@@ -102,7 +104,8 @@ extension TetrisViewController: UICollectionViewDataSource {
 
 extension TetrisViewController: UICollectionViewDelegateFlowLayout {
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         cellSize = collectionView.frame.width / CGFloat(Constants.Tetris.columns)
         return CGSize(width: cellSize, height: cellSize)

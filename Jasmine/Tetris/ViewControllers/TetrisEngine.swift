@@ -52,7 +52,7 @@ class TetrisEngine {
 
     private func updateMovingTile() {
         if let movingTile = movingTile {
-        	movingTile.indexPath = getNextPosition(movingTile.indexPath)
+            movingTile.indexPath = getNextPosition(movingTile.indexPath)
         } else {
             let randCol = Int(arc4random_uniform(UInt32(Constants.Tetris.columns)))
             movingTile = TetrisTile(word: getRandomWord(),
@@ -74,7 +74,7 @@ class TetrisEngine {
             return false
         }
 
-		tetrisGrid.add(movingTile)
+        tetrisGrid.add(movingTile)
         viewDelegate?.placeMovingTile()
         self.movingTile = nil
         return true
@@ -82,9 +82,9 @@ class TetrisEngine {
 
     private func getDestroyedIndexes() -> Set<IndexPath>? {
         if let destroyedIndexes = getDestroyedIndexes(byRow: true) {
-        	return destroyedIndexes
+            return destroyedIndexes
         } else {
-        	return getDestroyedIndexes(byRow: false)
+            return getDestroyedIndexes(byRow: false)
         }
     }
 
@@ -112,7 +112,7 @@ class TetrisEngine {
                                         IndexPath(row: index, section: i)
                 tetrisGrid.remove(at: indexPath)
                 if byRow {
-                	destroyedIndexes.insert(indexPath)
+                    destroyedIndexes.insert(indexPath)
                 }
                 viewDelegate?.destroyTile(at: indexPath)
             }
