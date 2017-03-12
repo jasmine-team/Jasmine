@@ -32,6 +32,8 @@
 		DF2D21EA1E743BC500094381 /* GridStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */; };
 		DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D21EB1E743C8700094381 /* GridGameViewController.swift */; };
 		DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */; };
+		DFCA8C1A1E753E0100A9C9B5 /* GeometryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCA8C191E753E0100A9C9B5 /* GeometryUtils.swift */; };
+		DFCA8C1E1E753E7800A9C9B5 /* GeometryUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCA8C1D1E753E7800A9C9B5 /* GeometryUtilsTest.swift */; };
 		DFE427BF1E744D3D00A837BD /* SquareTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE427BE1E744D3D00A837BD /* SquareTextViewCell.swift */; };
 		DFE427C11E74F78600A837BD /* SquareTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE427C01E74F78600A837BD /* SquareTextView.swift */; };
 /* End PBXBuildFile section */
@@ -89,6 +91,8 @@
 		DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GridStoryboard.storyboard; sourceTree = "<group>"; };
 		DF2D21EB1E743C8700094381 /* GridGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewController.swift; sourceTree = "<group>"; };
 		DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TetrisStoryboard.storyboard; sourceTree = "<group>"; };
+		DFCA8C191E753E0100A9C9B5 /* GeometryUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryUtils.swift; sourceTree = "<group>"; };
+		DFCA8C1D1E753E7800A9C9B5 /* GeometryUtilsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryUtilsTest.swift; sourceTree = "<group>"; };
 		DFE427BE1E744D3D00A837BD /* SquareTextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareTextViewCell.swift; sourceTree = "<group>"; };
 		DFE427C01E74F78600A837BD /* SquareTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareTextView.swift; sourceTree = "<group>"; };
 		FC0AD02B711C61B2492AE255 /* Pods-Jasmine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.release.xcconfig"; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
+				DFCA8C191E753E0100A9C9B5 /* GeometryUtils.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 		A260C6341E6AB30400782103 /* JasmineTests */ = {
 			isa = PBXGroup;
 			children = (
+				DFCA8C1B1E753E6000A9C9B5 /* Common */,
 				A260C6351E6AB30400782103 /* JasmineTests.swift */,
 				A260C6371E6AB30400782103 /* Info.plist */,
 			);
@@ -350,6 +356,22 @@
 				A260C6421E6AB30400782103 /* Info.plist */,
 			);
 			path = JasmineUITests;
+			sourceTree = "<group>";
+		};
+		DFCA8C1B1E753E6000A9C9B5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DFCA8C1C1E753E6600A9C9B5 /* Extensions */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		DFCA8C1C1E753E6600A9C9B5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DFCA8C1D1E753E7800A9C9B5 /* GeometryUtilsTest.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		DFE427BA1E744B6800A837BD /* Extensions */ = {
@@ -680,6 +702,7 @@
 				50989DD71E6D8B16009A86C8 /* TetrisViewModel.swift in Sources */,
 				50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */,
 				50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */,
+				DFCA8C1A1E753E0100A9C9B5 /* GeometryUtils.swift in Sources */,
 				50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */,
 				50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */,
 			);
@@ -690,6 +713,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A260C6361E6AB30400782103 /* JasmineTests.swift in Sources */,
+				DFCA8C1E1E753E7800A9C9B5 /* GeometryUtilsTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
