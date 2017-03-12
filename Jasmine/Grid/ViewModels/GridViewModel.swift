@@ -30,10 +30,10 @@ class GridViewModel: GameViewModel, GridViewModelProtocol {
 
         // TODO: Don't hardcode these characters
         switch type {
-        case .chengyu:
+        case .chengYu:
             characters = [["我", "们", "爱", "你"], ["我", "们", "爱", "你"],
                           ["我", "们", "爱", "你"], ["我", "们", "爱", "你"]]
-        case .pinyin:
+        case .pinYin:
             characters = [["w", "m", "我", "们"], ["m", "f", "免", "费"],
                           ["n", "r", "牛", "肉"], ["f", "y", "法", "语"]]
         default:
