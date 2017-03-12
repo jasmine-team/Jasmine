@@ -32,7 +32,8 @@
 		DF2D21EA1E743BC500094381 /* GridStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */; };
 		DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D21EB1E743C8700094381 /* GridGameViewController.swift */; };
 		DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */; };
-		DFE427BF1E744D3D00A837BD /* GridCharacterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE427BE1E744D3D00A837BD /* GridCharacterViewCell.swift */; };
+		DFE427BF1E744D3D00A837BD /* SquareTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE427BE1E744D3D00A837BD /* SquareTextViewCell.swift */; };
+		DFE427C11E74F78600A837BD /* SquareTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE427C01E74F78600A837BD /* SquareTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +89,8 @@
 		DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GridStoryboard.storyboard; sourceTree = "<group>"; };
 		DF2D21EB1E743C8700094381 /* GridGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewController.swift; sourceTree = "<group>"; };
 		DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TetrisStoryboard.storyboard; sourceTree = "<group>"; };
-		DFE427BE1E744D3D00A837BD /* GridCharacterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCharacterViewCell.swift; sourceTree = "<group>"; };
+		DFE427BE1E744D3D00A837BD /* SquareTextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareTextViewCell.swift; sourceTree = "<group>"; };
+		DFE427C01E74F78600A837BD /* SquareTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareTextView.swift; sourceTree = "<group>"; };
 		FC0AD02B711C61B2492AE255 /* Pods-Jasmine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.release.xcconfig"; sourceTree = "<group>"; };
 		FF297B9535BBD99F827421B6 /* Pods-JasmineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -360,7 +362,8 @@
 		DFE427BD1E744CFE00A837BD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DFE427BE1E744D3D00A837BD /* GridCharacterViewCell.swift */,
+				DFE427BE1E744D3D00A837BD /* SquareTextViewCell.swift */,
+				DFE427C01E74F78600A837BD /* SquareTextView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -666,12 +669,13 @@
 				50989DE01E6D8B16009A86C8 /* HomeScreenViewController.swift in Sources */,
 				50989DD51E6D8B16009A86C8 /* TetrisGameData.swift in Sources */,
 				50989DDA1E6D8B16009A86C8 /* GridViewModel.swift in Sources */,
+				DFE427C11E74F78600A837BD /* SquareTextView.swift in Sources */,
 				50989DDE1E6D8B16009A86C8 /* GameDataProtocol.swift in Sources */,
 				50989DE11E6D8B16009A86C8 /* GameViewModel.swift in Sources */,
 				50989DE21E6D8B16009A86C8 /* FlappyGameData.swift in Sources */,
 				DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */,
 				50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */,
-				DFE427BF1E744D3D00A837BD /* GridCharacterViewCell.swift in Sources */,
+				DFE427BF1E744D3D00A837BD /* SquareTextViewCell.swift in Sources */,
 				50989DD81E6D8B16009A86C8 /* GridGameData.swift in Sources */,
 				50989DD71E6D8B16009A86C8 /* TetrisViewModel.swift in Sources */,
 				50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */,
