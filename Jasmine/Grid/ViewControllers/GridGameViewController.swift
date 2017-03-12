@@ -6,6 +6,7 @@ class GridGameViewController: UIViewController {
 
     /* Constants */
     fileprivate static let characterCellIdentifier = "Grid Game Character Cell"
+    fileprivate static let snappingDuration = 0.3
 
     /// Provides a tolerance (via a factor of the expected size) so that 4 cells can fit in one row.
     fileprivate static let cellSizeFactor = CGFloat(0.9)
@@ -22,6 +23,7 @@ class GridGameViewController: UIViewController {
 
     fileprivate var draggingTile: SquareTextViewCell?
     fileprivate var draggingStartFrame: CGRect?
+    fileprivate var draggingStartIndex: IndexPath?
 
     /* View Controller Lifecycles */
     /// Readjusts layout (such as cell size) upon auto-rotate.
@@ -44,7 +46,7 @@ class GridGameViewController: UIViewController {
             handleTileDragged(at: position)
 
         case .ended:
-            handleTileDropped(at: position)
+            handleTileLanding(at: position)
 
         default:
             break
@@ -70,36 +72,94 @@ fileprivate extension GridGameViewController {
                 return
         }
 
+        charactersCollectionView.bringSubview(toFront: cellTouched)
         draggingTile = cellTouched
         draggingStartFrame = cellTouched.frame
+        draggingStartIndex = indexTouched
     }
 
     fileprivate func handleTileDragged(at position: CGPoint) {
-        draggingTile?.frame.origin = position
+        guard let draggingTile = draggingTile else {
+            return
+        }
+        let size = draggingTile.frame.size
+        let newOrigin = GeometryUtils.getOrigin(from: position, withSize: size)
+        draggingTile.frame.origin = newOrigin
     }
 
-    fileprivate func handleTileDropped(at position: CGPoint) {
+    fileprivate func handleTileLanding(at position: CGPoint) {
+        guard let indexLanded = charactersCollectionView.indexPathForItem(at: position) else {
+            handleTileFailedLanding()
+            return
+        }
+        guard let cellToVacate = charactersCollectionView
+            .cellForItem(at: indexLanded) as? SquareTextViewCell else {
+                handleTileFailedLanding()
+                return
+        }
+
+        handleTileSuccessfulLanding(on: cellToVacate, at: indexLanded)
+    }
+
+    private func handleTileFailedLanding() {
         guard let draggingTile = draggingTile else {
             return
         }
         guard let draggingStartFrame = draggingStartFrame else {
             return
         }
-        guard let indexLanded = charactersCollectionView.indexPathForItem(at: position) else {
-            return
-        }
-        guard let cellToVacate = charactersCollectionView
-            .cellForItem(at: indexLanded) as? SquareTextViewCell else {
-                return
+
+        let animation: () -> Void = {
+            draggingTile.frame = draggingStartFrame
         }
 
-        UIView.animate(withDuration: 1.0, animations: {
-            draggingTile.frame = cellToVacate.frame
-            cellToVacate.frame = draggingStartFrame
-        }, completion: { _ in
+        let completion: (Bool) -> Void = { _ in
             self.draggingTile = nil
             self.draggingStartFrame = nil
-        })
+        }
+
+        UIView.animate(withDuration: GridGameViewController.snappingDuration,
+                       animations: animation,
+                       completion: completion)
+    }
+
+    private func handleTileSuccessfulLanding(on otherCell: SquareTextViewCell,
+                                             at otherIndex: IndexPath) {
+        guard let draggingTile = draggingTile else {
+            return
+        }
+        guard let draggingStartFrame = draggingStartFrame else {
+            return
+        }
+        guard let draggingStartIndex = draggingStartIndex else {
+            return
+        }
+
+        let otherText = chineseTexts[otherIndex.item]
+        chineseTexts[otherIndex.item] = chineseTexts[draggingStartIndex.item]
+        chineseTexts[draggingStartIndex.item] = otherText
+
+        let animation: () -> Void = {
+            draggingTile.frame = otherCell.frame
+            otherCell.frame = draggingStartFrame
+        }
+
+        let completion: (Bool) -> Void = { _ in
+
+            UIView.setAnimationsEnabled(false)
+            otherCell.frame = draggingTile.frame
+            draggingTile.frame = draggingStartFrame
+            self.charactersCollectionView.reloadItems(at: [draggingStartIndex, otherIndex])
+            UIView.setAnimationsEnabled(true)
+
+            self.draggingTile = nil
+            self.draggingStartFrame = nil
+            self.draggingStartIndex = nil
+        }
+
+        UIView.animate(withDuration: GridGameViewController.snappingDuration,
+                       animations: animation,
+                       completion: completion)
     }
 }
 
