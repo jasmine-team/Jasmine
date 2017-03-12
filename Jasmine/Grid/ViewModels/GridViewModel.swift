@@ -4,14 +4,14 @@ class GridViewModel: GameViewModel, GridViewModelProtocol {
     /// The grid of the current game.
     private(set) var grid: [IndexPath: Character] = [:]
     /// Remaining time, in seconds.
-    private(set) var time: Int
+    private(set) var time: TimeInterval
 
     /// Creates an instance of the game.
     ///
     /// - Parameters:
     ///   - type: the type of the game
     ///   - time: initial time, in seconds
-    required init(type: GameType, time: Int) {
+    required init(type: GameType, time: TimeInterval) {
         self.time = time
         super.init()
         populateGrid(type: type)

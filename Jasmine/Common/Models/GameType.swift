@@ -1,5 +1,5 @@
 enum GameType {
-    case pinyin
-    case chengyu
-    case cihui
+    case pinYin
+    case chengYu
+    case ciHui
 }
