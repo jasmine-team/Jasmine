@@ -1,13 +1,31 @@
 import Foundation
 
-class GridViewModel: GameViewModel {
+class GridViewModel: GameViewModel, GridViewModelProtocol {
     /// The grid of the current game.
     private(set) var grid: [IndexPath: Character] = [:]
+    /// Remaining time, in seconds.
+    private(set) var time: Int
+
+    /// Creates an instance of the game.
+    ///
+    /// - Parameters:
+    ///   - type: the type of the game
+    ///   - time: initial time, in seconds
+    required init(type: GameType, time: Int) {
+        self.time = time
+        super.init()
+        populateGrid(type: type)
+    }
+
+    /// Swaps two tiles in the grid.
+    internal func swapTile(at first: IndexPath, with second: IndexPath) {
+        swap(&grid[first], &grid[second])
+    }
 
     /// Populates the grid according to the specified game type.
     ///
     /// - Parameter type: the game type
-    func populateGrid(type: GameType) {
+    private func populateGrid(type: GameType) {
         var characters: [[Character]] = []
 
         // TODO: Don't hardcode these characters
@@ -46,5 +64,4 @@ class GridViewModel: GameViewModel {
             idx += 1
         }
     }
-
 }
