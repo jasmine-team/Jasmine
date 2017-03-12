@@ -7,10 +7,10 @@ class GridViewModel: GameViewModel {
     /// Populates the grid according to the specified game type.
     ///
     /// - Parameter type: the game type
-    internal func populateGrid(type: GameType) {
+    func populateGrid(type: GameType) {
         var characters: [[Character]] = []
 
-        // TODO: Don't hardcore these characters
+        // TODO: Don't hardcode these characters
         switch type {
         case .chengyu:
             characters = [["我", "们", "爱", "你"], ["我", "们", "爱", "你"],
@@ -33,35 +33,18 @@ class GridViewModel: GameViewModel {
     private func loadGrid(from characters: [[Character]]) {
         let rows = characters.count
         let cols = characters.first?.count ?? 0
-        assert(rows > 0 && cols > 0, "Number of rows and columns should be > 0")
+        assert(rows > 0 && cols > 0, "Number of rows and columns should be more than 0")
         assert(Set(characters.map { $0.count }).count == 1, "All rows should have the same length")
 
-        var allChars = Array(characters.joined())
-
-        // Shuffle allChars
-        for originalIndex in 0..<allChars.count {
-            // Random number in [i, allChars.count)
-            let swapIndex = Int(arc4random_uniform(UInt32(allChars.count - originalIndex))) + originalIndex
-            swap(&allChars[originalIndex], &allChars[swapIndex])
-        }
+        let allChars = characters.joined().shuffled()
 
         // Place back allChars to the grid
         grid.removeAll()
         var idx = 0
-        for row in 0..<rows {
-            for item in 0..<cols {
-                grid[IndexPath(item: item, section: row)] = allChars[idx]
-                idx += 1
-            }
+        for (row, col) in zip(0..<rows, 0..<cols) {
+            grid[IndexPath(item: col, section: row)] = allChars[idx]
+            idx += 1
         }
     }
 
-    /// Swaps tiles from the first location with the second location.
-    ///
-    /// - Parameters:
-    ///   - firstLocation: first location of the grid to be swapped
-    ///   - secondLocation: second location of the grid to be swapped
-    internal func swapTiles(_ firstLocation: IndexPath, _ secondLocation: IndexPath) {
-        swap(&grid[firstLocation], &grid[secondLocation])
-    }
 }
