@@ -13,13 +13,16 @@ class GridGameViewController: UIViewController {
 
     /* Layouts */
     /// Keeps a 4 x 4 of chinese characters as individual cells.
-    @IBOutlet fileprivate weak var charactersCollectionView: UICollectionView!
+    @IBOutlet fileprivate weak var gridCollectionView: UICollectionView!
 
     /* Properties */
     /// Stores a list of Chinese characters, which serves as the data source for  
     /// `charactersCollectionView`.
     fileprivate var chineseTexts: [String?]
-        = ["天", "翻", "地", "覆", nil, nil, nil, nil, "天", "翻", "地", "覆", nil, nil, nil, nil]
+        = ["天", "翻", "地", "覆",
+           "Simi", "Sai", "Also", "Want",
+           "天", "翻", "地", "覆",
+           nil, "😛", nil, "😉"]
 
     fileprivate var draggingTile: SquareTextViewCell?
     fileprivate var draggingStartFrame: CGRect?
@@ -28,7 +31,7 @@ class GridGameViewController: UIViewController {
     /* View Controller Lifecycles */
     /// Readjusts layout (such as cell size) upon auto-rotate.
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        charactersCollectionView.performBatchUpdates(charactersCollectionView.reloadData,
+        gridCollectionView.performBatchUpdates(gridCollectionView.reloadData,
                                                      completion: nil)
     }
 
@@ -36,7 +39,7 @@ class GridGameViewController: UIViewController {
     /// Listens to a drag gesture and handles the operation of dragging a tile, and dropping it
     /// to another location.
     @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
-        let position = sender.location(in: charactersCollectionView)
+        let position = sender.location(in: gridCollectionView)
 
         switch sender.state {
         case .began:
@@ -69,15 +72,15 @@ fileprivate extension GridGameViewController {
         guard draggingStartFrame == nil else {
             return
         }
-        guard let indexTouched = charactersCollectionView.indexPathForItem(at: position) else {
+        guard let indexTouched = gridCollectionView.indexPathForItem(at: position) else {
             return
         }
-        guard let cellTouched = charactersCollectionView
+        guard let cellTouched = gridCollectionView
             .cellForItem(at: indexTouched) as? SquareTextViewCell else {
                 return
         }
 
-        charactersCollectionView.bringSubview(toFront: cellTouched)
+        gridCollectionView.bringSubview(toFront: cellTouched)
         draggingTile = cellTouched
         draggingStartFrame = cellTouched.frame
         draggingStartIndex = indexTouched
@@ -101,11 +104,11 @@ fileprivate extension GridGameViewController {
     ///
     /// - Parameter position: location where the tile should land.
     fileprivate func handleTileLanding(at position: CGPoint) {
-        guard let indexLanded = charactersCollectionView.indexPathForItem(at: position) else {
+        guard let indexLanded = gridCollectionView.indexPathForItem(at: position) else {
             handleTileFailedLanding()
             return
         }
-        guard let cellToVacate = charactersCollectionView
+        guard let cellToVacate = gridCollectionView
             .cellForItem(at: indexLanded) as? SquareTextViewCell else {
                 handleTileFailedLanding()
                 return
@@ -165,7 +168,7 @@ fileprivate extension GridGameViewController {
             UIView.setAnimationsEnabled(false)
             otherCell.frame = draggingTile.frame
             draggingTile.frame = draggingStartFrame
-            self.charactersCollectionView.reloadItems(at: [draggingStartIndex, otherIndex])
+            self.gridCollectionView.reloadItems(at: [draggingStartIndex, otherIndex])
             UIView.setAnimationsEnabled(true)
 
             self.draggingTile = nil
@@ -210,7 +213,7 @@ extension GridGameViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let length = charactersCollectionView.bounds.width / CGFloat(Constants.BoardGamePlay.columns)
+        let length = gridCollectionView.bounds.width / CGFloat(Constants.BoardGamePlay.columns)
             * GridGameViewController.cellSizeFactor
 
         return CGSize(width: length, height: length)

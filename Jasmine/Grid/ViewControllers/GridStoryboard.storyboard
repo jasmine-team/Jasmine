@@ -44,7 +44,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="si7-Wh-ASf" customClass="SquareTextView" customModule="Jasmine" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="si7-Wh-ASf" customClass="SquareTextView" customModule="Jasmine" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                                                     <color key="backgroundColor" red="0.18198148906230927" green="0.69426733255386353" blue="0.53024792671203613" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="40"/>
@@ -83,7 +83,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="charactersCollectionView" destination="uh3-nq-JZN" id="7GS-wQ-DSH"/>
+                        <outlet property="gridCollectionView" destination="uh3-nq-JZN" id="8eS-dJ-2Jf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="165-Wz-AYE" userLabel="First Responder" sceneMemberID="firstResponder"/>
