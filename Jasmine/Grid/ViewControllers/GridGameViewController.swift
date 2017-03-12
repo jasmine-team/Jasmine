@@ -57,6 +57,11 @@ class GridGameViewController: UIViewController {
 // MARK: - Drag and Drop Tiles
 fileprivate extension GridGameViewController {
 
+    /// Handles the case when the tile is lifted from the collection view.
+    /// Such a tile gets "detached" from the view by having its identity noted down in the 
+    /// properties.
+    ///
+    /// - Parameter position: location where the tile is selected.
     fileprivate func handleTileSelected(at position: CGPoint) {
         guard draggingTile == nil else {
             return
@@ -78,6 +83,9 @@ fileprivate extension GridGameViewController {
         draggingStartIndex = indexTouched
     }
 
+    /// Drags the tile that is referenced in `draggingTile`.
+    ///
+    /// - Parameter position: location where the tile should drag to.
     fileprivate func handleTileDragged(at position: CGPoint) {
         guard let draggingTile = draggingTile else {
             return
@@ -87,6 +95,11 @@ fileprivate extension GridGameViewController {
         draggingTile.frame.origin = newOrigin
     }
 
+    /// Lands the tile at the specified position, if such a cell is found.
+    /// The other cell will snap to the dragged cell position.
+    /// If fails to find a place, the dragged cell shall return to original position.
+    ///
+    /// - Parameter position: location where the tile should land.
     fileprivate func handleTileLanding(at position: CGPoint) {
         guard let indexLanded = charactersCollectionView.indexPathForItem(at: position) else {
             handleTileFailedLanding()
@@ -101,6 +114,7 @@ fileprivate extension GridGameViewController {
         handleTileSuccessfulLanding(on: cellToVacate, at: indexLanded)
     }
 
+    /// Helper method to let the dragged tile to return to its original position.
     private func handleTileFailedLanding() {
         guard let draggingTile = draggingTile else {
             return
@@ -123,6 +137,8 @@ fileprivate extension GridGameViewController {
                        completion: completion)
     }
 
+    /// Helper method to switch the landed tile and vacated tile, and update the database at the
+    /// same time.
     private func handleTileSuccessfulLanding(on otherCell: SquareTextViewCell,
                                              at otherIndex: IndexPath) {
         guard let draggingTile = draggingTile else {
