@@ -18,7 +18,6 @@
 		50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC21E6D8B16009A86C8 /* Constants.swift */; };
 		50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC31E6D8B16009A86C8 /* SoundService.swift */; };
 		50989DDD1E6D8B16009A86C8 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC51E6D8B16009A86C8 /* GameData.swift */; };
-		50989DDE1E6D8B16009A86C8 /* GameDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC61E6D8B16009A86C8 /* GameDataProtocol.swift */; };
 		50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC71E6D8B16009A86C8 /* Phrase.swift */; };
 		50989DE01E6D8B16009A86C8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC91E6D8B16009A86C8 /* HomeView.swift */; };
 		50989DE11E6D8B16009A86C8 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DCB1E6D8B16009A86C8 /* GameViewModel.swift */; };
@@ -29,6 +28,7 @@
 		A2187E661E6E9FCB0033FC5B /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E651E6E9FCB0033FC5B /* PlayerTests.swift */; };
 		A2187E681E6EA0A20033FC5B /* GameDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E671E6EA0A20033FC5B /* GameDataTests.swift */; };
 		A2187E6A1E6EA35C0033FC5B /* RealmTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E691E6EA35C0033FC5B /* RealmTestCase.swift */; };
+		A2187E761E76CE1A0033FC5B /* GameDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E751E76CE1A0033FC5B /* GameDataManager.swift */; };
 		A260C6261E6AB30400782103 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6241E6AB30400782103 /* Main.storyboard */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
 		A260C62B1E6AB30400782103 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6291E6AB30400782103 /* LaunchScreen.storyboard */; };
@@ -68,7 +68,6 @@
 		50989DC21E6D8B16009A86C8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		50989DC31E6D8B16009A86C8 /* SoundService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundService.swift; sourceTree = "<group>"; };
 		50989DC51E6D8B16009A86C8 /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
-		50989DC61E6D8B16009A86C8 /* GameDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataProtocol.swift; sourceTree = "<group>"; };
 		50989DC71E6D8B16009A86C8 /* Phrase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Phrase.swift; sourceTree = "<group>"; };
 		50989DC91E6D8B16009A86C8 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		50989DCB1E6D8B16009A86C8 /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
@@ -81,6 +80,7 @@
 		A2187E651E6E9FCB0033FC5B /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 		A2187E671E6EA0A20033FC5B /* GameDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataTests.swift; sourceTree = "<group>"; };
 		A2187E691E6EA35C0033FC5B /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
+		A2187E751E76CE1A0033FC5B /* GameDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataManager.swift; sourceTree = "<group>"; };
 		A260C61D1E6AB30400782103 /* Jasmine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jasmine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6251E6AB30400782103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A260C6271E6AB30400782103 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
@@ -217,7 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				50989DC51E6D8B16009A86C8 /* GameData.swift */,
-				50989DC61E6D8B16009A86C8 /* GameDataProtocol.swift */,
+				A2187E751E76CE1A0033FC5B /* GameDataManager.swift */,
 				50989DC71E6D8B16009A86C8 /* Phrase.swift */,
 				A260C65E1E6E916800782103 /* Player.swift */,
 			);
@@ -659,12 +659,12 @@
 				50989DE01E6D8B16009A86C8 /* HomeView.swift in Sources */,
 				50989DD51E6D8B16009A86C8 /* TetrisGameData.swift in Sources */,
 				50989DDA1E6D8B16009A86C8 /* GridViewModel.swift in Sources */,
-				50989DDE1E6D8B16009A86C8 /* GameDataProtocol.swift in Sources */,
 				50989DE11E6D8B16009A86C8 /* GameViewModel.swift in Sources */,
 				50989DE21E6D8B16009A86C8 /* FlappyGameData.swift in Sources */,
 				50989DD61E6D8B16009A86C8 /* TetrisGameView.swift in Sources */,
 				50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */,
 				50989DD81E6D8B16009A86C8 /* GridGameData.swift in Sources */,
+				A2187E761E76CE1A0033FC5B /* GameDataManager.swift in Sources */,
 				50989DD71E6D8B16009A86C8 /* TetrisViewModel.swift in Sources */,
 				50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */,
 				50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */,
