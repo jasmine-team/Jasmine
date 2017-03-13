@@ -20,12 +20,12 @@ opt_in_rules:
   - conditional_returns_on_newline
 
 line_length:
-  error: 105
-  warning: 105
+  error: 120
+  warning: 120
 
 file_length:
-  warning: 300
-  error: 400
+  warning: 600
+  error: 600
 
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
