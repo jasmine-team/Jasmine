@@ -27,7 +27,7 @@ protocol GridGameViewControllerDelegate: BaseGameViewControllerDelegate {
     /// updated.
     ///
     /// - Parameter coordinates: The set of coordinates to be redisplayed.
-    func redisplayTiles(at coordinates: Set<Coordinate>)
+    func redisplay(tilesAt coordinates: Set<Coordinate>)
 
     /// Refreshes one particular tile based on the tiles information stored in the VC's database.
     ///
@@ -35,5 +35,5 @@ protocol GridGameViewControllerDelegate: BaseGameViewControllerDelegate {
     /// updated.
     ///
     /// - Parameter coordinate: The single coordinate to be redisplayed.
-    func redisplayTile(at coordinate: Coordinate)
+    func redisplay(tileAt coordinate: Coordinate)
 }
