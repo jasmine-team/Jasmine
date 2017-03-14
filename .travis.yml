@@ -4,5 +4,5 @@ xcode_project: Jasmine.xcworkspace
 xcode_scheme: Jasmine
 xcode_sdk: iphonesimulator10.0
 script:
-    - xcodebuild test -destination "platform=iOS Simulator,name=iPhone 6,OS=10.0" -parallelizeTargets ONLY_ACTIVE_ARCH=YES -enableCodeCoverage YES -quiet
+    - xcodebuild test -sdk iphonesimulator10.0 -workspace Jasmine.xcworkspace -destination "platform=iOS Simulator,name=iPhone 6,OS=10.0" -scheme Jasmine -parallelizeTargets ONLY_ACTIVE_ARCH=YES -enableCodeCoverage YES -quiet
     - bash <(curl -s https://codecov.io/bash) -cF ios -J 'Jasmine'
