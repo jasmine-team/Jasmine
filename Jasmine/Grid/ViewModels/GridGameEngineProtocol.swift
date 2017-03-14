@@ -15,7 +15,9 @@ protocol GridGameEngineProtocol: BaseGameEngineProtocol {
     /// the specified two tiles.
     ///
     /// Note that if the tiles are swapped, `delegate.updateTiles(...)` should be called to update
-    /// the database of the cell stored in the view controller.
+    /// the database of the cell stored in the view controller. However, there is no need to call
+    /// `delegate.redisplayTiles(...)` as it will be done implicitly by the view controller when
+    /// the swapping is successful (determined by the returned value).
     ///
     /// - Parameters:
     ///   - coord1: One of the cells to be swapped.

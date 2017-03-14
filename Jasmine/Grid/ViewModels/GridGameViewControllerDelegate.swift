@@ -1,13 +1,9 @@
-//
-//  GridGameViewControllerDelegate.swift
-//  Jasmine
-//
-//  Created by Xien Dong on 14/3/17.
-//  Copyright © 2017 nus.cs3217. All rights reserved.
-//
-
 import Foundation
 
+/// Implement this delegate for `GridGameEngineProtocol` to call for updating and commanding the
+/// implementing game view controller.
+///
+/// - Author: Wang Xien Dong
 protocol GridGameViewControllerDelegate: BaseGameViewControllerDelegate {
 
     /// Update the database stored in the Grid Game View Controller with a new dataset.
