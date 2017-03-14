@@ -6,13 +6,16 @@ class GridViewModel: GameViewModel, GridViewModelProtocol {
     /// Remaining time, in seconds.
     private(set) var time: TimeInterval
 
+    private(set) var delegate: GridViewControllerDelegate?
+
     /// Creates an instance of the game.
     ///
     /// - Parameters:
     ///   - type: the type of the game
     ///   - time: initial time, in seconds
-    required init(type: GameType, time: TimeInterval) {
+    required init(type: GameType, time: TimeInterval, delegate: GridViewControllerDelegate?) {
         self.time = time
+        self.delegate = delegate
         super.init()
         populateGrid(type: type)
     }
