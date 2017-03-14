@@ -20,7 +20,7 @@ class GridGameViewController: UIViewController {
     /// `charactersCollectionView`.
     fileprivate var chineseTexts: [String?]
         = ["天", "翻", "地", "覆",
-           "Simi", "Sai", "Also", "Want",
+           "CS32", "17", ":D", ":(",
            "天", "翻", "地", "覆",
            nil, "😛", nil, "😉"]
 
@@ -32,7 +32,7 @@ class GridGameViewController: UIViewController {
     /// Readjusts layout (such as cell size) upon auto-rotate.
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         gridCollectionView.performBatchUpdates(gridCollectionView.reloadData,
-                                                     completion: nil)
+                                               completion: nil)
     }
 
     /* Gesture Recognisers */
