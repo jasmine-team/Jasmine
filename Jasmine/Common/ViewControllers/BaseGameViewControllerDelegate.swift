@@ -4,8 +4,6 @@ import Foundation
 /// This protocol will be inherited by all the specialsied game view controller delegates.
 protocol BaseGameViewControllerDelegate {
 
-    typealias Seconds = Double
-
     /// Redisplay the score displayed on the view controller screen with a new score.
     ///
     /// - Parameter newScore: the new score to be redisplayed.
@@ -16,5 +14,5 @@ protocol BaseGameViewControllerDelegate {
     /// - Parameters:
     ///   - timeRemaining: the remaining time left, in seconds.
     ///   - totalTime: the total time from the start of the game, in seconds.
-    func redisplay(_ timeRemaining: Seconds, outOf totalTime: Seconds)
+    func redisplay(_ timeRemaining: TimeInterval, outOf totalTime: TimeInterval)
 }
