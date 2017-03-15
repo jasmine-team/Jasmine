@@ -29,6 +29,7 @@
 		A2187E681E6EA0A20033FC5B /* GameDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E671E6EA0A20033FC5B /* GameDataTests.swift */; };
 		A2187E6A1E6EA35C0033FC5B /* RealmTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E691E6EA35C0033FC5B /* RealmTestCase.swift */; };
 		A2187E761E76CE1A0033FC5B /* GameDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E751E76CE1A0033FC5B /* GameDataManager.swift */; };
+		A2187E781E79B20D0033FC5B /* phrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = A2187E771E79B20D0033FC5B /* phrases.txt */; };
 		A260C6261E6AB30400782103 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6241E6AB30400782103 /* Main.storyboard */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
 		A260C62B1E6AB30400782103 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6291E6AB30400782103 /* LaunchScreen.storyboard */; };
@@ -81,6 +82,7 @@
 		A2187E671E6EA0A20033FC5B /* GameDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataTests.swift; sourceTree = "<group>"; };
 		A2187E691E6EA35C0033FC5B /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
 		A2187E751E76CE1A0033FC5B /* GameDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataManager.swift; sourceTree = "<group>"; };
+		A2187E771E79B20D0033FC5B /* phrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phrases.txt; sourceTree = "<group>"; };
 		A260C61D1E6AB30400782103 /* Jasmine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jasmine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6251E6AB30400782103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A260C6271E6AB30400782103 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				A260C6241E6AB30400782103 /* Main.storyboard */,
 				A260C6271E6AB30400782103 /* Assets.xcassets */,
 				A260C6291E6AB30400782103 /* LaunchScreen.storyboard */,
+				A2187E771E79B20D0033FC5B /* phrases.txt */,
 				50989DC41E6D8B16009A86C8 /* Helpers */,
 				50989DC81E6D8B16009A86C8 /* Models */,
 				50989DCA1E6D8B16009A86C8 /* ViewControllers */,
@@ -478,6 +481,7 @@
 				A260C62B1E6AB30400782103 /* LaunchScreen.storyboard in Resources */,
 				A260C6281E6AB30400782103 /* Assets.xcassets in Resources */,
 				A260C6261E6AB30400782103 /* Main.storyboard in Resources */,
+				A2187E781E79B20D0033FC5B /* phrases.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
