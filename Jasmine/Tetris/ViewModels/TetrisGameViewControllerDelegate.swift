@@ -9,9 +9,9 @@ protocol TetrisGameViewControllerDelegate: BaseGameViewControllerDelegate {
     /// Note that this does *not* reload all the tiles displayed on the View Controller.
     /// To do so, call a variant of `redisplayTiles`.
     ///
-    /// - Parameter database: the mapping of all the coordinates to all the displayed values on
+    /// - Parameter newTetrisData: the mapping of all the coordinates to all the displayed values on
     ///   the tetriw tiles.
-    func update(tilesWith database: [Coordinate: String])
+    func update(tilesWith newTetrisData: [Coordinate: String])
 
     /// Refreshes the tiles based on the tiles information stored in the View Controller's database.
     ///
