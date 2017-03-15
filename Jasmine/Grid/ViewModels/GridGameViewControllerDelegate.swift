@@ -4,7 +4,7 @@ import Foundation
 /// implementing game view controller.
 protocol GridGameViewControllerDelegate: BaseGameViewControllerDelegate {
 
-    /// Update the database stored in the Grid Game View Controller with a new dataset.
+    /// Update the grid data stored in the Grid Game View Controller with a new dataset.
     ///
     /// Note that this does *not* reload all the tiles displayed on the View Controller.
     /// To do so, call a variant of `redisplayTiles`.
@@ -13,23 +13,23 @@ protocol GridGameViewControllerDelegate: BaseGameViewControllerDelegate {
     ///   the grid tiles.
     func update(tilesWith newGridData: [Coordinate: String])
 
-    /// Refreshes the tiles based on the tiles information stored in the View Controller's database.
+    /// Refreshes the tiles based on the tiles information stored in the View Controller's grid data.
     ///
-    /// Note to call `updateTiles(with database)` if any information in the database should be 
+    /// Note to call `updateTiles(tilesWith newGridData)` if any information in the grid data should be
     /// updated.
     func redisplayAllTiles()
 
-    /// Refreshes a selected set of tiles based on the tiles information stored in the VC's database.
+    /// Refreshes a selected set of tiles based on the tiles information stored in the VC's grid data.
     ///
-    /// Note to call `updateTiles(with database)` if any information in the database should be
+    /// Note to call `updateTiles(tilesWith newGridData)` if any information in the grid data should be
     /// updated.
     ///
     /// - Parameter coordinates: The set of coordinates to be redisplayed.
     func redisplay(tilesAt coordinates: Set<Coordinate>)
 
-    /// Refreshes one particular tile based on the tiles information stored in the VC's database.
+    /// Refreshes one particular tile based on the tiles information stored in the VC's grid data.
     ///
-    /// Note to call `updateTiles(with database)` if any information in the database should be
+    /// Note to call `updateTiles(tilesWith newGridData)` if any information in the grid data should be
     /// updated.
     ///
     /// - Parameter coordinate: The single coordinate to be redisplayed.
