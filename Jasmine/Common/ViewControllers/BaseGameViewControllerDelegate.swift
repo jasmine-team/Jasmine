@@ -5,18 +5,12 @@ import Foundation
 protocol BaseGameViewControllerDelegate {
 
     /* Score Update */
-    /// A constant that indicates the initial score that is started with the game.
-    var initialScore: Int { get }
-
     /// Redisplay the score displayed on the view controller screen with a new score.
     ///
     /// - Parameter newScore: the new score to be redisplayed.
     func redisplay(_ newScore: Int)
 
     /* Time Update */
-    /// A constant that indicates the initial time remaining that is started with the game.
-    var initialRemainingTime: TimeInterval { get }
-
     /// Redisplay the time remaining on the view controller against a total time.
     ///
     /// - Parameters:
