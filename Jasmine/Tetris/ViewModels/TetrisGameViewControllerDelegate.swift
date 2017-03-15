@@ -4,7 +4,7 @@ import Foundation
 /// implementing game view controller.
 protocol TetrisGameViewControllerDelegate: BaseGameViewControllerDelegate {
 
-    /* Database Methods */
+    // MARK: Database Methods
     /// Update the board data stored in the Tetris Game View Controller with a new dataset.
     ///
     /// Note that this does *not* reload all the tiles displayed on the View Controller.
@@ -16,7 +16,7 @@ protocol TetrisGameViewControllerDelegate: BaseGameViewControllerDelegate {
     ///   the tetriw tiles.
     func update(tilesWith newBoardData: [Coordinate: String])
 
-    /* Tetris Grid Display Methods */
+    // MARK: Tetris Grid Display Methods
     /// Refreshes the tiles based on the tiles information stored in the View Controller's board data.
     ///
     /// Note to call `updateTiles(with board data)` if any information in the board data should be
@@ -39,6 +39,7 @@ protocol TetrisGameViewControllerDelegate: BaseGameViewControllerDelegate {
     /// - Parameter coordinate: The single coordinate to be redisplayed.
     func redisplay(tileAt coordinate: Coordinate)
 
+    // MARK: Animation
     /// Ask the view controller to animate the destruction of tiles at the specified coordinates.
     ///
     /// Note that the content of the tiles will be wiped clean after that. So update the tetris data
@@ -47,7 +48,7 @@ protocol TetrisGameViewControllerDelegate: BaseGameViewControllerDelegate {
     /// - Parameter coodinates: the set of coordinates to be destroyed.
     func animate(destroyTilesAt coodinates: Set<Coordinate>)
 
-    /* Upcoming and Falling Tile */
+    // MARK: Upcoming and Falling Tile
     /// Gets the position of the falling tile. If such a position is not available, returns nil.
     var fallingTilePosition: Coordinate? { get }
 

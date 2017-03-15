@@ -4,13 +4,13 @@ import Foundation
 /// This protocol will be inherited by all the specialsied game view controller delegates.
 protocol BaseGameViewControllerDelegate {
 
-    /* Score Update */
+    // MARK: Score Update
     /// Redisplay the score displayed on the view controller screen with a new score.
     ///
     /// - Parameter newScore: the new score to be redisplayed.
     func redisplay(_ newScore: Int)
 
-    /* Time Update */
+    // MARK: Time Update
     /// Redisplay the time remaining on the view controller against a total time.
     ///
     /// - Parameters:
@@ -19,7 +19,7 @@ protocol BaseGameViewControllerDelegate {
     ///     If no bonus time is added, should equate to `initialRemainingTime`.
     func redisplay(_ timeRemaining: TimeInterval, outOf totalTime: TimeInterval)
 
-    /* Game Status */
+    // MARK: Game Status
     /// Notifies the view controller that the game state has changed.
     /// 
     /// This is also the place to indicate when the user has won/lost.

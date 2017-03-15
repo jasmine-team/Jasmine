@@ -6,7 +6,7 @@ import Foundation
 /// board data should only store tiles that are landed.
 protocol TetrisGameEngineProtocol: BaseGameEngineProtocol {
 
-    /* Properties */
+    // MARK: Properties
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
     var delegate: TetrisGameViewControllerDelegate { get set }
@@ -23,7 +23,7 @@ protocol TetrisGameEngineProtocol: BaseGameEngineProtocol {
     /// Stores the currently falling tile. Nil if there is no tile that is falling.
     var currentTile: String? { get }
 
-    /* Methods */
+    // MARK: Game Operations
     /// Tells the game engine to get the next tile for falling.
     func dropNextTile() -> String
 

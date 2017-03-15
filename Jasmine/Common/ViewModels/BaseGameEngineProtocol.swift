@@ -4,7 +4,7 @@ import Foundation
 /// This protocol will be inherited by all the specialsied game engine view model protocols.
 protocol BaseGameEngineProtocol {
 
-    /* Properties */
+    // MARK: Properties
     /// Specifies the current score of the game. If the game has not started, it will be the initial
     /// displayed score.
     var currentScore: Int { get }
