@@ -14,7 +14,7 @@ struct Coordinate {
 extension Coordinate: Hashable {
     /// Returns the hash value of this coordinate data structure.
     var hashValue: Int {
-        return row + col * 31
+        return "\(row) \(col)".hashValue
     }
 }
 
