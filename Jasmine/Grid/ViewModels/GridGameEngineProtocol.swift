@@ -1,8 +1,6 @@
 import Foundation
 
 /// Implement this class to describe how a game can be played with a Grid Game board.
-///
-/// - Author: Wang Xien Dong
 protocol GridGameEngineProtocol: BaseGameEngineProtocol {
 
     /* Properties */

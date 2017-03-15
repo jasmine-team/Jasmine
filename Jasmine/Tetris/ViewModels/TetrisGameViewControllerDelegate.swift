@@ -2,8 +2,6 @@ import Foundation
 
 /// Implement this delegate for `TetriwGameEngineProtocol` to call for updating and commanding the
 /// implementing game view controller.
-///
-/// - Author: Wang Xien Dong
 protocol TetrisGameViewControllerDelegate: BaseGameViewControllerDelegate {
 
     /// Update the database stored in the Tetris Game View Controller with a new dataset.

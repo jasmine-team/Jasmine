@@ -2,8 +2,6 @@ import Foundation
 
 /// Defines a coordinate system that is zero-indexed, where the top left corner has the coordinate
 /// row = 0, col = 0.
-///
-/// - Author: Wang Xien Dong
 struct Coordinate {
 
     /// Defines the origin of the coordinate system, which is zero.
