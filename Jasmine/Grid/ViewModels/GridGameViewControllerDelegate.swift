@@ -13,7 +13,7 @@ protocol GridGameViewControllerDelegate: BaseGameViewControllerDelegate {
     ///
     /// - Parameter database: the mapping of all the coordinates to all the displayed values on
     ///   the grid tiles.
-    func updateTiles(with database: [Coordinate: String])
+    func update(tilesWith database: [Coordinate: String])
 
     /// Refreshes the tiles based on the tiles information stored in the View Controller's database.
     ///

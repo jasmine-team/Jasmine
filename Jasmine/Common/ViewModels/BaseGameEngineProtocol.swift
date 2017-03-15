@@ -6,4 +6,6 @@ import Foundation
 /// - Author: Wang Xien Dong
 protocol BaseGameEngineProtocol {
 
+    /// Tells the view model that the game has started.
+    func startGame()
 }
