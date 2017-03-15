@@ -5,35 +5,35 @@ import Foundation
 protocol TetrisGameViewControllerDelegate: BaseGameViewControllerDelegate {
 
     /* Database Methods */
-    /// Update the database stored in the Tetris Game View Controller with a new dataset.
+    /// Update the board data stored in the Tetris Game View Controller with a new dataset.
     ///
     /// Note that this does *not* reload all the tiles displayed on the View Controller.
     /// To do so, call a variant of `redisplayTiles`.
     ///
-    /// Note also that the `tetrisData` property should be updated as well.
+    /// Note also that the `boardData` property should be updated as well.
     ///
-    /// - Parameter newTetrisData: the mapping of all the coordinates to all the displayed values on
+    /// - Parameter newBoardData: the mapping of all the coordinates to all the displayed values on
     ///   the tetriw tiles.
-    func update(tilesWith newTetrisData: [Coordinate: String])
+    func update(tilesWith newBoardData: [Coordinate: String])
 
     /* Tetris Grid Display Methods */
-    /// Refreshes the tiles based on the tiles information stored in the View Controller's database.
+    /// Refreshes the tiles based on the tiles information stored in the View Controller's board data.
     ///
-    /// Note to call `updateTiles(with database)` if any information in the database should be
+    /// Note to call `updateTiles(with board data)` if any information in the board data should be
     /// updated.
     func redisplayAllTiles()
 
-    /// Refreshes a selected set of tiles based on the tiles information stored in the VC's database.
+    /// Refreshes a selected set of tiles based on the tiles information stored in the VC's board data.
     ///
-    /// Note to call `updateTiles(with database)` if any information in the database should be
+    /// Note to call `updateTiles(with board data)` if any information in the board data should be
     /// updated.
     ///
     /// - Parameter coordinates: The set of coordinates to be redisplayed.
     func redisplay(tilesAt coordinates: Set<Coordinate>)
 
-    /// Refreshes one particular tile based on the tiles information stored in the VC's database.
+    /// Refreshes one particular tile based on the tiles information stored in the VC's board data.
     ///
-    /// Note to call `updateTiles(with database)` if any information in the database should be
+    /// Note to call `updateTiles(with board data)` if any information in the board data should be
     /// updated.
     ///
     /// - Parameter coordinate: The single coordinate to be redisplayed.

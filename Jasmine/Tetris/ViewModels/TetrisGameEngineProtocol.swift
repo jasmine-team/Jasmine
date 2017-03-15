@@ -2,8 +2,8 @@ import Foundation
 
 /// Implement this class to describe how a game can be played with a Tetris Game board.
 ///
-/// Note that the falling tile shound *not* be included in the tetris database. This means that the
-/// database should only store tiles that are landed.
+/// Note that the falling tile shound *not* be included in the tetris board data. This means that the
+/// board data should only store tiles that are landed.
 protocol TetrisGameEngineProtocol: BaseGameEngineProtocol {
 
     /* Properties */
@@ -13,9 +13,9 @@ protocol TetrisGameEngineProtocol: BaseGameEngineProtocol {
 
     /// Stores the tetris data that will be used to display in the view controller.
     ///
-    /// Note also that the falling tile should not be stored inside the tetris database. Only tiles
+    /// Note also that the falling tile should not be stored inside the tetris board data. Only tiles
     /// that are stationary should be displayed.
-    var tetrisData: [Coordinate: String] { get }
+    var boardData: [Coordinate: String] { get }
 
     /// Stores the upcoming tile that will be dropped.
     var upcomingTile: String { get }
@@ -31,7 +31,7 @@ protocol TetrisGameEngineProtocol: BaseGameEngineProtocol {
     /// returns true and perform this shifting. False otherwise.
     ///
     /// Note that there is no need to call `update(...)` or `redisplay(...)` as this falling tile
-    /// is not expected to be stored in the tetris database.
+    /// is not expected to be stored in the tetris board data.
     ///
     /// - Parameter coordinate: the new position to be shifted to.
     /// - Returns: true if this shifting is allowed, false otherwise.
