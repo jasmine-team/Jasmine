@@ -1,11 +1,3 @@
-//
-//  CoordinateTests.swift
-//  Jasmine
-//
-//  Created by Herbert Ilhan Tanujaya on 16/3/17.
-//  Copyright © 2017 nus.cs3217. All rights reserved.
-//
-
 import XCTest
 @testable import Jasmine
 
