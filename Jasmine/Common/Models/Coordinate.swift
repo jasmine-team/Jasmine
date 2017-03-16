@@ -5,7 +5,7 @@ import Foundation
 struct Coordinate {
 
     /// Defines the origin of the coordinate system, which is zero.
-    static let zero = Coordinate(row: 0, col: 0)
+    static let origin = Coordinate(row: 0, col: 0)
 
     let row: Int
     let col: Int
