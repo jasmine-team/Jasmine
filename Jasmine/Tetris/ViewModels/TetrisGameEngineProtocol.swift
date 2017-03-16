@@ -27,8 +27,8 @@ protocol TetrisGameEngineProtocol: BaseGameEngineProtocol {
     /// Tells the game engine to get the next tile for falling.
     func dropNextTile() -> String
 
-    /// Asks the Game Engine if the falling tile can be shifted to the specified position, if so
-    /// returns true and perform this shifting. False otherwise.
+    /// Tells the game engine to shift the falling tile to the specified position. If this is not 
+    /// possible, returns false.
     ///
     /// Note that there is no need to call `update(...)` or `redisplay(...)` as this falling tile
     /// is not expected to be stored in the tetris board data.

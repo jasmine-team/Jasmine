@@ -52,16 +52,14 @@ protocol TetrisGameViewControllerDelegate: BaseGameViewControllerDelegate {
     /// Gets the position of the falling tile. If such a position is not available, returns nil.
     var fallingTilePosition: Coordinate? { get }
 
-    /// Tells the view controller to reload the display of the upcoming tile (that is not falling 
-    /// currently).
+    /// Tells the view controller to reload the display of the upcoming tile.
     ///
     /// Note that this should update the relevant property as well.
     ///
     /// - Parameter tile: the tile to be displayed as upcoming tile.
     func redisplay(upcoming tile: String)
 
-    /// Tells the view controller to reload the display of the current tile (that is not falling
-    /// currently).
+    /// Tells the view controller to reload the display of the current tile that is falling.
     ///
     /// Note that this should update the relevant property as well.
     ///
