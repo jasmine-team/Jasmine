@@ -1,49 +1,90 @@
 import Foundation
 
-class GridViewModel: GameViewModel, GridViewModelProtocol {
-    /// The grid of the current game.
-    private(set) var grid: [IndexPath: Character] = [:]
-    /// Remaining time, in seconds.
-    private(set) var time: TimeInterval
+class GridViewModel: GridGameEngineProtocol {
+    /// Stores the grid data that will be used to display in the view controller.
+    private(set) var gridData: [Coordinate : String] = [:]
+    /// The delegate that the View Controller will conform to in some way, so that the Game Engine
+    /// View Model can call.
+    var delegate: GridGameViewControllerDelegate?
+    /// Specifies the remaining time left in the game.
+    private(set) var remainingTimeLeft: TimeInterval = 0.0
+    /// Specifies the total time allowed in the game.
+    private(set) var totalTimeAllowed: TimeInterval = Constants.Grid.time
+    /// Specifies the current score of the game. If the game has not started, it will be the initial
+    /// displayed score.
+    private(set) var currentScore: Int = 0
 
-    private(set) var delegate: GridViewControllerDelegate?
+    /// Tells the view model that the game has started.
+    func startGame() {
+        remainingTimeLeft = Constants.Grid.time
 
-    /// Creates an instance of the game.
-    ///
-    /// - Parameters:
-    ///   - type: the type of the game
-    ///   - time: initial time, in seconds
-    required init(type: GameType, time: TimeInterval, delegate: GridViewControllerDelegate?) {
-        self.time = time
-        self.delegate = delegate
-        super.init()
-        populateGrid(type: type)
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            self.remainingTimeLeft -= 1
+
+            if self.remainingTimeLeft == 0 {
+                self.delegate?.notifyGameStatus(with: .endedWithLost)
+                timer.invalidate()
+            }
+        }
     }
 
-    /// Swaps two tiles in the grid.
-    internal func swapTile(at first: IndexPath, with second: IndexPath) {
-        swap(&grid[first], &grid[second])
+    /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
+    /// the specified two tiles.
+    ///
+    /// Note that if the tiles are swapped, `delegate.updateTiles(...)` should be called to update
+    /// the grid data of the cell stored in the view controller. However, there is no need to call
+    /// `delegate.redisplayTiles(...)` as it will be done implicitly by the view controller when
+    /// the swapping is successful (determined by the returned value).
+    ///
+    /// - Parameters:
+    ///   - coord1: One of the cells to be swapped.
+    ///   - coord2: The other cell to be swapped.
+    /// - Returns: Returns true if the two coordinates has be swapped, false otherwise.
+    func swapTiles(_ coord1: Coordinate, and coord2: Coordinate) -> Bool {
+        guard gridData[coord1] != nil && gridData[coord2] != nil else {
+            return false
+        }
+
+        swap(&gridData[coord1], &gridData[coord2])
+
+        if gridDone {
+            delegate?.notifyGameStatus(with: .endedWithWon)
+        }
+
+        return true
+    }
+
+    /// Returns true iff the grid is done (a.k.a. the game is won)
+    private var gridDone: Bool {
+        for rowNumber in 0..<Constants.Grid.rows {
+            let row = gridData
+                .filter { $0.key.row == rowNumber }
+                .sorted { $0.0.key.col < $0.1.key.col }
+                .map { $0.value }
+            // do something with this row
+        }
+        return false
     }
 
     /// Populates the grid according to the specified game type.
     ///
     /// - Parameter type: the game type
     private func populateGrid(type: GameType) {
-        var characters: [[Character]] = []
+        var phrases: [[String]] = []
 
         // TODO: Don't hardcode these characters
         switch type {
         case .chengYu:
-            characters = [["我", "们", "爱", "你"], ["我", "们", "爱", "你"],
-                          ["我", "们", "爱", "你"], ["我", "们", "爱", "你"]]
+            phrases = [["我", "们", "爱", "你"], ["我", "们", "爱", "你"],
+                       ["我", "们", "爱", "你"], ["我", "们", "爱", "你"]]
         case .pinYin:
-            characters = [["w", "m", "我", "们"], ["m", "f", "免", "费"],
-                          ["n", "r", "牛", "肉"], ["f", "y", "法", "语"]]
+            phrases = [["w", "m", "我", "们"], ["m", "f", "免", "费"],
+                       ["n", "r", "牛", "肉"], ["f", "y", "法", "语"]]
         default:
             break
         }
 
-        loadGrid(from: characters)
+        loadGrid(from: phrases)
     }
 
     /// Loads the grid from an array of array of characters.
@@ -51,19 +92,19 @@ class GridViewModel: GameViewModel, GridViewModelProtocol {
     /// Each element in the main array should have the same length.
     ///
     /// - Parameter characters: the characters to be loaded to the grid
-    private func loadGrid(from characters: [[Character]]) {
-        let rows = characters.count
-        let cols = characters.first?.count ?? 0
+    private func loadGrid(from phrases: [[String]]) {
+        let rows = phrases.count
+        let cols = phrases.first?.count ?? 0
         assert(rows > 0 && cols > 0, "Number of rows and columns should be more than 0")
-        assert(Set(characters.map { $0.count }).count == 1, "All rows should have the same length")
+        assert(phrases.map { $0.count }.hasNoDuplicates, "All rows should have the same length")
 
-        let allChars = characters.joined().shuffled()
+        let allChars = phrases.joined().shuffled()
 
         // Place back allChars to the grid
-        grid.removeAll()
+        gridData.removeAll()
         var idx = 0
         for (row, col) in zip(0..<rows, 0..<cols) {
-            grid[IndexPath(item: col, section: row)] = allChars[idx]
+            gridData[Coordinate(row: row, col: col)] = allChars[idx]
             idx += 1
         }
     }

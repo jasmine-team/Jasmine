@@ -9,22 +9,17 @@
 /* Begin PBXBuildFile section */
 		0CF9D2BB3EBC822ACB7FF766 /* Pods_Jasmine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */; };
 		4EA886212AABEB7ED888C04C /* Pods_JasmineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */; };
-		508AC57D1E77B28000BC2C85 /* GridViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508AC57C1E77B28000BC2C85 /* GridViewControllerDelegate.swift */; };
 		509894A31E6E6CAE00FC9CF3 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509894A21E6E6CAE00FC9CF3 /* GameType.swift */; };
 		50989DD51E6D8B16009A86C8 /* TetrisGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DB41E6D8B16009A86C8 /* TetrisGameData.swift */; };
-		50989DD71E6D8B16009A86C8 /* TetrisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DB81E6D8B16009A86C8 /* TetrisViewModel.swift */; };
 		50989DD81E6D8B16009A86C8 /* GridGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DBB1E6D8B16009A86C8 /* GridGameData.swift */; };
 		50989DDA1E6D8B16009A86C8 /* GridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DBF1E6D8B16009A86C8 /* GridViewModel.swift */; };
 		50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC21E6D8B16009A86C8 /* Constants.swift */; };
 		50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC31E6D8B16009A86C8 /* SoundService.swift */; };
 		50989DDD1E6D8B16009A86C8 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC51E6D8B16009A86C8 /* GameData.swift */; };
 		50989DDE1E6D8B16009A86C8 /* GameDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC61E6D8B16009A86C8 /* GameDataProtocol.swift */; };
-		50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC71E6D8B16009A86C8 /* Phrase.swift */; };
-		50989DE11E6D8B16009A86C8 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DCB1E6D8B16009A86C8 /* GameViewModel.swift */; };
 		50989DE21E6D8B16009A86C8 /* FlappyGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DCE1E6D8B16009A86C8 /* FlappyGameData.swift */; };
 		50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DD21E6D8B16009A86C8 /* FlappyViewModel.swift */; };
 		50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */; };
-		50DD46281E7573D5001378D9 /* GridViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD46271E7573D5001378D9 /* GridViewModelProtocol.swift */; };
 		A2187E6C1E7510B60033FC5B /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E6B1E7510B60033FC5B /* Random.swift */; };
 		A2187E6E1E7511470033FC5B /* MutableCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E6D1E7511470033FC5B /* MutableCollection+Extensions.swift */; };
 		A2187E701E75116A0033FC5B /* RandomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E6F1E75116A0033FC5B /* RandomTests.swift */; };
@@ -69,10 +64,8 @@
 		3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasmine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
 		379F12059637B53A50B97F3B /* Pods-JasmineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineUITests/Pods-JasmineUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		508AC57C1E77B28000BC2C85 /* GridViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewControllerDelegate.swift; sourceTree = "<group>"; };
 		509894A21E6E6CAE00FC9CF3 /* GameType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
 		50989DB41E6D8B16009A86C8 /* TetrisGameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameData.swift; sourceTree = "<group>"; };
-		50989DB81E6D8B16009A86C8 /* TetrisViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisViewModel.swift; sourceTree = "<group>"; };
 		50989DBB1E6D8B16009A86C8 /* GridGameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameData.swift; sourceTree = "<group>"; };
 		50989DBF1E6D8B16009A86C8 /* GridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
 		50989DC21E6D8B16009A86C8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -80,12 +73,10 @@
 		50989DC51E6D8B16009A86C8 /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		50989DC61E6D8B16009A86C8 /* GameDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataProtocol.swift; sourceTree = "<group>"; };
 		50989DC71E6D8B16009A86C8 /* Phrase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Phrase.swift; sourceTree = "<group>"; };
-		50989DCB1E6D8B16009A86C8 /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		50989DCE1E6D8B16009A86C8 /* FlappyGameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyGameData.swift; sourceTree = "<group>"; };
 		50989DD21E6D8B16009A86C8 /* FlappyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyViewModel.swift; sourceTree = "<group>"; };
 		50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50989DE61E6D8BBD009A86C8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		50DD46271E7573D5001378D9 /* GridViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModelProtocol.swift; sourceTree = "<group>"; };
 		5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2187E6B1E7510B60033FC5B /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		A2187E6D1E7511470033FC5B /* MutableCollection+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MutableCollection+Extensions.swift"; sourceTree = "<group>"; };
@@ -177,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				DFB95A051E785D2E005EE2A4 /* TetrisGameEngineProtocol.swift */,
-				50989DB81E6D8B16009A86C8 /* TetrisViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -213,7 +203,6 @@
 			children = (
 				DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */,
 				50989DBF1E6D8B16009A86C8 /* GridViewModel.swift */,
-				50DD46271E7573D5001378D9 /* GridViewModelProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -263,7 +252,6 @@
 		50989DCC1E6D8B16009A86C8 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				50989DCB1E6D8B16009A86C8 /* GameViewModel.swift */,
 				DFB3426E1E77E77900D2FE09 /* BaseGameEngineProtocol.swift */,
 			);
 			path = ViewModels;
@@ -689,26 +677,19 @@
 				50989DDA1E6D8B16009A86C8 /* GridViewModel.swift in Sources */,
 				DFB95A0C1E786044005EE2A4 /* TetrisGameViewControllerDelegate.swift in Sources */,
 				50989DDE1E6D8B16009A86C8 /* GameDataProtocol.swift in Sources */,
-				50989DE11E6D8B16009A86C8 /* GameViewModel.swift in Sources */,
 				50989DE21E6D8B16009A86C8 /* FlappyGameData.swift in Sources */,
 				A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */,
-				50989DD61E6D8B16009A86C8 /* TetrisGameView.swift in Sources */,
-				50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */,
 				A2187E6E1E7511470033FC5B /* MutableCollection+Extensions.swift in Sources */,
 				DFB3426F1E77E77900D2FE09 /* BaseGameEngineProtocol.swift in Sources */,
 				DFB342771E77F5F200D2FE09 /* FlappyGameEngineProtocol.swift in Sources */,
-				50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */,
 				DFB95A081E785ED9005EE2A4 /* GridGameViewControllerDelegate.swift in Sources */,
 				50989DD81E6D8B16009A86C8 /* GridGameData.swift in Sources */,
 				DFB95A061E785D2E005EE2A4 /* TetrisGameEngineProtocol.swift in Sources */,
-				50989DD71E6D8B16009A86C8 /* TetrisViewModel.swift in Sources */,
 				DFB342751E77F06400D2FE09 /* BaseGameViewControllerDelegate.swift in Sources */,
 				50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */,
 				50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */,
 				509894A31E6E6CAE00FC9CF3 /* GameType.swift in Sources */,
-				50DD46281E7573D5001378D9 /* GridViewModelProtocol.swift in Sources */,
 				A2187E6C1E7510B60033FC5B /* Random.swift in Sources */,
-				508AC57D1E77B28000BC2C85 /* GridViewControllerDelegate.swift in Sources */,
 				50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */,
 				50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */,
 				DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */,
