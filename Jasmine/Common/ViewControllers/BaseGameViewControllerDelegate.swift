@@ -8,16 +8,16 @@ protocol BaseGameViewControllerDelegate {
     /// Redisplay the score displayed on the view controller screen with a new score.
     ///
     /// - Parameter newScore: the new score to be redisplayed.
-    func redisplay(_ newScore: Int)
+    func redisplay(newScore: Int)
 
     // MARK: Time Update
     /// Redisplay the time remaining on the view controller against a total time.
     ///
     /// - Parameters:
-    ///   - timeRemaining: the remaining time left, in seconds.
+    ///   - remainingTime: the remaining time left, in seconds.
     ///   - totalTime: the total time from the start of the game, in seconds.
     ///     If no bonus time is added, should equate to `initialRemainingTime`.
-    func redisplay(_ timeRemaining: TimeInterval, outOf totalTime: TimeInterval)
+    func redisplay(remainingTime: TimeInterval, outOf totalTime: TimeInterval)
 
     // MARK: Game Status
     /// Notifies the view controller that the game state has changed.

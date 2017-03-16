@@ -17,8 +17,8 @@ protocol TetrisGameEngineProtocol: BaseGameEngineProtocol {
     /// that are stationary should be displayed.
     var boardData: [Coordinate: String] { get }
 
-    /// Stores the upcoming tile that will be dropped.
-    var upcomingTile: String { get }
+    /// Stores the upcoming tiles that will be dropped, where index 0 will be the first to fall. 
+    var upcomingTiles: [String] { get }
 
     /// Stores the currently falling tile. Nil if there is no tile that is falling.
     var currentTile: String? { get }
