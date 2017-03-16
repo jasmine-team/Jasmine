@@ -5,7 +5,7 @@ class GridViewModel: GridGameEngineProtocol {
     private(set) var gridData: [Coordinate : String] = [:]
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
-    var delegate: GridGameViewControllerDelegate?
+    weak var delegate: GridGameViewControllerDelegate?
     /// Specifies the remaining time left in the game.
     private(set) var remainingTimeLeft: TimeInterval = 0.0
     /// Specifies the total time allowed in the game.
@@ -16,6 +16,8 @@ class GridViewModel: GridGameEngineProtocol {
 
     /// Tells the view model that the game has started.
     func startGame() {
+        self.delegate?.notifyGameStatus(with: .inProgress)
+
         remainingTimeLeft = Constants.Grid.time
 
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
