@@ -1,9 +1,10 @@
-//
-//  Secrets.swift
-//  Jasmine
-//
-//  Created by Li Kai on 16/3/17.
-//  Copyright © 2017 nus.cs3217. All rights reserved.
-//
+/// Contains api keys and other files that should not be checked into repo
+enum Secrets {
 
-import Foundation
+    enum ApiKeys {
+        static let chineseDict = ""
+        static let englishDict = ""
+        static let chineseIdiom = ""
+    }
+
+}

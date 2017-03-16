@@ -30,6 +30,11 @@
 		A2187E6A1E6EA35C0033FC5B /* RealmTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E691E6EA35C0033FC5B /* RealmTestCase.swift */; };
 		A2187E761E76CE1A0033FC5B /* GameDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E751E76CE1A0033FC5B /* GameDataManager.swift */; };
 		A2187E781E79B20D0033FC5B /* phrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = A2187E771E79B20D0033FC5B /* phrases.txt */; };
+		A2187E7A1E79BA140033FC5B /* Scrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E791E79BA140033FC5B /* Scrapper.swift */; };
+		A2187E7C1E7A27D10033FC5B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E7B1E7A27D10033FC5B /* Api.swift */; };
+		A2187E7E1E7A38F70033FC5B /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E7D1E7A38F70033FC5B /* Secrets.swift */; };
+		A2187E801E7A52560033FC5B /* ScrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E7F1E7A52560033FC5B /* ScrapperTests.swift */; };
+		A2187E821E7A54B30033FC5B /* ApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E811E7A54B30033FC5B /* ApiProtocol.swift */; };
 		A260C6261E6AB30400782103 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6241E6AB30400782103 /* Main.storyboard */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
 		A260C62B1E6AB30400782103 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6291E6AB30400782103 /* LaunchScreen.storyboard */; };
@@ -83,6 +88,11 @@
 		A2187E691E6EA35C0033FC5B /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
 		A2187E751E76CE1A0033FC5B /* GameDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataManager.swift; sourceTree = "<group>"; };
 		A2187E771E79B20D0033FC5B /* phrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phrases.txt; sourceTree = "<group>"; };
+		A2187E791E79BA140033FC5B /* Scrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrapper.swift; sourceTree = "<group>"; };
+		A2187E7B1E7A27D10033FC5B /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		A2187E7D1E7A38F70033FC5B /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		A2187E7F1E7A52560033FC5B /* ScrapperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapperTests.swift; sourceTree = "<group>"; };
+		A2187E811E7A54B30033FC5B /* ApiProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiProtocol.swift; sourceTree = "<group>"; };
 		A260C61D1E6AB30400782103 /* Jasmine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jasmine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6251E6AB30400782103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A260C6271E6AB30400782103 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
@@ -211,6 +221,9 @@
 			isa = PBXGroup;
 			children = (
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
+				A2187E791E79BA140033FC5B /* Scrapper.swift */,
+				A2187E7B1E7A27D10033FC5B /* Api.swift */,
+				A2187E811E7A54B30033FC5B /* ApiProtocol.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -251,6 +264,7 @@
 				A260C6241E6AB30400782103 /* Main.storyboard */,
 				A260C6271E6AB30400782103 /* Assets.xcassets */,
 				A260C6291E6AB30400782103 /* LaunchScreen.storyboard */,
+				A2187E7D1E7A38F70033FC5B /* Secrets.swift */,
 				A2187E771E79B20D0033FC5B /* phrases.txt */,
 				50989DC41E6D8B16009A86C8 /* Helpers */,
 				50989DC81E6D8B16009A86C8 /* Models */,
@@ -343,6 +357,7 @@
 		A260C6341E6AB30400782103 /* JasmineTests */ = {
 			isa = PBXGroup;
 			children = (
+				A2187E7F1E7A52560033FC5B /* ScrapperTests.swift */,
 				A2187E691E6EA35C0033FC5B /* RealmTestCase.swift */,
 				A2187E671E6EA0A20033FC5B /* GameDataTests.swift */,
 				A2187E651E6E9FCB0033FC5B /* PlayerTests.swift */,
@@ -671,9 +686,13 @@
 				A2187E761E76CE1A0033FC5B /* GameDataManager.swift in Sources */,
 				50989DD71E6D8B16009A86C8 /* TetrisViewModel.swift in Sources */,
 				50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */,
+				A2187E821E7A54B30033FC5B /* ApiProtocol.swift in Sources */,
 				50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */,
 				50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */,
+				A2187E7E1E7A38F70033FC5B /* Secrets.swift in Sources */,
 				A260C65F1E6E916800782103 /* Player.swift in Sources */,
+				A2187E7A1E79BA140033FC5B /* Scrapper.swift in Sources */,
+				A2187E7C1E7A27D10033FC5B /* Api.swift in Sources */,
 				50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,6 +704,7 @@
 				A2187E661E6E9FCB0033FC5B /* PlayerTests.swift in Sources */,
 				A260C6361E6AB30400782103 /* JasmineTests.swift in Sources */,
 				A2187E681E6EA0A20033FC5B /* GameDataTests.swift in Sources */,
+				A2187E801E7A52560033FC5B /* ScrapperTests.swift in Sources */,
 				A2187E6A1E6EA35C0033FC5B /* RealmTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
