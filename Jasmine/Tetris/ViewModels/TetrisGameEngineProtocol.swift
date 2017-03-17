@@ -1,0 +1,45 @@
+import Foundation
+
+/// Implement this class to describe how a game can be played with a Tetris Game board.
+///
+/// Note that the falling tile shound *not* be included in the tetris board data. This means that the
+/// board data should only store tiles that are landed.
+protocol TetrisGameEngineProtocol: BaseGameEngineProtocol {
+
+    // MARK: Properties
+    /// The delegate that the View Controller will conform to in some way, so that the Game Engine
+    /// View Model can call.
+    var delegate: TetrisGameViewControllerDelegate { get set }
+
+    /// Stores the tetris data that will be used to display in the view controller.
+    ///
+    /// Note also that the falling tile should not be stored inside the tetris board data. Only tiles
+    /// that are stationary should be displayed.
+    var boardData: [Coordinate: String] { get }
+
+    /// Stores the upcoming tiles that will be dropped, where index 0 will be the first to fall. 
+    var upcomingTiles: [String] { get }
+
+    /// Stores the currently falling tile. Nil if there is no tile that is falling.
+    var currentTile: String? { get }
+
+    // MARK: Game Operations
+    /// Tells the game engine to get the next tile for falling.
+    func dropNextTile() -> String
+
+    /// Tells the game engine to shift the falling tile to the specified position. If this is not 
+    /// possible, returns false.
+    ///
+    /// Note that there is no need to call `update(...)` or `redisplay(...)` as this falling tile
+    /// is not expected to be stored in the tetris board data.
+    ///
+    /// - Parameter coordinate: the new position to be shifted to.
+    /// - Returns: true if this shifting is allowed, false otherwise.
+    func shiftFallingTile(to coordinate: Coordinate) -> Bool
+
+    /// Ask the game engine to land the falling tile at the specified position.
+    ///
+    /// - Parameter coordinate: the position to land the tile.
+    /// - Returns: true if this move is successful.
+    func landFallingTile(at coordinate: Coordinate) -> Bool
+}
