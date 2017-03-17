@@ -4,18 +4,24 @@ import UIKit
 /// - Author: Wang Xien Dong
 class GridGameViewController: UIViewController {
 
-    /* Constants */
+    // MARK: Constants
     fileprivate static let characterCellIdentifier = "Grid Game Character Cell"
     fileprivate static let snappingDuration = 0.3
 
     /// Provides a tolerance (via a factor of the expected size) so that 4 cells can fit in one row.
     fileprivate static let cellSizeFactor = CGFloat(0.9)
 
-    /* Layouts */
+    // MARK: Layouts
     /// Keeps a 4 x 4 of chinese characters as individual cells.
     @IBOutlet fileprivate weak var gridCollectionView: UICollectionView!
 
-    /* Properties */
+    fileprivate var draggingTile: SquareTextViewCell?
+    fileprivate var draggingStartFrame: CGRect?
+    fileprivate var draggingStartIndex: IndexPath?
+
+    // MARK: Game Properties
+    fileprivate var gameEngine: GridGameEngineProtocol!
+
     /// Stores a list of Chinese characters, which serves as the data source for  
     /// `charactersCollectionView`.
     fileprivate var chineseTexts: [String?]
@@ -24,17 +30,27 @@ class GridGameViewController: UIViewController {
            "天", "翻", "地", "覆",
            nil, "😛", nil, "😉"]
 
-    fileprivate var draggingTile: SquareTextViewCell?
-    fileprivate var draggingStartFrame: CGRect?
-    fileprivate var draggingStartIndex: IndexPath?
-
-    /* View Controller Lifecycles */
+    // MARK: View Controller Lifecycles
     /// Readjusts layout (such as cell size) upon auto-rotate.
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         gridCollectionView.performBatchUpdates(gridCollectionView.reloadData, completion: nil)
     }
 
-    /* Gesture Recognisers */
+    /// Specifies that the supported orientation for this view is portrait only.
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+
+    // MARK: Segue methods
+    /// Feeds in the appropriate data for the use of seguing into this view.
+    ///
+    /// - Parameter gameEngine: the game engine required to play this game.
+    func segueWith(_ gameEngine: GridGameEngineProtocol) {
+        self.gameEngine = gameEngine
+        self.gameEngine.delegate = self
+    }
+
+    // MARK: Gesture Recognisers
     /// Listens to a drag gesture and handles the operation of dragging a tile, and dropping it
     /// to another location.
     @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
@@ -100,11 +116,9 @@ fileprivate extension GridGameViewController {
         guard let indexLanded = gridCollectionView.indexPathForItem(at: position),
             let cellToVacate = gridCollectionView.cellForItem(at: indexLanded),
             let squareCellToVacate = cellToVacate as? SquareTextViewCell else {
-
                 handleTileFailedLanding()
                 return
         }
-
         handleTileSuccessfulLanding(on: squareCellToVacate, at: indexLanded)
     }
 
@@ -115,18 +129,17 @@ fileprivate extension GridGameViewController {
                 return
         }
 
-        let animation: () -> Void = {
+        let animationFunc: () -> Void = {
             draggingTile.frame = draggingStartFrame
         }
 
-        let completion: (Bool) -> Void = { _ in
+        let completionFunc: (Bool) -> Void = { _ in
             self.draggingTile = nil
             self.draggingStartFrame = nil
         }
 
         UIView.animate(withDuration: GridGameViewController.snappingDuration,
-                       animations: animation,
-                       completion: completion)
+                       animations: animationFunc, completion: completionFunc)
     }
 
     /// Helper method to switch the landed tile and vacated tile, and update the database at the
@@ -161,6 +174,50 @@ fileprivate extension GridGameViewController {
         UIView.animate(withDuration: GridGameViewController.snappingDuration,
                        animations: animation,
                        completion: completion)
+    }
+}
+
+// MARK: - Delegate for Grid Game
+extension GridGameViewController: GridGameViewControllerDelegate {
+
+    /// Update the grid data stored in the Grid Game View Controller with a new dataset.
+    func update(tilesWith newGridData: [Coordinate: String]) {
+
+    }
+
+    /// Refreshes the tiles based on the tiles information stored in the View Controller's grid data.
+    func redisplayAllTiles() {
+
+    }
+
+    /// Refreshes a selected set of tiles based on the tiles information stored in the VC's grid data.
+    func redisplay(tilesAt coordinates: Set<Coordinate>) {
+
+    }
+
+    /// Refreshes one particular tile based on the tiles information stored in the VC's grid data.
+    func redisplay(tileAt coordinate: Coordinate) {
+
+    }
+}
+
+extension GridGameViewController: BaseGameViewControllerDelegate {
+    // MARK: Score Update
+    /// Redisplay the score displayed on the view controller screen with a new score.
+    func redisplay(newScore: Int) {
+
+    }
+
+    // MARK: Time Update
+    /// Redisplay the time remaining on the view controller against a total time.
+    func redisplay(remainingTime: TimeInterval, outOf totalTime: TimeInterval) {
+
+    }
+
+    // MARK: Game Status
+    /// Notifies the view controller that the game state has changed.
+    func notifyGameStatus(with newStatus: GameStatus) {
+
     }
 }
 
