@@ -15,5 +15,4 @@ class MutableCollectionExtensionsTests: XCTestCase {
         }
         XCTAssertTrue(lastElementMoved, "Last element was not swapped")
     }
-
 }
