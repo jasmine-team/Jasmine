@@ -13,10 +13,10 @@ import UIKit
 class GeometryUtilsTest: XCTestCase {
 
     func testGetOrigin() {
-
-        func testHelper(withPoint center: CGPoint, andSize size: CGSize, expect: CGPoint) {
+        /// Helper method that test for the correct origin given the center and size.
+        func testHelper(withPoint center: CGPoint, andSize size: CGSize, expect origin: CGPoint) {
             let outcome = GeometryUtils.getOrigin(from: center, withSize: size)
-            XCTAssertEqual(outcome, expect, "Origin is wrong for \(center) and \(size).")
+            XCTAssertEqual(outcome, origin, "Origin is wrong for \(center) and \(size).")
         }
 
         // Zero case
@@ -44,5 +44,4 @@ class GeometryUtilsTest: XCTestCase {
 
         // Invalid size is not tested, because invalid size just does not make sense.
     }
-
 }

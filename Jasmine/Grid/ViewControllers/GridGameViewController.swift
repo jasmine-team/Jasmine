@@ -65,22 +65,16 @@ fileprivate extension GridGameViewController {
     ///
     /// - Parameter position: location where the tile is selected.
     fileprivate func handleTileSelected(at position: CGPoint) {
-        guard draggingTile == nil else {
-            return
-        }
-        guard draggingStartFrame == nil else {
-            return
-        }
-        guard let indexTouched = gridCollectionView.indexPathForItem(at: position) else {
-            return
-        }
-        guard let cellTouched = gridCollectionView
-            .cellForItem(at: indexTouched) as? SquareTextViewCell else {
+        guard draggingTile == nil,
+            draggingStartFrame == nil,
+            let indexTouched = gridCollectionView.indexPathForItem(at: position),
+            let cellTouched = gridCollectionView.cellForItem(at: indexTouched),
+            let squareCellTouched = cellTouched as? SquareTextViewCell else {
                 return
         }
 
-        gridCollectionView.bringSubview(toFront: cellTouched)
-        draggingTile = cellTouched
+        gridCollectionView.bringSubview(toFront: squareCellTouched)
+        draggingTile = squareCellTouched
         draggingStartFrame = cellTouched.frame
         draggingStartIndex = indexTouched
     }
@@ -145,9 +139,7 @@ fileprivate extension GridGameViewController {
                 return
         }
 
-        let otherText = chineseTexts[otherIndex.item]
-        chineseTexts[otherIndex.item] = chineseTexts[draggingStartIndex.item]
-        chineseTexts[draggingStartIndex.item] = otherText
+        swap(&chineseTexts[otherIndex.item], &chineseTexts[draggingStartIndex.item])
 
         let animation: () -> Void = {
             draggingTile.frame = otherCell.frame
@@ -204,7 +196,7 @@ extension GridGameViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let length = gridCollectionView.bounds.width / CGFloat(Constants.BoardGamePlay.columns)
-            * GridGameViewController.cellSizeFactor
+                * GridGameViewController.cellSizeFactor
 
         return CGSize(width: length, height: length)
     }
