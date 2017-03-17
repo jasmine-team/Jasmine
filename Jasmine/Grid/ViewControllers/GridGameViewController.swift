@@ -31,8 +31,7 @@ class GridGameViewController: UIViewController {
     /* View Controller Lifecycles */
     /// Readjusts layout (such as cell size) upon auto-rotate.
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        gridCollectionView.performBatchUpdates(gridCollectionView.reloadData,
-                                               completion: nil)
+        gridCollectionView.performBatchUpdates(gridCollectionView.reloadData, completion: nil)
     }
 
     /* Gesture Recognisers */
@@ -104,26 +103,22 @@ fileprivate extension GridGameViewController {
     ///
     /// - Parameter position: location where the tile should land.
     fileprivate func handleTileLanding(at position: CGPoint) {
-        guard let indexLanded = gridCollectionView.indexPathForItem(at: position) else {
-            handleTileFailedLanding()
-            return
-        }
-        guard let cellToVacate = gridCollectionView
-            .cellForItem(at: indexLanded) as? SquareTextViewCell else {
+        guard let indexLanded = gridCollectionView.indexPathForItem(at: position),
+            let cellToVacate = gridCollectionView.cellForItem(at: indexLanded),
+            let squareCellToVacate = cellToVacate as? SquareTextViewCell else {
+
                 handleTileFailedLanding()
                 return
         }
 
-        handleTileSuccessfulLanding(on: cellToVacate, at: indexLanded)
+        handleTileSuccessfulLanding(on: squareCellToVacate, at: indexLanded)
     }
 
     /// Helper method to let the dragged tile to return to its original position.
     private func handleTileFailedLanding() {
-        guard let draggingTile = draggingTile else {
-            return
-        }
-        guard let draggingStartFrame = draggingStartFrame else {
-            return
+        guard let draggingTile = draggingTile,
+            let draggingStartFrame = draggingStartFrame else {
+                return
         }
 
         let animation: () -> Void = {
@@ -144,14 +139,10 @@ fileprivate extension GridGameViewController {
     /// same time.
     private func handleTileSuccessfulLanding(on otherCell: SquareTextViewCell,
                                              at otherIndex: IndexPath) {
-        guard let draggingTile = draggingTile else {
-            return
-        }
-        guard let draggingStartFrame = draggingStartFrame else {
-            return
-        }
-        guard let draggingStartIndex = draggingStartIndex else {
-            return
+        guard let draggingTile = draggingTile,
+            let draggingStartFrame = draggingStartFrame,
+            let draggingStartIndex = draggingStartIndex else {
+                return
         }
 
         let otherText = chineseTexts[otherIndex.item]
@@ -164,7 +155,6 @@ fileprivate extension GridGameViewController {
         }
 
         let completion: (Bool) -> Void = { _ in
-
             UIView.setAnimationsEnabled(false)
             otherCell.frame = draggingTile.frame
             draggingTile.frame = draggingStartFrame

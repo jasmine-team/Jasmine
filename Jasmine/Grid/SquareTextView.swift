@@ -54,15 +54,15 @@ class SquareTextView: UILabel {
 
     private func setTheme(whenFilled: Bool) {
         backgroundColor = whenFilled
-            ? SquareTextView.filledColor
-            : SquareTextView.emptyColor
+                        ? SquareTextView.filledColor
+                        : SquareTextView.emptyColor
     }
 
     private func setSquareDimension() {
-        let ratioConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal,
-                                                 toItem: self, attribute: .width,
-                                                 multiplier: SquareTextView.heightWidthRatio,
-                                                 constant: 0)
+        let ratioConstraint = NSLayoutConstraint(
+            item: self, attribute: .height, relatedBy: .equal, toItem: self, attribute: .width,
+            multiplier: SquareTextView.heightWidthRatio, constant: 0)
+
         addConstraint(ratioConstraint)
     }
 }
