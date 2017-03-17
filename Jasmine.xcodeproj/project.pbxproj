@@ -27,7 +27,6 @@
 		A260C6261E6AB30400782103 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6241E6AB30400782103 /* Main.storyboard */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
 		A260C62B1E6AB30400782103 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6291E6AB30400782103 /* LaunchScreen.storyboard */; };
-		A260C6361E6AB30400782103 /* JasmineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260C6351E6AB30400782103 /* JasmineTests.swift */; };
 		A260C6411E6AB30400782103 /* JasmineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260C6401E6AB30400782103 /* JasmineUITests.swift */; };
 		BD025B06A527CD03DA811285 /* Pods_JasmineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */; };
 		DF2D21EA1E743BC500094381 /* GridStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */; };
@@ -92,7 +91,6 @@
 		A260C6271E6AB30400782103 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		A260C62A1E6AB30400782103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A260C6311E6AB30400782103 /* JasmineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JasmineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A260C6351E6AB30400782103 /* JasmineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JasmineTests.swift; sourceTree = "<group>"; };
 		A260C6371E6AB30400782103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A260C63C1E6AB30400782103 /* JasmineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JasmineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6401E6AB30400782103 /* JasmineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JasmineUITests.swift; sourceTree = "<group>"; };
@@ -341,6 +339,7 @@
 		50F191A61E7ADC3D00EE9A75 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				DFCA8C1C1E753E6600A9C9B5 /* Extensions */,
 				50F191A71E7ADC4500EE9A75 /* Helpers */,
 				50F191A81E7ADC4800EE9A75 /* Models */,
 				50F191A91E7ADC4C00EE9A75 /* ViewControllers */,
@@ -507,8 +506,6 @@
 		A260C6341E6AB30400782103 /* JasmineTests */ = {
 			isa = PBXGroup;
 			children = (
-				DFCA8C1B1E753E6000A9C9B5 /* Common */,
-				A260C6351E6AB30400782103 /* JasmineTests.swift */,
 				50F191A61E7ADC3D00EE9A75 /* Common */,
 				50F191AB1E7ADC6D00EE9A75 /* Tetris */,
 				50F191B01E7ADCA200EE9A75 /* Grid */,
@@ -525,14 +522,6 @@
 				A260C6421E6AB30400782103 /* Info.plist */,
 			);
 			path = JasmineUITests;
-			sourceTree = "<group>";
-		};
-		DFCA8C1B1E753E6000A9C9B5 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				DFCA8C1C1E753E6600A9C9B5 /* Extensions */,
-			);
-			name = Common;
 			sourceTree = "<group>";
 		};
 		DFCA8C1C1E753E6600A9C9B5 /* Extensions */ = {
@@ -893,7 +882,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A260C6361E6AB30400782103 /* JasmineTests.swift in Sources */,
 				DFCA8C1E1E753E7800A9C9B5 /* GeometryUtilsTest.swift in Sources */,
 				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
 			);
