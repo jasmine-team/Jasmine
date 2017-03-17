@@ -45,7 +45,7 @@
                 <viewControllerPlaceholder storyboardName="GridStoryboard" referencedIdentifier="GridGameViewController" id="n7s-Ck-n8c" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WeS-BJ-Okb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="662" y="31"/>
+            <point key="canvasLocation" x="830" y="122"/>
         </scene>
     </scenes>
 </document>

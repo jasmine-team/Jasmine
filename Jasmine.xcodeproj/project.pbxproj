@@ -255,6 +255,8 @@
 		50989DCA1E6D8B16009A86C8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A260C6241E6AB30400782103 /* Main.storyboard */,
+				A260C6291E6AB30400782103 /* LaunchScreen.storyboard */,
 				50989DC91E6D8B16009A86C8 /* HomeScreenViewController.swift */,
 				DFB342741E77F06400D2FE09 /* BaseGameViewControllerDelegate.swift */,
 			);
@@ -273,13 +275,11 @@
 		50989DCD1E6D8B16009A86C8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				DFE427BA1E744B6800A837BD /* Extensions */,
 				50989DC21E6D8B16009A86C8 /* Constants.swift */,
 				50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */,
 				50989DE61E6D8BBD009A86C8 /* Info.plist */,
-				A260C6241E6AB30400782103 /* Main.storyboard */,
 				A260C6271E6AB30400782103 /* Assets.xcassets */,
-				A260C6291E6AB30400782103 /* LaunchScreen.storyboard */,
+				DFE427BA1E744B6800A837BD /* Extensions */,
 				50989DC41E6D8B16009A86C8 /* Helpers */,
 				50989DC81E6D8B16009A86C8 /* Models */,
 				50989DCA1E6D8B16009A86C8 /* ViewControllers */,
@@ -909,7 +909,7 @@
 				A260C6251E6AB30400782103 /* Base */,
 			);
 			name = Main.storyboard;
-			path = ..;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		A260C6291E6AB30400782103 /* LaunchScreen.storyboard */ = {
@@ -918,7 +918,7 @@
 				A260C62A1E6AB30400782103 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			path = ..;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
