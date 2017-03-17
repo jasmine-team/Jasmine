@@ -25,10 +25,10 @@
 		A2187E701E75116A0033FC5B /* RandomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E6F1E75116A0033FC5B /* RandomTests.swift */; };
 		A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E711E751C930033FC5B /* Sequence+Extensions.swift */; };
 		A2187E741E7522F10033FC5B /* MutableCollection+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E731E7522F10033FC5B /* MutableCollection+ExtensionsTests.swift */; };
+		50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */; };
 		A260C6261E6AB30400782103 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6241E6AB30400782103 /* Main.storyboard */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
 		A260C62B1E6AB30400782103 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6291E6AB30400782103 /* LaunchScreen.storyboard */; };
-		A260C6361E6AB30400782103 /* JasmineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260C6351E6AB30400782103 /* JasmineTests.swift */; };
 		A260C6411E6AB30400782103 /* JasmineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260C6401E6AB30400782103 /* JasmineUITests.swift */; };
 		BD025B06A527CD03DA811285 /* Pods_JasmineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */; };
 		DFB3426D1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */; };
@@ -77,6 +77,7 @@
 		50989DD21E6D8B16009A86C8 /* FlappyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyViewModel.swift; sourceTree = "<group>"; };
 		50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50989DE61E6D8BBD009A86C8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoordinateTests.swift; path = Common/Models/CoordinateTests.swift; sourceTree = "<group>"; };
 		5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2187E6B1E7510B60033FC5B /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		A2187E6D1E7511470033FC5B /* MutableCollection+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MutableCollection+Extensions.swift"; sourceTree = "<group>"; };
@@ -88,7 +89,6 @@
 		A260C6271E6AB30400782103 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		A260C62A1E6AB30400782103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A260C6311E6AB30400782103 /* JasmineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JasmineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A260C6351E6AB30400782103 /* JasmineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JasmineTests.swift; sourceTree = "<group>"; };
 		A260C6371E6AB30400782103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A260C63C1E6AB30400782103 /* JasmineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JasmineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6401E6AB30400782103 /* JasmineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JasmineUITests.swift; sourceTree = "<group>"; };
@@ -322,6 +322,139 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		50F191A61E7ADC3D00EE9A75 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				50F191A71E7ADC4500EE9A75 /* Helpers */,
+				50F191A81E7ADC4800EE9A75 /* Models */,
+				50F191A91E7ADC4C00EE9A75 /* ViewControllers */,
+				50F191AA1E7ADC5000EE9A75 /* ViewModels */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		50F191A71E7ADC4500EE9A75 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		50F191A81E7ADC4800EE9A75 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		50F191A91E7ADC4C00EE9A75 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		50F191AA1E7ADC5000EE9A75 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		50F191AB1E7ADC6D00EE9A75 /* Tetris */ = {
+			isa = PBXGroup;
+			children = (
+				50F191AE1E7ADC8600EE9A75 /* Models */,
+				50F191AD1E7ADC8000EE9A75 /* ViewControllers */,
+				50F191AC1E7ADC7A00EE9A75 /* ViewModels */,
+			);
+			name = Tetris;
+			sourceTree = "<group>";
+		};
+		50F191AC1E7ADC7A00EE9A75 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		50F191AD1E7ADC8000EE9A75 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		50F191AE1E7ADC8600EE9A75 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		50F191B01E7ADCA200EE9A75 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				50F191B41E7ADCB700EE9A75 /* Models */,
+				50F191B31E7ADCB200EE9A75 /* ViewControllers */,
+				50F191B21E7ADCAE00EE9A75 /* ViewModels */,
+			);
+			name = Grid;
+			sourceTree = "<group>";
+		};
+		50F191B11E7ADCA600EE9A75 /* Flappy */ = {
+			isa = PBXGroup;
+			children = (
+				50F191B71E7ADCC800EE9A75 /* Models */,
+				50F191B61E7ADCC200EE9A75 /* ViewControllers */,
+				50F191B51E7ADCBE00EE9A75 /* ViewModels */,
+			);
+			name = Flappy;
+			sourceTree = "<group>";
+		};
+		50F191B21E7ADCAE00EE9A75 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		50F191B31E7ADCB200EE9A75 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		50F191B41E7ADCB700EE9A75 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		50F191B51E7ADCBE00EE9A75 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		50F191B61E7ADCC200EE9A75 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		50F191B71E7ADCC800EE9A75 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		A260C6141E6AB30400782103 = {
 			isa = PBXGroup;
 			children = (
@@ -358,9 +491,10 @@
 		A260C6341E6AB30400782103 /* JasmineTests */ = {
 			isa = PBXGroup;
 			children = (
-				A2187E6F1E75116A0033FC5B /* RandomTests.swift */,
-				A2187E731E7522F10033FC5B /* MutableCollection+ExtensionsTests.swift */,
-				A260C6351E6AB30400782103 /* JasmineTests.swift */,
+				50F191A61E7ADC3D00EE9A75 /* Common */,
+				50F191AB1E7ADC6D00EE9A75 /* Tetris */,
+				50F191B01E7ADCA200EE9A75 /* Grid */,
+				50F191B11E7ADCA600EE9A75 /* Flappy */,
 				A260C6371E6AB30400782103 /* Info.plist */,
 			);
 			path = JasmineTests;
@@ -457,6 +591,7 @@
 					};
 					A260C6301E6AB30400782103 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A260C61C1E6AB30400782103;
 					};
@@ -704,6 +839,7 @@
 				A2187E701E75116A0033FC5B /* RandomTests.swift in Sources */,
 				A260C6361E6AB30400782103 /* JasmineTests.swift in Sources */,
 				A2187E741E7522F10033FC5B /* MutableCollection+ExtensionsTests.swift in Sources */,
+				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -879,10 +1015,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = JasmineTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.JasmineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jasmine.app/Jasmine";
 			};
@@ -894,6 +1032,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = JasmineTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.JasmineTests;
