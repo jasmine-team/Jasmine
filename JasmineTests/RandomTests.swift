@@ -31,5 +31,4 @@ class RandomTests: XCTestCase {
             XCTAssertTrue(result >= 0 && result <= 1, "CGFloat generated is not within range")
         }
     }
-
 }
