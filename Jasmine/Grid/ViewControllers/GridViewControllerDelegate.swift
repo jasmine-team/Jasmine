@@ -1,3 +1,0 @@
-protocol GridViewControllerDelegate {
-    func timeDidUpdate()
-}
