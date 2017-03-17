@@ -1,11 +1,3 @@
-//
-//  GeometryUtilsTest.swift
-//  Jasmine
-//
-//  Created by Xien Dong on 12/3/17.
-//  Copyright © 2017 nus.cs3217. All rights reserved.
-//
-
 import XCTest
 import UIKit
 @testable import Jasmine
