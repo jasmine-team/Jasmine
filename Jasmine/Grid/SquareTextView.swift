@@ -21,11 +21,11 @@ class SquareTextView: UILabel {
     /// Also sets the theme of this class here.
     override var text: String? {
         didSet {
-            guard let text = text else {
+            if text == nil {
                 setTheme(whenFilled: false)
-                return
+            } else {
+                setTheme(whenFilled: !text.isEmpty)
             }
-            setTheme(whenFilled: !text.isEmpty)
         }
     }
 

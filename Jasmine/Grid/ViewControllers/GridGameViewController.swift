@@ -23,6 +23,7 @@ class GridGameViewController: UIViewController {
            "CS32", "17", ":D", ":(",
            "天", "翻", "地", "覆",
            nil, "😛", nil, "😉"]
+    // TODO: Don't hardcode above
 
     fileprivate var draggingTile: SquareTextViewCell?
     fileprivate var draggingStartFrame: CGRect?
@@ -43,13 +44,10 @@ class GridGameViewController: UIViewController {
         switch sender.state {
         case .began:
             handleTileSelected(at: position)
-
         case .changed:
             handleTileDragged(at: position)
-
         case .ended:
             handleTileLanding(at: position)
-
         default:
             break
         }
