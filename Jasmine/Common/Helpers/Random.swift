@@ -24,16 +24,4 @@ enum Random {
         assert(toInclusive > from, "`toInclusive` must be larger than `from` number")
         return from + (drand48() * (toInclusive - from))
     }
-
-    /// Generates a random CGFloat
-    ///
-    /// - Parameters:
-    ///   - from: start of range, inclusive
-    ///   - toInclusive: end of range, inclusive
-    /// - Returns: a random number in the range
-    static func cgFloat(from: CGFloat, toInclusive: CGFloat) -> CGFloat {
-        assert(toInclusive > from, "`toInclusive` must be larger than `from` number")
-        return from + (CGFloat(drand48()) * (toInclusive - from))
-    }
-
 }

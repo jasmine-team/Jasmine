@@ -4,7 +4,7 @@ extension MutableCollection where Indices.Iterator.Element == Index {
 
     /// Shuffles the contents of this collection.
     mutating func shuffle() {
-        guard count > 1 else {
+        if isEmpty {
             return
         }
 
