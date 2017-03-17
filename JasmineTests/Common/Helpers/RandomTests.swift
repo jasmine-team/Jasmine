@@ -24,11 +24,4 @@ class RandomTests: XCTestCase {
             XCTAssertTrue(result >= 0 && result <= 1, "Double generated is not within range")
         }
     }
-
-    func testRandom_cgFloat() {
-        testMultiple(times: iterations) {
-            let result = Random.cgFloat(from: 0, toInclusive: 1)
-            XCTAssertTrue(result >= 0 && result <= 1, "CGFloat generated is not within range")
-        }
-    }
 }

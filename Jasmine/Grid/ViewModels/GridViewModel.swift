@@ -98,7 +98,7 @@ class GridViewModel: GridGameEngineProtocol {
         let rows = phrases.count
         let cols = phrases.first?.count ?? 0
         assert(rows > 0 && cols > 0, "Number of rows and columns should be more than 0")
-        assert(phrases.map { $0.count }.hasNoDuplicates, "All rows should have the same length")
+        assert(phrases.map { $0.count }.isAllSame, "All rows should have the same length")
 
         let allChars = phrases.joined().shuffled()
 

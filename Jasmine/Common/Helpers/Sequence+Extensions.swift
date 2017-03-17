@@ -8,7 +8,7 @@ extension Sequence {
 }
 
 extension Sequence where Iterator.Element: Hashable {
-    var hasNoDuplicates: Bool {
+    var isAllSame: Bool {
         return Set(self).count <= 1
     }
 }
