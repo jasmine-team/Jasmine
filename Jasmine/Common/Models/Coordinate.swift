@@ -20,8 +20,8 @@ extension Coordinate: Hashable {
 
 extension Coordinate: Equatable {
     /// Returns true when two coordinates are equal.
-    static func ==(_ coord1: Coordinate, _ coord2: Coordinate) -> Bool {
-        return coord1.row == coord2.row
-            && coord1.col == coord2.col
+    static func == (_ lhs: Coordinate, _ rhs: Coordinate) -> Bool {
+        return lhs.row == rhs.row
+            && lhs.col == rhs.col
     }
 }
