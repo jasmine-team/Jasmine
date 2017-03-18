@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Square Grid View Controller-->
+        <scene sceneID="DWs-d6-gJr">
+            <objects>
+                <viewController id="MNX-xH-RW2" customClass="SquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K0r-CF-OU1"/>
+                        <viewControllerLayoutGuide type="bottom" id="DvA-CY-DUo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zyY-Q3-gtn">
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZrG-Ec-cgV">
+                                <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iA4-fP-1EX">
+                                    <size key="itemSize" width="84" height="84"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Square Text View Cell" id="gT3-Kz-crB" customClass="SquareTextViewCell" customModule="Jasmine" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNV-J8-dBR" customClass="SquareTextView" customModule="Jasmine" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
+                                                    <color key="backgroundColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="40"/>
+                                                    <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="YNV-J8-dBR" secondAttribute="bottom" id="4H2-Hm-SjG"/>
+                                            <constraint firstItem="YNV-J8-dBR" firstAttribute="leading" secondItem="gT3-Kz-crB" secondAttribute="leading" id="DGw-pp-VGe"/>
+                                            <constraint firstAttribute="trailing" secondItem="YNV-J8-dBR" secondAttribute="trailing" id="VyW-Ph-sfS"/>
+                                            <constraint firstItem="YNV-J8-dBR" firstAttribute="top" secondItem="gT3-Kz-crB" secondAttribute="top" id="bOy-pn-JZm"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="MNX-xH-RW2" id="mRk-22-uiE"/>
+                                    <outlet property="delegate" destination="MNX-xH-RW2" id="qCd-Dd-wMw"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ZrG-Ec-cgV" secondAttribute="trailing" id="FCD-nx-40w"/>
+                            <constraint firstItem="ZrG-Ec-cgV" firstAttribute="top" secondItem="K0r-CF-OU1" secondAttribute="bottom" id="Wkm-Zm-T9V"/>
+                            <constraint firstItem="ZrG-Ec-cgV" firstAttribute="leading" secondItem="zyY-Q3-gtn" secondAttribute="leading" id="k47-E2-8e3"/>
+                            <constraint firstItem="DvA-CY-DUo" firstAttribute="top" secondItem="ZrG-Ec-cgV" secondAttribute="bottom" id="zYA-br-Yvb"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="500" height="500"/>
+                    <connections>
+                        <outlet property="gridCollectionView" destination="ZrG-Ec-cgV" id="MHc-8U-bbx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G2A-Wd-yn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-660" y="-52"/>
+        </scene>
+    </scenes>
+</document>
