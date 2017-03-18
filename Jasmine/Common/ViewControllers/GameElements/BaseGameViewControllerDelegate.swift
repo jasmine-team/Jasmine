@@ -2,7 +2,7 @@ import Foundation
 
 /// Sets the shared functionalities that are applicable across all game view controller delegates.
 /// This protocol will be inherited by all the specialsied game view controller delegates.
-protocol BaseGameViewControllerDelegate {
+protocol BaseGameViewControllerDelegate: class {
 
     // MARK: Score Update
     /// Redisplay the score displayed on the view controller screen with a new score.
