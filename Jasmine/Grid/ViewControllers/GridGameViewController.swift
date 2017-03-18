@@ -119,6 +119,8 @@ fileprivate extension GridGameViewController {
                 handleTileFailedLanding()
                 return
         }
+
+//        gameEngine.swapTiles(<#T##coord1: Coordinate##Coordinate#>, and: <#T##Coordinate#>)
         handleTileSuccessfulLanding(on: squareCellToVacate, at: indexLanded)
     }
 
@@ -151,8 +153,6 @@ fileprivate extension GridGameViewController {
             let draggingStartIndex = draggingStartIndex else {
                 return
         }
-
-        swap(&chineseTexts[otherIndex.item], &chineseTexts[draggingStartIndex.item])
 
         let animation: () -> Void = {
             draggingTile.frame = otherCell.frame

@@ -18,12 +18,12 @@ struct Coordinate {
             self.col = 0
             return
         }
-
         self.row = row
         self.col = col
     }
 
-    /// Initialise a coordinate based on an array-like index, starting from 0, and `maxColumnCount`.
+    /// Initialise a coordinate based on a flattened array-like index, starting from 0, and 
+    /// `maxColumnCount`.
     ///
     /// - Parameters:
     ///   - index: an index >= 0 to be converted.
@@ -34,13 +34,12 @@ struct Coordinate {
             self.init(index: 0, withNumCol: 1)
             return
         }
-
         let row = index / maxColumnCount
         let col = index % maxColumnCount
         self.init(row: row, col: col)
     }
 
-    /// Computes the flattened index starting from index 0 based on the `maxColumnCount`.
+    /// Computes the flattened array-like index starting from index 0 based on the `maxColumnCount`.
     ///
     /// - Parameter maxColumnCount: the maximum number of items possible in a row.
     /// - Returns: the index based on the `maxColumnCount`, starting from index 0.
@@ -49,7 +48,6 @@ struct Coordinate {
             assertionFailure("maxColumnCount should be > col.")
             return 0
         }
-
         return row * maxColumnCount + col
     }
 }
