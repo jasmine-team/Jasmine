@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0CF9D2BB3EBC822ACB7FF766 /* Pods_Jasmine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */; };
 		42B4D7991E7CD39C0015196E /* TimedGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B4D7981E7CD39C0015196E /* TimedGameViewModel.swift */; };
+		42B4D79B1E7D01D10015196E /* TimedGameViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B4D79A1E7D01D10015196E /* TimedGameViewModelTest.swift */; };
 		4EA886212AABEB7ED888C04C /* Pods_JasmineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */; };
 		505E07381E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E07371E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift */; };
 		505E073A1E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E07391E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift */; };
@@ -71,6 +72,7 @@
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
 		379F12059637B53A50B97F3B /* Pods-JasmineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineUITests/Pods-JasmineUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		42B4D7981E7CD39C0015196E /* TimedGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedGameViewModel.swift; sourceTree = "<group>"; };
+		42B4D79A1E7D01D10015196E /* TimedGameViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimedGameViewModelTest.swift; path = Jasmine/Common/ViewModels/TimedGameViewModelTest.swift; sourceTree = SOURCE_ROOT; };
 		505E07371E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		505E07391E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		505E073B1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyGameViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 		50F191AA1E7ADC5000EE9A75 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				42B4D79A1E7D01D10015196E /* TimedGameViewModelTest.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -887,6 +890,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
+				42B4D79B1E7D01D10015196E /* TimedGameViewModelTest.swift in Sources */,
 				507A215D1E7C046200C815B9 /* GeometryUtilsTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

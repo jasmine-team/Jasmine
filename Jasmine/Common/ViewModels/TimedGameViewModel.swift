@@ -16,12 +16,14 @@ class TimedGameViewModel: GameViewModel {
 
     /// Initialize the total time allowed and sets timeRemaining to it
     init(totalTimeAllowed: TimeInterval) {
+        assert(totalTimeAllowed >= 0, "totalTimeAllowed must be positive")
         self.totalTimeAllowed = totalTimeAllowed
         timeRemaining = totalTimeAllowed
     }
 
     /// Starts the countdown timer
     func startTimer(timerInterval: TimeInterval, viewControllerDelegate: BaseGameViewControllerDelegate?) {
+        assert(timerInterval >= 0, "timerInterval must be positive")
         viewControllerDelegate?.notifyGameStatus(with: .inProgress)
 
         Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { timer in
