@@ -5,4 +5,9 @@ enum Constants {
         static let columns: Int = 4
     }
 
+    enum Language: String {
+        case english = "eng"
+        case chinese = "cmn"
+    }
+
 }

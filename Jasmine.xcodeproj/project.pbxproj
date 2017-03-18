@@ -29,7 +29,6 @@
 		A2187E681E6EA0A20033FC5B /* GameDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E671E6EA0A20033FC5B /* GameDataTests.swift */; };
 		A2187E6A1E6EA35C0033FC5B /* RealmTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E691E6EA35C0033FC5B /* RealmTestCase.swift */; };
 		A2187E761E76CE1A0033FC5B /* GameDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E751E76CE1A0033FC5B /* GameDataManager.swift */; };
-		A2187E781E79B20D0033FC5B /* phrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = A2187E771E79B20D0033FC5B /* phrases.txt */; };
 		A2187E7A1E79BA140033FC5B /* Scrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E791E79BA140033FC5B /* Scrapper.swift */; };
 		A2187E7C1E7A27D10033FC5B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E7B1E7A27D10033FC5B /* Api.swift */; };
 		A2187E7E1E7A38F70033FC5B /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E7D1E7A38F70033FC5B /* Secrets.swift */; };
@@ -41,6 +40,7 @@
 		A260C6361E6AB30400782103 /* JasmineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260C6351E6AB30400782103 /* JasmineTests.swift */; };
 		A260C6411E6AB30400782103 /* JasmineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260C6401E6AB30400782103 /* JasmineUITests.swift */; };
 		A260C65F1E6E916800782103 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260C65E1E6E916800782103 /* Player.swift */; };
+		A2EA687B1E7CC78200668C72 /* phrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = A2EA687A1E7CC78200668C72 /* phrases.txt */; };
 		BD025B06A527CD03DA811285 /* Pods_JasmineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,7 +87,6 @@
 		A2187E671E6EA0A20033FC5B /* GameDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataTests.swift; sourceTree = "<group>"; };
 		A2187E691E6EA35C0033FC5B /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
 		A2187E751E76CE1A0033FC5B /* GameDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataManager.swift; sourceTree = "<group>"; };
-		A2187E771E79B20D0033FC5B /* phrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phrases.txt; sourceTree = "<group>"; };
 		A2187E791E79BA140033FC5B /* Scrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrapper.swift; sourceTree = "<group>"; };
 		A2187E7B1E7A27D10033FC5B /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		A2187E7D1E7A38F70033FC5B /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
@@ -104,6 +103,7 @@
 		A260C6401E6AB30400782103 /* JasmineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JasmineUITests.swift; sourceTree = "<group>"; };
 		A260C6421E6AB30400782103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A260C65E1E6E916800782103 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		A2EA687A1E7CC78200668C72 /* phrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phrases.txt; sourceTree = "<group>"; };
 		B0F92A417FF0A33A2C39DC68 /* Pods-JasmineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineUITests/Pods-JasmineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF6F46CAE49685937742BCB /* Pods-JasmineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -265,7 +265,7 @@
 				A260C6271E6AB30400782103 /* Assets.xcassets */,
 				A260C6291E6AB30400782103 /* LaunchScreen.storyboard */,
 				A2187E7D1E7A38F70033FC5B /* Secrets.swift */,
-				A2187E771E79B20D0033FC5B /* phrases.txt */,
+				A2EA687A1E7CC78200668C72 /* phrases.txt */,
 				50989DC41E6D8B16009A86C8 /* Helpers */,
 				50989DC81E6D8B16009A86C8 /* Models */,
 				50989DCA1E6D8B16009A86C8 /* ViewControllers */,
@@ -496,7 +496,7 @@
 				A260C62B1E6AB30400782103 /* LaunchScreen.storyboard in Resources */,
 				A260C6281E6AB30400782103 /* Assets.xcassets in Resources */,
 				A260C6261E6AB30400782103 /* Main.storyboard in Resources */,
-				A2187E781E79B20D0033FC5B /* phrases.txt in Resources */,
+				A2EA687B1E7CC78200668C72 /* phrases.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
