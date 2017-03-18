@@ -7,7 +7,7 @@ class GameDataTests: RealmTestCase {
 
     override func setUp() {
         super.setUp()
-        gameData = GameData(instance: realm)
+        gameData = GameData()
     }
 
     override func tearDown() {
@@ -19,8 +19,8 @@ class GameDataTests: RealmTestCase {
     }
 
     func testGameData_phrases() {
-        let phrase = Phrase()
-        save(phrase)
+        save(Phrase())
+        gameData.phrases = realm.objects(Phrase.self)
         XCTAssertEqual(gameData.phrases.count, 1, "game data could not find relevant phrase")
     }
 
