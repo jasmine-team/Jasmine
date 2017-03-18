@@ -13,7 +13,7 @@ protocol BaseGameEngineProtocol {
     var totalTimeAllowed: TimeInterval { get }
 
     /// Specifies the remaining time left in the game.
-    var remainingTimeLeft: TimeInterval { get }
+    var timeRemaining: TimeInterval { get }
 
     /// Tells the view model that the game has started.
     func startGame()

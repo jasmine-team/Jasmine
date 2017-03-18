@@ -1,3 +1,3 @@
-class TetrisViewModel: GameViewModel {
+class TetrisViewModel: TimedGameViewModel {
 
 }

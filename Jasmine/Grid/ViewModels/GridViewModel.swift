@@ -1,3 +1,3 @@
-class GridViewModel: GameViewModel {
+class GridViewModel: TimedGameViewModel {
 
 }
