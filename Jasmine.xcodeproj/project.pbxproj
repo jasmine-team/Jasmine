@@ -29,11 +29,14 @@
 		A2187E681E6EA0A20033FC5B /* GameDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E671E6EA0A20033FC5B /* GameDataTests.swift */; };
 		A2187E6A1E6EA35C0033FC5B /* RealmTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E691E6EA35C0033FC5B /* RealmTestCase.swift */; };
 		A2187E761E76CE1A0033FC5B /* GameDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E751E76CE1A0033FC5B /* GameDataManager.swift */; };
-		A2187E7A1E79BA140033FC5B /* Scrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E791E79BA140033FC5B /* Scrapper.swift */; };
-		A2187E7C1E7A27D10033FC5B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E7B1E7A27D10033FC5B /* Api.swift */; };
+		A2187E7A1E79BA140033FC5B /* Prebundler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E791E79BA140033FC5B /* Prebundler.swift */; };
+		A2187E7C1E7A27D10033FC5B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E7B1E7A27D10033FC5B /* API.swift */; };
 		A2187E7E1E7A38F70033FC5B /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E7D1E7A38F70033FC5B /* Secrets.swift */; };
-		A2187E801E7A52560033FC5B /* ScrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E7F1E7A52560033FC5B /* ScrapperTests.swift */; };
-		A2187E821E7A54B30033FC5B /* ApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E811E7A54B30033FC5B /* ApiProtocol.swift */; };
+		A2187E821E7A54B30033FC5B /* APIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E811E7A54B30033FC5B /* APIProtocol.swift */; };
+		A24027DF1E7D777000869B7F /* EnglishApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24027DE1E7D777000869B7F /* EnglishApiResponse.swift */; };
+		A24027E11E7D8BFC00869B7F /* prebundled.realm in Resources */ = {isa = PBXBuildFile; fileRef = A24027E01E7D8BFC00869B7F /* prebundled.realm */; };
+		A24027E31E7D8DF800869B7F /* Realm+defaultURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24027E21E7D8DF800869B7F /* Realm+defaultURL.swift */; };
+		A24027E71E7D93C600869B7F /* UIApplication+isFirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24027E61E7D93C600869B7F /* UIApplication+isFirstLaunch.swift */; };
 		A260C6261E6AB30400782103 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6241E6AB30400782103 /* Main.storyboard */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
 		A260C62B1E6AB30400782103 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6291E6AB30400782103 /* LaunchScreen.storyboard */; };
@@ -87,11 +90,14 @@
 		A2187E671E6EA0A20033FC5B /* GameDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataTests.swift; sourceTree = "<group>"; };
 		A2187E691E6EA35C0033FC5B /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
 		A2187E751E76CE1A0033FC5B /* GameDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataManager.swift; sourceTree = "<group>"; };
-		A2187E791E79BA140033FC5B /* Scrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrapper.swift; sourceTree = "<group>"; };
-		A2187E7B1E7A27D10033FC5B /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		A2187E791E79BA140033FC5B /* Prebundler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prebundler.swift; sourceTree = "<group>"; };
+		A2187E7B1E7A27D10033FC5B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		A2187E7D1E7A38F70033FC5B /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
-		A2187E7F1E7A52560033FC5B /* ScrapperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapperTests.swift; sourceTree = "<group>"; };
-		A2187E811E7A54B30033FC5B /* ApiProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiProtocol.swift; sourceTree = "<group>"; };
+		A2187E811E7A54B30033FC5B /* APIProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIProtocol.swift; sourceTree = "<group>"; };
+		A24027DE1E7D777000869B7F /* EnglishApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnglishApiResponse.swift; sourceTree = "<group>"; };
+		A24027E01E7D8BFC00869B7F /* prebundled.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = prebundled.realm; sourceTree = "<group>"; };
+		A24027E21E7D8DF800869B7F /* Realm+defaultURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+defaultURL.swift"; sourceTree = "<group>"; };
+		A24027E61E7D93C600869B7F /* UIApplication+isFirstLaunch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+isFirstLaunch.swift"; sourceTree = "<group>"; };
 		A260C61D1E6AB30400782103 /* Jasmine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jasmine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6251E6AB30400782103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A260C6271E6AB30400782103 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
@@ -221,9 +227,11 @@
 			isa = PBXGroup;
 			children = (
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
-				A2187E791E79BA140033FC5B /* Scrapper.swift */,
-				A2187E7B1E7A27D10033FC5B /* Api.swift */,
-				A2187E811E7A54B30033FC5B /* ApiProtocol.swift */,
+				A2187E791E79BA140033FC5B /* Prebundler.swift */,
+				A2187E7B1E7A27D10033FC5B /* API.swift */,
+				A2187E811E7A54B30033FC5B /* APIProtocol.swift */,
+				A24027E21E7D8DF800869B7F /* Realm+defaultURL.swift */,
+				A24027E61E7D93C600869B7F /* UIApplication+isFirstLaunch.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -235,6 +243,7 @@
 				A2187E751E76CE1A0033FC5B /* GameDataManager.swift */,
 				50989DC71E6D8B16009A86C8 /* Phrase.swift */,
 				A260C65E1E6E916800782103 /* Player.swift */,
+				A24027DE1E7D777000869B7F /* EnglishApiResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -265,6 +274,7 @@
 				A260C6271E6AB30400782103 /* Assets.xcassets */,
 				A260C6291E6AB30400782103 /* LaunchScreen.storyboard */,
 				A2187E7D1E7A38F70033FC5B /* Secrets.swift */,
+				A24027E01E7D8BFC00869B7F /* prebundled.realm */,
 				A2EA687A1E7CC78200668C72 /* phrases.txt */,
 				50989DC41E6D8B16009A86C8 /* Helpers */,
 				50989DC81E6D8B16009A86C8 /* Models */,
@@ -357,7 +367,6 @@
 		A260C6341E6AB30400782103 /* JasmineTests */ = {
 			isa = PBXGroup;
 			children = (
-				A2187E7F1E7A52560033FC5B /* ScrapperTests.swift */,
 				A2187E691E6EA35C0033FC5B /* RealmTestCase.swift */,
 				A2187E671E6EA0A20033FC5B /* GameDataTests.swift */,
 				A2187E651E6E9FCB0033FC5B /* PlayerTests.swift */,
@@ -454,6 +463,7 @@
 				TargetAttributes = {
 					A260C61C1E6AB30400782103 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = W76H98A34A;
 						ProvisioningStyle = Automatic;
 					};
 					A260C6301E6AB30400782103 = {
@@ -494,6 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A260C62B1E6AB30400782103 /* LaunchScreen.storyboard in Resources */,
+				A24027E11E7D8BFC00869B7F /* prebundled.realm in Resources */,
 				A260C6281E6AB30400782103 /* Assets.xcassets in Resources */,
 				A260C6261E6AB30400782103 /* Main.storyboard in Resources */,
 				A2EA687B1E7CC78200668C72 /* phrases.txt in Resources */,
@@ -675,6 +686,7 @@
 				50989DE31E6D8B16009A86C8 /* FlappyGameView.swift in Sources */,
 				50989DD91E6D8B16009A86C8 /* GridGameView.swift in Sources */,
 				50989DDD1E6D8B16009A86C8 /* GameData.swift in Sources */,
+				A24027E71E7D93C600869B7F /* UIApplication+isFirstLaunch.swift in Sources */,
 				50989DE01E6D8B16009A86C8 /* HomeView.swift in Sources */,
 				50989DD51E6D8B16009A86C8 /* TetrisGameData.swift in Sources */,
 				50989DDA1E6D8B16009A86C8 /* GridViewModel.swift in Sources */,
@@ -685,14 +697,16 @@
 				50989DD81E6D8B16009A86C8 /* GridGameData.swift in Sources */,
 				A2187E761E76CE1A0033FC5B /* GameDataManager.swift in Sources */,
 				50989DD71E6D8B16009A86C8 /* TetrisViewModel.swift in Sources */,
+				A24027E31E7D8DF800869B7F /* Realm+defaultURL.swift in Sources */,
+				A24027DF1E7D777000869B7F /* EnglishApiResponse.swift in Sources */,
 				50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */,
-				A2187E821E7A54B30033FC5B /* ApiProtocol.swift in Sources */,
+				A2187E821E7A54B30033FC5B /* APIProtocol.swift in Sources */,
 				50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */,
 				50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */,
 				A2187E7E1E7A38F70033FC5B /* Secrets.swift in Sources */,
 				A260C65F1E6E916800782103 /* Player.swift in Sources */,
-				A2187E7A1E79BA140033FC5B /* Scrapper.swift in Sources */,
-				A2187E7C1E7A27D10033FC5B /* Api.swift in Sources */,
+				A2187E7A1E79BA140033FC5B /* Prebundler.swift in Sources */,
+				A2187E7C1E7A27D10033FC5B /* API.swift in Sources */,
 				50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,7 +718,6 @@
 				A2187E661E6E9FCB0033FC5B /* PlayerTests.swift in Sources */,
 				A260C6361E6AB30400782103 /* JasmineTests.swift in Sources */,
 				A2187E681E6EA0A20033FC5B /* GameDataTests.swift in Sources */,
-				A2187E801E7A52560033FC5B /* ScrapperTests.swift in Sources */,
 				A2187E6A1E6EA35C0033FC5B /* RealmTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -852,6 +865,7 @@
 			baseConfigurationReference = 35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = "$(SRCROOT)/Jasmine/Common/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.Jasmine;
@@ -865,6 +879,7 @@
 			baseConfigurationReference = FC0AD02B711C61B2492AE255 /* Pods-Jasmine.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = "$(SRCROOT)/Jasmine/Common/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.Jasmine;
