@@ -1,3 +1,3 @@
-class FlappyViewModel {
+class FlappyViewModel: GameViewModel {
 
 }
