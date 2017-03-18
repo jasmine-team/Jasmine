@@ -184,17 +184,23 @@ extension GridGameViewController: GridGameViewControllerDelegate {
 
     /// Refreshes the tiles based on the tiles information stored in the View Controller's grid data.
     func redisplayAllTiles() {
-
+        gridCollectionView.performBatchUpdates(gridCollectionView.reloadData, completion: nil)
     }
 
     /// Refreshes a selected set of tiles based on the tiles information stored in the VC's grid data.
     func redisplay(tilesAt coordinates: Set<Coordinate>) {
-
+        let indices = coordinates.map { IndexPath($0) }
+        self.gridCollectionView.reloadItems(at: indices)
     }
 
     /// Refreshes one particular tile based on the tiles information stored in the VC's grid data.
     func redisplay(tileAt coordinate: Coordinate) {
 
+    }
+
+    fileprivate func redisplayWithNoAnimation(forTilesAt coordinates: Set<Coordinate>) {
+        let indices = coordinates.map { IndexPath($0) }
+        self.gridCollectionView.reloadItems(at: indices)
     }
 }
 
