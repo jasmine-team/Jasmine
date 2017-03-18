@@ -33,6 +33,8 @@
 		DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D21EB1E743C8700094381 /* GridGameViewController.swift */; };
 		DF6149321E7BD6300017B6DD /* GeometryUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6149311E7BD6300017B6DD /* GeometryUtilsTest.swift */; };
 		DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */; };
+		DF8564441E7D356100A42128 /* IndexPath+Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8564431E7D356100A42128 /* IndexPath+Coordinate.swift */; };
+		DF8564471E7D3F8100A42128 /* IndexPathCoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8564461E7D3F8100A42128 /* IndexPathCoordinateTests.swift */; };
 		DFB3426D1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */; };
 		DFB3426F1E77E77900D2FE09 /* BaseGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426E1E77E77900D2FE09 /* BaseGameEngineProtocol.swift */; };
 		DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342701E77EB6700D2FE09 /* Coordinate.swift */; };
@@ -102,6 +104,8 @@
 		DF2D21EB1E743C8700094381 /* GridGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewController.swift; sourceTree = "<group>"; };
 		DF6149311E7BD6300017B6DD /* GeometryUtilsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeometryUtilsTest.swift; path = Common/Helpers/GeometryUtilsTest.swift; sourceTree = "<group>"; };
 		DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TetrisStoryboard.storyboard; sourceTree = "<group>"; };
+		DF8564431E7D356100A42128 /* IndexPath+Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "IndexPath+Coordinate.swift"; path = "Extensions/IndexPath+Coordinate.swift"; sourceTree = "<group>"; };
+		DF8564461E7D3F8100A42128 /* IndexPathCoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IndexPathCoordinateTests.swift; path = Common/Extensions/IndexPathCoordinateTests.swift; sourceTree = "<group>"; };
 		DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameEngineProtocol.swift; sourceTree = "<group>"; };
 		DFB3426E1E77E77900D2FE09 /* BaseGameEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGameEngineProtocol.swift; sourceTree = "<group>"; };
 		DFB342701E77EB6700D2FE09 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
@@ -339,6 +343,7 @@
 		50F191A61E7ADC3D00EE9A75 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				DF8564451E7D3F6000A42128 /* Extensions */,
 				50F191A71E7ADC4500EE9A75 /* Helpers */,
 				50F191A81E7ADC4800EE9A75 /* Models */,
 				50F191A91E7ADC4C00EE9A75 /* ViewControllers */,
@@ -524,9 +529,18 @@
 			path = JasmineUITests;
 			sourceTree = "<group>";
 		};
+		DF8564451E7D3F6000A42128 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DF8564461E7D3F8100A42128 /* IndexPathCoordinateTests.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		DFE427BA1E744B6800A837BD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DF8564431E7D356100A42128 /* IndexPath+Coordinate.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -850,6 +864,7 @@
 				50989DDE1E6D8B16009A86C8 /* GameDataProtocol.swift in Sources */,
 				50989DE11E6D8B16009A86C8 /* GameViewModel.swift in Sources */,
 				50989DE21E6D8B16009A86C8 /* FlappyGameData.swift in Sources */,
+				DF8564441E7D356100A42128 /* IndexPath+Coordinate.swift in Sources */,
 				DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */,
 				DFB3426F1E77E77900D2FE09 /* BaseGameEngineProtocol.swift in Sources */,
 				DFB342771E77F5F200D2FE09 /* FlappyGameEngineProtocol.swift in Sources */,
@@ -874,6 +889,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF8564471E7D3F8100A42128 /* IndexPathCoordinateTests.swift in Sources */,
 				DF6149321E7BD6300017B6DD /* GeometryUtilsTest.swift in Sources */,
 				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
 			);
