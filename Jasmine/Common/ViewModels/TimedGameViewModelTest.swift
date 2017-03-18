@@ -1,14 +1,34 @@
 import XCTest
 @testable import Jasmine
 
+class TimedGameViewModelMock: TimedGameViewModel {
+    /// Specifies the total time allowed in the game.
+    var totalTimeAllowed: TimeInterval
+
+    /// Specifies the time remaining in the game.
+    var timeRemaining: TimeInterval
+
+    init() {
+        totalTimeAllowed = 0
+        timeRemaining = 0
+    }
+}
+
 class TimedGameViewModelTest: XCTestCase {
 
-    private let totalTimeAllowed: TimeInterval = 10
+    func testTimeElapsed() {
+        let gameViewModel = TimedGameViewModelMock()
+        let testCases: [(TimeInterval, TimeInterval)] = [(0, 0), (2, 2), (5, 3), (100, 7), (10.7, 3.3)]
 
-    func testInit() {
-        let gameViewModel = TimedGameViewModel(totalTimeAllowed: totalTimeAllowed)
-        XCTAssertEqual(gameViewModel.totalTimeAllowed, totalTimeAllowed, "Total time allowed in init is wrong")
-        XCTAssertEqual(gameViewModel.timeRemaining, totalTimeAllowed, "Time remaining in init is wrong")
-        XCTAssertEqual(gameViewModel.timeElapsed, 0, "Time elapsed in init is wrong")
+        for (totalTime, timeRemaining) in testCases {
+            gameViewModel.totalTimeAllowed = totalTime
+            gameViewModel.timeRemaining = timeRemaining
+            XCTAssertEqual(gameViewModel.timeElapsed, totalTime - timeRemaining,
+                           "Time elapsed is not totalTime - timeRemaining")
+        }
+    }
+
+    func testStartTimer() {
+        // TODO
     }
 }

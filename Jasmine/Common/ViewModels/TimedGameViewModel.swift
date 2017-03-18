@@ -14,23 +14,12 @@ protocol TimedGameViewModel: class {
 
     /// Starts the countdown timer
     func startTimer(timerInterval: TimeInterval, viewControllerDelegate: BaseGameViewControllerDelegate?)
-
-    init()
-
-    init(totalTimeAllowed: TimeInterval)
 }
 
 extension TimedGameViewModel {
-
     /// Retrieves time elapsed since game started
     var timeElapsed: TimeInterval {
         return totalTimeAllowed - timeRemaining
-    }
-
-    init(totalTimeAllowed: TimeInterval) {
-        self.init()
-        self.totalTimeAllowed = totalTimeAllowed
-        timeRemaining = totalTimeAllowed
     }
 
     /// Starts the countdown timer
