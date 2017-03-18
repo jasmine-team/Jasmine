@@ -22,14 +22,6 @@ class GridGameViewController: UIViewController {
     // MARK: Game Properties
     fileprivate var gameEngine: GridGameEngineProtocol!
 
-    /// Stores a list of Chinese characters, which serves as the data source for  
-    /// `charactersCollectionView`.
-    fileprivate var chineseTexts: [String?]
-        = ["天", "翻", "地", "覆",
-           "CS32", "17", ":D", ":(",
-           "天", "翻", "地", "覆",
-           nil, "😛", nil, "😉"]
-
     // MARK: View Controller Lifecycles
     /// Readjusts layout (such as cell size) upon auto-rotate.
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -113,15 +105,20 @@ fileprivate extension GridGameViewController {
     ///
     /// - Parameter position: location where the tile should land.
     fileprivate func handleTileLanding(at position: CGPoint) {
-        guard let indexLanded = gridCollectionView.indexPathForItem(at: position),
+        guard
+            let startingIndex = draggingStartIndex,
+            let indexLanded = gridCollectionView.indexPathForItem(at: position),
             let cellToVacate = gridCollectionView.cellForItem(at: indexLanded),
             let squareCellToVacate = cellToVacate as? SquareTextViewCell else {
                 handleTileFailedLanding()
                 return
         }
 
-//        gameEngine.swapTiles(<#T##coord1: Coordinate##Coordinate#>, and: <#T##Coordinate#>)
-        handleTileSuccessfulLanding(on: squareCellToVacate, at: indexLanded)
+        if gameEngine.swapTiles(indexLanded.toCoordinate, and: startingIndex.toCoordinate) {
+            handleTileSuccessfulLanding(on: squareCellToVacate, at: indexLanded)
+        } else {
+            handleTileFailedLanding()
+        }
     }
 
     /// Helper method to let the dragged tile to return to its original position.
@@ -224,10 +221,15 @@ extension GridGameViewController: BaseGameViewControllerDelegate {
 // MARK: - Data Source for Characters Collection View
 extension GridGameViewController: UICollectionViewDataSource {
 
-    /// Tells the charactersCollectionView the number of cells to display.
+    /// Tells the charactersCollectionView the number of rows to display.
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return Constants.BoardGamePlay.rows
+    }
+
+    /// Tells the charactersCollectionView the number of cells in a row to display.
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return chineseTexts.count
+        return Constants.BoardGamePlay.columns
     }
 
     /// Feeds the data (chinese characters) to the charactersCollectionView.
@@ -240,7 +242,7 @@ extension GridGameViewController: UICollectionViewDataSource {
         guard let textCell = reusableCell as? SquareTextViewCell else {
             fatalError("View Cell that extends from ChineseCharacterViewCell is required.")
         }
-        textCell.text = chineseTexts[indexPath.item]
+        textCell.text = gameEngine.gridData[indexPath.toCoordinate]
         return textCell
     }
 }
