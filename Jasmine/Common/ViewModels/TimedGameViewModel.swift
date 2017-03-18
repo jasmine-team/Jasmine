@@ -1,22 +1,34 @@
 import Foundation
 
 /// View model with a countdown timer
-class TimedGameViewModel: GameViewModel {
+protocol TimedGameViewModel: class {
 
     /// Specifies the time remaining in the game.
-    private(set) var timeRemaining: TimeInterval
+    var timeRemaining: TimeInterval { get set }
 
     /// Specifies the total time allowed in the game.
-    private(set) var totalTimeAllowed: TimeInterval
+    var totalTimeAllowed: TimeInterval { get set }
+
+    /// Retrieves time elapsed since game started
+    var timeElapsed: TimeInterval { get }
+
+    /// Starts the countdown timer
+    func startTimer(timerInterval: TimeInterval, viewControllerDelegate: BaseGameViewControllerDelegate?)
+
+    init()
+
+    init(totalTimeAllowed: TimeInterval)
+}
+
+extension TimedGameViewModel {
 
     /// Retrieves time elapsed since game started
     var timeElapsed: TimeInterval {
         return totalTimeAllowed - timeRemaining
     }
 
-    /// Initialize the total time allowed and sets timeRemaining to it
     init(totalTimeAllowed: TimeInterval) {
-        assert(totalTimeAllowed >= 0, "totalTimeAllowed must be positive")
+        self.init()
         self.totalTimeAllowed = totalTimeAllowed
         timeRemaining = totalTimeAllowed
     }
