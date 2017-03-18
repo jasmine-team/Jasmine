@@ -38,6 +38,7 @@
 		DF8564521E7D575D00A42128 /* BaseGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8564501E7D575D00A42128 /* BaseGameViewControllerDelegate.swift */; };
 		DF8564531E7D575D00A42128 /* GameElements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF8564511E7D575D00A42128 /* GameElements.storyboard */; };
 		DF8564581E7D583B00A42128 /* SquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8564571E7D583B00A42128 /* SquareGridViewController.swift */; };
+		DF894ADA1E7D7318009AFD91 /* MockGridGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF894AD91E7D7318009AFD91 /* MockGridGameEngine.swift */; };
 		DFB3426D1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */; };
 		DFB3426F1E77E77900D2FE09 /* BaseGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426E1E77E77900D2FE09 /* BaseGameEngineProtocol.swift */; };
 		DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342701E77EB6700D2FE09 /* Coordinate.swift */; };
@@ -111,6 +112,7 @@
 		DF8564501E7D575D00A42128 /* BaseGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseGameViewControllerDelegate.swift; path = GameElements/BaseGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DF8564511E7D575D00A42128 /* GameElements.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GameElements.storyboard; path = GameElements/GameElements.storyboard; sourceTree = "<group>"; };
 		DF8564571E7D583B00A42128 /* SquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SquareGridViewController.swift; path = GameElements/SquareGridViewController.swift; sourceTree = "<group>"; };
+		DF894AD91E7D7318009AFD91 /* MockGridGameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockGridGameEngine.swift; sourceTree = "<group>"; };
 		DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameEngineProtocol.swift; sourceTree = "<group>"; };
 		DFB3426E1E77E77900D2FE09 /* BaseGameEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGameEngineProtocol.swift; sourceTree = "<group>"; };
 		DFB342701E77EB6700D2FE09 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */,
+				DF894AD91E7D7318009AFD91 /* MockGridGameEngine.swift */,
 				50989DBF1E6D8B16009A86C8 /* GridViewModel.swift */,
 			);
 			path = ViewModels;
@@ -896,6 +899,7 @@
 				DFCA8C1A1E753E0100A9C9B5 /* GeometryUtils.swift in Sources */,
 				50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */,
 				50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */,
+				DF894ADA1E7D7318009AFD91 /* MockGridGameEngine.swift in Sources */,
 				DF8564581E7D583B00A42128 /* SquareGridViewController.swift in Sources */,
 				DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */,
 				DFB3426D1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift in Sources */,
