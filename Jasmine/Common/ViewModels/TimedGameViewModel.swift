@@ -3,8 +3,8 @@ import Foundation
 /// View model with a countdown timer
 class TimedGameViewModel: GameViewModel {
 
-    /// Specifies the remaining time left in the game.
-    private(set) var timeRemaining: TimeInterval = 0.0
+    /// Specifies the time remaining in the game.
+    private(set) var timeRemaining: TimeInterval
 
     /// Specifies the total time allowed in the game.
     private(set) var totalTimeAllowed: TimeInterval
@@ -14,15 +14,18 @@ class TimedGameViewModel: GameViewModel {
         return totalTimeAllowed - timeRemaining
     }
 
-    /// Initialize the total time allowed
+    /// Initialize the total time allowed and sets timeRemaining to it
     init(totalTimeAllowed: TimeInterval) {
         self.totalTimeAllowed = totalTimeAllowed
+        timeRemaining = totalTimeAllowed
     }
 
     /// Starts the countdown timer
     func startTimer(timerInterval: TimeInterval, viewControllerDelegate: BaseGameViewControllerDelegate?) {
+        viewControllerDelegate?.notifyGameStatus(with: .inProgress)
+
         Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { timer in
-            self.timeRemaining -= 1
+            self.timeRemaining -= timerInterval
             viewControllerDelegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
 
             if self.timeRemaining == 0 {
