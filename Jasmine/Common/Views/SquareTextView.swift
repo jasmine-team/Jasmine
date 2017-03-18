@@ -11,8 +11,6 @@ class SquareTextView: UILabel {
     /* Constants */
     private static let heightWidthRatio = CGFloat(1.0)
     private static let borderWidth = CGFloat(2.0)
-    private static let filledColor = FlatMint()
-    private static let emptyColor = UIColor.clear
 
     /* Properties */
     /// Sets the text to be displayed in the UILabel, which derives from the `character` property in
@@ -48,14 +46,15 @@ class SquareTextView: UILabel {
 
     /* Styling Methods */
     private func applyBorder() {
-        layer.borderColor = SquareTextView.filledColor.cgColor
+        layer.borderColor = Constants.Theme.mainColor.cgColor
         layer.borderWidth = SquareTextView.borderWidth
+        textColor = Constants.Theme.mainWhiteColor
     }
 
     private func setTheme(whenFilled: Bool) {
         backgroundColor = whenFilled
-                        ? SquareTextView.filledColor
-                        : SquareTextView.emptyColor
+                        ? Constants.Theme.mainColor
+                        : UIColor.clear
     }
 
     private func setSquareDimension() {
