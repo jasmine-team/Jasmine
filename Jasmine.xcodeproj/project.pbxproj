@@ -38,7 +38,7 @@
 		DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D21EB1E743C8700094381 /* GridGameViewController.swift */; };
 		DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */; };
 		DFB3426D1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */; };
-		DFB3426F1E77E77900D2FE09 /* BaseGameViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426E1E77E77900D2FE09 /* BaseGameViewModelProtocol.swift */; };
+		DFB3426F1E77E77900D2FE09 /* BaseGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426E1E77E77900D2FE09 /* BaseGameEngineProtocol.swift */; };
 		DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342701E77EB6700D2FE09 /* Coordinate.swift */; };
 		DFB342751E77F06400D2FE09 /* BaseGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342741E77F06400D2FE09 /* BaseGameViewControllerDelegate.swift */; };
 		DFB342771E77F5F200D2FE09 /* FlappyGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342761E77F5F200D2FE09 /* FlappyGameEngineProtocol.swift */; };
@@ -108,7 +108,7 @@
 		DF2D21EB1E743C8700094381 /* GridGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewController.swift; sourceTree = "<group>"; };
 		DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TetrisStoryboard.storyboard; sourceTree = "<group>"; };
 		DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameEngineProtocol.swift; sourceTree = "<group>"; };
-		DFB3426E1E77E77900D2FE09 /* BaseGameViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGameViewModelProtocol.swift; sourceTree = "<group>"; };
+		DFB3426E1E77E77900D2FE09 /* BaseGameEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGameEngineProtocol.swift; sourceTree = "<group>"; };
 		DFB342701E77EB6700D2FE09 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		DFB342741E77F06400D2FE09 /* BaseGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DFB342761E77F5F200D2FE09 /* FlappyGameEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyGameEngineProtocol.swift; sourceTree = "<group>"; };
@@ -266,7 +266,7 @@
 		50989DCC1E6D8B16009A86C8 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				DFB3426E1E77E77900D2FE09 /* BaseGameViewModelProtocol.swift */,
+				DFB3426E1E77E77900D2FE09 /* BaseGameEngineProtocol.swift */,
 				42B4D7981E7CD39C0015196E /* CountDownTimer.swift */,
 			);
 			path = ViewModels;
@@ -860,7 +860,7 @@
 				50989DDE1E6D8B16009A86C8 /* GameDataProtocol.swift in Sources */,
 				50989DE21E6D8B16009A86C8 /* FlappyGameData.swift in Sources */,
 				DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */,
-				DFB3426F1E77E77900D2FE09 /* BaseGameViewModelProtocol.swift in Sources */,
+				DFB3426F1E77E77900D2FE09 /* BaseGameEngineProtocol.swift in Sources */,
 				DFB342771E77F5F200D2FE09 /* FlappyGameEngineProtocol.swift in Sources */,
 				50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */,
 				DFE427BF1E744D3D00A837BD /* SquareTextViewCell.swift in Sources */,
