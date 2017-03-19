@@ -29,7 +29,6 @@
 		BD025B06A527CD03DA811285 /* Pods_JasmineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */; };
 		DF2D21EA1E743BC500094381 /* GridStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */; };
 		DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D21EB1E743C8700094381 /* GridGameViewController.swift */; };
-		DF6149321E7BD6300017B6DD /* GeometryUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6149311E7BD6300017B6DD /* GeometryUtilsTest.swift */; };
 		DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */; };
 		DF8564441E7D356100A42128 /* IndexPath+Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8564431E7D356100A42128 /* IndexPath+Coordinate.swift */; };
 		DF8564471E7D3F8100A42128 /* IndexPathCoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8564461E7D3F8100A42128 /* IndexPathCoordinateTests.swift */; };
@@ -40,6 +39,7 @@
 		DF8564581E7D583B00A42128 /* SquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8564571E7D583B00A42128 /* SquareGridViewController.swift */; };
 		DF894ADA1E7D7318009AFD91 /* MockGridGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF894AD91E7D7318009AFD91 /* MockGridGameEngine.swift */; };
 		DF894ADC1E7D9101009AFD91 /* CGRect+Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF894ADB1E7D9101009AFD91 /* CGRect+Arithmetic.swift */; };
+		DF894AE01E7E5D76009AFD91 /* CGRectArithmeticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF894ADF1E7E5D76009AFD91 /* CGRectArithmeticTests.swift */; };
 		DFB3426D1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */; };
 		DFB3426F1E77E77900D2FE09 /* BaseGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426E1E77E77900D2FE09 /* BaseGameEngineProtocol.swift */; };
 		DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342701E77EB6700D2FE09 /* Coordinate.swift */; };
@@ -103,7 +103,6 @@
 		CDF6F46CAE49685937742BCB /* Pods-JasmineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GridStoryboard.storyboard; sourceTree = "<group>"; };
 		DF2D21EB1E743C8700094381 /* GridGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewController.swift; sourceTree = "<group>"; };
-		DF6149311E7BD6300017B6DD /* GeometryUtilsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeometryUtilsTest.swift; path = Common/Helpers/GeometryUtilsTest.swift; sourceTree = "<group>"; };
 		DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TetrisStoryboard.storyboard; sourceTree = "<group>"; };
 		DF8564431E7D356100A42128 /* IndexPath+Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "IndexPath+Coordinate.swift"; path = "Extensions/IndexPath+Coordinate.swift"; sourceTree = "<group>"; };
 		DF8564461E7D3F8100A42128 /* IndexPathCoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IndexPathCoordinateTests.swift; path = Common/Extensions/IndexPathCoordinateTests.swift; sourceTree = "<group>"; };
@@ -114,6 +113,7 @@
 		DF8564571E7D583B00A42128 /* SquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SquareGridViewController.swift; path = GameElements/SquareGridViewController.swift; sourceTree = "<group>"; };
 		DF894AD91E7D7318009AFD91 /* MockGridGameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockGridGameEngine.swift; sourceTree = "<group>"; };
 		DF894ADB1E7D9101009AFD91 /* CGRect+Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGRect+Arithmetic.swift"; path = "Extensions/CGRect+Arithmetic.swift"; sourceTree = "<group>"; };
+		DF894ADF1E7E5D76009AFD91 /* CGRectArithmeticTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGRectArithmeticTests.swift; path = Common/Extensions/CGRectArithmeticTests.swift; sourceTree = "<group>"; };
 		DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameEngineProtocol.swift; sourceTree = "<group>"; };
 		DFB3426E1E77E77900D2FE09 /* BaseGameEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGameEngineProtocol.swift; sourceTree = "<group>"; };
 		DFB342701E77EB6700D2FE09 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
@@ -361,7 +361,6 @@
 		50F191A71E7ADC4500EE9A75 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				DF6149311E7BD6300017B6DD /* GeometryUtilsTest.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -539,6 +538,7 @@
 			isa = PBXGroup;
 			children = (
 				DF8564461E7D3F8100A42128 /* IndexPathCoordinateTests.swift */,
+				DF894ADF1E7E5D76009AFD91 /* CGRectArithmeticTests.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -911,8 +911,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF8564471E7D3F8100A42128 /* IndexPathCoordinateTests.swift in Sources */,
-				DF6149321E7BD6300017B6DD /* GeometryUtilsTest.swift in Sources */,
 				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
+				DF894AE01E7E5D76009AFD91 /* CGRectArithmeticTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
