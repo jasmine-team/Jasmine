@@ -9,6 +9,7 @@ target 'Jasmine' do
   pod 'RealmSwift'
   pod 'SwiftLint'
   pod 'Alamofire', '~> 4.4'
+  pod 'PromiseKit', '~> 4.0'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 
   target 'JasmineTests' do
