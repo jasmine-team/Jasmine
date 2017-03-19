@@ -5,15 +5,15 @@ class MockGridGameEngine: GridGameEngineProtocol {
     // MARK: Properties
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
-    var delegate: GridGameViewControllerDelegate?
+    weak var delegate: GridGameViewControllerDelegate?
 
     /// Stores the grid data that will be used to display in the view controller.
     var gridData: [Coordinate: String] = [
         Coordinate(row: 0, col: 0): "😜",
         Coordinate(row: 0, col: 1): "😉",
-        Coordinate(row: 0, col: 2): "😆",
-        Coordinate(row: 0, col: 3): "😁",
-        Coordinate(row: 1, col: 0): "😜",
+        Coordinate(row: 0, col: 2): "",
+        Coordinate(row: 0, col: 3): "123",
+        Coordinate(row: 1, col: 0): "lala",
         Coordinate(row: 1, col: 1): "😉",
         Coordinate(row: 1, col: 2): "😆",
         Coordinate(row: 1, col: 3): "😁",
@@ -42,6 +42,8 @@ class MockGridGameEngine: GridGameEngineProtocol {
     /// - Returns: Returns true if the two coordinates has be swapped, false otherwise.
     func swapTiles(_ coord1: Coordinate, and coord2: Coordinate) -> Bool {
         swap(&gridData[coord1], &gridData[coord2])
+        delegate?.update(tilesWith: gridData)
+        return true
     }
 }
 
