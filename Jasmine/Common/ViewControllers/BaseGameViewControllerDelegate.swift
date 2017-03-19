@@ -14,10 +14,9 @@ protocol BaseGameViewControllerDelegate: class {
     /// Redisplay the time remaining on the view controller against a total time.
     ///
     /// - Parameters:
-    ///   - remainingTime: the remaining time left, in seconds.
+    ///   - timeRemaining: the time remaining, in seconds.
     ///   - totalTime: the total time from the start of the game, in seconds.
-    ///     If no bonus time is added, should equate to `initialRemainingTime`.
-    func redisplay(remainingTime: TimeInterval, outOf totalTime: TimeInterval)
+    func redisplay(timeRemaining: TimeInterval, outOf totalTime: TimeInterval)
 
     // MARK: Game Status
     /// Notifies the view controller that the game state has changed.
