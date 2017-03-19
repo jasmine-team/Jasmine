@@ -78,7 +78,7 @@ struct Prebundler {
     static func fillDatabase() {
         do {
             let listOfPhrases = try Prebundler.parse(fileName: "phrases")
-            let promises = listOfPhrases.enumerated().prefix(200).map { i, phrase in
+            let promises = listOfPhrases.enumerated().prefix(fetchLimit).map { i, phrase in
                 return Prebundler.fetch(phrase: phrase, rank: i)
             }
             when(fulfilled: promises).then { results -> Void in
