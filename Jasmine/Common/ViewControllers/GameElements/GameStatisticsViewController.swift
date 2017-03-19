@@ -11,11 +11,7 @@ class GameStatisticsViewController: UIViewController {
     /// Sets the current score in this VC, which also updates the view elements automatically.
     var currentScore: Int? {
         didSet {
-            guard let currentScore = currentScore else {
-                scoreLabel.text = ""
-                return
-            }
-            scoreLabel.text = "\(currentScore)"
+            displayCurrentScore()
         }
     }
 
@@ -23,11 +19,39 @@ class GameStatisticsViewController: UIViewController {
     /// rounded to integers.
     var timeLeft: TimeInterval? {
         didSet {
-            guard let timeLeft = timeLeft else {
-                timeLeftLabel.text = ""
-                return
-            }
-            timeLeftLabel.text = "\(round(timeLeft))"
+            displayTimeRemaining()
         }
+    }
+
+    // MARK: View Controller Lifecycle
+    /// Presents the information on view after loading.
+    override func viewWillAppear(_ animated: Bool) {
+        displayCurrentScore()
+        displayTimeRemaining()
+    }
+
+    // MARK: Helper Methods
+    /// Displays the current score in the label, in integer.
+    private func displayCurrentScore() {
+        guard scoreLabel != nil else {
+            return
+        }
+        guard let currentScore = currentScore else {
+            scoreLabel.text = ""
+            return
+        }
+        scoreLabel.text = "\(currentScore)"
+    }
+
+    /// Displays the time remaining in the label, in integer.
+    private func displayTimeRemaining() {
+        guard timeLeftLabel != nil else {
+            return
+        }
+        guard let timeLeft = timeLeft else {
+            timeLeftLabel.text = ""
+            return
+        }
+        timeLeftLabel.text = "\(Int(round(timeLeft)))"
     }
 }
