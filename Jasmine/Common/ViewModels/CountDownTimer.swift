@@ -24,6 +24,8 @@ class CountDownTimer {
     /// Starts the countdown timer
     func startTimer(timerInterval: TimeInterval, viewControllerDelegate: BaseGameViewControllerDelegate?) {
         assert(timerInterval >= 0, "timerInterval must be positive")
+
+        viewControllerDelegate?.redisplay(timeRemaining: timeRemaining, outOf: totalTimeAllowed)
         viewControllerDelegate?.notifyGameStatus(with: .inProgress)
 
         Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { timer in
