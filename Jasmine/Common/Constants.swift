@@ -1,10 +1,11 @@
 import ChameleonFramework
+import Foundation
 
 enum Constants {
-
-    enum BoardGamePlay {
-        static let rows: Int = 4
-        static let columns: Int = 4
+    enum Grid {
+        static let rows = 4
+        static let columns = 4
+        static let time: TimeInterval = 60
     }
 
     enum Theme {
