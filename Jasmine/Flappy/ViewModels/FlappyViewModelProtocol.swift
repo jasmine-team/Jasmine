@@ -1,6 +1,6 @@
 import Foundation
 
-protocol FlappyGameEngineProtocol: BaseGameEngineProtocol {
+protocol FlappyViewModelProtocol: BaseViewModelProtocol {
 
     var delegate: FlappyGameViewControllerDelegate? { get set }
 

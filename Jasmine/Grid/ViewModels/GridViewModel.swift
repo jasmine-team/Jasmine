@@ -1,6 +1,6 @@
 import Foundation
 
-class GridViewModel: GridGameEngineProtocol {
+class GridViewModel: GridViewModelProtocol {
     /// Stores the grid data that will be used to display in the view controller.
     private(set) var gridData: [Coordinate : String] = [:]
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
