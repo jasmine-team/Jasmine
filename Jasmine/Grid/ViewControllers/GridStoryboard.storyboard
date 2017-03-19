@@ -11,6 +11,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Square Grid View Controller-->
+        <scene sceneID="HTn-RY-q1C">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GameElements" referencedIdentifier="Square Grid View Controller" id="iGk-7X-0JV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PPz-1S-6Tl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="482" y="45"/>
+        </scene>
         <!--Grid Game View Controller-->
         <scene sceneID="yeQ-RR-Dye">
             <objects>
@@ -23,50 +31,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uh3-nq-JZN">
-                                <rect key="frame" x="16" y="161.5" width="343" height="343"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="uh3-nq-JZN" secondAttribute="height" id="KOv-57-uX0"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LoK-4Q-Reu">
-                                    <size key="itemSize" width="64" height="64"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Grid Game Character Cell" id="SsE-9t-hHQ" customClass="SquareTextViewCell" customModule="Jasmine" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="si7-Wh-ASf" customClass="SquareTextView" customModule="Jasmine" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
-                                                    <color key="backgroundColor" red="0.18198148906230927" green="0.69426733255386353" blue="0.53024792671203613" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="40"/>
-                                                    <color key="textColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="si7-Wh-ASf" secondAttribute="bottom" id="0pL-xK-VI7"/>
-                                            <constraint firstAttribute="trailing" secondItem="si7-Wh-ASf" secondAttribute="trailing" id="4ur-ua-ibd"/>
-                                            <constraint firstItem="si7-Wh-ASf" firstAttribute="top" secondItem="SsE-9t-hHQ" secondAttribute="top" id="6Jc-Uj-3E9"/>
-                                            <constraint firstItem="si7-Wh-ASf" firstAttribute="leading" secondItem="SsE-9t-hHQ" secondAttribute="leading" id="ilX-en-ntQ"/>
-                                        </constraints>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="WaX-Zk-8YX" id="rLm-Qz-pqf"/>
-                                    <outlet property="delegate" destination="WaX-Zk-8YX" id="NiW-jX-r2D"/>
-                                    <outletCollection property="gestureRecognizers" destination="gKY-pq-L80" appends="YES" id="4SE-BB-wDO"/>
-                                </connections>
-                            </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDO-Gr-UVd">
                                 <rect key="frame" x="166" y="107" width="44" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -74,17 +38,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hV-fi-ivC" userLabel="Square Grid View Controller">
+                                <rect key="frame" x="16" y="161.5" width="343" height="343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1hV-fi-ivC" secondAttribute="height" id="irh-fD-oZD"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="gKY-pq-L80" appends="YES" id="Ws9-3L-IYY"/>
+                                    <segue destination="iGk-7X-0JV" kind="embed" id="aaE-vY-JZg"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uh3-nq-JZN" firstAttribute="leading" secondItem="Eab-wS-66c" secondAttribute="leadingMargin" id="19h-eb-bck"/>
-                            <constraint firstItem="uh3-nq-JZN" firstAttribute="centerY" secondItem="Eab-wS-66c" secondAttribute="centerY" id="Itw-a7-41b"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="uh3-nq-JZN" secondAttribute="trailing" id="Pal-VJ-H9p"/>
+                            <constraint firstItem="1hV-fi-ivC" firstAttribute="centerY" secondItem="Eab-wS-66c" secondAttribute="centerY" id="LtI-fb-nee"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1hV-fi-ivC" secondAttribute="trailing" id="aK3-bZ-z8D"/>
+                            <constraint firstItem="1hV-fi-ivC" firstAttribute="leading" secondItem="Eab-wS-66c" secondAttribute="leadingMargin" id="kIA-6n-LSo"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="gridCollectionView" destination="uh3-nq-JZN" id="8eS-dJ-2Jf"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="165-Wz-AYE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" maximumNumberOfTouches="1" id="gKY-pq-L80" userLabel="Tile Dragger Gesture Recogniser">
@@ -93,7 +64,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-206" y="46"/>
+            <point key="canvasLocation" x="-207.19999999999999" y="45.42728635682159"/>
         </scene>
     </scenes>
 </document>

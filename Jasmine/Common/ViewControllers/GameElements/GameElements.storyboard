@@ -12,7 +12,7 @@
         <!--Square Grid View Controller-->
         <scene sceneID="DWs-d6-gJr">
             <objects>
-                <viewController id="MNX-xH-RW2" customClass="SquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Square Grid View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MNX-xH-RW2" customClass="SquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K0r-CF-OU1"/>
                         <viewControllerLayoutGuide type="bottom" id="DvA-CY-DUo"/>
@@ -21,10 +21,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZrG-Ec-cgV">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZrG-Ec-cgV">
                                 <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iA4-fP-1EX">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="iA4-fP-1EX">
                                     <size key="itemSize" width="84" height="84"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -37,22 +37,7 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNV-J8-dBR" customClass="SquareTextView" customModule="Jasmine" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
-                                                    <color key="backgroundColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="40"/>
-                                                    <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                         </view>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="YNV-J8-dBR" secondAttribute="bottom" id="4H2-Hm-SjG"/>
-                                            <constraint firstItem="YNV-J8-dBR" firstAttribute="leading" secondItem="gT3-Kz-crB" secondAttribute="leading" id="DGw-pp-VGe"/>
-                                            <constraint firstAttribute="trailing" secondItem="YNV-J8-dBR" secondAttribute="trailing" id="VyW-Ph-sfS"/>
-                                            <constraint firstItem="YNV-J8-dBR" firstAttribute="top" secondItem="gT3-Kz-crB" secondAttribute="top" id="bOy-pn-JZm"/>
-                                        </constraints>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

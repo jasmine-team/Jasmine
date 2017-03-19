@@ -4,36 +4,31 @@ import UIKit
 /// - Author: Wang Xien Dong
 class GridGameViewController: UIViewController {
 
-    // MARK: Constants
-    fileprivate static let characterCellIdentifier = "Grid Game Character Cell"
-    fileprivate static let snappingDuration = 0.3
-
-    /// Provides a tolerance (via a factor of the expected size) so that 4 cells can fit in one row.
-    fileprivate static let cellSizeFactor = CGFloat(0.9)
-
     // MARK: Layouts
-    /// Keeps a 4 x 4 of chinese characters as individual cells.
-    @IBOutlet fileprivate weak var gridCollectionView: UICollectionView!
+    fileprivate var squareGridViewController: SquareGridViewController!
 
-    fileprivate var draggingTile: SquareTextViewCell?
-    fileprivate var draggingStartFrame: CGRect?
-    fileprivate var draggingStartIndex: IndexPath?
+    fileprivate var draggingTile: (view: UIView, originalCoord: Coordinate)?
 
     // MARK: Game Properties
     fileprivate var gameEngine: GridGameEngineProtocol!
 
     // MARK: View Controller Lifecycles
-    /// Readjusts layout (such as cell size) upon auto-rotate.
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        gridCollectionView.performBatchUpdates(gridCollectionView.reloadData, completion: nil)
-    }
-
     /// Specifies that the supported orientation for this view is portrait only.
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
 
     // MARK: Segue methods
+    /// Method that manages the seguing to other view controllers from this view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let squareGridView = segue.destination as? SquareGridViewController {
+            squareGridView.segueWith(gameEngine.gridData,
+                                     numRows: Constants.BoardGamePlay.rows,
+                                     numCols: Constants.BoardGamePlay.columns)
+            self.squareGridViewController = squareGridView
+        }
+    }
+
     /// Feeds in the appropriate data for the use of seguing into this view.
     ///
     /// - Parameter gameEngine: the game engine required to play this game.
@@ -46,7 +41,7 @@ class GridGameViewController: UIViewController {
     /// Listens to a drag gesture and handles the operation of dragging a tile, and dropping it
     /// to another location.
     @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
-        let position = sender.location(in: gridCollectionView)
+        let position = sender.location(in: squareGridViewController.view)
 
         switch sender.state {
         case .began:
@@ -73,18 +68,13 @@ fileprivate extension GridGameViewController {
     ///
     /// - Parameter position: location where the tile is selected.
     fileprivate func handleTileSelected(at position: CGPoint) {
-        guard draggingTile == nil,
-            draggingStartFrame == nil,
-            let indexTouched = gridCollectionView.indexPathForItem(at: position),
-            let cellTouched = gridCollectionView.cellForItem(at: indexTouched),
-            let squareCellTouched = cellTouched as? SquareTextViewCell else {
+        guard
+            draggingTile == nil,
+            let coordTouched = squareGridViewController.getCoordinate(at: position),
+            let detachedCell = squareGridViewController.detachTile(fromCoord: coordTouched) else {
                 return
         }
-
-        gridCollectionView.bringSubview(toFront: squareCellTouched)
-        draggingTile = squareCellTouched
-        draggingStartFrame = cellTouched.frame
-        draggingStartIndex = indexTouched
+        draggingTile = (detachedCell, coordTouched)
     }
 
     /// Drags the tile that is referenced in `draggingTile`.
@@ -94,9 +84,7 @@ fileprivate extension GridGameViewController {
         guard let draggingTile = draggingTile else {
             return
         }
-        let size = draggingTile.frame.size
-        let newOrigin = GeometryUtils.getOrigin(from: position, withSize: size)
-        draggingTile.frame.origin = newOrigin
+        squareGridViewController.moveDetachedTile(draggingTile.view, toPosition: position)
     }
 
     /// Lands the tile at the specified position, if such a cell is found.
@@ -105,72 +93,52 @@ fileprivate extension GridGameViewController {
     ///
     /// - Parameter position: location where the tile should land.
     fileprivate func handleTileLanding(at position: CGPoint) {
+        guard let draggingTile = draggingTile else {
+            return
+        }
         guard
-            let startingIndex = draggingStartIndex,
-            let indexLanded = gridCollectionView.indexPathForItem(at: position),
-            let cellToVacate = gridCollectionView.cellForItem(at: indexLanded),
-            let squareCellToVacate = cellToVacate as? SquareTextViewCell else {
+            let landedCoord = squareGridViewController.getCoordinate(at: position),
+            gameEngine.swapTiles(draggingTile.originalCoord, and: landedCoord) else {
                 handleTileFailedLanding()
                 return
         }
-
-        if gameEngine.swapTiles(indexLanded.toCoordinate, and: startingIndex.toCoordinate) {
-            handleTileSuccessfulLanding(on: squareCellToVacate, at: indexLanded)
-        } else {
-            handleTileFailedLanding()
-        }
+        handleTileSuccessfulLanding(on: landedCoord)
     }
 
     /// Helper method to let the dragged tile to return to its original position.
     private func handleTileFailedLanding() {
-        guard let draggingTile = draggingTile,
-            let draggingStartFrame = draggingStartFrame else {
-                return
+        guard let tile = draggingTile else {
+            return
         }
-
-        let animationFunc: () -> Void = {
-            draggingTile.frame = draggingStartFrame
-        }
-
-        let completionFunc: (Bool) -> Void = { _ in
+        squareGridViewController.snapDetachedTile(tile.view, toCoordinate: tile.originalCoord) {
             self.draggingTile = nil
-            self.draggingStartFrame = nil
         }
-
-        UIView.animate(withDuration: GridGameViewController.snappingDuration,
-                       animations: animationFunc, completion: completionFunc)
     }
 
     /// Helper method to switch the landed tile and vacated tile, and update the database at the
     /// same time.
-    private func handleTileSuccessfulLanding(on otherCell: SquareTextViewCell,
-                                             at otherIndex: IndexPath) {
-        guard let draggingTile = draggingTile,
-            let draggingStartFrame = draggingStartFrame,
-            let draggingStartIndex = draggingStartIndex else {
-                return
+    private func handleTileSuccessfulLanding(on landedCoord: Coordinate) {
+        guard let draggingTile = draggingTile else {
+            return
+        }
+        guard let landedView = squareGridViewController.detachTile(fromCoord: landedCoord) else {
+            handleTileFailedLanding()
+            return
         }
 
-        let animation: () -> Void = {
-            draggingTile.frame = otherCell.frame
-            otherCell.frame = draggingStartFrame
+        self.draggingTile = nil
+        let startingView = draggingTile.view
+        let startingCoord = draggingTile.originalCoord
+        let endingView = landedView
+        let endingCoord = landedCoord
+
+        squareGridViewController.snapDetachedTile(startingView, toCoordinate: endingCoord) {
+            self.squareGridViewController.reload(cellsAt: [endingCoord], withAnimation: false)
         }
+        self.squareGridViewController.snapDetachedTile(endingView, toCoordinate: startingCoord) {
+            self.squareGridViewController.reload(cellsAt: [startingCoord], withAnimation: false)
 
-        let completion: (Bool) -> Void = { _ in
-            UIView.setAnimationsEnabled(false)
-            otherCell.frame = draggingTile.frame
-            draggingTile.frame = draggingStartFrame
-            self.gridCollectionView.reloadItems(at: [draggingStartIndex, otherIndex])
-            UIView.setAnimationsEnabled(true)
-
-            self.draggingTile = nil
-            self.draggingStartFrame = nil
-            self.draggingStartIndex = nil
         }
-
-        UIView.animate(withDuration: GridGameViewController.snappingDuration,
-                       animations: animation,
-                       completion: completion)
     }
 }
 
@@ -179,28 +147,22 @@ extension GridGameViewController: GridGameViewControllerDelegate {
 
     /// Update the grid data stored in the Grid Game View Controller with a new dataset.
     func update(tilesWith newGridData: [Coordinate: String]) {
-
+        squareGridViewController.update(collectionData: newGridData)
     }
 
     /// Refreshes the tiles based on the tiles information stored in the View Controller's grid data.
     func redisplayAllTiles() {
-        gridCollectionView.performBatchUpdates(gridCollectionView.reloadData, completion: nil)
+        squareGridViewController.reload(allCellsWithAnimation: true)
     }
 
     /// Refreshes a selected set of tiles based on the tiles information stored in the VC's grid data.
     func redisplay(tilesAt coordinates: Set<Coordinate>) {
-        let indices = coordinates.map { IndexPath($0) }
-        self.gridCollectionView.reloadItems(at: indices)
+        squareGridViewController.reload(cellsAt: coordinates, withAnimation: true)
     }
 
     /// Refreshes one particular tile based on the tiles information stored in the VC's grid data.
     func redisplay(tileAt coordinate: Coordinate) {
-
-    }
-
-    fileprivate func redisplayWithNoAnimation(forTilesAt coordinates: Set<Coordinate>) {
-        let indices = coordinates.map { IndexPath($0) }
-        self.gridCollectionView.reloadItems(at: indices)
+        squareGridViewController.reload(cellsAt: [coordinate], withAnimation: true)
     }
 }
 
@@ -221,48 +183,5 @@ extension GridGameViewController: BaseGameViewControllerDelegate {
     /// Notifies the view controller that the game state has changed.
     func notifyGameStatus(with newStatus: GameStatus) {
 
-    }
-}
-
-// MARK: - Data Source for Characters Collection View
-extension GridGameViewController: UICollectionViewDataSource {
-
-    /// Tells the charactersCollectionView the number of rows to display.
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return Constants.BoardGamePlay.rows
-    }
-
-    /// Tells the charactersCollectionView the number of cells in a row to display.
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        return Constants.BoardGamePlay.columns
-    }
-
-    /// Feeds the data (chinese characters) to the charactersCollectionView.
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        let reusableCell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: GridGameViewController.characterCellIdentifier, for: indexPath)
-
-        guard let textCell = reusableCell as? SquareTextViewCell else {
-            fatalError("View Cell that extends from ChineseCharacterViewCell is required.")
-        }
-        textCell.text = gameEngine.gridData[indexPath.toCoordinate]
-        return textCell
-    }
-}
-
-// MARK: - Size of each Character View Cell
-extension GridGameViewController: UICollectionViewDelegateFlowLayout {
-
-    /// Sets the size of each cell in charactersCollectionView such that we have a 4x4 grid.
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let length = gridCollectionView.bounds.width / CGFloat(Constants.BoardGamePlay.columns)
-                * GridGameViewController.cellSizeFactor
-
-        return CGSize(width: length, height: length)
     }
 }
