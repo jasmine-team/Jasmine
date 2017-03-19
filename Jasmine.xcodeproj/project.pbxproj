@@ -27,8 +27,9 @@
 		50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DD21E6D8B16009A86C8 /* FlappyViewModel.swift */; };
 		50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */; };
 		50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */; };
+		A222C02B1E7E9768006BEE8C /* JasmineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A222C0291E7E9768006BEE8C /* JasmineAPI.swift */; };
+		A222C02C1E7E9768006BEE8C /* JSONParsingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A222C02A1E7E9768006BEE8C /* JSONParsingError.swift */; };
 		A2341A7E1E7E3C3C001BAAD4 /* GameDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2341A7D1E7E3C3C001BAAD4 /* GameDataManagerTests.swift */; };
-		A24028B31E7E247500869B7F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24028AE1E7E247500869B7F /* API.swift */; };
 		A24028B41E7E247500869B7F /* APIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24028AF1E7E247500869B7F /* APIProtocol.swift */; };
 		A24028B51E7E247500869B7F /* Prebundler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24028B01E7E247500869B7F /* Prebundler.swift */; };
 		A24028B61E7E247500869B7F /* Realm+defaultURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24028B11E7E247500869B7F /* Realm+defaultURL.swift */; };
@@ -103,8 +104,9 @@
 		50989DE61E6D8BBD009A86C8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateTests.swift; sourceTree = "<group>"; };
 		5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A222C0291E7E9768006BEE8C /* JasmineAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JasmineAPI.swift; sourceTree = "<group>"; };
+		A222C02A1E7E9768006BEE8C /* JSONParsingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParsingError.swift; sourceTree = "<group>"; };
 		A2341A7D1E7E3C3C001BAAD4 /* GameDataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataManagerTests.swift; sourceTree = "<group>"; };
-		A24028AE1E7E247500869B7F /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		A24028AF1E7E247500869B7F /* APIProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIProtocol.swift; sourceTree = "<group>"; };
 		A24028B01E7E247500869B7F /* Prebundler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prebundler.swift; sourceTree = "<group>"; };
 		A24028B11E7E247500869B7F /* Realm+defaultURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+defaultURL.swift"; sourceTree = "<group>"; };
@@ -262,9 +264,10 @@
 		50989DC41E6D8B16009A86C8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A24028AE1E7E247500869B7F /* API.swift */,
 				A24028AF1E7E247500869B7F /* APIProtocol.swift */,
 				DFCA8C191E753E0100A9C9B5 /* GeometryUtils.swift */,
+				A222C02A1E7E9768006BEE8C /* JSONParsingError.swift */,
+				A222C0291E7E9768006BEE8C /* JasmineAPI.swift */,
 				A24028B01E7E247500869B7F /* Prebundler.swift */,
 				A24028B11E7E247500869B7F /* Realm+defaultURL.swift */,
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
@@ -906,9 +909,10 @@
 				DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */,
 				DFB3426F1E77E77900D2FE09 /* BaseGameEngineProtocol.swift in Sources */,
 				DFB342771E77F5F200D2FE09 /* FlappyGameEngineProtocol.swift in Sources */,
+				A222C02B1E7E9768006BEE8C /* JasmineAPI.swift in Sources */,
 				50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */,
+				A222C02C1E7E9768006BEE8C /* JSONParsingError.swift in Sources */,
 				A24028BD1E7E247C00869B7F /* Player.swift in Sources */,
-				A24028B31E7E247500869B7F /* API.swift in Sources */,
 				DFE427BF1E744D3D00A837BD /* SquareTextViewCell.swift in Sources */,
 				50989DD81E6D8B16009A86C8 /* GridGameData.swift in Sources */,
 				DFB95A061E785D2E005EE2A4 /* TetrisGameEngineProtocol.swift in Sources */,
