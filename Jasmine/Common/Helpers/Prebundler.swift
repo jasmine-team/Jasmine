@@ -98,7 +98,6 @@ struct Prebundler {
         }
         let prebundledUrl = resourceUrl.appendingPathComponent(Prebundler.prebundledFileName)
         do {
-            try FileManager.default.removeItem(at: Realm.defaultURL)
             try FileManager.default.copyItem(at: prebundledUrl, to: Realm.defaultURL)
         } catch let error {
             fatalError("Error: \(error.localizedDescription)")
