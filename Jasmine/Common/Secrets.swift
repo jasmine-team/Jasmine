@@ -3,7 +3,7 @@ enum Secrets {
 
     enum ApiKeys {
         static let chineseDict = ""
-        static let chineseIdiom = ""
+        static let chengYu = ""
     }
 
 }
