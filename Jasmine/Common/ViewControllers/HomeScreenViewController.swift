@@ -8,5 +8,4 @@ class HomeScreenViewController: UIViewController {
             gridGame.segueWith(MockGridGameEngine())
         }
     }
-
 }
