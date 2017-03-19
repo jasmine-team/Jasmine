@@ -8,12 +8,21 @@ class GridGameViewController: UIViewController {
 
     fileprivate var statisticsViewController: GameStatisticsViewController!
 
+    @IBOutlet private weak var navigationBar: UINavigationBar!
+
+    @IBOutlet private weak var statusBarBackgroundView: UIView!
+
     fileprivate var draggingTile: (view: UIView, originalCoord: Coordinate)?
 
     // MARK: Game Properties
     fileprivate var gameEngine: GridGameEngineProtocol!
 
     // MARK: View Controller Lifecycles
+    /// Set its theme after the view controller `viewDidLoad` is called.
+    override func viewDidLoad() {
+        setTheme()
+    }
+
     /// Specifies that the supported orientation for this view is portrait only.
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
@@ -44,7 +53,7 @@ class GridGameViewController: UIViewController {
         self.gameEngine.delegate = self
     }
 
-    // MARK: Gesture Recognisers
+    // MARK: - Gesture Recognisers and Listeners
     /// Listens to a drag gesture and handles the operation of dragging a tile, and dropping it
     /// to another location.
     ///
@@ -67,6 +76,21 @@ class GridGameViewController: UIViewController {
         default:
             break
         }
+    }
+
+    /// Quit this screen when the back button is pressed.
+    @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    // MARK: Theming
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    private func setTheme() {
+        statusBarBackgroundView.backgroundColor = Constants.Theme.mainColorDark
+        navigationBar.backgroundColor = Constants.Theme.mainColorDark
     }
 }
 
