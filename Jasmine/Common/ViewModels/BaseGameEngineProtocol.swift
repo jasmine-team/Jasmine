@@ -9,12 +9,6 @@ protocol BaseGameEngineProtocol {
     /// displayed score.
     var currentScore: Int { get }
 
-    /// Specifies the total time allowed in the game.
-    var totalTimeAllowed: TimeInterval { get }
-
-    /// Specifies the time remaining in the game.
-    var timeRemaining: TimeInterval { get }
-
     /// Tells the view model that the game has started.
     func startGame()
 }
