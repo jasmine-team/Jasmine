@@ -285,12 +285,12 @@
 		50989DC41E6D8B16009A86C8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A2187E6B1E7510B60033FC5B /* Random.swift */,
-				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
 				A24028AE1E7E247500869B7F /* API.swift */,
 				A24028AF1E7E247500869B7F /* APIProtocol.swift */,
+				DFCA8C191E753E0100A9C9B5 /* GeometryUtils.swift */,
 				A24028B01E7E247500869B7F /* Prebundler.swift */,
 				A24028B11E7E247500869B7F /* Realm+defaultURL.swift */,
+				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
 				A24028B21E7E247500869B7F /* UIApplication+isFirstLaunch.swift */,
 			);
 			path = Helpers;
@@ -299,14 +299,14 @@
 		50989DC81E6D8B16009A86C8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A24028BA1E7E247C00869B7F /* Player.swift */,
 				DFB342701E77EB6700D2FE09 /* Coordinate.swift */,
+				A24028B81E7E247C00869B7F /* EnglishApiResponse.swift */,
 				50989DC51E6D8B16009A86C8 /* GameData.swift */,
 				A24028B91E7E247C00869B7F /* GameDataManager.swift */,
 				DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */,
 				509894A21E6E6CAE00FC9CF3 /* GameType.swift */,
 				50989DC71E6D8B16009A86C8 /* Phrase.swift */,
-				A24028B81E7E247C00869B7F /* EnglishApiResponse.swift */,
+				A24028BA1E7E247C00869B7F /* Player.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -343,12 +343,12 @@
 				50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */,
 				A260C6271E6AB30400782103 /* Assets.xcassets */,
 				50989DC21E6D8B16009A86C8 /* Constants.swift */,
-				A24028C41E7E269400869B7F /* Secrets.swift */,
 				50989DE61E6D8BBD009A86C8 /* Info.plist */,
-				A24028C51E7E269400869B7F /* prebundled.realm */,
-				A24028C61E7E269400869B7F /* phrases.txt */,
 				A260C6291E6AB30400782103 /* LaunchScreen.storyboard */,
 				A260C6241E6AB30400782103 /* Main.storyboard */,
+				A24028C41E7E269400869B7F /* Secrets.swift */,
+				A24028C61E7E269400869B7F /* phrases.txt */,
+				A24028C51E7E269400869B7F /* prebundled.realm */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -416,8 +416,8 @@
 		50F191A71E7ADC4500EE9A75 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A24028BE1E7E267200869B7F /* RealmTestCase.swift */,
 				507A215C1E7C046200C815B9 /* GeometryUtilsTest.swift */,
+				A24028BE1E7E267200869B7F /* RealmTestCase.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -425,10 +425,10 @@
 		50F191A81E7ADC4800EE9A75 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A24028C11E7E267C00869B7F /* PlayerTests.swift */,
-				A24028C01E7E267C00869B7F /* GameDataTests.swift */,
 				50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */,
 				A2341A7D1E7E3C3C001BAAD4 /* GameDataManagerTests.swift */,
+				A24028C01E7E267C00869B7F /* GameDataTests.swift */,
+				A24028C11E7E267C00869B7F /* PlayerTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
