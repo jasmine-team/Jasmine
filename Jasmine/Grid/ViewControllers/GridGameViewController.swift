@@ -193,7 +193,7 @@ extension GridGameViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let length = gridCollectionView.bounds.width / CGFloat(Constants.BoardGamePlay.columns)
+        let length = gridCollectionView.bounds.width / CGFloat(Constants.Grid.columns)
                 * GridGameViewController.cellSizeFactor
 
         return CGSize(width: length, height: length)
