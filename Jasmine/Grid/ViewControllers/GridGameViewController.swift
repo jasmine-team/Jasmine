@@ -6,6 +6,8 @@ class GridGameViewController: UIViewController {
     // MARK: Layouts
     fileprivate var squareGridViewController: SquareGridViewController!
 
+    fileprivate var statisticsViewController: GameStatisticsViewController!
+
     fileprivate var draggingTile: (view: UIView, originalCoord: Coordinate)?
 
     // MARK: Game Properties
@@ -25,6 +27,12 @@ class GridGameViewController: UIViewController {
                                      numRows: Constants.BoardGamePlay.rows,
                                      numCols: Constants.BoardGamePlay.columns)
             self.squareGridViewController = squareGridView
+
+        } else if let statisticsView = segue.destination as? GameStatisticsViewController {
+            statisticsView.timeLeft = gameEngine.totalTimeAllowed
+            statisticsView.currentScore = gameEngine.currentScore
+
+            self.statisticsViewController = statisticsView
         }
     }
 
@@ -39,7 +47,11 @@ class GridGameViewController: UIViewController {
     // MARK: Gesture Recognisers
     /// Listens to a drag gesture and handles the operation of dragging a tile, and dropping it
     /// to another location.
+    ///
+    /// This also starts the game if have not done so.
     @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
+        gameEngine.startGame()
+
         let position = sender.location(in: squareGridViewController.view)
 
         switch sender.state {
@@ -168,13 +180,13 @@ extension GridGameViewController: BaseGameViewControllerDelegate {
     // MARK: Score Update
     /// Redisplay the score displayed on the view controller screen with a new score.
     func redisplay(newScore: Int) {
-
+        statisticsViewController.currentScore = newScore
     }
 
     // MARK: Time Update
     /// Redisplay the time remaining on the view controller against a total time.
     func redisplay(remainingTime: TimeInterval, outOf totalTime: TimeInterval) {
-
+        statisticsViewController.timeLeft = remainingTime
     }
 
     // MARK: Game Status

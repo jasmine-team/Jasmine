@@ -17,7 +17,15 @@
                 <viewControllerPlaceholder storyboardName="GameElements" referencedIdentifier="Square Grid View Controller" id="iGk-7X-0JV" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPz-1S-6Tl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="482" y="45"/>
+            <point key="canvasLocation" x="488" y="17"/>
+        </scene>
+        <!--Game Statistics View Controller-->
+        <scene sceneID="sEg-jQ-Apo">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Game Statistics View Controller" storyboardName="GameElements" referencedIdentifier="Game Statistics View Controller" id="Ana-Ub-Zvc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q45-E1-9cH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="507" y="73"/>
         </scene>
         <!--Grid Game View Controller-->
         <scene sceneID="yeQ-RR-Dye">
@@ -48,11 +56,23 @@
                                     <segue destination="iGk-7X-0JV" kind="embed" id="aaE-vY-JZg"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDe-Ia-KAl">
+                                <rect key="frame" x="0.0" y="595" width="375" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="Skc-Mj-kYB"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Ana-Ub-Zvc" kind="embed" id="dha-SW-4fc"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="z1B-88-3dA" firstAttribute="top" secondItem="aDe-Ia-KAl" secondAttribute="bottom" id="8Ff-66-SXU"/>
+                            <constraint firstAttribute="trailing" secondItem="aDe-Ia-KAl" secondAttribute="trailing" id="L0v-Gh-AsI"/>
                             <constraint firstItem="1hV-fi-ivC" firstAttribute="centerY" secondItem="Eab-wS-66c" secondAttribute="centerY" id="LtI-fb-nee"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1hV-fi-ivC" secondAttribute="trailing" id="aK3-bZ-z8D"/>
+                            <constraint firstItem="aDe-Ia-KAl" firstAttribute="leading" secondItem="Eab-wS-66c" secondAttribute="leading" id="gTP-lj-DhX"/>
                             <constraint firstItem="1hV-fi-ivC" firstAttribute="leading" secondItem="Eab-wS-66c" secondAttribute="leadingMargin" id="kIA-6n-LSo"/>
                         </constraints>
                     </view>
