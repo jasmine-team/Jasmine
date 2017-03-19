@@ -20,10 +20,10 @@ protocol APIProtocol {
     /// - Returns: Promise of Chinese definition in JSON
     static func getDefinition(of phrase: String) -> Promise<[String: Any]>
 
-    /// Gets the english definition from JSON api end point
+    /// Gets the chinese definition from JSON api end point
     ///
-    /// - Parameter phrase: Chinese idiom
+    /// - Parameter phrase: Chinese idiom (Cheng Yu)
     /// - Returns: Promise of Chinese definition in JSON
-    static func getChineseIdiomDefinition(fromIdiom phrase: String) -> Promise<[String: Any]>
+    static func getChengYuDefinition(of phrase: String) -> Promise<[String: Any]>
 
 }
