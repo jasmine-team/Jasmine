@@ -51,6 +51,7 @@
 		DFE427BF1E744D3D00A837BD /* SquareTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE427BE1E744D3D00A837BD /* SquareTextViewCell.swift */; };
 		DFE427C11E74F78600A837BD /* SquareTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE427C01E74F78600A837BD /* SquareTextView.swift */; };
 		DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */; };
+		DFF0A08D1E7E67B80091CD83 /* GameStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF0A08C1E7E67B80091CD83 /* GameStatisticsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		DFE427BE1E744D3D00A837BD /* SquareTextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SquareTextViewCell.swift; path = ../Common/Views/SquareTextViewCell.swift; sourceTree = "<group>"; };
 		DFE427C01E74F78600A837BD /* SquareTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SquareTextView.swift; path = ../Common/Views/SquareTextView.swift; sourceTree = "<group>"; };
 		DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
+		DFF0A08C1E7E67B80091CD83 /* GameStatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameStatisticsViewController.swift; path = GameElements/GameStatisticsViewController.swift; sourceTree = "<group>"; };
 		FC0AD02B711C61B2492AE255 /* Pods-Jasmine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.release.xcconfig"; sourceTree = "<group>"; };
 		FF297B9535BBD99F827421B6 /* Pods-JasmineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -549,6 +551,7 @@
 				DF8564501E7D575D00A42128 /* BaseGameViewControllerDelegate.swift */,
 				DF8564511E7D575D00A42128 /* GameElements.storyboard */,
 				DF8564571E7D583B00A42128 /* SquareGridViewController.swift */,
+				DFF0A08C1E7E67B80091CD83 /* GameStatisticsViewController.swift */,
 			);
 			name = GameElements;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 				50989DE01E6D8B16009A86C8 /* HomeScreenViewController.swift in Sources */,
 				50989DD51E6D8B16009A86C8 /* TetrisGameData.swift in Sources */,
 				DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */,
+				DFF0A08D1E7E67B80091CD83 /* GameStatisticsViewController.swift in Sources */,
 				50989DDA1E6D8B16009A86C8 /* GridViewModel.swift in Sources */,
 				DFE427C11E74F78600A837BD /* SquareTextView.swift in Sources */,
 				DFB95A0C1E786044005EE2A4 /* TetrisGameViewControllerDelegate.swift in Sources */,
