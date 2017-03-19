@@ -71,7 +71,7 @@
         <!--Game Statistics View Controller-->
         <scene sceneID="Yk7-9i-JNA">
             <objects>
-                <viewController id="wmI-Up-KyC" customClass="GameStatisticsViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Game Statistics View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wmI-Up-KyC" customClass="GameStatisticsViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O9C-hO-BXk"/>
                         <viewControllerLayoutGuide type="bottom" id="9cP-5m-B4c"/>

@@ -1,35 +1,33 @@
-//
-//  GameStatisticsViewController.swift
-//  Jasmine
-//
-//  Created by Xien Dong on 19/3/17.
-//  Copyright © 2017 nus.cs3217. All rights reserved.
-//
-
 import UIKit
 
+/// Displays the statistics, such as time remaining and current score in this game.
 class GameStatisticsViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: Layout
+    @IBOutlet private weak var scoreLabel: UILabel!
+    @IBOutlet private weak var timeLeftLabel: UILabel!
 
-        // Do any additional setup after loading the view.
+    // MARK: Properties
+    /// Sets the current score in this VC, which also updates the view elements automatically.
+    var currentScore: Int? {
+        didSet {
+            guard let currentScore = currentScore else {
+                scoreLabel.text = ""
+                return
+            }
+            scoreLabel.text = "\(currentScore)"
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    /// Sets the time remaining in this VC, which also updates the view elements automatically,
+    /// rounded to integers.
+    var timeLeft: TimeInterval? {
+        didSet {
+            guard let timeLeft = timeLeft else {
+                timeLeftLabel.text = ""
+                return
+            }
+            timeLeftLabel.text = "\(round(timeLeft))"
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
