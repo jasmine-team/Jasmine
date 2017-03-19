@@ -48,8 +48,8 @@ struct Prebundler {
     static func fetch(phrase: String, rank: Int) -> Promise<Phrase?> {
         print(phrase, rank)
         let definitions = [
-            API.getDefinition(of: phrase, from: .chinese, to: .english),
-            // Api.getDefinition(of: phrase),
+            JasmineAPI.getDefinition(of: phrase, from: .chinese, to: .english),
+            // JasmineAPI.getDefinition(of: phrase),
         ]
         return when(fulfilled: definitions).then { results -> Phrase? in
             let englishDefinitionJSON = results[0]
