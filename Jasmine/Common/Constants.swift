@@ -11,5 +11,7 @@ enum Constants {
         static let mainColor = FlatMint()
         static let mainWhiteColor = FlatWhite()
         static let mainFontColor = FlatBlack()
+
+        static let tilesFont = UIFont(name: "HelveticaNeue-Light", size: 30.0)
     }
 }
