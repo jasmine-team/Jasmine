@@ -20,8 +20,6 @@ struct API: APIProtocol {
             "format": "json",
             "phrase": phrase,
         ]
-        let request = Alamofire.request(translateApiUrl, parameters: parameters)
-        print(phrase, request, destLang)
         // All three of these calls are equivalent
         return getJSON(fromUrl: translateApiUrl, parameters: parameters)
     }
@@ -31,8 +29,6 @@ struct API: APIProtocol {
             "appkey": Secrets.ApiKeys.chineseDict,
             "word": phrase,
         ]
-        let request = Alamofire.request(chineseDictApiUrl, parameters: parameters)
-        print(phrase, request, "chinese")
         return getJSON(fromUrl: chineseDictApiUrl, parameters: parameters)
     }
 
