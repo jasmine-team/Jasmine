@@ -35,6 +35,12 @@
 		A24028BB1E7E247C00869B7F /* EnglishApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24028B81E7E247C00869B7F /* EnglishApiResponse.swift */; };
 		A24028BC1E7E247C00869B7F /* GameDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24028B91E7E247C00869B7F /* GameDataManager.swift */; };
 		A24028BD1E7E247C00869B7F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24028BA1E7E247C00869B7F /* Player.swift */; };
+		A24028BF1E7E267200869B7F /* RealmTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24028BE1E7E267200869B7F /* RealmTestCase.swift */; };
+		A24028C21E7E267C00869B7F /* GameDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24028C01E7E267C00869B7F /* GameDataTests.swift */; };
+		A24028C31E7E267C00869B7F /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24028C11E7E267C00869B7F /* PlayerTests.swift */; };
+		A24028C71E7E269400869B7F /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24028C41E7E269400869B7F /* Secrets.swift */; };
+		A24028C81E7E269400869B7F /* prebundled.realm in Resources */ = {isa = PBXBuildFile; fileRef = A24028C51E7E269400869B7F /* prebundled.realm */; };
+		A24028C91E7E269400869B7F /* phrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = A24028C61E7E269400869B7F /* phrases.txt */; };
 		A260C6261E6AB30400782103 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6241E6AB30400782103 /* Main.storyboard */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
 		A260C62B1E6AB30400782103 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A260C6291E6AB30400782103 /* LaunchScreen.storyboard */; };
@@ -104,6 +110,12 @@
 		A24028B81E7E247C00869B7F /* EnglishApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnglishApiResponse.swift; sourceTree = "<group>"; };
 		A24028B91E7E247C00869B7F /* GameDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataManager.swift; sourceTree = "<group>"; };
 		A24028BA1E7E247C00869B7F /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		A24028BE1E7E267200869B7F /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
+		A24028C01E7E267C00869B7F /* GameDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataTests.swift; sourceTree = "<group>"; };
+		A24028C11E7E267C00869B7F /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
+		A24028C41E7E269400869B7F /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		A24028C51E7E269400869B7F /* prebundled.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = prebundled.realm; sourceTree = "<group>"; };
+		A24028C61E7E269400869B7F /* phrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phrases.txt; sourceTree = "<group>"; };
 		A260C61D1E6AB30400782103 /* Jasmine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jasmine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6251E6AB30400782103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A260C6271E6AB30400782103 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -301,7 +313,10 @@
 				50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */,
 				A260C6271E6AB30400782103 /* Assets.xcassets */,
 				50989DC21E6D8B16009A86C8 /* Constants.swift */,
+				A24028C41E7E269400869B7F /* Secrets.swift */,
 				50989DE61E6D8BBD009A86C8 /* Info.plist */,
+				A24028C51E7E269400869B7F /* prebundled.realm */,
+				A24028C61E7E269400869B7F /* phrases.txt */,
 				A260C6291E6AB30400782103 /* LaunchScreen.storyboard */,
 				A260C6241E6AB30400782103 /* Main.storyboard */,
 			);
@@ -370,6 +385,7 @@
 		50F191A71E7ADC4500EE9A75 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A24028BE1E7E267200869B7F /* RealmTestCase.swift */,
 				507A215C1E7C046200C815B9 /* GeometryUtilsTest.swift */,
 			);
 			path = Helpers;
@@ -378,6 +394,8 @@
 		50F191A81E7ADC4800EE9A75 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A24028C01E7E267C00869B7F /* GameDataTests.swift */,
+				A24028C11E7E267C00869B7F /* PlayerTests.swift */,
 				50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */,
 			);
 			path = Models;
@@ -674,9 +692,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A260C62B1E6AB30400782103 /* LaunchScreen.storyboard in Resources */,
+				A24028C91E7E269400869B7F /* phrases.txt in Resources */,
 				DF2D21EA1E743BC500094381 /* GridStoryboard.storyboard in Resources */,
 				A260C6281E6AB30400782103 /* Assets.xcassets in Resources */,
 				DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */,
+				A24028C81E7E269400869B7F /* prebundled.realm in Resources */,
 				A260C6261E6AB30400782103 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -869,6 +889,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50989DDD1E6D8B16009A86C8 /* GameData.swift in Sources */,
+				A24028C71E7E269400869B7F /* Secrets.swift in Sources */,
 				50989DE01E6D8B16009A86C8 /* HomeScreenViewController.swift in Sources */,
 				50989DD51E6D8B16009A86C8 /* TetrisGameData.swift in Sources */,
 				DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */,
@@ -910,8 +931,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A24028C31E7E267C00869B7F /* PlayerTests.swift in Sources */,
 				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
+				A24028C21E7E267C00869B7F /* GameDataTests.swift in Sources */,
 				507A215D1E7C046200C815B9 /* GeometryUtilsTest.swift in Sources */,
+				A24028BF1E7E267200869B7F /* RealmTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
