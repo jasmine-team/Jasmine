@@ -39,6 +39,7 @@
 		DF8564531E7D575D00A42128 /* GameElements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF8564511E7D575D00A42128 /* GameElements.storyboard */; };
 		DF8564581E7D583B00A42128 /* SquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8564571E7D583B00A42128 /* SquareGridViewController.swift */; };
 		DF894ADA1E7D7318009AFD91 /* MockGridGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF894AD91E7D7318009AFD91 /* MockGridGameEngine.swift */; };
+		DF894ADC1E7D9101009AFD91 /* CGRect+Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF894ADB1E7D9101009AFD91 /* CGRect+Arithmetic.swift */; };
 		DFB3426D1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */; };
 		DFB3426F1E77E77900D2FE09 /* BaseGameEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426E1E77E77900D2FE09 /* BaseGameEngineProtocol.swift */; };
 		DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342701E77EB6700D2FE09 /* Coordinate.swift */; };
@@ -47,7 +48,6 @@
 		DFB95A081E785ED9005EE2A4 /* GridGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB95A071E785ED9005EE2A4 /* GridGameViewControllerDelegate.swift */; };
 		DFB95A0A1E785FA4005EE2A4 /* FlappyGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB95A091E785FA4005EE2A4 /* FlappyGameViewControllerDelegate.swift */; };
 		DFB95A0C1E786044005EE2A4 /* TetrisGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB95A0B1E786044005EE2A4 /* TetrisGameViewControllerDelegate.swift */; };
-		DFCA8C1A1E753E0100A9C9B5 /* GeometryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCA8C191E753E0100A9C9B5 /* GeometryUtils.swift */; };
 		DFE427BF1E744D3D00A837BD /* SquareTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE427BE1E744D3D00A837BD /* SquareTextViewCell.swift */; };
 		DFE427C11E74F78600A837BD /* SquareTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE427C01E74F78600A837BD /* SquareTextView.swift */; };
 		DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */; };
@@ -113,6 +113,7 @@
 		DF8564511E7D575D00A42128 /* GameElements.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = GameElements.storyboard; path = GameElements/GameElements.storyboard; sourceTree = "<group>"; };
 		DF8564571E7D583B00A42128 /* SquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SquareGridViewController.swift; path = GameElements/SquareGridViewController.swift; sourceTree = "<group>"; };
 		DF894AD91E7D7318009AFD91 /* MockGridGameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockGridGameEngine.swift; sourceTree = "<group>"; };
+		DF894ADB1E7D9101009AFD91 /* CGRect+Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGRect+Arithmetic.swift"; path = "Extensions/CGRect+Arithmetic.swift"; sourceTree = "<group>"; };
 		DFB3426C1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameEngineProtocol.swift; sourceTree = "<group>"; };
 		DFB3426E1E77E77900D2FE09 /* BaseGameEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGameEngineProtocol.swift; sourceTree = "<group>"; };
 		DFB342701E77EB6700D2FE09 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
@@ -121,7 +122,6 @@
 		DFB95A071E785ED9005EE2A4 /* GridGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridGameViewControllerDelegate.swift; path = Jasmine/Grid/ViewModels/GridGameViewControllerDelegate.swift; sourceTree = SOURCE_ROOT; };
 		DFB95A091E785FA4005EE2A4 /* FlappyGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlappyGameViewControllerDelegate.swift; path = Jasmine/Tetris/ViewModels/FlappyGameViewControllerDelegate.swift; sourceTree = SOURCE_ROOT; };
 		DFB95A0B1E786044005EE2A4 /* TetrisGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TetrisGameViewControllerDelegate.swift; path = Jasmine/Tetris/ViewModels/TetrisGameViewControllerDelegate.swift; sourceTree = SOURCE_ROOT; };
-		DFCA8C191E753E0100A9C9B5 /* GeometryUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryUtils.swift; sourceTree = "<group>"; };
 		DFE427BE1E744D3D00A837BD /* SquareTextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SquareTextViewCell.swift; path = ../Common/Views/SquareTextViewCell.swift; sourceTree = "<group>"; };
 		DFE427C01E74F78600A837BD /* SquareTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SquareTextView.swift; path = ../Common/Views/SquareTextView.swift; sourceTree = "<group>"; };
 		DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
@@ -245,7 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
-				DFCA8C191E753E0100A9C9B5 /* GeometryUtils.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -558,6 +557,7 @@
 			isa = PBXGroup;
 			children = (
 				DF8564431E7D356100A42128 /* IndexPath+Coordinate.swift */,
+				DF894ADB1E7D9101009AFD91 /* CGRect+Arithmetic.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -896,13 +896,13 @@
 				50989DD71E6D8B16009A86C8 /* TetrisViewModel.swift in Sources */,
 				50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */,
 				50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */,
-				DFCA8C1A1E753E0100A9C9B5 /* GeometryUtils.swift in Sources */,
 				50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */,
 				50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */,
 				DF894ADA1E7D7318009AFD91 /* MockGridGameEngine.swift in Sources */,
 				DF8564581E7D583B00A42128 /* SquareGridViewController.swift in Sources */,
 				DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */,
 				DFB3426D1E77E6AA00D2FE09 /* GridGameEngineProtocol.swift in Sources */,
+				DF894ADC1E7D9101009AFD91 /* CGRect+Arithmetic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
