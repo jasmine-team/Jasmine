@@ -7,7 +7,7 @@ enum FileError: Error {
     case fileNotFound
 }
 
-/// Prebundler that collects data from multiple api locations
+/// Prebundler that collects data from multiple API locations
 struct Prebundler {
 
     /// Limit of phrases to fetch at once
@@ -19,7 +19,7 @@ struct Prebundler {
     /// Prebundled realm file name, must end in .realm extension
     fileprivate static let prebundledFileName = "prebundled.realm"
 
-    /// Parses a text file with each item seperated by a seoerator
+    /// Parses a text file with each item seperated by a separator
     ///
     /// - Parameters:
     ///   - fileName: file name as defined in the repository
