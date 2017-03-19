@@ -1,7 +1,6 @@
 import UIKit
 
 /// View Controller implementation for Grid Game.
-/// - Author: Wang Xien Dong
 class GridGameViewController: UIViewController {
 
     // MARK: Layouts
@@ -137,7 +136,6 @@ fileprivate extension GridGameViewController {
         }
         self.squareGridViewController.snapDetachedTile(endingView, toCoordinate: startingCoord) {
             self.squareGridViewController.reload(cellsAt: [startingCoord], withAnimation: false)
-
         }
     }
 }
