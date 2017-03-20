@@ -1,4 +1,4 @@
-struct EnglishApiResponse {
+struct EnglishAPIResponse {
 
     let english: String
     let englishMeaning: String

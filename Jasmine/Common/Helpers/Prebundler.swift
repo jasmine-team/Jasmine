@@ -56,7 +56,7 @@ struct Prebundler {
             // let chineseDefinitionJSON = results[1]
             // print("chinese def", chineseDefinitionJSON)
 
-            guard let englishResponse = try? EnglishApiResponse(json: englishDefinitionJSON) else {
+            guard let englishResponse = try? EnglishAPIResponse(json: englishDefinitionJSON) else {
                 return nil
             }
 
