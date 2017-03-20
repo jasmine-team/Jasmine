@@ -15,7 +15,7 @@ class GridGameViewController: UIViewController {
     fileprivate var draggingTile: (view: UIView, originalCoord: Coordinate)?
 
     // MARK: Game Properties
-    fileprivate var gameEngine: GridGameEngineProtocol!
+    fileprivate var viewModel: GridViewModelProtocol!
 
     // MARK: View Controller Lifecycles
     /// Set its theme after the view controller `viewDidLoad` is called.
@@ -32,14 +32,14 @@ class GridGameViewController: UIViewController {
     /// Method that manages the seguing to other view controllers from this view controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let squareGridView = segue.destination as? SquareGridViewController {
-            squareGridView.segueWith(gameEngine.gridData,
+            squareGridView.segueWith(viewModel.gridData,
                                      numRows: Constants.Grid.rows,
                                      numCols: Constants.Grid.columns)
             self.squareGridViewController = squareGridView
 
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
-// TODO:            statisticsView.timeLeft = gameEngine.totalTimeAllowed
-            statisticsView.currentScore = gameEngine.currentScore
+// TODO:            statisticsView.timeLeft = viewModel.totalTimeAllowed
+            statisticsView.currentScore = viewModel.currentScore
 
             self.statisticsViewController = statisticsView
         }
@@ -47,10 +47,10 @@ class GridGameViewController: UIViewController {
 
     /// Feeds in the appropriate data for the use of seguing into this view.
     ///
-    /// - Parameter gameEngine: the game engine required to play this game.
-    func segueWith(_ gameEngine: GridGameEngineProtocol) {
-        self.gameEngine = gameEngine
-        self.gameEngine.delegate = self
+    /// - Parameter viewModel: the game engine required to play this game.
+    func segueWith(_ viewModel: GridViewModelProtocol) {
+        self.viewModel = viewModel
+        self.viewModel.delegate = self
     }
 
     // MARK: - Gesture Recognisers and Listeners
@@ -59,7 +59,7 @@ class GridGameViewController: UIViewController {
     ///
     /// This also starts the game if have not done so.
     @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
-        gameEngine.startGame()
+        viewModel.startGame()
 
         let position = sender.location(in: squareGridViewController.view)
 
@@ -128,7 +128,7 @@ fileprivate extension GridGameViewController {
             return
         }
         guard let landedCoord = squareGridViewController.getCoordinate(at: position),
-            gameEngine.swapTiles(draggingTile.originalCoord, and: landedCoord) else {
+            viewModel.swapTiles(draggingTile.originalCoord, and: landedCoord) else {
                 handleTileFailedLanding()
                 return
         }

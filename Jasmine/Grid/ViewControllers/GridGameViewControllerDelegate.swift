@@ -1,6 +1,6 @@
 import Foundation
 
-/// Implement this delegate for `GridGameEngineProtocol` to call for updating and commanding the
+/// Implement this delegate for `GridViewModelProtocol` to call for updating and commanding the
 /// implementing game view controller.
 protocol GridGameViewControllerDelegate: BaseGameViewControllerDelegate {
 

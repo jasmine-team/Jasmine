@@ -1,7 +1,7 @@
 import Foundation
 
 /// Implement this class to describe how a game can be played with a Grid Game board.
-protocol GridGameEngineProtocol: BaseGameEngineProtocol {
+protocol GridViewModelProtocol: BaseViewModelProtocol {
 
     // MARK: Properties
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine

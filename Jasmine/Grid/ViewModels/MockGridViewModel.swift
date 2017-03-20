@@ -1,6 +1,6 @@
 import Foundation
 
-class MockGridGameEngine: GridGameEngineProtocol {
+class MockGridViewModel: GridViewModelProtocol {
 
     // MARK: Properties
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
@@ -47,7 +47,7 @@ class MockGridGameEngine: GridGameEngineProtocol {
     }
 }
 
-extension MockGridGameEngine: BaseGameEngineProtocol {
+extension MockGridViewModel: BaseViewModelProtocol {
     // MARK: Properties
     /// Specifies the current score of the game. If the game has not started, it will be the initial
     /// displayed score.
