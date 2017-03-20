@@ -13,10 +13,7 @@ struct Coordinate {
     /// Default constructor for Coordinate.
     init(row: Int, col: Int) {
         guard row >= 0, col >= 0 else {
-            assertionFailure("Row and column coordinates should be >= 0")
-            self.row = 0
-            self.col = 0
-            return
+            fatalError("Row and column coordinates should be >= 0")
         }
         self.row = row
         self.col = col
@@ -26,7 +23,7 @@ struct Coordinate {
 extension Coordinate: Hashable {
     /// Returns the hash value of this coordinate data structure.
     var hashValue: Int {
-        return "\(row) \(col)".hashValue
+        return row ^ col
     }
 }
 
