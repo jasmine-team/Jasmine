@@ -17,7 +17,7 @@ class RealmTestCase: XCTestCase {
 
 }
 
-extension GameDataTests {
+extension RealmTestCase {
 
     func save(_ object: Object) {
         do {

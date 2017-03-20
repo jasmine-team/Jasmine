@@ -15,9 +15,11 @@ class GameDataManagerTests: RealmTestCase {
     }
 
     func testGameDataManager_createGame() {
+        save(Phrase())
         let difficulty = 1
         let gameData = gameDataManager.createGame(difficulty: difficulty)
         XCTAssertEqual(gameData.difficulty, difficulty, "game difficulty is incorrect")
+        XCTAssertEqual(gameData.phrases.count, 1, "game difficulty is incorrect")
     }
 
 }
