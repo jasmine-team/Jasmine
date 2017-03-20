@@ -1,6 +1,6 @@
 import Foundation
 
-/// Implement this delegate for `TetriwGameEngineProtocol` to call for updating and commanding the
+/// Implement this delegate for `TetrisViewModelProtocol` to call for updating and commanding the
 /// implementing game view controller.
 protocol TetrisGameViewControllerDelegate: BaseGameViewControllerDelegate {
 
