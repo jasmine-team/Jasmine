@@ -8,7 +8,7 @@ protocol TetrisGameViewControllerDelegate: BaseGameViewControllerDelegate {
     /// Shifts the content of the tiles from Coordinate `from` to Coordinate `to`
     ///
     /// - Parameter coordinatesShifted: array of coordinates to shift
-    func shiftTiles(_ coordinatesToShift: [(from: Coordinate, to: Coordinate)])
+    func animate(shiftTiles coordinatesToShift: [(from: Coordinate, to: Coordinate)])
 
     // MARK: Animation
     /// Ask the view controller to animate the destruction of tiles at the specified coordinates.
