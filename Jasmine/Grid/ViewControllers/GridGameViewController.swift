@@ -38,7 +38,7 @@ class GridGameViewController: UIViewController {
             self.squareGridViewController = squareGridView
 
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
-            statisticsView.timeLeft = gameEngine.totalTimeAllowed
+// TODO:            statisticsView.timeLeft = gameEngine.totalTimeAllowed
             statisticsView.currentScore = gameEngine.currentScore
 
             self.statisticsViewController = statisticsView
@@ -209,7 +209,7 @@ extension GridGameViewController: BaseGameViewControllerDelegate {
 
     // MARK: Time Update
     /// Redisplay the time remaining on the view controller against a total time.
-    func redisplay(remainingTime: TimeInterval, outOf totalTime: TimeInterval) {
+    func redisplay(timeRemaining remainingTime: TimeInterval, outOf totalTime: TimeInterval) {
         statisticsViewController.timeLeft = remainingTime
     }
 
