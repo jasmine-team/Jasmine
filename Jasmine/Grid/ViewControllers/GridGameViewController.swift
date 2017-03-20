@@ -66,13 +66,10 @@ class GridGameViewController: UIViewController {
         switch sender.state {
         case .began:
             handleTileSelected(at: position)
-
         case .changed:
             handleTileDragged(at: position)
-
         case .ended:
             handleTileLanding(at: position)
-
         default:
             break
         }
@@ -103,8 +100,7 @@ fileprivate extension GridGameViewController {
     ///
     /// - Parameter position: location where the tile is selected.
     fileprivate func handleTileSelected(at position: CGPoint) {
-        guard
-            draggingTile == nil,
+        guard draggingTile == nil,
             let coordTouched = squareGridViewController.getCoordinate(at: position),
             let detachedCell = squareGridViewController.detachTile(fromCoord: coordTouched) else {
                 return
@@ -131,8 +127,7 @@ fileprivate extension GridGameViewController {
         guard let draggingTile = draggingTile else {
             return
         }
-        guard
-            let landedCoord = squareGridViewController.getCoordinate(at: position),
+        guard let landedCoord = squareGridViewController.getCoordinate(at: position),
             gameEngine.swapTiles(draggingTile.originalCoord, and: landedCoord) else {
                 handleTileFailedLanding()
                 return
