@@ -190,11 +190,9 @@ extension SquareGridViewController {
             guard hasEnded else {
                 return
             }
-            defer {
-                callback?()
-            }
             textViewTile.removeFromSuperview()
             destinationSquareCell.textView = textViewTile
+            callback?()
         }
 
         gridCollectionView.bringSubview(toFront: textViewTile)
