@@ -11,7 +11,9 @@ protocol TetrisViewModelProtocol: BaseViewModelProtocol {
 
     // MARK: Game Operations
     /// Tells the game engine to get the next tile for falling.
-    func dropNextTile() -> (Coordinate, String)
+    ///
+    /// - Returns: a tuple of the location where the tile drops from, and the label of that tile.
+    func dropNextTile() -> (location: Coordinate, tileText: String)
 
     /// Tells the game engine to shift the falling tile to the specified position. If this is not
     /// possible, returns false.
