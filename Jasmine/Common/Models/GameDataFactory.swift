@@ -18,7 +18,7 @@ class GameDataFactory {
     convenience init() throws {
         self.init(realm: try Realm())
     }
-    
+
     /// Creates a game with the indicated difficulty
     ///
     /// - Parameter difficulty: difficulty of the game

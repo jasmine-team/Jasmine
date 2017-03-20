@@ -1,35 +1,37 @@
-//
-//  UIApplicationTests.swift
-//  Jasmine
-//
-//  Created by likai on 20/3/17.
-//  Copyright © 2017 nus.cs3217. All rights reserved.
-//
-
 import XCTest
+import UIKit
+@testable import Jasmine
 
 class UIApplicationTests: XCTestCase {
-    
+
+    // for use in restoring the key value
+    var initialLaunchedBeforeKeyValue: Bool!
+
+    let launchedBeforeKey = Constants.UserDefaultsKeys.launchedBefore.rawValue
+
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        // capture initial value for restoring later
+        initialLaunchedBeforeKeyValue = UserDefaults.standard.bool(forKey: launchedBeforeKey)
     }
-    
+
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        // restoring initial value
+        UserDefaults.standard.set(initialLaunchedBeforeKeyValue, forKey: launchedBeforeKey)
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+    func testIsFirstLaunch_firstLaunch() {
+        UserDefaults.standard.removeObject(forKey: launchedBeforeKey)
+        // sanity check
+        XCTAssertFalse(UserDefaults.standard.bool(forKey: launchedBeforeKey), "launched before is not false")
+        XCTAssertTrue(UIApplication.isFirstLaunch, "it is launched before")
+        XCTAssertFalse(UIApplication.isFirstLaunch, "launched variable is not set to false on second call")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+
+    func testIsFirstLaunch_notFirstLaunchd() {
+        UserDefaults.standard.set(true, forKey: launchedBeforeKey)
+        XCTAssertFalse(UIApplication.isFirstLaunch, "launched variable is not launched before")
     }
-    
+
 }

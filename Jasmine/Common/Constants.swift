@@ -23,4 +23,8 @@ enum Constants {
         case chinese = "cmn"
     }
 
+    enum UserDefaultsKeys: String {
+        case launchedBefore
+    }
+
 }
