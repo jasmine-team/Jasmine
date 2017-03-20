@@ -112,7 +112,7 @@ class SquareGridViewController: UIViewController {
 // MARK: - Tile Repositioning and Interaction
 extension SquareGridViewController {
 
-    // MARK: Detech Tiles in Collection View
+    // MARK: Detach Tiles in Collection View
     /// Detach a tile contained in a view cell.
     /// Note that in this case, the tile is the underlying view stored inside the view cell.
     ///
