@@ -6,7 +6,7 @@ import UIKit
 class SquareTextView: UILabel {
 
     // MARK: Constants
-    private static let borderWidth = CGFloat(2.0)
+    private static let borderWidth: CGFloat = 2
 
     // MARK: Text Properties
     /// Sets the text to be displayed in the UILabel, which derives from the `character` property in
