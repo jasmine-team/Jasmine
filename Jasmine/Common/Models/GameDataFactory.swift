@@ -1,7 +1,7 @@
 import RealmSwift
 
 /// Responsible for creating game data objects
-class GameDataManager {
+class GameDataFactory {
 
     let realm: Realm
 
@@ -18,7 +18,11 @@ class GameDataManager {
     convenience init() throws {
         self.init(realm: try Realm())
     }
-
+    
+    /// Creates a game with the indicated difficulty
+    ///
+    /// - Parameter difficulty: difficulty of the game
+    /// - Returns: game data containing relevant phrases
     func createGame(difficulty: Int) -> GameData {
         let gameData = GameData()
         gameData.difficulty = difficulty

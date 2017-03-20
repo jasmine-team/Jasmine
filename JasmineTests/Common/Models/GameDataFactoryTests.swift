@@ -1,23 +1,23 @@
 import XCTest
 @testable import Jasmine
 
-class GameDataManagerTests: RealmTestCase {
+class GameDataFactoryTests: RealmTestCase {
 
-    var gameDataManager: GameDataManager!
+    var gameDataFactory: GameDataFactory!
 
     override func setUp() {
         super.setUp()
-        gameDataManager = GameDataManager(realm: realm)
+        gameDataFactory = GameDataFactory(realm: realm)
     }
 
     override func tearDown() {
         super.tearDown()
     }
 
-    func testGameDataManager_createGame() {
+    func testGameDataFactory_createGame() {
         save(Phrase())
         let difficulty = 1
-        let gameData = gameDataManager.createGame(difficulty: difficulty)
+        let gameData = gameDataFactory.createGame(difficulty: difficulty)
         XCTAssertEqual(gameData.difficulty, difficulty, "game difficulty is incorrect")
         XCTAssertEqual(gameData.phrases.count, 1, "game difficulty is incorrect")
     }
