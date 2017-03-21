@@ -23,18 +23,18 @@ class TetrisGameViewModel {
 
     /// Checks for and returns coordinates of matching phrase, searching by row-wise and return if found
     /// otherwise continue with searching by column-wise
-    fileprivate func getDestroyedCoordinates() -> Set<Coordinate>? {
-        if let destroyedIndexes = getDestroyedCoordinates(searchByRow: true) {
-            return destroyedIndexes
+    fileprivate func checkForMatchingPhrase() -> Set<Coordinate>? {
+        if let matchedCoordinates = checkForMatchingPhrase(searchByRow: true) {
+            return matchedCoordinates
         } else {
-            return getDestroyedCoordinates(searchByRow: false)
+            return checkForMatchingPhrase(searchByRow: false)
         }
     }
 
     /// Checks for and returns coordinates of matching phrase, search row/col-wise as specify by searchbyRow
     /// Concatenate the words row by row or col by col to check if a phrase is contained in them
-    private func getDestroyedCoordinates(searchByRow: Bool) -> Set<Coordinate>? {
-        var destroyedCoordinates: Set<Coordinate> = []
+    private func checkForMatchingPhrase(searchByRow: Bool) -> Set<Coordinate>? {
+        var matchedCoordinates: Set<Coordinate> = []
         let maxIndex = searchByRow ? Constants.Tetris.rows : Constants.Tetris.columns
         for index in 0..<maxIndex {
             var line = ""
@@ -54,10 +54,9 @@ class TetrisGameViewModel {
 
             for i in validPhraseRange {
                 let coordinate = searchByRow ? Coordinate(row: index, col: i) : Coordinate(row: i, col: index)
-                tetrisGrid.remove(at: coordinate)
-                destroyedCoordinates.insert(coordinate)
+                matchedCoordinates.insert(coordinate)
             }
-            return destroyedCoordinates
+            return matchedCoordinates
         }
         return nil
     }
@@ -68,16 +67,19 @@ class TetrisGameViewModel {
         return tetrisGrid.get(at: Coordinate(row: row, col: col)) ?? " "
     }
 
-    /// Shifts all the tiles above the indexes 1 cell down
-    fileprivate func shiftDownTiles(_ indexes: Set<Coordinate>) {
+    /// Shifts all the tiles above `coordinates` 1 row down.
+    /// Starts from the row right above the coordinates so that it can break once an empty tile is encountered
+    fileprivate func shiftDownTiles(_ coordinates: Set<Coordinate>) {
         var coordinatesToShift: [(from: Coordinate, to: Coordinate)] = []
-        for coordinate in indexes {
-            for section in (0..<coordinate.row).reversed() {
-                let coordinate = Coordinate(row: section, col: coordinate.col)
-                let text = tetrisGrid.remove(at: coordinate)
-                let newCoordinate = coordinate.getNextRow()
+        for coordinate in coordinates {
+            for row in (0..<coordinate.row).reversed() {
+                let currentCoordinate = Coordinate(row: row, col: coordinate.col)
+                guard let text = tetrisGrid.remove(at: currentCoordinate) else {
+                    break
+                }
+                let newCoordinate = currentCoordinate.getNextRow()
                 tetrisGrid.add(at: newCoordinate, tileText: text)
-                coordinatesToShift.append((from: coordinate, to: newCoordinate))
+                coordinatesToShift.append((from: currentCoordinate, to: newCoordinate))
             }
         }
         delegate?.animate(shiftTiles: coordinatesToShift)
@@ -128,12 +130,17 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
             return
         }
         tetrisGrid.add(at: coordinate, tileText: fallingTileText)
-        if let destroyedCoordinates = getDestroyedCoordinates() {
-            delegate?.animate(destroyTilesAt: destroyedCoordinates)
-            currentScore += destroyedCoordinates.count
-            delegate?.redisplay(newScore: currentScore)
-            shiftDownTiles(destroyedCoordinates)
+
+        guard let destroyedCoordinates = checkForMatchingPhrase() else {
+            return
         }
+        tetrisGrid.remove(at: destroyedCoordinates)
+        delegate?.animate(destroyTilesAt: destroyedCoordinates)
+
+        currentScore += destroyedCoordinates.count
+        delegate?.redisplay(newScore: currentScore)
+
+        shiftDownTiles(destroyedCoordinates)
     }
 
     func swapCurrentTileWithUpcomingTile(at index: Int) {

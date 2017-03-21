@@ -15,11 +15,16 @@ class TetrisGrid {
         tiles[coordinate] = tileText
     }
 
-    @discardableResult
-    func remove(at coordinate: Coordinate) -> String {
+    func remove(at coordinate: Coordinate) -> String? {
         guard let removedValue = tiles.removeValue(forKey: coordinate) else {
-            fatalError("Grid has no tile at \(coordinate)")
+            return nil
         }
         return removedValue
+    }
+
+    func remove(at coordinates: Set<Coordinate>) {
+        for coordinate in coordinates {
+            _ = remove(at: coordinate)
+        }
     }
 }
