@@ -15,15 +15,11 @@ protocol TetrisGameViewModelProtocol: BaseViewModelProtocol {
     /// - Returns: a tuple of the location where the tile drops from, and the label of that tile.
     func dropNextTile() -> (location: Coordinate, tileText: String)
 
-    /// Tells the game engine to shift the falling tile to the specified position. If this is not
-    /// possible, returns false.
+    /// Checks if it is possible to shift the falling tile to the specified coordinate.
     ///
-    /// Note that there is no need to call `update(...)` or `redisplay(...)` as this falling tile
-    /// is not expected to be stored in the tetris board data.
-    ///
-    /// - Parameter coordinate: the new position to be shifted to.
+    /// - Parameter coordinate: the coordinate to check if it can be shifted to.
     /// - Returns: true if this shifting is allowed, false otherwise.
-    func shiftFallingTile(to coordinate: Coordinate) -> Bool
+    func canShiftFallingTile(to coordinate: Coordinate) -> Bool
 
     /// Ask the game engine to land the falling tile at the specified position.
     ///

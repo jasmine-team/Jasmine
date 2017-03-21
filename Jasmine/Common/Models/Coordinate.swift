@@ -20,7 +20,7 @@ struct Coordinate {
     }
 
     /// Returns the Coordinate of the next row
-    func getNextRow() -> Coordinate {
+    var nextRow: Coordinate {
         return Coordinate(row: row + 1, col: col)
     }
 }

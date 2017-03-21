@@ -30,7 +30,7 @@ class CoordinateTests: XCTestCase {
     }
 
     func testGetNextRow() {
-        XCTAssertEqual(Coordinate(row: 3, col: 5).getNextRow(), Coordinate(row: 4, col: 5),
+        XCTAssertEqual(Coordinate(row: 3, col: 5).nextRow, Coordinate(row: 4, col: 5),
                        "getNextRow did not return the correct coordinates")
 
     }
