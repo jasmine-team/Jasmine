@@ -14,8 +14,10 @@ enum Constants {
         /// Number of cols on the grid
         static let columns = 8
 
-        /// Interval (in seconds) to update the game state
-        static let updateInterval = 0.3
+        /// Total time allowed
+        static let totalTime: TimeInterval = 120
+        /// Interval to update the time
+        static let timeInterval: TimeInterval = 1
 
         static let upcomingTilesCount = 3
 

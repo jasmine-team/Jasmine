@@ -29,4 +29,9 @@ protocol TetrisGameViewModelProtocol: BaseViewModelProtocol {
     ///
     /// - Parameter coordinate: the position to land the tile.
     func landFallingTile(at coordinate: Coordinate)
+
+    /// Swaps the current tile with the upcoming tile at `index`
+    ///
+    /// - Parameter index: the index of `upcomingTiles` to be swapped
+    func swapCurrentTileWithUpcomingTile(at index: Int)
 }

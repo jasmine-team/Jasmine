@@ -1,45 +1,50 @@
 import Foundation
 
-/// The main view model for Tetris
+/// The main view model for Tetris game
 class TetrisGameViewModel {
 
     weak var delegate: TetrisGameViewControllerDelegate?
+
     fileprivate var tetrisGrid = TetrisGrid()
+
     var upcomingTiles: [String] = []
     fileprivate var fallingTileText: String?
 
-    private static let rowIncrement = 1
-
     var currentScore: Int = 0
 
+    let countDownTimer = CountDownTimer(totalTimeAllowed: Constants.Tetris.totalTime)
+
+    /// Populate upcomingTiles
     init() {
         for _ in 0..<Constants.Tetris.upcomingTilesCount {
             upcomingTiles.append(getRandomWord())
         }
     }
 
-    fileprivate func getDestroyedIndexes() -> Set<Coordinate>? {
-        if let destroyedIndexes = getDestroyedIndexes(searchByRow: true) {
+    /// Checks for and returns coordinates of matching phrase, searching by row-wise and return if found
+    /// otherwise continue with searching by column-wise
+    fileprivate func getDestroyedCoordinates() -> Set<Coordinate>? {
+        if let destroyedIndexes = getDestroyedCoordinates(searchByRow: true) {
             return destroyedIndexes
         } else {
-            return getDestroyedIndexes(searchByRow: false)
+            return getDestroyedCoordinates(searchByRow: false)
         }
     }
 
-    /// Checkes for and returns indexes of matching phrase, row/col-wise as specify by byRow
+    /// Checks for and returns coordinates of matching phrase, search row/col-wise as specify by searchbyRow
     /// Concatenate the words row by row or col by col to check if a phrase is contained in them
-    private func getDestroyedIndexes(searchByRow: Bool) -> Set<Coordinate>? {
+    private func getDestroyedCoordinates(searchByRow: Bool) -> Set<Coordinate>? {
         var destroyedCoordinates: Set<Coordinate> = []
         let maxIndex = searchByRow ? Constants.Tetris.rows : Constants.Tetris.columns
         for index in 0..<maxIndex {
             var line = ""
             if searchByRow {
                 for col in 0..<Constants.Tetris.columns {
-                    line += getWord(row: index, col: col)
+                    line += getTileText(row: index, col: col)
                 }
             } else {
                 for row in 0..<Constants.Tetris.rows {
-                    line += getWord(row: row, col: index)
+                    line += getTileText(row: row, col: index)
                 }
             }
 
@@ -57,9 +62,9 @@ class TetrisGameViewModel {
         return nil
     }
 
-    /// Gets the word at the row and section 
-    /// returns " " if no word is present so that phrases separated by gaps don't get matched
-    private func getWord(row: Int, col: Int) -> String {
+    /// Gets the tile text at coordinate specified by `row` and `col`
+    /// returns " " if no tile is present so that phrases separated by gaps don't get matched
+    private func getTileText(row: Int, col: Int) -> String {
         return tetrisGrid.get(at: Coordinate(row: row, col: col)) ?? " "
     }
 
@@ -93,10 +98,6 @@ class TetrisGameViewModel {
         return nil
     }
 
-    private func getNextPosition(_ coordinate: Coordinate) -> Coordinate {
-        return Coordinate(row: coordinate.row + TetrisGameViewModel.rowIncrement, col: coordinate.col)
-    }
-
     // TODO: generate from database, base on existing grid
     fileprivate func getRandomWord() -> String {
         let words = "先发制人"
@@ -113,8 +114,12 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
 
     func dropNextTile() -> (location: Coordinate, tileText: String) {
         upcomingTiles.append(getRandomWord())
-    	let randCol = Int(arc4random_uniform(UInt32(Constants.Tetris.columns)))
-        return (Coordinate(row: Coordinate.origin.row, col: randCol), upcomingTiles.removeFirst())
+        let tileText = upcomingTiles.removeFirst()
+        delegate?.redisplayUpcomingTiles()
+        fallingTileText = tileText
+        let randCol = Random.integer(toInclusive: UInt(Constants.Tetris.columns))
+        return (location: Coordinate(row: Coordinate.origin.row, col: randCol),
+                tileText: tileText)
     }
 
     func landFallingTile(at coordinate: Coordinate) {
@@ -123,12 +128,24 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
             return
         }
         tetrisGrid.add(at: coordinate, tileText: fallingTileText)
-        if let destroyedCoordinates = getDestroyedIndexes() {
+        if let destroyedCoordinates = getDestroyedCoordinates() {
             delegate?.animate(destroyTilesAt: destroyedCoordinates)
+            currentScore += destroyedCoordinates.count
+            delegate?.redisplay(newScore: currentScore)
             shiftDownTiles(destroyedCoordinates)
         }
     }
 
+    func swapCurrentTileWithUpcomingTile(at index: Int) {
+        guard let currentFallingTileText = fallingTileText else {
+            assertionFailure("No falling tile")
+            return
+        }
+        fallingTileText = upcomingTiles[index]
+        upcomingTiles[index] = currentFallingTileText
+    }
+
     func startGame() {
+        countDownTimer.startTimer(timerInterval: Constants.Tetris.timeInterval, viewControllerDelegate: delegate)
     }
 }

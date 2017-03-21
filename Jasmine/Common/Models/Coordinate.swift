@@ -19,6 +19,7 @@ struct Coordinate {
         self.col = col
     }
 
+    /// Returns the Coordinate of the next row
     func getNextRow() -> Coordinate {
         return Coordinate(row: row + 1, col: col)
     }

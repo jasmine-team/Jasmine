@@ -14,6 +14,15 @@ enum Random {
         return from + Int(arc4random_uniform(UInt32(toInclusive - from + 1)))
     }
 
+    /// Generates a random integer
+    ///
+    /// - Parameters:
+    ///   - toInclusive: end of range, inclusive
+    /// - Returns: a random number from 0 to toInclusive
+    static func integer(toInclusive: UInt) -> Int {
+        return integer(from: 0, toInclusive: Int(toInclusive))
+    }
+
     /// Generates a random double
     ///
     /// - Parameters:
