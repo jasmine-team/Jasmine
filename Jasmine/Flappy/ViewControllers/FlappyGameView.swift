@@ -1,3 +1,0 @@
-class FlappyGameView: HomeView {
-
-}
