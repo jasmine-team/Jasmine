@@ -639,7 +639,6 @@
 			buildConfigurationList = A260C6451E6AB30400782103 /* Build configuration list for PBXNativeTarget "Jasmine" */;
 			buildPhases = (
 				7E0A70CF6F2BAA3DCED4965E /* [CP] Check Pods Manifest.lock */,
-				505E073D1E7BE7CE00CEE8BF /* Synx */,
 				A260C64E1E6AB3DC00782103 /* Swiftlint Autocorrect */,
 				A260C6191E6AB30400782103 /* Sources */,
 				A260C61A1E6AB30400782103 /* Frameworks */,
@@ -823,20 +822,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
-		};
-		505E073D1E7BE7CE00CEE8BF /* Synx */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Synx;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which synx > /dev/null; then\n    synx \"$PROJECT_FILE_PATH\"\nelse\n    echo \"Synx is not installed!\"\nfi";
 		};
 		6C30C7D33289147D19E045E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
