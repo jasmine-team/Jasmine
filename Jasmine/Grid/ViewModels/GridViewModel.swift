@@ -1,8 +1,17 @@
 import Foundation
 
 class GridViewModel: GridViewModelProtocol {
+    /// The status of the current game.
+    var gameStatus: GameStatus = .notStarted {
+        didSet {
+            delegate?.notifyGameStatus()
+        }
+    }
     /// Stores the grid data that will be used to display in the view controller.
-    private(set) var gridData: [Coordinate : String] = [:]
+    private(set) var gridData: [Coordinate: String] = [:]
+    /// Answers for this game. The game is won if this is done
+    private var answers: [[String]] = [["1", "2", "3", "4"], ["5", "6", "7", "8"],
+                                       ["9", "10", "11", "12"], ["13", "14", "15", "16"]]
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
     weak var delegate: GridGameViewControllerDelegate?
@@ -13,21 +22,14 @@ class GridViewModel: GridViewModelProtocol {
     /// Specifies the current score of the game. If the game has not started, it will be the initial
     /// displayed score.
     private(set) var currentScore: Int = 0
+    /// The timer of this game.
+    let timer: CountDownTimer = CountDownTimer(totalTimeAllowed: 60)
 
     /// Tells the view model that the game has started.
     func startGame() {
-        self.delegate?.notifyGameStatus(with: .inProgress)
+        loadGrid(from: answers)
 
-        remainingTimeLeft = Constants.Grid.time
-
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            self.remainingTimeLeft -= 1
-
-            if self.remainingTimeLeft == 0 {
-                self.delegate?.notifyGameStatus(with: .endedWithLost)
-                timer.invalidate()
-            }
-        }
+        timer.startTimer(timerInterval: 1)
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
@@ -50,7 +52,7 @@ class GridViewModel: GridViewModelProtocol {
         swap(&gridData[coord1], &gridData[coord2])
 
         if gridDone {
-            delegate?.notifyGameStatus(with: .endedWithWon)
+            gameStatus = .endedWithWon
         }
 
         return true
@@ -66,27 +68,6 @@ class GridViewModel: GridViewModelProtocol {
             // do something with this row
         }
         return false
-    }
-
-    /// Populates the grid according to the specified game type.
-    ///
-    /// - Parameter type: the game type
-    private func populateGrid(type: GameType) {
-        var phrases: [[String]] = []
-
-        // TODO: Don't hardcode these characters
-        switch type {
-        case .chengYu:
-            phrases = [["我", "们", "爱", "你"], ["我", "们", "爱", "你"],
-                       ["我", "们", "爱", "你"], ["我", "们", "爱", "你"]]
-        case .pinYin:
-            phrases = [["w", "m", "我", "们"], ["m", "f", "免", "费"],
-                       ["n", "r", "牛", "肉"], ["f", "y", "法", "语"]]
-        default:
-            break
-        }
-
-        loadGrid(from: phrases)
     }
 
     /// Loads the grid from an array of array of characters.
@@ -109,5 +90,8 @@ class GridViewModel: GridViewModelProtocol {
             gridData[Coordinate(row: row, col: col)] = allChars[idx]
             idx += 1
         }
+
+        delegate?.updateGridData()
+        delegate?.redisplayAllTiles()
     }
 }

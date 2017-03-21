@@ -2,12 +2,14 @@ import Foundation
 
 /// A timer to handle game time
 class CountDownTimer {
-
     /// Specifies the time remaining in the game.
     private(set) var timeRemaining: TimeInterval
-
     /// Specifies the total time allowed in the game.
     let totalTimeAllowed: TimeInterval
+    /// The ViewModel that contains this timer.
+    var viewModel: TimedViewModelProtocol?
+    /// The ViewController of the ViewModel.
+    var viewController: BaseGameViewControllerDelegate?
 
     /// Retrieves time elapsed since game started
     var timeElapsed: TimeInterval {
@@ -22,18 +24,18 @@ class CountDownTimer {
     }
 
     /// Starts the countdown timer
-    func startTimer(timerInterval: TimeInterval, viewControllerDelegate: BaseGameViewControllerDelegate?) {
+    func startTimer(timerInterval: TimeInterval) {
         assert(timerInterval >= 0, "timerInterval must be positive")
 
-        viewControllerDelegate?.redisplay(timeRemaining: timeRemaining, outOf: totalTimeAllowed)
-        viewControllerDelegate?.notifyGameStatus(with: .inProgress)
+        viewModel?.gameStatus = .inProgress
+        viewController?.redisplay(timeRemaining: timeRemaining, outOf: totalTimeAllowed)
 
         Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { timer in
             self.timeRemaining -= timerInterval
-            viewControllerDelegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
+            self.viewController?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
 
             if self.timeRemaining <= 0 {
-                viewControllerDelegate?.notifyGameStatus(with: .endedWithLost)
+                self.viewController?.notifyGameStatus()
                 timer.invalidate()
             }
         }
