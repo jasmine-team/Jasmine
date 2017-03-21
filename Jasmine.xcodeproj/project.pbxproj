@@ -45,6 +45,11 @@
 		A2E1FD681E811FE3003EC053 /* phrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = A2E1FD651E811FE3003EC053 /* phrases.txt */; };
 		A2E1FD691E811FE3003EC053 /* prebundled.realm in Resources */ = {isa = PBXBuildFile; fileRef = A2E1FD661E811FE3003EC053 /* prebundled.realm */; };
 		A2E1FD6A1E811FE3003EC053 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD671E811FE3003EC053 /* Secrets.swift */; };
+		A2E1FD6E1E81206D003EC053 /* GameDataFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD6B1E81206D003EC053 /* GameDataFactoryTests.swift */; };
+		A2E1FD6F1E81206D003EC053 /* GameDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD6C1E81206D003EC053 /* GameDataTests.swift */; };
+		A2E1FD701E81206D003EC053 /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD6D1E81206D003EC053 /* PlayerTests.swift */; };
+		A2E1FD721E812072003EC053 /* RealmTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD711E812072003EC053 /* RealmTestCase.swift */; };
+		A2E1FD741E812078003EC053 /* UIApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD731E812078003EC053 /* UIApplicationTests.swift */; };
 		BD025B06A527CD03DA811285 /* Pods_JasmineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */; };
 		DF2D21EA1E743BC500094381 /* GridStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */; };
 		DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D21EB1E743C8700094381 /* GridGameViewController.swift */; };
@@ -130,6 +135,11 @@
 		A2E1FD651E811FE3003EC053 /* phrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phrases.txt; sourceTree = "<group>"; };
 		A2E1FD661E811FE3003EC053 /* prebundled.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = prebundled.realm; sourceTree = "<group>"; };
 		A2E1FD671E811FE3003EC053 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		A2E1FD6B1E81206D003EC053 /* GameDataFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataFactoryTests.swift; sourceTree = "<group>"; };
+		A2E1FD6C1E81206D003EC053 /* GameDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataTests.swift; sourceTree = "<group>"; };
+		A2E1FD6D1E81206D003EC053 /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
+		A2E1FD711E812072003EC053 /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
+		A2E1FD731E812078003EC053 /* UIApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationTests.swift; sourceTree = "<group>"; };
 		B0F92A417FF0A33A2C39DC68 /* Pods-JasmineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineUITests/Pods-JasmineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF6F46CAE49685937742BCB /* Pods-JasmineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -400,6 +410,7 @@
 		50F191A71E7ADC4500EE9A75 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A2E1FD711E812072003EC053 /* RealmTestCase.swift */,
 				50717ABF1E7BD944005A2FE5 /* RandomTests.swift */,
 			);
 			path = Helpers;
@@ -408,6 +419,9 @@
 		50F191A81E7ADC4800EE9A75 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A2E1FD6B1E81206D003EC053 /* GameDataFactoryTests.swift */,
+				A2E1FD6C1E81206D003EC053 /* GameDataTests.swift */,
+				A2E1FD6D1E81206D003EC053 /* PlayerTests.swift */,
 				50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */,
 			);
 			path = Models;
@@ -611,6 +625,7 @@
 		DF7CF7871E7E9FD700C6979A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A2E1FD731E812078003EC053 /* UIApplicationTests.swift */,
 				DF7CF7881E7E9FD700C6979A /* CGRect+ArithmeticTests.swift */,
 				DF7CF7891E7E9FD700C6979A /* IndexPath+CoordinateTests.swift */,
 				50717ABE1E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift */,
@@ -985,12 +1000,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2E1FD701E81206D003EC053 /* PlayerTests.swift in Sources */,
 				50717AC31E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift in Sources */,
 				DF6156961E7FA96200443E65 /* CountDownTimerTest.swift in Sources */,
+				A2E1FD6F1E81206D003EC053 /* GameDataTests.swift in Sources */,
 				50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */,
 				50717AC01E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift in Sources */,
+				A2E1FD6E1E81206D003EC053 /* GameDataFactoryTests.swift in Sources */,
 				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
+				A2E1FD741E812078003EC053 /* UIApplicationTests.swift in Sources */,
 				DF7CF78B1E7E9FD700C6979A /* IndexPath+CoordinateTests.swift in Sources */,
+				A2E1FD721E812072003EC053 /* RealmTestCase.swift in Sources */,
 				DF7CF78A1E7E9FD700C6979A /* CGRect+ArithmeticTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
