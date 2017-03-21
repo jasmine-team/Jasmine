@@ -59,7 +59,9 @@ class GridGameViewController: UIViewController {
     ///
     /// This also starts the game if have not done so.
     @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
-        viewModel.startGame()
+        if viewModel.gameStatus == .notStarted {
+            viewModel.startGame()
+        }
 
         let position = sender.location(in: squareGridViewController.view)
 
@@ -175,8 +177,8 @@ fileprivate extension GridGameViewController {
 extension GridGameViewController: GridGameViewControllerDelegate {
 
     /// Update the grid data stored in the Grid Game View Controller with a new dataset.
-    func update(tilesWith newGridData: [Coordinate: String]) {
-        squareGridViewController.update(collectionData: newGridData)
+    func updateGridData() {
+        squareGridViewController.update(collectionData: viewModel.gridData)
     }
 
     /// Refreshes the tiles based on the tiles information stored in the View Controller's grid data.
@@ -210,7 +212,7 @@ extension GridGameViewController: BaseGameViewControllerDelegate {
 
     // MARK: Game Status
     /// Notifies the view controller that the game state has changed.
-    func notifyGameStatus(with newStatus: GameStatus) {
+    func notifyGameStatus() {
 
     }
 }

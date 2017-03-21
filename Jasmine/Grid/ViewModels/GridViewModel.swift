@@ -1,8 +1,14 @@
 import Foundation
 
 class GridViewModel: GridViewModelProtocol {
+    /// The status of the current game.
+    var gameStatus: GameStatus = .notStarted {
+        didSet {
+            delegate?.notifyGameStatus()
+        }
+    }
     /// Stores the grid data that will be used to display in the view controller.
-    private(set) var gridData: [Coordinate : String] = [:]
+    private(set) var gridData: [Coordinate: String] = [:]
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
     weak var delegate: GridGameViewControllerDelegate?
@@ -13,21 +19,13 @@ class GridViewModel: GridViewModelProtocol {
     /// Specifies the current score of the game. If the game has not started, it will be the initial
     /// displayed score.
     private(set) var currentScore: Int = 0
+    /// The timer of this game.
+    let timer: CountDownTimer = CountDownTimer(totalTimeAllowed: 60)
 
     /// Tells the view model that the game has started.
     func startGame() {
-        self.delegate?.notifyGameStatus(with: .inProgress)
-
-        remainingTimeLeft = Constants.Grid.time
-
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            self.remainingTimeLeft -= 1
-
-            if self.remainingTimeLeft == 0 {
-                self.delegate?.notifyGameStatus(with: .endedWithLost)
-                timer.invalidate()
-            }
-        }
+        populateGrid(type: .chengYu)
+        timer.startTimer(timerInterval: 1)
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
@@ -50,7 +48,7 @@ class GridViewModel: GridViewModelProtocol {
         swap(&gridData[coord1], &gridData[coord2])
 
         if gridDone {
-            delegate?.notifyGameStatus(with: .endedWithWon)
+            gameStatus = .endedWithWon
         }
 
         return true
@@ -109,5 +107,8 @@ class GridViewModel: GridViewModelProtocol {
             gridData[Coordinate(row: row, col: col)] = allChars[idx]
             idx += 1
         }
+
+        delegate?.updateGridData()
+        delegate?.redisplayAllTiles()
     }
 }
