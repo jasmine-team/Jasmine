@@ -14,7 +14,10 @@ struct Prebundler {
         }
         let prebundledUrl = resourceUrl.appendingPathComponent(Prebundler.prebundledFileName)
         do {
-            try FileManager.default.copyItem(at: prebundledUrl, to: Realm.defaultURL)
+            guard let defaultUrl = Realm.Configuration.defaultConfiguration.fileURL else {
+                fatalError("Default realm has no file path")
+            }
+            try FileManager.default.copyItem(at: prebundledUrl, to: defaultUrl)
         } catch let error {
             fatalError("Error: \(error.localizedDescription)")
         }

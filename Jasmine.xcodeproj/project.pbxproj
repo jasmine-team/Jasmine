@@ -37,7 +37,6 @@
 		A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E711E751C930033FC5B /* Sequence+Extensions.swift */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
 		A260C6411E6AB30400782103 /* JasmineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260C6401E6AB30400782103 /* JasmineUITests.swift */; };
-		A2E1FD5D1E811FC6003EC053 /* Realm+defaultURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD5B1E811FC6003EC053 /* Realm+defaultURL.swift */; };
 		A2E1FD5E1E811FC6003EC053 /* UIApplication+isFirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD5C1E811FC6003EC053 /* UIApplication+isFirstLaunch.swift */; };
 		A2E1FD601E811FCF003EC053 /* Prebundler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD5F1E811FCF003EC053 /* Prebundler.swift */; };
 		A2E1FD631E811FD6003EC053 /* GameDataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD611E811FD6003EC053 /* GameDataFactory.swift */; };
@@ -127,7 +126,6 @@
 		A260C63C1E6AB30400782103 /* JasmineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JasmineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6401E6AB30400782103 /* JasmineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JasmineUITests.swift; sourceTree = "<group>"; };
 		A260C6421E6AB30400782103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A2E1FD5B1E811FC6003EC053 /* Realm+defaultURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+defaultURL.swift"; sourceTree = "<group>"; };
 		A2E1FD5C1E811FC6003EC053 /* UIApplication+isFirstLaunch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+isFirstLaunch.swift"; sourceTree = "<group>"; };
 		A2E1FD5F1E811FCF003EC053 /* Prebundler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prebundler.swift; sourceTree = "<group>"; };
 		A2E1FD611E811FD6003EC053 /* GameDataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataFactory.swift; sourceTree = "<group>"; };
@@ -592,7 +590,6 @@
 		DF7CF76E1E7E9E2B00C6979A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A2E1FD5B1E811FC6003EC053 /* Realm+defaultURL.swift */,
 				A2E1FD5C1E811FC6003EC053 /* UIApplication+isFirstLaunch.swift */,
 				DF7CF76F1E7E9E3500C6979A /* CGRect+Arithmetic.swift */,
 				DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */,
@@ -987,7 +984,6 @@
 				A2E1FD601E811FCF003EC053 /* Prebundler.swift in Sources */,
 				DF7CF77F1E7E9EED00C6979A /* SquareTextView.swift in Sources */,
 				50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */,
-				A2E1FD5D1E811FC6003EC053 /* Realm+defaultURL.swift in Sources */,
 				505E073C1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift in Sources */,
 				DF7CF7711E7E9E3500C6979A /* CGRect+Arithmetic.swift in Sources */,
 				DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */,
