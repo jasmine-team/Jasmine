@@ -9,12 +9,21 @@ struct Coordinate {
 
     let row: Int
     let col: Int
+
+    /// Default constructor for Coordinate.
+    init(row: Int, col: Int) {
+        guard row >= 0, col >= 0 else {
+            fatalError("Row and column coordinates should be >= 0")
+        }
+        self.row = row
+        self.col = col
+    }
 }
 
 extension Coordinate: Hashable {
     /// Returns the hash value of this coordinate data structure.
     var hashValue: Int {
-        return "\(row) \(col)".hashValue
+        return row ^ col
     }
 }
 
