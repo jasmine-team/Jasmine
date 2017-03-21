@@ -150,6 +150,7 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
         }
         fallingTileText = upcomingTiles[index]
         upcomingTiles[index] = currentFallingTileText
+        delegate?.redisplayUpcomingTiles()
     }
 
     func startGame() {
