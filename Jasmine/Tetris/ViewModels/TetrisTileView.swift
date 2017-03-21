@@ -1,8 +1,7 @@
 import UIKit
 
 /// Represents the view for a tile
-
-class TetrisView: UILabel {
+class TetrisTileView: UILabel {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

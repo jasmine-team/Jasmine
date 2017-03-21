@@ -1,25 +1,25 @@
-import Foundation
-
 /// Manages the tiles on the grid
-
 class TetrisGrid {
 
-    private var tiles: [IndexPath: TetrisTile] = [:]
+    private var tiles: [Coordinate: String] = [:]
 
-    func get(at indexPath: IndexPath) -> TetrisTile? {
-        return tiles[indexPath]
+    func get(at coordinate: Coordinate) -> String? {
+        return tiles[coordinate]
     }
 
-    func hasTile(at indexPath: IndexPath) -> Bool {
-        return tiles[indexPath] != nil
+    func hasTile(at coordinate: Coordinate) -> Bool {
+        return tiles[coordinate] != nil
     }
 
-    func add(_ tile: TetrisTile) {
-        tiles[tile.indexPath] = tile
+    func add(at coordinate: Coordinate, tileText: String) {
+        tiles[coordinate] = tileText
     }
 
-    func remove(at indexPath: IndexPath) {
-        tiles[indexPath] = nil
+    @discardableResult
+    func remove(at coordinate: Coordinate) -> String {
+        guard let removedValue = tiles.removeValue(forKey: coordinate) else {
+            fatalError("Grid has no tile at \(coordinate)")
+        }
+        return removedValue
     }
-
 }

@@ -13,14 +13,17 @@ enum Constants {
         static let rows = 12
         /// Number of cols on the grid
         static let columns = 8
-        
+
         /// Interval (in seconds) to update the game state
         static let updateInterval = 0.3
-        
-        /// Reuse identifier for the cell, shifted to custom UICollectionViewCell class when created
+
+        static let upcomingTilesCount = 3
+
+        /// Reuse identifier for the cell
+        /// can be shifted to custom UICollectionViewCell class when created
         static let cellIdentifier = "tetrisCell"
     }
-    
+
     enum Theme {
         static let mainColor = FlatMint()
         static let mainColorDark = FlatMintDark()

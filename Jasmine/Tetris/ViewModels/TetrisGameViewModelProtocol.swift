@@ -1,10 +1,10 @@
 /// Implement this class to describe how a game can be played with a Tetris Game board.
-protocol TetrisViewModelProtocol: BaseViewModelProtocol {
+protocol TetrisGameViewModelProtocol: BaseViewModelProtocol {
 
     // MARK: Properties
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
-    var delegate: TetrisGameViewControllerDelegate { get set }
+    var delegate: TetrisGameViewControllerDelegate? { get set }
 
     /// Stores the upcoming tiles that will be dropped, where index 0 will be the first to fall.
     var upcomingTiles: [String] { get }

@@ -18,6 +18,10 @@ struct Coordinate {
         self.row = row
         self.col = col
     }
+
+    func getNextRow() -> Coordinate {
+        return Coordinate(row: row + 1, col: col)
+    }
 }
 
 extension Coordinate: Hashable {

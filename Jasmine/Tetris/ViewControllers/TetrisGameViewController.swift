@@ -1,18 +1,21 @@
 import UIKit
 
 /// Main view controller for Tetris
-
-class TetrisViewController: UIViewController {
+class TetrisGameViewController: UIViewController {
 
     @IBOutlet private var gridCollectionView: UICollectionView!
     @IBOutlet private var upcomingCollectionView: UICollectionView!
 
     // initialize in viewDidLoad
     fileprivate var gridView: TetrisGridView!
-    private var engine: TetrisEngineProtocol!
+    private var viewModel: TetrisGameViewModelProtocol!
     fileprivate var cellSize: CGFloat!
 
-    fileprivate var movingTileView: TetrisView?
+    fileprivate var movingTileView: TetrisTileView?
+
+    // MARK: Upcoming and Falling Tile
+    /// Gets the position of the falling tile. If such a position is not available, returns nil.
+    var fallingTilePosition: Coordinate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +31,8 @@ class TetrisViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        engine = TetrisEngine(viewDelegate: self)
+        viewModel = TetrisGameViewModel()
+        viewModel.delegate = self
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -42,44 +46,41 @@ class TetrisViewController: UIViewController {
 
     @objc
     private func tapHandler(_ recognizer: UITapGestureRecognizer) {
-        let location = recognizer.location(in: gridCollectionView)
-        if let indexPath = gridCollectionView.indexPathForItem(at: location) {
-            engine.moveTile(towards: indexPath)
-        }
     }
-
 }
 
 /// MARK: - TetrisViewDelegate
-extension TetrisViewController: TetrisViewDelegate {
+extension TetrisGameViewController: TetrisGameViewControllerDelegate {
 
-    func updateMovingTile(_ movingTile: TetrisTile) {
-        let currentMovingTileView = movingTileView ?? TetrisView(movingTile.word, size: cellSize)
-        currentMovingTileView.removeFromSuperview()
-        currentMovingTileView.text = String(movingTile.word)
-        gridView.addToCell(currentMovingTileView, at: movingTile.indexPath)
-        movingTileView = currentMovingTileView
+    /// Tells the view controller to retrieve `upcomingTiles` and reload the view for the upcoming tiles.
+    func redisplayUpcomingTiles() {}
+
+    // MARK: Animation
+    /// Ask the view controller to animate the destruction of tiles at the specified coordinates.
+    ///
+    /// - Parameter coodinates: the set of coordinates to be destroyed.
+    func animate(destroyTilesAt coodinates: Set<Coordinate>) {}
+
+    /// Shifts the content of the tiles from Coordinate `from` to Coordinate `to`
+    ///
+    /// - Parameter coordinatesShifted: array of coordinates to shift
+    func animate(shiftTiles coordinatesToShift: [(from: Coordinate, to: Coordinate)]) {}
+
+    func redisplay(newScore: Int) {
+
     }
 
-    /// Settle the moving tile on the grid after it has collided.
-    /// Since it's already set to the correct position by updateMovingTile, 
-    /// we simply remove the reference to it here so that a new moving tile view will be created
-    func placeMovingTile() {
-        movingTileView = nil
+    func redisplay(timeRemaining: TimeInterval, outOf totalTime: TimeInterval) {
+
     }
 
-    func destroyTile(at indexPath: IndexPath) {
-        gridView.clearCell(at: indexPath)
-    }
+    func notifyGameStatus(with newStatus: GameStatus) {
 
-    func shiftTileDown(at indexPath: IndexPath) {
-        gridView.shiftViewDown(at: indexPath)
     }
-
 }
 
 /// MARK: - UICollectionViewDataSource
-extension TetrisViewController: UICollectionViewDataSource {
+extension TetrisGameViewController: UICollectionViewDataSource {
 
     // every section comprises a row of tiles,
     // while the column index of the tile is given by IndexPath.row
@@ -111,7 +112,7 @@ extension TetrisViewController: UICollectionViewDataSource {
 }
 
 /// MARK: - UICollectionViewDelegateFlowLayout
-extension TetrisViewController: UICollectionViewDelegateFlowLayout {
+extension TetrisGameViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
