@@ -2,6 +2,7 @@ import XCTest
 @testable import Jasmine
 
 class CoordinateTests: XCTestCase {
+
     func testOrigin() {
         XCTAssertEqual(Coordinate(row: 0, col: 0), Coordinate.origin, "Origin should be (0, 0)")
     }
@@ -26,5 +27,11 @@ class CoordinateTests: XCTestCase {
 
         XCTAssertEqual(Coordinate(row: 5, col: 3).hashValue, Coordinate(row: 5, col: 3).hashValue,
                        "Coordinates with same row and col should be equal")
+    }
+
+    func testGetNextRow() {
+        XCTAssertEqual(Coordinate(row: 3, col: 5).getNextRow(), Coordinate(row: 4, col: 5),
+                       "getNextRow did not return the correct coordinates")
+
     }
 }

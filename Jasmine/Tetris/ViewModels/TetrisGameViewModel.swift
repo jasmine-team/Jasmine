@@ -104,7 +104,7 @@ class TetrisGameViewModel {
     fileprivate func getRandomWord() -> String {
         let words = "先发制人"
         return String(words[words.index(words.startIndex,
-                                 	    offsetBy: Int(arc4random_uniform(UInt32(words.characters.count))))])
+                                        offsetBy: Random.integer(toInclusive: UInt(words.characters.count)))])
     }
 }
 
@@ -126,7 +126,7 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
 
     func landFallingTile(at coordinate: Coordinate) {
         guard let fallingTileText = fallingTileText else {
-        	assertionFailure("No falling tile")
+            assertionFailure("No falling tile")
             return
         }
         tetrisGrid.add(at: coordinate, tileText: fallingTileText)
