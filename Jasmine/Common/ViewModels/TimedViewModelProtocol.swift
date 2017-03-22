@@ -1,7 +1,7 @@
 import Foundation
 
 /// A ViewModel that implements a timer, i.e. it is timed.
-protocol TimedViewModelProtocol {
+protocol TimedViewModelProtocol: class {
     /// The timer of the ViewModel
     var timer: CountDownTimer { get }
     /// Specifies the total time allowed in the game.

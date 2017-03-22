@@ -5,7 +5,7 @@ class CountDownTimer {
     typealias VMProtocol = (TimedViewModelProtocol & BaseViewModelProtocol)
 
     /// The ViewModel that contains this timer.
-    private var viewModel: VMProtocol?
+    private weak var viewModel: VMProtocol?
     /// Specifies the total time allowed in the game.
     let totalTimeAllowed: TimeInterval
     /// Specifies the time remaining in the game.

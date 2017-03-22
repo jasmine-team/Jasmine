@@ -2,7 +2,7 @@ import Foundation
 
 /// Sets the shared functionalities that are applicable across all view model declarations.
 /// This protocol will be inherited by all the specialised view model protocols.
-protocol BaseViewModelProtocol {
+protocol BaseViewModelProtocol: class {
 
     // MARK: Properties
     /// Specifies the current score of the game. If the game has not started, it will be the initial
