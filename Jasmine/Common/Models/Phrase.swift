@@ -13,6 +13,7 @@ class Phrase: Object {
     dynamic fileprivate(set) var chineseMeaning: String = ""
 
     /// Rank of the frequency of word in practice, higher means more difficult
+    // -1 for invalid rank, realm doesn't support init without defaults
     dynamic fileprivate(set) var rank: Int = -1
 
 }
