@@ -20,7 +20,16 @@ class GridGameViewController: UIViewController {
     // MARK: View Controller Lifecycles
     /// Set its theme after the view controller `viewDidLoad` is called.
     override func viewDidLoad() {
+        super.viewDidLoad()
         setTheme()
+
+    }
+
+    /// This also starts the game if have not done so.
+    ///
+    /// - Parameter animated: true if the appearance of the view is animated
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
         if viewModel.gameStatus == .notStarted {
             viewModel.startGame()
@@ -162,8 +171,6 @@ fileprivate extension GridGameViewController {
             return
         }
 
-        self.squareGridViewController.update(collectionData: viewModel.gridData)
-
         self.draggingTile = nil
         let startingView = draggingTile.view
         let startingCoord = draggingTile.originalCoord
@@ -218,7 +225,7 @@ extension GridGameViewController: BaseGameViewControllerDelegate {
 
     // MARK: Game Status
     /// Notifies the view controller that the game state has changed.
-    func notifyGameStatus() {
+    func updateGameStatus() {
 
     }
 }

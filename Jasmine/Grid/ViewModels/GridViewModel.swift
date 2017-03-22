@@ -2,7 +2,11 @@ import Foundation
 
 class GridViewModel: GridViewModelProtocol {
     /// Stores the grid data that will be used to display in the view controller.
-    private(set) var gridData: [Coordinate: String] = [:]
+    private(set) var gridData: [Coordinate: String] = [:] {
+        didSet {
+            delegate?.updateGridData()
+        }
+    }
     /// Answers for this game. The game is won if this is done
     private var answers: [[String]] = [["1", "2", "3", "4"], ["5", "6", "7", "8"],
                                        ["9", "10", "11", "12"], ["13", "14", "15", "16"]]
@@ -21,7 +25,7 @@ class GridViewModel: GridViewModelProtocol {
     /// The status of the current game.
     var gameStatus: GameStatus = .notStarted {
         didSet {
-            delegate?.notifyGameStatus()
+            delegate?.updateGameStatus()
         }
     }
 
@@ -58,19 +62,19 @@ class GridViewModel: GridViewModelProtocol {
             return false
         }
 
-        swap(&gridData[coord1], &gridData[coord2])
+        swapGridData(coord1, and: coord2)
 
-        if gridDone {
+        if gameIsWon {
             gameStatus = .endedWithWon
         }
 
         return true
     }
 
-    /// Returns true iff the grid is done (a.k.a. the game is won)
-    private var gridDone: Bool {
+    /// Returns true iff the game is won
+    private var gameIsWon: Bool {
         let sortedGrid = gridData
-            .sorted { $0.key.compareByRowFirst($1.key) }
+            .sorted { $0.key.isLessThanByRowFirst($1.key) }
             .map { $0.value }
 
         var temporary: [String] = []
@@ -110,7 +114,18 @@ class GridViewModel: GridViewModelProtocol {
             }
         }
 
-        delegate?.updateGridData()
         delegate?.redisplayAllTiles()
+    }
+
+    /// Swaps two coordinates in the grid data. The built-in swap function cannot be used as
+    /// it will introduce concurrent write in `delegate?.updateGridData()`.
+    ///
+    /// - Parameters:
+    ///   - coord1: the first coordinate
+    ///   - coord2: the second coordinate
+    private func swapGridData(_ coord1: Coordinate, and coord2: Coordinate) {
+        let initialSecond = gridData[coord2]
+        gridData[coord2] = gridData[coord1]
+        gridData[coord1] = initialSecond
     }
 }

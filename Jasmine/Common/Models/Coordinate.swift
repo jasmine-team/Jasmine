@@ -19,7 +19,12 @@ struct Coordinate {
         self.col = col
     }
 
-    func compareByRowFirst(_ other: Coordinate) -> Bool {
+    /// Compares a coordinate with another coordinate. Returns true if and only if self < other.
+    /// Here comparison is done by looking at the row, then by column.
+    ///
+    /// - Parameter other: the other coordinate to be compared
+    /// - Returns: true if and only if self < other
+    func isLessThanByRowFirst(_ other: Coordinate) -> Bool {
         if row == other.row {
             return col < other.col
         } else {
