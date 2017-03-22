@@ -129,7 +129,7 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
 
     func landFallingTile(at coordinate: Coordinate) {
         guard let fallingTileText = fallingTileText else {
-            assertionFailure("No falling tile")
+            assertionFailure("fallingTileText is not initialised")
             return
         }
         tetrisGrid.addTile(at: coordinate, tileText: fallingTileText)
