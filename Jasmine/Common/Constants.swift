@@ -17,4 +17,14 @@ enum Constants {
 
         static let tilesFont = UIFont(name: "HelveticaNeue-Light", size: 30.0)
     }
+
+    enum Language: String {
+        case english = "eng"
+        case chinese = "cmn"
+    }
+
+    enum UserDefaultsKeys: String {
+        case launchedBefore
+    }
+
 }
