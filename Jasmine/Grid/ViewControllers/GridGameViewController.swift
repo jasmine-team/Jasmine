@@ -58,8 +58,10 @@ class GridGameViewController: UIViewController {
     }
 
     // MARK: - Gesture Recognisers and Listeners
-    /// If game is in progress, listens to a drag gesture and handles the operation
-    /// of dragging a tile, and dropping it to another location.
+    /// Listens to a drag gesture and handles the operation of dragging a tile, and dropping it
+    /// to another location.
+    ///
+    /// Note that if the game status is not in progress, results in no-op.
     @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
         guard viewModel.gameStatus == .inProgress else {
             return
