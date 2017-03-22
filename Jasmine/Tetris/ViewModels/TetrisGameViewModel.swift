@@ -106,7 +106,7 @@ class TetrisGameViewModel {
     fileprivate func getRandomWord() -> String {
         let words = "先发制人"
         return String(words[words.index(words.startIndex,
-                                        offsetBy: Random.integer(toInclusive: UInt(words.characters.count)))])
+                                        offsetBy: Random.integer(toInclusive: words.characters.count))])
     }
 }
 
@@ -122,7 +122,7 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
         delegate?.redisplayUpcomingTiles()
 
         fallingTileText = tileText
-        let randCol = Random.integer(toInclusive: UInt(Constants.Tetris.columns))
+        let randCol = Random.integer(toInclusive: Constants.Tetris.columns)
         return (location: Coordinate(row: Coordinate.origin.row, col: randCol),
                 tileText: tileText)
     }
@@ -145,12 +145,14 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
         shiftDownTiles(destroyedCoordinates)
     }
 
-    func swapCurrentTileWithUpcomingTile(at index: Int) {
+    func swapFallingTile(withUpcomingAt index: Int) {
         guard let currentFallingTileText = fallingTileText else {
             assertionFailure("fallingTileText is not initialised")
             return
         }
         fallingTileText = upcomingTiles[index]
+        delegate?.redisplayFallingTile(tileText: upcomingTiles[index])
+
         upcomingTiles[index] = currentFallingTileText
         delegate?.redisplayUpcomingTiles()
     }

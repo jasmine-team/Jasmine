@@ -55,6 +55,8 @@ extension TetrisGameViewController: TetrisGameViewControllerDelegate {
     /// Tells the view controller to retrieve `upcomingTiles` and reload the view for the upcoming tiles.
     func redisplayUpcomingTiles() {}
 
+    func redisplayFallingTile(tileText: String) {}
+
     // MARK: Animation
     /// Ask the view controller to animate the destruction of tiles at the specified coordinates.
     ///
