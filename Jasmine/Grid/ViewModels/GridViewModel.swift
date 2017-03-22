@@ -1,31 +1,41 @@
 import Foundation
 
 class GridViewModel: GridViewModelProtocol {
+    /// The delegate that the View Controller will conform to in some way, so that the Game Engine
+    /// View Model can call.
+    weak var delegate: GridGameViewControllerDelegate?
+    /// Stores the grid data that will be used to display in the view controller.
+    private(set) var gridData: [Coordinate: String] = [:]
+    /// Specifies the current score of the game. If the game has not started, it will be the initial
+    /// displayed score.
+    private(set) var currentScore: Int = 0
+    /// The timer of this game.
+    private(set) var timer = CountDownTimer(totalTimeAllowed: 0, viewModel: nil)
+    /// Specifies the remaining time left in the game.
+    private(set) var timeRemaining: TimeInterval = Constants.Grid.time
+    /// Specifies the total time allowed in the game.
+    private(set) var totalTimeAllowed: TimeInterval = Constants.Grid.time
     /// The status of the current game.
     var gameStatus: GameStatus = .notStarted {
         didSet {
             delegate?.notifyGameStatus()
         }
     }
-    /// Stores the grid data that will be used to display in the view controller.
-    private(set) var gridData: [Coordinate: String] = [:]
-    /// The delegate that the View Controller will conform to in some way, so that the Game Engine
-    /// View Model can call.
-    weak var delegate: GridGameViewControllerDelegate?
-    /// Specifies the remaining time left in the game.
-    private(set) var remainingTimeLeft: TimeInterval = 0.0
-    /// Specifies the total time allowed in the game.
-    private(set) var totalTimeAllowed: TimeInterval = Constants.Grid.time
-    /// Specifies the current score of the game. If the game has not started, it will be the initial
-    /// displayed score.
-    private(set) var currentScore: Int = 0
-    /// The timer of this game.
-    let timer: CountDownTimer = CountDownTimer(totalTimeAllowed: 60)
 
     /// Tells the view model that the game has started.
     func startGame() {
+        timer = CountDownTimer(totalTimeAllowed: totalTimeAllowed, viewModel: self)
         populateGrid(type: .chengYu)
         timer.startTimer(timerInterval: 1)
+    }
+
+    /// Tells the VM that the time has been updated.
+    ///
+    /// - Parameters:
+    ///   - timeRemaining: the remaining time
+    ///   - totalTime: the total time
+    func timeDidUpdate(timeRemaining: TimeInterval, totalTime: TimeInterval) {
+        delegate?.redisplay(timeRemaining: timeRemaining, outOf: totalTime)
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
