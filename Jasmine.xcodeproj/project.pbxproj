@@ -263,7 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				A2187E6B1E7510B60033FC5B /* Random.swift */,
-				DF6156931E7FA93500443E65 /* CountDownTimer.swift */,
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
 			);
 			path = Helpers;

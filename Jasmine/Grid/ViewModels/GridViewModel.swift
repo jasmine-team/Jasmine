@@ -1,12 +1,6 @@
 import Foundation
 
 class GridViewModel: GridViewModelProtocol {
-    /// The status of the current game.
-    var gameStatus: GameStatus = .notStarted {
-        didSet {
-            delegate?.notifyGameStatus()
-        }
-    }
     /// Stores the grid data that will be used to display in the view controller.
     private(set) var gridData: [Coordinate: String] = [:]
     /// Answers for this game. The game is won if this is done
@@ -15,8 +9,6 @@ class GridViewModel: GridViewModelProtocol {
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
     weak var delegate: GridGameViewControllerDelegate?
-    /// Stores the grid data that will be used to display in the view controller.
-    private(set) var gridData: [Coordinate: String] = [:]
     /// Specifies the current score of the game. If the game has not started, it will be the initial
     /// displayed score.
     private(set) var currentScore: Int = 0
@@ -35,8 +27,8 @@ class GridViewModel: GridViewModelProtocol {
 
     /// Tells the view model that the game has started.
     func startGame() {
+        loadGrid(from: answers)
         timer = CountDownTimer(totalTimeAllowed: totalTimeAllowed, viewModel: self)
-        populateGrid(type: .chengYu)
         timer.startTimer(timerInterval: 1)
     }
 
@@ -77,14 +69,22 @@ class GridViewModel: GridViewModelProtocol {
 
     /// Returns true iff the grid is done (a.k.a. the game is won)
     private var gridDone: Bool {
-        for rowNumber in 0..<Constants.Grid.rows {
-            let row = gridData
-                .filter { $0.key.row == rowNumber }
-                .sorted { $0.0.key.col < $0.1.key.col }
-                .map { $0.value }
-            // do something with this row
+        let sortedGrid = gridData
+            .sorted { $0.key.compareByRowFirst($1.key) }
+            .map { $0.value }
+
+        var temporary: [String] = []
+        for element in sortedGrid {
+            temporary.append(element)
+            if temporary.count == Constants.Grid.columns {
+                if answers.contains(where: { $0 == temporary }) {
+                    temporary = []
+                } else {
+                    return false
+                }
+            }
         }
-        return false
+        return true
     }
 
     /// Loads the grid from an array of array of characters.
@@ -103,9 +103,11 @@ class GridViewModel: GridViewModelProtocol {
         // Place back allChars to the grid
         gridData.removeAll()
         var idx = 0
-        for (row, col) in zip(0..<rows, 0..<cols) {
-            gridData[Coordinate(row: row, col: col)] = allChars[idx]
-            idx += 1
+        for row in 0..<rows {
+            for col in 0..<cols {
+                gridData[Coordinate(row: row, col: col)] = allChars[idx]
+                idx += 1
+            }
         }
 
         delegate?.updateGridData()

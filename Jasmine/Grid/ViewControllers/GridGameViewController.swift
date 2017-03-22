@@ -21,6 +21,10 @@ class GridGameViewController: UIViewController {
     /// Set its theme after the view controller `viewDidLoad` is called.
     override func viewDidLoad() {
         setTheme()
+
+        if viewModel.gameStatus == .notStarted {
+            viewModel.startGame()
+        }
     }
 
     /// Specifies that the supported orientation for this view is portrait only.
@@ -38,7 +42,7 @@ class GridGameViewController: UIViewController {
             self.squareGridViewController = squareGridView
 
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
-// TODO:            statisticsView.timeLeft = viewModel.totalTimeAllowed
+            statisticsView.timeLeft = viewModel.totalTimeAllowed
             statisticsView.currentScore = viewModel.currentScore
 
             self.statisticsViewController = statisticsView
@@ -54,13 +58,11 @@ class GridGameViewController: UIViewController {
     }
 
     // MARK: - Gesture Recognisers and Listeners
-    /// Listens to a drag gesture and handles the operation of dragging a tile, and dropping it
-    /// to another location.
-    ///
-    /// This also starts the game if have not done so.
+    /// If game is in progress, listens to a drag gesture and handles the operation
+    /// of dragging a tile, and dropping it to another location.
     @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
-        if viewModel.gameStatus == .notStarted {
-            viewModel.startGame()
+        guard viewModel.gameStatus == .inProgress else {
+            return
         }
 
         let position = sender.location(in: squareGridViewController.view)
@@ -157,6 +159,8 @@ fileprivate extension GridGameViewController {
             handleTileFailedLanding()
             return
         }
+
+        self.squareGridViewController.update(collectionData: viewModel.gridData)
 
         self.draggingTile = nil
         let startingView = draggingTile.view

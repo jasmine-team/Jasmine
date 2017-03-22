@@ -18,6 +18,14 @@ struct Coordinate {
         self.row = row
         self.col = col
     }
+
+    func compareByRowFirst(_ other: Coordinate) -> Bool {
+        if row == other.row {
+            return col < other.col
+        } else {
+            return row < other.row
+        }
+    }
 }
 
 extension Coordinate: Hashable {
