@@ -1,18 +1,16 @@
 import Foundation
 
 /// A ViewModel that implements a timer, i.e. it is timed.
-protocol TimedViewModelProtocol {
+protocol CountdownTimable {
     /// The timer of the ViewModel
     var timer: CountDownTimer { get }
     /// Specifies the total time allowed in the game.
     var totalTimeAllowed: TimeInterval { get }
     /// Specifies the remaining time left in the game.
     var timeRemaining: TimeInterval { get }
-    /// Tells the ViewModel that the time was updated
-    func timeDidUpdate(timeRemaining: TimeInterval, totalTime: TimeInterval)
 }
 
-extension TimedViewModelProtocol {
+extension CountdownTimable {
     var totalTimeAllowed: TimeInterval {
         return timer.totalTimeAllowed
     }

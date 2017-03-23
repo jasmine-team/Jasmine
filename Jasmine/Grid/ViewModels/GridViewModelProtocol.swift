@@ -1,7 +1,11 @@
 import Foundation
 
 /// Implement this class to describe how a game can be played with a Grid Game board.
+<<<<<<< HEAD
 protocol GridViewModelProtocol: BaseViewModelProtocol, TimedViewModelProtocol {
+=======
+protocol GridViewModelProtocol: BaseViewModelProtocol, CountdownTimable {
+>>>>>>> master
 
     // MARK: Properties
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
