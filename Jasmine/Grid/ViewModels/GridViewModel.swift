@@ -114,20 +114,20 @@ class GridViewModel: GridViewModelProtocol {
     /// - Returns: the countdown timer
     private func createTimer() -> CountDownTimer {
         let timer = CountDownTimer(totalTimeAllowed: totalTimeAllowed)
+        timer.timerListener = { status in
+            switch status {
+            case .start:
+                self.gameStatus = .inProgress
+                self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
+            case .tick:
+                self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
+            case .finish:
+                self.gameStatus = .endedWithLost
+            case .stop:
+                self.gameStatus = .endedWithWon
+            }
+        }
 
-        timer.timerDidStart = {
-            self.gameStatus = .inProgress
-            self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
-        }
-        timer.timerDidTick = {
-            self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
-        }
-        timer.timerDidFinish = {
-            self.gameStatus = .endedWithLost
-        }
-        timer.timerDidStop = {
-            self.gameStatus = .endedWithWon
-        }
         return timer
     }
 }

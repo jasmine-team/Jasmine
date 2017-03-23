@@ -31,6 +31,7 @@
 		50989DE21E6D8B16009A86C8 /* FlappyGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DCE1E6D8B16009A86C8 /* FlappyGameData.swift */; };
 		50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DD21E6D8B16009A86C8 /* FlappyViewModel.swift */; };
 		50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */; };
+		50B5E9B91E8376F000D1B777 /* TimerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B5E9B81E8376F000D1B777 /* TimerStatus.swift */; };
 		50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */; };
 		A2187E6C1E7510B60033FC5B /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E6B1E7510B60033FC5B /* Random.swift */; };
 		A2187E6E1E7511470033FC5B /* MutableCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E6D1E7511470033FC5B /* MutableCollection+Extensions.swift */; };
@@ -115,6 +116,7 @@
 		50989DD21E6D8B16009A86C8 /* FlappyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyViewModel.swift; sourceTree = "<group>"; };
 		50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50989DE61E6D8BBD009A86C8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50B5E9B81E8376F000D1B777 /* TimerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerStatus.swift; sourceTree = "<group>"; };
 		50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateTests.swift; sourceTree = "<group>"; };
 		5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2187E6B1E7510B60033FC5B /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
@@ -144,8 +146,8 @@
 		CDF6F46CAE49685937742BCB /* Pods-JasmineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GridStoryboard.storyboard; sourceTree = "<group>"; };
 		DF2D21EB1E743C8700094381 /* GridGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewController.swift; sourceTree = "<group>"; };
-		DF6156931E7FA93500443E65 /* CountDownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountDownTimer.swift; path = CountDownTimer.swift; sourceTree = "<group>"; };
-		DF6156951E7FA96200443E65 /* CountDownTimerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountDownTimerTest.swift; path = CountDownTimerTest.swift; sourceTree = "<group>"; };
+		DF6156931E7FA93500443E65 /* CountDownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownTimer.swift; sourceTree = "<group>"; };
+		DF6156951E7FA96200443E65 /* CountDownTimerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownTimerTest.swift; sourceTree = "<group>"; };
 		DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TetrisStoryboard.storyboard; sourceTree = "<group>"; };
 		DF7CF76F1E7E9E3500C6979A /* CGRect+Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Arithmetic.swift"; sourceTree = "<group>"; };
 		DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+Coordinate.swift"; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				DF6156931E7FA93500443E65 /* CountDownTimer.swift */,
+				50B5E9B81E8376F000D1B777 /* TimerStatus.swift */,
 				A2E1FD5F1E811FCF003EC053 /* Prebundler.swift */,
 				A2187E6B1E7510B60033FC5B /* Random.swift */,
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
@@ -966,6 +969,7 @@
 				A2E1FD601E811FCF003EC053 /* Prebundler.swift in Sources */,
 				DF7CF77F1E7E9EED00C6979A /* SquareTextView.swift in Sources */,
 				50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */,
+				50B5E9B91E8376F000D1B777 /* TimerStatus.swift in Sources */,
 				5011E2781E7FD861000D0564 /* BaseViewModelProtocol.swift in Sources */,
 				505E073C1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift in Sources */,
 				DF7CF7711E7E9E3500C6979A /* CGRect+Arithmetic.swift in Sources */,

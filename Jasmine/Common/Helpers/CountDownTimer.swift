@@ -8,15 +8,8 @@ class CountDownTimer {
     private(set) var timeRemaining: TimeInterval
     /// The timer of this countdown timer.
     private var timer: Timer?
-
-    /// Function that is fired when timer is started.
-    var timerDidStart: (() -> Void)?
-    /// Function that is fired when timer has ticked.
-    var timerDidTick: (() -> Void)?
-    /// Function that is fired when timer is finished (timeRemaining <= 0).
-    var timerDidFinish: (() -> Void)?
-    /// Function that is fired when timer has stopped.
-    var timerDidStop: (() -> Void)?
+    /// A listener to this timer that is fired depending on the timer status.
+    var timerListener: ((TimerStatus) -> Void) = { _ in }
 
     /// Initialize the total time allowed and sets timeRemaining to it
     init(totalTimeAllowed: TimeInterval) {
@@ -28,15 +21,15 @@ class CountDownTimer {
     /// Starts the countdown timer
     func startTimer(timerInterval: TimeInterval) {
         assert(timerInterval >= 0, "timerInterval must be positive")
-        timerDidStart?()
+        timerListener(.start)
 
         timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { timer in
             self.timeRemaining -= timerInterval
-            self.timerDidTick?()
+            self.timerListener(.tick)
 
             if self.timeRemaining <= 0 {
                 timer.invalidate()
-                self.timerDidFinish?()
+                self.timerListener(.finish)
             }
         }
     }
@@ -48,6 +41,6 @@ class CountDownTimer {
         }
 
         timer.invalidate()
-        timerDidStop?()
+        timerListener(.stop)
     }
 }

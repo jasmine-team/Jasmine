@@ -9,10 +9,6 @@ class CountDownTimerTest: XCTestCase {
 
         XCTAssertEqual(timer.totalTimeAllowed, totalTimeAllowed, "Total time allowed in init is wrong")
         XCTAssertEqual(timer.timeRemaining, totalTimeAllowed, "Time remaining in init is wrong")
-        XCTAssertNil(timer.timerDidStart, "The function timerDidStart is not nil on init")
-        XCTAssertNil(timer.timerDidTick, "The function timerDidTick is not nil on init")
-        XCTAssertNil(timer.timerDidFinish, "The function timerDidFinish is not nil on init")
-        XCTAssertNil(timer.timerDidStop, "The function timerDidStop is not nil on init")
     }
 
     func testStartTimer() {
@@ -21,14 +17,18 @@ class CountDownTimerTest: XCTestCase {
         var started = false
         var ticks = 0
         var finished = false
-        timer.timerDidStart = {
-            started = true
-        }
-        timer.timerDidTick = {
-            ticks += 1
-        }
-        timer.timerDidFinish = {
-            finished = true
+
+        timer.timerListener = { status in
+            switch status {
+            case .start:
+                started = true
+            case .tick:
+                ticks += 1
+            case .finish:
+                finished = true
+            default:
+                break
+            }
         }
 
         timer.startTimer(timerInterval: 1)
@@ -46,8 +46,10 @@ class CountDownTimerTest: XCTestCase {
         let timer = CountDownTimer(totalTimeAllowed: 2)
 
         var stopped = false
-        timer.timerDidStop = {
-            stopped = true
+        timer.timerListener = { status in
+            if status == .stop {
+                stopped = true
+            }
         }
 
         timer.startTimer(timerInterval: 1)
