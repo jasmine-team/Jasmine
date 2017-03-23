@@ -9,69 +9,65 @@
 /* Begin PBXBuildFile section */
 		0CF9D2BB3EBC822ACB7FF766 /* Pods_Jasmine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */; };
 		4EA886212AABEB7ED888C04C /* Pods_JasmineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */; };
-		500923321E83987B00BD55FD /* CountDownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500923311E83987B00BD55FD /* CountDownTimer.swift */; };
-		500923341E8398A500BD55FD /* CountDownTimerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500923331E8398A500BD55FD /* CountDownTimerTest.swift */; };
 		5011E2711E7FD03A000D0564 /* TetrisViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB95A051E785D2E005EE2A4 /* TetrisViewModelProtocol.swift */; };
 		5011E2731E7FD065000D0564 /* TetrisGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5011E2721E7FD065000D0564 /* TetrisGameViewModel.swift */; };
-		5011E2781E7FD861000D0564 /* BaseViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5011E2761E7FD861000D0564 /* BaseViewModelProtocol.swift */; };
+		502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342761E77F5F200D2FE09 /* FlappyViewModelProtocol.swift */; };
 		50269D431E83C7CB0043C45D /* GridGameViewControllerDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50269D421E83C7CB0043C45D /* GridGameViewControllerDelegateMock.swift */; };
 		50269D451E83C96C0043C45D /* GridViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50269D441E83C96C0043C45D /* GridViewModelTests.swift */; };
 		50269D471E83CB750043C45D /* CountdownTimableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50269D461E83CB750043C45D /* CountdownTimableTests.swift */; };
 		50269D491E83CBC10043C45D /* CountdownTimableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50269D481E83CBC10043C45D /* CountdownTimableMock.swift */; };
-		5040AA5F1E81585200A7EF10 /* CountdownTimable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040AA5E1E81585200A7EF10 /* CountdownTimable.swift */; };
+		50269D4A1E8429090043C45D /* GameStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF7761E7E9ECE00C6979A /* GameStatisticsViewController.swift */; };
+		50269D4B1E8429090043C45D /* BaseViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426E1E77E77900D2FE09 /* BaseViewModelProtocol.swift */; };
+		50269D4C1E8429090043C45D /* TetrisGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DB41E6D8B16009A86C8 /* TetrisGameData.swift */; };
 		505E07381E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E07371E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift */; };
 		505E073A1E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E07391E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift */; };
-		505E073C1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E073B1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift */; };
-		50717AC01E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50717ABE1E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift */; };
-		50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50717ABF1E7BD944005A2FE5 /* RandomTests.swift */; };
+		505E073C1E7BE59300CEE8BF /* FlappyViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E073B1E7BE59300CEE8BF /* FlappyViewControllerDelegate.swift */; };
 		50717AC31E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50717AC21E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift */; };
 		509894A31E6E6CAE00FC9CF3 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509894A21E6E6CAE00FC9CF3 /* GameType.swift */; };
-		50989DD51E6D8B16009A86C8 /* TetrisGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DB41E6D8B16009A86C8 /* TetrisGameData.swift */; };
 		50989DD81E6D8B16009A86C8 /* GridGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DBB1E6D8B16009A86C8 /* GridGameData.swift */; };
 		50989DDA1E6D8B16009A86C8 /* GridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DBF1E6D8B16009A86C8 /* GridViewModel.swift */; };
 		50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC21E6D8B16009A86C8 /* Constants.swift */; };
 		50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC31E6D8B16009A86C8 /* SoundService.swift */; };
 		50989DDD1E6D8B16009A86C8 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC51E6D8B16009A86C8 /* GameData.swift */; };
 		50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC71E6D8B16009A86C8 /* Phrase.swift */; };
-		50989DE01E6D8B16009A86C8 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC91E6D8B16009A86C8 /* HomeScreenViewController.swift */; };
 		50989DE21E6D8B16009A86C8 /* FlappyGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DCE1E6D8B16009A86C8 /* FlappyGameData.swift */; };
 		50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DD21E6D8B16009A86C8 /* FlappyViewModel.swift */; };
 		50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */; };
-		50B5E9B91E8376F000D1B777 /* TimerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B5E9B81E8376F000D1B777 /* TimerStatus.swift */; };
-		50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */; };
 		A2187E6C1E7510B60033FC5B /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E6B1E7510B60033FC5B /* Random.swift */; };
 		A2187E6E1E7511470033FC5B /* MutableCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E6D1E7511470033FC5B /* MutableCollection+Extensions.swift */; };
 		A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E711E751C930033FC5B /* Sequence+Extensions.swift */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
 		A260C6411E6AB30400782103 /* JasmineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260C6401E6AB30400782103 /* JasmineUITests.swift */; };
-		A2E1FD5E1E811FC6003EC053 /* UIApplication+isFirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD5C1E811FC6003EC053 /* UIApplication+isFirstLaunch.swift */; };
-		A2E1FD601E811FCF003EC053 /* Prebundler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD5F1E811FCF003EC053 /* Prebundler.swift */; };
-		A2E1FD631E811FD6003EC053 /* GameDataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD611E811FD6003EC053 /* GameDataFactory.swift */; };
-		A2E1FD641E811FD6003EC053 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD621E811FD6003EC053 /* Player.swift */; };
-		A2E1FD681E811FE3003EC053 /* phrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = A2E1FD651E811FE3003EC053 /* phrases.txt */; };
-		A2E1FD691E811FE3003EC053 /* prebundled.realm in Resources */ = {isa = PBXBuildFile; fileRef = A2E1FD661E811FE3003EC053 /* prebundled.realm */; };
-		A2E1FD6A1E811FE3003EC053 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD671E811FE3003EC053 /* Secrets.swift */; };
-		A2E1FD6E1E81206D003EC053 /* GameDataFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD6B1E81206D003EC053 /* GameDataFactoryTests.swift */; };
-		A2E1FD6F1E81206D003EC053 /* GameDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD6C1E81206D003EC053 /* GameDataTests.swift */; };
-		A2E1FD701E81206D003EC053 /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD6D1E81206D003EC053 /* PlayerTests.swift */; };
-		A2E1FD721E812072003EC053 /* RealmTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD711E812072003EC053 /* RealmTestCase.swift */; };
-		A2E1FD741E812078003EC053 /* UIApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD731E812078003EC053 /* UIApplicationTests.swift */; };
 		BD025B06A527CD03DA811285 /* Pods_JasmineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */; };
 		DF2D21EA1E743BC500094381 /* GridStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */; };
 		DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D21EB1E743C8700094381 /* GridGameViewController.swift */; };
+		DF409FDB1E84145800389976 /* UIApplication+isFirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FDA1E84145800389976 /* UIApplication+isFirstLaunch.swift */; };
+		DF409FDF1E84147400389976 /* CountDownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FDC1E84147400389976 /* CountDownTimer.swift */; };
+		DF409FE01E84147400389976 /* Prebundler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FDD1E84147400389976 /* Prebundler.swift */; };
+		DF409FE11E84147400389976 /* TimerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FDE1E84147400389976 /* TimerStatus.swift */; };
+		DF409FE31E84149F00389976 /* GameDataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FE21E84149F00389976 /* GameDataFactory.swift */; };
+		DF409FE51E8414B000389976 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FE41E8414B000389976 /* Player.swift */; };
+		DF409FE71E8414F500389976 /* CountdownTimable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FE61E8414F500389976 /* CountdownTimable.swift */; };
+		DF409FEB1E8415AB00389976 /* phrases.txt in Resources */ = {isa = PBXBuildFile; fileRef = DF409FE81E8415AB00389976 /* phrases.txt */; };
+		DF409FEC1E8415AB00389976 /* prebundled.realm in Resources */ = {isa = PBXBuildFile; fileRef = DF409FE91E8415AB00389976 /* prebundled.realm */; };
+		DF409FED1E8415AB00389976 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FEA1E8415AB00389976 /* Secrets.swift */; };
+		DF409FEF1E8415E000389976 /* UIApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FEE1E8415E000389976 /* UIApplicationTests.swift */; };
+		DF409FF21E8415F400389976 /* CountDownTimerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FF01E8415F400389976 /* CountDownTimerTest.swift */; };
+		DF409FF31E8415F400389976 /* RealmTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FF11E8415F400389976 /* RealmTestCase.swift */; };
+		DF409FF71E84160C00389976 /* GameDataFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FF41E84160C00389976 /* GameDataFactoryTests.swift */; };
+		DF409FF81E84160C00389976 /* GameDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FF51E84160C00389976 /* GameDataTests.swift */; };
+		DF409FF91E84160C00389976 /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FF61E84160C00389976 /* PlayerTests.swift */; };
 		DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */; };
 		DF7CF7711E7E9E3500C6979A /* CGRect+Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF76F1E7E9E3500C6979A /* CGRect+Arithmetic.swift */; };
 		DF7CF7721E7E9E3500C6979A /* IndexPath+Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */; };
 		DF7CF7781E7E9ECE00C6979A /* BaseGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF7741E7E9ECE00C6979A /* BaseGameViewControllerDelegate.swift */; };
 		DF7CF7791E7E9ECE00C6979A /* GameElements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF7CF7751E7E9ECE00C6979A /* GameElements.storyboard */; };
-		DF7CF77A1E7E9ECE00C6979A /* GameStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF7761E7E9ECE00C6979A /* GameStatisticsViewController.swift */; };
 		DF7CF77B1E7E9ECE00C6979A /* SquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF7771E7E9ECE00C6979A /* SquareGridViewController.swift */; };
 		DF7CF77F1E7E9EED00C6979A /* SquareTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF77D1E7E9EED00C6979A /* SquareTextView.swift */; };
 		DF7CF7801E7E9EED00C6979A /* SquareTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF77E1E7E9EED00C6979A /* SquareTextViewCell.swift */; };
 		DF7CF7831E7E9F3700C6979A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF7CF7811E7E9F3700C6979A /* LaunchScreen.storyboard */; };
 		DF7CF7841E7E9F3700C6979A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF7CF7821E7E9F3700C6979A /* Main.storyboard */; };
 		DF7CF78A1E7E9FD700C6979A /* CGRect+ArithmeticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF7881E7E9FD700C6979A /* CGRect+ArithmeticTests.swift */; };
-		DF7CF78B1E7E9FD700C6979A /* IndexPath+CoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF7891E7E9FD700C6979A /* IndexPath+CoordinateTests.swift */; };
 		DFB3426D1E77E6AA00D2FE09 /* GridViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426C1E77E6AA00D2FE09 /* GridViewModelProtocol.swift */; };
 		DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342701E77EB6700D2FE09 /* Coordinate.swift */; };
 		DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */; };
@@ -98,18 +94,14 @@
 		3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasmine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
 		379F12059637B53A50B97F3B /* Pods-JasmineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineUITests/Pods-JasmineUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		500923311E83987B00BD55FD /* CountDownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownTimer.swift; sourceTree = "<group>"; };
-		500923331E8398A500BD55FD /* CountDownTimerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownTimerTest.swift; sourceTree = "<group>"; };
 		5011E2721E7FD065000D0564 /* TetrisGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewModel.swift; sourceTree = "<group>"; };
-		5011E2761E7FD861000D0564 /* BaseViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModelProtocol.swift; sourceTree = "<group>"; };
 		50269D421E83C7CB0043C45D /* GridGameViewControllerDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewControllerDelegateMock.swift; sourceTree = "<group>"; };
 		50269D441E83C96C0043C45D /* GridViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModelTests.swift; sourceTree = "<group>"; };
 		50269D461E83CB750043C45D /* CountdownTimableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimableTests.swift; sourceTree = "<group>"; };
 		50269D481E83CBC10043C45D /* CountdownTimableMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimableMock.swift; sourceTree = "<group>"; };
-		5040AA5E1E81585200A7EF10 /* CountdownTimable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimable.swift; sourceTree = "<group>"; };
 		505E07371E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		505E07391E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewControllerDelegate.swift; sourceTree = "<group>"; };
-		505E073B1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyGameViewControllerDelegate.swift; sourceTree = "<group>"; };
+		505E073B1E7BE59300CEE8BF /* FlappyViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyViewControllerDelegate.swift; sourceTree = "<group>"; };
 		50717ABE1E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MutableCollection+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		50717ABF1E7BD944005A2FE5 /* RandomTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomTests.swift; sourceTree = "<group>"; };
 		50717AC21E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+ExtensionsTests.swift"; sourceTree = "<group>"; };
@@ -126,7 +118,6 @@
 		50989DD21E6D8B16009A86C8 /* FlappyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyViewModel.swift; sourceTree = "<group>"; };
 		50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50989DE61E6D8BBD009A86C8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		50B5E9B81E8376F000D1B777 /* TimerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerStatus.swift; sourceTree = "<group>"; };
 		50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateTests.swift; sourceTree = "<group>"; };
 		5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2187E6B1E7510B60033FC5B /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
@@ -139,23 +130,27 @@
 		A260C63C1E6AB30400782103 /* JasmineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JasmineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6401E6AB30400782103 /* JasmineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JasmineUITests.swift; sourceTree = "<group>"; };
 		A260C6421E6AB30400782103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A2E1FD5C1E811FC6003EC053 /* UIApplication+isFirstLaunch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+isFirstLaunch.swift"; sourceTree = "<group>"; };
-		A2E1FD5F1E811FCF003EC053 /* Prebundler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prebundler.swift; sourceTree = "<group>"; };
-		A2E1FD611E811FD6003EC053 /* GameDataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataFactory.swift; sourceTree = "<group>"; };
-		A2E1FD621E811FD6003EC053 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		A2E1FD651E811FE3003EC053 /* phrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phrases.txt; sourceTree = "<group>"; };
-		A2E1FD661E811FE3003EC053 /* prebundled.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = prebundled.realm; sourceTree = "<group>"; };
-		A2E1FD671E811FE3003EC053 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
-		A2E1FD6B1E81206D003EC053 /* GameDataFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataFactoryTests.swift; sourceTree = "<group>"; };
-		A2E1FD6C1E81206D003EC053 /* GameDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataTests.swift; sourceTree = "<group>"; };
-		A2E1FD6D1E81206D003EC053 /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
-		A2E1FD711E812072003EC053 /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
-		A2E1FD731E812078003EC053 /* UIApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationTests.swift; sourceTree = "<group>"; };
 		B0F92A417FF0A33A2C39DC68 /* Pods-JasmineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineUITests/Pods-JasmineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF6F46CAE49685937742BCB /* Pods-JasmineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GridStoryboard.storyboard; sourceTree = "<group>"; };
 		DF2D21EB1E743C8700094381 /* GridGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewController.swift; sourceTree = "<group>"; };
+		DF409FDA1E84145800389976 /* UIApplication+isFirstLaunch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+isFirstLaunch.swift"; sourceTree = "<group>"; };
+		DF409FDC1E84147400389976 /* CountDownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownTimer.swift; sourceTree = "<group>"; };
+		DF409FDD1E84147400389976 /* Prebundler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prebundler.swift; sourceTree = "<group>"; };
+		DF409FDE1E84147400389976 /* TimerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerStatus.swift; sourceTree = "<group>"; };
+		DF409FE21E84149F00389976 /* GameDataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataFactory.swift; sourceTree = "<group>"; };
+		DF409FE41E8414B000389976 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		DF409FE61E8414F500389976 /* CountdownTimable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimable.swift; sourceTree = "<group>"; };
+		DF409FE81E8415AB00389976 /* phrases.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phrases.txt; sourceTree = "<group>"; };
+		DF409FE91E8415AB00389976 /* prebundled.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = prebundled.realm; sourceTree = "<group>"; };
+		DF409FEA1E8415AB00389976 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		DF409FEE1E8415E000389976 /* UIApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationTests.swift; sourceTree = "<group>"; };
+		DF409FF01E8415F400389976 /* CountDownTimerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownTimerTest.swift; sourceTree = "<group>"; };
+		DF409FF11E8415F400389976 /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
+		DF409FF41E84160C00389976 /* GameDataFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataFactoryTests.swift; sourceTree = "<group>"; };
+		DF409FF51E84160C00389976 /* GameDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataTests.swift; sourceTree = "<group>"; };
+		DF409FF61E84160C00389976 /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 		DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TetrisStoryboard.storyboard; sourceTree = "<group>"; };
 		DF7CF76F1E7E9E3500C6979A /* CGRect+Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Arithmetic.swift"; sourceTree = "<group>"; };
 		DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+Coordinate.swift"; sourceTree = "<group>"; };
@@ -170,6 +165,7 @@
 		DF7CF7881E7E9FD700C6979A /* CGRect+ArithmeticTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+ArithmeticTests.swift"; sourceTree = "<group>"; };
 		DF7CF7891E7E9FD700C6979A /* IndexPath+CoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+CoordinateTests.swift"; sourceTree = "<group>"; };
 		DFB3426C1E77E6AA00D2FE09 /* GridViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModelProtocol.swift; sourceTree = "<group>"; };
+		DFB3426E1E77E77900D2FE09 /* BaseViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModelProtocol.swift; sourceTree = "<group>"; };
 		DFB342701E77EB6700D2FE09 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		DFB342761E77F5F200D2FE09 /* FlappyViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyViewModelProtocol.swift; sourceTree = "<group>"; };
 		DFB95A051E785D2E005EE2A4 /* TetrisViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -292,11 +288,11 @@
 		50989DC41E6D8B16009A86C8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				500923311E83987B00BD55FD /* CountDownTimer.swift */,
-				A2E1FD5F1E811FCF003EC053 /* Prebundler.swift */,
+				DF409FDC1E84147400389976 /* CountDownTimer.swift */,
+				DF409FDD1E84147400389976 /* Prebundler.swift */,
 				A2187E6B1E7510B60033FC5B /* Random.swift */,
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
-				50B5E9B81E8376F000D1B777 /* TimerStatus.swift */,
+				DF409FDE1E84147400389976 /* TimerStatus.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -306,11 +302,11 @@
 			children = (
 				DFB342701E77EB6700D2FE09 /* Coordinate.swift */,
 				50989DC51E6D8B16009A86C8 /* GameData.swift */,
-				A2E1FD611E811FD6003EC053 /* GameDataFactory.swift */,
+				DF409FE21E84149F00389976 /* GameDataFactory.swift */,
 				DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */,
 				509894A21E6E6CAE00FC9CF3 /* GameType.swift */,
 				50989DC71E6D8B16009A86C8 /* Phrase.swift */,
-				A2E1FD621E811FD6003EC053 /* Player.swift */,
+				DF409FE41E8414B000389976 /* Player.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -329,8 +325,8 @@
 		50989DCC1E6D8B16009A86C8 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				5011E2761E7FD861000D0564 /* BaseViewModelProtocol.swift */,
-				5040AA5E1E81585200A7EF10 /* CountdownTimable.swift */,
+				DFB3426E1E77E77900D2FE09 /* BaseViewModelProtocol.swift */,
+				DF409FE61E8414F500389976 /* CountdownTimable.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -348,9 +344,9 @@
 				A260C6271E6AB30400782103 /* Assets.xcassets */,
 				50989DC21E6D8B16009A86C8 /* Constants.swift */,
 				50989DE61E6D8BBD009A86C8 /* Info.plist */,
-				A2E1FD671E811FE3003EC053 /* Secrets.swift */,
-				A2E1FD651E811FE3003EC053 /* phrases.txt */,
-				A2E1FD661E811FE3003EC053 /* prebundled.realm */,
+				DF409FEA1E8415AB00389976 /* Secrets.swift */,
+				DF409FE81E8415AB00389976 /* phrases.txt */,
+				DF409FE91E8415AB00389976 /* prebundled.realm */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -366,7 +362,7 @@
 		50989DD11E6D8B16009A86C8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				505E073B1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift */,
+				505E073B1E7BE59300CEE8BF /* FlappyViewControllerDelegate.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -418,9 +414,9 @@
 		50F191A71E7ADC4500EE9A75 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				500923331E8398A500BD55FD /* CountDownTimerTest.swift */,
+				DF409FF01E8415F400389976 /* CountDownTimerTest.swift */,
 				50717ABF1E7BD944005A2FE5 /* RandomTests.swift */,
-				A2E1FD711E812072003EC053 /* RealmTestCase.swift */,
+				DF409FF11E8415F400389976 /* RealmTestCase.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -429,9 +425,9 @@
 			isa = PBXGroup;
 			children = (
 				50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */,
-				A2E1FD6B1E81206D003EC053 /* GameDataFactoryTests.swift */,
-				A2E1FD6C1E81206D003EC053 /* GameDataTests.swift */,
-				A2E1FD6D1E81206D003EC053 /* PlayerTests.swift */,
+				DF409FF41E84160C00389976 /* GameDataFactoryTests.swift */,
+				DF409FF51E84160C00389976 /* GameDataTests.swift */,
+				DF409FF61E84160C00389976 /* PlayerTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -446,8 +442,8 @@
 		50F191AA1E7ADC5000EE9A75 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				50269D461E83CB750043C45D /* CountdownTimableTests.swift */,
 				50269D481E83CBC10043C45D /* CountdownTimableMock.swift */,
+				50269D461E83CB750043C45D /* CountdownTimableTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -608,7 +604,7 @@
 				DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */,
 				A2187E6D1E7511470033FC5B /* MutableCollection+Extensions.swift */,
 				A2187E711E751C930033FC5B /* Sequence+Extensions.swift */,
-				A2E1FD5C1E811FC6003EC053 /* UIApplication+isFirstLaunch.swift */,
+				DF409FDA1E84145800389976 /* UIApplication+isFirstLaunch.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -640,7 +636,7 @@
 				DF7CF7891E7E9FD700C6979A /* IndexPath+CoordinateTests.swift */,
 				50717ABE1E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift */,
 				50717AC21E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift */,
-				A2E1FD731E812078003EC053 /* UIApplicationTests.swift */,
+				DF409FEE1E8415E000389976 /* UIApplicationTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -653,6 +649,7 @@
 			buildConfigurationList = A260C6451E6AB30400782103 /* Build configuration list for PBXNativeTarget "Jasmine" */;
 			buildPhases = (
 				7E0A70CF6F2BAA3DCED4965E /* [CP] Check Pods Manifest.lock */,
+				505E073D1E7BE7CE00CEE8BF /* Synx */,
 				A260C64E1E6AB3DC00782103 /* Swiftlint Autocorrect */,
 				A260C6191E6AB30400782103 /* Sources */,
 				A260C61A1E6AB30400782103 /* Frameworks */,
@@ -765,10 +762,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF7CF7791E7E9ECE00C6979A /* GameElements.storyboard in Resources */,
-				A2E1FD681E811FE3003EC053 /* phrases.txt in Resources */,
+				DF409FEB1E8415AB00389976 /* phrases.txt in Resources */,
 				DF2D21EA1E743BC500094381 /* GridStoryboard.storyboard in Resources */,
 				DF7CF7841E7E9F3700C6979A /* Main.storyboard in Resources */,
-				A2E1FD691E811FE3003EC053 /* prebundled.realm in Resources */,
+				DF409FEC1E8415AB00389976 /* prebundled.realm in Resources */,
 				A260C6281E6AB30400782103 /* Assets.xcassets in Resources */,
 				DF7CF7831E7E9F3700C6979A /* LaunchScreen.storyboard in Resources */,
 				DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */,
@@ -836,6 +833,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		505E073D1E7BE7CE00CEE8BF /* Synx */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Synx;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which synx > /dev/null; then\n    synx \"$PROJECT_FILE_PATH\"\nelse\n    echo \"Synx is not installed!\"\nfi";
 		};
 		6C30C7D33289147D19E045E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -948,21 +959,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50269D4A1E8429090043C45D /* GameStatisticsViewController.swift in Sources */,
+				50269D4B1E8429090043C45D /* BaseViewModelProtocol.swift in Sources */,
+				50269D4C1E8429090043C45D /* TetrisGameData.swift in Sources */,
 				5011E2711E7FD03A000D0564 /* TetrisViewModelProtocol.swift in Sources */,
+				502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */,
 				DF7CF7721E7E9E3500C6979A /* IndexPath+Coordinate.swift in Sources */,
 				DF7CF7781E7E9ECE00C6979A /* BaseGameViewControllerDelegate.swift in Sources */,
 				5011E2731E7FD065000D0564 /* TetrisGameViewModel.swift in Sources */,
 				50989DDD1E6D8B16009A86C8 /* GameData.swift in Sources */,
-				5040AA5F1E81585200A7EF10 /* CountdownTimable.swift in Sources */,
-				DF7CF77A1E7E9ECE00C6979A /* GameStatisticsViewController.swift in Sources */,
-				50989DE01E6D8B16009A86C8 /* HomeScreenViewController.swift in Sources */,
-				50989DD51E6D8B16009A86C8 /* TetrisGameData.swift in Sources */,
-				A2E1FD6A1E811FE3003EC053 /* Secrets.swift in Sources */,
+				DF409FDB1E84145800389976 /* UIApplication+isFirstLaunch.swift in Sources */,
 				DF7CF7801E7E9EED00C6979A /* SquareTextViewCell.swift in Sources */,
 				DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */,
 				505E07381E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift in Sources */,
 				50989DDA1E6D8B16009A86C8 /* GridViewModel.swift in Sources */,
 				50989DE21E6D8B16009A86C8 /* FlappyGameData.swift in Sources */,
+				DF409FE71E8414F500389976 /* CountdownTimable.swift in Sources */,
 				A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */,
 				A2187E6E1E7511470033FC5B /* MutableCollection+Extensions.swift in Sources */,
 				DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */,
@@ -972,22 +984,21 @@
 				50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */,
 				50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */,
 				509894A31E6E6CAE00FC9CF3 /* GameType.swift in Sources */,
-				A2E1FD641E811FD6003EC053 /* Player.swift in Sources */,
+				DF409FE51E8414B000389976 /* Player.swift in Sources */,
 				A2187E6C1E7510B60033FC5B /* Random.swift in Sources */,
-				A2E1FD631E811FD6003EC053 /* GameDataFactory.swift in Sources */,
+				DF409FE31E84149F00389976 /* GameDataFactory.swift in Sources */,
 				505E073A1E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift in Sources */,
+				DF409FE01E84147400389976 /* Prebundler.swift in Sources */,
 				50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */,
-				A2E1FD601E811FCF003EC053 /* Prebundler.swift in Sources */,
 				DF7CF77F1E7E9EED00C6979A /* SquareTextView.swift in Sources */,
+				DF409FE11E84147400389976 /* TimerStatus.swift in Sources */,
 				50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */,
-				50B5E9B91E8376F000D1B777 /* TimerStatus.swift in Sources */,
-				500923321E83987B00BD55FD /* CountDownTimer.swift in Sources */,
-				5011E2781E7FD861000D0564 /* BaseViewModelProtocol.swift in Sources */,
-				505E073C1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift in Sources */,
+				505E073C1E7BE59300CEE8BF /* FlappyViewControllerDelegate.swift in Sources */,
+				DF409FED1E8415AB00389976 /* Secrets.swift in Sources */,
 				DF7CF7711E7E9E3500C6979A /* CGRect+Arithmetic.swift in Sources */,
 				DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */,
-				A2E1FD5E1E811FC6003EC053 /* UIApplication+isFirstLaunch.swift in Sources */,
 				DFB3426D1E77E6AA00D2FE09 /* GridViewModelProtocol.swift in Sources */,
+				DF409FDF1E84147400389976 /* CountDownTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -995,21 +1006,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2E1FD701E81206D003EC053 /* PlayerTests.swift in Sources */,
+				DF409FEF1E8415E000389976 /* UIApplicationTests.swift in Sources */,
+				DF409FF21E8415F400389976 /* CountDownTimerTest.swift in Sources */,
 				50717AC31E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift in Sources */,
-				A2E1FD6F1E81206D003EC053 /* GameDataTests.swift in Sources */,
 				50269D471E83CB750043C45D /* CountdownTimableTests.swift in Sources */,
-				50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */,
-				50717AC01E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift in Sources */,
-				A2E1FD6E1E81206D003EC053 /* GameDataFactoryTests.swift in Sources */,
 				50269D451E83C96C0043C45D /* GridViewModelTests.swift in Sources */,
-				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
-				A2E1FD741E812078003EC053 /* UIApplicationTests.swift in Sources */,
 				50269D431E83C7CB0043C45D /* GridGameViewControllerDelegateMock.swift in Sources */,
-				DF7CF78B1E7E9FD700C6979A /* IndexPath+CoordinateTests.swift in Sources */,
-				500923341E8398A500BD55FD /* CountDownTimerTest.swift in Sources */,
-				A2E1FD721E812072003EC053 /* RealmTestCase.swift in Sources */,
 				50269D491E83CBC10043C45D /* CountdownTimableMock.swift in Sources */,
+				DF409FF71E84160C00389976 /* GameDataFactoryTests.swift in Sources */,
+				DF409FF31E8415F400389976 /* RealmTestCase.swift in Sources */,
+				DF409FF81E84160C00389976 /* GameDataTests.swift in Sources */,
+				DF409FF91E84160C00389976 /* PlayerTests.swift in Sources */,
 				DF7CF78A1E7E9FD700C6979A /* CGRect+ArithmeticTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
