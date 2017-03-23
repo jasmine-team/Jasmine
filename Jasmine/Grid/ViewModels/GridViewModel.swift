@@ -15,13 +15,21 @@ class GridViewModel: GridViewModelProtocol {
     weak var delegate: GridGameViewControllerDelegate?
     /// Specifies the current score of the game. If the game has not started, it will be the initial
     /// displayed score.
-    private(set) var currentScore: Int = 0
+    private(set) var currentScore: Int = 0 {
+        didSet {
+            delegate?.redisplay(newScore: currentScore)
+        }
+    }
     /// The timer of this game.
     private(set) var timer = CountDownTimer(totalTimeAllowed: Constants.Grid.time)
     /// The status of the current game.
     private(set) var gameStatus: GameStatus = .notStarted {
         didSet {
             delegate?.updateGameStatus()
+
+            if gameStatus != .inProgress {
+                timer.stopTimer()
+            }
         }
     }
 
@@ -29,7 +37,7 @@ class GridViewModel: GridViewModelProtocol {
     func startGame() {
         loadGrid(from: answers)
         timer = createTimer()
-        timer.startTimer(timerInterval: 1)
+        timer.startTimer(timerInterval: Constants.Grid.timerInterval)
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
@@ -53,6 +61,7 @@ class GridViewModel: GridViewModelProtocol {
 
         if gameIsWon {
             gameStatus = .endedWithWon
+            currentScore += Int(timeRemaining * Double(Constants.Grid.scoreMultiplier))
         }
 
         return true
@@ -130,8 +139,8 @@ class GridViewModel: GridViewModelProtocol {
                 self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
             case .finish:
                 self.gameStatus = .endedWithLost
-            case .stop:
-                self.gameStatus = .endedWithWon
+            default:
+                break
             }
         }
 
