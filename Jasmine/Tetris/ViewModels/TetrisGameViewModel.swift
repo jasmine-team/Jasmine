@@ -16,14 +16,35 @@ class TetrisGameViewModel {
         }
     }
 
-    fileprivate let countDownTimer = CountDownTimer(totalTimeAllowed: Constants.Tetris.totalTime)
+    let timer = CountDownTimer(totalTimeAllowed: Constants.Tetris.totalTime)
 
-    fileprivate let gameStatus = GameStatus.notStarted
+    private(set) var gameStatus = GameStatus.notStarted
 
     /// Populate upcomingTiles
     init() {
+        populateUpcomingTiles()
+        setTimerListener()
+    }
+
+    private func populateUpcomingTiles() {
         for _ in 0..<Constants.Tetris.upcomingTilesCount {
             upcomingTiles.append(getRandomWord())
+        }
+    }
+
+    private func setTimerListener() {
+        timer.timerListener = { status in
+            switch status {
+            case .start:
+                self.gameStatus = .inProgress
+                self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
+            case .tick:
+                self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
+            case .finish:
+                self.gameStatus = .endedWithLost
+            case .stop:
+                self.gameStatus = .endedWithWon
+            }
         }
     }
 
@@ -112,6 +133,14 @@ class TetrisGameViewModel {
 
 extension TetrisGameViewModel: TetrisGameViewModelProtocol {
 
+    var gameTitle: String {
+        return Constants.Tetris.gameTitle
+    }
+
+    var gameInstruction: String {
+    	return Constants.Tetris.gameInstruction
+    }
+
     func canShiftFallingTile(to coordinate: Coordinate) -> Bool {
         return !tetrisGrid.hasTile(at: coordinate)
     }
@@ -162,6 +191,6 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
             assertionFailure("startGame called when game is already ongoing")
             return
         }
-        countDownTimer.startTimer(timerInterval: Constants.Tetris.timeInterval, viewControllerDelegate: delegate)
+        timer.startTimer(timerInterval: Constants.Tetris.timeInterval)
     }
 }

@@ -52,33 +52,21 @@ class TetrisGameViewController: UIViewController {
 /// MARK: - TetrisViewDelegate
 extension TetrisGameViewController: TetrisGameViewControllerDelegate {
 
-    /// Tells the view controller to retrieve `upcomingTiles` and reload the view for the upcoming tiles.
+    func notifyGameStatus() {}
+
     func redisplayUpcomingTiles() {}
 
     func redisplayFallingTile(tileText: String) {}
 
-    // MARK: Animation
-    /// Ask the view controller to animate the destruction of tiles at the specified coordinates.
-    ///
-    /// - Parameter coodinates: the set of coordinates to be destroyed.
     func animate(destroyTilesAt coodinates: Set<Coordinate>) {}
 
-    /// Shifts the content of the tiles from Coordinate `from` to Coordinate `to`
-    ///
-    /// - Parameter coordinatesShifted: array of coordinates to shift
     func animate(shiftTiles coordinatesToShift: [(from: Coordinate, to: Coordinate)]) {}
 
-    func redisplay(newScore: Int) {
+    func redisplay(newScore: Int) {}
 
-    }
+    func redisplay(timeRemaining: TimeInterval, outOf totalTime: TimeInterval) {}
 
-    func redisplay(timeRemaining: TimeInterval, outOf totalTime: TimeInterval) {
-
-    }
-
-    func notifyGameStatus(with newStatus: GameStatus) {
-
-    }
+    func notifyGameStatus(with newStatus: GameStatus) {}
 }
 
 /// MARK: - UICollectionViewDataSource
