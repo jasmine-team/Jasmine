@@ -18,7 +18,11 @@ class TetrisGameViewModel {
 
     let timer = CountDownTimer(totalTimeAllowed: Constants.Tetris.totalTime)
 
-    private(set) var gameStatus = GameStatus.notStarted
+    private(set) var gameStatus = GameStatus.notStarted {
+        didSet {
+            delegate?.notifyGameStatus()
+        }
+    }
 
     /// Populate upcomingTiles
     init() {
