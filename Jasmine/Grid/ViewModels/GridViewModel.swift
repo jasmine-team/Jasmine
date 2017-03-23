@@ -18,6 +18,20 @@ class GridViewModel: GridViewModelProtocol {
         }
     }
 
+    /// Provide a brief title for this game. Note that this title should be able to fit within the
+    /// width of the display.
+    var gameTitle: String {
+        // TODO: Fill this in.
+        return ""
+    }
+
+    /// Provide of a brief description of its objectives and how this game is played.
+    /// There is no word count limit, but should be concise.
+    var gameInstruction: String {
+        // TODO: Fill this in.
+        return ""
+    }
+
     /// Tells the view model that the game has started.
     func startGame() {
         timer = createTimer()
