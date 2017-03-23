@@ -144,8 +144,8 @@
 		CDF6F46CAE49685937742BCB /* Pods-JasmineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GridStoryboard.storyboard; sourceTree = "<group>"; };
 		DF2D21EB1E743C8700094381 /* GridGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewController.swift; sourceTree = "<group>"; };
-		DF6156931E7FA93500443E65 /* CountDownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountDownTimer.swift; path = ../ViewModels/CountDownTimer.swift; sourceTree = "<group>"; };
-		DF6156951E7FA96200443E65 /* CountDownTimerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountDownTimerTest.swift; path = ../ViewModels/CountDownTimerTest.swift; sourceTree = "<group>"; };
+		DF6156931E7FA93500443E65 /* CountDownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountDownTimer.swift; path = CountDownTimer.swift; sourceTree = "<group>"; };
+		DF6156951E7FA96200443E65 /* CountDownTimerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountDownTimerTest.swift; path = CountDownTimerTest.swift; sourceTree = "<group>"; };
 		DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TetrisStoryboard.storyboard; sourceTree = "<group>"; };
 		DF7CF76F1E7E9E3500C6979A /* CGRect+Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Arithmetic.swift"; sourceTree = "<group>"; };
 		DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+Coordinate.swift"; sourceTree = "<group>"; };
@@ -282,9 +282,9 @@
 		50989DC41E6D8B16009A86C8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DF6156931E7FA93500443E65 /* CountDownTimer.swift */,
 				A2E1FD5F1E811FCF003EC053 /* Prebundler.swift */,
 				A2187E6B1E7510B60033FC5B /* Random.swift */,
-				DF6156931E7FA93500443E65 /* CountDownTimer.swift */,
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
 			);
 			path = Helpers;
@@ -293,13 +293,13 @@
 		50989DC81E6D8B16009A86C8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A2E1FD611E811FD6003EC053 /* GameDataFactory.swift */,
-				A2E1FD621E811FD6003EC053 /* Player.swift */,
 				DFB342701E77EB6700D2FE09 /* Coordinate.swift */,
 				50989DC51E6D8B16009A86C8 /* GameData.swift */,
+				A2E1FD611E811FD6003EC053 /* GameDataFactory.swift */,
 				DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */,
 				509894A21E6E6CAE00FC9CF3 /* GameType.swift */,
 				50989DC71E6D8B16009A86C8 /* Phrase.swift */,
+				A2E1FD621E811FD6003EC053 /* Player.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -335,11 +335,11 @@
 				DF7CF77C1E7E9EED00C6979A /* Views */,
 				50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */,
 				A260C6271E6AB30400782103 /* Assets.xcassets */,
-				A2E1FD651E811FE3003EC053 /* phrases.txt */,
-				A2E1FD661E811FE3003EC053 /* prebundled.realm */,
-				A2E1FD671E811FE3003EC053 /* Secrets.swift */,
 				50989DC21E6D8B16009A86C8 /* Constants.swift */,
 				50989DE61E6D8BBD009A86C8 /* Info.plist */,
+				A2E1FD671E811FE3003EC053 /* Secrets.swift */,
+				A2E1FD651E811FE3003EC053 /* phrases.txt */,
+				A2E1FD661E811FE3003EC053 /* prebundled.realm */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -408,8 +408,8 @@
 			isa = PBXGroup;
 			children = (
 				DF6156951E7FA96200443E65 /* CountDownTimerTest.swift */,
-				A2E1FD711E812072003EC053 /* RealmTestCase.swift */,
 				50717ABF1E7BD944005A2FE5 /* RandomTests.swift */,
+				A2E1FD711E812072003EC053 /* RealmTestCase.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -417,10 +417,10 @@
 		50F191A81E7ADC4800EE9A75 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */,
 				A2E1FD6B1E81206D003EC053 /* GameDataFactoryTests.swift */,
 				A2E1FD6C1E81206D003EC053 /* GameDataTests.swift */,
 				A2E1FD6D1E81206D003EC053 /* PlayerTests.swift */,
-				50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -589,11 +589,11 @@
 		DF7CF76E1E7E9E2B00C6979A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A2E1FD5C1E811FC6003EC053 /* UIApplication+isFirstLaunch.swift */,
 				DF7CF76F1E7E9E3500C6979A /* CGRect+Arithmetic.swift */,
 				DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */,
 				A2187E6D1E7511470033FC5B /* MutableCollection+Extensions.swift */,
 				A2187E711E751C930033FC5B /* Sequence+Extensions.swift */,
+				A2E1FD5C1E811FC6003EC053 /* UIApplication+isFirstLaunch.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -621,11 +621,11 @@
 		DF7CF7871E7E9FD700C6979A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A2E1FD731E812078003EC053 /* UIApplicationTests.swift */,
 				DF7CF7881E7E9FD700C6979A /* CGRect+ArithmeticTests.swift */,
 				DF7CF7891E7E9FD700C6979A /* IndexPath+CoordinateTests.swift */,
 				50717ABE1E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift */,
 				50717AC21E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift */,
+				A2E1FD731E812078003EC053 /* UIApplicationTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
