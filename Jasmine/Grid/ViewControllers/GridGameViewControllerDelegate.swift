@@ -8,10 +8,7 @@ protocol GridGameViewControllerDelegate: BaseGameViewControllerDelegate {
     ///
     /// Note that this does *not* reload all the tiles displayed on the View Controller.
     /// To do so, call a variant of `redisplayTiles`.
-    ///
-    /// - Parameter newGridData: the mapping of all the coordinates to all the displayed values on
-    ///   the grid tiles.
-    func update(tilesWith newGridData: [Coordinate: String])
+    func updateGridData()
 
     /// Refreshes the tiles based on the tiles information stored in the View Controller's grid data.
     ///

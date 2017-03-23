@@ -24,7 +24,5 @@ protocol BaseGameViewControllerDelegate: class {
     /// This is also the place to indicate when the user has won/lost.
     /// Note also that if the user has won/lost, the score in the `redisplay(_ newScore)` will be
     /// taken as the end game score. So update it before calling end game.
-    ///
-    /// - Parameter newStatus: the new status of the current game session.
-    func notifyGameStatus(with newStatus: GameStatus)
+    func notifyGameStatus()
 }

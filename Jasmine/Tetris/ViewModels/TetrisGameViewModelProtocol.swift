@@ -1,5 +1,5 @@
 /// Implement this class to describe how a game can be played with a Tetris Game board.
-protocol TetrisGameViewModelProtocol: BaseViewModelProtocol {
+protocol TetrisGameViewModelProtocol: BaseViewModelProtocol, CountdownTimable {
 
     // MARK: Properties
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
