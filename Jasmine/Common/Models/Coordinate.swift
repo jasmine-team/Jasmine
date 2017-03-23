@@ -18,19 +18,6 @@ struct Coordinate {
         self.row = row
         self.col = col
     }
-
-    /// Compares a coordinate with another coordinate. Returns true if and only if self < other.
-    /// Here comparison is done by looking at the row, then by column.
-    ///
-    /// - Parameter other: the other coordinate to be compared
-    /// - Returns: true if and only if self < other
-    func isLessThanByRowFirst(_ other: Coordinate) -> Bool {
-        if row == other.row {
-            return col < other.col
-        } else {
-            return row < other.row
-        }
-    }
 }
 
 extension Coordinate: Hashable {
@@ -45,5 +32,19 @@ extension Coordinate: Equatable {
     static func == (_ lhs: Coordinate, _ rhs: Coordinate) -> Bool {
         return lhs.row == rhs.row
             && lhs.col == rhs.col
+    }
+}
+
+extension Coordinate: Comparable {
+    /// Compares two Coordinates. Comparison is done by looking at the row, then by column.
+    ///
+    /// - Parameter other: the other coordinate to be compared
+    /// - Returns: true if and only if lhs < rhs
+    static func < (_ lhs: Coordinate, _ rhs: Coordinate) -> Bool {
+        if lhs.row == rhs.row {
+            return lhs.col < rhs.col
+        } else {
+            return lhs.row < rhs.row
+        }
     }
 }

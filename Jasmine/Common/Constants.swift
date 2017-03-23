@@ -6,7 +6,7 @@ enum Constants {
         static let rows = 4
         static let columns = 4
         static let time: TimeInterval = 60
-        static let scoreMultiplier = 100
+        static let scoreMultiplierFromTime = 100
         static let timerInterval: TimeInterval = 0.1
     }
 

@@ -25,7 +25,7 @@ class GridViewModel: GridViewModelProtocol {
     /// The status of the current game.
     private(set) var gameStatus: GameStatus = .notStarted {
         didSet {
-            delegate?.updateGameStatus()
+            delegate?.notifyGameStatusUpdated()
 
             if gameStatus != .inProgress {
                 timer.stopTimer()
@@ -59,18 +59,18 @@ class GridViewModel: GridViewModelProtocol {
 
         swapGridData(coord1, and: coord2)
 
-        if gameIsWon {
+        if hasGameWon {
             gameStatus = .endedWithWon
-            currentScore += Int(timeRemaining * Double(Constants.Grid.scoreMultiplier))
+            currentScore += Int(timeRemaining * Double(Constants.Grid.scoreMultiplierFromTime))
         }
 
         return true
     }
 
     /// Returns true iff the game is won
-    private var gameIsWon: Bool {
+    private var hasGameWon: Bool {
         let sortedGrid = gridData
-            .sorted { $0.key.isLessThanByRowFirst($1.key) }
+            .sorted { $0.key < $1.key }
             .map { $0.value }
 
         var temporary: [String] = []

@@ -224,7 +224,7 @@ extension GridGameViewController: BaseGameViewControllerDelegate {
 
     // MARK: Game Status
     /// Notifies the view controller that the game state has changed.
-    func updateGameStatus() {
+    func notifyGameStatusUpdated() {
 
     }
 }

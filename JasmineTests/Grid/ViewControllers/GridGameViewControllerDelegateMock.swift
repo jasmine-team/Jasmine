@@ -4,7 +4,6 @@ import Foundation
 class GridGameViewControllerDelegateMock: GridGameViewControllerDelegate {
     var gridDataUpdated = false
     var allTilesRedisplayed = false
-    var tilesRedisplayed: Set<Coordinate> = []
     var score = 0
     var timeRemaining: TimeInterval = 0
     var totalTime: TimeInterval = 0
@@ -18,14 +17,6 @@ class GridGameViewControllerDelegateMock: GridGameViewControllerDelegate {
         allTilesRedisplayed = true
     }
 
-    func redisplay(tileAt coordinate: Coordinate) {
-        tilesRedisplayed.formUnion([coordinate])
-    }
-
-    func redisplay(tilesAt coordinates: Set<Coordinate>) {
-        tilesRedisplayed.formUnion(coordinates)
-    }
-
     func redisplay(newScore: Int) {
         score = newScore
     }
@@ -35,7 +26,7 @@ class GridGameViewControllerDelegateMock: GridGameViewControllerDelegate {
         self.totalTime = totalTime
     }
 
-    func updateGameStatus() {
+    func notifyGameStatusUpdated() {
         gameStatusUpdated = true
     }
 }
