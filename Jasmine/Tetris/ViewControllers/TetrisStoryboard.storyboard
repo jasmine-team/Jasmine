@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="Krm-gK-4xY">
             <objects>
-                <viewController id="QxJ-8P-SqZ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TetrisGameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QxJ-8P-SqZ" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="q8A-bO-b8u"/>
                         <viewControllerLayoutGuide type="bottom" id="VPR-bF-iqZ"/>
