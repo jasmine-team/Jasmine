@@ -10,7 +10,7 @@ protocol BaseViewModelProtocol: class {
     var currentScore: Int { get }
 
     /// The status of the current game.
-    var gameStatus: GameStatus { get set }
+    var gameStatus: GameStatus { get }
 
     /// Tells the view model that the game has started.
     func startGame()

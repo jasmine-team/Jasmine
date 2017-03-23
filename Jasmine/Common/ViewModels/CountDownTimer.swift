@@ -2,42 +2,51 @@ import Foundation
 
 /// A timer to handle game time
 class CountDownTimer {
-    typealias VMProtocol = (TimedViewModelProtocol & BaseViewModelProtocol)
-
-    /// The ViewModel that contains this timer.
-    private weak var viewModel: VMProtocol?
     /// Specifies the total time allowed in the game.
     let totalTimeAllowed: TimeInterval
     /// Specifies the time remaining in the game.
-    private(set) var timeRemaining: TimeInterval {
-        didSet {
-            viewModel?.timeDidUpdate(timeRemaining: timeRemaining, totalTime: totalTimeAllowed)
-        }
-    }
+    private(set) var timeRemaining: TimeInterval
+    /// The timer of this countdown timer.
+    private var timer: Timer?
+
+    /// Function that is fired when timer is started.
+    var timerDidStart: (() -> Void)?
+    /// Function that is fired when timer has ticked.
+    var timerDidTick: (() -> Void)?
+    /// Function that is fired when timer is finished (timeRemaining <= 0).
+    var timerDidFinish: (() -> Void)?
+    /// Function that is fired when timer has stopped.
+    var timerDidStop: (() -> Void)?
 
     /// Initialize the total time allowed and sets timeRemaining to it
-    init(totalTimeAllowed: TimeInterval, viewModel: VMProtocol?) {
+    init(totalTimeAllowed: TimeInterval) {
         assert(totalTimeAllowed >= 0, "totalTimeAllowed must be positive")
-        self.viewModel = viewModel
         self.totalTimeAllowed = totalTimeAllowed
         timeRemaining = totalTimeAllowed
-        // Need to include this on init only
-        viewModel?.timeDidUpdate(timeRemaining: timeRemaining, totalTime: totalTimeAllowed)
     }
 
     /// Starts the countdown timer
     func startTimer(timerInterval: TimeInterval) {
         assert(timerInterval >= 0, "timerInterval must be positive")
+        timerDidStart?()
 
-        viewModel?.gameStatus = .inProgress
-
-        Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { timer in
+        timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { timer in
             self.timeRemaining -= timerInterval
+            self.timerDidTick?()
 
             if self.timeRemaining <= 0 {
-                self.viewModel?.gameStatus = .endedWithLost
                 timer.invalidate()
+                self.timerDidFinish?()
             }
         }
+    }
+
+    func stopTimer() {
+        guard let timer = timer else {
+            fatalError("Timer is stopped when it has not started")
+        }
+
+        timer.invalidate()
+        timerDidStop?()
     }
 }

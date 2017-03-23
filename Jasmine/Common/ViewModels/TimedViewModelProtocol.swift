@@ -8,8 +8,6 @@ protocol TimedViewModelProtocol: class {
     var totalTimeAllowed: TimeInterval { get }
     /// Specifies the remaining time left in the game.
     var timeRemaining: TimeInterval { get }
-    /// Tells the ViewModel that the time was updated
-    func timeDidUpdate(timeRemaining: TimeInterval, totalTime: TimeInterval)
 }
 
 extension TimedViewModelProtocol {

@@ -10,13 +10,9 @@ class GridViewModel: GridViewModelProtocol {
     /// displayed score.
     private(set) var currentScore: Int = 0
     /// The timer of this game.
-    private(set) var timer = CountDownTimer(totalTimeAllowed: 0, viewModel: nil)
-    /// Specifies the remaining time left in the game.
-    private(set) var timeRemaining: TimeInterval = Constants.Grid.time
-    /// Specifies the total time allowed in the game.
-    private(set) var totalTimeAllowed: TimeInterval = Constants.Grid.time
+    private(set) var timer = CountDownTimer(totalTimeAllowed: Constants.Grid.time)
     /// The status of the current game.
-    var gameStatus: GameStatus = .notStarted {
+    private(set) var gameStatus: GameStatus = .notStarted {
         didSet {
             delegate?.notifyGameStatus()
         }
@@ -24,18 +20,9 @@ class GridViewModel: GridViewModelProtocol {
 
     /// Tells the view model that the game has started.
     func startGame() {
-        timer = CountDownTimer(totalTimeAllowed: totalTimeAllowed, viewModel: self)
+        timer = createTimer()
         populateGrid(type: .chengYu)
         timer.startTimer(timerInterval: 1)
-    }
-
-    /// Tells the VM that the time has been updated.
-    ///
-    /// - Parameters:
-    ///   - timeRemaining: the remaining time
-    ///   - totalTime: the total time
-    func timeDidUpdate(timeRemaining: TimeInterval, totalTime: TimeInterval) {
-        delegate?.redisplay(timeRemaining: timeRemaining, outOf: totalTime)
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
@@ -120,5 +107,27 @@ class GridViewModel: GridViewModelProtocol {
 
         delegate?.updateGridData()
         delegate?.redisplayAllTiles()
+    }
+
+    /// The countdown timer for use in this viewmodel.
+    ///
+    /// - Returns: the countdown timer
+    private func createTimer() -> CountDownTimer {
+        let timer = CountDownTimer(totalTimeAllowed: totalTimeAllowed)
+
+        timer.timerDidStart = {
+            self.gameStatus = .inProgress
+            self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
+        }
+        timer.timerDidTick = {
+            self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
+        }
+        timer.timerDidFinish = {
+            self.gameStatus = .endedWithLost
+        }
+        timer.timerDidStop = {
+            self.gameStatus = .endedWithWon
+        }
+        return timer
     }
 }
