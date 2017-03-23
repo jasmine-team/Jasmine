@@ -12,13 +12,10 @@ class CountDownTimer {
     var timerListener: ((TimerStatus) -> Void) = { _ in }
 
     /// Initialize the total time allowed and sets timeRemaining to it
-    init(totalTimeAllowed: TimeInterval, viewModel: VMProtocol?) {
+    init(totalTimeAllowed: TimeInterval) {
         assert(totalTimeAllowed >= 0, "totalTimeAllowed must be positive")
-        self.viewModel = viewModel
         self.totalTimeAllowed = totalTimeAllowed
         timeRemaining = totalTimeAllowed
-        // Need to include this on init only
-        viewModel?.timeDidUpdate(timeRemaining: timeRemaining, totalTime: totalTimeAllowed)
     }
 
     /// Starts the countdown timer

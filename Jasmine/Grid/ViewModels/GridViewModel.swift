@@ -21,14 +21,14 @@ class GridViewModel: GridViewModelProtocol {
     /// The status of the current game.
     private(set) var gameStatus: GameStatus = .notStarted {
         didSet {
-            delegate?.notifyGameStatus()
+            delegate?.updateGameStatus()
         }
     }
 
     /// Tells the view model that the game has started.
     func startGame() {
         loadGrid(from: answers)
-        timer = CountDownTimer(totalTimeAllowed: totalTimeAllowed, viewModel: self)
+        timer = createTimer()
         timer.startTimer(timerInterval: 1)
     }
 
