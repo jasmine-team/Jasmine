@@ -12,7 +12,7 @@
 		5011E2711E7FD03A000D0564 /* TetrisViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB95A051E785D2E005EE2A4 /* TetrisViewModelProtocol.swift */; };
 		5011E2731E7FD065000D0564 /* TetrisGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5011E2721E7FD065000D0564 /* TetrisGameViewModel.swift */; };
 		5011E2781E7FD861000D0564 /* BaseViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5011E2761E7FD861000D0564 /* BaseViewModelProtocol.swift */; };
-		5040AA5F1E81585200A7EF10 /* TimedViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040AA5E1E81585200A7EF10 /* TimedViewModelProtocol.swift */; };
+		5040AA5F1E81585200A7EF10 /* TimedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040AA5E1E81585200A7EF10 /* TimedProtocol.swift */; };
 		505E07381E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E07371E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift */; };
 		505E073A1E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E07391E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift */; };
 		505E073C1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E073B1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift */; };
@@ -95,7 +95,7 @@
 		379F12059637B53A50B97F3B /* Pods-JasmineUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineUITests/Pods-JasmineUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5011E2721E7FD065000D0564 /* TetrisGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewModel.swift; sourceTree = "<group>"; };
 		5011E2761E7FD861000D0564 /* BaseViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModelProtocol.swift; sourceTree = "<group>"; };
-		5040AA5E1E81585200A7EF10 /* TimedViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedViewModelProtocol.swift; sourceTree = "<group>"; };
+		5040AA5E1E81585200A7EF10 /* TimedProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedProtocol.swift; sourceTree = "<group>"; };
 		505E07371E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		505E07391E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		505E073B1E7BE59300CEE8BF /* FlappyGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyGameViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -319,7 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				5011E2761E7FD861000D0564 /* BaseViewModelProtocol.swift */,
-				5040AA5E1E81585200A7EF10 /* TimedViewModelProtocol.swift */,
+				5040AA5E1E81585200A7EF10 /* TimedProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -938,7 +938,7 @@
 				DF7CF7781E7E9ECE00C6979A /* BaseGameViewControllerDelegate.swift in Sources */,
 				5011E2731E7FD065000D0564 /* TetrisGameViewModel.swift in Sources */,
 				50989DDD1E6D8B16009A86C8 /* GameData.swift in Sources */,
-				5040AA5F1E81585200A7EF10 /* TimedViewModelProtocol.swift in Sources */,
+				5040AA5F1E81585200A7EF10 /* TimedProtocol.swift in Sources */,
 				DF7CF77A1E7E9ECE00C6979A /* GameStatisticsViewController.swift in Sources */,
 				50989DE01E6D8B16009A86C8 /* HomeScreenViewController.swift in Sources */,
 				50989DD51E6D8B16009A86C8 /* TetrisGameData.swift in Sources */,
