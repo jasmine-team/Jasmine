@@ -114,7 +114,7 @@ class GridViewModel: GridViewModelProtocol {
     }
 
     /// Swaps two coordinates in the grid data. The built-in swap function cannot be used as
-    /// it will introduce concurrent write in `delegate?.updateGridData()`.
+    /// it will introduce concurrent write in gridData's didSet listener.
     ///
     /// - Parameters:
     ///   - coord1: the first coordinate

@@ -22,7 +22,6 @@ class GridGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTheme()
-
     }
 
     /// This also starts the game if have not done so.
