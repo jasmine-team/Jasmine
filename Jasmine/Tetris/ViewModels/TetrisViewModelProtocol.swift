@@ -2,7 +2,7 @@
 ///
 /// Note that the falling tile shound *not* be included in the tetris board data. This means that the
 /// board data should only store tiles that are landed.
-protocol TetrisViewModelProtocol: BaseViewModelProtocol, TimedProtocol {
+protocol TetrisViewModelProtocol: BaseViewModelProtocol, CountdownTimable {
 
     // MARK: Properties
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
