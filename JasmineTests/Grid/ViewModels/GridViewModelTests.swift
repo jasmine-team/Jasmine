@@ -16,6 +16,11 @@ class GridViewModelTests: XCTestCase {
                        "ViewModel timer on init is not correct")
         XCTAssertEqual(GameStatus.notStarted, viewModel.gameStatus,
                        "ViewModel gameStatus on init is not correct")
+        XCTAssertEqual("Grid Game", viewModel.gameTitle,
+                       "ViewModel gameTitle on init is not correct")
+        XCTAssertEqual("Match the Chinese characters with their Pinyins by putting them in one row.",
+                       viewModel.gameInstruction,
+                       "ViewModel gameInstruction on init is not correct")
     }
 
     func testStartGame() {
