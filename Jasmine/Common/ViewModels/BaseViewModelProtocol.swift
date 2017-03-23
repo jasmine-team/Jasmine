@@ -18,6 +18,9 @@ protocol BaseViewModelProtocol {
     var gameInstruction: String { get }
 
     // MARK: Game Actions
+    /// The status of the current game.
+    var gameStatus: GameStatus { get }
+
     /// Tells the view model that the game has started.
     func startGame()
 }
