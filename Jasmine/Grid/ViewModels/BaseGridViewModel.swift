@@ -10,11 +10,11 @@ class BaseGridViewModel: GridViewModelProtocol {
     /// Answers for this game. The game is won if this is done
     private var answers: [[String]]
     /// Number of rows in the grid, according to the answers property
-    private var rows: Int {
+    var rows: Int {
         return answers.count
     }
     /// Number of columns in the grid, according to the answers property
-    private var columns: Int {
+    var columns: Int {
         return answers[0].count
     }
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
@@ -62,7 +62,7 @@ class BaseGridViewModel: GridViewModelProtocol {
 
     /// Tells the view model that the game has started.
     func startGame() {
-        timer.startTimer(timerInterval: Constants.Grid.timerInterval)
+        timer.startTimer(timerInterval: Constants.Game.Grid.timerInterval)
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
