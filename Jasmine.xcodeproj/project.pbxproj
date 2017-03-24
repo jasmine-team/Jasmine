@@ -41,8 +41,6 @@
 		A2187E6E1E7511470033FC5B /* MutableCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E6D1E7511470033FC5B /* MutableCollection+Extensions.swift */; };
 		A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E711E751C930033FC5B /* Sequence+Extensions.swift */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
-		A260C6411E6AB30400782103 /* JasmineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260C6401E6AB30400782103 /* JasmineUITests.swift */; };
-		BD025B06A527CD03DA811285 /* Pods_JasmineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */; };
 		DF2D21EA1E743BC500094381 /* GridStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */; };
 		DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D21EB1E743C8700094381 /* GridGameViewController.swift */; };
 		DF409FDB1E84145800389976 /* UIApplication+isFirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FDA1E84145800389976 /* UIApplication+isFirstLaunch.swift */; };
@@ -81,13 +79,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		A260C6321E6AB30400782103 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A260C6151E6AB30400782103 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A260C61C1E6AB30400782103;
-			remoteInfo = Jasmine;
-		};
-		A260C63D1E6AB30400782103 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A260C6151E6AB30400782103 /* Project object */;
 			proxyType = 1;
@@ -134,9 +125,6 @@
 		A260C6271E6AB30400782103 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A260C6311E6AB30400782103 /* JasmineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JasmineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6371E6AB30400782103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A260C63C1E6AB30400782103 /* JasmineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JasmineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A260C6401E6AB30400782103 /* JasmineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JasmineUITests.swift; sourceTree = "<group>"; };
-		A260C6421E6AB30400782103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0F92A417FF0A33A2C39DC68 /* Pods-JasmineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineUITests/Pods-JasmineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF6F46CAE49685937742BCB /* Pods-JasmineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,14 +183,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EA886212AABEB7ED888C04C /* Pods_JasmineTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A260C6391E6AB30400782103 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BD025B06A527CD03DA811285 /* Pods_JasmineUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,7 +537,6 @@
 				4F925529F1FCEF5E5A4CE750 /* Frameworks */,
 				A260C61F1E6AB30400782103 /* Jasmine */,
 				A260C6341E6AB30400782103 /* JasmineTests */,
-				A260C63F1E6AB30400782103 /* JasmineUITests */,
 				50BB58D66BC620D2B41E2E2D /* Pods */,
 				A260C61E1E6AB30400782103 /* Products */,
 			);
@@ -568,7 +547,6 @@
 			children = (
 				A260C61D1E6AB30400782103 /* Jasmine.app */,
 				A260C6311E6AB30400782103 /* JasmineTests.xctest */,
-				A260C63C1E6AB30400782103 /* JasmineUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -594,15 +572,6 @@
 				A260C6371E6AB30400782103 /* Info.plist */,
 			);
 			path = JasmineTests;
-			sourceTree = "<group>";
-		};
-		A260C63F1E6AB30400782103 /* JasmineUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A260C6421E6AB30400782103 /* Info.plist */,
-				A260C6401E6AB30400782103 /* JasmineUITests.swift */,
-			);
-			path = JasmineUITests;
 			sourceTree = "<group>";
 		};
 		DF7CF76E1E7E9E2B00C6979A /* Extensions */ = {
@@ -695,27 +664,6 @@
 			productReference = A260C6311E6AB30400782103 /* JasmineTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A260C63B1E6AB30400782103 /* JasmineUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A260C64B1E6AB30400782103 /* Build configuration list for PBXNativeTarget "JasmineUITests" */;
-			buildPhases = (
-				EBA48037FE7DCCE36E9E204E /* [CP] Check Pods Manifest.lock */,
-				A260C6381E6AB30400782103 /* Sources */,
-				A260C6391E6AB30400782103 /* Frameworks */,
-				A260C63A1E6AB30400782103 /* Resources */,
-				B0EC76671E171577C9FDD233 /* [CP] Embed Pods Frameworks */,
-				A813EBADD2106F05186F6114 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A260C63E1E6AB30400782103 /* PBXTargetDependency */,
-			);
-			name = JasmineUITests;
-			productName = JasmineUITests;
-			productReference = A260C63C1E6AB30400782103 /* JasmineUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -737,11 +685,6 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = A260C61C1E6AB30400782103;
 					};
-					A260C63B1E6AB30400782103 = {
-						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
-						TestTargetID = A260C61C1E6AB30400782103;
-					};
 				};
 			};
 			buildConfigurationList = A260C6181E6AB30400782103 /* Build configuration list for PBXProject "Jasmine" */;
@@ -759,7 +702,6 @@
 			targets = (
 				A260C61C1E6AB30400782103 /* Jasmine */,
 				A260C6301E6AB30400782103 /* JasmineTests */,
-				A260C63B1E6AB30400782103 /* JasmineUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -781,13 +723,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A260C62F1E6AB30400782103 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A260C63A1E6AB30400782103 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -915,51 +850,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$SRCROOT/scripts/swiftlint.sh\"";
 		};
-		A813EBADD2106F05186F6114 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JasmineUITests/Pods-JasmineUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B0EC76671E171577C9FDD233 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JasmineUITests/Pods-JasmineUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EBA48037FE7DCCE36E9E204E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1035,14 +925,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A260C6381E6AB30400782103 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A260C6411E6AB30400782103 /* JasmineUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1050,11 +932,6 @@
 			isa = PBXTargetDependency;
 			target = A260C61C1E6AB30400782103 /* Jasmine */;
 			targetProxy = A260C6321E6AB30400782103 /* PBXContainerItemProxy */;
-		};
-		A260C63E1E6AB30400782103 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A260C61C1E6AB30400782103 /* Jasmine */;
-			targetProxy = A260C63D1E6AB30400782103 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1213,34 +1090,6 @@
 			};
 			name = Release;
 		};
-		A260C64C1E6AB30400782103 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 379F12059637B53A50B97F3B /* Pods-JasmineUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = JasmineUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.JasmineUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = Jasmine;
-			};
-			name = Debug;
-		};
-		A260C64D1E6AB30400782103 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0F92A417FF0A33A2C39DC68 /* Pods-JasmineUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = JasmineUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.JasmineUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = Jasmine;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1267,15 +1116,6 @@
 			buildConfigurations = (
 				A260C6491E6AB30400782103 /* Debug */,
 				A260C64A1E6AB30400782103 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A260C64B1E6AB30400782103 /* Build configuration list for PBXNativeTarget "JasmineUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A260C64C1E6AB30400782103 /* Debug */,
-				A260C64D1E6AB30400782103 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
