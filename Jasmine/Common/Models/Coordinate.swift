@@ -41,6 +41,7 @@ extension Coordinate: Comparable {
     /// - Parameter other: the other coordinate to be compared
     /// - Returns: true if and only if lhs < rhs
     static func < (_ lhs: Coordinate, _ rhs: Coordinate) -> Bool {
-        return lhs.row == rhs.row ? lhs.col < rhs.col : lhs.row < rhs.row
+        return lhs.row == rhs.row ? lhs.col < rhs.col
+                                  : lhs.row < rhs.row
     }
 }
