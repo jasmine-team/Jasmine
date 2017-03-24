@@ -32,6 +32,7 @@ class CoordinateTests: XCTestCase {
     func testNextRow() {
         XCTAssertEqual(Coordinate(row: 3, col: 5).nextRow, Coordinate(row: 4, col: 5),
                        "nextRow did not return the correct coordinates")
+    }
 
     func testComparable() {
         let coordinateArray = [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]

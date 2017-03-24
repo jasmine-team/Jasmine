@@ -20,7 +20,7 @@ class TetrisGameViewModel {
 
     private(set) var gameStatus = GameStatus.notStarted {
         didSet {
-            delegate?.notifyGameStatus()
+            delegate?.notifyGameStatusUpdated()
         }
     }
 

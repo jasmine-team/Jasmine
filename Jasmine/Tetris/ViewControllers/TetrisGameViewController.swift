@@ -52,7 +52,7 @@ class TetrisGameViewController: UIViewController {
 /// MARK: - TetrisViewDelegate
 extension TetrisGameViewController: TetrisGameViewControllerDelegate {
 
-    func notifyGameStatus() {}
+    func notifyGameStatusUpdated() {}
 
     func redisplayUpcomingTiles() {}
 
