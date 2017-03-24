@@ -1,6 +1,6 @@
 import Foundation
 
-class GridViewModel: GridViewModelProtocol {
+class BaseGridViewModel: GridViewModelProtocol {
     /// Stores the grid data that will be used to display in the view controller.
     private(set) var gridData: [Coordinate: String] = [:] {
         didSet {
@@ -8,8 +8,15 @@ class GridViewModel: GridViewModelProtocol {
         }
     }
     /// Answers for this game. The game is won if this is done
-    private var answers: [[String]] = [["1", "2", "3", "4"], ["5", "6", "7", "8"],
-                                       ["9", "10", "11", "12"], ["13", "14", "15", "16"]]
+    private var answers: [[String]]
+    /// Number of rows in the grid, according to the answers property
+    private var rows: Int {
+        return answers.count
+    }
+    /// Number of columns in the grid, according to the answers property
+    private var columns: Int {
+        return answers[0].count
+    }
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
     weak var delegate: GridGameViewControllerDelegate?
@@ -21,7 +28,7 @@ class GridViewModel: GridViewModelProtocol {
         }
     }
     /// The timer of this game.
-    private(set) var timer = CountDownTimer(totalTimeAllowed: Constants.Grid.time)
+    private(set) var timer: CountDownTimer
     /// The status of the current game.
     private(set) var gameStatus: GameStatus = .notStarted {
         didSet {
@@ -41,10 +48,20 @@ class GridViewModel: GridViewModelProtocol {
     /// There is no word count limit, but should be concise.
     var gameInstruction = "Match the Chinese characters with their Pinyins by putting them in one row."
 
+    init(time: TimeInterval, answers: [[String]]) {
+        timer = CountDownTimer(totalTimeAllowed: time)
+
+        self.answers = answers
+        assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
+        assert(answers.map { $0.count }.isAllSame, "All rows should have the same length")
+
+        timer.timerListener = gridTimerListener
+
+        loadGrid()
+    }
+
     /// Tells the view model that the game has started.
     func startGame() {
-        loadGrid(from: answers)
-        timer = createTimer()
         timer.startTimer(timerInterval: Constants.Grid.timerInterval)
     }
 
@@ -100,20 +117,15 @@ class GridViewModel: GridViewModelProtocol {
     /// Each element in the main array should have the same length.
     ///
     /// - Parameter characters: the characters to be loaded to the grid
-    private func loadGrid(from phrases: [[String]]) {
-        let rows = phrases.count
-        let cols = phrases.first?.count ?? 0
-        assert(rows > 0 && cols > 0, "Number of rows and columns should be more than 0")
-        assert(phrases.map { $0.count }.isAllSame, "All rows should have the same length")
+    private func loadGrid() {
+        let allTiles = answers.joined().shuffled()
 
-        let allChars = phrases.joined().shuffled()
-
-        // Place back allChars to the grid
+        // Place back allTiles to the grid
         gridData.removeAll()
         var idx = 0
         for row in 0..<rows {
-            for col in 0..<cols {
-                gridData[Coordinate(row: row, col: col)] = allChars[idx]
+            for col in 0..<columns {
+                gridData[Coordinate(row: row, col: col)] = allTiles[idx]
                 idx += 1
             }
         }
@@ -136,22 +148,17 @@ class GridViewModel: GridViewModelProtocol {
     /// The countdown timer for use in this viewmodel.
     ///
     /// - Returns: the countdown timer
-    private func createTimer() -> CountDownTimer {
-        let timer = CountDownTimer(totalTimeAllowed: totalTimeAllowed)
-        timer.timerListener = { status in
-            switch status {
-            case .start:
-                self.gameStatus = .inProgress
-                self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
-            case .tick:
-                self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
-            case .finish:
-                self.gameStatus = .endedWithLost
-            default:
-                break
-            }
+    private func gridTimerListener(status: TimerStatus) {
+        switch status {
+        case .start:
+            gameStatus = .inProgress
+            delegate?.redisplay(timeRemaining: timeRemaining, outOf: totalTimeAllowed)
+        case .tick:
+            delegate?.redisplay(timeRemaining: timeRemaining, outOf: totalTimeAllowed)
+        case .finish:
+            gameStatus = .endedWithLost
+        default:
+            break
         }
-
-        return timer
     }
 }
