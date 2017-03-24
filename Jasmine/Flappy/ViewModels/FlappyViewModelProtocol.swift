@@ -15,7 +15,7 @@ protocol FlappyViewModelProtocol: BaseViewModelProtocol {
     ///
     /// - Returns: A tuple consisting of the question title, words to be displayed on the projectile
     ///   and a list of words to be displayed on the targets, where index 0 is the top-most target.
-    func getNextQuestion() -> (title: String?, projectile: String, targets: [String])
+    func getNextQuestion() -> FlappyQuestion
 
     /// Tells the view model that the projectile has landed into one of the targets.
     ///

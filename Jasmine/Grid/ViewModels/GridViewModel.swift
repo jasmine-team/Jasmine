@@ -1,6 +1,7 @@
 import Foundation
 
 class GridViewModel: GridViewModelProtocol {
+
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
     weak var delegate: GridGameViewControllerDelegate?

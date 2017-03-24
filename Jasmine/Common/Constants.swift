@@ -8,6 +8,13 @@ enum Constants {
         static let time: TimeInterval = 60
     }
 
+    enum Flappy {
+        static let gameTitle = "Flappy game"
+        static let gameInstruction = "Fly your bird through the correct tunnel"
+
+        static let scoreIncrement = 1
+    }
+
     enum Theme {
         static let mainColor = FlatMint()
         static let mainColorDark = FlatMintDark()
