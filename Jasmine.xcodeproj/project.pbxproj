@@ -26,6 +26,7 @@
 		50717AC31E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50717AC21E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift */; };
 		508BAF7D1E84BDA10088D0A6 /* CiHuiGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BAF7C1E84BDA10088D0A6 /* CiHuiGridViewModel.swift */; };
 		508BAF7F1E84C00D0088D0A6 /* ChengYuGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BAF7E1E84C00D0088D0A6 /* ChengYuGridViewModel.swift */; };
+		508BAF811E8510A90088D0A6 /* CiHuiGridViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BAF801E8510A90088D0A6 /* CiHuiGridViewModelTests.swift */; };
 		509894A31E6E6CAE00FC9CF3 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509894A21E6E6CAE00FC9CF3 /* GameType.swift */; };
 		50989DD51E6D8B16009A86C8 /* TetrisGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DB41E6D8B16009A86C8 /* TetrisGameData.swift */; };
 		50989DDA1E6D8B16009A86C8 /* BaseGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DBF1E6D8B16009A86C8 /* BaseGridViewModel.swift */; };
@@ -115,6 +116,7 @@
 		50717AC21E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		508BAF7C1E84BDA10088D0A6 /* CiHuiGridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiGridViewModel.swift; sourceTree = "<group>"; };
 		508BAF7E1E84C00D0088D0A6 /* ChengYuGridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuGridViewModel.swift; sourceTree = "<group>"; };
+		508BAF801E8510A90088D0A6 /* CiHuiGridViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiGridViewModelTests.swift; sourceTree = "<group>"; };
 		509894A21E6E6CAE00FC9CF3 /* GameType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
 		50989DB41E6D8B16009A86C8 /* TetrisGameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameData.swift; sourceTree = "<group>"; };
 		50989DBF1E6D8B16009A86C8 /* BaseGridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGridViewModel.swift; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				50269D441E83C96C0043C45D /* BaseGridViewModelTests.swift */,
+				508BAF801E8510A90088D0A6 /* CiHuiGridViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -991,6 +994,7 @@
 			files = (
 				A2E1FD701E81206D003EC053 /* PlayerTests.swift in Sources */,
 				50717AC31E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift in Sources */,
+				508BAF811E8510A90088D0A6 /* CiHuiGridViewModelTests.swift in Sources */,
 				A2E1FD6F1E81206D003EC053 /* GameDataTests.swift in Sources */,
 				50269D471E83CB750043C45D /* CountdownTimableTests.swift in Sources */,
 				50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */,

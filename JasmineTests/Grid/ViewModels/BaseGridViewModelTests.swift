@@ -21,8 +21,10 @@ class BaseGridViewModelTests: XCTestCase {
                        "ViewModel rows on init is not correct")
         XCTAssertEqual(2, viewModel.columns,
                        "ViewModel columns on init is not correct")
-        XCTAssertEqual(0, viewModel.currentScore,
-                       "ViewModel currentScore on init is not correct")
+        XCTAssertEqual(3, viewModel.timeRemaining,
+                       "ViewModel timeRemaining on init is not correct")
+        XCTAssertEqual(3, viewModel.totalTimeAllowed,
+                       "ViewModel timeRemaining on init is not correct")
         XCTAssertEqual(GameStatus.notStarted, viewModel.gameStatus,
                        "ViewModel gameStatus on init is not correct")
         XCTAssertEqual("Grid Game", viewModel.gameTitle,
