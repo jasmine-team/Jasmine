@@ -21,7 +21,7 @@ class GridViewModel: GridViewModelProtocol {
         }
     }
     /// The timer of this game.
-    private(set) var timer = CountDownTimer(totalTimeAllowed: Constants.Grid.time)
+    private(set) var timer = CountDownTimer(totalTimeAllowed: Constants.Game.Grid.time)
     /// The status of the current game.
     private(set) var gameStatus: GameStatus = .notStarted {
         didSet {
@@ -45,7 +45,7 @@ class GridViewModel: GridViewModelProtocol {
     func startGame() {
         loadGrid(from: answers)
         timer = createTimer()
-        timer.startTimer(timerInterval: Constants.Grid.timerInterval)
+        timer.startTimer(timerInterval: Constants.Game.Grid.timerInterval)
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
@@ -69,7 +69,7 @@ class GridViewModel: GridViewModelProtocol {
 
         if hasGameWon {
             gameStatus = .endedWithWon
-            currentScore += Int(timeRemaining * Double(Constants.Grid.scoreMultiplierFromTime))
+            currentScore += Int(timeRemaining * Double(Constants.Game.Grid.scoreMultiplierFromTime))
         }
 
         return true
@@ -84,7 +84,7 @@ class GridViewModel: GridViewModelProtocol {
         var temporary: [String] = []
         for element in sortedGrid {
             temporary.append(element)
-            if temporary.count == Constants.Grid.columns {
+            if temporary.count == Constants.Game.Grid.columns {
                 if answers.contains(where: { $0 == temporary }) {
                     temporary = []
                 } else {
