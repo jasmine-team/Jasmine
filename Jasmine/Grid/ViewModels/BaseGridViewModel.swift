@@ -42,13 +42,16 @@ class BaseGridViewModel: GridViewModelProtocol {
 
     /// Provide a brief title for this game. Note that this title should be able to fit within the
     /// width of the display.
-    var gameTitle = "Grid Game"
+    var gameTitle: String
 
     /// Provide of a brief description of its objectives and how this game is played.
     /// There is no word count limit, but should be concise.
-    var gameInstruction = "Match the Chinese characters with their Pinyins by putting them in one row."
+    var gameInstruction: String
 
     init(time: TimeInterval, answers: [[String]]) {
+        gameTitle = "Grid Game"
+        gameInstruction = "Match the Chinese characters with their Pinyins by putting them in one row."
+
         timer = CountDownTimer(totalTimeAllowed: time)
 
         self.answers = answers
