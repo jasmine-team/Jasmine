@@ -1,8 +1,7 @@
 import Foundation
 
 class CiHuiGridViewModel: BaseGridViewModel {
-    init(time: TimeInterval, gameData: GameData) {
-        let numberOfPhrases = Constants.Game.Grid.rows
+    init(time: TimeInterval, gameData: GameData, numberOfPhrases: Int) {
         let phrases = gameData.phrases.prefix(numberOfPhrases)
 
         var tiles: [String] = []

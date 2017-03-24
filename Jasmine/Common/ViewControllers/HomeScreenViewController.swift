@@ -8,7 +8,8 @@ class HomeScreenViewController: UIViewController {
             }
             let gameData = gameDataFactory.createGame(difficulty: 0)
             gridGame.segueWith(CiHuiGridViewModel(time: Constants.Game.Grid.time,
-                                                  gameData: gameData))
+                                                  gameData: gameData,
+                                                  numberOfPhrases: Constants.Game.Grid.rows))
         }
     }
 }
