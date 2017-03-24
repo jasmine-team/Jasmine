@@ -82,6 +82,7 @@ class BaseGridViewModel: GridViewModelProtocol {
     ///   - coord1: One of the cells to be swapped.
     ///   - coord2: The other cell to be swapped.
     /// - Returns: Returns true if the two coordinates has be swapped, false otherwise.
+    @discardableResult
     func swapTiles(_ coord1: Coordinate, and coord2: Coordinate) -> Bool {
         guard gridData[coord1] != nil && gridData[coord2] != nil else {
             return false
@@ -134,8 +135,6 @@ class BaseGridViewModel: GridViewModelProtocol {
                 idx += 1
             }
         }
-
-        delegate?.redisplayAllTiles()
     }
 
     /// Swaps two coordinates in the grid data. The built-in swap function cannot be used as

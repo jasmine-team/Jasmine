@@ -15,7 +15,7 @@
 		5011E2731E7FD065000D0564 /* TetrisGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5011E2721E7FD065000D0564 /* TetrisGameViewModel.swift */; };
 		5011E2781E7FD861000D0564 /* BaseViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5011E2761E7FD861000D0564 /* BaseViewModelProtocol.swift */; };
 		50269D431E83C7CB0043C45D /* GridGameViewControllerDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50269D421E83C7CB0043C45D /* GridGameViewControllerDelegateMock.swift */; };
-		50269D451E83C96C0043C45D /* GridViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50269D441E83C96C0043C45D /* GridViewModelTests.swift */; };
+		50269D451E83C96C0043C45D /* BaseGridViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50269D441E83C96C0043C45D /* BaseGridViewModelTests.swift */; };
 		50269D471E83CB750043C45D /* CountdownTimableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50269D461E83CB750043C45D /* CountdownTimableTests.swift */; };
 		50269D491E83CBC10043C45D /* CountdownTimableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50269D481E83CBC10043C45D /* CountdownTimableMock.swift */; };
 		5040AA5F1E81585200A7EF10 /* CountdownTimable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040AA5E1E81585200A7EF10 /* CountdownTimable.swift */; };
@@ -27,10 +27,8 @@
 		508BAF7D1E84BDA10088D0A6 /* CiHuiGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BAF7C1E84BDA10088D0A6 /* CiHuiGridViewModel.swift */; };
 		508BAF7F1E84C00D0088D0A6 /* ChengYuGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BAF7E1E84C00D0088D0A6 /* ChengYuGridViewModel.swift */; };
 		509894A31E6E6CAE00FC9CF3 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509894A21E6E6CAE00FC9CF3 /* GameType.swift */; };
-		50989DDA1E6D8B16009A86C8 /* BaseGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DBF1E6D8B16009A86C8 /* BaseGridViewModel.swift */; };
 		50989DD51E6D8B16009A86C8 /* TetrisGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DB41E6D8B16009A86C8 /* TetrisGameData.swift */; };
-		50989DD81E6D8B16009A86C8 /* GridGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DBB1E6D8B16009A86C8 /* GridGameData.swift */; };
-		50989DDA1E6D8B16009A86C8 /* GridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DBF1E6D8B16009A86C8 /* GridViewModel.swift */; };
+		50989DDA1E6D8B16009A86C8 /* BaseGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DBF1E6D8B16009A86C8 /* BaseGridViewModel.swift */; };
 		50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC21E6D8B16009A86C8 /* Constants.swift */; };
 		50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC31E6D8B16009A86C8 /* SoundService.swift */; };
 		50989DDD1E6D8B16009A86C8 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DC51E6D8B16009A86C8 /* GameData.swift */; };
@@ -105,7 +103,7 @@
 		5011E2721E7FD065000D0564 /* TetrisGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewModel.swift; sourceTree = "<group>"; };
 		5011E2761E7FD861000D0564 /* BaseViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModelProtocol.swift; sourceTree = "<group>"; };
 		50269D421E83C7CB0043C45D /* GridGameViewControllerDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewControllerDelegateMock.swift; sourceTree = "<group>"; };
-		50269D441E83C96C0043C45D /* GridViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModelTests.swift; sourceTree = "<group>"; };
+		50269D441E83C96C0043C45D /* BaseGridViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGridViewModelTests.swift; sourceTree = "<group>"; };
 		50269D461E83CB750043C45D /* CountdownTimableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimableTests.swift; sourceTree = "<group>"; };
 		50269D481E83CBC10043C45D /* CountdownTimableMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimableMock.swift; sourceTree = "<group>"; };
 		5040AA5E1E81585200A7EF10 /* CountdownTimable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimable.swift; sourceTree = "<group>"; };
@@ -502,7 +500,7 @@
 		50F191B21E7ADCAE00EE9A75 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				50269D441E83C96C0043C45D /* GridViewModelTests.swift */,
+				50269D441E83C96C0043C45D /* BaseGridViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -944,9 +942,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50269D4A1E8429090043C45D /* GameStatisticsViewController.swift in Sources */,
-				50269D4B1E8429090043C45D /* BaseViewModelProtocol.swift in Sources */,
-				50269D4C1E8429090043C45D /* TetrisGameData.swift in Sources */,
 				508BAF7F1E84C00D0088D0A6 /* ChengYuGridViewModel.swift in Sources */,
 				5011E2711E7FD03A000D0564 /* TetrisViewModelProtocol.swift in Sources */,
 				DF7CF7721E7E9E3500C6979A /* IndexPath+Coordinate.swift in Sources */,
@@ -1001,7 +996,7 @@
 				50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */,
 				50717AC01E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift in Sources */,
 				A2E1FD6E1E81206D003EC053 /* GameDataFactoryTests.swift in Sources */,
-				50269D451E83C96C0043C45D /* GridViewModelTests.swift in Sources */,
+				50269D451E83C96C0043C45D /* BaseGridViewModelTests.swift in Sources */,
 				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
 				A2E1FD741E812078003EC053 /* UIApplicationTests.swift in Sources */,
 				50269D431E83C7CB0043C45D /* GridGameViewControllerDelegateMock.swift in Sources */,

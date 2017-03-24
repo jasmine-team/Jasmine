@@ -12,7 +12,7 @@ class CountDownTimerTest: XCTestCase {
     }
 
     func testStartTimer() {
-        let timer = CountDownTimer(totalTimeAllowed: 2)
+        let timer = CountDownTimer(totalTimeAllowed: 4)
 
         var started = false
         var ticks = 0
@@ -31,13 +31,13 @@ class CountDownTimerTest: XCTestCase {
             }
         }
 
-        timer.startTimer(timerInterval: 1)
+        timer.startTimer(timerInterval: 2)
         XCTAssert(started, "timerDidStart is not fired")
 
-        RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
+        RunLoop.current.run(until: Date(timeIntervalSinceNow: 2.5))
         XCTAssertEqual(1, ticks, "timerDidTick is not fired")
 
-        RunLoop.current.run(until: Date(timeIntervalSinceNow: 1.5))
+        RunLoop.current.run(until: Date(timeIntervalSinceNow: 2.5))
         XCTAssertEqual(2, ticks, "timerDidTick is not fired")
         XCTAssert(finished, "timerDidFinish is not fired")
     }
