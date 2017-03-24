@@ -50,6 +50,11 @@
 		A2E1FD701E81206D003EC053 /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD6D1E81206D003EC053 /* PlayerTests.swift */; };
 		A2E1FD721E812072003EC053 /* RealmTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD711E812072003EC053 /* RealmTestCase.swift */; };
 		A2E1FD741E812078003EC053 /* UIApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1FD731E812078003EC053 /* UIApplicationTests.swift */; };
+		A2F923DE1E84CEBD001A3331 /* APIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F923DB1E84CEBD001A3331 /* APIProtocol.swift */; };
+		A2F923DF1E84CEBD001A3331 /* JasmineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F923DC1E84CEBD001A3331 /* JasmineAPI.swift */; };
+		A2F923E01E84CEBD001A3331 /* JSONParsingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F923DD1E84CEBD001A3331 /* JSONParsingError.swift */; };
+		A2F923E21E84CEE1001A3331 /* Realm+defaultURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F923E11E84CEE1001A3331 /* Realm+defaultURL.swift */; };
+		A2F923E41E84CEE7001A3331 /* EnglishAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F923E31E84CEE7001A3331 /* EnglishAPIResponse.swift */; };
 		BD025B06A527CD03DA811285 /* Pods_JasmineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */; };
 		DF2D21EA1E743BC500094381 /* GridStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */; };
 		DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D21EB1E743C8700094381 /* GridGameViewController.swift */; };
@@ -141,6 +146,11 @@
 		A2E1FD6D1E81206D003EC053 /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 		A2E1FD711E812072003EC053 /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
 		A2E1FD731E812078003EC053 /* UIApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationTests.swift; sourceTree = "<group>"; };
+		A2F923DB1E84CEBD001A3331 /* APIProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIProtocol.swift; sourceTree = "<group>"; };
+		A2F923DC1E84CEBD001A3331 /* JasmineAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JasmineAPI.swift; sourceTree = "<group>"; };
+		A2F923DD1E84CEBD001A3331 /* JSONParsingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParsingError.swift; sourceTree = "<group>"; };
+		A2F923E11E84CEE1001A3331 /* Realm+defaultURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+defaultURL.swift"; sourceTree = "<group>"; };
+		A2F923E31E84CEE7001A3331 /* EnglishAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnglishAPIResponse.swift; sourceTree = "<group>"; };
 		B0F92A417FF0A33A2C39DC68 /* Pods-JasmineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineUITests/Pods-JasmineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF6F46CAE49685937742BCB /* Pods-JasmineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -284,11 +294,14 @@
 		50989DC41E6D8B16009A86C8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A2F923DB1E84CEBD001A3331 /* APIProtocol.swift */,
 				DF6156931E7FA93500443E65 /* CountDownTimer.swift */,
-				50B5E9B81E8376F000D1B777 /* TimerStatus.swift */,
+				A2F923DD1E84CEBD001A3331 /* JSONParsingError.swift */,
+				A2F923DC1E84CEBD001A3331 /* JasmineAPI.swift */,
 				A2E1FD5F1E811FCF003EC053 /* Prebundler.swift */,
 				A2187E6B1E7510B60033FC5B /* Random.swift */,
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
+				50B5E9B81E8376F000D1B777 /* TimerStatus.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -297,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				DFB342701E77EB6700D2FE09 /* Coordinate.swift */,
+				A2F923E31E84CEE7001A3331 /* EnglishAPIResponse.swift */,
 				50989DC51E6D8B16009A86C8 /* GameData.swift */,
 				A2E1FD611E811FD6003EC053 /* GameDataFactory.swift */,
 				DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */,
@@ -595,6 +609,7 @@
 				DF7CF76F1E7E9E3500C6979A /* CGRect+Arithmetic.swift */,
 				DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */,
 				A2187E6D1E7511470033FC5B /* MutableCollection+Extensions.swift */,
+				A2F923E11E84CEE1001A3331 /* Realm+defaultURL.swift */,
 				A2187E711E751C930033FC5B /* Sequence+Extensions.swift */,
 				A2E1FD5C1E811FC6003EC053 /* UIApplication+isFirstLaunch.swift */,
 			);
@@ -940,17 +955,22 @@
 				DF7CF7721E7E9E3500C6979A /* IndexPath+Coordinate.swift in Sources */,
 				DF7CF7781E7E9ECE00C6979A /* BaseGameViewControllerDelegate.swift in Sources */,
 				5011E2731E7FD065000D0564 /* TetrisGameViewModel.swift in Sources */,
+				A2F923DF1E84CEBD001A3331 /* JasmineAPI.swift in Sources */,
 				50989DDD1E6D8B16009A86C8 /* GameData.swift in Sources */,
 				5040AA5F1E81585200A7EF10 /* TimedProtocol.swift in Sources */,
 				DF7CF77A1E7E9ECE00C6979A /* GameStatisticsViewController.swift in Sources */,
+				A2F923DE1E84CEBD001A3331 /* APIProtocol.swift in Sources */,
 				50989DE01E6D8B16009A86C8 /* HomeScreenViewController.swift in Sources */,
 				50989DD51E6D8B16009A86C8 /* TetrisGameData.swift in Sources */,
 				A2E1FD6A1E811FE3003EC053 /* Secrets.swift in Sources */,
 				DF6156941E7FA93500443E65 /* CountDownTimer.swift in Sources */,
+				A2F923E21E84CEE1001A3331 /* Realm+defaultURL.swift in Sources */,
 				DF7CF7801E7E9EED00C6979A /* SquareTextViewCell.swift in Sources */,
+				A2F923E41E84CEE7001A3331 /* EnglishAPIResponse.swift in Sources */,
 				DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */,
 				505E07381E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift in Sources */,
 				50989DDA1E6D8B16009A86C8 /* GridViewModel.swift in Sources */,
+				A2F923E01E84CEBD001A3331 /* JSONParsingError.swift in Sources */,
 				50989DE21E6D8B16009A86C8 /* FlappyGameData.swift in Sources */,
 				A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */,
 				A2187E6E1E7511470033FC5B /* MutableCollection+Extensions.swift in Sources */,
