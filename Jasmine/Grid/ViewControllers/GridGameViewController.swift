@@ -20,7 +20,19 @@ class GridGameViewController: UIViewController {
     // MARK: View Controller Lifecycles
     /// Set its theme after the view controller `viewDidLoad` is called.
     override func viewDidLoad() {
+        super.viewDidLoad()
         setTheme()
+    }
+
+    /// This also starts the game if have not done so.
+    ///
+    /// - Parameter animated: true if the appearance of the view is animated
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if viewModel.gameStatus == .notStarted {
+            viewModel.startGame()
+        }
     }
 
     /// Specifies that the supported orientation for this view is portrait only.
@@ -33,12 +45,12 @@ class GridGameViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let squareGridView = segue.destination as? SquareGridViewController {
             squareGridView.segueWith(viewModel.gridData,
-                                     numRows: Constants.Grid.rows,
-                                     numCols: Constants.Grid.columns)
+                                     numRows: Constants.Game.Grid.rows,
+                                     numCols: Constants.Game.Grid.columns)
             self.squareGridViewController = squareGridView
 
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
-// TODO:            statisticsView.timeLeft = viewModel.totalTimeAllowed
+            statisticsView.timeLeft = viewModel.totalTimeAllowed
             statisticsView.currentScore = viewModel.currentScore
 
             self.statisticsViewController = statisticsView
@@ -57,10 +69,10 @@ class GridGameViewController: UIViewController {
     /// Listens to a drag gesture and handles the operation of dragging a tile, and dropping it
     /// to another location.
     ///
-    /// This also starts the game if have not done so.
+    /// Note that if the game status is not in progress, results in no-op.
     @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
-        if viewModel.gameStatus == .notStarted {
-            viewModel.startGame()
+        guard viewModel.gameStatus == .inProgress else {
+            return
         }
 
         let position = sender.location(in: squareGridViewController.view)
@@ -212,7 +224,7 @@ extension GridGameViewController: BaseGameViewControllerDelegate {
 
     // MARK: Game Status
     /// Notifies the view controller that the game state has changed.
-    func notifyGameStatus() {
+    func notifyGameStatusUpdated() {
 
     }
 }

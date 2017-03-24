@@ -29,7 +29,7 @@ class UIApplicationTests: XCTestCase {
         XCTAssertFalse(UIApplication.isFirstLaunch, "launched variable is not set to false on second call")
     }
 
-    func testIsFirstLaunch_notFirstLaunchd() {
+    func testIsFirstLaunch_notFirstLaunched() {
         UserDefaults.standard.set(true, forKey: launchedBeforeKey)
         XCTAssertFalse(UIApplication.isFirstLaunch, "launched variable is not launched before")
     }
