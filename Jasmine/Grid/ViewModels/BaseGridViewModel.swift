@@ -86,7 +86,7 @@ class BaseGridViewModel: GridViewModelProtocol {
 
         if hasGameWon {
             gameStatus = .endedWithWon
-            currentScore += Int(timeRemaining * Double(Constants.Grid.scoreMultiplierFromTime))
+            currentScore += Int(timeRemaining * Double(Constants.Game.Grid.scoreMultiplierFromTime))
         }
 
         return true
@@ -101,7 +101,7 @@ class BaseGridViewModel: GridViewModelProtocol {
         var temporary: [String] = []
         for element in sortedGrid {
             temporary.append(element)
-            if temporary.count == Constants.Grid.columns {
+            if temporary.count == Constants.Game.Grid.columns {
                 if answers.contains(where: { $0 == temporary }) {
                     temporary = []
                 } else {

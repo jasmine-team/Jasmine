@@ -1,13 +1,16 @@
 import ChameleonFramework
 import Foundation
 
+// swiftlint:disable nesting
 enum Constants {
-    enum Grid {
-        static let rows = 4
-        static let columns = 4
-        static let time: TimeInterval = 60
-        static let scoreMultiplierFromTime = 100
-        static let timerInterval: TimeInterval = 0.1
+    enum Game {
+        enum Grid {
+            static let rows = 4
+            static let columns = 4
+            static let time: TimeInterval = 60
+            static let scoreMultiplierFromTime = 100
+            static let timerInterval: TimeInterval = 0.1
+        }
     }
 
     enum Theme {
