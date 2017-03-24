@@ -1,42 +1,51 @@
 import Foundation
 
 class GridViewModel: GridViewModelProtocol {
+    /// Stores the grid data that will be used to display in the view controller.
+    private(set) var gridData: [Coordinate: String] = [:] {
+        didSet {
+            delegate?.updateGridData()
+        }
+    }
+    /// Answers for this game. The game is won if this is done
+    private var answers: [[String]] = [["1", "2", "3", "4"], ["5", "6", "7", "8"],
+                                       ["9", "10", "11", "12"], ["13", "14", "15", "16"]]
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
     weak var delegate: GridGameViewControllerDelegate?
-    /// Stores the grid data that will be used to display in the view controller.
-    private(set) var gridData: [Coordinate: String] = [:]
     /// Specifies the current score of the game. If the game has not started, it will be the initial
     /// displayed score.
-    private(set) var currentScore: Int = 0
+    private(set) var currentScore: Int = 0 {
+        didSet {
+            delegate?.redisplay(newScore: currentScore)
+        }
+    }
     /// The timer of this game.
-    private(set) var timer = CountDownTimer(totalTimeAllowed: Constants.Grid.time)
+    private(set) var timer = CountDownTimer(totalTimeAllowed: Constants.Game.Grid.time)
     /// The status of the current game.
     private(set) var gameStatus: GameStatus = .notStarted {
         didSet {
-            delegate?.notifyGameStatus()
+            delegate?.notifyGameStatusUpdated()
+
+            if gameStatus != .inProgress {
+                timer.stopTimer()
+            }
         }
     }
 
     /// Provide a brief title for this game. Note that this title should be able to fit within the
     /// width of the display.
-    var gameTitle: String {
-        // TODO: Fill this in.
-        return ""
-    }
+    var gameTitle = "Grid Game"
 
     /// Provide of a brief description of its objectives and how this game is played.
     /// There is no word count limit, but should be concise.
-    var gameInstruction: String {
-        // TODO: Fill this in.
-        return ""
-    }
+    var gameInstruction = "Match the Chinese characters with their Pinyins by putting them in one row."
 
     /// Tells the view model that the game has started.
     func startGame() {
+        loadGrid(from: answers)
         timer = createTimer()
-        populateGrid(type: .chengYu)
-        timer.startTimer(timerInterval: 1)
+        timer.startTimer(timerInterval: Constants.Game.Grid.timerInterval)
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
@@ -56,46 +65,37 @@ class GridViewModel: GridViewModelProtocol {
             return false
         }
 
-        swap(&gridData[coord1], &gridData[coord2])
+        swapGridData(coord1, and: coord2)
 
-        if gridDone {
+        if hasGameWon {
             gameStatus = .endedWithWon
+            currentScore += Int(timeRemaining * Double(Constants.Game.Grid.scoreMultiplierFromTime))
         }
 
         return true
     }
 
-    /// Returns true iff the grid is done (a.k.a. the game is won)
-    private var gridDone: Bool {
-        for rowNumber in 0..<Constants.Grid.rows {
-            let row = gridData
-                .filter { $0.key.row == rowNumber }
-                .sorted { $0.0.key.col < $0.1.key.col }
-                .map { $0.value }
-            // do something with this row
+    /// Returns true iff the game is won
+    private var hasGameWon: Bool {
+        let sortedGrid = gridData
+            .sorted { $0.key < $1.key }
+            .map { $0.value }
+
+        // SortedGrid is an array containing all the elements in order.
+        // This will iterate through the array and combine them into Constant.Game.Grid.columns elements,
+        // then check if the resulting string formed is part of the answers.
+        var temporary: [String] = []
+        for element in sortedGrid {
+            temporary.append(element)
+            if temporary.count == Constants.Game.Grid.columns {
+                if answers.contains(where: { $0 == temporary }) {
+                    temporary = []
+                } else {
+                    return false
+                }
+            }
         }
-        return false
-    }
-
-    /// Populates the grid according to the specified game type.
-    ///
-    /// - Parameter type: the game type
-    private func populateGrid(type: GameType) {
-        var phrases: [[String]] = []
-
-        // TODO: Don't hardcode these characters
-        switch type {
-        case .chengYu:
-            phrases = [["我", "们", "爱", "你"], ["我", "们", "爱", "你"],
-                       ["我", "们", "爱", "你"], ["我", "们", "爱", "你"]]
-        case .pinYin:
-            phrases = [["w", "m", "我", "们"], ["m", "f", "免", "费"],
-                       ["n", "r", "牛", "肉"], ["f", "y", "法", "语"]]
-        default:
-            break
-        }
-
-        loadGrid(from: phrases)
+        return true
     }
 
     /// Loads the grid from an array of array of characters.
@@ -114,13 +114,26 @@ class GridViewModel: GridViewModelProtocol {
         // Place back allChars to the grid
         gridData.removeAll()
         var idx = 0
-        for (row, col) in zip(0..<rows, 0..<cols) {
-            gridData[Coordinate(row: row, col: col)] = allChars[idx]
-            idx += 1
+        for row in 0..<rows {
+            for col in 0..<cols {
+                gridData[Coordinate(row: row, col: col)] = allChars[idx]
+                idx += 1
+            }
         }
 
-        delegate?.updateGridData()
         delegate?.redisplayAllTiles()
+    }
+
+    /// Swaps two coordinates in the grid data. The built-in swap function cannot be used as
+    /// it will introduce concurrent write in gridData's didSet listener.
+    ///
+    /// - Parameters:
+    ///   - coord1: the first coordinate
+    ///   - coord2: the second coordinate
+    private func swapGridData(_ coord1: Coordinate, and coord2: Coordinate) {
+        let initialSecond = gridData[coord2]
+        gridData[coord2] = gridData[coord1]
+        gridData[coord1] = initialSecond
     }
 
     /// The countdown timer for use in this viewmodel.
@@ -137,8 +150,8 @@ class GridViewModel: GridViewModelProtocol {
                 self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
             case .finish:
                 self.gameStatus = .endedWithLost
-            case .stop:
-                self.gameStatus = .endedWithWon
+            default:
+                break
             }
         }
 

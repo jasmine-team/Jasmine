@@ -33,5 +33,17 @@ class CoordinateTests: XCTestCase {
         XCTAssertEqual(Coordinate(row: 3, col: 5).nextRow, Coordinate(row: 4, col: 5),
                        "nextRow did not return the correct coordinates")
 
+    func testComparable() {
+        let coordinateArray = [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
+        let sortedCoordinateArray = coordinateArray.sorted {
+            Coordinate(row: $0.0, col: $0.1) < Coordinate(row: $1.0, col: $1.1)
+        }
+
+        for (original, sorted) in zip(coordinateArray, sortedCoordinateArray) {
+            XCTAssertEqual(original.0, sorted.0,
+                           "Coordinates are not sorted properly")
+            XCTAssertEqual(original.1, sorted.1,
+                           "Coordinates are not sorted properly")
+        }
     }
 }
