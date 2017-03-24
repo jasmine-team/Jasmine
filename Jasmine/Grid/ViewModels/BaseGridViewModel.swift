@@ -7,16 +7,14 @@ class BaseGridViewModel: GridViewModelProtocol {
             delegate?.updateGridData()
         }
     }
-    /// Answers for this game. The game is won if this is done
-    private var answers: [[String]]
+    /// Tiles for this game. Will be randomized.
+    private let tiles: [String]
+    /// Possible answers in this game. The game is won when all rows in the grid is in this possibleAnswers.
+    private let possibleAnswers: [[String]]
     /// Number of rows in the grid, according to the answers property
-    var rows: Int {
-        return answers.count
-    }
+    let rows: Int
     /// Number of columns in the grid, according to the answers property
-    var columns: Int {
-        return answers[0].count
-    }
+    let columns: Int
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
     weak var delegate: GridGameViewControllerDelegate?
@@ -39,25 +37,29 @@ class BaseGridViewModel: GridViewModelProtocol {
             }
         }
     }
-
     /// Provide a brief title for this game. Note that this title should be able to fit within the
     /// width of the display.
     var gameTitle: String
-
     /// Provide of a brief description of its objectives and how this game is played.
     /// There is no word count limit, but should be concise.
     var gameInstruction: String
 
-    init(time: TimeInterval, answers: [[String]]) {
+    init(time: TimeInterval, tiles: [String], possibleAnswers: [[String]], rows: Int, columns: Int) {
+        assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
+        assert(tiles.count == rows * columns, "Number of tiles should equal rows * columns")
+        assert(possibleAnswers.map { $0.count }.isAllSame, "All rows in possible answers should have the same length")
+        assert(possibleAnswers[0].count == columns, "Possible answers rows length should equal # of columns")
+        assert(Set(possibleAnswers.flatMap { $0 }) == Set(tiles), "Possible answers and tiles should've same char set")
+
         gameTitle = "Grid Game"
         gameInstruction = "Match the Chinese characters with their Pinyins by putting them in one row."
 
+        self.tiles = tiles
+        self.possibleAnswers = possibleAnswers
+        self.rows = rows
+        self.columns = columns
+
         timer = CountDownTimer(totalTimeAllowed: time)
-
-        self.answers = answers
-        assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
-        assert(answers.map { $0.count }.isAllSame, "All rows should have the same length")
-
         timer.timerListener = gridTimerListener
 
         loadGrid()
@@ -105,7 +107,7 @@ class BaseGridViewModel: GridViewModelProtocol {
         for element in sortedGrid {
             temporary.append(element)
             if temporary.count == Constants.Game.Grid.columns {
-                if answers.contains(where: { $0 == temporary }) {
+                if possibleAnswers.contains(where: { $0 == temporary }) {
                     temporary = []
                 } else {
                     return false
@@ -121,7 +123,7 @@ class BaseGridViewModel: GridViewModelProtocol {
     ///
     /// - Parameter characters: the characters to be loaded to the grid
     private func loadGrid() {
-        let allTiles = answers.joined().shuffled()
+        let allTiles = tiles.shuffled()
 
         // Place back allTiles to the grid
         gridData.removeAll()
