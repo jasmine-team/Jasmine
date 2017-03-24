@@ -81,6 +81,9 @@ class GridViewModel: GridViewModelProtocol {
             .sorted { $0.key < $1.key }
             .map { $0.value }
 
+        // SortedGrid is an array containing all the elements in order.
+        // This will iterate through the array and combine them into Constant.Game.Grid.columns elements,
+        // then check if the resulting string formed is part of the answers.
         var temporary: [String] = []
         for element in sortedGrid {
             temporary.append(element)
