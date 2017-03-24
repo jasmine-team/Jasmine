@@ -8,7 +8,7 @@ class SquareGridViewController: UIViewController {
 
     fileprivate static let snappingDuration = 0.2
 
-    fileprivate static let cellSpacing = CGFloat(8.0)
+    fileprivate static let standardCellSpacing = CGFloat(8.0)
 
     // MARK: Layouts
     @IBOutlet fileprivate weak var gridCollectionView: UICollectionView!
@@ -19,6 +19,9 @@ class SquareGridViewController: UIViewController {
 
     /// Stores the maximum number of columns that should be displayed in this view.
     fileprivate var numCols = 0
+
+    /// Specifies the amount of space between each cell.
+    fileprivate var cellSpacing: CGFloat = 0
 
     /// A lazily computed property that gives all the coordinates that is used in this view.
     fileprivate var allCoordinates: Set<Coordinate> {
@@ -51,10 +54,11 @@ class SquareGridViewController: UIViewController {
     ///   - initialData: initial set of data to be displayed in this view.
     ///   - numRows: maximum number of rows to be displayed in this grid.
     ///   - numCols: maximum number of columns to be displayed in this grid.
-    func segueWith(_ initialData: [Coordinate: String], numRows: Int, numCols: Int) {
+    func segueWith(_ initialData: [Coordinate: String], numRows: Int, numCols: Int, requireSpace: Bool) {
         self.collectionData = initialData
         self.numCols = numCols
         self.numRows = numRows
+        self.cellSpacing = requireSpace ? SquareGridViewController.standardCellSpacing : 0
     }
 
     // MARK: - Data Interaction
@@ -297,7 +301,7 @@ extension SquareGridViewController: UICollectionViewDelegateFlowLayout {
     fileprivate var cellSize: CGSize {
         let viewSize = gridCollectionView.bounds.size
 
-        let spacing = SquareGridViewController.cellSpacing
+        let spacing = cellSpacing
         let numColSpacing = CGFloat(numCols - 1)
         let numRowSpacing = CGFloat(numRows - 1)
 
@@ -315,7 +319,7 @@ extension SquareGridViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        let insetFromSpacing = SquareGridViewController.cellSpacing / 2.0
+        let insetFromSpacing = cellSpacing / 2.0
         return UIEdgeInsets(top: insetFromSpacing, left: 0, bottom: insetFromSpacing, right: 0)
     }
 
@@ -323,7 +327,7 @@ extension SquareGridViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return SquareGridViewController.cellSpacing
+        return cellSpacing
     }
 
     /// Sets the size of each cell in the collection view to achieve `numRows` x `numCols`.
