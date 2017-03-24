@@ -19,7 +19,7 @@ PODS:
   - Realm/Headers (2.4.4)
   - RealmSwift (2.4.4):
     - Realm (= 2.4.4)
-  - SwiftLint (0.16.1)
+  - SwiftLint (0.17.0)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
@@ -45,7 +45,7 @@ SPEC CHECKSUMS:
   PromiseKit: 779f2e41faf62d854e7593026ddbcb0bb5c5002d
   Realm: 5a280a1f5a9a3c267bebf4f41ee47911137703d7
   RealmSwift: 0c02b9f2d4be4301c497ed10e53a0580584eb1dd
-  SwiftLint: b8b683208cc09640898f16318a7a452274e91f61
+  SwiftLint: 9fb1dd71d5952d130f8c2fb60ae2e1475cf5d575
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
 PODFILE CHECKSUM: ec2a18c5cb4976f7b2a9c25025d20cad69c1d55e
