@@ -109,7 +109,7 @@ class GridGameViewController: UIViewController {
 fileprivate extension GridGameViewController {
 
     /// Handles the case when the tile is lifted from the collection view.
-    /// Such a tile gets "detached" from the view by having its identity noted down in the 
+    /// Such a tile gets "detached" from the view by having its identity noted down in the
     /// properties.
     ///
     /// - Parameter position: location where the tile is selected.
