@@ -65,7 +65,7 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Game Title" id="4dc-xX-Or9">
+                                    <navigationItem title="Grid Game Title" id="4dc-xX-Or9">
                                         <barButtonItem key="leftBarButtonItem" title="Back" width="35" id="Zwe-14-X0B">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
