@@ -8,10 +8,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // swiftlint:disable:previous vertical_parameter_alignment
-
+        Prebundler.fillDatabase()
+        /*
         if UIApplication.isFirstLaunch {
             Prebundler.hydrateRealm() // add phrases
         }
+         */
         return true
     }
 

@@ -9,6 +9,9 @@ target 'Jasmine' do
   pod 'RealmSwift'
   pod 'SwiftLint'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  pod 'Alamofire', '~> 4.4'
+  pod 'PromiseKit', '~> 4.0'
+  pod 'SwiftyJSON'
 
   target 'JasmineTests' do
     inherit! :search_paths

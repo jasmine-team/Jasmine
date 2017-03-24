@@ -11,7 +11,7 @@ enum FileError: Error {
 struct Prebundler {
 
     /// Limit of phrases to fetch at once
-    fileprivate static let fetchLimit = 200
+    fileprivate static let fetchLimit = 2
     /// Text file of list of phrases to read from
     fileprivate static let phrasesFileName = "phrases"
     /// Identifier for memory realm to prevent memory collisions, is arbitrary
