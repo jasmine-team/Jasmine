@@ -20,6 +20,7 @@ class GridGameViewController: UIViewController {
     // MARK: View Controller Lifecycles
     /// Set its theme after the view controller `viewDidLoad` is called.
     override func viewDidLoad() {
+        super.viewDidLoad()
         setTheme()
     }
 
@@ -34,7 +35,8 @@ class GridGameViewController: UIViewController {
         if let squareGridView = segue.destination as? SquareGridViewController {
             squareGridView.segueWith(viewModel.gridData,
                                      numRows: Constants.Grid.rows,
-                                     numCols: Constants.Grid.columns)
+                                     numCols: Constants.Grid.columns,
+                                     requireSpace: true)
             self.squareGridViewController = squareGridView
 
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
@@ -142,7 +144,7 @@ fileprivate extension GridGameViewController {
         guard let tile = draggingTile else {
             return
         }
-        squareGridViewController.snapDetachedTile(tile.view, toCoordinate: tile.originalCoord) {
+        squareGridViewController.snapAndReattachDetachedTile(tile.view, toCoordinate: tile.originalCoord) {
             self.draggingTile = nil
         }
     }
@@ -164,10 +166,10 @@ fileprivate extension GridGameViewController {
         let endingView = landedView
         let endingCoord = landedCoord
 
-        squareGridViewController.snapDetachedTile(startingView, toCoordinate: endingCoord) {
+        squareGridViewController.snapAndReattachDetachedTile(startingView, toCoordinate: endingCoord) {
             self.squareGridViewController.reload(cellsAt: [endingCoord], withAnimation: false)
         }
-        self.squareGridViewController.snapDetachedTile(endingView, toCoordinate: startingCoord) {
+        squareGridViewController.snapAndReattachDetachedTile(endingView, toCoordinate: startingCoord) {
             self.squareGridViewController.reload(cellsAt: [startingCoord], withAnimation: false)
         }
     }

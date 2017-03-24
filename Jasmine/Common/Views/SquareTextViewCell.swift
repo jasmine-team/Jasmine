@@ -29,7 +29,7 @@ class SquareTextViewCell: UICollectionViewCell {
                 contentView.subviews.isEmpty else {
                     return
             }
-            
+
             contentView.addSubview(newTextView)
             newTextView.frame = bounds
             contentView.bringSubview(toFront: newTextView)
@@ -58,5 +58,6 @@ class SquareTextViewCell: UICollectionViewCell {
 
     private func initHelper() {
         textView = SquareTextView()
+        self.clipsToBounds = false
     }
 }
