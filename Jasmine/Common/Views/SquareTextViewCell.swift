@@ -7,13 +7,18 @@ import UIKit
 class SquareTextViewCell: UICollectionViewCell {
 
     // MARK: Properties
-    /// Stores the displayed character by displaying it in the label.
+    /// Stores the displayed text by displaying it in the label.
+    /// If the text is nil, the content of this view cell is removed.
     var text: String? {
-        set {
-            textView?.text = newValue
-        }
         get {
             return textView?.text
+        }
+        set {
+            if text == nil {
+                textView = nil
+            } else {
+                textView?.text = newValue
+            }
         }
     }
 
@@ -25,13 +30,20 @@ class SquareTextViewCell: UICollectionViewCell {
                 .first
         }
         set {
-            guard let newTextView = newValue,
-                contentView.subviews.isEmpty else {
-                    return
+            // Case: new textView is nil.
+            guard let newTextView = newValue else {
+                contentView.subviews.forEach { $0.removeFromSuperview() }
+                return
             }
 
-            contentView.addSubview(newTextView)
+            // Case: new textView is present, but viewCell contains another textView.
+            guard contentView.subviews.isEmpty else {
+                return
+            }
+
+            // Otherwise:
             newTextView.frame = bounds
+            contentView.addSubview(newTextView)
             contentView.bringSubview(toFront: newTextView)
         }
     }
