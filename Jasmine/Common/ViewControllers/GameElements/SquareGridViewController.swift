@@ -48,17 +48,29 @@ class SquareGridViewController: UIViewController {
 
     // MARK: Segue Methods
     /// Load the view controller with initial dataset, and the number of rows and columns in this
+    /// collection view. Note that needing space is assumed.
+    ///
+    /// - Parameters:
+    ///   - initialData: initial set of data to be displayed in this view.
+    ///   - numRows: maximum number of rows to be displayed in this grid.
+    ///   - numCols: maximum number of columns to be displayed in this grid.
+    func segueWith(_ initialData: [Coordinate: String], numRows: Int, numCols: Int) {
+        self.segueWith(initialData, numRows: numRows, numCols: numCols, needSpace: true)
+    }
+
+    /// Load the view controller with initial dataset, and the number of rows and columns in this
     /// collection view.
     ///
     /// - Parameters:
     ///   - initialData: initial set of data to be displayed in this view.
     ///   - numRows: maximum number of rows to be displayed in this grid.
     ///   - numCols: maximum number of columns to be displayed in this grid.
-    func segueWith(_ initialData: [Coordinate: String], numRows: Int, numCols: Int, requireSpace: Bool) {
+    ///   - needSpace: when set to true, provides a spacing, else space is removed.
+    func segueWith(_ initialData: [Coordinate: String], numRows: Int, numCols: Int, needSpace: Bool) {
         self.collectionData = initialData
         self.numCols = numCols
         self.numRows = numRows
-        self.cellSpacing = requireSpace ? SquareGridViewController.standardCellSpacing : 0
+        self.cellSpacing = needSpace ? SquareGridViewController.standardCellSpacing : 0
     }
 
     // MARK: - Data Interaction
