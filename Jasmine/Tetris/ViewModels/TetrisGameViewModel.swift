@@ -24,7 +24,7 @@ class TetrisGameViewModel {
         }
     }
 
-    /// Populate upcomingTiles
+    /// Populate upcomingTiles and set listeners for the timer
     init() {
         populateUpcomingTiles()
         setTimerListener()
