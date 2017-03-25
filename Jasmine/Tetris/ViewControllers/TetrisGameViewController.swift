@@ -2,11 +2,26 @@ import UIKit
 
 class TetrisGameViewController: UIViewController {
 
+    // MARK: - Constants
+    private static let tetrisGameAreaIdentifier = "Tetris Game Area"
+    private static let tetrisUpcomingTilesIdentifier = "Tetris Upcoming Tiles"
+
+    // MARK: - Layouts
+    private var tetrisGameArea: SquareGridViewController!
+
+    private var tetrisUpcomingTilesArea: SquareGridViewController!
+
+    private var gameStatisticsView: GameStatisticsViewController!
+
     // MARK: Game Properties
     fileprivate var viewModel: TetrisViewModelProtocol!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private var upcomingTiles: [Coordinate: String] {
+        var outcome: [Coordinate: String] = [:]
+        (0..<Constants.Game.Tetris.upcomingTilesCount)
+            .map { (location: $0, data: viewModel.upcomingTiles[$0]) }
+            .forEach { outcome[Coordinate(row: 0, col: $0.location)] = $0.data }
+        return outcome
     }
 
     // MARK: View Controller Lifecycles
@@ -17,7 +32,23 @@ class TetrisGameViewController: UIViewController {
 
     // MARK: Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let squareGridView = segue.destination as? SquareGridViewController {
+            if segue.identifier == TetrisGameViewController.tetrisGameAreaIdentifier {
+                squareGridView.segueWith([:], numRows: Constants.Game.Tetris.rows,
+                                         numCols: Constants.Game.Tetris.columns, needSpace: false)
+                self.tetrisGameArea = squareGridView
 
+            } else if segue.identifier == TetrisGameViewController.tetrisUpcomingTilesIdentifier {
+                squareGridView.segueWith(upcomingTiles, numRows: 1,
+                                         numCols: Constants.Game.Tetris.upcomingTilesCount)
+                self.tetrisUpcomingTilesArea = squareGridView
+            }
+
+        } else if let statisticsView = segue.destination as? GameStatisticsViewController {
+            statisticsView.segueWith(timeLeft: viewModel.timeRemaining,
+                                     currentScore: viewModel.currentScore)
+            self.gameStatisticsView = statisticsView
+        }
     }
 
     /// Feeds in the appropriate data for the use of seguing into this view.

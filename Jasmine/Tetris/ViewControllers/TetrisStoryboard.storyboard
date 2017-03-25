@@ -44,7 +44,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJA-n4-ff2">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJA-n4-ff2" userLabel="Game Statistics View">
                                 <rect key="frame" x="0.0" y="595" width="375" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="ixr-iv-hcP"/>
@@ -53,25 +53,25 @@
                                     <segue destination="R24-L6-yHQ" kind="embed" id="Mme-iF-zsH"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EvM-bs-WbZ">
-                                <rect key="frame" x="20" y="511" width="335" height="64"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="Tetris Upcoming Tiles" translatesAutoresizingMaskIntoConstraints="NO" id="EvM-bs-WbZ" userLabel="Tetris Upcoming Tiles">
+                                <rect key="frame" x="16" y="515" width="343" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="7xf-n5-kRY"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="2qr-g3-djp" kind="embed" id="U7L-P9-Zvz"/>
+                                    <segue destination="2qr-g3-djp" kind="embed" identifier="Tetris Upcoming Tiles" id="U7L-P9-Zvz"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPCOMING TILES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5z-y8-XQq">
-                                <rect key="frame" x="20" y="491" width="112.5" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPCOMING TILES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5z-y8-XQq" userLabel="Tetris Upcoming Tiles Label">
+                                <rect key="frame" x="20" y="495" width="112.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <color key="textColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64w-ac-iLZ">
-                                <rect key="frame" x="20" y="80" width="335" height="395"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="Tetris Game Area" translatesAutoresizingMaskIntoConstraints="NO" id="64w-ac-iLZ" userLabel="Tetris Game Area">
+                                <rect key="frame" x="16" y="80" width="343" height="399"/>
                                 <connections>
-                                    <segue destination="2qr-g3-djp" kind="embed" id="ikw-ff-9sC"/>
+                                    <segue destination="2qr-g3-djp" kind="embed" identifier="Tetris Game Area" id="ikw-ff-9sC"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -79,12 +79,12 @@
                         <constraints>
                             <constraint firstItem="64w-ac-iLZ" firstAttribute="top" secondItem="vb6-rG-EyC" secondAttribute="bottom" constant="16" id="21H-G2-Cle"/>
                             <constraint firstItem="vPF-3v-g0Z" firstAttribute="top" secondItem="4Wh-bq-pwH" secondAttribute="top" id="2w0-a6-DH2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="EvM-bs-WbZ" secondAttribute="trailing" constant="4" id="2wv-Go-sk5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EvM-bs-WbZ" secondAttribute="trailing" id="2wv-Go-sk5"/>
                             <constraint firstAttribute="trailing" secondItem="LJA-n4-ff2" secondAttribute="trailing" id="Bv4-rt-7hu"/>
                             <constraint firstAttribute="trailing" secondItem="vPF-3v-g0Z" secondAttribute="trailing" id="EbN-ii-fBh"/>
-                            <constraint firstItem="EvM-bs-WbZ" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leadingMargin" constant="4" id="HvE-yL-fri"/>
+                            <constraint firstItem="EvM-bs-WbZ" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leadingMargin" id="HvE-yL-fri"/>
                             <constraint firstItem="vb6-rG-EyC" firstAttribute="top" secondItem="q8A-bO-b8u" secondAttribute="bottom" id="NaL-Vq-uvW"/>
-                            <constraint firstItem="LJA-n4-ff2" firstAttribute="top" secondItem="EvM-bs-WbZ" secondAttribute="bottom" constant="20" id="QhW-Y3-y3o"/>
+                            <constraint firstItem="LJA-n4-ff2" firstAttribute="top" secondItem="EvM-bs-WbZ" secondAttribute="bottom" constant="16" id="QhW-Y3-y3o"/>
                             <constraint firstItem="64w-ac-iLZ" firstAttribute="leading" secondItem="EvM-bs-WbZ" secondAttribute="leading" id="W4a-a4-9xB"/>
                             <constraint firstItem="z5z-y8-XQq" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leadingMargin" constant="4" id="aAF-yj-7AY"/>
                             <constraint firstItem="VPR-bF-iqZ" firstAttribute="top" secondItem="LJA-n4-ff2" secondAttribute="bottom" id="aeR-Ie-N7j"/>
@@ -120,6 +120,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ikw-ff-9sC"/>
+        <segue reference="U7L-P9-Zvz"/>
     </inferredMetricsTieBreakers>
 </document>
