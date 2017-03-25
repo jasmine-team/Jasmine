@@ -9,6 +9,7 @@ class TetrisGameViewModel {
 
     fileprivate(set) var upcomingTiles: [String] = []
     fileprivate var fallingTileText: String?
+    fileprivate var landingCoordinate: Coordinate?
 
     fileprivate(set) var currentScore: Int = 0 {
         didSet {
@@ -133,6 +134,12 @@ class TetrisGameViewModel {
         return String(words[words.index(words.startIndex,
                                         offsetBy: Random.integer(toInclusive: words.characters.count))])
     }
+
+    @inline(__always)
+    fileprivate func assertCoordinateValid(_ coordinate: Coordinate) {
+        assert(coordinate.row < Constants.Game.Tetris.rows &&
+               coordinate.col < Constants.Game.Tetris.columns, "Coordinate is out of bounds")
+    }
 }
 
 extension TetrisGameViewModel: TetrisGameViewModelProtocol {
@@ -146,6 +153,7 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
     }
 
     func canShiftFallingTile(to coordinate: Coordinate) -> Bool {
+        assertCoordinateValid(coordinate)
         return !tetrisGrid.hasTile(at: coordinate)
     }
 
@@ -160,12 +168,22 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
                 tileText: tileText)
     }
 
-    func landFallingTile(at coordinate: Coordinate) {
-        guard let fallingTileText = fallingTileText else {
-            assertionFailure("fallingTileText is not initialised")
-            return
+    func canLandTile(at coordinate: Coordinate) -> Bool {
+        assertCoordinateValid(coordinate)
+        if tetrisGrid.hasTile(at: coordinate) ||
+           (!tetrisGrid.hasTile(at: coordinate.nextRow) && coordinate.row < Constants.Game.Tetris.rows - 1) {
+            return false
         }
-        tetrisGrid.addTile(at: coordinate, tileText: fallingTileText)
+        landingCoordinate = coordinate
+        return true
+    }
+
+    func tileHasLanded() {
+        guard let fallingTileText = fallingTileText,
+              let landingCoordinate = landingCoordinate else {
+            fatalError("fallingTileText or landingCoordinate is not initialised")
+        }
+        tetrisGrid.addTile(at: landingCoordinate, tileText: fallingTileText)
 
         guard let destroyedCoordinates = checkForMatchingPhrase() else {
             return
@@ -183,6 +201,7 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
             assertionFailure("fallingTileText is not initialised")
             return
         }
+        assert(index < upcomingTiles.count, "Index of upcoming tile is out of bounds")
         fallingTileText = upcomingTiles[index]
         delegate?.redisplayFallingTile(tileText: upcomingTiles[index])
 
