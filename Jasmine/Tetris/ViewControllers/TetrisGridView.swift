@@ -9,10 +9,6 @@ class TetrisGridView {
         self.collectionView = collectionView
     }
 
-    private func getIndexPath(_ coordinate: Coordinate) -> IndexPath {
-        return IndexPath(row: coordinate.col, section: coordinate.row)
-    }
-
     private func getCell(at indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.cellForItem(at: indexPath) else {
             fatalError("Failed to get cell at \(indexPath)")
@@ -29,18 +25,18 @@ class TetrisGridView {
 
     /// Adds a new view to the cell at indexPath
     func addToCell(_ view: UIView, at coordinate: Coordinate) {
-        getCell(at: getIndexPath(coordinate)).contentView.addSubview(view)
+        getCell(at: IndexPath(coordinate)).contentView.addSubview(view)
     }
 
     /// Removes the view in the cell at indexPath
     func clearCell(at coordinate: Coordinate) {
-        getSubview(at: getIndexPath(coordinate)).removeFromSuperview()
+        getSubview(at: IndexPath(coordinate)).removeFromSuperview()
     }
 
     /// Shifts the view to the cell one row below it
     func shiftViewDown(at coordinate: Coordinate) {
-        let sourceView = getSubview(at: getIndexPath(coordinate))
+        let sourceView = getSubview(at: IndexPath(coordinate))
         sourceView.removeFromSuperview()
-        addToCell(sourceView, at: Coordinate(row: coordinate.row + 1, col: coordinate.col))
+        addToCell(sourceView, at: coordinate.nextRow)
     }
 }
