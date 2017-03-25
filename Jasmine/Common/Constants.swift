@@ -14,8 +14,8 @@ enum Constants {
     }
 
     enum Tetris {
-        static let gameTitle = "Tetris ChenYu"
-        static let gameInstruction = "Form ChenYu in a row or column to destroy the block"
+        static let gameTitle = "Tetris ChengYu"
+        static let gameInstruction = "Form ChengYu in a row or column to destroy the block"
 
         /// Number of rows on the grid
         static let rows = 12
