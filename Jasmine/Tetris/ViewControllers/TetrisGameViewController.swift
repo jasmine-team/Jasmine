@@ -76,19 +76,19 @@ extension TetrisGameViewController: UICollectionViewDataSource {
     // while the column index of the tile is given by IndexPath.row
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return Constants.Tetris.columns
+        return Constants.Game.Tetris.columns
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return Constants.Tetris.rows
+        return Constants.Game.Tetris.rows
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: Constants.Tetris.cellIdentifier, for: indexPath)
+            withReuseIdentifier: Constants.Game.Tetris.cellIdentifier, for: indexPath)
 
-        // todo: remove these temp code (for visualization only)
+        // TODO: remove these temp code (for visualization only)
         cell.layer.borderWidth = 1.0
         let label = UILabel()
         label.frame.size = CGSize(width: cell.frame.width, height: cell.frame.height / 3)
@@ -107,7 +107,7 @@ extension TetrisGameViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        cellSize = collectionView.frame.width / CGFloat(Constants.Tetris.columns)
+        cellSize = collectionView.frame.width / CGFloat(Constants.Game.Tetris.columns)
         return CGSize(width: cellSize, height: cellSize)
     }
 

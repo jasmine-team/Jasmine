@@ -16,7 +16,7 @@ class TetrisGameViewModel {
         }
     }
 
-    let timer = CountDownTimer(totalTimeAllowed: Constants.Tetris.totalTime)
+    let timer = CountDownTimer(totalTimeAllowed: Constants.Game.Tetris.totalTime)
 
     private(set) var gameStatus = GameStatus.notStarted {
         didSet {
@@ -31,7 +31,7 @@ class TetrisGameViewModel {
     }
 
     private func populateUpcomingTiles() {
-        for _ in 0..<Constants.Tetris.upcomingTilesCount {
+        for _ in 0..<Constants.Game.Tetris.upcomingTilesCount {
             upcomingTiles.append(getRandomWord())
         }
     }
@@ -62,15 +62,15 @@ class TetrisGameViewModel {
     /// Concatenate the words row by row or col by col to check if a phrase is contained in them
     private func checkForMatchingPhrase(byRow searchByRow: Bool) -> Set<Coordinate>? {
         var matchedCoordinates: Set<Coordinate> = []
-        let maxIndex = searchByRow ? Constants.Tetris.rows : Constants.Tetris.columns
+        let maxIndex = searchByRow ? Constants.Game.Tetris.rows : Constants.Game.Tetris.columns
         for index in 0..<maxIndex {
             var line = ""
             if searchByRow {
-                for col in 0..<Constants.Tetris.columns {
+                for col in 0..<Constants.Game.Tetris.columns {
                     line += getTileText(at: Coordinate(row: index, col: col))
                 }
             } else {
-                for row in 0..<Constants.Tetris.rows {
+                for row in 0..<Constants.Game.Tetris.rows {
                     line += getTileText(at: Coordinate(row: row, col: index))
                 }
             }
@@ -138,11 +138,11 @@ class TetrisGameViewModel {
 extension TetrisGameViewModel: TetrisGameViewModelProtocol {
 
     var gameTitle: String {
-        return Constants.Tetris.gameTitle
+        return Constants.Game.Tetris.gameTitle
     }
 
     var gameInstruction: String {
-    	return Constants.Tetris.gameInstruction
+    	return Constants.Game.Tetris.gameInstruction
     }
 
     func canShiftFallingTile(to coordinate: Coordinate) -> Bool {
@@ -155,7 +155,7 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
         delegate?.redisplayUpcomingTiles()
 
         fallingTileText = tileText
-        let randCol = Random.integer(toInclusive: Constants.Tetris.columns)
+        let randCol = Random.integer(toInclusive: Constants.Game.Tetris.columns)
         return (location: Coordinate(row: Coordinate.origin.row, col: randCol),
                 tileText: tileText)
     }
@@ -195,6 +195,6 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
             assertionFailure("startGame called when game is already ongoing")
             return
         }
-        timer.startTimer(timerInterval: Constants.Tetris.timeInterval)
+        timer.startTimer(timerInterval: Constants.Game.Tetris.timeInterval)
     }
 }
