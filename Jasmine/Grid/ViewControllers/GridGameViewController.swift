@@ -46,14 +46,12 @@ class GridGameViewController: UIViewController {
         if let squareGridView = segue.destination as? SquareGridViewController {
             squareGridView.segueWith(viewModel.gridData,
                                      numRows: Constants.Game.Grid.rows,
-                                     numCols: Constants.Game.Grid.columns,
-                                     requireSpace: true)
+                                     numCols: Constants.Game.Grid.columns)
             self.squareGridViewController = squareGridView
 
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
-            statisticsView.timeLeft = viewModel.totalTimeAllowed
-            statisticsView.currentScore = viewModel.currentScore
-
+            statisticsView.segueWith(timeLeft: viewModel.timeRemaining,
+                                     currentScore: viewModel.currentScore)
             self.statisticsViewController = statisticsView
         }
     }
