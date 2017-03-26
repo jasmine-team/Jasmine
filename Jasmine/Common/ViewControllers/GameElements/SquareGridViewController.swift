@@ -8,8 +8,6 @@ class SquareGridViewController: UIViewController {
 
     fileprivate static let standardCellSpacing = CGFloat(8.0)
 
-    fileprivate static let gravityDirection = CGVector(dx: 0, dy: -1)
-
     // MARK: Layouts
     @IBOutlet fileprivate weak var gridCollectionView: UICollectionView!
 
@@ -33,10 +31,6 @@ class SquareGridViewController: UIViewController {
         }
         return outcome
     }
-
-    // MARK: UIDynamics Properties
-    fileprivate var gravityProperty: UIGravityBehavior!
-    fileprivate var collisionProperty: UICollisionBehavior!
 
     /// Stores the database that is used to display onto the collection view in this view controller.
     fileprivate var collectionData: [Coordinate: String] = [:]

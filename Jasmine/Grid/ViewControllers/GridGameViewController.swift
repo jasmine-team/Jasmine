@@ -4,7 +4,7 @@ import UIKit
 class GridGameViewController: UIViewController {
 
     // MARK: Layouts
-    fileprivate var squareGridViewController: SquareGridViewController!
+    fileprivate var squareGridViewController: DraggableSquareGridViewController!
 
     fileprivate var statisticsViewController: GameStatisticsViewController!
 
@@ -12,7 +12,7 @@ class GridGameViewController: UIViewController {
 
     @IBOutlet private weak var statusBarBackgroundView: UIView!
 
-    fileprivate var draggingTile: (view: UIView, originalCoord: Coordinate)?
+    fileprivate var draggingTile: (view: SquareTextView, originalCoord: Coordinate)?
 
     // MARK: Game Properties
     fileprivate var viewModel: GridViewModelProtocol!
@@ -43,7 +43,7 @@ class GridGameViewController: UIViewController {
     // MARK: Segue methods
     /// Method that manages the seguing to other view controllers from this view controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let squareGridView = segue.destination as? SquareGridViewController {
+        if let squareGridView = segue.destination as? DraggableSquareGridViewController {
             squareGridView.segueWith(viewModel.gridData,
                                      numRows: Constants.Game.Grid.rows,
                                      numCols: Constants.Game.Grid.columns)
