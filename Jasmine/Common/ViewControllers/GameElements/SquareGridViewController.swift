@@ -131,11 +131,11 @@ extension SquareGridViewController {
     // MARK: Detach Tiles from Collection View
     /// Detach a tile contained in a view cell.
     ///
-    /// Note that in this case, the tile is the underlying view stored inside the view cell.
-    /// Note further that without detaching, the tile cannot be moved.
-    ///
     /// - Parameter coordinate: the tile that should be detached from the view cell.
-    /// - Returns: the tile view.
+    /// - Returns: the detached tile view.
+    /// - Note:
+    ///   - In these operations, the tile is the underlying view stored inside the view cell.
+    ///   - Without detaching the tile, the tile cannot be moved.
     func detachTile(fromCoord coordinate: Coordinate) -> UIView? {
         guard let cell = gridCollectionView.cellForItem(at: IndexPath(coordinate)),
             let squareCell = cell as? SquareTextViewCell,
@@ -153,6 +153,9 @@ extension SquareGridViewController {
     ///   - frame: the new frame to position this tile with reference to this collection view 
     ///     coordinates.
     /// - Returns: the tile view.
+    /// - Note:
+    ///   - In these operations, the tile is the underlying view stored inside the view cell.
+    ///   - By detaching the tile, the tile can then be moved.
     func addDetachedTile(withData data: String, toFrame frame: CGRect) -> UIView {
         let squareTile = SquareTextView()
         squareTile.text = data
@@ -192,11 +195,11 @@ extension SquareGridViewController {
     // MARK: Move Tiles in Collection View
     /// Moves a detached tile in this collection view.
     ///
-    /// Note that if this tile is not found in this collection view will result in no-op.
-    ///
     /// - Parameters:
     ///   - tile: the tile view that should be moved.
     ///   - newCenter: the new center location to position this tile.
+    /// - Precondition:
+    ///   - This tile has been "detached" from this collection view, otherwise will result in no-op.
     func moveDetachedTile(_ tile: UIView, toPosition newCenter: CGPoint) {
         guard detachedTiles.contains(tile) else {
             return
@@ -205,15 +208,47 @@ extension SquareGridViewController {
         tile.center = newCenter
     }
 
+    /// Moves a detached tile in this collection view along the x axis.
+    ///
+    /// - Parameters:
+    ///   - tile: the tile view that should be moved.
+    ///   - xCoord: the x coordinate where the tile should be moved to.
+    /// - Precondition:
+    ///   - This tile has been "detached" from this collection view, otherwise will result in no-op.
+    func moveDetachedTile(_ tile: UIView, toAlongXAxis xCoord: CGFloat) {
+        guard detachedTiles.contains(tile) else {
+            return
+        }
+        gridCollectionView.bringSubview(toFront: tile)
+        tile.center.x = xCoord
+    }
+
+    /// Moves a detached tile in this collection view along the y axis.
+    ///
+    /// - Parameters:
+    ///   - tile: the tile view that should be moved.
+    ///   - xCoord: the y coordinate where the tile should be moved to.
+    /// - Precondition:
+    ///   - This tile has been "detached" from this collection view, otherwise will result in no-op.
+    func moveDetachedTile(_ tile: UIView, toAlongYAxis yCoord: CGFloat) {
+        guard detachedTiles.contains(tile) else {
+            return
+        }
+        gridCollectionView.bringSubview(toFront: tile)
+        tile.center.y = yCoord
+    }
+
     // MARK: Snap And Reattach Tiles to Cells
     /// Animatedly move the detached tile to a particular cell in the specified coordinate.
-    ///
-    /// Note that this method does not reattach the tile to the specified cell coordinate.
     ///
     /// - Parameters:
     ///   - tile: tile view to be attached.
     ///   - coordinate: destination coordinate to be attached to.
     ///   - callback: a function that will be called when the tile has successfully been attached.
+    /// - Precondition: 
+    ///   - This tile has been "detached" from this collection view, otherwise will result in no-op.
+    /// - Note:
+    ///   - This method does not reattach the tile to the specified cell coordinate.
     func snapDetachedTile(_ tile: UIView, toCoordinate coordinate: Coordinate,
                           withCompletion callback: (() -> Void)?) {
         guard detachedTiles.contains(tile),
@@ -228,16 +263,15 @@ extension SquareGridViewController {
 
     /// Reattach the detached tile to a particular cell in the specified coordinate.
     ///
-    /// Note that if the tile fails to attach (because another tile is occupying the cell), results
-    /// in no-op.
-    ///
     /// - Parameters:
     ///   - tile: tile view to be attached.
     ///   - coordinate: destination coordinate to be attached to.
     ///   - callback: a function that will be called when the tile has successfully been attached.
+    /// - Precondition:
+    ///   - This tile has been "detached" from this collection view, otherwise will result in no-op.
+    ///   - The destinating cell does not contain any other tile. Otherwise results in no-op.
     func snapAndReattachDetachedTile(_ tile: UIView, toCoordinate coordinate: Coordinate,
                                      withCompletion callback: (() -> Void)?) {
-
         guard detachedTiles.contains(tile),
             let textViewTile = tile as? SquareTextView,
             let destinationCell = gridCollectionView.cellForItem(at: IndexPath(coordinate)),
@@ -254,11 +288,11 @@ extension SquareGridViewController {
 
     /// Helper method to perform the actual attachment of the specified view.
     ///
-    /// Note that if the cell is occupied, results in no-op.
-    ///
     /// - Parameters:
     ///   - tile: the tile to be attached.
     ///   - viewCell: the cell that the tile should be attached to.
+    /// - Precondition:
+    ///   - The destinating cell does not contain any other tile. Otherwise results in no-op.
     private func helperAttachTile(for tile: SquareTextView, onto viewCell: SquareTextViewCell) {
         guard viewCell.textView == nil else {
             return
