@@ -9,7 +9,7 @@ enum Random {
     ///   - from: start of range, inclusive
     ///   - toInclusive: end of range, inclusive
     /// - Returns: a random number in the range
-    static func integer(from: Int, toInclusive: Int) -> Int {
+    static func integer(from: Int = 0, toInclusive: Int) -> Int {
         assert(toInclusive > from, "`toInclusive` must be larger than `from` number")
         return from + Int(arc4random_uniform(UInt32(toInclusive - from + 1)))
     }
