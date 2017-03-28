@@ -7,11 +7,13 @@ PODS:
   - Realm/Headers (2.4.4)
   - RealmSwift (2.4.4):
     - Realm (= 2.4.4)
-  - SwiftLint (0.16.1)
+  - SnapKit (3.2.0)
+  - SwiftLint (0.17.0)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - RealmSwift
+  - SnapKit (~> 3.2.0)
   - SwiftLint
 
 EXTERNAL SOURCES:
@@ -27,8 +29,9 @@ SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Realm: 5a280a1f5a9a3c267bebf4f41ee47911137703d7
   RealmSwift: 0c02b9f2d4be4301c497ed10e53a0580584eb1dd
-  SwiftLint: b8b683208cc09640898f16318a7a452274e91f61
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SwiftLint: 9fb1dd71d5952d130f8c2fb60ae2e1475cf5d575
 
-PODFILE CHECKSUM: 7ff181a45e49c4a6ce6ce7818db3437f09f3cdbc
+PODFILE CHECKSUM: cd34ffaeaba84ecfbac5c63976610a8f9a6a17f5
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.1.1
