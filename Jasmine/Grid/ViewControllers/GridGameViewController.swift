@@ -37,7 +37,7 @@ class GridGameViewController: UIViewController {
 
     /// Specifies that the supported orientation for this view is portrait only.
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
+        return .portraitUpsideDown
     }
 
     // MARK: Segue methods

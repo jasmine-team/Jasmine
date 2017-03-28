@@ -11,14 +11,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Square Grid View Controller-->
-        <scene sceneID="HTn-RY-q1C">
-            <objects>
-                <viewControllerPlaceholder storyboardName="GameElements" referencedIdentifier="Square Grid View Controller" id="iGk-7X-0JV" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PPz-1S-6Tl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="486" y="22"/>
-        </scene>
         <!--Game Statistics View Controller-->
         <scene sceneID="sEg-jQ-Apo">
             <objects>
@@ -26,6 +18,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q45-E1-9cH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="506" y="67"/>
+        </scene>
+        <!--Draggable Square Grid View Controller-->
+        <scene sceneID="DmQ-RR-sld">
+            <objects>
+                <viewController modalPresentationStyle="currentContext" id="KAG-wQ-P9r" customClass="DraggableSquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LIS-VZ-DXB"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Wh-jH-Sit"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v2q-RC-6jM">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="361"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cGc-ZY-3lX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1014" y="23"/>
         </scene>
         <!--Grid Game View Controller-->
         <scene sceneID="yeQ-RR-Dye">
@@ -46,7 +59,7 @@
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="gKY-pq-L80" appends="YES" id="Ws9-3L-IYY"/>
-                                    <segue destination="iGk-7X-0JV" kind="embed" id="aaE-vY-JZg"/>
+                                    <segue destination="KAG-wQ-P9r" kind="embed" id="c6k-TI-sqi"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDe-Ia-KAl">
