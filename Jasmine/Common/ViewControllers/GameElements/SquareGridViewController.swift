@@ -48,6 +48,7 @@ class SquareGridViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initCollectionView()
+        initOtherViewProperties()
     }
 
     /// Readjusts layout (such as cell size) upon auto-rotate.
@@ -168,6 +169,8 @@ class SquareGridViewController: UIViewController {
     private func initCollectionView() {
         gridCollectionView.delegate = self
         gridCollectionView.dataSource = self
+        gridCollectionView.isScrollEnabled = false
+        gridCollectionView.clipsToBounds = false
         gridCollectionView.backgroundColor = UIColor.clear
         gridCollectionView.register(
             SquareTextViewCell.self,
@@ -175,6 +178,10 @@ class SquareGridViewController: UIViewController {
 
         view.addSubview(gridCollectionView)
         gridCollectionView.snp.makeConstraints { $0.edges.equalToSuperview() }
+    }
+
+    private func initOtherViewProperties() {
+        view.clipsToBounds = false
     }
 }
 
