@@ -139,13 +139,29 @@ class DraggableSquareGridViewController: SquareGridViewController {
     func snapDetachedTile(_ tile: SquareTextView, toCoordinate coordinate: Coordinate,
                           withCompletion callback: (() -> Void)?) {
         guard detachedTiles.contains(tile),
-            let targetCell = getCell(at: coordinate) else {
-                return
+              let targetCell = getCell(at: coordinate) else {
+            return
         }
         bringTileToFront(tile)
         UIView.animate(withDuration: DraggableSquareGridViewController.snappingDuration,
                        animations: { tile.frame = targetCell.frame },
                        completion: { _ in callback?() })
+    }
+
+    /// Animatedly move the detached tile to the nearest particular cell.
+    ///
+    /// - Parameters:
+    ///   - tile: tile view to be attached.
+    /// - Precondition:
+    ///   - This tile has been "detached" from this collection view, otherwise will result in no-op.
+    /// - Note:
+    ///   - This method does not reattach the tile to the specified cell coordinate.
+    func snapDetachedTileToNearestCell(_ tile: SquareTextView) {
+        guard detachedTiles.contains(tile),
+              let targetCoord = getCoordinate(at: tile.center) else {
+            return
+        }
+        snapDetachedTile(tile, toCoordinate: targetCoord, withCompletion: nil)
     }
 
     /// Reattach the detached tile to a particular cell in the specified coordinate.
