@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 /// A view controller that stores a grid of square cells.
 class SquareGridViewController: UIViewController {
@@ -9,7 +10,8 @@ class SquareGridViewController: UIViewController {
     fileprivate static let standardCellSpacing = CGFloat(8.0)
 
     // MARK: Layouts
-    @IBOutlet fileprivate weak var gridCollectionView: UICollectionView!
+    fileprivate let gridCollectionView
+        = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
     // MARK: Properties
     /// Stores the maximum number of rows that should be displayed in this view.
@@ -32,10 +34,22 @@ class SquareGridViewController: UIViewController {
         return outcome
     }
 
+    /// Gets all the tiles in this collection view.
+    var allTiles: Set<SquareTextView> {
+        let floatingTiles = gridCollectionView.subviews.flatMap { $0 as? SquareTextView }
+        let remainingTiles = Set(allCoordinates.flatMap { getTile(at: $0) })
+        return remainingTiles.union(floatingTiles)
+    }
+
     /// Stores the database that is used to display onto the collection view in this view controller.
     fileprivate var collectionData: [Coordinate: String] = [:]
 
     // MARK: View Controller Lifecycles
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initCollectionView()
+    }
+
     /// Readjusts layout (such as cell size) upon auto-rotate.
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         gridCollectionView.performBatchUpdates(gridCollectionView.reloadData, completion: nil)
@@ -87,15 +101,15 @@ class SquareGridViewController: UIViewController {
     func reload(cellsAt coordinates: Set<Coordinate>, withAnimation shouldAnimate: Bool) {
         let indices = coordinates.map { IndexPath($0) }
         let basicReloadIndices = {
-            UIView.setAnimationsEnabled(false)
             self.gridCollectionView.reloadItems(at: indices)
-            UIView.setAnimationsEnabled(true)
         }
 
         if shouldAnimate {
             gridCollectionView.performBatchUpdates(basicReloadIndices, completion: nil)
         } else {
+            UIView.setAnimationsEnabled(false)
             basicReloadIndices()
+            UIView.setAnimationsEnabled(true)
         }
     }
 
@@ -148,6 +162,19 @@ class SquareGridViewController: UIViewController {
     /// - Parameter tile: the tile to be brought to the front.
     func bringTileToFront(_ tile: SquareTextView) {
         gridCollectionView.bringSubview(toFront: tile)
+    }
+
+    // MARK: Helper Methods
+    private func initCollectionView() {
+        gridCollectionView.delegate = self
+        gridCollectionView.dataSource = self
+        gridCollectionView.backgroundColor = UIColor.clear
+        gridCollectionView.register(
+            SquareTextViewCell.self,
+            forCellWithReuseIdentifier: SquareGridViewController.cellIdentifier)
+
+        view.addSubview(gridCollectionView)
+        gridCollectionView.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
 }
 

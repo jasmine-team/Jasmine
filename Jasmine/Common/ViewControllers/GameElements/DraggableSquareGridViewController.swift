@@ -8,6 +8,11 @@ class DraggableSquareGridViewController: SquareGridViewController {
     private static let snappingDuration = 0.2
 
     // MARK: Properties
+    /// Gets all the tiles in this collection view.
+    override var allTiles: Set<SquareTextView> {
+        return super.allTiles.union(detachedTiles)
+    }
+
     /// Stores the set of tiles that are "detached" from the collection view.
     private(set) var detachedTiles: Set<SquareTextView> = []
 

@@ -14,11 +14,14 @@ class SquareTextViewCell: UICollectionViewCell {
             return textView?.text
         }
         set {
-            if text == nil {
+            guard let newText = newValue else {
                 textView = nil
-            } else {
-                textView?.text = newValue
+                return
             }
+            if textView == nil {
+                textView = SquareTextView()
+            }
+            textView?.text = newText
         }
     }
 
