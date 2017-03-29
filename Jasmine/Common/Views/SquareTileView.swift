@@ -3,7 +3,7 @@ import UIKit
 /// Displays a view that is square in shape.
 /// Capable of displaying a limited number of character(s), including chinese characters.
 @IBDesignable
-class SquareTextView: UILabel {
+class SquareTileView: UILabel {
 
     // MARK: Constants
     private static let borderWidth: CGFloat = 2
