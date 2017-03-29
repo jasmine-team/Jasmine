@@ -26,6 +26,20 @@ class SquareTileViewCell: UICollectionViewCell {
         return displayedTile?.text
     }
 
+    /// Set this method to set the properties to all the tiles in this cell.
+    var tileProperties: ((SquareTileView) -> Void)? {
+        didSet {
+            guard tileProperties != nil || oldValue != nil else {
+                return
+            }
+            guard let tileProperties = tileProperties else {
+                resetTiles()
+                return
+            }
+            tiles.forEach { tileProperties($0) }
+        }
+    }
+
     override var bounds: CGRect {
         didSet {
             tiles.forEach { $0.frame = bounds }
@@ -36,14 +50,21 @@ class SquareTileViewCell: UICollectionViewCell {
 
     // MARK: Tile Stack
     /// Pushes a tile to the top of the cell view stack.
+    /// - Postcondition: 
+    ///   - The tile's properties will be automatically applied with `setTileProperties`
+    ///   - The tile's size is set after this method is called.
+    /// - Note:
+    ///   - All other methods that involve adding a tile will involve calling this method.
     func pushTileToTop(_ tile: SquareTileView) {
         contentView.addSubview(tile)
-        tile.frame = bounds
         contentView.bringSubview(toFront: tile)
+
+        tileProperties?(tile)
+        tile.frame = bounds
     }
 
     /// Pushes a text that will be placed in a tile to the top of the cell view stack.
-    func pushTextToTop(_ text: String) -> SquareTileView {
+    func pushTextToTop(_ text: String?) -> SquareTileView {
         let tile = SquareTileView()
         tile.text = text
         pushTileToTop(tile)
@@ -120,6 +141,7 @@ class SquareTileViewCell: UICollectionViewCell {
         initHelper()
     }
 
+    // MARK: Helper methods
     private func initHelper() {
         self.clipsToBounds = false
         self.backgroundColor = Constants.Theme.cellsBackground
@@ -130,5 +152,12 @@ class SquareTileViewCell: UICollectionViewCell {
         self.addSubview(animationView)
         self.sendSubview(toBack: animationView)
         self.animationView.snp.makeConstraints { $0.edges.equalToSuperview() }
+    }
+
+    private func resetTiles() {
+        let oldTiles = tiles
+        clearAllTiles()
+        oldTiles.reversed()
+            .forEach { _ = pushTextToTop($0.text) }
     }
 }
