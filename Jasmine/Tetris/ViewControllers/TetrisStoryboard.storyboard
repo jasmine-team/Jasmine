@@ -10,6 +10,52 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Discrete Fallable Square Grid View Controller-->
+        <scene sceneID="KaK-2e-8h7">
+            <objects>
+                <viewController id="4Oq-id-eCE" customClass="DiscreteFallableSquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="INd-ZT-zgV"/>
+                        <viewControllerLayoutGuide type="bottom" id="8t1-Lj-Zzl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5zt-Cb-aGG">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="399"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="343" height="399"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pFs-F6-KFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-692" y="740"/>
+        </scene>
+        <!--Square Grid View Controller-->
+        <scene sceneID="t1o-aH-0OC">
+            <objects>
+                <viewController id="RSU-zj-Keu" customClass="SquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lV4-5t-hoC"/>
+                        <viewControllerLayoutGuide type="bottom" id="YmJ-tj-2Vo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Yow-Pe-xhz">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="64"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="343" height="64"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V6C-vL-diE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="210" y="590"/>
+        </scene>
         <!--Tetris Game View Controller-->
         <scene sceneID="Krm-gK-4xY">
             <objects>
@@ -22,6 +68,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="Tetris Game Area" translatesAutoresizingMaskIntoConstraints="NO" id="64w-ac-iLZ" userLabel="Tetris Game Area">
+                                <rect key="frame" x="16" y="80" width="343" height="393"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="IxQ-me-Oov" appends="YES" id="gur-7k-JWm"/>
+                                    <outletCollection property="gestureRecognizers" destination="foD-TI-dgZ" appends="YES" id="chf-Mb-uuL"/>
+                                    <outletCollection property="gestureRecognizers" destination="5Rf-XV-Nsb" appends="YES" id="SNu-n8-Go0"/>
+                                    <segue destination="4Oq-id-eCE" kind="embed" id="mD0-vD-TBv"/>
+                                </connections>
+                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPF-3v-g0Z" userLabel="Status Bar Background">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
                                 <color key="backgroundColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -40,6 +95,9 @@
                                     <navigationItem title="Tetris Game Title" id="R5p-HH-gxO">
                                         <barButtonItem key="leftBarButtonItem" title="Back" width="35" id="YXs-Km-Pak">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="onBackPressed:" destination="QxJ-8P-SqZ" id="Ba4-ZR-qCE"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -54,28 +112,24 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="Tetris Upcoming Tiles" translatesAutoresizingMaskIntoConstraints="NO" id="EvM-bs-WbZ" userLabel="Tetris Upcoming Tiles">
-                                <rect key="frame" x="16" y="515" width="343" height="64"/>
+                                <rect key="frame" x="16" y="509" width="343" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="7xf-n5-kRY"/>
+                                    <constraint firstAttribute="height" constant="70" id="7xf-n5-kRY"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="2qr-g3-djp" kind="embed" identifier="Tetris Upcoming Tiles" id="U7L-P9-Zvz"/>
+                                    <outletCollection property="gestureRecognizers" destination="clz-3h-Xvc" appends="YES" id="GYd-jE-f0p"/>
+                                    <segue destination="RSU-zj-Keu" kind="embed" id="awe-DI-mk0"/>
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPCOMING TILES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5z-y8-XQq" userLabel="Tetris Upcoming Tiles Label">
-                                <rect key="frame" x="20" y="495" width="112.5" height="16"/>
+                                <rect key="frame" x="16" y="489" width="112.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <color key="textColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="Tetris Game Area" translatesAutoresizingMaskIntoConstraints="NO" id="64w-ac-iLZ" userLabel="Tetris Game Area">
-                                <rect key="frame" x="16" y="80" width="343" height="399"/>
-                                <connections>
-                                    <segue destination="2qr-g3-djp" kind="embed" identifier="Tetris Game Area" id="ikw-ff-9sC"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="64w-ac-iLZ" firstAttribute="top" secondItem="vb6-rG-EyC" secondAttribute="bottom" constant="16" id="21H-G2-Cle"/>
                             <constraint firstItem="vPF-3v-g0Z" firstAttribute="top" secondItem="4Wh-bq-pwH" secondAttribute="top" id="2w0-a6-DH2"/>
@@ -86,7 +140,7 @@
                             <constraint firstItem="vb6-rG-EyC" firstAttribute="top" secondItem="q8A-bO-b8u" secondAttribute="bottom" id="NaL-Vq-uvW"/>
                             <constraint firstItem="LJA-n4-ff2" firstAttribute="top" secondItem="EvM-bs-WbZ" secondAttribute="bottom" constant="16" id="QhW-Y3-y3o"/>
                             <constraint firstItem="64w-ac-iLZ" firstAttribute="leading" secondItem="EvM-bs-WbZ" secondAttribute="leading" id="W4a-a4-9xB"/>
-                            <constraint firstItem="z5z-y8-XQq" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leadingMargin" constant="4" id="aAF-yj-7AY"/>
+                            <constraint firstItem="z5z-y8-XQq" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leadingMargin" id="aAF-yj-7AY"/>
                             <constraint firstItem="VPR-bF-iqZ" firstAttribute="top" secondItem="LJA-n4-ff2" secondAttribute="bottom" id="aeR-Ie-N7j"/>
                             <constraint firstItem="vb6-rG-EyC" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leading" id="eCB-HZ-mr8"/>
                             <constraint firstItem="z5z-y8-XQq" firstAttribute="top" secondItem="64w-ac-iLZ" secondAttribute="bottom" constant="16" id="fCF-lD-XDE"/>
@@ -99,16 +153,28 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGJ-pa-lSq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="clz-3h-Xvc">
+                    <connections>
+                        <action selector="onUpcomingTilesTouched:" destination="QxJ-8P-SqZ" id="i5e-r4-KXV"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="IxQ-me-Oov" userLabel="Swipe Right Gesture Recognizer">
+                    <connections>
+                        <action selector="onTilesSwiped:" destination="QxJ-8P-SqZ" id="c1F-FL-b4j"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="foD-TI-dgZ" userLabel="Swipe Left Gesture Recognizer">
+                    <connections>
+                        <action selector="onTilesSwiped:" destination="QxJ-8P-SqZ" id="LXk-6L-jmG"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="5Rf-XV-Nsb" userLabel="Swipe Down Gesture Recognizer">
+                    <connections>
+                        <action selector="onTilesSwiped:" destination="QxJ-8P-SqZ" id="spt-2g-ycI"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-44" y="98"/>
-        </scene>
-        <!--Square Grid View Controller-->
-        <scene sceneID="e5Q-xH-z5f">
-            <objects>
-                <viewControllerPlaceholder storyboardName="GameElements" referencedIdentifier="Square Grid View Controller" id="2qr-g3-djp" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="E7O-1G-8gP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="562" y="49"/>
         </scene>
         <!--Game Statistics View Controller-->
         <scene sceneID="dwX-hO-08x">
@@ -119,7 +185,4 @@
             <point key="canvasLocation" x="578" y="98"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="U7L-P9-Zvz"/>
-    </inferredMetricsTieBreakers>
 </document>

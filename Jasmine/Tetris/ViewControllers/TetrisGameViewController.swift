@@ -2,21 +2,17 @@ import UIKit
 
 class TetrisGameViewController: UIViewController {
 
-    // MARK: - Constants
-    private static let tetrisGameAreaIdentifier = "Tetris Game Area"
-    private static let tetrisUpcomingTilesIdentifier = "Tetris Upcoming Tiles"
-
     // MARK: - Layouts
-    private var tetrisGameArea: SquareGridViewController!
+    fileprivate var tetrisGameAreaView: DiscreteFallableSquareGridViewController!
 
-    private var tetrisUpcomingTilesArea: SquareGridViewController!
+    fileprivate var tetrisUpcomingTilesView: SquareGridViewController!
 
-    private var gameStatisticsView: GameStatisticsViewController!
+    fileprivate var gameStatisticsView: GameStatisticsViewController!
 
     // MARK: Game Properties
-    fileprivate var viewModel: TetrisViewModelProtocol!
+    fileprivate var viewModel: TetrisGameViewModelProtocol!
 
-    private var upcomingTiles: [Coordinate: String] {
+    fileprivate var upcomingTiles: [Coordinate: String] {
         var outcome: [Coordinate: String] = [:]
         (0..<Constants.Game.Tetris.upcomingTilesCount)
             .map { (location: $0, data: viewModel.upcomingTiles[$0]) }
@@ -25,24 +21,21 @@ class TetrisGameViewController: UIViewController {
     }
 
     // MARK: View Controller Lifecycles
-    /// Specifies that the supported orientation for this view is portrait only.
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        startGame()
     }
 
     // MARK: Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let squareGridView = segue.destination as? SquareGridViewController {
-            if segue.identifier == TetrisGameViewController.tetrisGameAreaIdentifier {
-                squareGridView.segueWith([:], numRows: Constants.Game.Tetris.rows,
-                                         numCols: Constants.Game.Tetris.columns, needSpace: false)
-                self.tetrisGameArea = squareGridView
+        if let tetrisGridView = segue.destination as? DiscreteFallableSquareGridViewController {
+            self.tetrisGameAreaView = tetrisGridView
+            helperSegueIntoTetrisGridView()
 
-            } else if segue.identifier == TetrisGameViewController.tetrisUpcomingTilesIdentifier {
-                squareGridView.segueWith(upcomingTiles, numRows: 1,
-                                         numCols: Constants.Game.Tetris.upcomingTilesCount)
-                self.tetrisUpcomingTilesArea = squareGridView
-            }
+        } else if let upcomingView = segue.destination as? SquareGridViewController {
+            upcomingView.segueWith(upcomingTiles, numRows: 1,
+                                   numCols: Constants.Game.Tetris.upcomingTilesCount)
+            self.tetrisUpcomingTilesView = upcomingView
 
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
             statisticsView.segueWith(timeLeft: viewModel.timeRemaining,
@@ -51,20 +44,100 @@ class TetrisGameViewController: UIViewController {
         }
     }
 
+    /// Helper method to set up tetris grid view in segue
+    private func helperSegueIntoTetrisGridView() {
+        tetrisGameAreaView.onFallingTileRepositioned = notifyTileHasRepositioned
+        tetrisGameAreaView.onFallingTileLanded = notifyTileHasLanded
+        tetrisGameAreaView.canRepositionDetachedTileToCoord = { tile, coord in
+            guard tile == self.tetrisGameAreaView.fallingTile else {
+                return true
+            }
+            return self.viewModel.canShiftFallingTile(to: coord)
+        }
+
+        tetrisGameAreaView.segueWith([:], numRows: Constants.Game.Tetris.rows,
+                                     numCols: Constants.Game.Tetris.columns, needSpace: false)
+    }
+
     /// Feeds in the appropriate data for the use of seguing into this view.
     ///
     /// - Parameter viewModel: the game engine required to play this game.
-    func segueWith(_ viewModel: TetrisViewModelProtocol) {
+    func segueWith(_ viewModel: TetrisGameViewModelProtocol) {
         self.viewModel = viewModel
         self.viewModel.delegate = self
+    }
+
+    // MARK: Gestures and Listeners
+    @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func onUpcomingTilesTouched(_ sender: UITapGestureRecognizer) {
+        guard tetrisGameAreaView.hasFallingTile,
+              let coord = tetrisUpcomingTilesView
+                  .getCoordinate(at: sender.location(in: tetrisUpcomingTilesView.view)) else {
+            return
+        }
+        viewModel.swapFallingTile(withUpcomingAt: coord.col)
+    }
+
+    @IBAction func onTilesSwiped(_ sender: UISwipeGestureRecognizer) {
+        guard tetrisGameAreaView.hasFallingTile else {
+            return
+        }
+        if sender.direction == .left {
+            tetrisGameAreaView.shiftFallingTileLeftwards()
+        } else if sender.direction == .right {
+            tetrisGameAreaView.shiftFallingTileRightwards()
+        } else if sender.direction == .down {
+            tetrisGameAreaView.shiftFallingTileDownwards()
+        } else {
+            return
+        }
+    }
+
+    // MARK: - Game State and Actions
+    private func startGame() {
+        viewModel.startGame()
+        tetrisGameAreaView.startFallingTiles(with: Constants.Game.Tetris.tileFallInterval)
+        releaseNewTile()
+    }
+
+    private func releaseNewTile() {
+        guard !tetrisGameAreaView.hasFallingTile else {
+            assertionFailure("Current tile still falling! Cannot release a new tile for falling!")
+            return
+        }
+        let nextTile = viewModel.dropNextTile()
+        tetrisGameAreaView.setFallingTile(withData: nextTile.tileText, toCoord: nextTile.location)
+    }
+
+    private func notifyTileHasRepositioned() {
+        guard let coord = tetrisGameAreaView.fallingTileCoord,
+              viewModel.canLandTile(at: coord) else {
+            return
+        }
+        tetrisGameAreaView.landFallingTile()
+    }
+
+    private func notifyTileHasLanded() {
+        viewModel.tileHasLanded()
+        releaseNewTile()
     }
 }
 
 extension TetrisGameViewController: TetrisGameViewControllerDelegate {
 
-    /// Tells the view controller to retrieve `upcomingTiles` and reload the view for the upcoming tiles.
+    /// Tells the view controller to retrieve `upcomingTiles` and reload the view for the upcoming 
+    /// tiles.
     func redisplayUpcomingTiles() {
+        tetrisUpcomingTilesView.update(collectionData: upcomingTiles)
+        tetrisUpcomingTilesView.reload(allCellsWithAnimation: true)
+    }
 
+    /// Tells the view controller to redisplay the falling tile with `tileText`
+    func redisplayFallingTile(tileText: String) {
+        tetrisGameAreaView.fallingTile?.text = tileText
     }
 
     // MARK: Animation
@@ -90,7 +163,7 @@ extension TetrisGameViewController: BaseGameViewControllerDelegate {
     ///
     /// - Parameter newScore: the new score to be redisplayed.
     func redisplay(newScore: Int) {
-
+        gameStatisticsView.currentScore = viewModel.currentScore
     }
 
     // MARK: Time Update
@@ -100,7 +173,7 @@ extension TetrisGameViewController: BaseGameViewControllerDelegate {
     ///   - timeRemaining: the time remaining, in seconds.
     ///   - totalTime: the total time from the start of the game, in seconds.
     func redisplay(timeRemaining: TimeInterval, outOf totalTime: TimeInterval) {
-
+        gameStatisticsView.timeLeft = timeRemaining
     }
 
     // MARK: Game Status
@@ -110,6 +183,13 @@ extension TetrisGameViewController: BaseGameViewControllerDelegate {
     /// Note also that if the user has won/lost, the score in the `redisplay(_ newScore)` will be
     /// taken as the end game score. So update it before calling end game.
     func notifyGameStatusUpdated() {
-
+        switch viewModel.gameStatus {
+        case .endedWithWon:
+            fallthrough
+        case .endedWithLost:
+            tetrisGameAreaView.pauseFallingTiles()
+        default:
+            break
+        }
     }
 }
