@@ -26,7 +26,9 @@ enum Constants {
             /// Interval to update the time
             static let timeInterval: TimeInterval = 1
 
-            static let upcomingTilesCount = 3
+            static let upcomingTilesCount = 4
+
+            static let tileFallInterval: TimeInterval = 0.5
         }
     }
 
@@ -38,6 +40,7 @@ enum Constants {
         static let mainFontColor = FlatBlack()
 
         static let tilesFont = UIFont(name: "HelveticaNeue-Light", size: 30.0)
+        static let cellsBackground = UIColor(hexString: "c2d1cc")
     }
 
     enum Language: String {
