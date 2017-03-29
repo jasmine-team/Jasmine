@@ -36,6 +36,8 @@ enum Constants {
         static let mainColor = FlatMint()
         static let mainColorDark = FlatMintDark()
 
+        static let secondaryColor = UIColor(hexString: "ffd53f")
+
         static let mainWhiteColor = FlatWhite()
         static let mainFontColor = FlatBlack()
 
