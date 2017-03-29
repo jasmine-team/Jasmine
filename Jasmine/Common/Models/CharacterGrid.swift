@@ -10,17 +10,19 @@ struct CharacterGrid {
 
     init(fromInitialGrid initialGrid: [[String]], randomized: Bool) {
         let rows = initialGrid.count
-        let cols = initialGrid.first?.count ?? 0
-        assert(rows > 0 && cols > 0, "Number of rows and columns should be more than 0")
+        let columns = initialGrid.first?.count ?? 0
+        assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
         assert(initialGrid.map { $0.count }.isAllSame, "All rows should have the same length")
 
         if randomized {
             let allChars = initialGrid.joined().shuffled()
-            var randomizedGrid: [[String?]] = []
+
+            let oneRow = [String?](repeating: nil, count: columns)
+            var randomizedGrid = [[String?]](repeating: oneRow, count: rows)
 
             var idx = 0
             for row in 0..<rows {
-                for col in 0..<cols {
+                for col in 0..<columns {
                     randomizedGrid[row][col] = allChars[idx]
                     idx += 1
                 }
@@ -47,6 +49,12 @@ struct CharacterGrid {
             }
         }
         return true
+    }
+
+    mutating func swap(_ coord1: Coordinate, and coord2: Coordinate) {
+        let initialSecond = grid[coord2.row][coord2.col]
+        grid[coord2.row][coord2.col] = grid[coord1.row][coord1.col]
+        grid[coord1.row][coord1.col] = initialSecond
     }
 
     private func horizontallyContains(string: [String]) -> Bool {

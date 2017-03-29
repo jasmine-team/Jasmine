@@ -32,7 +32,7 @@ class SquareGridViewController: UIViewController {
     }
 
     /// Stores the database that is used to display onto the collection view in this view controller.
-    fileprivate var collectionData: [Coordinate: String] = [:]
+    fileprivate var collectionData: CharacterGrid!
 
     /// Stores the set of tiles that are "detached" from the collection view.
     fileprivate var detachedTiles: Set<UIView> = []
@@ -51,7 +51,7 @@ class SquareGridViewController: UIViewController {
     ///   - initialData: initial set of data to be displayed in this view.
     ///   - numRows: maximum number of rows to be displayed in this grid.
     ///   - numCols: maximum number of columns to be displayed in this grid.
-    func segueWith(_ initialData: [Coordinate: String], numRows: Int, numCols: Int) {
+    func segueWith(_ initialData: CharacterGrid, numRows: Int, numCols: Int) {
         self.collectionData = initialData
         self.numCols = numCols
         self.numRows = numRows
@@ -62,7 +62,7 @@ class SquareGridViewController: UIViewController {
     /// However, this does not reload the data in this display.
     ///
     /// - Parameter collectionData: the data source to be updated.
-    func update(collectionData: [Coordinate: String]) {
+    func update(collectionData: CharacterGrid) {
         self.collectionData = collectionData
     }
 
