@@ -4,9 +4,8 @@
 import Foundation
 import UIKit
 
-
 extension UIImageView {
-    
+
     /// Helper method that animates the given frames only once, and stops the animation
     /// on the last frame.
     ///
@@ -16,7 +15,7 @@ extension UIImageView {
     func animateOnce(with frames: [UIImage], and durationPerFrame: TimeInterval) {
         animateOnce(with: frames, lastFrame: frames.last, and: durationPerFrame)
     }
-    
+
     /// Helper method that animates the given frames only once, and stops the animation
     /// on the last frame.
     ///
@@ -29,12 +28,12 @@ extension UIImageView {
     func animateOnce(with frames: [UIImage], lastFrame: UIImage?,
                      and durationPerFrame: TimeInterval) {
         let repeatCount = 1
-        
+
         self.image = lastFrame
         self.animationImages = frames
         self.animationRepeatCount = repeatCount
         self.animationDuration = durationPerFrame * TimeInterval(frames.count)
         self.startAnimating()
     }
-    
+
 }
