@@ -29,26 +29,34 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
         return getCoordinate(from: fallingTile)
     }
 
-    private var timer = Timer()
+    private var timer: Timer?
 
     // MARK: - Start and Stop Falling of Tiles
     func startFallingTiles(with interval: TimeInterval) {
-        guard !timer.isValid else {
+        guard timer == nil else {
             return
         }
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
-            self.allTiles.forEach { _ in self.shiftFallingTileDownwards() }
+            self.shiftFallingTileDownwards()
         }
     }
 
     func pauseFallingTiles() {
+        guard let timer = timer else {
+            return
+        }
         timer.invalidate()
+        self.timer = nil
     }
 
     // MARK: - Adding and Landing Tile Methods
     func setFallingTile(withData data: String, toCoord coordinate: Coordinate) {
-        guard !hasFallingTile,
-              let view = super.addDetachedTile(withData: data, toCoord: coordinate) else {
+        guard !hasFallingTile else {
+            assertionFailure("A falling tile is still present!")
+            return
+        }
+        guard let view = addDetachedTile(withData: data, toCoord: coordinate) else {
+            assertionFailure("A tile has failed to generate at \(coordinate)")
             return
         }
         self.fallingTile = view
