@@ -281,8 +281,7 @@ class DraggableSquareGridViewController: SquareGridViewController {
     /// Checks if the new coordinate is valid by asking the delegate, and checking the coordinate
     /// bounds.
     private func checkCanRepositionTile(_ tile: SquareTileView, toCoord newCoord: Coordinate) -> Bool {
-        return canRepositionDetachedTileToCoord(tile, newCoord)
-            && newCoord >= .origin
-            && newCoord < Coordinate(row: numRows, col: numCols)
+        return newCoord.isWithin(numRows: numRows, numCols: numCols)
+            && canRepositionDetachedTileToCoord(tile, newCoord)
     }
 }
