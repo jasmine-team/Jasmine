@@ -6,36 +6,38 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
 
     // MARK: - Listeners
     /// Implement this function to get notified when the falling tile has repositioned.
-    var onFallingTileRepositioned: ((SquareTileView) -> Void)?
+    var onFallingTileRepositioned: (() -> Void)?
 
-    /// Implement a function that checks if the falling tile should be repositioned.
-    /// This function takes a parameter which is the position where the falling tile will be placed,
-    /// and returns true if the tile can placed there.
-    var canRepositionTile: ((SquareTileView, Coordinate) -> Bool) = { _ in
-        return true
-    }
+    /// Implement this function to get notified when the falling tile has landed.
+    var onFallingTileLanded: (() -> Void)?
 
     // MARK: - Properties
     /// Stores the current falling tiles. Empty implies that no tile is falling currently.
-    private(set) var fallingTiles: Set<SquareTileView> = []
+    private(set) var fallingTile: SquareTileView?
 
     /// Returns true if there is a falling tile.
-    var hasFallingTiles: Bool {
-        return !fallingTiles.isEmpty
+    var hasFallingTile: Bool {
+        return fallingTile != nil
     }
 
     /// Returns the coordinate where the falling tile is currently at, if such a falling tile is 
     /// present.
-    var fallingTilesCoord: Set<Coordinate> {
-        return Set(fallingTiles.flatMap { getCoordinate(from: $0) })
+    var fallingTileCoord: Coordinate? {
+        guard let fallingTile = fallingTile else {
+            return nil
+        }
+        return getCoordinate(from: fallingTile)
     }
 
     private var timer = Timer()
 
     // MARK: - Start and Stop Falling of Tiles
     func startFallingTiles(with interval: TimeInterval) {
+        guard !timer.isValid else {
+            return
+        }
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
-            self.allTiles.forEach { self.shiftFallingTileDownwards($0) }
+            self.allTiles.forEach { _ in self.shiftFallingTileDownwards() }
         }
     }
 
@@ -44,49 +46,53 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
     }
 
     // MARK: - Adding and Landing Tile Methods
-    func addFallingTile(withData data: String, toCoord coordinate: Coordinate) -> SquareTileView? {
-        guard let view = super.addDetachedTile(withData: data, toCoord: coordinate) else {
-            return nil
-        }
-        fallingTiles.insert(view)
-        return view
-    }
-
-    func landFallingTile(_ tile: SquareTileView) {
-        guard fallingTiles.remove(tile) != nil else {
+    func setFallingTile(withData data: String, toCoord coordinate: Coordinate) {
+        guard !hasFallingTile,
+              let view = super.addDetachedTile(withData: data, toCoord: coordinate) else {
             return
         }
-        snapAndReattachDetachedTileToNearestCell(tile)
+        self.fallingTile = view
+    }
+
+    func landFallingTile() {
+        guard let fallingTile = fallingTile else {
+            return
+        }
+        snapDetachedTile(fallingTile) {
+            self.reattachDetachedTile(fallingTile)
+            self.fallingTile = nil
+            self.onFallingTileLanded?()
+        }
     }
 
     // MARK: - Shifting Falling Tiles
-    func shiftFallingTileLeftwards(_ tile: SquareTileView) {
-        guard let coord = getCoordinate(from: tile) else {
+    /// Shifts the tile one step to the left.
+    func shiftFallingTileLeftwards() {
+        guard let fallingTile = fallingTile else {
             return
         }
-        shiftFallingTile(tile, to: coord.prevCol)
+        snapDetachedTileLeftwards(fallingTile) {
+            self.onFallingTileRepositioned?()
+        }
     }
 
-    func shiftFallingTileRightwards(_ tile: SquareTileView) {
-        guard let coord = getCoordinate(from: tile) else {
+    /// Shifts the tile one step to the right.
+    func shiftFallingTileRightwards() {
+        guard let fallingTile = fallingTile else {
             return
         }
-        shiftFallingTile(tile, to: coord.nextCol)
+        snapDetachedTileRightwards(fallingTile) {
+            self.onFallingTileRepositioned?()
+        }
     }
 
-    func shiftFallingTileDownwards(_ tile: SquareTileView) {
-        guard let coord = getCoordinate(from: tile) else {
+    /// Shifts the tile one step down.
+    func shiftFallingTileDownwards() {
+        guard let fallingTile = fallingTile else {
             return
         }
-        shiftFallingTile(tile, to: coord.nextRow)
-    }
-
-    func shiftFallingTile(_ tile: SquareTileView, to coordinate: Coordinate) {
-        guard canRepositionTile(tile, coordinate) else {
-            return
-        }
-        snapDetachedTile(tile, toCoordinate: coordinate) {
-            self.onFallingTileRepositioned?(tile)
+        snapDetachedTileDownwards(fallingTile) {
+            self.onFallingTileRepositioned?()
         }
     }
 }
