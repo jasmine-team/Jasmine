@@ -21,6 +21,21 @@ class DraggableSquareGridViewController: SquareGridViewController {
     /// Stores the set of tiles that are "detached" from the collection view.
     private(set) var detachedTiles: Set<SquareTileView> = []
 
+    // MARK: Event Listeners
+    /// Implement a function that checks if the detached tile should be repositioned.
+    /// This function takes in a tile and the future coordinate, 
+    /// and returns true if the tile can placed there.
+    var canRepositionDetachedTileToCoord: ((SquareTileView, Coordinate) -> Bool) = { _ in
+        return true
+    }
+
+    /// Implement a function that checks if the detached tile should be repositioned.
+    /// This function takes in a tile and the future point,
+    /// and returns true if the tile can placed there.
+    var canRepositionDetachedTileToPosition: ((SquareTileView, CGPoint) -> Bool) = { _ in
+        return true
+    }
+
     // MARK: Detach Tiles from Collection View
     /// Detach a tile contained in a view cell.
     ///
@@ -34,7 +49,7 @@ class DraggableSquareGridViewController: SquareGridViewController {
               let squareTile = squareCell.popTileFromTop() else {
             return nil
         }
-        return helperAssociateDetachTile(squareTile, withFrame: squareCell.frame)
+        return helperAssociateDetachedTile(squareTile, withFrame: squareCell.frame)
     }
 
     // MARK: Add Detached tiles to Collection View
@@ -51,8 +66,7 @@ class DraggableSquareGridViewController: SquareGridViewController {
     func addDetachedTile(withData data: String, toFrame frame: CGRect) -> SquareTileView {
         let squareTile = SquareTileView()
         squareTile.text = data
-
-        return helperAssociateDetachTile(squareTile, withFrame: frame)
+        return helperAssociateDetachedTile(squareTile, withFrame: frame)
     }
 
     /// Add a tile into the collection view stored in the VC. This tile is automatically detached.
@@ -65,7 +79,9 @@ class DraggableSquareGridViewController: SquareGridViewController {
         guard let targetFrame = getFrame(at: coordinate) else {
             return nil
         }
-        return addDetachedTile(withData: data, toFrame: targetFrame)
+        let tile = SquareTileView()
+        tile.text = data
+        return helperAssociateDetachedTile(tile, withFrame: targetFrame)
     }
 
     /// Helper method to perform the actual detachment of the specified tile view.
@@ -74,12 +90,12 @@ class DraggableSquareGridViewController: SquareGridViewController {
     ///   - tile: the tile to be detached.
     ///   - frame: where the tile should be located after detaching.
     /// - Returns: the detached tile.
-    private func helperAssociateDetachTile(
-        _ tile: SquareTileView, withFrame frame: CGRect) -> SquareTileView {
-
+    /// - Note: this tile will be removed from its superview.
+    private func helperAssociateDetachedTile(_ tile: SquareTileView,
+                                             withFrame frame: CGRect) -> SquareTileView {
+        tile.removeFromSuperview()
         tile.frame = frame
         tile.addDropShadow()
-
         addTileOntoCollectionView(tile)
         detachedTiles.insert(tile)
         return tile
@@ -93,9 +109,11 @@ class DraggableSquareGridViewController: SquareGridViewController {
     ///   - newCenter: the new center location to position this tile.
     /// - Precondition:
     ///   - This tile has been "detached" from this collection view, otherwise will result in no-op.
+    ///   - Repositioning to the new position is allowed, using `canRepositionDetachedTileToPosition`.
     func moveDetachedTile(_ tile: SquareTileView, toPosition newCenter: CGPoint) {
-        guard detachedTiles.contains(tile) else {
-            return
+        guard detachedTiles.contains(tile),
+            canRepositionDetachedTileToPosition(tile, newCenter) else {
+                return
         }
         bringTileToFront(tile)
         tile.center = newCenter
@@ -105,46 +123,42 @@ class DraggableSquareGridViewController: SquareGridViewController {
     ///
     /// - Parameters:
     ///   - tile: the tile view that should be moved.
-    ///   - xCoord: the x coordinate where the tile should be moved to.
+    ///   - xPosition: the x coordinate where the tile should be moved to.
     /// - Precondition:
-    ///   - This tile has been "detached" from this collection view, otherwise will result in no-op.
-    func moveDetachedTile(_ tile: SquareTileView, toAlongXAxis xCoord: CGFloat) {
-        guard detachedTiles.contains(tile) else {
-            return
-        }
-        bringTileToFront(tile)
-        tile.center.x = xCoord
+    ///   - Follows precondition in `moveDetachedTIle(tile, newCenter)`
+    func moveDetachedTile(_ tile: SquareTileView, toAlongXAxis xPosition: CGFloat) {
+        let newPosition = CGPoint(x: xPosition, y: tile.center.y)
+        moveDetachedTile(tile, toPosition: newPosition)
     }
 
     /// Moves a detached tile in this collection view along the y axis.
     ///
     /// - Parameters:
     ///   - tile: the tile view that should be moved.
-    ///   - xCoord: the y coordinate where the tile should be moved to.
+    ///   - yPosition: the y coordinate where the tile should be moved to.
     /// - Precondition:
-    ///   - This tile has been "detached" from this collection view, otherwise will result in no-op.
-    func moveDetachedTile(_ tile: SquareTileView, toAlongYAxis yCoord: CGFloat) {
-        guard detachedTiles.contains(tile) else {
-            return
-        }
-        bringTileToFront(tile)
-        tile.center.y = yCoord
+    ///   - Follows precondition in `moveDetachedTIle(tile, newCenter)`
+    func moveDetachedTile(_ tile: SquareTileView, toAlongYAxis yPosition: CGFloat) {
+        let newPosition = CGPoint(x: tile.center.x, y: yPosition)
+        moveDetachedTile(tile, toPosition: newPosition)
     }
 
-    // MARK: Snap And Reattach Tiles to Cells
+    // MARK: Snap Tiles to Cells
     /// Animatedly move the detached tile to a particular cell in the specified coordinate.
     ///
     /// - Parameters:
-    ///   - tile: tile view to be attached.
-    ///   - coordinate: destination coordinate to be attached to.
-    ///   - callback: a function that will be called when the tile has successfully been attached.
+    ///   - tile: tile view to be snapped.
+    ///   - coordinate: destination coordinate to be snapped to.
+    ///   - callback: a function that will be called when the tile has successfully been snapped.
     /// - Precondition:
     ///   - This tile has been "detached" from this collection view, otherwise will result in no-op.
-    /// - Note:
+    ///   - Repositioning to the new position is allowed, using `canRepositionDetachedTileToCoord`.
+    /// - Postcondition:
     ///   - This method does not reattach the tile to the specified cell coordinate.
     func snapDetachedTile(_ tile: SquareTileView, toCoordinate coordinate: Coordinate,
                           withCompletion callback: (() -> Void)?) {
         guard detachedTiles.contains(tile),
+              checkCanRepositionTile(tile, toCoord: coordinate),
               let targetFrame = getFrame(at: coordinate) else {
             return
         }
@@ -154,52 +168,121 @@ class DraggableSquareGridViewController: SquareGridViewController {
                        completion: { _ in callback?() })
     }
 
-    /// Animatedly move the detached tile to the nearest particular cell, and attached to that cell.
+    /// Animatedly move the detached tile to the nearest cell.
     ///
     /// - Parameters:
-    ///   - tile: tile view to be attached.
+    ///   - tile: tile view to be snapped.
+    ///   - callback: a function that will be called when the tile has successfully been snapped.
     /// - Precondition:
-    ///   - This tile has been "detached" from this collection view, otherwise will result in no-op.
-    func snapAndReattachDetachedTileToNearestCell(_ tile: SquareTileView) {
-        guard detachedTiles.contains(tile),
-              let targetCoord = getCoordinate(from: tile) else {
+    ///   - Follows precondition in `snapDetachedTile(tile, coordinate, callback)`.
+    func snapDetachedTile(_ tile: SquareTileView, withCompletion callback: (() -> Void)?) {
+        guard let targetCoord = getCoordinate(from: tile) else {
             return
         }
-        snapAndReattachDetachedTile(tile, toCoordinate: targetCoord, withCompletion: nil)
+        snapDetachedTile(tile, toCoordinate: targetCoord, withCompletion: callback)
     }
 
-    /// Reattach the detached tile to a particular cell in the specified coordinate.
+    /// Animatedly move the detached tile to the left cell of the nearest cell.
+    ///
+    /// - Parameters:
+    ///   - tile: tile view to be snapped.
+    ///   - callback: a function that will be called when the tile has successfully been snapped.
+    /// - Precondition:
+    ///   - Follows precondition in `snapDetachedTile(tile, coordinate, callback)`.
+    func snapDetachedTileLeftwards(_ tile: SquareTileView, withCompletion callback: (() -> Void)?) {
+        guard let targetCoord = getCoordinate(from: tile) else {
+            return
+        }
+        snapDetachedTile(tile, toCoordinate: targetCoord.prevCol, withCompletion: callback)
+    }
+
+    /// Animatedly move the detached tile to the right cell of the nearest cell.
+    ///
+    /// - Parameters:
+    ///   - tile: tile view to be snapped.
+    ///   - callback: a function that will be called when the tile has successfully been snapped.
+    /// - Precondition:
+    ///   - Follows precondition in `snapDetachedTile(tile, coordinate, callback)`.
+    func snapDetachedTileRightwards(_ tile: SquareTileView, withCompletion callback: (() -> Void)?) {
+        guard let targetCoord = getCoordinate(from: tile) else {
+            return
+        }
+        snapDetachedTile(tile, toCoordinate: targetCoord.nextCol, withCompletion: callback)
+    }
+
+    /// Animatedly move the detached tile to the top cell of the nearest cell.
+    ///
+    /// - Parameters:
+    ///   - tile: tile view to be snapped.
+    ///   - callback: a function that will be called when the tile has successfully been snapped.
+    /// - Precondition:
+    ///   - Follows precondition in `snapDetachedTile(tile, coordinate, callback)`.
+    func snapDetachedTileUpwards(_ tile: SquareTileView, withCompletion callback: (() -> Void)?) {
+        guard let targetCoord = getCoordinate(from: tile) else {
+            return
+        }
+        snapDetachedTile(tile, toCoordinate: targetCoord.prevRow, withCompletion: callback)
+    }
+
+    /// Animatedly move the detached tile to the bottom cell of the nearest cell.
+    ///
+    /// - Parameters:
+    ///   - tile: tile view to be snapped.
+    ///   - callback: a function that will be called when the tile has successfully been snapped.
+    /// - Precondition:
+    ///   - Follows precondition in `snapDetachedTile(tile, coordinate, callback)`.
+    func snapDetachedTileDownwards(_ tile: SquareTileView, withCompletion callback: (() -> Void)?) {
+        guard let targetCoord = getCoordinate(from: tile) else {
+            return
+        }
+        snapDetachedTile(tile, toCoordinate: targetCoord.nextRow, withCompletion: callback)
+    }
+
+    // MARK: Reattach detached tiles to cell.
+    /// Reattaches the tile to a particular cell in the specified coordinate in the collection view.
     ///
     /// - Parameters:
     ///   - tile: tile view to be attached.
     ///   - coordinate: destination coordinate to be attached to.
-    ///   - callback: a function that will be called when the tile has successfully been attached.
     /// - Precondition:
     ///   - This tile has been "detached" from this collection view, otherwise will result in no-op.
-    ///   - Multiple attachments to the same cell is allowed.
-    func snapAndReattachDetachedTile(_ tile: SquareTileView, toCoordinate coordinate: Coordinate,
-                                     withCompletion callback: (() -> Void)?) {
+    ///   - Repositioning to the new position is allowed, using `canRepositionDetachedTileToCoord`.
+    /// - Postcondition:
+    ///   - This method reattaches the tile to the specified cell coordinate.
+    func reattachDetachedTile(_ tile: SquareTileView, to coordinate: Coordinate) {
         guard detachedTiles.contains(tile),
-              let destinationSquareCell = getCell(at: coordinate) else {
+              checkCanRepositionTile(tile, toCoord: coordinate),
+              let destinationCell = getCell(at: coordinate) else {
             return
         }
-
-        snapDetachedTile(tile, toCoordinate: coordinate) {
-            self.helperAttachTile(for: tile, onto: destinationSquareCell)
-            callback?()
-        }
+        tile.removeFromSuperview()
+        destinationCell.pushTileToTop(tile)
+        tile.removeDropShadow()
     }
 
-    /// Helper method to perform the actual attachment of the specified view.
+    /// Reattaches the tile to the nearest particular cell in the specified coordinate in the 
+    /// collection view.
     ///
     /// - Parameters:
-    ///   - tile: the tile to be attached.
-    ///   - viewCell: the cell that the tile should be attached to.
+    ///   - tile: tile view to be attached.
+    ///   - coordinate: destination coordinate to be attached to.
     /// - Precondition:
-    ///   - Multiple attachments to the same cell is allowed.
-    private func helperAttachTile(for tile: SquareTileView, onto viewCell: SquareTileViewCell) {
-        tile.removeFromSuperview()
-        viewCell.pushTileToTop(tile)
-        tile.removeDropShadow()
+    ///   - Follows precondition in `reattachDetachedTile(tile, coordinate)`.
+    /// - Postcondition:
+    ///   - Follows postcondition in `reattachDetachedTile(tile, coordinate)`.
+    func reattachDetachedTile(_ tile: SquareTileView) {
+        guard let destinationCoord = getCoordinate(at: tile.center) else {
+            return
+        }
+        reattachDetachedTile(tile, to: destinationCoord)
+    }
+
+    // MARK: - Helper Methods
+    /// Checks if the new coordinate is valid by asking the delegate, and checking the coordinate
+    /// bounds.
+    private func checkCanRepositionTile(_ tile: SquareTileView, toCoord newCoord: Coordinate) -> Bool {
+        return canRepositionDetachedTileToCoord(tile, newCoord)
+            && newCoord >= .origin
+            && newCoord < Coordinate(row: numRows, col: numCols)
     }
 }
