@@ -12,7 +12,7 @@ class GridGameViewController: UIViewController {
 
     @IBOutlet private weak var statusBarBackgroundView: UIView!
 
-    fileprivate var draggingTile: (view: SquareTextView, originalCoord: Coordinate)?
+    fileprivate var draggingTile: (view: SquareTileView, originalCoord: Coordinate)?
 
     // MARK: Game Properties
     fileprivate var viewModel: GridViewModelProtocol!
@@ -33,11 +33,6 @@ class GridGameViewController: UIViewController {
         if viewModel.gameStatus == .notStarted {
             viewModel.startGame()
         }
-    }
-
-    /// Specifies that the supported orientation for this view is portrait only.
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portraitUpsideDown
     }
 
     // MARK: Segue methods
@@ -153,7 +148,8 @@ fileprivate extension GridGameViewController {
         guard let tile = draggingTile else {
             return
         }
-        squareGridViewController.snapAndReattachDetachedTile(tile.view, toCoordinate: tile.originalCoord) {
+        squareGridViewController.snapDetachedTile(tile.view, toCoordinate: tile.originalCoord) {
+            self.squareGridViewController.reattachDetachedTile(tile.view)
             self.draggingTile = nil
         }
     }
@@ -175,10 +171,12 @@ fileprivate extension GridGameViewController {
         let endingView = landedView
         let endingCoord = landedCoord
 
-        squareGridViewController.snapAndReattachDetachedTile(startingView, toCoordinate: endingCoord) {
+        squareGridViewController.snapDetachedTile(startingView, toCoordinate: endingCoord) {
+            self.squareGridViewController.reattachDetachedTile(startingView)
             self.squareGridViewController.reload(cellsAt: [endingCoord], withAnimation: false)
         }
-        squareGridViewController.snapAndReattachDetachedTile(endingView, toCoordinate: startingCoord) {
+        squareGridViewController.snapDetachedTile(endingView, toCoordinate: startingCoord) {
+            self.squareGridViewController.reattachDetachedTile(endingView)
             self.squareGridViewController.reload(cellsAt: [startingCoord], withAnimation: false)
         }
     }
