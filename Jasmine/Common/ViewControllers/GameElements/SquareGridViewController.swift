@@ -53,6 +53,10 @@ class SquareGridViewController: UIViewController {
     /// Stores the database that is used to display onto the collection view in this view controller.
     fileprivate var collectionData: [Coordinate: String] = [:]
 
+    /// Stores the properties that is used to apply onto all the tiles in that specified coordinate,
+    /// that is inside this collection view.
+    var tileProperties: [Coordinate: (SquareTileView) -> Void] = [:]
+
     // MARK: View Controller Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -232,6 +236,7 @@ extension SquareGridViewController: UICollectionViewDataSource {
         }
 
         squareCell.setOnlyText(collectionData[indexPath.toCoordinate])
+        squareCell.tileProperties = self.tileProperties[indexPath.toCoordinate]
         return squareCell
     }
 }

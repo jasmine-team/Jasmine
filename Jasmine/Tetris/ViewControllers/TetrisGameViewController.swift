@@ -29,6 +29,7 @@ class TetrisGameViewController: UIViewController {
     // MARK: View Controller Lifecycles
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        setFirstUpcomingTileStyle()
         startGame()
     }
 
@@ -130,6 +131,13 @@ class TetrisGameViewController: UIViewController {
     private func notifyTileHasLanded() {
         viewModel.tileHasLanded()
         releaseNewTile()
+    }
+
+    // MARK: - Layout Helper Methods
+    private func setFirstUpcomingTileStyle() {
+        tetrisUpcomingTilesView.tileProperties[.origin] = { (tile: SquareTileView) in
+            tile.textColor = Constants.Theme.secondaryColor
+        }
     }
 }
 
