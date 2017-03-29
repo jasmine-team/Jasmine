@@ -2,7 +2,7 @@ import Foundation
 
 class GridViewModel: GridViewModelProtocol {
     /// Stores the grid data that will be used to display in the view controller.
-    private(set) var gridData: CharacterGrid {
+    private(set) var gridData: TextGrid {
         didSet {
             delegate?.updateGridData()
         }
@@ -34,7 +34,7 @@ class GridViewModel: GridViewModelProtocol {
     }
 
     init() {
-        gridData = CharacterGrid(fromInitialGrid: answers, randomized: true)
+        gridData = TextGrid(fromInitialGrid: answers, randomized: true)
     }
 
     /// Provide a brief title for this game. Note that this title should be able to fit within the
@@ -81,7 +81,7 @@ class GridViewModel: GridViewModelProtocol {
     /// Returns true iff the game is won
     private var hasGameWon: Bool {
         for row in answers {
-            if !gridData.horizontallyContains(stringArray: row) {
+            if !gridData.contains(stringsInRows: row) {
                 return false
             }
         }

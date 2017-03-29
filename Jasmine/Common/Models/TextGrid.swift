@@ -1,4 +1,4 @@
-struct CharacterGrid {
+struct TextGrid {
     /// The actual grid.
     private var grid: [[String?]]
 
@@ -8,26 +8,19 @@ struct CharacterGrid {
     ///   - initialGrid: the initial grid. The CharacterGrid will read from this grid.
     ///   - randomized: pass in true if the resulting grid wants to be randomized from the initial grid.
     init(fromInitialGrid initialGrid: [[String]], randomized: Bool) {
-        let rows = initialGrid.count
+        let numRows = initialGrid.count
         let columns = initialGrid.first?.count ?? 0
-        assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
-        assert(initialGrid.map { $0.count }.isAllSame, "All rows should have the same length")
+        assert(numRows > 0 && columns > 0, "Number of numRows and columns should be more than 0")
+        assert(initialGrid.map { $0.count }.isAllSame, "All numRows should have the same length")
 
         if randomized {
-            let allChars = initialGrid.joined().shuffled()
+            let shuffledGrid = initialGrid.joined().shuffled()
 
-            let oneRow = [String?](repeating: nil, count: columns)
-            var randomizedGrid = [[String?]](repeating: oneRow, count: rows)
-
-            var idx = 0
-            for row in 0..<rows {
-                for col in 0..<columns {
-                    randomizedGrid[row][col] = allChars[idx]
-                    idx += 1
+            grid = (0..<numRows).map { row in
+                (0..<columns).map { col in
+                    shuffledGrid[row * columns + col]
                 }
             }
-
-            grid = randomizedGrid
         } else {
             grid = initialGrid
         }
@@ -47,37 +40,19 @@ struct CharacterGrid {
     ///   - coord1: the first coordinate
     ///   - coord2: the second coordinate
     mutating func swap(_ coord1: Coordinate, and coord2: Coordinate) {
-        let initialSecond = grid[coord2.row][coord2.col]
+        let temp = grid[coord2.row][coord2.col]
         grid[coord2.row][coord2.col] = grid[coord1.row][coord1.col]
-        grid[coord1.row][coord1.col] = initialSecond
+        grid[coord1.row][coord1.col] = temp
     }
 
     /// Checks if the grid contains the String array given horizontally.
     ///
     /// - Parameter stringArray: the string array to be checked
     /// - Returns: true if and only if the grid contains the string array horizontally
-    func horizontallyContains(stringArray: [String]) -> Bool {
+    func contains(stringsInRows stringArray: [String]) -> Bool {
         return grid.contains { row in
-            guard row.count >= stringArray.count else {
-                return false
-            }
-
-            for rowIndex in 0...(row.count - stringArray.count) {
-                var inThisRow = true
-
-                for stringIndex in 0..<stringArray.count {
-                    guard row[rowIndex + stringIndex] == stringArray[stringIndex] else {
-                        inThisRow = false
-                        break
-                    }
-                }
-
-                if inThisRow {
-                    return true
-                }
-            }
-
-            return false
+            let optionalArray: [String?] = stringArray
+            optionalArray.isSubsequenceOf(row)
         }
     }
 }
