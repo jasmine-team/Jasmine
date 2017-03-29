@@ -15,10 +15,10 @@ class SquareGridViewController: UIViewController {
 
     // MARK: Properties
     /// Stores the maximum number of rows that should be displayed in this view.
-    private(set) var numRows = 0
+    private(set) var numRows = 1
 
     /// Stores the maximum number of columns that should be displayed in this view.
-    private(set) var numCols = 0
+    private(set) var numCols = 1
 
     /// Specifies the amount of space between each cell.
     fileprivate var cellSpacing: CGFloat = 0
