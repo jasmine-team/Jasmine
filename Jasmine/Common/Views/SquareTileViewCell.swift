@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 /// Represents a cell in the Square Grid view controller.
 /// This cell can hold more than one `SquareTileView` tile.
@@ -31,6 +32,8 @@ class SquareTileViewCell: UICollectionViewCell {
         }
     }
 
+    private let animationView = UIImageView()
+
     // MARK: Tile Stack
     /// Pushes a tile to the top of the cell view stack.
     func pushTileToTop(_ tile: SquareTileView) {
@@ -62,6 +65,16 @@ class SquareTileViewCell: UICollectionViewCell {
         tiles.forEach { $0.removeFromSuperview() }
     }
 
+    /// Clear all the tiles except the top most tile in this cell.
+    func clearExceptFirst() {
+        tiles.forEach {
+            guard $0 != displayedTile else {
+                return
+            }
+            $0.removeFromSuperview()
+        }
+    }
+
     // MARK: With One Tile Only
     func setOnlyTile(_ tile: SquareTileView?) {
         clearAllTiles()
@@ -80,6 +93,20 @@ class SquareTileViewCell: UICollectionViewCell {
         return pushTextToTop(text)
     }
 
+    // MARK: Animations
+    func animateExplosion() {
+        guard let displayedTile = displayedTile else {
+            return
+        }
+        clearExceptFirst()
+        animationView.animateOnce(with: Constants.Graphics.Explosion.frames, lastFrame: nil,
+                                  and: Constants.Graphics.Explosion.interval)
+
+        UIView.animate(withDuration: Constants.Graphics.Explosion.duration,
+                       animations: { displayedTile.alpha = 0.0 },
+                       completion: { _ in displayedTile.removeFromSuperview() })
+    }
+
     // MARK: Initialisers
     /// Default initialiser for collection view cell.
     override init(frame: CGRect) {
@@ -96,5 +123,12 @@ class SquareTileViewCell: UICollectionViewCell {
     private func initHelper() {
         self.clipsToBounds = false
         self.backgroundColor = Constants.Theme.cellsBackground
+        self.setUpAnimationView()
+    }
+
+    private func setUpAnimationView() {
+        self.addSubview(animationView)
+        self.sendSubview(toBack: animationView)
+        self.animationView.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
 }

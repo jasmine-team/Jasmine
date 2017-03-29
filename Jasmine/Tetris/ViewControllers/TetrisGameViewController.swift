@@ -2,6 +2,12 @@ import UIKit
 
 class TetrisGameViewController: UIViewController {
 
+    // MARK: - Constants
+    private static let cellSpace: CGFloat = 2.0
+
+    /// Denotes the delay in animation between explosion and falling.
+    fileprivate static let animationDelay = 0.5
+
     // MARK: - Layouts
     fileprivate var tetrisGameAreaView: DiscreteFallableSquareGridViewController!
 
@@ -56,7 +62,8 @@ class TetrisGameViewController: UIViewController {
         }
 
         tetrisGameAreaView.segueWith([:], numRows: Constants.Game.Tetris.rows,
-                                     numCols: Constants.Game.Tetris.columns, needSpace: false)
+                                     numCols: Constants.Game.Tetris.columns,
+                                     withSpace: TetrisGameViewController.cellSpace)
     }
 
     /// Feeds in the appropriate data for the use of seguing into this view.
@@ -144,15 +151,39 @@ extension TetrisGameViewController: TetrisGameViewControllerDelegate {
     /// Ask the view controller to animate the destruction of tiles at the specified coordinates.
     ///
     /// - Parameter coodinates: the set of coordinates to be destroyed.
-    func animate(destroyTilesAt coodinates: Set<Coordinate>) {
-
+    func animate(destroyTilesAt coordinates: Set<Coordinate>) {
+        coordinates.flatMap { self.tetrisGameAreaView.getCell(at: $0) }
+            .forEach { $0.animateExplosion() }
     }
 
     /// Shifts the content of the tiles from Coordinate `from` to Coordinate `to`
     ///
     /// - Parameter coordinatesShifted: array of coordinates to shift
     func animate(shiftTiles coordinatesToShift: [(from: Coordinate, to: Coordinate)]) {
+        coordinatesToShift.forEach {
+            guard let tile = self.tetrisGameAreaView.detachTile(fromCoord: $0.from) else {
+                return
+            }
+            self.tetrisGameAreaView.snapDetachedTile(tile, toCoordinate: $0.to) {
+                self.tetrisGameAreaView.reattachDetachedTile(tile)
+            }
+        }
+    }
 
+    /// Ask the view controller to animate the destruction of tiles at the specified coordinates,
+    /// and then shift the content of the tiles from Coordinate `from` to Coordinate `to`.
+    ///
+    /// - Parameters:
+    ///   - coodinates: the set of coordinates to be destroyed.
+    ///   - coordinatesShifted: array of coordinates to shift
+    func animate(destroyTilesAt coordinates: Set<Coordinate>,
+                 thenShiftTiles coordinatesToShift: [(from: Coordinate, to: Coordinate)]) {
+
+        self.animate(destroyTilesAt: coordinates)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + TetrisGameViewController.animationDelay) {
+            self.animate(shiftTiles: coordinatesToShift)
+        }
     }
 }
 

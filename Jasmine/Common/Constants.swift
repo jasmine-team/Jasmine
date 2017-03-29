@@ -43,6 +43,16 @@ enum Constants {
         static let cellsBackground = UIColor(hexString: "c2d1cc")
     }
 
+    enum Graphics {
+
+        enum Explosion {
+            static let frames = [#imageLiteral(resourceName: "explode-0"), #imageLiteral(resourceName: "explode-1"), #imageLiteral(resourceName: "explode-2"), #imageLiteral(resourceName: "explode-3"), #imageLiteral(resourceName: "explode-4")]
+            static let interval: TimeInterval = 0.1
+            static let duration: TimeInterval = 0.5
+        }
+
+    }
+
     enum Language: String {
         case english = "eng"
         case chinese = "cmn"
