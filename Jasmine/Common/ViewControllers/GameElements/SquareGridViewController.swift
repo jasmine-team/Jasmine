@@ -74,7 +74,8 @@ class SquareGridViewController: UIViewController {
     ///   - numRows: maximum number of rows to be displayed in this grid.
     ///   - numCols: maximum number of columns to be displayed in this grid.
     func segueWith(_ initialData: [Coordinate: String], numRows: Int, numCols: Int) {
-        self.segueWith(initialData, numRows: numRows, numCols: numCols, needSpace: true)
+        self.segueWith(initialData, numRows: numRows, numCols: numCols,
+                       withSpace: SquareGridViewController.standardCellSpacing)
     }
 
     /// Load the view controller with initial dataset, and the number of rows and columns in this
@@ -85,11 +86,13 @@ class SquareGridViewController: UIViewController {
     ///   - numRows: maximum number of rows to be displayed in this grid.
     ///   - numCols: maximum number of columns to be displayed in this grid.
     ///   - needSpace: when set to true, provides a spacing, else space is removed.
-    func segueWith(_ initialData: [Coordinate: String], numRows: Int, numCols: Int, needSpace: Bool) {
+    func segueWith(_ initialData: [Coordinate: String], numRows: Int, numCols: Int,
+                   withSpace space: CGFloat) {
+
         self.collectionData = initialData
         self.numCols = numCols
         self.numRows = numRows
-        self.cellSpacing = needSpace ? SquareGridViewController.standardCellSpacing : 0
+        self.cellSpacing = space
     }
 
     // MARK: - Data Interaction
@@ -254,12 +257,21 @@ extension SquareGridViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: cellLength, height: cellLength)
     }
 
+    /// Computes the sum of left and right margin width.
+    private var totalMarginWidth: CGFloat {
+        let gridWidth = gridCollectionView.bounds.width
+        let cellWidth = cellSize.width
+        return gridWidth - (cellWidth + cellSpacing) * CGFloat(numCols)
+    }
+
     /// Computes the spacing betwen each row.
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         let insetFromSpacing = cellSpacing / 2.0
-        return UIEdgeInsets(top: insetFromSpacing, left: 0, bottom: insetFromSpacing, right: 0)
+        let margin = totalMarginWidth / 2.0
+        return UIEdgeInsets(top: insetFromSpacing, left: margin,
+                            bottom: insetFromSpacing, right: margin)
     }
 
     /// Computes the spacing between each column.
