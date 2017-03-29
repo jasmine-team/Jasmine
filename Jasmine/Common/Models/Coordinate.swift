@@ -19,9 +19,34 @@ struct Coordinate {
         self.col = col
     }
 
-    /// Returns the Coordinate of the next row
+    /// Returns the Coordinate of the next row, which is one row down.
     var nextRow: Coordinate {
         return Coordinate(row: row + 1, col: col)
+    }
+
+    /// Returns the Coordinate of the previous row, which is one row up.
+    var prevRow: Coordinate {
+        return Coordinate(row: row - 1, col: col)
+    }
+
+    /// Returns the Coordinate of the next column, which is one column to the right.
+    var nextCol: Coordinate {
+        return Coordinate(row: row, col: col + 1)
+    }
+
+    /// Returns the Coordinate of the previous column, which is one column to the left.
+    var prevCol: Coordinate {
+        return Coordinate(row: row, col: col - 1)
+    }
+
+    /// Gets the index path from the current coordinate.
+    var toIndexPath: IndexPath {
+        return IndexPath(item: col, section: row)
+    }
+
+    /// Returns true if this coordinate is found within the specified number of rows and columns.
+    func isWithin(numRows: Int, numCols: Int) -> Bool {
+        return row >= 0 && row < numRows && col > 0 && col < numCols
     }
 }
 
