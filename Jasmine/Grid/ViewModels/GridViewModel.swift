@@ -70,9 +70,20 @@ class GridViewModel: GridViewModelProtocol {
 
         gridData.swap(coord1, and: coord2)
 
-        if gridData.horizontallyContainsAll(strings: answers) {
+        if hasGameWon {
             gameStatus = .endedWithWon
             currentScore += Int(timeRemaining * Double(Constants.Game.Grid.scoreMultiplierFromTime))
+        }
+
+        return true
+    }
+
+    /// Returns true iff the game is won
+    private var hasGameWon: Bool {
+        for row in answers {
+            if !gridData.horizontallyContains(stringArray: row) {
+                return false
+            }
         }
 
         return true
