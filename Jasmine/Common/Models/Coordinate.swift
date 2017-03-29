@@ -12,9 +12,6 @@ struct Coordinate {
 
     /// Default constructor for Coordinate.
     init(row: Int, col: Int) {
-        guard row >= 0, col >= 0 else {
-            fatalError("Row and column coordinates should be >= 0")
-        }
         self.row = row
         self.col = col
     }
@@ -46,7 +43,7 @@ struct Coordinate {
 
     /// Returns true if this coordinate is found within the specified number of rows and columns.
     func isWithin(numRows: Int, numCols: Int) -> Bool {
-        return row >= 0 && row < numRows && col > 0 && col < numCols
+        return row >= 0 && row < numRows && col >= 0 && col < numCols
     }
 }
 
