@@ -1,5 +1,4 @@
 import UIKit
-import SnapKit
 
 /// Represents a cell in the Square Grid view controller.
 /// This cell can hold more than one `SquareTileView` tile.
@@ -26,11 +25,17 @@ class SquareTileViewCell: UICollectionViewCell {
         return displayedTile?.text
     }
 
+    override var bounds: CGRect {
+        didSet {
+            tiles.forEach { $0.frame = bounds }
+        }
+    }
+
     // MARK: Tile Stack
     /// Pushes a tile to the top of the cell view stack.
     func pushTileToTop(_ tile: SquareTileView) {
         contentView.addSubview(tile)
-        tile.snp.makeConstraints { $0.edges.equalToSuperview() }
+        tile.frame = bounds
         contentView.bringSubview(toFront: tile)
     }
 
@@ -43,12 +48,12 @@ class SquareTileViewCell: UICollectionViewCell {
     }
 
     /// Removes a tile from the top of the cell view stack
-    @discardableResult func popTileFromTop() -> SquareTileView? {
+    @discardableResult
+    func popTileFromTop() -> SquareTileView? {
         guard let tile = displayedTile else {
             return nil
         }
         tile.removeFromSuperview()
-        tile.snp.removeConstraints()
         return tile
     }
 
@@ -66,7 +71,8 @@ class SquareTileViewCell: UICollectionViewCell {
         pushTileToTop(tile)
     }
 
-    @discardableResult func setOnlyText(_ text: String?) -> SquareTileView? {
+    @discardableResult
+    func setOnlyText(_ text: String?) -> SquareTileView? {
         clearAllTiles()
         guard let text = text else {
             return nil
@@ -89,5 +95,6 @@ class SquareTileViewCell: UICollectionViewCell {
 
     private func initHelper() {
         self.clipsToBounds = false
+        self.backgroundColor = Constants.Theme.cellsBackground
     }
 }

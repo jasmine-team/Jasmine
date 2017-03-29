@@ -43,7 +43,7 @@ class SquareTileView: UILabel {
 
     private func applyBorder() {
         layer.borderColor = Constants.Theme.mainColor.cgColor
-        layer.borderWidth = SquareTextView.borderWidth
+        layer.borderWidth = SquareTileView.borderWidth
     }
 
     private func applyFont() {
