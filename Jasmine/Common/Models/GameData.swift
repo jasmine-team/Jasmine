@@ -1,14 +1,7 @@
-import RealmSwift
+/// Simple container for information necessary at the start of every game
+struct GameData {
 
-/// GameData contains relevant statistics and information to play a game
-class GameData: Object {
-
-    dynamic var score: Int = 0
-    dynamic var difficulty: Int = 0
-    var phrases: Results<Phrase>! // Set from manager
-
-    override static func ignoredProperties() -> [String] {
-        return ["phrases"]
-    }
+    let phrases: Phrases
+    let difficulty: Int
 
 }
