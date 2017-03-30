@@ -1,20 +1,21 @@
 import XCTest
 @testable import Jasmine
 
-class ArrayExtensionsTests: XCTestCase {
-    func testIsSubsequenceOf() {
-        let array = [1, 2, 3]
+class ArrayExtensions: XCTestCase {
 
-        for startElem in 0..<3 {
-            for endElem in startElem..<3 {
-                let subArray = Array(array[startElem...endElem])
-                XCTAssert(subArray.isSubsequenceOf(array), "\(subArray) is not subsequence of [1, 2, 3]")
-            }
-        }
+    func equals() {
+        let intArray: [Int] = [1, 2, 3]
+        let intOptionalArray: [Int?] = [1, 2, 3]
+        let intNilArray: [Int?] = [1, nil, 3]
+        let emptyArray: [Int?] = []
+        let longArray: [Int?] = [1, 2, 3, 4, 5, 6, 7]
 
-        XCTAssertFalse([1, 3].isSubsequenceOf(array),
-                       "[1, 3] is subsequence of [1, 2, 3]")
-        XCTAssertFalse([4].isSubsequenceOf(array),
-                       "[4] is subsequence of [1, 2, 3]")
+        XCTAssert(intArray == intOptionalArray, "Array equals not correct")
+        XCTAssert(!(intArray == intNilArray), "Array equals not correct")
+        XCTAssert(!(intArray == emptyArray), "Array equals not correct")
+        XCTAssert(!(intArray == longArray), "Array equals not correct")
+        XCTAssert(intArray != intNilArray, "Array equals not correct")
+        XCTAssert(intArray != emptyArray, "Array equals not correct")
+        XCTAssert(intArray != longArray, "Array equals not correct")
     }
 }

@@ -49,10 +49,13 @@ struct TextGrid {
     ///
     /// - Parameter stringArray: the string array to be checked
     /// - Returns: true if and only if the grid contains the string array horizontally
-    func contains(stringsInRows stringArray: [String]) -> Bool {
-        return grid.contains { row in
-            let optionalArray: [String?] = stringArray
-            optionalArray.isSubsequenceOf(row)
+    func allRowsInside(stringArrays: [[String]]) -> Bool {
+        for row in grid {
+            if !stringArrays.contains(where: { $0 == row }) {
+                return false
+            }
         }
+
+        return true
     }
 }

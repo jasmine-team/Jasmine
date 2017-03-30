@@ -80,13 +80,7 @@ class GridViewModel: GridViewModelProtocol {
 
     /// Returns true iff the game is won
     private var hasGameWon: Bool {
-        for row in answers {
-            if !gridData.contains(stringsInRows: row) {
-                return false
-            }
-        }
-
-        return true
+        return gridData.allRowsInside(stringArrays: answers)
     }
 
     /// The countdown timer for use in this viewmodel.

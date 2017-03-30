@@ -1,10 +1,10 @@
 import XCTest
 @testable import Jasmine
 
-class CharacterGridTests: XCTestCase {
+class TextGridTests: XCTestCase {
     func testInitFromInitialGrid() {
         let initialGrid = [["a", "b"], ["c", "d"]]
-        let grid = CharacterGrid(fromInitialGrid: initialGrid, randomized: false)
+        let grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
 
         for row in 0..<2 {
             for col in 0..<2 {
@@ -17,7 +17,7 @@ class CharacterGridTests: XCTestCase {
 
     func testInitFromInitialGridRandomized() {
         let initialGrid = [["a", "b"], ["c", "d"]]
-        let grid = CharacterGrid(fromInitialGrid: initialGrid, randomized: true)
+        let grid = TextGrid(fromInitialGrid: initialGrid, randomized: true)
 
         var allCharacters = initialGrid.flatMap { $0 }
 
@@ -33,7 +33,7 @@ class CharacterGridTests: XCTestCase {
 
     func testSubscriptSet() {
         let initialGrid = [["a", "b", "c"], ["d", "e", "f"]]
-        var grid = CharacterGrid(fromInitialGrid: initialGrid, randomized: false)
+        var grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
 
         grid[Coordinate(row: 0, col: 0)] = "f"
 
@@ -49,7 +49,7 @@ class CharacterGridTests: XCTestCase {
 
     func testSwap() {
         let initialGrid = [["a", "b", "c"], ["d", "e", "f"]]
-        var grid = CharacterGrid(fromInitialGrid: initialGrid, randomized: false)
+        var grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
 
         grid.swap(Coordinate(row: 0, col: 1), and: Coordinate(row: 1, col: 2))
 
@@ -63,25 +63,21 @@ class CharacterGridTests: XCTestCase {
         }
     }
 
-    func testHorizontallyContains() {
+    func testAllRowsInside() {
         let initialGrid = [["a", "b", "c"], ["d", "e", "f"]]
-        let grid = CharacterGrid(fromInitialGrid: initialGrid, randomized: false)
+        let grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
 
-        for startElem in 0..<3 {
-            for endElem in startElem..<3 {
-                let firstRowSlice = Array(initialGrid[0][startElem...endElem])
-                let secondRowSlice = Array(initialGrid[1][startElem...endElem])
-
-                XCTAssert(grid.horizontallyContains(stringArray: firstRowSlice),
-                          "Grid doesn't horizontally contain \(firstRowSlice)")
-                XCTAssert(grid.horizontallyContains(stringArray: secondRowSlice),
-                          "Grid doesn't horizontally contain \(secondRowSlice)")
-            }
-        }
-
-        XCTAssertFalse(grid.horizontallyContains(stringArray: ["g", "h"]),
-                       "Grid doesn't horizontally contain the string array")
-        XCTAssertFalse(grid.horizontallyContains(stringArray: ["g"]),
-                       "Grid doesn't horizontally contain the string array")
+        XCTAssert(grid.allRowsInside(stringArrays: initialGrid),
+                  "Grid allRowsInside not working properly")
+        XCTAssert(grid.allRowsInside(stringArrays: [["a", "b", "c"], ["d", "e", "f"], ["g", "h", "i"]]),
+                  "Grid allRowsInside not working properly")
+        XCTAssertFalse(grid.allRowsInside(stringArrays: [["a", "b", "c"]]),
+                  "Grid allRowsInside not working properly")
+        XCTAssertFalse(grid.allRowsInside(stringArrays: [["d", "e", "f"]]),
+                  "Grid allRowsInside not working properly")
+        XCTAssertFalse(grid.allRowsInside(stringArrays: [["c", "b", "a"], ["d", "e", "f"]]),
+                  "Grid allRowsInside not working properly")
+        XCTAssertFalse(grid.allRowsInside(stringArrays: [["a", "b", "c", "x"], ["d", "e", "f"]]),
+                  "Grid allRowsInside not working properly")
     }
 }
