@@ -6,7 +6,7 @@ protocol SlidingViewModelProtocol: BaseViewModelProtocol, CountdownTimable {
     // MARK: Properties
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
-    var delegate: GridGameViewControllerDelegate? { get set }
+    var delegate: SlidingGameViewControllerDelegate? { get set }
 
     /// Stores the grid data that will be used to display in the view controller.
     var gridData: [Coordinate: String] { get }
