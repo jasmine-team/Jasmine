@@ -112,8 +112,8 @@ class DraggableSquareGridViewController: SquareGridViewController {
     ///   - Repositioning to the new position is allowed, using `canRepositionDetachedTileToPosition`.
     func moveDetachedTile(_ tile: SquareTileView, toPosition newCenter: CGPoint) {
         guard detachedTiles.contains(tile),
-            canRepositionDetachedTileToPosition(tile, newCenter) else {
-                return
+              canRepositionDetachedTileToPosition(tile, newCenter) else {
+            return
         }
         bringTileToFront(tile)
         tile.center = newCenter
