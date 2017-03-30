@@ -12,9 +12,9 @@ class BaseGridViewModel: GridViewModelProtocol {
     /// Possible answers in this game. The game is won when all rows in the grid is in this possibleAnswers.
     private let possibleAnswers: [[String]]
     /// Number of rows in the grid, according to the answers property
-    let rows: Int
+    let numRows: Int
     /// Number of columns in the grid, according to the answers property
-    let columns: Int
+    let numColumns: Int
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
     weak var delegate: GridGameViewControllerDelegate?
@@ -44,9 +44,17 @@ class BaseGridViewModel: GridViewModelProtocol {
     /// There is no word count limit, but should be concise.
     var gameInstruction: String
 
+    /// Initializes the grid VM.
+    ///
+    /// - Parameters:
+    ///   - time: total time allowed
+    ///   - tiles: tiles in the game
+    ///   - possibleAnswers: all possible answers. The game is won if all rows in the game is in all possible answers.
+    ///   - rows: number of rows in the grid.
+    ///   - columns: number of columns in the grid.
     init(time: TimeInterval, tiles: [String], possibleAnswers: [[String]], rows: Int, columns: Int) {
         assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
-        assert(tiles.count == rows * columns, "Number of tiles should equal rows * columns")
+        assert(tiles.count == rows * columns, "Number of tiles should equal numRows * numColumns")
         assert(possibleAnswers.map { $0.count }.isAllSame, "All rows in possible answers should have the same length")
         assert(possibleAnswers[0].count == columns, "Possible answers rows length should equal # of columns")
         assert(Set(possibleAnswers.flatMap { $0 }) == Set(tiles), "Possible answers and tiles should've same char set")
@@ -56,8 +64,8 @@ class BaseGridViewModel: GridViewModelProtocol {
 
         self.tiles = tiles
         self.possibleAnswers = possibleAnswers
-        self.rows = rows
-        self.columns = columns
+        numRows = rows
+        numColumns = columns
 
         timer = CountDownTimer(totalTimeAllowed: time)
         timer.timerListener = gridTimerListener
@@ -129,8 +137,8 @@ class BaseGridViewModel: GridViewModelProtocol {
         // Place back allTiles to the grid
         gridData.removeAll()
         var idx = 0
-        for row in 0..<rows {
-            for col in 0..<columns {
+        for row in 0..<numRows {
+            for col in 0..<numColumns {
                 gridData[Coordinate(row: row, col: col)] = allTiles[idx]
                 idx += 1
             }

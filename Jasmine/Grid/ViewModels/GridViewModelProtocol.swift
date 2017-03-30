@@ -12,10 +12,10 @@ protocol GridViewModelProtocol: BaseViewModelProtocol, CountdownTimable {
     var gridData: [Coordinate: String] { get }
 
     /// Number of rows in the grid
-    var rows: Int { get }
+    var numRows: Int { get }
 
     /// Number of columns in the grid
-    var columns: Int { get }
+    var numColumns: Int { get }
 
     // MARK: Game Operations
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
