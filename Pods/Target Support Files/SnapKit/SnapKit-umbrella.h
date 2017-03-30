@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_JasmineUITestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_JasmineUITestsVersionString[];
+FOUNDATION_EXPORT double SnapKitVersionNumber;
+FOUNDATION_EXPORT const unsigned char SnapKitVersionString[];
 
