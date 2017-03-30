@@ -16,4 +16,7 @@ class Phrase: Object {
     // -1 for invalid rank, realm doesn't support init without defaults
     dynamic fileprivate(set) var rank: Int = -1
 
+    override static func primaryKey() -> String? {
+        return "chinese"
+    }
 }
