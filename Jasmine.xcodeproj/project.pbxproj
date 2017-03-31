@@ -26,6 +26,7 @@
 		50717AC31E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50717AC21E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift */; };
 		507194EF1E8E14C9002A6BC0 /* BaseGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507194EE1E8E14C9002A6BC0 /* BaseGridViewModel.swift */; };
 		507194F11E8E1512002A6BC0 /* TetrisGameViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507194F01E8E1512002A6BC0 /* TetrisGameViewModelProtocol.swift */; };
+		5071D26A1E8E2F32006878E6 /* ChengYuGridViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5071D2691E8E2F32006878E6 /* ChengYuGridViewModelTests.swift */; };
 		508BAF7D1E84BDA10088D0A6 /* CiHuiGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BAF7C1E84BDA10088D0A6 /* CiHuiGridViewModel.swift */; };
 		508BAF7F1E84C00D0088D0A6 /* ChengYuGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BAF7E1E84C00D0088D0A6 /* ChengYuGridViewModel.swift */; };
 		508BAF811E8510A90088D0A6 /* CiHuiGridViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BAF801E8510A90088D0A6 /* CiHuiGridViewModelTests.swift */; };
@@ -106,6 +107,7 @@
 		50717AC21E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		507194EE1E8E14C9002A6BC0 /* BaseGridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGridViewModel.swift; sourceTree = "<group>"; };
 		507194F01E8E1512002A6BC0 /* TetrisGameViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewModelProtocol.swift; sourceTree = "<group>"; };
+		5071D2691E8E2F32006878E6 /* ChengYuGridViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuGridViewModelTests.swift; sourceTree = "<group>"; };
 		508BAF7C1E84BDA10088D0A6 /* CiHuiGridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiGridViewModel.swift; sourceTree = "<group>"; };
 		508BAF7E1E84C00D0088D0A6 /* ChengYuGridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuGridViewModel.swift; sourceTree = "<group>"; };
 		508BAF801E8510A90088D0A6 /* CiHuiGridViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiGridViewModelTests.swift; sourceTree = "<group>"; };
@@ -505,6 +507,7 @@
 			children = (
 				50269D441E83C96C0043C45D /* BaseGridViewModelTests.swift */,
 				508BAF801E8510A90088D0A6 /* CiHuiGridViewModelTests.swift */,
+				5071D2691E8E2F32006878E6 /* ChengYuGridViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -922,6 +925,7 @@
 				4262E5A91E8170C80040E191 /* TetrisGridTests.swift in Sources */,
 				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
 				DF7CF78B1E7E9FD700C6979A /* IndexPath+CoordinateTests.swift in Sources */,
+				5071D26A1E8E2F32006878E6 /* ChengYuGridViewModelTests.swift in Sources */,
 				DF7CF78A1E7E9FD700C6979A /* CGRect+ArithmeticTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
