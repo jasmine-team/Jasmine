@@ -37,9 +37,8 @@ class SquareGridViewController: UIViewController {
     /// Gets all the tiles in this collection view.
     var allTiles: Set<SquareTileView> {
         var outcome = Set(gridCollectionView.subviews.flatMap { $0 as? SquareTileView })
-        for tiles in allCoordinates.flatMap({ getCell(at: $0)?.tiles }) {
-            outcome = outcome.union(Set(tiles))
-        }
+        allCoordinates.flatMap { getCell(at: $0)?.tiles }
+            .forEach { outcome = outcome.union(Set($0)) }
         return outcome
     }
 

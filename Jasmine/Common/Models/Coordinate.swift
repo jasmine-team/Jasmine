@@ -44,7 +44,7 @@ struct Coordinate {
     /// Returns true if this coordinate is found within the specified number of rows and columns.
     func isWithin(numRows: Int, numCols: Int) -> Bool {
         assert(numRows > 0 && numCols > 0, "Invalid row or column number")
-        return row >= 0 && row < numRows && col >= 0 && col < numCols
+        return (0..<numRows).contains(row) && (0..<numCols).contains(col)
     }
 }
 

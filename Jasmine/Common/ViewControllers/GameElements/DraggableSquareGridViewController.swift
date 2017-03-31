@@ -49,7 +49,7 @@ class DraggableSquareGridViewController: SquareGridViewController {
               let squareTile = squareCell.popTileFromTop() else {
             return nil
         }
-        return helperAssociateDetachedTile(squareTile, withFrame: squareCell.frame)
+        return associateDetachedTile(squareTile, withFrame: squareCell.frame)
     }
 
     // MARK: Add Detached tiles to Collection View
@@ -66,7 +66,7 @@ class DraggableSquareGridViewController: SquareGridViewController {
     func addDetachedTile(withData data: String, toFrame frame: CGRect) -> SquareTileView {
         let squareTile = SquareTileView()
         squareTile.text = data
-        return helperAssociateDetachedTile(squareTile, withFrame: frame)
+        return associateDetachedTile(squareTile, withFrame: frame)
     }
 
     /// Add a tile into the collection view stored in the VC. This tile is automatically detached.
@@ -81,7 +81,7 @@ class DraggableSquareGridViewController: SquareGridViewController {
         }
         let tile = SquareTileView()
         tile.text = data
-        return helperAssociateDetachedTile(tile, withFrame: targetFrame)
+        return associateDetachedTile(tile, withFrame: targetFrame)
     }
 
     /// Helper method to perform the actual detachment of the specified tile view.
@@ -91,7 +91,7 @@ class DraggableSquareGridViewController: SquareGridViewController {
     ///   - frame: where the tile should be located after detaching.
     /// - Returns: the detached tile.
     /// - Note: this tile will be removed from its superview.
-    private func helperAssociateDetachedTile(_ tile: SquareTileView,
+    private func associateDetachedTile(_ tile: SquareTileView,
                                              withFrame frame: CGRect) -> SquareTileView {
         tile.removeFromSuperview()
         tile.frame = frame

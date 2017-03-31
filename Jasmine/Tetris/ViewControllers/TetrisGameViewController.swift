@@ -149,28 +149,6 @@ extension TetrisGameViewController: TetrisGameViewControllerDelegate {
     }
 
     // MARK: Animation
-    /// Ask the view controller to animate the destruction of tiles at the specified coordinates.
-    ///
-    /// - Parameter coodinates: the set of coordinates to be destroyed.
-    func animate(destroyTilesAt coordinates: Set<Coordinate>) {
-        coordinates.flatMap { self.tetrisGameAreaView.getCell(at: $0) }
-            .forEach { $0.animateExplosion() }
-    }
-
-    /// Shifts the content of the tiles from Coordinate `from` to Coordinate `to`
-    ///
-    /// - Parameter coordinatesShifted: array of coordinates to shift
-    func animate(shiftTiles coordinatesToShift: [(from: Coordinate, to: Coordinate)]) {
-        coordinatesToShift.forEach {
-            guard let tile = self.tetrisGameAreaView.detachTile(fromCoord: $0.from) else {
-                return
-            }
-            self.tetrisGameAreaView.snapDetachedTile(tile, toCoordinate: $0.to) {
-                self.tetrisGameAreaView.reattachDetachedTile(tile)
-            }
-        }
-    }
-
     /// Ask the view controller to animate the destruction of tiles at the specified coordinates,
     /// and then shift the content of the tiles from Coordinate `from` to Coordinate `to`.
     ///
@@ -184,6 +162,28 @@ extension TetrisGameViewController: TetrisGameViewControllerDelegate {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + TetrisGameViewController.animationDelay) {
             self.animate(shiftTiles: coordinatesToShift)
+        }
+    }
+
+    /// Ask the view controller to animate the destruction of tiles at the specified coordinates.
+    ///
+    /// - Parameter coodinates: the set of coordinates to be destroyed.
+    private func animate(destroyTilesAt coordinates: Set<Coordinate>) {
+        coordinates.flatMap { self.tetrisGameAreaView.getCell(at: $0) }
+            .forEach { $0.animateExplosion() }
+    }
+
+    /// Shifts the content of the tiles from Coordinate `from` to Coordinate `to`
+    ///
+    /// - Parameter coordinatesShifted: array of coordinates to shift
+    private func animate(shiftTiles coordinatesToShift: [(from: Coordinate, to: Coordinate)]) {
+        coordinatesToShift.forEach {
+            guard let tile = self.tetrisGameAreaView.detachTile(fromCoord: $0.from) else {
+                return
+            }
+            self.tetrisGameAreaView.snapDetachedTile(tile, toCoordinate: $0.to) {
+                self.tetrisGameAreaView.reattachDetachedTile(tile)
+            }
         }
     }
 }
