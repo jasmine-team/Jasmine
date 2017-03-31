@@ -1,28 +1,36 @@
 import RealmSwift
 
 /// Phrases contains list of phrases for a particular difficulty
-class Phrases: Sequence {
+class Phrases {
 
     private var phrases: Results<Phrase>
     private var range: CountableRange<Int>
+    private var shuffledRange: [Int] = []
 
     init(_ phrases: Results<Phrase>, range: CountableRange<Int>) {
         self.phrases = phrases
         self.range = range
     }
 
-    /// Makes an infinite generator of phrases, repeats phrases when exhausted
+    /// Returns a list of phrases
     ///
-    /// - Returns: Iterator of phrases
-    func makeIterator() -> AnyIterator<Phrase> {
-        var shuffledRange: [Int] = []
-        return AnyIterator {
-            if shuffledRange.isEmpty {
-                shuffledRange = self.range.shuffled()
-            }
-            let nextIndex = shuffledRange.removeFirst()
-            return self.phrases[nextIndex]
+    /// - Parameter length: length of resulting array
+    /// - Returns: An array of Phrase
+    func next(count: Int) -> [Phrase] {
+        return (0..<count).map { _ in
+            self.next()
         }
+    }
+
+    /// Returns the next phrase, non-exhausive
+    ///
+    /// - Returns: Phrase
+    func next() -> Phrase {
+        if shuffledRange.isEmpty {
+            shuffledRange = self.range.shuffled()
+        }
+        let nextIndex = shuffledRange.removeFirst()
+        return self.phrases[nextIndex]
     }
 
     /// Checks if the chinese text is a valid chinese phrase, regardless of position
