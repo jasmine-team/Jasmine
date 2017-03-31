@@ -97,8 +97,8 @@ class TetrisGameViewModel {
 
     /// Shifts all the tiles above `coordinates` 1 row down.
     /// Starts from the row right above the coordinates so that it can break once an empty tile is encountered
-    fileprivate func shiftDownTiles(_ coordinates: Set<Coordinate>) {
-        var coordinatesToShift: [(from: Coordinate, to: Coordinate)] = []
+    fileprivate func shiftDownTiles(_ coordinates: Set<Coordinate>) -> [(from: Coordinate, to: Coordinate)] {
+        var shiftedTiles: [(from: Coordinate, to: Coordinate)] = []
         for coordinate in coordinates {
             for row in (0..<coordinate.row).reversed() {
                 let currentCoordinate = Coordinate(row: row, col: coordinate.col)
@@ -107,10 +107,10 @@ class TetrisGameViewModel {
                 }
                 let newCoordinate = currentCoordinate.nextRow
                 tetrisGrid.addTile(at: newCoordinate, tileText: text)
-                coordinatesToShift.append((from: currentCoordinate, to: newCoordinate))
+                shiftedTiles.append((from: currentCoordinate, to: newCoordinate))
             }
         }
-        delegate?.animate(shiftTiles: coordinatesToShift)
+        return shiftedTiles
     }
 
     // TODO: fetch from database to match valid phrase
@@ -185,15 +185,14 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
         }
         tetrisGrid.addTile(at: landingCoordinate, tileText: fallingTileText)
 
-        guard let destroyedCoordinates = checkForMatchingPhrase() else {
+        guard let destroyedTiles = checkForMatchingPhrase() else {
             return
         }
-        tetrisGrid.removeTiles(at: destroyedCoordinates)
-        delegate?.animate(destroyTilesAt: destroyedCoordinates)
+        tetrisGrid.removeTiles(at: destroyedTiles)
+        currentScore += destroyedTiles.count
 
-        currentScore += destroyedCoordinates.count
-
-        shiftDownTiles(destroyedCoordinates)
+        let shiftedTiles = shiftDownTiles(destroyedTiles)
+        delegate?.animate(destroyedTiles: destroyedTiles, shiftedTiles: shiftedTiles)
     }
 
     func swapFallingTile(withUpcomingAt index: Int) {
