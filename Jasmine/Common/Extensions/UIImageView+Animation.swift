@@ -25,5 +25,4 @@ extension UIImageView {
         self.animationDuration = durationPerFrame * TimeInterval(frames.count)
         self.startAnimating()
     }
-
 }
