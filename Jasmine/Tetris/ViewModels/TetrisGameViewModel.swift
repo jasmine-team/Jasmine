@@ -91,7 +91,7 @@ class TetrisGameViewModel {
 
     /// Gets the tile text at coordinate specified by `row` and `col`
     /// returns " " if no tile is present so that phrases separated by gaps don't get matched
-    private func getTileText(at coordinate: Coordinate) -> String {: 
+    private func getTileText(at coordinate: Coordinate) -> String {
         return tetrisGrid.getTileText(at: coordinate) ?? " "
     }
 
