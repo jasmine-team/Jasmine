@@ -55,11 +55,6 @@ enum Constants {
 
     }
 
-    enum Language: String {
-        case english = "eng"
-        case chinese = "cmn"
-    }
-
     enum UserDefaultsKeys: String {
         case launchedBefore
     }

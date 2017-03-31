@@ -2,11 +2,11 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
-  - Realm (2.4.4):
-    - Realm/Headers (= 2.4.4)
-  - Realm/Headers (2.4.4)
-  - RealmSwift (2.4.4):
-    - Realm (= 2.4.4)
+  - Realm (2.5.0):
+    - Realm/Headers (= 2.5.0)
+  - Realm/Headers (2.5.0)
+  - RealmSwift (2.5.0):
+    - Realm (= 2.5.0)
   - SnapKit (3.2.0)
   - SwiftLint (0.17.0)
 
@@ -27,11 +27,11 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  Realm: 5a280a1f5a9a3c267bebf4f41ee47911137703d7
-  RealmSwift: 0c02b9f2d4be4301c497ed10e53a0580584eb1dd
+  Realm: 62abce501668580092d2be9b6ba7324a3d5f906a
+  RealmSwift: 9f1a8f624f2f153410115c2cb7d486be9976565d
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftLint: 9fb1dd71d5952d130f8c2fb60ae2e1475cf5d575
 
-PODFILE CHECKSUM: cd34ffaeaba84ecfbac5c63976610a8f9a6a17f5
+PODFILE CHECKSUM: aad87713438c1b2eca08a141d9cb87edd9eb895b
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0
