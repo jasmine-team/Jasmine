@@ -92,7 +92,7 @@ class DraggableSquareGridViewController: SquareGridViewController {
     /// - Returns: the detached tile.
     /// - Note: this tile will be removed from its superview.
     private func associateDetachedTile(_ tile: SquareTileView,
-                                             withFrame frame: CGRect) -> SquareTileView {
+                                       withFrame frame: CGRect) -> SquareTileView {
         tile.removeFromSuperview()
         tile.frame = frame
         tile.addDropShadow()
@@ -205,6 +205,8 @@ class DraggableSquareGridViewController: SquareGridViewController {
             destinationCoord = coord.nextCol
         case .westwards:
             destinationCoord = coord.prevCol
+        default:
+            destinationCoord = coord
         }
         snapDetachedTile(tile, toCoordinate: destinationCoord, withCompletion: callback)
     }
