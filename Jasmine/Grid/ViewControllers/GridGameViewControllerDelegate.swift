@@ -7,7 +7,7 @@ protocol GridGameViewControllerDelegate: BaseGameViewControllerDelegate {
     /// Update the grid data stored in the Grid Game View Controller with a new dataset.
     ///
     /// Note that this does *not* reload all the tiles displayed on the View Controller.
-    /// To do so, call a variant of `redisplayTiles`.
+    /// To do so, call redisplayAllTiles.
     func updateGridData()
 
     /// Refreshes the tiles based on the tiles information stored in the View Controller's grid data.

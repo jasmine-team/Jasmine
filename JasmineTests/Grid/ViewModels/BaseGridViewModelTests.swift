@@ -17,9 +17,9 @@ class BaseGridViewModelTests: XCTestCase {
                      "ViewModel delegate on init is not nil")
         XCTAssertEqual(0, viewModel.currentScore,
                        "ViewModel currentScore on init is not zero")
-        XCTAssertEqual(1, viewModel.rows,
+        XCTAssertEqual(1, viewModel.numRows,
                        "ViewModel rows on init is not correct")
-        XCTAssertEqual(2, viewModel.columns,
+        XCTAssertEqual(2, viewModel.numColumns,
                        "ViewModel columns on init is not correct")
         XCTAssertEqual(3, viewModel.timeRemaining,
                        "ViewModel timeRemaining on init is not correct")

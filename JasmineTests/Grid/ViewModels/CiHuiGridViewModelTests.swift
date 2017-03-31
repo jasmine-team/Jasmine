@@ -5,7 +5,7 @@ class CiHuiGridViewModelTests: XCTestCase {
     func testInit() {
         let numberOfPhrases = 3
 
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 5) else {
+        guard let gameData = try? GameDataFactory().createGame(difficulty: 5, type: .ciHui) else {
             XCTFail("Realm errors")
             return
         }
@@ -26,9 +26,9 @@ class CiHuiGridViewModelTests: XCTestCase {
                      "ViewModel delegate on init is not nil")
         XCTAssertEqual(0, viewModel.currentScore,
                        "ViewModel currentScore on init is not zero")
-        XCTAssertEqual(3, viewModel.rows,
+        XCTAssertEqual(3, viewModel.numRows,
                        "ViewModel rows on init is not correct")
-        XCTAssertEqual(4, viewModel.columns,
+        XCTAssertEqual(4, viewModel.numColumns,
                        "ViewModel columns on init is not correct")
         XCTAssertEqual(10, viewModel.timeRemaining,
                        "ViewModel timeRemaining on init is not correct")

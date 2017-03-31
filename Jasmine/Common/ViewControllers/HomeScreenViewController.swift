@@ -6,7 +6,7 @@ class HomeScreenViewController: UIViewController {
             guard let gameDataFactory = try? GameDataFactory() else {
                 fatalError("Error with Realm")
             }
-            let gameData = gameDataFactory.createGame(difficulty: 0)
+            let gameData = gameDataFactory.createGame(difficulty: 0, type: .ciHui)
             gridGame.segueWith(CiHuiGridViewModel(time: Constants.Game.Grid.time,
                                                   gameData: gameData,
                                                   numberOfPhrases: Constants.Game.Grid.rows))

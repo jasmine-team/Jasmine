@@ -19,15 +19,35 @@ class GameDataFactory {
         self.init(realm: try Realm())
     }
 
-    /// Creates a game with the indicated difficulty
+    /// Creates game data with the indicated difficulty
     ///
     /// - Parameter difficulty: difficulty of the game
-    /// - Returns: game data containing relevant phrases
-    func createGame(difficulty: Int) -> GameData {
-        let gameData = GameData()
-        gameData.difficulty = difficulty
-        gameData.phrases = realm.objects(Phrase.self)
+    /// - Returns: game data containing relevant phrases and difficulty
+    func createGame(difficulty: Int, type: GameType) -> GameData {
+        let predicate = filterChinese(ofLength: lengthOf(type: type))
+        let phrases = realm.objects(Phrase.self).filter(predicate)
+        let gamePhrases = Phrases(phrases, range: 0..<phrases.count)
+        let gameData = GameData(phrases: gamePhrases, difficulty: difficulty)
         return gameData
+    }
+
+    /// Creates a predicate that filters based on character count
+    ///
+    /// - Parameter count: numebr of characters for the chinese phrase
+    /// - Returns: a string that follows NSPredicate format
+    private func filterChinese(ofLength count: Int) -> String {
+        return "chinese LIKE '\(String(repeating: "?", count: count))'"
+    }
+
+    // Returns the length of phrases for the specified game type
+    private func lengthOf(type: GameType) -> Int {
+        switch type {
+        case .chengYu:
+            return 4
+        case .ciHui,
+             .pinYin:
+            return 2
+        }
     }
 
 }
