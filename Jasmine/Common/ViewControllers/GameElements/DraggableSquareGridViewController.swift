@@ -182,60 +182,31 @@ class DraggableSquareGridViewController: SquareGridViewController {
         snapDetachedTile(tile, toCoordinate: targetCoord, withCompletion: callback)
     }
 
-    /// Animatedly move the detached tile to the left cell of the nearest cell.
+    /// Animatedly move the detached tile to the neighbouring cell.
     ///
     /// - Parameters:
     ///   - tile: tile view to be snapped.
+    ///   - direction: the location neighbouring to the tile in terms of `Direction` enum.
     ///   - callback: a function that will be called when the tile has successfully been snapped.
     /// - Precondition:
     ///   - Follows precondition in `snapDetachedTile(tile, coordinate, callback)`.
-    func snapDetachedTileLeftwards(_ tile: SquareTileView, withCompletion callback: (() -> Void)?) {
-        guard let targetCoord = getCoordinate(from: tile) else {
+    func snapDetachedTile(_ tile: SquareTileView, towards direction: Direction,
+                          withCompletion callback: (() -> Void)?) {
+        guard let coord = getCoordinate(from: tile) else {
             return
         }
-        snapDetachedTile(tile, toCoordinate: targetCoord.prevCol, withCompletion: callback)
-    }
-
-    /// Animatedly move the detached tile to the right cell of the nearest cell.
-    ///
-    /// - Parameters:
-    ///   - tile: tile view to be snapped.
-    ///   - callback: a function that will be called when the tile has successfully been snapped.
-    /// - Precondition:
-    ///   - Follows precondition in `snapDetachedTile(tile, coordinate, callback)`.
-    func snapDetachedTileRightwards(_ tile: SquareTileView, withCompletion callback: (() -> Void)?) {
-        guard let targetCoord = getCoordinate(from: tile) else {
-            return
+        let destinationCoord: Coordinate
+        switch direction {
+        case .northwards:
+            destinationCoord = coord.prevRow
+        case .southwards:
+            destinationCoord = coord.nextRow
+        case .eastwards:
+            destinationCoord = coord.nextCol
+        case .westwards:
+            destinationCoord = coord.prevCol
         }
-        snapDetachedTile(tile, toCoordinate: targetCoord.nextCol, withCompletion: callback)
-    }
-
-    /// Animatedly move the detached tile to the top cell of the nearest cell.
-    ///
-    /// - Parameters:
-    ///   - tile: tile view to be snapped.
-    ///   - callback: a function that will be called when the tile has successfully been snapped.
-    /// - Precondition:
-    ///   - Follows precondition in `snapDetachedTile(tile, coordinate, callback)`.
-    func snapDetachedTileUpwards(_ tile: SquareTileView, withCompletion callback: (() -> Void)?) {
-        guard let targetCoord = getCoordinate(from: tile) else {
-            return
-        }
-        snapDetachedTile(tile, toCoordinate: targetCoord.prevRow, withCompletion: callback)
-    }
-
-    /// Animatedly move the detached tile to the bottom cell of the nearest cell.
-    ///
-    /// - Parameters:
-    ///   - tile: tile view to be snapped.
-    ///   - callback: a function that will be called when the tile has successfully been snapped.
-    /// - Precondition:
-    ///   - Follows precondition in `snapDetachedTile(tile, coordinate, callback)`.
-    func snapDetachedTileDownwards(_ tile: SquareTileView, withCompletion callback: (() -> Void)?) {
-        guard let targetCoord = getCoordinate(from: tile) else {
-            return
-        }
-        snapDetachedTile(tile, toCoordinate: targetCoord.nextRow, withCompletion: callback)
+        snapDetachedTile(tile, toCoordinate: destinationCoord, withCompletion: callback)
     }
 
     // MARK: Reattach detached tiles to cell.

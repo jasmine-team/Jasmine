@@ -90,18 +90,11 @@ class TetrisGameViewController: UIViewController {
     }
 
     @IBAction func onTilesSwiped(_ sender: UISwipeGestureRecognizer) {
-        guard tetrisGameAreaView.hasFallingTile else {
+        guard tetrisGameAreaView.hasFallingTile,
+              sender.direction != .up else {
             return
         }
-        if sender.direction == .left {
-            tetrisGameAreaView.shiftFallingTileLeftwards()
-        } else if sender.direction == .right {
-            tetrisGameAreaView.shiftFallingTileRightwards()
-        } else if sender.direction == .down {
-            tetrisGameAreaView.shiftFallingTileDownwards()
-        } else {
-            return
-        }
+        tetrisGameAreaView.shiftFallingTile(towards: sender.direction.toDirection)
     }
 
     // MARK: - Game State and Actions

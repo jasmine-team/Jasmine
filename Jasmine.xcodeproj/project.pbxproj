@@ -36,6 +36,9 @@
 		DF21551A1E8E234D005A0927 /* Phrases.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2155191E8E234D005A0927 /* Phrases.swift */; };
 		DF2155201E8E237F005A0927 /* SlidingGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF21551D1E8E237F005A0927 /* SlidingGameViewControllerDelegate.swift */; };
 		DF2155211E8E237F005A0927 /* SlidingViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF21551F1E8E237F005A0927 /* SlidingViewModelProtocol.swift */; };
+		DF2155251E8E3F25005A0927 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2155241E8E3F25005A0927 /* Direction.swift */; };
+		DF2155271E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2155261E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift */; };
+		DF2155291E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2155281E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift */; };
 		DF2D21EA1E743BC500094381 /* GridStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */; };
 		DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D21EB1E743C8700094381 /* GridGameViewController.swift */; };
 		DF409FDB1E84145800389976 /* UIApplication+isFirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FDA1E84145800389976 /* UIApplication+isFirstLaunch.swift */; };
@@ -128,6 +131,9 @@
 		DF2155191E8E234D005A0927 /* Phrases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Phrases.swift; sourceTree = "<group>"; };
 		DF21551D1E8E237F005A0927 /* SlidingGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DF21551F1E8E237F005A0927 /* SlidingViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingViewModelProtocol.swift; sourceTree = "<group>"; };
+		DF2155241E8E3F25005A0927 /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		DF2155261E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISwipeGestureRecognizerDirection+Direction.swift"; sourceTree = "<group>"; };
+		DF2155281E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISwipeGestureRecognizerDirection+DirectionTests.swift"; sourceTree = "<group>"; };
 		DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GridStoryboard.storyboard; sourceTree = "<group>"; };
 		DF2D21EB1E743C8700094381 /* GridGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewController.swift; sourceTree = "<group>"; };
 		DF409FDA1E84145800389976 /* UIApplication+isFirstLaunch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+isFirstLaunch.swift"; sourceTree = "<group>"; };
@@ -295,6 +301,7 @@
 		50989DC81E6D8B16009A86C8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DF2155241E8E3F25005A0927 /* Direction.swift */,
 				DFB342701E77EB6700D2FE09 /* Coordinate.swift */,
 				50989DC51E6D8B16009A86C8 /* GameData.swift */,
 				DF409FE21E84149F00389976 /* GameDataFactory.swift */,
@@ -616,6 +623,7 @@
 				DF409FDA1E84145800389976 /* UIApplication+isFirstLaunch.swift */,
 				DF944C2C1E84EF250037437C /* UIView+Shadows.swift */,
 				DF2052C71E8BDD5A00D66B0B /* UIImageView + Animation.swift */,
+				DF2155261E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -650,6 +658,7 @@
 				50717ABE1E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift */,
 				50717AC21E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift */,
 				DF409FEE1E8415E000389976 /* UIApplicationTests.swift */,
+				DF2155281E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -914,9 +923,11 @@
 				50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */,
 				DF7CF77B1E7E9ECE00C6979A /* SquareGridViewController.swift in Sources */,
 				50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */,
+				DF2155271E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift in Sources */,
 				50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */,
 				509894A31E6E6CAE00FC9CF3 /* GameType.swift in Sources */,
 				DF2155201E8E237F005A0927 /* SlidingGameViewControllerDelegate.swift in Sources */,
+				DF2155251E8E3F25005A0927 /* Direction.swift in Sources */,
 				DF409FE51E8414B000389976 /* Player.swift in Sources */,
 				DF7056351E8A409500C51534 /* TetrisGameViewModelProtocol.swift in Sources */,
 				A2187E6C1E7510B60033FC5B /* Random.swift in Sources */,
@@ -959,6 +970,7 @@
 				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
 				DF7056371E8A40BC00C51534 /* TetrisGridTests.swift in Sources */,
 				DF7189091E85032A009EA28E /* CountdownTimableMock.swift in Sources */,
+				DF2155291E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift in Sources */,
 				DF71890C1E850359009EA28E /* GridGameViewControllerDelegateMock.swift in Sources */,
 				DF7CF78B1E7E9FD700C6979A /* IndexPath+CoordinateTests.swift in Sources */,
 				DF7CF78A1E7E9FD700C6979A /* CGRect+ArithmeticTests.swift in Sources */,

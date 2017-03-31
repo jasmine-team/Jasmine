@@ -42,7 +42,7 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
             return
         }
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
-            self.shiftFallingTileDownwards()
+            self.shiftFallingTile(towards: .southwards)
         }
     }
 
@@ -93,32 +93,13 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
     }
 
     // MARK: - Shifting Falling Tiles
-    /// Shifts the tile one step to the left.
-    func shiftFallingTileLeftwards() {
+    /// Shifts the tile one step to specified direction.
+    /// - Parameter direction: the direction where the falling tile should shift to.
+    func shiftFallingTile(towards direction: Direction) {
         guard let fallingTile = fallingTile else {
             return
         }
-        snapDetachedTileLeftwards(fallingTile) {
-            self.onFallingTileRepositioned?()
-        }
-    }
-
-    /// Shifts the tile one step to the right.
-    func shiftFallingTileRightwards() {
-        guard let fallingTile = fallingTile else {
-            return
-        }
-        snapDetachedTileRightwards(fallingTile) {
-            self.onFallingTileRepositioned?()
-        }
-    }
-
-    /// Shifts the tile one step down.
-    func shiftFallingTileDownwards() {
-        guard let fallingTile = fallingTile else {
-            return
-        }
-        snapDetachedTileDownwards(fallingTile) {
+        snapDetachedTile(fallingTile, towards: direction) {
             self.onFallingTileRepositioned?()
         }
     }
