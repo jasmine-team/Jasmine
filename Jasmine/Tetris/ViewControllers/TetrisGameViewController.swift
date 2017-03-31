@@ -177,8 +177,8 @@ extension TetrisGameViewController: TetrisGameViewControllerDelegate {
     /// - Parameters:
     ///   - coodinates: the set of coordinates to be destroyed.
     ///   - coordinatesShifted: array of coordinates to shift
-    func animate(destroyTilesAt coordinates: Set<Coordinate>,
-                 thenShiftTiles coordinatesToShift: [(from: Coordinate, to: Coordinate)]) {
+    func animate(destroyedTiles coordinates: Set<Coordinate>,
+                 shiftedTiles coordinatesToShift: [(from: Coordinate, to: Coordinate)]) {
 
         self.animate(destroyTilesAt: coordinates)
 
