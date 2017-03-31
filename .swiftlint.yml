@@ -27,6 +27,10 @@ file_length:
   warning: 600
   error: 600
 
+large_tuple:
+  warning: 3
+  error: 4
+
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
   - Pods
