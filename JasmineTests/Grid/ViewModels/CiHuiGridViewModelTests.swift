@@ -12,7 +12,7 @@ class CiHuiGridViewModelTests: XCTestCase {
 
         let viewModel = CiHuiGridViewModel(time: 10, gameData: gameData, numberOfPhrases: numberOfPhrases)
 
-        let phrases = gameData.phrases.prefix(numberOfPhrases)
+        let phrases = gameData.phrases.next(count: numberOfPhrases)
         var tiles: [String] = []
         for phrase in phrases {
             let hanzi = phrase.chinese.characters.map { String($0) }

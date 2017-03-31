@@ -2,7 +2,7 @@ import Foundation
 
 class ChengYuGridViewModel: BaseGridViewModel {
     init(time: TimeInterval, gameData: GameData, numberOfPhrases: Int) {
-        let phrases = gameData.phrases.prefix(numberOfPhrases)
+        let phrases = gameData.phrases.next(count: numberOfPhrases)
 
         let answers = phrases.map { $0.chinese.characters.map { char in String(char) } }
         let tiles = answers.flatMap { $0 }

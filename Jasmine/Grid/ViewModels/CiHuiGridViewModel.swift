@@ -2,7 +2,7 @@ import Foundation
 
 class CiHuiGridViewModel: BaseGridViewModel {
     init(time: TimeInterval, gameData: GameData, numberOfPhrases: Int) {
-        let phrases = gameData.phrases.prefix(numberOfPhrases)
+        let phrases = gameData.phrases.next(count: numberOfPhrases)
 
         var tiles: [String] = []
         var answers: [[String]] = []
