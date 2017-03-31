@@ -6,4 +6,5 @@ enum Direction {
     case southwards
     case eastwards
     case westwards
+    case centre
 }
