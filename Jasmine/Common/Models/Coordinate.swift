@@ -18,6 +18,11 @@ struct Coordinate {
         self.row = row
         self.col = col
     }
+
+    /// Returns the Coordinate of the next row
+    var nextRow: Coordinate {
+        return Coordinate(row: row + 1, col: col)
+    }
 }
 
 extension Coordinate: Hashable {
