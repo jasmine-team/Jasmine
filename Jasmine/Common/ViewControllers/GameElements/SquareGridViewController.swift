@@ -15,10 +15,14 @@ class SquareGridViewController: UIViewController {
 
     // MARK: Properties
     /// Stores the maximum number of rows that should be displayed in this view.
-    fileprivate var numRows = 0
+    fileprivate var numRows: Int {
+        return collectionData.numRows
+    }
 
     /// Stores the maximum number of columns that should be displayed in this view.
-    fileprivate var numCols = 0
+    fileprivate var numCols: Int {
+        return collectionData.numColumns
+    }
 
     /// A lazily computed property that gives all the coordinates that is used in this view.
     fileprivate var allCoordinates: Set<Coordinate> {
@@ -32,7 +36,7 @@ class SquareGridViewController: UIViewController {
     }
 
     /// Stores the database that is used to display onto the collection view in this view controller.
-    fileprivate var collectionData: TextGrid!
+    fileprivate var collectionData = TextGrid()
 
     /// Stores the set of tiles that are "detached" from the collection view.
     fileprivate var detachedTiles: Set<UIView> = []
@@ -51,10 +55,8 @@ class SquareGridViewController: UIViewController {
     ///   - initialData: initial set of data to be displayed in this view.
     ///   - numRows: maximum number of rows to be displayed in this grid.
     ///   - numCols: maximum number of columns to be displayed in this grid.
-    func segueWith(_ initialData: TextGrid, numRows: Int, numCols: Int) {
+    func segueWith(_ initialData: TextGrid) {
         self.collectionData = initialData
-        self.numCols = numCols
-        self.numRows = numRows
     }
 
     // MARK: - Data Interaction

@@ -44,9 +44,7 @@ class GridGameViewController: UIViewController {
     /// Method that manages the seguing to other view controllers from this view controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let squareGridView = segue.destination as? SquareGridViewController {
-            squareGridView.segueWith(viewModel.gridData,
-                                     numRows: Constants.Game.Grid.rows,
-                                     numCols: Constants.Game.Grid.columns)
+            squareGridView.segueWith(viewModel.gridData)
             self.squareGridViewController = squareGridView
 
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {

@@ -3,11 +3,11 @@ import XCTest
 
 class TextGridTests: XCTestCase {
     func testInitFromInitialGrid() {
-        let initialGrid = [["a", "b"], ["c", "d"]]
+        let initialGrid = [["a", nil, "c"], ["d", "e", "f"], ["g", "h", nil], [nil, nil, nil]]
         let grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
 
-        for row in 0..<2 {
-            for col in 0..<2 {
+        for row in 0..<4 {
+            for col in 0..<3 {
                 XCTAssertEqual(initialGrid[row][col],
                                grid[Coordinate(row: row, col: col)],
                                "Grid is not initialized properly")

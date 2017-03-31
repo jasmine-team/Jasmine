@@ -3,8 +3,8 @@ func ==<T: Equatable>(lhs: [T], rhs: [T?]) -> Bool {
         return false
     }
 
-    for idx in 0..<lhs.count {
-        guard let rhsElement = rhs[idx], lhs[idx] == rhsElement else {
+    for (lhsElement, rhsElement) in zip(lhs, rhs) {
+        guard let rhsElement = rhsElement, rhsElement == lhsElement else {
             return false
         }
     }

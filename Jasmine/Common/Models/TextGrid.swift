@@ -2,12 +2,22 @@ struct TextGrid {
     /// The actual grid.
     private var grid: [[String?]]
 
-    /// Initializes a CharacterGrid, given the initial grid.
+    /// The number of rows in the grid.
+    var numRows: Int {
+        return grid.count
+    }
+
+    /// The number of columns in the grid.
+    var numColumns: Int {
+        return grid.first?.count ?? 0
+    }
+
+    /// Initializes a TextGrid, given the initial grid.
     ///
     /// - Parameters:
     ///   - initialGrid: the initial grid. The CharacterGrid will read from this grid.
     ///   - randomized: pass in true if the resulting grid wants to be randomized from the initial grid.
-    init(fromInitialGrid initialGrid: [[String]], randomized: Bool) {
+    init(fromInitialGrid initialGrid: [[String?]], randomized: Bool) {
         let numRows = initialGrid.count
         let numColumns = initialGrid.first?.count ?? 0
         assert(numRows > 0 && numColumns > 0, "Number of numRows and columns should be more than 0")
@@ -24,6 +34,11 @@ struct TextGrid {
         } else {
             grid = initialGrid
         }
+    }
+
+    /// Initializes with an empty grid.
+    init() {
+        self.init(fromInitialGrid: [], randomized: false)
     }
 
     /// Gets the element in the specified coordinate.
@@ -55,7 +70,6 @@ struct TextGrid {
                 return false
             }
         }
-
         return true
     }
 }
