@@ -14,8 +14,8 @@ done
 export SCRIPT_INPUT_FILE_COUNT=$count
 
 if (( $count > 0 )); then
-    ${PODS_ROOT}/SwiftLint/swiftlint autocorrect --use-script-input-files
-    ${PODS_ROOT}/SwiftLint/swiftlint lint --use-script-input-files
+    ${PODS_ROOT}/SwiftLint/swiftlint autocorrect --use-script-input-files --config .swiftlint.yml
+    ${PODS_ROOT}/SwiftLint/swiftlint lint --use-script-input-files --config .swiftlint.yml
 fi
 
 IFS=$OLD_IFS
