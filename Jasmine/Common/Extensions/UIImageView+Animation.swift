@@ -9,16 +9,6 @@ extension UIImageView {
     /// Helper method that animates the given frames only once, and stops the animation
     /// on the last frame.
     ///
-    /// - Parameters:
-    ///   - frames: the set of images used for animation.
-    ///   - durationPerFrame: the duration, in seconds, for each frame.
-    func animateOnce(with frames: [UIImage], and durationPerFrame: TimeInterval) {
-        animateOnce(with: frames, lastFrame: frames.last, and: durationPerFrame)
-    }
-
-    /// Helper method that animates the given frames only once, and stops the animation
-    /// on the last frame.
-    ///
     /// If last frame is not supplied, displays nothing.
     ///
     /// - Parameters:
