@@ -7,6 +7,10 @@ class HomeScreenViewController: UIViewController {
 
         } else if let tetrisGame = segue.destination as? TetrisGameViewController {
             tetrisGame.segueWith(TetrisGameViewModel())
+
+        } else if let slidingGame = segue.destination as? SlidingGameViewController {
+            slidingGame.segueWith(MockSlidingViewModel())
         }
+
     }
 }

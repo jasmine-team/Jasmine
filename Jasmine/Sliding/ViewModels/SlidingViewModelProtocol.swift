@@ -12,6 +12,20 @@ protocol SlidingViewModelProtocol: BaseViewModelProtocol, CountdownTimable {
     var gridData: [Coordinate: String] { get }
 
     // MARK: Game Operations
+    /// Ask the view model wherether the specified tile from the coordinate can be slided.
+    ///
+    /// - Parameters:
+    ///   - start: the starting coordinate where the tile slides from.
+    ///   - end: the ending coordinate where the tile slides to.
+    /// - Returns: true if the tile can be slided from the starting to the ending coordinate.
+    /// - Note:
+    ///   - if the tile from the `start` should never be slided in the first place, returns false.
+    ///   - also that the parameter value start can be equal to end.
+    func canTileSlide(from start: Coordinate) -> Bool
+    // TODO: Maybe the VM can tell VC which direction is swipable.
+
+    /// Ask the view model where the specified tile can be slided to.
+
     /// Tells the Game Engine View Model that the user from the View Controller attempts to slide
     /// the tile.
     ///
