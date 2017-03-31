@@ -91,12 +91,14 @@ class TetrisGameViewModel {
 
     /// Gets the tile text at coordinate specified by `row` and `col`
     /// returns " " if no tile is present so that phrases separated by gaps don't get matched
-    private func getTileText(at coordinate: Coordinate) -> String {
+    private func getTileText(at coordinate: Coordinate) -> String {: 
         return tetrisGrid.getTileText(at: coordinate) ?? " "
     }
 
     /// Shifts all the tiles above `coordinates` 1 row down.
     /// Starts from the row right above the coordinates so that it can break once an empty tile is encountered
+    ///
+    /// Returns: array of coordinates shifted from `from` to `to`
     fileprivate func shiftDownTiles(_ coordinates: Set<Coordinate>) -> [(from: Coordinate, to: Coordinate)] {
         var shiftedTiles: [(from: Coordinate, to: Coordinate)] = []
         for coordinate in coordinates {
