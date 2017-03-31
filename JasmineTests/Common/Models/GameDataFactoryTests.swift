@@ -44,7 +44,7 @@ class GameDataFactoryTests: RealmTestCase {
         phrases.forEach(save)
         let difficulty = 1
         let gameData = gameDataFactory.createGame(difficulty: difficulty, type: type)
-        let result = Set(gameData.phrases.prefix(phrases.count))
+        let result = Set(gameData.phrases.next(count: phrases.count))
         XCTAssertEqual(result.count, count, "game phrases is incorrect")
         XCTAssertEqual(gameData.difficulty, difficulty, "game difficulty is incorrect")
     }
