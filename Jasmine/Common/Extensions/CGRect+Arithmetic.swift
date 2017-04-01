@@ -10,7 +10,7 @@ extension CGRect {
             origin = CGPoint(x: newValue.x - size.width / 2, y: newValue.y - size.height / 2)
         }
         get {
-            return CGPoint(x: origin.x + width / 2, y: origin.y + height / 2)
+            return CGPoint(x: midX, y: midY)
         }
     }
 

@@ -41,33 +41,4 @@ extension CGPoint {
         }
         return outcome
     }
-
-    /// Creates a new point that aligns to either the vertical or horizontal axis from the origin
-    /// depending on which line is nearer, with a further requirement that direction from the origin
-    /// to that point is within the allowed directions.
-    ///
-    /// - Parameters:
-    ///   - origin: the origin point of the axis.
-    ///   - allowedDirections: the direction of the axis which the point is allowed to rest.
-    /// - Returns: the aligned point.
-    func alignToAxis(fromOrigin origin: CGPoint,
-                     withDirections allowedDirections: Set<Direction>) -> CGPoint {
-
-        var outcome = self.alignToAxis(fromOrigin: origin)
-
-        if !allowedDirections.contains(.northwards) {
-            outcome.y = max(outcome.y, origin.y)
-        }
-        if !allowedDirections.contains(.southwards) {
-            outcome.y = min(outcome.y, origin.y)
-        }
-        if !allowedDirections.contains(.eastwards) {
-            outcome.x = min(outcome.x, origin.x)
-        }
-        if !allowedDirections.contains(.westwards) {
-            outcome.x = max(outcome.x, origin.x)
-        }
-
-        return outcome
-    }
 }

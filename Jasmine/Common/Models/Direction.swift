@@ -6,7 +6,6 @@ enum Direction {
     case southwards
     case eastwards
     case westwards
-    case centre
 
     /// Returns true if the direction is horizontal.
     var isHorizontal: Bool {
