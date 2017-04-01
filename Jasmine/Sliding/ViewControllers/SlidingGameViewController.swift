@@ -11,7 +11,6 @@ class SlidingGameViewController: UIViewController {
     fileprivate var viewModel: SlidingViewModelProtocol!
 
     fileprivate var movingTile: (tile: SquareTileView, from: Coordinate)?
-    fileprivate var movingDirection: Direction?
 
     // MARK: - Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -48,22 +47,23 @@ class SlidingGameViewController: UIViewController {
     }
 
     /// Handles the gesture where the user drags the tile to an empty slot.
-    @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
+    @IBAction func onTilesDragged(_ sender: UIDirectionalPanGestureRecognizer) {
         guard viewModel.gameStatus == .inProgress else {
             return
         }
-        let position = sender.location(in: slidingGridView.view)
-
-        switch sender.state {
-        case .began:
-            onTileDraggedBegan(at: position)
-        case .changed:
-            onTileDragged(to: position, withDirection: sender.direction)
-        case .ended:
-            onTileDraggedEnded()
-        default:
-            break
+        sender.touchedLocations.forEach { position in
+            switch sender.state {
+            case .began:
+                onTileDraggedBegan(at: position)
+            case .changed:
+                onTileDragged(to: position, withDirection: sender.direction ?? .centre)
+            case .ended:
+                onTileDraggedEnded()
+            default:
+                break
+            }
         }
+
     }
 }
 
@@ -80,28 +80,14 @@ fileprivate extension SlidingGameViewController {
     }
 
     fileprivate func onTileDragged(to position: CGPoint, withDirection direction: Direction) {
-        guard let movingTile = movingTile,
-              direction != .centre else {
+        guard let movingTile = movingTile else {
             return
         }
-
-        let finalDirection = movingDirection ?? direction
-        switch finalDirection {
-        case .eastwards:
-            fallthrough
-        case .westwards:
+        if direction.isHorizontal {
             slidingGridView.moveDetachedTile(movingTile.tile, toAlongXAxis: position.x)
-
-        case .northwards:
-            fallthrough
-        case .southwards:
+        } else if direction.isVertical {
             slidingGridView.moveDetachedTile(movingTile.tile, toAlongYAxis: position.y)
-
-        default:
-            break
         }
-
-        movingDirection = finalDirection
     }
 
     fileprivate func onTileDraggedEnded() {
@@ -114,7 +100,6 @@ fileprivate extension SlidingGameViewController {
                 self.slidingGridView.reattachDetachedTile(movingTile.tile)
                 self.redisplayAllTiles()
                 self.movingTile = nil
-                self.movingDirection = nil
             }
         }
 

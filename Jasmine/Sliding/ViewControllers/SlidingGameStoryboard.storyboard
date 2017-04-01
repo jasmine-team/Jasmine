@@ -93,7 +93,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lwv-m7-ZgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="Kvd-RL-DVW" userLabel="Sliding Tile Gesture Recognizer">
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Kvd-RL-DVW" userLabel="Sliding Tile Gesture Recognizer" customClass="UIDirectionalPanGestureRecognizer" customModule="Jasmine" customModuleProvider="target">
                     <connections>
                         <action selector="onTilesDragged:" destination="39S-vZ-Zyw" id="lV5-zu-ZRS"/>
                     </connections>
@@ -113,6 +113,10 @@
         <scene sceneID="6d4-Xe-pWg">
             <objects>
                 <viewController id="fq0-sW-ABh" customClass="DraggableSquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ddC-oy-g83"/>
+                        <viewControllerLayoutGuide type="bottom" id="edo-IR-5Ya"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iFR-3A-Qq3">
                         <rect key="frame" x="0.0" y="0.0" width="374" height="394"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
