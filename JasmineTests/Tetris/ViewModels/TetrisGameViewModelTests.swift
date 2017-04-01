@@ -68,6 +68,5 @@ class TetrisGameViewModelTests: RealmTestCase {
         let viewModel = TetrisGameViewModel(gameData: gameData)
         XCTAssertTrue(viewModel.canShiftFallingTile(to: Coordinate(row: 0, col: 0)),
                       "canShiftFallingTile wrongly returned false")
-
     }
 }
