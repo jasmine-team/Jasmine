@@ -55,11 +55,22 @@ class MockSlidingViewModel: SlidingViewModelProtocol, CountdownTimable {
         return true
     }
 
-    func canTileSlide(from coordinate: Coordinate) -> Bool {
-        var outcome: [Coordinate] = [coordinate.nextCol, coordinate.nextRow,
-                                     coordinate.prevCol, coordinate.prevRow]
-        outcome = outcome.filter { !gridData.keys.contains($0) }
-        return !outcome.isEmpty
+    func canTileSlide(from coordinate: Coordinate) -> [Direction: Coordinate] {
+        var allowedDirections: [Direction: Coordinate] = [:]
+
+        if !gridData.keys.contains(coordinate.nextCol) {
+            allowedDirections[.eastwards] = coordinate.nextCol
+        }
+        if !gridData.keys.contains(coordinate.prevCol) {
+            allowedDirections[.westwards] = coordinate.prevCol
+        }
+        if !gridData.keys.contains(coordinate.nextRow) {
+            allowedDirections[.southwards] = coordinate.nextRow
+        }
+        if !gridData.keys.contains(coordinate.prevRow) {
+            allowedDirections[.northwards] = coordinate.prevRow
+        }
+        return allowedDirections
     }
 }
 
