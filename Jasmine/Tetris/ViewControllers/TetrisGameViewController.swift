@@ -1,5 +1,6 @@
 import UIKit
 
+/// View Controller implementation for Tetris Game.
 class TetrisGameViewController: UIViewController {
 
     // MARK: - Constants
