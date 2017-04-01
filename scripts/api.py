@@ -84,13 +84,12 @@ def cheng_yu_api_query(phrase):
 def fill_row(row):
     """Forms a row of data for the phrase in chinese"""
     if len(row['chinese']) == 4:
-        data = cheng_yu_api_query(row['chinese'])
-        new_row = {**row, **data}
-        return new_row
+        endpoint = cheng_yu_api_query
     else:
-        data = chinese_dict_api_query(row['chinese'])
-        new_row = {**row, **data}
-        return new_row
+        endpoint = chinese_dict_api_query
+    data = endpoint(row['chinese'])
+    new_row = {**row, **data}
+    return new_row
 
 def read_csv():
     """Reads csv and inputs new api data into it"""
