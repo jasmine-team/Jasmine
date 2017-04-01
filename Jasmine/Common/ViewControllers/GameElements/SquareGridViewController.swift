@@ -173,6 +173,14 @@ class SquareGridViewController: UIViewController {
         return getCell(at: coordinate)?.frame
     }
 
+    /// Get the cell center at the specified coordinate.
+    ///
+    /// - Parameter coordinate: the coordinate where the view cell's center should be obtained.
+    /// - Returns: the center if coordinate is valid.
+    func getCenter(from coordinate: Coordinate) -> CGPoint? {
+        return getCell(at: coordinate)?.center
+    }
+
     /// Adds the specified tile to the collection view.
     ///
     /// - Parameter tile: the tile to be added right on the collection view.

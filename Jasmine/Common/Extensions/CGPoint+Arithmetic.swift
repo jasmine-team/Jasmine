@@ -24,7 +24,7 @@ extension CGPoint {
     }
 
     /// Creates a new point that aligns to either the vertical or horizontal axis from the origin
-    /// depending on which line is nearer.
+    /// depending on which axis line is nearer to the current point.
     ///
     /// - Parameter origin: the origin point of the axis.
     /// - Returns: the aligned point.
