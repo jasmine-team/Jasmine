@@ -4,7 +4,7 @@ import Foundation
 class TetrisGameViewControllerDelegateMock: TetrisGameViewControllerDelegate {
     var score: Int?
     var timeRemaining: TimeInterval?
-    var totalTime: TimeInterval?
+    var totalTime: TimeInterval!
     var gameStatusUpdated = false
 
     var fallingTileTextRedisplayed = false

@@ -40,13 +40,14 @@ class GridViewModelTests: XCTestCase {
         XCTAssertEqual(Constants.Game.Grid.time, delegate.timeRemaining,
                        "Delegate timeRemaining is not correct")
 
-        RunLoop.current.run(until: Date(timeIntervalSinceNow: Constants.Game.Grid.time + 1))
+        RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
         XCTAssertEqual(Constants.Game.Grid.time, delegate.totalTime,
                        "Delegate totalTime is not correct")
-        XCTAssertEqualWithAccuracy(0, delegate.timeRemaining, accuracy: Constants.Game.Grid.time / 10,
-                       "Delegate timeRemaining is not correct")
-        XCTAssertEqual(GameStatus.endedWithLost, viewModel.gameStatus,
-                       "ViewModel game status when time's up is not endedWithLost")
+        XCTAssertEqualWithAccuracy(delegate.timeRemaining, delegate.totalTime - 1,
+                                   accuracy: Constants.Game.Grid.time / 10,
+                                   "Delegate timeRemaining is not correct")
+        XCTAssertEqual(viewModel.gameStatus, GameStatus.inProgress,
+                       "ViewModel game status is not in progress")
     }
 
     func testSwapTiles() {
