@@ -20,4 +20,15 @@ extension CGRect {
         self.size = size
         self.center = center
     }
+
+    /// Initialise the rectangle with the specified inputs.
+    ///
+    /// - Parameters:
+    ///   - minX: the smaller x-coordinate value
+    ///   - maxX: the larger x-coordinate value
+    ///   - minY: the smaller y-coordinate value
+    ///   - maxY: the larger y-coordinate value
+    init(minX: CGFloat, maxX: CGFloat, minY: CGFloat, maxY: CGFloat) {
+        self.init(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
+    }
 }
