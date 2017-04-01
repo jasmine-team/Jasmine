@@ -9,7 +9,7 @@ protocol GridViewModelProtocol: BaseViewModelProtocol, CountdownTimable {
     var delegate: GridGameViewControllerDelegate? { get set }
 
     /// Stores the grid data that will be used to display in the view controller.
-    var gridData: [Coordinate: String] { get }
+    var gridData: TextGrid { get }
 
     // MARK: Game Operations
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap

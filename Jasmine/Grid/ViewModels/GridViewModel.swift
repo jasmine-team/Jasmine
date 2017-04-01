@@ -2,7 +2,7 @@ import Foundation
 
 class GridViewModel: GridViewModelProtocol {
     /// Stores the grid data that will be used to display in the view controller.
-    private(set) var gridData: [Coordinate: String] = [:] {
+    private(set) var gridData: TextGrid {
         didSet {
             delegate?.updateGridData()
         }
@@ -33,6 +33,10 @@ class GridViewModel: GridViewModelProtocol {
         }
     }
 
+    init() {
+        gridData = TextGrid(fromInitialGrid: answers, randomized: true)
+    }
+
     /// Provide a brief title for this game. Note that this title should be able to fit within the
     /// width of the display.
     var gameTitle = "Grid Game"
@@ -43,7 +47,6 @@ class GridViewModel: GridViewModelProtocol {
 
     /// Tells the view model that the game has started.
     func startGame() {
-        loadGrid(from: answers)
         timer = createTimer()
         timer.startTimer(timerInterval: Constants.Game.Grid.timerInterval)
     }
@@ -65,7 +68,7 @@ class GridViewModel: GridViewModelProtocol {
             return false
         }
 
-        swapGridData(coord1, and: coord2)
+        gridData.swap(coord1, and: coord2)
 
         if hasGameWon {
             gameStatus = .endedWithWon
@@ -77,63 +80,7 @@ class GridViewModel: GridViewModelProtocol {
 
     /// Returns true iff the game is won
     private var hasGameWon: Bool {
-        let sortedGrid = gridData
-            .sorted { $0.key < $1.key }
-            .map { $0.value }
-
-        // SortedGrid is an array containing all the elements in order.
-        // This will iterate through the array and combine them into Constant.Game.Grid.columns elements,
-        // then check if the resulting string formed is part of the answers.
-        var temporary: [String] = []
-        for element in sortedGrid {
-            temporary.append(element)
-            if temporary.count == Constants.Game.Grid.columns {
-                if answers.contains(where: { $0 == temporary }) {
-                    temporary = []
-                } else {
-                    return false
-                }
-            }
-        }
-        return true
-    }
-
-    /// Loads the grid from an array of array of characters.
-    /// The characters will be shuffled before putting it in the grid.
-    /// Each element in the main array should have the same length.
-    ///
-    /// - Parameter characters: the characters to be loaded to the grid
-    private func loadGrid(from phrases: [[String]]) {
-        let rows = phrases.count
-        let cols = phrases.first?.count ?? 0
-        assert(rows > 0 && cols > 0, "Number of rows and columns should be more than 0")
-        assert(phrases.map { $0.count }.isAllSame, "All rows should have the same length")
-
-        let allChars = phrases.joined().shuffled()
-
-        // Place back allChars to the grid
-        gridData.removeAll()
-        var idx = 0
-        for row in 0..<rows {
-            for col in 0..<cols {
-                gridData[Coordinate(row: row, col: col)] = allChars[idx]
-                idx += 1
-            }
-        }
-
-        delegate?.redisplayAllTiles()
-    }
-
-    /// Swaps two coordinates in the grid data. The built-in swap function cannot be used as
-    /// it will introduce concurrent write in gridData's didSet listener.
-    ///
-    /// - Parameters:
-    ///   - coord1: the first coordinate
-    ///   - coord2: the second coordinate
-    private func swapGridData(_ coord1: Coordinate, and coord2: Coordinate) {
-        let initialSecond = gridData[coord2]
-        gridData[coord2] = gridData[coord1]
-        gridData[coord1] = initialSecond
+        return gridData.allRowsInside(stringArrays: answers)
     }
 
     /// The countdown timer for use in this viewmodel.

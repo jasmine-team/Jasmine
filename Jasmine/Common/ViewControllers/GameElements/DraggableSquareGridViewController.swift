@@ -205,8 +205,6 @@ class DraggableSquareGridViewController: SquareGridViewController {
             destinationCoord = coord.nextCol
         case .westwards:
             destinationCoord = coord.prevCol
-        default:
-            destinationCoord = coord
         }
         snapDetachedTile(tile, toCoordinate: destinationCoord, withCompletion: callback)
     }

@@ -11,6 +11,5 @@ class HomeScreenViewController: UIViewController {
         } else if let slidingGame = segue.destination as? SlidingGameViewController {
             slidingGame.segueWith(MockSlidingViewModel())
         }
-
     }
 }

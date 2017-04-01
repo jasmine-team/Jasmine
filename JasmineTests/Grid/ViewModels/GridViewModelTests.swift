@@ -6,8 +6,6 @@ class GridViewModelTests: XCTestCase {
     func testInit() {
         let viewModel = GridViewModel()
 
-        XCTAssertEqual([:], viewModel.gridData,
-                       "ViewModel gridData on init is not empty")
         XCTAssertNil(viewModel.delegate,
                      "ViewModel delegate on init is not nil")
         XCTAssertEqual(0, viewModel.currentScore,
@@ -31,16 +29,12 @@ class GridViewModelTests: XCTestCase {
 
         XCTAssertEqual(GameStatus.inProgress, viewModel.gameStatus,
                        "ViewModel game status when the game runs is not inProgress")
-        XCTAssertEqual(Constants.Game.Grid.rows * Constants.Game.Grid.columns, viewModel.gridData.count,
-                       "ViewModel gridData is not correctly populated")
         for row in 0..<Constants.Game.Grid.rows {
             for col in 0..<Constants.Game.Grid.columns {
                 XCTAssertNotNil(viewModel.gridData[Coordinate(row: row, col: col)],
                                 "ViewModel gridData is not correctly populated")
             }
         }
-        XCTAssert(delegate.allTilesRedisplayed,
-                  "Delegate redisplayAllTiles is not called")
         XCTAssertEqual(Constants.Game.Grid.time, delegate.totalTime,
                        "Delegate totalTime is not correct")
         XCTAssertEqual(Constants.Game.Grid.time, delegate.timeRemaining,
@@ -82,16 +76,6 @@ class GridViewModelTests: XCTestCase {
                 }
             }
         }
-    }
-
-    func testSwapTilesFail() {
-        let viewModel = GridViewModel()
-        let delegate = GridGameViewControllerDelegateMock()
-        viewModel.delegate = delegate
-        viewModel.startGame()
-
-        XCTAssertFalse(viewModel.swapTiles(Coordinate(row: 5, col: 0), and: Coordinate(row: 0, col: 7)),
-                       "Swapping tiles with invalid coordinates are allowed")
     }
 
     // TODO

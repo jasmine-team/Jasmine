@@ -42,6 +42,10 @@
 		DF21552B1E8E712B005A0927 /* SlidingGameStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF21552A1E8E712B005A0927 /* SlidingGameStoryboard.storyboard */; };
 		DF21552D1E8E72C3005A0927 /* SlidingGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF21552C1E8E72C3005A0927 /* SlidingGameViewController.swift */; };
 		DF21552F1E8E75A5005A0927 /* MockSlidingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF21552E1E8E75A5005A0927 /* MockSlidingViewModel.swift */; };
+		DF272DA41E9017B300E62243 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF272DA31E9017B300E62243 /* Array+Extensions.swift */; };
+		DF272DA61E9017C400E62243 /* TextGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF272DA51E9017C400E62243 /* TextGrid.swift */; };
+		DF272DA81E9017D900E62243 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF272DA71E9017D900E62243 /* Array+Extensions.swift */; };
+		DF272DAA1E9017E800E62243 /* TextGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF272DA91E9017E800E62243 /* TextGridTests.swift */; };
 		DF2D21EA1E743BC500094381 /* GridStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */; };
 		DF2D21EC1E743C8700094381 /* GridGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D21EB1E743C8700094381 /* GridGameViewController.swift */; };
 		DF3F156D1E8FD8B9009D5F16 /* CGPoint+Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3F156C1E8FD8B9009D5F16 /* CGPoint+Arithmetic.swift */; };
@@ -141,6 +145,10 @@
 		DF21552A1E8E712B005A0927 /* SlidingGameStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SlidingGameStoryboard.storyboard; sourceTree = "<group>"; };
 		DF21552C1E8E72C3005A0927 /* SlidingGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingGameViewController.swift; sourceTree = "<group>"; };
 		DF21552E1E8E75A5005A0927 /* MockSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSlidingViewModel.swift; sourceTree = "<group>"; };
+		DF272DA31E9017B300E62243 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		DF272DA51E9017C400E62243 /* TextGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextGrid.swift; sourceTree = "<group>"; };
+		DF272DA71E9017D900E62243 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		DF272DA91E9017E800E62243 /* TextGridTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextGridTests.swift; sourceTree = "<group>"; };
 		DF2D21E91E743BC500094381 /* GridStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GridStoryboard.storyboard; sourceTree = "<group>"; };
 		DF2D21EB1E743C8700094381 /* GridGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridGameViewController.swift; sourceTree = "<group>"; };
 		DF3F156C1E8FD8B9009D5F16 /* CGPoint+Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Arithmetic.swift"; sourceTree = "<group>"; };
@@ -309,6 +317,7 @@
 		50989DC81E6D8B16009A86C8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DF272DA51E9017C400E62243 /* TextGrid.swift */,
 				DF2155241E8E3F25005A0927 /* Direction.swift */,
 				DFB342701E77EB6700D2FE09 /* Coordinate.swift */,
 				50989DC51E6D8B16009A86C8 /* GameData.swift */,
@@ -432,6 +441,7 @@
 		50F191A81E7ADC4800EE9A75 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DF272DA91E9017E800E62243 /* TextGridTests.swift */,
 				DF2155171E8E2335005A0927 /* PhrasesTests.swift */,
 				50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */,
 				DF409FF41E84160C00389976 /* GameDataFactoryTests.swift */,
@@ -627,6 +637,7 @@
 		DF7CF76E1E7E9E2B00C6979A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DF272DA31E9017B300E62243 /* Array+Extensions.swift */,
 				DF3F156C1E8FD8B9009D5F16 /* CGPoint+Arithmetic.swift */,
 				DF7CF76F1E7E9E3500C6979A /* CGRect+Arithmetic.swift */,
 				DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */,
@@ -665,6 +676,7 @@
 		DF7CF7871E7E9FD700C6979A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DF272DA71E9017D900E62243 /* Array+Extensions.swift */,
 				DF7CF7881E7E9FD700C6979A /* CGRect+ArithmeticTests.swift */,
 				DF7CF7891E7E9FD700C6979A /* IndexPath+CoordinateTests.swift */,
 				50717ABE1E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift */,
@@ -926,6 +938,7 @@
 				DF7CF7801E7E9EED00C6979A /* SquareTileViewCell.swift in Sources */,
 				DF21552D1E8E72C3005A0927 /* SlidingGameViewController.swift in Sources */,
 				DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */,
+				DF272DA61E9017C400E62243 /* TextGrid.swift in Sources */,
 				505E07381E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift in Sources */,
 				50989DDA1E6D8B16009A86C8 /* GridViewModel.swift in Sources */,
 				DF409FE71E8414F500389976 /* CountdownTimable.swift in Sources */,
@@ -949,6 +962,7 @@
 				DF409FE31E84149F00389976 /* GameDataFactory.swift in Sources */,
 				DF21551A1E8E234D005A0927 /* Phrases.swift in Sources */,
 				505E073A1E7BE58E00CEE8BF /* GridGameViewControllerDelegate.swift in Sources */,
+				DF272DA41E9017B300E62243 /* Array+Extensions.swift in Sources */,
 				DF409FE01E84147400389976 /* Prebundler.swift in Sources */,
 				50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */,
 				DF3F156D1E8FD8B9009D5F16 /* CGPoint+Arithmetic.swift in Sources */,
@@ -976,6 +990,7 @@
 				DF409FF21E8415F400389976 /* CountDownTimerTest.swift in Sources */,
 				50717AC31E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift in Sources */,
 				DF409FF71E84160C00389976 /* GameDataFactoryTests.swift in Sources */,
+				DF272DAA1E9017E800E62243 /* TextGridTests.swift in Sources */,
 				DF409FF31E8415F400389976 /* RealmTestCase.swift in Sources */,
 				DF409FF91E84160C00389976 /* PlayerTests.swift in Sources */,
 				50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */,
@@ -989,6 +1004,7 @@
 				DF2155291E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift in Sources */,
 				DF71890C1E850359009EA28E /* GridGameViewControllerDelegateMock.swift in Sources */,
 				DF7CF78B1E7E9FD700C6979A /* IndexPath+CoordinateTests.swift in Sources */,
+				DF272DA81E9017D900E62243 /* Array+Extensions.swift in Sources */,
 				DF7CF78A1E7E9FD700C6979A /* CGRect+ArithmeticTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

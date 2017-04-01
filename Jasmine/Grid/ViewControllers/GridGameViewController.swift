@@ -39,7 +39,7 @@ class GridGameViewController: UIViewController {
     /// Method that manages the seguing to other view controllers from this view controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let squareGridView = segue.destination as? DraggableSquareGridViewController {
-            squareGridView.segueWith(viewModel.gridData,
+            squareGridView.segueWith(viewModel.gridData.coordinateDictionary,
                                      numRows: Constants.Game.Grid.rows,
                                      numCols: Constants.Game.Grid.columns)
             self.squareGridViewController = squareGridView
@@ -187,7 +187,7 @@ extension GridGameViewController: GridGameViewControllerDelegate {
 
     /// Update the grid data stored in the Grid Game View Controller with a new dataset.
     func updateGridData() {
-        squareGridViewController.update(collectionData: viewModel.gridData)
+        squareGridViewController.update(collectionData: viewModel.gridData.coordinateDictionary)
     }
 
     /// Refreshes the tiles based on the tiles information stored in the View Controller's grid data.
