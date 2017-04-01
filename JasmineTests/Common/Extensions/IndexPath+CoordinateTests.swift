@@ -5,16 +5,17 @@ class IndexPathCoordinateTests: XCTestCase {
 
     func testConvertBetweenCoordinate() {
         /// Helper test for conversions.
-        func testHelper(for coordinate: Coordinate) {
-            let indexPath = IndexPath(coordinate)
+        func testHelper(row: Int, col: Int) {
+            let indexPath = IndexPath(item: col, section: row)
+            let coordinate = Coordinate(row: row, col: col)
             XCTAssertEqual(indexPath.toCoordinate, coordinate, "The returned coordinate should equate")
         }
 
-        testHelper(for: Coordinate(row: 0, col: 0))
-        testHelper(for: Coordinate(row: 0, col: 1))
-        testHelper(for: Coordinate(row: 0, col: 2))
-        testHelper(for: Coordinate(row: 5, col: 0))
-        testHelper(for: Coordinate(row: 5, col: 5))
+        testHelper(row: 0, col: 0)
+        testHelper(row: 0, col: 1)
+        testHelper(row: 0, col: 2)
+        testHelper(row: 5, col: 0)
+        testHelper(row: 5, col: 5)
     }
 
 }

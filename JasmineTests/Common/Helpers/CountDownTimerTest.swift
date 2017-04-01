@@ -34,7 +34,7 @@ class CountDownTimerTest: XCTestCase {
         timer.startTimer(timerInterval: 1)
         XCTAssert(started, "timerDidStart is not fired")
 
-        RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
+        RunLoop.current.run(until: Date(timeIntervalSinceNow: 1.5))
         XCTAssertEqual(1, ticks, "timerDidTick is not fired")
 
         RunLoop.current.run(until: Date(timeIntervalSinceNow: 1.5))

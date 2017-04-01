@@ -4,7 +4,7 @@ import UIKit
 class GridGameViewController: UIViewController {
 
     // MARK: Layouts
-    fileprivate var squareGridViewController: SquareGridViewController!
+    fileprivate var squareGridViewController: DraggableSquareGridViewController!
 
     fileprivate var statisticsViewController: GameStatisticsViewController!
 
@@ -12,7 +12,7 @@ class GridGameViewController: UIViewController {
 
     @IBOutlet private weak var statusBarBackgroundView: UIView!
 
-    fileprivate var draggingTile: (view: UIView, originalCoord: Coordinate)?
+    fileprivate var draggingTile: (view: SquareTileView, originalCoord: Coordinate)?
 
     // MARK: Game Properties
     fileprivate var viewModel: GridViewModelProtocol!
@@ -35,22 +35,18 @@ class GridGameViewController: UIViewController {
         }
     }
 
-    /// Specifies that the supported orientation for this view is portrait only.
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
-    }
-
     // MARK: Segue methods
     /// Method that manages the seguing to other view controllers from this view controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let squareGridView = segue.destination as? SquareGridViewController {
-            squareGridView.segueWith(viewModel.gridData)
+        if let squareGridView = segue.destination as? DraggableSquareGridViewController {
+            squareGridView.segueWith(viewModel.gridData,
+                                     numRows: Constants.Game.Grid.rows,
+                                     numCols: Constants.Game.Grid.columns)
             self.squareGridViewController = squareGridView
 
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
-            statisticsView.timeLeft = viewModel.totalTimeAllowed
-            statisticsView.currentScore = viewModel.currentScore
-
+            statisticsView.segueWith(timeLeft: viewModel.timeRemaining,
+                                     currentScore: viewModel.currentScore)
             self.statisticsViewController = statisticsView
         }
     }
@@ -153,6 +149,7 @@ fileprivate extension GridGameViewController {
             return
         }
         squareGridViewController.snapDetachedTile(tile.view, toCoordinate: tile.originalCoord) {
+            self.squareGridViewController.reattachDetachedTile(tile.view)
             self.draggingTile = nil
         }
     }
@@ -175,9 +172,11 @@ fileprivate extension GridGameViewController {
         let endingCoord = landedCoord
 
         squareGridViewController.snapDetachedTile(startingView, toCoordinate: endingCoord) {
+            self.squareGridViewController.reattachDetachedTile(startingView)
             self.squareGridViewController.reload(cellsAt: [endingCoord], withAnimation: false)
         }
-        self.squareGridViewController.snapDetachedTile(endingView, toCoordinate: startingCoord) {
+        squareGridViewController.snapDetachedTile(endingView, toCoordinate: startingCoord) {
+            self.squareGridViewController.reattachDetachedTile(endingView)
             self.squareGridViewController.reload(cellsAt: [startingCoord], withAnimation: false)
         }
     }
