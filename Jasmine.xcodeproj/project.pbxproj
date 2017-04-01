@@ -87,6 +87,7 @@
 		DF944C2D1E84EF250037437C /* UIView+Shadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF944C2C1E84EF250037437C /* UIView+Shadows.swift */; };
 		DFB3426D1E77E6AA00D2FE09 /* GridViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426C1E77E6AA00D2FE09 /* GridViewModelProtocol.swift */; };
 		DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342701E77EB6700D2FE09 /* Coordinate.swift */; };
+		DFBB11C91E902737005DDCFC /* CGPoint+ArithmeticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBB11C81E902737005DDCFC /* CGPoint+ArithmeticTests.swift */; };
 		DFCF3FC81E875D940027016E /* DiscreteFallableSquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF3FC71E875D940027016E /* DiscreteFallableSquareGridViewController.swift */; };
 		DFCF3FCA1E875DCB0027016E /* DraggableSquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF3FC91E875DCB0027016E /* DraggableSquareGridViewController.swift */; };
 		DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */; };
@@ -192,6 +193,7 @@
 		DFB3426E1E77E77900D2FE09 /* BaseViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModelProtocol.swift; sourceTree = "<group>"; };
 		DFB342701E77EB6700D2FE09 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		DFB342761E77F5F200D2FE09 /* FlappyViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyViewModelProtocol.swift; sourceTree = "<group>"; };
+		DFBB11C81E902737005DDCFC /* CGPoint+ArithmeticTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+ArithmeticTests.swift"; sourceTree = "<group>"; };
 		DFCF3FC71E875D940027016E /* DiscreteFallableSquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscreteFallableSquareGridViewController.swift; sourceTree = "<group>"; };
 		DFCF3FC91E875DCB0027016E /* DraggableSquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableSquareGridViewController.swift; sourceTree = "<group>"; };
 		DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
@@ -678,6 +680,7 @@
 			children = (
 				DF272DA71E9017D900E62243 /* Array+Extensions.swift */,
 				DF7CF7881E7E9FD700C6979A /* CGRect+ArithmeticTests.swift */,
+				DFBB11C81E902737005DDCFC /* CGPoint+ArithmeticTests.swift */,
 				DF7CF7891E7E9FD700C6979A /* IndexPath+CoordinateTests.swift */,
 				50717ABE1E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift */,
 				50717AC21E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift */,
@@ -991,6 +994,7 @@
 				50717AC31E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift in Sources */,
 				DF409FF71E84160C00389976 /* GameDataFactoryTests.swift in Sources */,
 				DF272DAA1E9017E800E62243 /* TextGridTests.swift in Sources */,
+				DFBB11C91E902737005DDCFC /* CGPoint+ArithmeticTests.swift in Sources */,
 				DF409FF31E8415F400389976 /* RealmTestCase.swift in Sources */,
 				DF409FF91E84160C00389976 /* PlayerTests.swift in Sources */,
 				50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */,
