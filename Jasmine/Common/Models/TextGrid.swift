@@ -1,3 +1,4 @@
+/// An encapsulation of a grid of strings, mapping a Coordinate to a String.
 struct TextGrid {
     /// The actual grid.
     private var grid: [[String?]]
