@@ -116,17 +116,10 @@ class SquareGridViewController: UIViewController {
     ///   - shouldAnimate: true to animate the reloading with fade animation, false otherwise.
     func reload(cellsAt coordinates: Set<Coordinate>, withAnimation shouldAnimate: Bool) {
         let indices = coordinates.map { $0.toIndexPath }
-        let basicReloadIndices = {
-            self.gridCollectionView.reloadItems(at: indices)
-        }
 
-        if shouldAnimate {
-            gridCollectionView.performBatchUpdates(basicReloadIndices, completion: nil)
-        } else {
-            UIView.setAnimationsEnabled(false)
-            basicReloadIndices()
-            UIView.setAnimationsEnabled(true)
-        }
+        UIView.setAnimationsEnabled(shouldAnimate)
+        self.gridCollectionView.reloadItems(at: indices)
+        UIView.setAnimationsEnabled(true)
     }
 
     /// Call this method to reload all the data that is displayed in the collection view with the
