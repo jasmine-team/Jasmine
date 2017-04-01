@@ -34,6 +34,68 @@ class CoordinateTests: XCTestCase {
                        "nextRow did not return the correct coordinates")
     }
 
+    func testPreviousRow() {
+        XCTAssertEqual(Coordinate(row: 3, col: 5).prevRow, Coordinate(row: 2, col: 5),
+                       "nextRow did not return the correct coordinates")
+    }
+
+    func testNextColumn() {
+        XCTAssertEqual(Coordinate(row: 3, col: 5).nextCol, Coordinate(row: 3, col: 6),
+                       "nextRow did not return the correct coordinates")
+    }
+
+    func testPreviousColumn() {
+        XCTAssertEqual(Coordinate(row: 3, col: 5).prevCol, Coordinate(row: 3, col: 4),
+                       "nextRow did not return the correct coordinates")
+    }
+
+    func testConvertToIndexPath() {
+        /// Helper test for conversions.
+        func testHelper(row: Int, col: Int) {
+            let indexPath = IndexPath(item: col, section: row)
+            let coordinate = Coordinate(row: row, col: col)
+            XCTAssertEqual(coordinate.toIndexPath, indexPath, "The returned index path should equate")
+        }
+
+        testHelper(row: 0, col: 0)
+        testHelper(row: 0, col: 1)
+        testHelper(row: 0, col: 2)
+        testHelper(row: 5, col: 0)
+        testHelper(row: 5, col: 5)
+    }
+
+    func testIsWithinBound() {
+        XCTAssertTrue(Coordinate(row: 0, col: 0).isWithin(numRows: 1, numCols: 1),
+                      "This coordinate should be found within bounds")
+
+        XCTAssertFalse(Coordinate(row: 1, col: 1).isWithin(numRows: 1, numCols: 1),
+                      "This coordinate should not be found within bounds")
+
+        XCTAssertFalse(Coordinate(row: 1, col: 0).isWithin(numRows: 1, numCols: 1),
+                       "This coordinate should not be found within bounds")
+
+        XCTAssertFalse(Coordinate(row: 0, col: 1).isWithin(numRows: 1, numCols: 1),
+                       "This coordinate should not be found within bounds")
+
+        XCTAssertTrue(Coordinate(row: 0, col: 0).isWithin(numRows: 10, numCols: 10),
+                      "This coordinate should be found within bounds")
+
+        XCTAssertTrue(Coordinate(row: 5, col: 6).isWithin(numRows: 10, numCols: 10),
+                      "This coordinate should be found within bounds")
+
+        XCTAssertTrue(Coordinate(row: 9, col: 9).isWithin(numRows: 10, numCols: 10),
+                      "This coordinate should be found within bounds")
+
+        XCTAssertFalse(Coordinate(row: 10, col: 10).isWithin(numRows: 10, numCols: 10),
+                       "This coordinate should not be found within bounds")
+
+        XCTAssertFalse(Coordinate(row: 10, col: 0).isWithin(numRows: 10, numCols: 10),
+                       "This coordinate should not be found within bounds")
+
+        XCTAssertFalse(Coordinate(row: 0, col: 10).isWithin(numRows: 10, numCols: 10),
+                       "This coordinate should not be found within bounds")
+    }
+
     func testComparable() {
         let coordinateArray = [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
         let sortedCoordinateArray = coordinateArray.sorted {
