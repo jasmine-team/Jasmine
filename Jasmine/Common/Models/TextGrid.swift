@@ -1,4 +1,5 @@
 /// An encapsulation of a grid of strings, mapping a Coordinate to a String.
+/// Stores text as String instead of Character to allow pinyin as text
 struct TextGrid {
     /// The actual grid.
     private var grid: [[String?]]
@@ -37,9 +38,13 @@ struct TextGrid {
         }
     }
 
-    /// Initializes with an empty grid.
-    init() {
-        self.init(fromInitialGrid: [], randomized: false)
+    init(numRows: Int, numColumns: Int) {
+        assert(numRows > 0 && numColumns > 0, "Number of numRows and columns should be more than 0")
+
+        grid = []
+        for _ in 0..<numRows {
+            grid.append(Array(repeating: nil, count: numColumns))
+        }
     }
 
     /// Gets the element in the specified coordinate.
@@ -55,10 +60,8 @@ struct TextGrid {
     /// - Parameters:
     ///   - coord1: the first coordinate
     ///   - coord2: the second coordinate
-    mutating func swap(_ coord1: Coordinate, and coord2: Coordinate) {
-        let temp = grid[coord2.row][coord2.col]
-        grid[coord2.row][coord2.col] = grid[coord1.row][coord1.col]
-        grid[coord1.row][coord1.col] = temp
+    mutating func swap(coord1: Coordinate, coord2: Coordinate) {
+        Swift.swap(&self[coord1], &self[coord2])
     }
 
     /// Checks if the grid contains the String array given horizontally.
@@ -83,5 +86,41 @@ struct TextGrid {
             }
         }
         return result
+    }
+
+    func hasText(at coordinate: Coordinate) -> Bool {
+        return self[coordinate] != nil
+    }
+
+    mutating func removeTexts(at coordinates: Set<Coordinate>) {
+        for coordinate in coordinates {
+            self[coordinate] = nil
+        }
+    }
+
+    /// Gets the texts at `coordinates`
+    /// Ordering of the texts will correspond to the ordering of `coordinates`
+    ///
+    /// - Parameter coordinates: Array of Coordinate to get the text at
+    /// - Returns: Array of String correspond to the texts at `coordinates`
+    ///            Returns nil if there is no text at any of the coordinates
+    func getTexts(at coordinates: [Coordinate]) -> [String]? {
+        var texts: [String] = []
+        for coordinate in coordinates {
+            guard let text = self[coordinate] else {
+                return nil
+            }
+            texts.append(text)
+        }
+        return texts
+    }
+
+    /// Gets the texts at `coordinates`
+    ///
+    /// - Parameter coordinates: Array of Coordinate to get the text at
+    /// - Returns: Concatenated string from texts at `coordinates`
+    ///            Returns nil if there is no text at any of the coordinates
+    func getConcatenatedTexts(at coordinates: [Coordinate]) -> String? {
+        return getTexts(at: coordinates)?.joined()
     }
 }
