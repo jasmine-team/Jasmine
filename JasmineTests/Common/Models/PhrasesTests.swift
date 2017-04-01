@@ -14,7 +14,10 @@ class PhrasesTests: RealmTestCase {
         super.setUp()
         listOfPhrases.forEach(save)
         let phraseResults = realm.objects(Phrase.self)
-        phrases = Phrases(phraseResults, range: 0..<phraseResults.count)
+        guard let phraseLength = listOfPhrases.first?.chinese.characters.count else {
+            fatalError("Failed to get phrase length")
+        }
+        phrases = Phrases(phraseResults, range: 0..<phraseResults.count, phraseLength: phraseLength)
     }
 
     func testPhrases_next() {
