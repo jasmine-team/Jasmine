@@ -74,6 +74,7 @@ struct TextGrid {
         return true
     }
 
+    /// Returns the [Coordinate: String] representation of this grid.
     var coordinateDictionary: [Coordinate: String] {
         var result: [Coordinate: String] = [:]
         for row in 0..<numRows {
