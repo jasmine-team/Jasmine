@@ -6,10 +6,12 @@ class Phrases {
     private var phrases: Results<Phrase>
     private var range: CountableRange<Int>
     private var shuffledRange: [Int] = []
+    let phraseLength: Int
 
-    init(_ phrases: Results<Phrase>, range: CountableRange<Int>) {
+    init(_ phrases: Results<Phrase>, range: CountableRange<Int>, phraseLength: Int) {
         self.phrases = phrases
         self.range = range
+        self.phraseLength = phraseLength
     }
 
     /// Returns a list of phrases
@@ -22,7 +24,7 @@ class Phrases {
         }
     }
 
-    /// Returns the next phrase, non-exhausive
+    /// Returns the next phrase, non-exhaustive
     ///
     /// - Returns: Phrase
     func next() -> Phrase {

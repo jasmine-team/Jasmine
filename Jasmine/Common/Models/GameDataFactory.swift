@@ -24,9 +24,10 @@ class GameDataFactory {
     /// - Parameter difficulty: difficulty of the game
     /// - Returns: game data containing relevant phrases and difficulty
     func createGame(difficulty: Int, type: GameType) -> GameData {
-        let predicate = filterChinese(ofLength: lengthOf(type: type))
+        let phraseLength = lengthOf(type: type)
+        let predicate = filterChinese(ofLength: phraseLength)
         let phrases = realm.objects(Phrase.self).filter(predicate)
-        let gamePhrases = Phrases(phrases, range: 0..<phrases.count)
+        let gamePhrases = Phrases(phrases, range: 0..<phrases.count, phraseLength: phraseLength)
         let gameData = GameData(phrases: gamePhrases, difficulty: difficulty)
         return gameData
     }
