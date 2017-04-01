@@ -25,7 +25,7 @@ class TetrisGameViewModel {
         }
     }
 
-    // TODO: change to let and remove empty init after VC implement passing gameData to VM 
+    // TODO : change to let and remove empty init after VC implement passing gameData to VM 
     private var gameData: GameData!
     init() {}
 
