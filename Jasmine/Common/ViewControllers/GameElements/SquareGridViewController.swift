@@ -13,6 +13,8 @@ class SquareGridViewController: UIViewController {
     fileprivate let gridCollectionView
         = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
+    // MARK: Properties
+    /// Stores the maximum number of rows that should be displayed in this view.
     private(set) var numRows = 1
 
     /// Stores the maximum number of columns that should be displayed in this view.
@@ -48,7 +50,7 @@ class SquareGridViewController: UIViewController {
     }
 
     /// Stores the database that is used to display onto the collection view in this view controller.
-    fileprivate var collectionData = TextGrid()
+    fileprivate var collectionData: [Coordinate: String] = [:]
 
     /// Stores the properties that is used to apply onto all the tiles in that specified coordinate,
     /// that is inside this collection view.
@@ -101,7 +103,7 @@ class SquareGridViewController: UIViewController {
     /// However, this does not reload the data in this display.
     ///
     /// - Parameter collectionData: the data source to be updated.
-    func update(collectionData: TextGrid) {
+    func update(collectionData: [Coordinate: String]) {
         self.collectionData = collectionData
     }
 

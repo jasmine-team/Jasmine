@@ -73,4 +73,14 @@ struct TextGrid {
         }
         return true
     }
+
+    var coordinateDictionary: [Coordinate: String] {
+        var result: [Coordinate: String] = [:]
+        for row in 0..<numRows {
+            for col in 0..<numColumns {
+                result[Coordinate(row: row, col: col)] = grid[row][col]
+            }
+        }
+        return result
+    }
 }
