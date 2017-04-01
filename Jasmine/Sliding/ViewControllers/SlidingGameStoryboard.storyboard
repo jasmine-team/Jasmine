@@ -93,7 +93,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lwv-m7-ZgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="Kvd-RL-DVW" userLabel="Sliding Tile Gesture Recognizer" customClass="UIDirectionalPanGestureRecognizer" customModule="Jasmine" customModuleProvider="target">
+                <panGestureRecognizer minimumNumberOfTouches="1" maximumNumberOfTouches="1" id="Kvd-RL-DVW" userLabel="Sliding Tile Gesture Recognizer">
                     <connections>
                         <action selector="onTilesDragged:" destination="39S-vZ-Zyw" id="lV5-zu-ZRS"/>
                     </connections>
