@@ -114,7 +114,7 @@ class TetrisGameViewModel {
                     break
                 }
                 let newCoordinate = currentCoordinate.nextRow
-                swap(&grid[currentCoordinate], &grid[newCoordinate])
+                grid.swap(coord1: currentCoordinate, coord2: newCoordinate)
                 shiftedTiles.append((from: currentCoordinate, to: newCoordinate))
             }
         }
