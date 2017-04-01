@@ -16,18 +16,14 @@ class GameDataFactory {
     ///
     /// - Throws: realm initialization errors
     convenience init() throws {
-        let config = Realm.Configuration(
-            // Set the new schema version.
-            schemaVersion: 1,
-            migrationBlock: { _, oldSchemaVersion in
-                // We haven’t migrated anything yet, so oldSchemaVersion == 0
-                if oldSchemaVersion < 1 {
-                    // Realm will automatically detect new properties and removed properties
-                }
-        })
-
         // Tell Realm to use this new configuration object for the default Realm
-        Realm.Configuration.defaultConfiguration = config
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            schemaVersion: 1, // Set the new schema version.
+            // We haven't migrated anything, so oldSchemaVersion = 0.
+            // Realm will automatically detect new properties and removed properties
+            // by accessing the oldSchemaVersion property.
+            migrationBlock: { _, oldSchemaVersion in _ = oldSchemaVersion }
+        )
         self.init(realm: try Realm())
     }
 
