@@ -44,7 +44,7 @@ def translate_api_query(phrase, from_lang='cmn', to_lang='eng'):
             'chinese': phrase,
             'englishMeaning': meaning['text']
         }
-    except IndexError:
+    except (IndexError, TypeError):
         return None
 
 def chinese_dict_api_query(phrase):
@@ -61,7 +61,7 @@ def chinese_dict_api_query(phrase):
             'pinyin': answer['pinyin'],
             'chineseMeaning': answer['content']
         }
-    except IndexError:
+    except (IndexError, TypeError):
         return None
 
 def cheng_yu_api_query(phrase):
@@ -78,19 +78,22 @@ def cheng_yu_api_query(phrase):
             'pinyin': answer['pronounce'],
             'chineseMeaning': answer['content']
         }
-    except IndexError:
+    except (IndexError, TypeError):
         return None
 
 def fill_row(row):
     """Forms a row of data for the phrase in chinese"""
     if len(row['chinese']) == 4:
-        test = {'chineseMeaning': 'test'}
-        new_row = {**row, **test}
+        data = cheng_yu_api_query(row['chinese'])
+        new_row = {**row, **data}
         return new_row
-    return row
+    else:
+        data = chinese_dict_api_query(row['chinese'])
+        new_row = {**row, **data}
+        return new_row
 
 def read_csv():
-    """Forms a row of data for the phrase in chinese"""
+    """Reads csv and inputs new api data into it"""
     with open(CSV_FILE_PATH, 'r+') as csvfile:
         reader = csv.DictReader(csvfile)
         new_rows = [fill_row(row) for row in reader]
