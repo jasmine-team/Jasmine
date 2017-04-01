@@ -134,7 +134,7 @@ class TetrisGameViewModel {
     fileprivate func getRandomWord() -> String {
         let words = "先发制人"
         return String(words[words.index(words.startIndex,
-                                        offsetBy: Random.integer(toInclusive: words.characters.count))])
+                                        offsetBy: Random.integer(toInclusive: words.characters.count - 1))])
     }
 
     @inline(__always)
@@ -165,7 +165,7 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
         delegate?.redisplayUpcomingTiles()
 
         fallingTileText = tileText
-        let randCol = Random.integer(toInclusive: Constants.Game.Tetris.columns)
+        let randCol = Random.integer(toInclusive: Constants.Game.Tetris.columns - 1)
         return (location: Coordinate(row: Coordinate.origin.row, col: randCol),
                 tileText: tileText)
     }

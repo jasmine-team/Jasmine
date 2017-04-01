@@ -26,11 +26,9 @@ enum Constants {
             /// Interval to update the time
             static let timeInterval: TimeInterval = 1
 
-            static let upcomingTilesCount = 3
+            static let upcomingTilesCount = 4
 
-            /// Reuse identifier for the cell
-            /// TODO: can be shifted to custom UICollectionViewCell class when created
-            static let cellIdentifier = "tetrisCell"
+            static let tileFallInterval: TimeInterval = 0.5
         }
     }
 
@@ -38,10 +36,23 @@ enum Constants {
         static let mainColor = FlatMint()
         static let mainColorDark = FlatMintDark()
 
+        static let secondaryColor = UIColor(hexString: "ffd53f")
+
         static let mainWhiteColor = FlatWhite()
         static let mainFontColor = FlatBlack()
 
         static let tilesFont = UIFont(name: "HelveticaNeue-Light", size: 30.0)
+        static let cellsBackground = UIColor(hexString: "c2d1cc")
+    }
+
+    enum Graphics {
+
+        enum Explosion {
+            static let frames = [#imageLiteral(resourceName: "explode-0"), #imageLiteral(resourceName: "explode-1"), #imageLiteral(resourceName: "explode-2"), #imageLiteral(resourceName: "explode-3"), #imageLiteral(resourceName: "explode-4")]
+            static let interval: TimeInterval = 0.1
+            static let duration: TimeInterval = 0.5
+        }
+
     }
 
     enum UserDefaultsKeys: String {

@@ -12,16 +12,39 @@ struct Coordinate {
 
     /// Default constructor for Coordinate.
     init(row: Int, col: Int) {
-        guard row >= 0, col >= 0 else {
-            fatalError("Row and column coordinates should be >= 0")
-        }
         self.row = row
         self.col = col
     }
 
-    /// Returns the Coordinate of the next row
+    /// Returns the Coordinate of the next row, which is one row down.
     var nextRow: Coordinate {
         return Coordinate(row: row + 1, col: col)
+    }
+
+    /// Returns the Coordinate of the previous row, which is one row up.
+    var prevRow: Coordinate {
+        return Coordinate(row: row - 1, col: col)
+    }
+
+    /// Returns the Coordinate of the next column, which is one column to the right.
+    var nextCol: Coordinate {
+        return Coordinate(row: row, col: col + 1)
+    }
+
+    /// Returns the Coordinate of the previous column, which is one column to the left.
+    var prevCol: Coordinate {
+        return Coordinate(row: row, col: col - 1)
+    }
+
+    /// Gets the index path from the current coordinate.
+    var toIndexPath: IndexPath {
+        return IndexPath(item: col, section: row)
+    }
+
+    /// Returns true if this coordinate is found within the specified number of rows and columns.
+    func isWithin(numRows: Int, numCols: Int) -> Bool {
+        assert(numRows > 0 && numCols > 0, "Invalid row or column number")
+        return (0..<numRows).contains(row) && (0..<numCols).contains(col)
     }
 }
 

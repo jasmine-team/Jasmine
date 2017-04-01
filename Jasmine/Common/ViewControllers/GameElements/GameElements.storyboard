@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Square Grid View Controller-->
+        <!--Fallable Square Grid View Controller-->
         <scene sceneID="DWs-d6-gJr">
             <objects>
-                <viewController storyboardIdentifier="Square Grid View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MNX-xH-RW2" customClass="SquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Square Grid View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MNX-xH-RW2" customClass="FallableSquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K0r-CF-OU1"/>
                         <viewControllerLayoutGuide type="bottom" id="DvA-CY-DUo"/>
