@@ -1,11 +1,3 @@
-//
-//  MockSlidingViewModel.swift
-//  Jasmine
-//
-//  Created by Xien Dong on 31/3/17.
-//  Copyright © 2017 nus.cs3217. All rights reserved.
-//
-
 import Foundation
 
 class MockSlidingViewModel: SlidingViewModelProtocol, CountdownTimable {
