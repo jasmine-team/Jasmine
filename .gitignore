@@ -72,3 +72,8 @@ fastlane/test_output
 # End of https://www.gitignore.io/api/swift
 
 **/.DS_Store
+# Ignore secrets
+scripts/secrets.py
+# Ignore realm related files
+*.realm.lock
+*.realm.management
