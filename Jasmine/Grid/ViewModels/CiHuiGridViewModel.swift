@@ -25,16 +25,26 @@ class CiHuiGridViewModel: BaseGridViewModel {
     /// Returns if and only if the game is won, that is: every row contains a valid Cihui and its pinyin.
     override var hasGameWon: Bool {
         for row in 0..<gridData.numRows {
-            var text = ""
+            var firstText = ""
+            var secondText = ""
 
-            for col in 0..<gridData.numColumns {
+            for col in 0...1 {
                 guard let tile = gridData[Coordinate(row: row, col: col)] else {
                     return false
                 }
-                text += tile
+                firstText += tile
+            }
+            for col in 2...3 {
+                guard let tile = gridData[Coordinate(row: row, col: col)] else {
+                    return false
+                }
+                secondText += tile
             }
 
-            if gameData.phrases.contains(chinese: text) {
+            let firstPhrase = gameData.phrases.first(whereChinese: firstText)
+            let secondPhrase = gameData.phrases.first(whereChinese: secondText)
+
+            if firstPhrase?.pinyin != secondText && secondPhrase?.pinyin != firstText {
                 return false
             }
         }

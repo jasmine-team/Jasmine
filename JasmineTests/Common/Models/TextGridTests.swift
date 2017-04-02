@@ -113,7 +113,7 @@ class TextGridTests: XCTestCase {
 
     func testGetTexts() {
         let initialGrid = [["a", "b"], ["c", "d"]]
-        let grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
+        let grid = TextGrid(fromInitialGrid: initialGrid)
         guard let texts = grid.getTexts(at: [Coordinate(row: 1, col: 0), Coordinate(row: 1, col:1)]) else {
             XCTAssert(false, "Failed to get texts")
             return
@@ -123,14 +123,14 @@ class TextGridTests: XCTestCase {
 
     func testGetTextsNil() {
         let initialGrid = [["a", nil], ["c", "d"]]
-        let grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
+        let grid = TextGrid(fromInitialGrid: initialGrid)
         XCTAssertNil(grid.getTexts(at: [Coordinate(row: 0, col: 0), Coordinate(row: 0, col:1)]),
                      "Did not return nil when there's no text at a coordinate")
     }
 
     func testGetConcatenatedTexts() {
         let initialGrid = [["a", "b"], ["c", "d"]]
-        let grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
+        let grid = TextGrid(fromInitialGrid: initialGrid)
         guard let texts = grid.getConcatenatedTexts(at: [Coordinate(row: 1, col: 0), Coordinate(row: 1, col:1)]) else {
             XCTAssert(false, "Failed to get texts")
             return
@@ -140,7 +140,7 @@ class TextGridTests: XCTestCase {
 
     func testGetConcatenatedTextsNil() {
         let initialGrid = [["a", nil], ["c", "d"]]
-        let grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
+        let grid = TextGrid(fromInitialGrid: initialGrid)
         XCTAssertNil(grid.getTexts(at: [Coordinate(row: 0, col: 0), Coordinate(row: 0, col:1)]),
                      "Did not return nil when there's no text at a coordinate")
     }
