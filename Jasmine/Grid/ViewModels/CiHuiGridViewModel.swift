@@ -27,8 +27,8 @@ class CiHuiGridViewModel: BaseGridViewModel {
             let secondHalfCoordinates = ((gridData.numColumns / 2)..<gridData.numColumns)
                 .map { Coordinate(row: row, col: $0) }
             guard let firstText = gridData.getConcatenatedTexts(at: firstHalfCoordinates),
-                let secondText = gridData.getConcatenatedTexts(at: secondHalfCoordinates) else {
-                    return false
+                  let secondText = gridData.getConcatenatedTexts(at: secondHalfCoordinates) else {
+                return false
             }
 
             let firstPhrase = gameData.phrases.first(whereChinese: firstText)
