@@ -146,8 +146,8 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
     }
 
     func canLandTile(at coordinate: Coordinate) -> Bool {
-        if grid.hasText(at: coordinate) ||
-           ((coordinate.row < Constants.Game.Tetris.rows - 1) && !grid.hasText(at: coordinate.nextRow)) {
+        let isNextRowOccupied = (coordinate.row == grid.numRows - 1) || grid.hasText(at: coordinate.nextRow)
+        if isNextRowOccupied || grid.hasText(at: coordinate) {
             return false
         }
         landingCoordinate = coordinate
