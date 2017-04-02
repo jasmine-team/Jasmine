@@ -5,7 +5,7 @@ class ChengYuGridViewModelTests: XCTestCase {
     func testInit() {
         let numberOfPhrases = 3
 
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 5, type: .chengYu) else {
+        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
             XCTFail("Realm errors")
             return
         }

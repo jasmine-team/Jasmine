@@ -2,19 +2,17 @@ import Foundation
 
 class BaseGridViewModel: GridViewModelProtocol {
     /// Stores the grid data that will be used to display in the view controller.
-    private(set) var gridData: TextGrid {
-        didSet {
-            delegate?.updateGridData()
-        }
-    }
-    /// Tiles for this game. Will be randomized.
-    private let tiles: [String]
+    private(set) var gridData: TextGrid
     /// Possible answers in this game. The game is won when all rows in the grid is in this possibleAnswers.
     private let possibleAnswers: [[String]]
     /// Number of rows in the grid, according to the answers property
-    let numRows: Int
+    var numRows: Int {
+        return gridData.numRows
+    }
     /// Number of columns in the grid, according to the answers property
-    let numColumns: Int
+    var numColumns: Int {
+        return gridData.numColumns
+    }
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
     weak var delegate: GridGameViewControllerDelegate?
@@ -63,10 +61,7 @@ class BaseGridViewModel: GridViewModelProtocol {
         gameTitle = "Grid Game"
         gameInstruction = "Match the Chinese characters with their Pinyins by putting them in one row."
 
-        self.tiles = tiles
         self.possibleAnswers = possibleAnswers
-        numRows = rows
-        numColumns = columns
 
         gridData = TextGrid(fromInitialGrid: possibleAnswers, randomized: true)
 

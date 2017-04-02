@@ -98,22 +98,6 @@ class BaseGridViewModelTests: XCTestCase {
         }
     }
 
-    func testSwapTilesFail() {
-        let rows = 1
-        let columns = 2
-        let time: TimeInterval = 3
-
-        let viewModel = BaseGridViewModel(time: time, tiles: ["a", "b"],
-                                          possibleAnswers: [["a", "b"]],
-                                          rows: rows, columns: columns)
-        let delegate = GridGameViewControllerDelegateMock()
-        viewModel.delegate = delegate
-        viewModel.startGame()
-
-        XCTAssertFalse(viewModel.swapTiles(Coordinate(row: 5, col: 0), and: Coordinate(row: 0, col: 7)),
-                       "Swapping tiles with invalid coordinates are allowed")
-    }
-
     func testGameWon() {
         let rows = 1
         let columns = 2
