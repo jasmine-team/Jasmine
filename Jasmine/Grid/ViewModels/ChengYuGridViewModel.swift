@@ -21,16 +21,9 @@ class ChengYuGridViewModel: BaseGridViewModel {
     /// Returns if and only if the game is won, that is: every row is a valid Chengyu.
     override var hasGameWon: Bool {
         for row in 0..<gridData.numRows {
-            var text = ""
-
-            for col in 0..<gridData.numColumns {
-                guard let tile = gridData[Coordinate(row: row, col: col)] else {
-                    return false
-                }
-                text += tile
-            }
-
-            if !gameData.phrases.contains(chinese: text) {
+            let coordinates = (0..<gridData.numColumns).map { Coordinate(row: row, col: $0) }
+            guard let text = gridData.getConcatenatedTexts(at: coordinates),
+                  !gameData.phrases.contains(chinese: text) else {
                 return false
             }
         }
