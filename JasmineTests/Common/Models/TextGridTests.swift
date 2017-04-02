@@ -40,6 +40,19 @@ class TextGridTests: XCTestCase {
                        "Coordinate dictionary representation not correct")
     }
 
+    func testInitFromNumRowsAndColumns() {
+        let numRows = 10
+        let numColumns = 8
+        let grid = TextGrid(numRows: numRows, numColumns: numColumns)
+        XCTAssertEqual(grid.numRows, numRows)
+        XCTAssertEqual(grid.numColumns, numColumns)
+        for row in 0..<numRows {
+            for col in 0..<numColumns {
+                XCTAssertNil(grid[Coordinate(row: row, col: col)], "Initialized grid is not nil")
+            }
+        }
+    }
+
     func testSubscriptSet() {
         let initialGrid = [["a", "b", "c"], ["d", "e", "f"]]
         var grid = TextGrid(fromInitialGrid: initialGrid)
@@ -70,5 +83,65 @@ class TextGridTests: XCTestCase {
                                "Grid is not initialized properly")
             }
         }
+    }
+
+    func testHasText() {
+        var grid = TextGrid(numRows: 10, numColumns: 8)
+        let coordinate = Coordinate(row: 1, col: 1)
+        grid[coordinate] = "test"
+        XCTAssertFalse(grid.hasText(at: Coordinate(row: 0, col: 0)), "hasText returns false positive")
+        XCTAssert(grid.hasText(at: coordinate), "hasText returns false negative")
+    }
+
+    func testRemoveTexts() {
+        var grid = TextGrid(numRows: 10, numColumns: 8)
+        var coordinatesToRemove: Set<Coordinate> = []
+        coordinatesToRemove.insert(Coordinate(row: 1, col: 1))
+        coordinatesToRemove.insert(Coordinate(row: 0, col: 0))
+        let coordinateToRetain = Coordinate(row: 0, col: 1)
+        grid[coordinateToRetain] = "test"
+        for coordinate in coordinatesToRemove {
+            grid[coordinate] = "test"
+        }
+        grid.removeTexts(at: coordinatesToRemove)
+
+        for coordinate in coordinatesToRemove {
+            XCTAssertFalse(grid.hasText(at: coordinate), "Failed to remove text")
+        }
+        XCTAssert(grid.hasText(at: coordinateToRetain), "Wrong text removed")
+    }
+
+    func testGetTexts() {
+        let initialGrid = [["a", "b"], ["c", "d"]]
+        let grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
+        guard let texts = grid.getTexts(at: [Coordinate(row: 1, col: 0), Coordinate(row: 1, col:1)]) else {
+            XCTAssert(false, "Failed to get texts")
+            return
+        }
+        XCTAssertEqual(texts, ["c", "d"], "Retrieved wrong texts")
+    }
+
+    func testGetTextsNil() {
+        let initialGrid = [["a", nil], ["c", "d"]]
+        let grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
+        XCTAssertNil(grid.getTexts(at: [Coordinate(row: 0, col: 0), Coordinate(row: 0, col:1)]),
+                     "Did not return nil when there's no text at a coordinate")
+    }
+
+    func testGetConcatenatedTexts() {
+        let initialGrid = [["a", "b"], ["c", "d"]]
+        let grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
+        guard let texts = grid.getConcatenatedTexts(at: [Coordinate(row: 1, col: 0), Coordinate(row: 1, col:1)]) else {
+            XCTAssert(false, "Failed to get texts")
+            return
+        }
+        XCTAssertEqual(texts, "cd", "Retrieved wrong texts")
+    }
+
+    func testGetConcatenatedTextsNil() {
+        let initialGrid = [["a", nil], ["c", "d"]]
+        let grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
+        XCTAssertNil(grid.getTexts(at: [Coordinate(row: 0, col: 0), Coordinate(row: 0, col:1)]),
+                     "Did not return nil when there's no text at a coordinate")
     }
 }

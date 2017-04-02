@@ -1,9 +1,11 @@
 import XCTest
 import RealmSwift
+@testable import Jasmine
 
 class RealmTestCase: XCTestCase {
 
     var realm: Realm!
+    var gameDataFactory: GameDataFactory!
 
     override func setUp() {
         super.setUp()
@@ -13,11 +15,9 @@ class RealmTestCase: XCTestCase {
         } catch {
             fatalError("Could not instantiate realm")
         }
+
+        gameDataFactory = GameDataFactory(realm: realm)
     }
-
-}
-
-extension RealmTestCase {
 
     func save(_ object: Object) {
         do {
@@ -29,4 +29,8 @@ extension RealmTestCase {
         }
     }
 
+    func createGameData(phrases: [Phrase], difficulty: Int, type: GameType) -> GameData {
+        phrases.forEach(save)
+        return gameDataFactory.createGame(difficulty: difficulty, type: type)
+    }
 }
