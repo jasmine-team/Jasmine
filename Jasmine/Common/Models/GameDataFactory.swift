@@ -16,6 +16,14 @@ class GameDataFactory {
     ///
     /// - Throws: realm initialization errors
     convenience init() throws {
+        // Tell Realm to use this new configuration object for the default Realm
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            schemaVersion: 1, // Set the new schema version.
+            // We haven't migrated anything, so oldSchemaVersion = 0.
+            // Realm will automatically detect new properties and removed properties
+            // by accessing the oldSchemaVersion property.
+            migrationBlock: { _, oldSchemaVersion in _ = oldSchemaVersion }
+        )
         self.init(realm: try Realm())
     }
 
@@ -24,9 +32,10 @@ class GameDataFactory {
     /// - Parameter difficulty: difficulty of the game
     /// - Returns: game data containing relevant phrases and difficulty
     func createGame(difficulty: Int, type: GameType) -> GameData {
-        let predicate = filterChinese(ofLength: lengthOf(type: type))
+        let phraseLength = lengthOf(type: type)
+        let predicate = filterChinese(ofLength: phraseLength)
         let phrases = realm.objects(Phrase.self).filter(predicate)
-        let gamePhrases = Phrases(phrases, range: 0..<phrases.count)
+        let gamePhrases = Phrases(phrases, range: 0..<phrases.count, phraseLength: phraseLength)
         let gameData = GameData(phrases: gamePhrases, difficulty: difficulty)
         return gameData
     }

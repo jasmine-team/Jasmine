@@ -5,28 +5,35 @@ class RandomTests: XCTestCase {
 
     private let iterations = 10
 
-    func testMultiple(times: Int, function: () -> Void) {
-        for _ in 0...times {
+    func testMultiple(function: () -> Void) {
+        for _ in 0...iterations {
             function()
         }
     }
 
-    func testRandom_int() {
-        testMultiple(times: iterations) {
+    func testIntegerInclusive() {
+        testMultiple {
             let result = Random.integer(from: 0, toInclusive: 1)
             XCTAssertTrue(result == 0 || result == 1, "Int generated is not within range")
         }
     }
 
-    func testRandom_intDefaultFrom() {
-        testMultiple(times: iterations) {
+    func testIntegerInclusiveDefaultFrom() {
+        testMultiple {
             let result = Random.integer(toInclusive: 1)
             XCTAssertTrue(result == 0 || result == 1, "Int generated is not within range")
         }
     }
 
-    func testRandom_double() {
-        testMultiple(times: iterations) {
+    func testIntegerExclusive() {
+        testMultiple {
+            let result = Random.integer(from: 0, toExclusive: 2)
+            XCTAssertTrue(result == 0 || result == 1, "Int generated is not within range")
+        }
+    }
+
+    func testDouble() {
+        testMultiple {
             let result = Random.double(from: 0, toInclusive: 1)
             XCTAssertTrue(result >= 0 && result <= 1, "Double generated is not within range")
         }

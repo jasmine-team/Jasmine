@@ -3,11 +3,8 @@ import XCTest
 
 class GameDataFactoryTests: RealmTestCase {
 
-    var gameDataFactory: GameDataFactory!
-
     override func setUp() {
         super.setUp()
-        gameDataFactory = GameDataFactory(realm: realm)
     }
 
     override func tearDown() {
@@ -41,9 +38,8 @@ class GameDataFactoryTests: RealmTestCase {
     private func testGameDataFactory_createGame_generic(phrases: [Phrase],
                                                         type: GameType,
                                                         count: Int) {
-        phrases.forEach(save)
         let difficulty = 1
-        let gameData = gameDataFactory.createGame(difficulty: difficulty, type: type)
+        let gameData = createGameData(phrases: phrases, difficulty: difficulty, type: type)
         let result = Set(gameData.phrases.next(count: phrases.count))
         XCTAssertEqual(result.count, count, "game phrases is incorrect")
         XCTAssertEqual(gameData.difficulty, difficulty, "game difficulty is incorrect")

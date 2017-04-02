@@ -4,11 +4,11 @@ import XCTest
 class CGPointArithmeticTests: XCTestCase {
 
     func testSub() {
-        XCTAssertEqual(CGPoint.zero.sub(.zero), CGVector.zero,
+        XCTAssertEqual(CGPoint.zero - CGPoint.zero, CGVector.zero,
                        "Zero vector expected.")
-        XCTAssertEqual(CGPoint(x: 10, y: 10).sub(CGPoint(x: 5, y: 5)), CGVector(dx: 5, dy: 5),
+        XCTAssertEqual(CGPoint(x: 10, y: 10) - CGPoint(x: 5, y: 5), CGVector(dx: 5, dy: 5),
                        "Incorrect resultant vector produced.")
-        XCTAssertEqual(CGPoint(x: 5, y: -5).sub(CGPoint(x: -15, y: 15)), CGVector(dx: 20, dy: -20),
+        XCTAssertEqual(CGPoint(x: 5, y: -5) - CGPoint(x: -15, y: 15), CGVector(dx: 20, dy: -20),
                        "Incorrect resultant vector produced.")
     }
 

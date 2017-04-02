@@ -14,7 +14,10 @@ class PhrasesTests: RealmTestCase {
         super.setUp()
         listOfPhrases.forEach(save)
         let phraseResults = realm.objects(Phrase.self)
-        phrases = Phrases(phraseResults, range: 0..<phraseResults.count)
+        guard let phraseLength = listOfPhrases.first?.chinese.characters.count else {
+            fatalError("Failed to get phrase length")
+        }
+        phrases = Phrases(phraseResults, range: 0..<phraseResults.count, phraseLength: phraseLength)
     }
 
     func testPhrases_next() {
@@ -34,6 +37,13 @@ class PhrasesTests: RealmTestCase {
         XCTAssertFalse(phrases.contains(chinese: ""), "Empty string found within phrases")
         XCTAssertFalse(phrases.contains(chinese: "中"), "Partial string found within phrases")
         XCTAssertTrue(phrases.contains(chinese: "中文"), "String not found within phrases")
+    }
+
+    func testPhrases_first() {
+        XCTAssertNil(phrases.first(whereChinese: ""), "Empty string found within phrases")
+        XCTAssertNil(phrases.first(whereChinese: "中"), "Partial string found within phrases")
+        XCTAssertEqual(phrases.first(whereChinese: "中文"), listOfPhrases.first,
+                       "String not found within phrases")
     }
 
 }

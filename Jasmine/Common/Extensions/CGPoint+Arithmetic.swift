@@ -5,10 +5,12 @@ extension CGPoint {
 
     /// Subtracts another point to get a displacement vector.
     ///
-    /// - Parameter other: the other point to get displacement.
+    /// - Parameters:
+    ///   - lhs: the point to be subtracted from.
+    ///   - rhs: the other point to be subtracted.
     /// - Returns: the resultant vector
-    func sub(_ other: CGPoint) -> CGVector {
-        return CGVector(dx: x - other.x, dy: y - other.y)
+    static func - (_ lhs: CGPoint, _ rhs: CGPoint) -> CGVector {
+        return CGVector(dx: lhs.x - rhs.x, dy: lhs.y - rhs.y)
     }
 
     /// Aligns the point within the bounding box, such that if any of the coordinate component
@@ -30,7 +32,7 @@ extension CGPoint {
     /// - Returns: the aligned point.
     func alignToAxis(fromOrigin origin: CGPoint) -> CGPoint {
         var outcome = self
-        let displacement = outcome.sub(origin)
+        let displacement = outcome - origin
         let xMagnitude = fabs(displacement.dx)
         let yMagnitude = fabs(displacement.dy)
 
