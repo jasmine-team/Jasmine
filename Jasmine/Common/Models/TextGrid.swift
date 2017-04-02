@@ -18,24 +18,12 @@ struct TextGrid {
     ///
     /// - Parameters:
     ///   - initialGrid: the initial grid. The CharacterGrid will read from this grid.
-    ///   - randomized: pass in true if the resulting grid wants to be randomized from the initial grid.
-    init(fromInitialGrid initialGrid: [[String?]], randomized: Bool) {
+    init(fromInitialGrid initialGrid: [[String?]]) {
         let numRows = initialGrid.count
         let numColumns = initialGrid.first?.count ?? 0
         assert(numRows > 0 && numColumns > 0, "Number of numRows and columns should be more than 0")
-        assert(initialGrid.map { $0.count }.isAllSame, "All numRows should have the same length")
 
-        if randomized {
-            let shuffledGrid = initialGrid.joined().shuffled()
-
-            grid = (0..<numRows).map { row in
-                (0..<numColumns).map { col in
-                    shuffledGrid[row * numColumns + col]
-                }
-            }
-        } else {
-            grid = initialGrid
-        }
+        grid = initialGrid
     }
 
     /// Initializes a TextGrid filled with nils, given the dimensions of the grid.
@@ -64,19 +52,6 @@ struct TextGrid {
     ///   - coord2: the second coordinate
     mutating func swap(_ coord1: Coordinate, _ coord2: Coordinate) {
         Swift.swap(&self[coord1], &self[coord2])
-    }
-
-    /// Checks if the grid contains the String array given horizontally.
-    ///
-    /// - Parameter stringArray: the string array to be checked
-    /// - Returns: true if and only if the grid contains the string array horizontally
-    func allRowsInside(stringArrays: [[String]]) -> Bool {
-        for row in grid {
-            if !stringArrays.contains(where: { $0 == row }) {
-                return false
-            }
-        }
-        return true
     }
 
     /// Returns the [Coordinate: String] representation of this grid.
