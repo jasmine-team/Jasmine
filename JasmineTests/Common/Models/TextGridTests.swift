@@ -114,7 +114,7 @@ class TextGridTests: XCTestCase {
     func testGetTexts() {
         let initialGrid = [["a", "b"], ["c", "d"]]
         let grid = TextGrid(fromInitialGrid: initialGrid)
-        guard let texts = grid.getTexts(at: [Coordinate(row: 1, col: 0), Coordinate(row: 1, col:1)]) else {
+        guard let texts = grid.getTexts(at: [Coordinate(row: 1, col: 0), Coordinate(row: 1, col: 1)]) else {
             XCTAssert(false, "Failed to get texts")
             return
         }
@@ -124,24 +124,36 @@ class TextGridTests: XCTestCase {
     func testGetTextsNil() {
         let initialGrid = [["a", nil], ["c", "d"]]
         let grid = TextGrid(fromInitialGrid: initialGrid)
-        XCTAssertNil(grid.getTexts(at: [Coordinate(row: 0, col: 0), Coordinate(row: 0, col:1)]),
+        XCTAssertNil(grid.getTexts(at: [Coordinate(row: 0, col: 0), Coordinate(row: 0, col: 1)]),
                      "Did not return nil when there's no text at a coordinate")
     }
 
     func testGetConcatenatedTexts() {
         let initialGrid = [["a", "b"], ["c", "d"]]
         let grid = TextGrid(fromInitialGrid: initialGrid)
-        guard let texts = grid.getConcatenatedTexts(at: [Coordinate(row: 1, col: 0), Coordinate(row: 1, col:1)]) else {
+        guard let texts = grid.getConcatenatedTexts(at: [Coordinate(row: 1, col: 0), Coordinate(row: 1, col: 1)]) else {
             XCTAssert(false, "Failed to get texts")
             return
         }
         XCTAssertEqual(texts, "cd", "Retrieved wrong texts")
     }
 
-    func testGetConcatenatedTextsNil() {
+    func testGetConcatenatedTextsWithSeparator() {
+        let initialGrid = [["a", "b"], ["c", "d"]]
+        let grid = TextGrid(fromInitialGrid: initialGrid)
+        guard let texts = grid.getConcatenatedTexts(at: [Coordinate(row: 1, col: 0), Coordinate(row: 1, col: 1)],
+                                                    separatedBy: "x") else {
+            XCTAssert(false, "Failed to get texts")
+            return
+        }
+        XCTAssertEqual(texts, "cxd", "Retrieved wrong texts")
+    }
+
+    func testGetConcatenatedTextsWithSeparatorNil() {
         let initialGrid = [["a", nil], ["c", "d"]]
         let grid = TextGrid(fromInitialGrid: initialGrid)
-        XCTAssertNil(grid.getTexts(at: [Coordinate(row: 0, col: 0), Coordinate(row: 0, col:1)]),
+        XCTAssertNil(grid.getConcatenatedTexts(at: [Coordinate(row: 0, col: 0), Coordinate(row: 0, col: 1)],
+                                               separatedBy: "qwer"),
                      "Did not return nil when there's no text at a coordinate")
     }
 }
