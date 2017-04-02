@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0044DD2D1E8FA5F400B9291F /* TetrisGameViewControllerDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0044DD2C1E8FA5F400B9291F /* TetrisGameViewControllerDelegateMock.swift */; };
 		0CF9D2BB3EBC822ACB7FF766 /* Pods_Jasmine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */; };
-		42862A9B1E86C16000062D47 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		42862A9B1E86C16000062D47 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		4EA886212AABEB7ED888C04C /* Pods_JasmineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */; };
 		502669021E7D6C6A00112291 /* BaseViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426E1E77E77900D2FE09 /* BaseViewModelProtocol.swift */; };
 		502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342761E77F5F200D2FE09 /* FlappyViewModelProtocol.swift */; };
@@ -66,7 +66,6 @@
 		DF409FEC1E8415AB00389976 /* prebundled.realm in Resources */ = {isa = PBXBuildFile; fileRef = DF409FE91E8415AB00389976 /* prebundled.realm */; };
 		DF409FEF1E8415E000389976 /* UIApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FEE1E8415E000389976 /* UIApplicationTests.swift */; };
 		DF409FF21E8415F400389976 /* CountDownTimerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FF01E8415F400389976 /* CountDownTimerTest.swift */; };
-		DF409FF31E8415F400389976 /* RealmTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FF11E8415F400389976 /* RealmTestCase.swift */; };
 		DF409FF71E84160C00389976 /* GameDataFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FF41E84160C00389976 /* GameDataFactoryTests.swift */; };
 		DF409FF91E84160C00389976 /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FF61E84160C00389976 /* PlayerTests.swift */; };
 		DF409FFB1E84225200389976 /* TetrisGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FFA1E84225200389976 /* TetrisGameViewController.swift */; };
@@ -167,7 +166,6 @@
 		DF409FE91E8415AB00389976 /* prebundled.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = prebundled.realm; sourceTree = "<group>"; };
 		DF409FEE1E8415E000389976 /* UIApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationTests.swift; sourceTree = "<group>"; };
 		DF409FF01E8415F400389976 /* CountDownTimerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownTimerTest.swift; sourceTree = "<group>"; };
-		DF409FF11E8415F400389976 /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
 		DF409FF41E84160C00389976 /* GameDataFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataFactoryTests.swift; sourceTree = "<group>"; };
 		DF409FF61E84160C00389976 /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 		DF409FFA1E84225200389976 /* TetrisGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewController.swift; sourceTree = "<group>"; };
@@ -423,7 +421,6 @@
 			children = (
 				DF409FF01E8415F400389976 /* CountDownTimerTest.swift */,
 				50717ABF1E7BD944005A2FE5 /* RandomTests.swift */,
-				DF409FF11E8415F400389976 /* RealmTestCase.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -979,7 +976,6 @@
 				508BAF811E8510A90088D0A6 /* CiHuiGridViewModelTests.swift in Sources */,
 				50AE3A781E8BE020005EC944 /* TextGridTests.swift in Sources */,
 				DF409FF71E84160C00389976 /* GameDataFactoryTests.swift in Sources */,
-				DF409FF31E8415F400389976 /* RealmTestCase.swift in Sources */,
 				DF409FF91E84160C00389976 /* PlayerTests.swift in Sources */,
 				50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */,
 				DF2155181E8E2335005A0927 /* PhrasesTests.swift in Sources */,
@@ -990,7 +986,7 @@
 				DF7189091E85032A009EA28E /* CountdownTimableMock.swift in Sources */,
 				DF2155291E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift in Sources */,
 				DF71890C1E850359009EA28E /* GridGameViewControllerDelegateMock.swift in Sources */,
-				42862A9B1E86C16000062D47 /* BuildFile in Sources */,
+				42862A9B1E86C16000062D47 /* (null) in Sources */,
 				DF7CF78B1E7E9FD700C6979A /* IndexPath+CoordinateTests.swift in Sources */,
 				5071D26A1E8E2F32006878E6 /* ChengYuGridViewModelTests.swift in Sources */,
 				50E3A98C1E8C9B0D00ADE87D /* Array+Extensions.swift in Sources */,
