@@ -91,7 +91,7 @@ class BaseGridViewModel: GridViewModelProtocol {
 
         gridData.swap(coord1, coord2)
         delegate?.updateGridData()
-        delegate?.redisplayAllTiles()
+        delegate?.redisplay(tilesAt: [coord1, coord2])
 
         if hasGameWon {
             gameStatus = .endedWithWon

@@ -12,14 +12,6 @@ class CiHuiGridViewModelTests: XCTestCase {
 
         let viewModel = CiHuiGridViewModel(time: 10, gameData: gameData, numberOfPhrases: numberOfPhrases)
 
-        let phrases = gameData.phrases.next(count: numberOfPhrases)
-        var tiles: [String] = []
-        for phrase in phrases {
-            let hanzi = phrase.chinese.characters.map { String($0) }
-            let pinyin = phrase.pinyin.components(separatedBy: " ")
-            tiles += (hanzi + pinyin)
-        }
-
         XCTAssertNil(viewModel.delegate,
                      "ViewModel delegate on init is not nil")
         XCTAssertEqual(0, viewModel.currentScore,

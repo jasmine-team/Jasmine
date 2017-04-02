@@ -73,6 +73,9 @@ class BaseGridViewModelTests: XCTestCase {
         XCTAssert(viewModel.swapTiles(Coordinate(row: 0, col: 0), and: Coordinate(row: 1, col: 1)),
                   "Swapping tiles is not possible")
 
+        XCTAssertEqual(delegate.coordinatesRedisplayed, [Coordinate(row: 0, col: 0), Coordinate(row: 1, col: 1)],
+                       "Tiles not redisplayed")
+
         for row in 0..<rows {
             for col in 0..<columns {
                 if (row, col) == (0, 0) {
