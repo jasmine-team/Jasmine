@@ -24,7 +24,7 @@ class Phrases {
         }
     }
 
-    /// Returns the next phrase, non-exhaustive
+    /// Returns the next phrase, non-exhaustively.
     ///
     /// - Returns: Phrase
     func next() -> Phrase {
