@@ -69,7 +69,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="Tetris Game Area" translatesAutoresizingMaskIntoConstraints="NO" id="64w-ac-iLZ" userLabel="Tetris Game Area">
-                                <rect key="frame" x="16" y="80" width="343" height="393"/>
+                                <rect key="frame" x="16" y="80" width="343" height="415"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="IxQ-me-Oov" appends="YES" id="gur-7k-JWm"/>
                                     <outletCollection property="gestureRecognizers" destination="foD-TI-dgZ" appends="YES" id="chf-Mb-uuL"/>
@@ -113,9 +113,9 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="Tetris Upcoming Tiles" translatesAutoresizingMaskIntoConstraints="NO" id="EvM-bs-WbZ" userLabel="Tetris Upcoming Tiles">
-                                <rect key="frame" x="16" y="509" width="343" height="70"/>
+                                <rect key="frame" x="16" y="531" width="343" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="7xf-n5-kRY"/>
+                                    <constraint firstAttribute="height" constant="48" id="7xf-n5-kRY"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="clz-3h-Xvc" appends="YES" id="GYd-jE-f0p"/>
@@ -123,7 +123,7 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPCOMING TILES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5z-y8-XQq" userLabel="Tetris Upcoming Tiles Label">
-                                <rect key="frame" x="16" y="489" width="112.5" height="16"/>
+                                <rect key="frame" x="16" y="511" width="112.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <color key="textColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
