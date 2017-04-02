@@ -102,7 +102,7 @@ class TextGridTests: XCTestCase {
         XCTAssert(grid.hasText(at: coordinate), "hasText returns false negative")
     }
 
-    func removeTexts() {
+    func testRemoveTexts() {
         var grid = TextGrid(numRows: 10, numColumns: 8)
         var coordinatesToRemove: Set<Coordinate> = []
         coordinatesToRemove.insert(Coordinate(row: 1, col: 1))

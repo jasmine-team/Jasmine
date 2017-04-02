@@ -38,13 +38,15 @@ struct TextGrid {
         }
     }
 
+    /// Initializes a TextGrid filled with nils, given the dimensions of the grid.
+    ///
+    /// - Parameters:
+    ///   - numRows: number of rows in the grid
+    ///   - numCols: number of columns in the grid
     init(numRows: Int, numColumns: Int) {
         assert(numRows > 0 && numColumns > 0, "Number of numRows and columns should be more than 0")
 
-        grid = []
-        for _ in 0..<numRows {
-            grid.append(Array(repeating: nil, count: numColumns))
-        }
+        grid = [[String?]](repeating: [String?](repeating: nil, count: numColumns), count: numRows)
     }
 
     /// Gets the element in the specified coordinate.
