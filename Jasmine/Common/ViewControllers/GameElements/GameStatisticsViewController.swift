@@ -30,6 +30,17 @@ class GameStatisticsViewController: UIViewController {
         displayTimeRemaining()
     }
 
+    // MARK: Segue methods
+    /// Feed in the appropriate data before seguing into this view.
+    ///
+    /// - Parameters:
+    ///   - timeLeft: the starting time left of this game.
+    ///   - currentScore: the starting current score of this game.
+    func segueWith(timeLeft: TimeInterval, currentScore: Int) {
+        self.currentScore = currentScore
+        self.timeLeft = timeLeft
+    }
+
     // MARK: Helper Methods
     /// Displays the current score in the label, in integer.
     private func displayCurrentScore() {

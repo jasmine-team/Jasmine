@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 /// A view controller that stores a grid of square cells.
 class SquareGridViewController: UIViewController {
@@ -6,22 +7,24 @@ class SquareGridViewController: UIViewController {
     // MARK: Constants
     fileprivate static let cellIdentifier = "Square Text View Cell"
 
-    fileprivate static let snappingDuration = 0.2
-
-    fileprivate static let cellSpacing = CGFloat(8.0)
+    fileprivate static let standardCellSpacing = CGFloat(8.0)
 
     // MARK: Layouts
-    @IBOutlet fileprivate weak var gridCollectionView: UICollectionView!
+    fileprivate let gridCollectionView
+        = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
     // MARK: Properties
     /// Stores the maximum number of rows that should be displayed in this view.
-    fileprivate var numRows = 0
+    private(set) var numRows = 1
 
     /// Stores the maximum number of columns that should be displayed in this view.
-    fileprivate var numCols = 0
+    private(set) var numCols = 1
+
+    /// Specifies the amount of space between each cell.
+    fileprivate var cellSpacing: CGFloat = 0
 
     /// A lazily computed property that gives all the coordinates that is used in this view.
-    fileprivate var allCoordinates: Set<Coordinate> {
+    var allCoordinates: Set<Coordinate> {
         var outcome: Set<Coordinate> = []
         for row in 0..<numRows {
             for col in 0..<numCols {
@@ -31,13 +34,35 @@ class SquareGridViewController: UIViewController {
         return outcome
     }
 
+    /// Gets all the tiles in this collection view.
+    var allTiles: Set<SquareTileView> {
+        var outcome = Set(gridCollectionView.subviews.flatMap { $0 as? SquareTileView })
+        allCoordinates.flatMap { getCell(at: $0)?.tiles }
+            .forEach { outcome = outcome.union(Set($0)) }
+        return outcome
+    }
+
+    /// Gets all the tiles directly visible in this collection view.
+    var allDisplayedTiles: Set<SquareTileView> {
+        let floatingTiles = Set(gridCollectionView.subviews.flatMap { $0 as? SquareTileView })
+        let tilesOnGrid = Set(allCoordinates.flatMap { getCell(at: $0)?.displayedTile })
+        return floatingTiles.union(tilesOnGrid)
+    }
+
     /// Stores the database that is used to display onto the collection view in this view controller.
     fileprivate var collectionData: [Coordinate: String] = [:]
 
-    /// Stores the set of tiles that are "detached" from the collection view.
-    fileprivate var detachedTiles: Set<UIView> = []
+    /// Stores the properties that is used to apply onto all the tiles in that specified coordinate,
+    /// that is inside this collection view.
+    var tileProperties: [Coordinate: (SquareTileView) -> Void] = [:]
 
     // MARK: View Controller Lifecycles
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initCollectionView()
+        initOtherViewProperties()
+    }
+
     /// Readjusts layout (such as cell size) upon auto-rotate.
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         gridCollectionView.performBatchUpdates(gridCollectionView.reloadData, completion: nil)
@@ -45,16 +70,32 @@ class SquareGridViewController: UIViewController {
 
     // MARK: Segue Methods
     /// Load the view controller with initial dataset, and the number of rows and columns in this
-    /// collection view.
+    /// collection view. Note that needing space is assumed.
     ///
     /// - Parameters:
     ///   - initialData: initial set of data to be displayed in this view.
     ///   - numRows: maximum number of rows to be displayed in this grid.
     ///   - numCols: maximum number of columns to be displayed in this grid.
     func segueWith(_ initialData: [Coordinate: String], numRows: Int, numCols: Int) {
+        self.segueWith(initialData, numRows: numRows, numCols: numCols,
+                       withSpace: SquareGridViewController.standardCellSpacing)
+    }
+
+    /// Load the view controller with initial dataset, and the number of rows and columns in this
+    /// collection view.
+    ///
+    /// - Parameters:
+    ///   - initialData: initial set of data to be displayed in this view.
+    ///   - numRows: maximum number of rows to be displayed in this grid.
+    ///   - numCols: maximum number of columns to be displayed in this grid.
+    ///   - needSpace: when set to true, provides a spacing, else space is removed.
+    func segueWith(_ initialData: [Coordinate: String], numRows: Int, numCols: Int,
+                   withSpace space: CGFloat) {
+
         self.collectionData = initialData
         self.numCols = numCols
         self.numRows = numRows
+        self.cellSpacing = space
     }
 
     // MARK: - Data Interaction
@@ -74,17 +115,17 @@ class SquareGridViewController: UIViewController {
     ///   - coordinates: the cell coordinates that should be updated.
     ///   - shouldAnimate: true to animate the reloading with fade animation, false otherwise.
     func reload(cellsAt coordinates: Set<Coordinate>, withAnimation shouldAnimate: Bool) {
-        let indices = coordinates.map { IndexPath($0) }
+        let indices = coordinates.map { $0.toIndexPath }
         let basicReloadIndices = {
-            UIView.setAnimationsEnabled(false)
             self.gridCollectionView.reloadItems(at: indices)
-            UIView.setAnimationsEnabled(true)
         }
 
         if shouldAnimate {
             gridCollectionView.performBatchUpdates(basicReloadIndices, completion: nil)
         } else {
+            UIView.setAnimationsEnabled(false)
             basicReloadIndices()
+            UIView.setAnimationsEnabled(true)
         }
     }
 
@@ -107,98 +148,62 @@ class SquareGridViewController: UIViewController {
     func getCoordinate(at position: CGPoint) -> Coordinate? {
         return gridCollectionView.indexPathForItem(at: position)?.toCoordinate
     }
-}
 
-// MARK: - Tile Repositioning and Interaction
-extension SquareGridViewController {
-
-    // MARK: Detach Tiles in Collection View
-    /// Detach a tile contained in a view cell.
-    /// Note that in this case, the tile is the underlying view stored inside the view cell.
+    /// Get the coordinate of where this tile is.
     ///
-    /// Note further that without detaching, the tile cannot be moved.
-    ///
-    /// - Parameter coordinate: the tile that should be detached from the view cell.
-    /// - Returns: the tile view.
-    func detachTile(fromCoord coordinate: Coordinate) -> UIView? {
-        guard let cell = gridCollectionView.cellForItem(at: IndexPath(coordinate)),
-            let squareCell = cell as? SquareTextViewCell,
-            let textViewTile = squareCell.textView else {
-                return nil
-        }
-        textViewTile.removeFromSuperview()
-        gridCollectionView.addSubview(textViewTile)
-        textViewTile.frame = squareCell.frame
-
-        detachedTiles.insert(textViewTile)
-        return textViewTile
+    /// - Parameter tile: the tile where the coordinate should be queried.
+    /// - Returns: the underlying coordinate if found, nil otherwise.
+    func getCoordinate(from tile: SquareTileView) -> Coordinate? {
+        return getCoordinate(at: tile.center)
     }
 
-    /// Add a tile into the collection view stored in the VC. This tile is automatically detached.
+    /// Get the cell at the specified coordinate.
     ///
-    /// - Parameters:
-    ///   - data: the text that is to be displayed on this tile.
-    ///   - newCenter: the new center location to position this tile.
-    /// - Returns: the tile view.
-    func addDetachedTile(withData data: String, toPosition newCenter: CGPoint) -> UIView {
-        let frame = CGRect(center: newCenter, size: cellSize)
-        let squareTile = SquareTextView(frame: frame)
-        squareTile.text = data
-
-        gridCollectionView.addSubview(squareTile)
-        return squareTile
+    /// - Parameter coordinate: the coordinate where the view cell should be obtained.
+    /// - Returns: the view cell with the class SquareTileViewCell.
+    func getCell(at coordinate: Coordinate) -> SquareTileViewCell? {
+        return gridCollectionView.cellForItem(at: coordinate.toIndexPath) as? SquareTileViewCell
     }
 
-    // MARK: Move Tiles in Collection View
-    /// Moves a detached tile in this collection view.
+    /// Get the cell frame at the specified coordinate.
     ///
-    /// Note that if this tile is not found in this collection view will result in no-op.
+    /// - Parameter coordinate: the coordinate where the view cell frame should be obtained.
+    /// - Returns: the frame if coordinate is valid.
+    func getFrame(at coordinate: Coordinate) -> CGRect? {
+        return getCell(at: coordinate)?.frame
+    }
+
+    /// Adds the specified tile to the collection view.
     ///
-    /// - Parameters:
-    ///   - tile: the tile view that should be moved.
-    ///   - newCenter: the new center location to position this tile.
-    func moveDetachedTile(_ tile: UIView, toPosition newCenter: CGPoint) {
-        guard detachedTiles.contains(tile) else {
-            return
-        }
+    /// - Parameter tile: the tile to be added right on the collection view.
+    func addTileOntoCollectionView(_ tile: SquareTileView) {
+        gridCollectionView.addSubview(tile)
+    }
+
+    /// Brings the tile to the front of the view.
+    ///
+    /// - Parameter tile: the tile to be brought to the front.
+    func bringTileToFront(_ tile: SquareTileView) {
         gridCollectionView.bringSubview(toFront: tile)
-        tile.center = newCenter
     }
 
-    // MARK: Snap And Reattach Tiles to Cells
-    /// Reattach the detached tile to a particular cell in the specified coordinate.
-    ///
-    /// Note that if the tile fails to attach (because another tile is occupying the cell), results
-    /// in no-op.
-    ///
-    /// - Parameters:
-    ///   - tile: tile view to be attached.
-    ///   - coordinate: destination coordinate to be attached to.
-    ///   - callback: a function that will be called when the tile has successfully been attached.
-    func snapDetachedTile(_ tile: UIView, toCoordinate coordinate: Coordinate,
-                          withCompletion callback: (() -> Void)?) {
+    // MARK: Helper Methods
+    private func initCollectionView() {
+        gridCollectionView.delegate = self
+        gridCollectionView.dataSource = self
+        gridCollectionView.isScrollEnabled = false
+        gridCollectionView.clipsToBounds = false
+        gridCollectionView.backgroundColor = UIColor.clear
+        gridCollectionView.register(
+            SquareTileViewCell.self,
+            forCellWithReuseIdentifier: SquareGridViewController.cellIdentifier)
 
-        guard detachedTiles.contains(tile),
-            let textViewTile = tile as? SquareTextView,
-            let destinationCell = gridCollectionView.cellForItem(at: IndexPath(coordinate)),
-            let destinationSquareCell = destinationCell as? SquareTextViewCell,
-            destinationSquareCell.textView == nil else {
-                return
-        }
+        view.addSubview(gridCollectionView)
+        gridCollectionView.snp.makeConstraints { $0.edges.equalToSuperview() }
+    }
 
-        let completionFunc: (Bool) -> Void = { hasEnded in
-            guard hasEnded else {
-                return
-            }
-            textViewTile.removeFromSuperview()
-            destinationSquareCell.textView = textViewTile
-            callback?()
-        }
-
-        gridCollectionView.bringSubview(toFront: textViewTile)
-        UIView.animate(withDuration: SquareGridViewController.snappingDuration,
-                       animations: { textViewTile.frame = destinationSquareCell.frame },
-                       completion: completionFunc)
+    private func initOtherViewProperties() {
+        view.clipsToBounds = false
     }
 }
 
@@ -225,11 +230,12 @@ extension SquareGridViewController: UICollectionViewDataSource {
             .dequeueReusableCell(withReuseIdentifier: SquareGridViewController.cellIdentifier,
                                  for: indexPath)
 
-        guard let squareCell = reusableCell as? SquareTextViewCell else {
-            fatalError("View Cell that extends from SquareTextViewCell is required.")
+        guard let squareCell = reusableCell as? SquareTileViewCell else {
+            fatalError("View Cell that extends from SquareTileViewCell is required.")
         }
 
-        squareCell.text = collectionData[indexPath.toCoordinate]
+        squareCell.setOnlyText(collectionData[indexPath.toCoordinate])
+        squareCell.tileProperties = self.tileProperties[indexPath.toCoordinate]
         return squareCell
     }
 }
@@ -241,7 +247,7 @@ extension SquareGridViewController: UICollectionViewDelegateFlowLayout {
     fileprivate var cellSize: CGSize {
         let viewSize = gridCollectionView.bounds.size
 
-        let spacing = SquareGridViewController.cellSpacing
+        let spacing = cellSpacing
         let numColSpacing = CGFloat(numCols - 1)
         let numRowSpacing = CGFloat(numRows - 1)
 
@@ -255,19 +261,28 @@ extension SquareGridViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: cellLength, height: cellLength)
     }
 
+    /// Computes the sum of left and right margin width.
+    private var totalMarginWidth: CGFloat {
+        let gridWidth = gridCollectionView.bounds.width
+        let cellWidth = cellSize.width
+        return gridWidth - (cellWidth + cellSpacing) * CGFloat(numCols)
+    }
+
     /// Computes the spacing betwen each row.
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        let insetFromSpacing = SquareGridViewController.cellSpacing / 2.0
-        return UIEdgeInsets(top: insetFromSpacing, left: 0, bottom: insetFromSpacing, right: 0)
+        let insetFromSpacing = cellSpacing / 2.0
+        let margin = totalMarginWidth / 2.0
+        return UIEdgeInsets(top: insetFromSpacing, left: margin,
+                            bottom: insetFromSpacing, right: margin)
     }
 
     /// Computes the spacing between each column.
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return SquareGridViewController.cellSpacing
+        return cellSpacing
     }
 
     /// Sets the size of each cell in the collection view to achieve `numRows` x `numCols`.

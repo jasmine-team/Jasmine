@@ -9,8 +9,10 @@ protocol TetrisGameViewControllerDelegate: BaseGameViewControllerDelegate {
     func redisplayFallingTile(tileText: String)
 
     // MARK: Animation
-    /// Animates the destroyed and shifted tiles
+    /// Ask the view controller to animate the destruction of tiles at the specified coordinates,
+    /// and then shift the content of the tiles from Coordinate `from` to Coordinate `to`.
     ///
+    /// - Parameters:
     /// - Parameter destroyedTiles: the destroyed set of coordinates
     /// - Parameter shiftedTiles: the shifted array of coordinates
     func animate(destroyedTiles: Set<Coordinate>, shiftedTiles: [(from: Coordinate, to: Coordinate)])

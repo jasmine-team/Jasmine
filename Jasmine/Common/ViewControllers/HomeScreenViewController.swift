@@ -10,6 +10,9 @@ class HomeScreenViewController: UIViewController {
             gridGame.segueWith(CiHuiGridViewModel(time: Constants.Game.Grid.time,
                                                   gameData: gameData,
                                                   numberOfPhrases: Constants.Game.Grid.rows))
+
+        } else if let tetrisGame = segue.destination as? TetrisGameViewController {
+            tetrisGame.segueWith(TetrisGameViewModel())
         }
     }
 }
