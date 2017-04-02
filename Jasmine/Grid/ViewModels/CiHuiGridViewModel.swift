@@ -18,6 +18,7 @@ class CiHuiGridViewModel: BaseGridViewModel {
         super.init(time: time, tiles: tiles, possibleAnswers: answers,
                    rows: numberOfPhrases, columns: Constants.Game.Grid.columns)
 
-        gameTitle = "Ci Hui (词汇) Grid Game"
+        gameTitle = Constants.Game.Grid.CiHui.gameTitle
+        gameInstruction = Constants.Game.Grid.CiHui.gameInstruction
     }
 }

@@ -10,6 +10,7 @@ class ChengYuGridViewModel: BaseGridViewModel {
         super.init(time: time, tiles: tiles, possibleAnswers: answers,
                    rows: numberOfPhrases, columns: Constants.Game.Grid.columns)
 
-        gameTitle = "Cheng Yu (成语) Grid Game"
+        gameTitle = Constants.Game.Grid.ChengYu.gameTitle
+        gameInstruction = Constants.Game.Grid.ChengYu.gameInstruction
     }
 }

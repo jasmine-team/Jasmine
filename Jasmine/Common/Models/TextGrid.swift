@@ -18,28 +18,30 @@ struct TextGrid {
     /// - Parameters:
     ///   - initialGrid: the initial grid. The CharacterGrid will read from this grid.
     ///   - randomized: pass in true if the resulting grid wants to be randomized from the initial grid.
-    init(fromInitialGrid initialGrid: [[String?]], randomized: Bool) {
+    init(fromTileSetRandomized tileSet: [String?], rows: Int, columns: Int) {
+        assert(rows > 0 && columns > 0, "Number of numRows and columns should be more than 0")
+        assert(rows * columns == tileSet.count, "Number of rows * columns should be equal to tileSet.count")
+
+        let shuffledGrid = tileSet.shuffled()
+
+        grid = (0..<rows).map { row in
+            (0..<columns).map { col in
+                shuffledGrid[row * columns + col]
+            }
+        }
+    }
+
+    init(fromInitialGrid initialGrid: [[String?]]) {
         let numRows = initialGrid.count
         let numColumns = initialGrid.first?.count ?? 0
         assert(numRows > 0 && numColumns > 0, "Number of numRows and columns should be more than 0")
-        assert(initialGrid.map { $0.count }.isAllSame, "All numRows should have the same length")
 
-        if randomized {
-            let shuffledGrid = initialGrid.joined().shuffled()
-
-            grid = (0..<numRows).map { row in
-                (0..<numColumns).map { col in
-                    shuffledGrid[row * numColumns + col]
-                }
-            }
-        } else {
-            grid = initialGrid
-        }
+        grid = initialGrid
     }
 
     /// Initializes with an empty grid.
     init() {
-        self.init(fromInitialGrid: [], randomized: false)
+        self.init(fromInitialGrid: [])
     }
 
     /// Gets the element in the specified coordinate.

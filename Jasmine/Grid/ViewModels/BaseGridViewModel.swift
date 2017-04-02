@@ -38,10 +38,10 @@ class BaseGridViewModel: GridViewModelProtocol {
 
     /// Provide a brief title for this game. Note that this title should be able to fit within the
     /// width of the display.
-    var gameTitle: String
+    var gameTitle: String = ""
     /// Provide of a brief description of its objectives and how this game is played.
     /// There is no word count limit, but should be concise.
-    var gameInstruction: String
+    var gameInstruction: String = ""
 
     /// Initializes the grid VM.
     ///
@@ -58,12 +58,9 @@ class BaseGridViewModel: GridViewModelProtocol {
         assert(possibleAnswers[0].count == columns, "Possible answers rows length should equal # of columns")
         assert(Set(possibleAnswers.flatMap { $0 }) == Set(tiles), "Possible answers and tiles should've same char set")
 
-        gameTitle = "Grid Game"
-        gameInstruction = "Match the Chinese characters with their Pinyins by putting them in one row."
-
         self.possibleAnswers = possibleAnswers
 
-        gridData = TextGrid(fromInitialGrid: possibleAnswers, randomized: true)
+        gridData = TextGrid(fromTileSetRandomized: tiles, rows: rows, columns: columns)
 
         timer = CountDownTimer(totalTimeAllowed: time)
         timer.timerListener = gridTimerListener

@@ -26,9 +26,9 @@ class ChengYuGridViewModelTests: XCTestCase {
                        "ViewModel timeRemaining on init is not correct")
         XCTAssertEqual(GameStatus.notStarted, viewModel.gameStatus,
                        "ViewModel gameStatus on init is not correct")
-        XCTAssertEqual("Ci Hui (词汇) Grid Game", viewModel.gameTitle,
+        XCTAssertEqual("Cheng Yu (成语) Grid Game", viewModel.gameTitle,
                        "ViewModel gameTitle on init is not correct")
-        XCTAssertEqual("Match the Chinese characters with their Pinyins by putting them in one row.",
+        XCTAssertEqual("Match the Cheng Yus by putting them in one row.",
                        viewModel.gameInstruction,
                        "ViewModel gameInstruction on init is not correct")
     }

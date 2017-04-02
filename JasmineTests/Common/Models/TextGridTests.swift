@@ -4,7 +4,7 @@ import XCTest
 class TextGridTests: XCTestCase {
     func testInitFromInitialGrid() {
         let initialGrid = [["a", nil, "c"], ["d", "e", "f"], ["g", "h", nil], [nil, nil, nil]]
-        let grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
+        let grid = TextGrid(fromInitialGrid: initialGrid)
 
         for row in 0..<4 {
             for col in 0..<3 {
@@ -16,10 +16,10 @@ class TextGridTests: XCTestCase {
     }
 
     func testInitFromInitialGridRandomized() {
-        let initialGrid = [["a", "b"], ["c", "d"]]
-        let grid = TextGrid(fromInitialGrid: initialGrid, randomized: true)
+        let tileSet = ["a", "b", "c", "d"]
+        let grid = TextGrid(fromTileSetRandomized: tileSet, rows: 2, columns: 2)
 
-        var allCharacters = initialGrid.flatMap { $0 }
+        var allCharacters = tileSet
 
         for row in 0..<2 {
             for col in 0..<2 {
@@ -33,7 +33,7 @@ class TextGridTests: XCTestCase {
 
     func testSubscriptSet() {
         let initialGrid = [["a", "b", "c"], ["d", "e", "f"]]
-        var grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
+        var grid = TextGrid(fromInitialGrid: initialGrid)
 
         grid[Coordinate(row: 0, col: 0)] = "f"
 
@@ -49,7 +49,7 @@ class TextGridTests: XCTestCase {
 
     func testSwap() {
         let initialGrid = [["a", "b", "c"], ["d", "e", "f"]]
-        var grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
+        var grid = TextGrid(fromInitialGrid: initialGrid)
 
         grid.swap(Coordinate(row: 0, col: 1), and: Coordinate(row: 1, col: 2))
 
@@ -65,7 +65,7 @@ class TextGridTests: XCTestCase {
 
     func testAllRowsInside() {
         let initialGrid = [["a", "b", "c"], ["d", "e", "f"]]
-        let grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
+        let grid = TextGrid(fromInitialGrid: initialGrid)
 
         XCTAssert(grid.allRowsInside(stringArrays: initialGrid),
                   "Grid allRowsInside not working properly")
