@@ -62,7 +62,7 @@ struct TextGrid {
     /// - Parameters:
     ///   - coord1: the first coordinate
     ///   - coord2: the second coordinate
-    mutating func swap(coord1: Coordinate, coord2: Coordinate) {
+    mutating func swap(_ coord1: Coordinate, _ coord2: Coordinate) {
         Swift.swap(&self[coord1], &self[coord2])
     }
 

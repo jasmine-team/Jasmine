@@ -68,7 +68,7 @@ class GridViewModel: GridViewModelProtocol {
             return false
         }
 
-        gridData.swap(coord1: coord1, coord2: coord2)
+        gridData.swap(coord1, coord2)
 
         if hasGameWon {
             gameStatus = .endedWithWon

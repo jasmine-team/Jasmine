@@ -31,6 +31,7 @@ class TetrisGameViewModel {
 
     private var nextTexts: [String] = []
 
+    // TODO : should be set from gameData instead
     var gameTitle: String {
         return Constants.Game.Tetris.gameTitle
     }
@@ -114,7 +115,7 @@ class TetrisGameViewModel {
                     break
                 }
                 let newCoordinate = currentCoordinate.nextRow
-                grid.swap(coord1: currentCoordinate, coord2: newCoordinate)
+                grid.swap(currentCoordinate, newCoordinate)
                 shiftedTiles.append((from: currentCoordinate, to: newCoordinate))
             }
         }
@@ -125,7 +126,7 @@ class TetrisGameViewModel {
         if nextTexts.isEmpty {
             nextTexts = gameData.phrases.next().chinese.characters.map { String($0) }
         }
-        let randInt = (nextTexts.count == 1) ? 0 : Random.integer(toExclusive: nextTexts.count)
+        let randInt = Random.integer(toExclusive: nextTexts.count)
         return nextTexts.remove(at: randInt)
     }
 }
