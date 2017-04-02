@@ -1,15 +1,16 @@
 import Foundation
 
-class GridViewModel: GridViewModelProtocol {
+class BaseGridViewModel: GridViewModelProtocol {
     /// Stores the grid data that will be used to display in the view controller.
-    private(set) var gridData: TextGrid {
-        didSet {
-            delegate?.updateGridData()
-        }
+    private(set) var gridData: TextGrid
+    /// Number of rows in the grid, according to the answers property
+    var numRows: Int {
+        return gridData.numRows
     }
-    /// Answers for this game. The game is won if this is done
-    private var answers: [[String]] = [["1", "2", "3", "4"], ["5", "6", "7", "8"],
-                                       ["9", "10", "11", "12"], ["13", "14", "15", "16"]]
+    /// Number of columns in the grid, according to the answers property
+    var numColumns: Int {
+        return gridData.numColumns
+    }
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
     weak var delegate: GridGameViewControllerDelegate?
@@ -21,7 +22,7 @@ class GridViewModel: GridViewModelProtocol {
         }
     }
     /// The timer of this game.
-    private(set) var timer = CountDownTimer(totalTimeAllowed: Constants.Game.Grid.time)
+    private(set) var timer: CountDownTimer
     /// The status of the current game.
     private(set) var gameStatus: GameStatus = .notStarted {
         didSet {
@@ -32,22 +33,45 @@ class GridViewModel: GridViewModelProtocol {
             }
         }
     }
-
-    init() {
-        gridData = TextGrid(fromInitialGrid: answers, randomized: true)
-    }
+    /// The game data of this game.
+    let gameData: GameData
 
     /// Provide a brief title for this game. Note that this title should be able to fit within the
     /// width of the display.
-    var gameTitle = "Grid Game"
-
+    var gameTitle: String = ""
     /// Provide of a brief description of its objectives and how this game is played.
     /// There is no word count limit, but should be concise.
-    var gameInstruction = "Match the Chinese characters with their Pinyins by putting them in one row."
+    var gameInstruction: String = ""
+
+    /// Initializes the grid VM.
+    ///
+    /// - Parameters:
+    ///   - time: total time allowed
+    ///   - tiles: tiles in the game
+    ///   - possibleAnswers: all possible answers. The game is won if all rows in the game is in all possible answers.
+    ///   - rows: number of rows in the grid.
+    ///   - columns: number of columns in the grid.
+    init(time: TimeInterval, gameData: GameData, tiles: [String], rows: Int, columns: Int) {
+        assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
+        assert(tiles.count == rows * columns, "Number of tiles should equal numRows * numColumns")
+
+        self.gameData = gameData
+
+        let shuffledTiles = tiles.shuffled()
+        let grid = (0..<rows).map { row in
+            (0..<columns).map { col in
+                shuffledTiles[row * columns + col]
+            }
+        }
+
+        gridData = TextGrid(fromInitialGrid: grid)
+
+        timer = CountDownTimer(totalTimeAllowed: time)
+        timer.timerListener = gridTimerListener
+    }
 
     /// Tells the view model that the game has started.
     func startGame() {
-        timer = createTimer()
         timer.startTimer(timerInterval: Constants.Game.Grid.timerInterval)
     }
 
@@ -63,12 +87,15 @@ class GridViewModel: GridViewModelProtocol {
     ///   - coord1: One of the cells to be swapped.
     ///   - coord2: The other cell to be swapped.
     /// - Returns: Returns true if the two coordinates has be swapped, false otherwise.
+    @discardableResult
     func swapTiles(_ coord1: Coordinate, and coord2: Coordinate) -> Bool {
         guard gridData[coord1] != nil && gridData[coord2] != nil else {
             return false
         }
 
         gridData.swap(coord1, coord2)
+        delegate?.updateGridData()
+        delegate?.redisplay(tilesAt: [coord1, coord2])
 
         if hasGameWon {
             gameStatus = .endedWithWon
@@ -78,30 +105,25 @@ class GridViewModel: GridViewModelProtocol {
         return true
     }
 
-    /// Returns true iff the game is won
-    private var hasGameWon: Bool {
-        return gridData.allRowsInside(stringArrays: answers)
+    /// Returns true iff the game is won. This is to be overriden
+    var hasGameWon: Bool {
+        return false
     }
 
     /// The countdown timer for use in this viewmodel.
     ///
     /// - Returns: the countdown timer
-    private func createTimer() -> CountDownTimer {
-        let timer = CountDownTimer(totalTimeAllowed: totalTimeAllowed)
-        timer.timerListener = { status in
-            switch status {
-            case .start:
-                self.gameStatus = .inProgress
-                self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
-            case .tick:
-                self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
-            case .finish:
-                self.gameStatus = .endedWithLost
-            default:
-                break
-            }
+    private func gridTimerListener(status: TimerStatus) {
+        switch status {
+        case .start:
+            gameStatus = .inProgress
+            delegate?.redisplay(timeRemaining: timeRemaining, outOf: totalTimeAllowed)
+        case .tick:
+            delegate?.redisplay(timeRemaining: timeRemaining, outOf: totalTimeAllowed)
+        case .finish:
+            gameStatus = .endedWithLost
+        default:
+            break
         }
-
-        return timer
     }
 }

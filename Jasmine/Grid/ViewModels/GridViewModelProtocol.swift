@@ -11,6 +11,12 @@ protocol GridViewModelProtocol: BaseViewModelProtocol, CountdownTimable {
     /// Stores the grid data that will be used to display in the view controller.
     var gridData: TextGrid { get }
 
+    /// Number of rows in the grid
+    var numRows: Int { get }
+
+    /// Number of columns in the grid
+    var numColumns: Int { get }
+
     // MARK: Game Operations
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
     /// the specified two tiles.
