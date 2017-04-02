@@ -74,3 +74,6 @@ fastlane/test_output
 **/.DS_Store
 # Ignore secrets
 scripts/secrets.py
+# Ignore realm related files
+*.realm.lock
+*.realm.management
