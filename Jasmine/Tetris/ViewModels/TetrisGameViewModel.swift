@@ -25,10 +25,7 @@ class TetrisGameViewModel {
         }
     }
 
-    // TODO : change to let and remove empty init after VC implement passing gameData to VM 
-    private var gameData: GameData!
-    init() {}
-
+    private let gameData: GameData
     private var nextTexts: [String] = []
 
     // TODO : should be set from gameData instead
@@ -150,7 +147,7 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
 
     func canLandTile(at coordinate: Coordinate) -> Bool {
         if grid.hasText(at: coordinate) ||
-           (!grid.hasText(at: coordinate.nextRow) && coordinate.row < Constants.Game.Tetris.rows - 1) {
+           ((coordinate.row < Constants.Game.Tetris.rows - 1) && !grid.hasText(at: coordinate.nextRow)) {
             return false
         }
         landingCoordinate = coordinate
