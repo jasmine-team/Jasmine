@@ -15,20 +15,29 @@ class TextGridTests: XCTestCase {
         }
     }
 
-    func testInitFromInitialGridRandomized() {
-        let tileSet = ["a", "b", "c", "d"]
-        let grid = TextGrid(fromTileSetRandomized: tileSet, rows: 2, columns: 2)
+    func testNumRowsColumns() {
+        let initialGrid = [["a", nil, "c"], ["d", "e", "f"], ["g", "h", nil], [nil, nil, nil]]
+        let grid = TextGrid(fromInitialGrid: initialGrid)
 
-        var allCharacters = tileSet
+        XCTAssertEqual(4, grid.numRows,
+                       "Number of rows not correct")
+        XCTAssertEqual(3, grid.numColumns,
+                       "Number of columns not correct")
+    }
 
-        for row in 0..<2 {
-            for col in 0..<2 {
-                let elem = grid[Coordinate(row: row, col: col)]
-                XCTAssert(allCharacters.contains { $0 == elem },
-                          "Grid is not initialized properly")
-                allCharacters = allCharacters.filter { $0 != elem }
+    func testCoordinateDictionary() {
+        let initialGrid = [["a", nil, "c"], ["d", "e", "f"], ["g", "h", nil], [nil, nil, nil]]
+        let grid = TextGrid(fromInitialGrid: initialGrid)
+
+        var coordinateDictionary: [Coordinate: String] = [:]
+        for row in 0..<initialGrid.count {
+            for col in 0..<initialGrid[0].count {
+                coordinateDictionary[Coordinate(row: row, col: col)] = initialGrid[row][col]
             }
         }
+
+        XCTAssertEqual(grid.coordinateDictionary, coordinateDictionary,
+                       "Coordinate dictionary representation not correct")
     }
 
     func testSubscriptSet() {
@@ -51,7 +60,7 @@ class TextGridTests: XCTestCase {
         let initialGrid = [["a", "b", "c"], ["d", "e", "f"]]
         var grid = TextGrid(fromInitialGrid: initialGrid)
 
-        grid.swap(Coordinate(row: 0, col: 1), and: Coordinate(row: 1, col: 2))
+        grid.swap(Coordinate(row: 0, col: 1), Coordinate(row: 1, col: 2))
 
         let resultingGrid = [["a", "f", "c"], ["d", "e", "b"]]
         for row in 0..<2 {
@@ -61,23 +70,5 @@ class TextGridTests: XCTestCase {
                                "Grid is not initialized properly")
             }
         }
-    }
-
-    func testAllRowsInside() {
-        let initialGrid = [["a", "b", "c"], ["d", "e", "f"]]
-        let grid = TextGrid(fromInitialGrid: initialGrid)
-
-        XCTAssert(grid.allRowsInside(stringArrays: initialGrid),
-                  "Grid allRowsInside not working properly")
-        XCTAssert(grid.allRowsInside(stringArrays: [["a", "b", "c"], ["d", "e", "f"], ["g", "h", "i"]]),
-                  "Grid allRowsInside not working properly")
-        XCTAssertFalse(grid.allRowsInside(stringArrays: [["a", "b", "c"]]),
-                  "Grid allRowsInside not working properly")
-        XCTAssertFalse(grid.allRowsInside(stringArrays: [["d", "e", "f"]]),
-                  "Grid allRowsInside not working properly")
-        XCTAssertFalse(grid.allRowsInside(stringArrays: [["c", "b", "a"], ["d", "e", "f"]]),
-                  "Grid allRowsInside not working properly")
-        XCTAssertFalse(grid.allRowsInside(stringArrays: [["a", "b", "c", "x"], ["d", "e", "f"]]),
-                  "Grid allRowsInside not working properly")
     }
 }

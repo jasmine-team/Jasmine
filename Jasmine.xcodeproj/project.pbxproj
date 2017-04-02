@@ -643,11 +643,11 @@
 			isa = PBXGroup;
 			children = (
 				DF7CF7741E7E9ECE00C6979A /* BaseGameViewControllerDelegate.swift */,
+				DFCF3FC71E875D940027016E /* DiscreteFallableSquareGridViewController.swift */,
+				DFCF3FC91E875DCB0027016E /* DraggableSquareGridViewController.swift */,
 				DF7CF7751E7E9ECE00C6979A /* GameElements.storyboard */,
 				DF7CF7761E7E9ECE00C6979A /* GameStatisticsViewController.swift */,
 				DF7CF7771E7E9ECE00C6979A /* SquareGridViewController.swift */,
-				DFCF3FC91E875DCB0027016E /* DraggableSquareGridViewController.swift */,
-				DFCF3FC71E875D940027016E /* DiscreteFallableSquareGridViewController.swift */,
 			);
 			path = GameElements;
 			sourceTree = "<group>";

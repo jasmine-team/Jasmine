@@ -4,9 +4,7 @@ import Foundation
 
 class BaseGridViewModelTests: XCTestCase {
     func testInit() {
-        let viewModel = BaseGridViewModel(time: 3, tiles: ["a", "b"],
-                                          possibleAnswers: [["a", "b"]],
-                                          rows: 1, columns: 2)
+        let viewModel = BaseGridViewModel(time: 3, tiles: ["a", "b"], rows: 1, columns: 2)
 
         XCTAssertNil(viewModel.delegate,
                      "ViewModel delegate on init is not nil")
@@ -26,6 +24,12 @@ class BaseGridViewModelTests: XCTestCase {
                        "ViewModel gameTitle on init is not correct")
         XCTAssertEqual("", viewModel.gameInstruction,
                        "ViewModel gameInstruction on init is not correct")
+
+        let gridData = viewModel.gridData
+        XCTAssert(["a", "b"].contains { $0 == gridData[Coordinate(row: 0, col: 0)] },
+                  "Grid Data is not correct")
+        XCTAssert(["a", "b"].contains { $0 == gridData[Coordinate(row: 0, col: 1)] },
+                  "Grid Data is not correct")
     }
 
     func testStartGame() {
@@ -33,21 +37,13 @@ class BaseGridViewModelTests: XCTestCase {
         let columns = 2
         let time: TimeInterval = 3
 
-        let viewModel = BaseGridViewModel(time: time, tiles: ["a", "b"],
-                                          possibleAnswers: [["a", "b"]],
-                                          rows: rows, columns: columns)
+        let viewModel = BaseGridViewModel(time: time, tiles: ["a", "b"], rows: rows, columns: columns)
         let delegate = GridGameViewControllerDelegateMock()
         viewModel.delegate = delegate
         viewModel.startGame()
 
         XCTAssertEqual(GameStatus.inProgress, viewModel.gameStatus,
                        "ViewModel game status when the game runs is not inProgress")
-        for row in 0..<rows {
-            for col in 0..<columns {
-                XCTAssertNotNil(viewModel.gridData[Coordinate(row: row, col: col)],
-                                "ViewModel gridData is not correctly populated")
-            }
-        }
         XCTAssertEqual(time, delegate.totalTime,
                        "Delegate totalTime is not correct")
         XCTAssertEqual(time, delegate.timeRemaining,
@@ -68,7 +64,6 @@ class BaseGridViewModelTests: XCTestCase {
         let time: TimeInterval = 3
 
         let viewModel = BaseGridViewModel(time: time, tiles: ["a", "b", "c", "d", "e", "f"],
-                                          possibleAnswers: [["a", "b", "c"], ["d", "e", "f"]],
                                           rows: rows, columns: columns)
         let delegate = GridGameViewControllerDelegateMock()
         viewModel.delegate = delegate
@@ -97,26 +92,10 @@ class BaseGridViewModelTests: XCTestCase {
         }
     }
 
-    func testGameWon() {
-        let rows = 1
-        let columns = 2
-        let time: TimeInterval = 3
+    func testHasGameWon() {
+        let viewModel = BaseGridViewModel(time: 3, tiles: ["a"], rows: 1, columns: 1)
 
-        var viewModel = BaseGridViewModel(time: time, tiles: ["a", "b"],
-                                          possibleAnswers: [["a", "b"]],
-                                          rows: rows, columns: columns)
-        var gridData = viewModel.gridData
-
-        while gridData[Coordinate(row: 0, col: 0)] == "a" {
-            viewModel = BaseGridViewModel(time: time, tiles: ["a", "b"],
-                                          possibleAnswers: [["a", "b"]],
-                                          rows: rows, columns: columns)
-            gridData = viewModel.gridData
-        }
-
-        viewModel.startGame()
-        viewModel.swapTiles(Coordinate(row: 0, col: 0), and: Coordinate(row: 0, col: 1))
-        XCTAssertEqual(GameStatus.endedWithWon, viewModel.gameStatus,
-                       "ViewModel game status when grid's done is not endedWithWon")
+        XCTAssertFalse(viewModel.hasGameWon,
+                       "hasGameWon should always return false on BaseGridVM")
     }
 }

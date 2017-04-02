@@ -3,8 +3,6 @@ import Foundation
 class BaseGridViewModel: GridViewModelProtocol {
     /// Stores the grid data that will be used to display in the view controller.
     private(set) var gridData: TextGrid
-    /// Possible answers in this game. The game is won when all rows in the grid is in this possibleAnswers.
-    private let possibleAnswers: [[String]]
     /// Number of rows in the grid, according to the answers property
     var numRows: Int {
         return gridData.numRows
@@ -51,16 +49,18 @@ class BaseGridViewModel: GridViewModelProtocol {
     ///   - possibleAnswers: all possible answers. The game is won if all rows in the game is in all possible answers.
     ///   - rows: number of rows in the grid.
     ///   - columns: number of columns in the grid.
-    init(time: TimeInterval, tiles: [String], possibleAnswers: [[String]], rows: Int, columns: Int) {
+    init(time: TimeInterval, tiles: [String], rows: Int, columns: Int) {
         assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
         assert(tiles.count == rows * columns, "Number of tiles should equal numRows * numColumns")
-        assert(possibleAnswers.map { $0.count }.isAllSame, "All rows in possible answers should have the same length")
-        assert(possibleAnswers[0].count == columns, "Possible answers rows length should equal # of columns")
-        assert(Set(possibleAnswers.flatMap { $0 }) == Set(tiles), "Possible answers and tiles should've same char set")
 
-        self.possibleAnswers = possibleAnswers
+        let shuffledTiles = tiles.shuffled()
+        let grid = (0..<rows).map { row in
+            (0..<columns).map { col in
+                shuffledTiles[row * columns + col]
+            }
+        }
 
-        gridData = TextGrid(fromTileSetRandomized: tiles, rows: rows, columns: columns)
+        gridData = TextGrid(fromInitialGrid: grid)
 
         timer = CountDownTimer(totalTimeAllowed: time)
         timer.timerListener = gridTimerListener
@@ -89,7 +89,9 @@ class BaseGridViewModel: GridViewModelProtocol {
             return false
         }
 
-        gridData.swap(coord1, and: coord2)
+        gridData.swap(coord1, coord2)
+        delegate?.updateGridData()
+        delegate?.redisplayAllTiles()
 
         if hasGameWon {
             gameStatus = .endedWithWon
@@ -99,9 +101,9 @@ class BaseGridViewModel: GridViewModelProtocol {
         return true
     }
 
-    /// Returns true iff the game is won
-    private var hasGameWon: Bool {
-        return gridData.allRowsInside(stringArrays: possibleAnswers)
+    /// Returns true iff the game is won. This is to be overriden
+    var hasGameWon: Bool {
+        return false
     }
 
     /// The countdown timer for use in this viewmodel.
