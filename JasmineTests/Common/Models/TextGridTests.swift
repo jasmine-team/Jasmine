@@ -64,7 +64,7 @@ class TextGridTests: XCTestCase {
         let initialGrid = [["a", "b", "c"], ["d", "e", "f"]]
         var grid = TextGrid(fromInitialGrid: initialGrid, randomized: false)
 
-        grid.swap(coord1: Coordinate(row: 0, col: 1), coord2: Coordinate(row: 1, col: 2))
+        grid.swap(Coordinate(row: 0, col: 1), Coordinate(row: 1, col: 2))
 
         let resultingGrid = [["a", "f", "c"], ["d", "e", "b"]]
         for row in 0..<2 {
