@@ -74,6 +74,7 @@
                                     <outletCollection property="gestureRecognizers" destination="IxQ-me-Oov" appends="YES" id="gur-7k-JWm"/>
                                     <outletCollection property="gestureRecognizers" destination="foD-TI-dgZ" appends="YES" id="chf-Mb-uuL"/>
                                     <outletCollection property="gestureRecognizers" destination="5Rf-XV-Nsb" appends="YES" id="SNu-n8-Go0"/>
+                                    <outletCollection property="gestureRecognizers" destination="rgY-ND-0k5" appends="YES" id="SwR-aB-lHK"/>
                                     <segue destination="4Oq-id-eCE" kind="embed" id="mD0-vD-TBv"/>
                                 </connections>
                             </containerView>
@@ -153,7 +154,7 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGJ-pa-lSq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="clz-3h-Xvc">
+                <tapGestureRecognizer id="clz-3h-Xvc" userLabel="Upcoming Tap Gesture Recognizer">
                     <connections>
                         <action selector="onUpcomingTilesTouched:" destination="QxJ-8P-SqZ" id="i5e-r4-KXV"/>
                     </connections>
@@ -173,6 +174,11 @@
                         <action selector="onTilesSwiped:" destination="QxJ-8P-SqZ" id="spt-2g-ycI"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="rgY-ND-0k5" userLabel="Grid Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="onTilesTapped:" destination="QxJ-8P-SqZ" id="7AC-K2-YSF"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-44" y="98"/>
         </scene>
