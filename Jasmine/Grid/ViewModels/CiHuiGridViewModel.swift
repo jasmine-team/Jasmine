@@ -1,11 +1,7 @@
 import Foundation
 
 class CiHuiGridViewModel: BaseGridViewModel {
-    /// The game data of this game.
-    let gameData: GameData
-
     init(time: TimeInterval, gameData: GameData, numberOfPhrases: Int) {
-        self.gameData = gameData
         let phrases = gameData.phrases.next(count: numberOfPhrases)
 
         var tiles: [String] = []
@@ -16,7 +12,8 @@ class CiHuiGridViewModel: BaseGridViewModel {
             tiles += (hanzi + pinyin)
         }
 
-        super.init(time: time, tiles: tiles, rows: numberOfPhrases, columns: Constants.Game.Grid.columns)
+        super.init(time: time, gameData: gameData, tiles: tiles,
+                   rows: numberOfPhrases, columns: Constants.Game.Grid.columns)
 
         gameTitle = Constants.Game.Grid.CiHui.gameTitle
         gameInstruction = Constants.Game.Grid.CiHui.gameInstruction
@@ -25,20 +22,13 @@ class CiHuiGridViewModel: BaseGridViewModel {
     /// Returns if and only if the game is won, that is: every row contains a valid Cihui and its pinyin.
     override var hasGameWon: Bool {
         for row in 0..<gridData.numRows {
-            var firstText = ""
-            var secondText = ""
-
-            for col in 0...1 {
-                guard let tile = gridData[Coordinate(row: row, col: col)] else {
+            let firstHalfCoordinates = (0..<(gridData.numColumns / 2))
+                .map { Coordinate(row: row, col: $0) }
+            let secondHalfCoordinates = ((gridData.numColumns / 2)..<gridData.numColumns)
+                .map { Coordinate(row: row, col: $0) }
+            guard let firstText = gridData.getConcatenatedTexts(at: firstHalfCoordinates),
+                let secondText = gridData.getConcatenatedTexts(at: secondHalfCoordinates) else {
                     return false
-                }
-                firstText += tile
-            }
-            for col in 2...3 {
-                guard let tile = gridData[Coordinate(row: row, col: col)] else {
-                    return false
-                }
-                secondText += tile
             }
 
             let firstPhrase = gameData.phrases.first(whereChinese: firstText)

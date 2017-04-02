@@ -33,6 +33,8 @@ class BaseGridViewModel: GridViewModelProtocol {
             }
         }
     }
+    /// The game data of this game.
+    let gameData: GameData
 
     /// Provide a brief title for this game. Note that this title should be able to fit within the
     /// width of the display.
@@ -49,9 +51,11 @@ class BaseGridViewModel: GridViewModelProtocol {
     ///   - possibleAnswers: all possible answers. The game is won if all rows in the game is in all possible answers.
     ///   - rows: number of rows in the grid.
     ///   - columns: number of columns in the grid.
-    init(time: TimeInterval, tiles: [String], rows: Int, columns: Int) {
+    init(time: TimeInterval, gameData: GameData, tiles: [String], rows: Int, columns: Int) {
         assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
         assert(tiles.count == rows * columns, "Number of tiles should equal numRows * numColumns")
+
+        self.gameData = gameData
 
         let shuffledTiles = tiles.shuffled()
         let grid = (0..<rows).map { row in

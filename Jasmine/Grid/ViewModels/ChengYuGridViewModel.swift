@@ -1,9 +1,6 @@
 import Foundation
 
 class ChengYuGridViewModel: BaseGridViewModel {
-    /// The game data of this game.
-    let gameData: GameData
-
     /// Initializes the game
     ///
     /// - Parameters:
@@ -11,11 +8,11 @@ class ChengYuGridViewModel: BaseGridViewModel {
     ///   - gameData: game data
     ///   - numberOfPhrases: number of phrases to be produced
     init(time: TimeInterval, gameData: GameData, numberOfPhrases: Int) {
-        self.gameData = gameData
         let phrases = gameData.phrases.next(count: numberOfPhrases)
         let tiles = phrases.flatMap { $0.chinese.characters.map { char in String(char) } }
 
-        super.init(time: time, tiles: tiles, rows: numberOfPhrases, columns: Constants.Game.Grid.columns)
+        super.init(time: time, gameData: gameData, tiles: tiles,
+                   rows: numberOfPhrases, columns: Constants.Game.Grid.columns)
 
         gameTitle = Constants.Game.Grid.ChengYu.gameTitle
         gameInstruction = Constants.Game.Grid.ChengYu.gameInstruction
