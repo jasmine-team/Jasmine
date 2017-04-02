@@ -72,7 +72,7 @@ class TetrisGameViewModel {
         let phraseLen = gameData.phrases.phraseLength
         for row in 0..<Constants.Game.Tetris.rows - phraseLen {
             for col in 0..<Constants.Game.Tetris.columns {
-                let phraseRange = col..<col + phraseLen
+                let phraseRange = col..<(col + phraseLen)
                 let coordinates = phraseRange.map { Coordinate(row: row, col: $0) }
                 if isPhraseValid(at: coordinates) {
                     return Set(coordinates)
@@ -82,7 +82,7 @@ class TetrisGameViewModel {
 
         for col in 0..<Constants.Game.Tetris.columns {
             for row in 0..<Constants.Game.Tetris.rows - phraseLen {
-                let phraseRange = row..<row + phraseLen
+                let phraseRange = row..<(row + phraseLen)
                 let coordinates = phraseRange.map { Coordinate(row: $0, col: col) }
                 if isPhraseValid(at: coordinates) {
                     return Set(coordinates)
@@ -128,18 +128,11 @@ class TetrisGameViewModel {
         let randInt = (nextTexts.count == 1) ? 0 : Random.integer(toExclusive: nextTexts.count)
         return nextTexts.remove(at: randInt)
     }
-
-    @inline(__always)
-    fileprivate func assertCoordinateValid(_ coordinate: Coordinate) {
-        assert(coordinate.row < Constants.Game.Tetris.rows &&
-               coordinate.col < Constants.Game.Tetris.columns, "Coordinate is out of bounds")
-    }
 }
 
 extension TetrisGameViewModel: TetrisGameViewModelProtocol {
 
     func canShiftFallingTile(to coordinate: Coordinate) -> Bool {
-        assertCoordinateValid(coordinate)
         return !grid.hasText(at: coordinate)
     }
 
@@ -155,7 +148,6 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
     }
 
     func canLandTile(at coordinate: Coordinate) -> Bool {
-        assertCoordinateValid(coordinate)
         if grid.hasText(at: coordinate) ||
            (!grid.hasText(at: coordinate.nextRow) && coordinate.row < Constants.Game.Tetris.rows - 1) {
             return false
