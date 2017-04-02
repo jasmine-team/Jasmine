@@ -2,7 +2,7 @@ import Foundation
 
 class BaseGridViewModel: GridViewModelProtocol {
     /// Stores the grid data that will be used to display in the view controller.
-    private(set) var gridData: [Coordinate: String] = [:] {
+    private(set) var gridData: TextGrid {
         didSet {
             delegate?.updateGridData()
         }
@@ -37,6 +37,7 @@ class BaseGridViewModel: GridViewModelProtocol {
             }
         }
     }
+
     /// Provide a brief title for this game. Note that this title should be able to fit within the
     /// width of the display.
     var gameTitle: String
@@ -67,10 +68,10 @@ class BaseGridViewModel: GridViewModelProtocol {
         numRows = rows
         numColumns = columns
 
+        gridData = TextGrid(fromInitialGrid: possibleAnswers, randomized: true)
+
         timer = CountDownTimer(totalTimeAllowed: time)
         timer.timerListener = gridTimerListener
-
-        loadGrid()
     }
 
     /// Tells the view model that the game has started.
@@ -96,7 +97,7 @@ class BaseGridViewModel: GridViewModelProtocol {
             return false
         }
 
-        swapGridData(coord1, and: coord2)
+        gridData.swap(coord1, and: coord2)
 
         if hasGameWon {
             gameStatus = .endedWithWon
@@ -108,53 +109,7 @@ class BaseGridViewModel: GridViewModelProtocol {
 
     /// Returns true iff the game is won
     private var hasGameWon: Bool {
-        let sortedGrid = gridData
-            .sorted { $0.key < $1.key }
-            .map { $0.value }
-
-        var temporary: [String] = []
-        for element in sortedGrid {
-            temporary.append(element)
-            if temporary.count == Constants.Game.Grid.columns {
-                if possibleAnswers.contains(where: { $0 == temporary }) {
-                    temporary = []
-                } else {
-                    return false
-                }
-            }
-        }
-        return true
-    }
-
-    /// Loads the grid from an array of array of characters.
-    /// The characters will be shuffled before putting it in the grid.
-    /// Each element in the main array should have the same length.
-    ///
-    /// - Parameter characters: the characters to be loaded to the grid
-    private func loadGrid() {
-        let allTiles = tiles.shuffled()
-
-        // Place back allTiles to the grid
-        gridData.removeAll()
-        var idx = 0
-        for row in 0..<numRows {
-            for col in 0..<numColumns {
-                gridData[Coordinate(row: row, col: col)] = allTiles[idx]
-                idx += 1
-            }
-        }
-    }
-
-    /// Swaps two coordinates in the grid data. The built-in swap function cannot be used as
-    /// it will introduce concurrent write in gridData's didSet listener.
-    ///
-    /// - Parameters:
-    ///   - coord1: the first coordinate
-    ///   - coord2: the second coordinate
-    private func swapGridData(_ coord1: Coordinate, and coord2: Coordinate) {
-        let initialSecond = gridData[coord2]
-        gridData[coord2] = gridData[coord1]
-        gridData[coord1] = initialSecond
+        return gridData.allRowsInside(stringArrays: possibleAnswers)
     }
 
     /// The countdown timer for use in this viewmodel.

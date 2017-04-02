@@ -8,11 +8,6 @@ class BaseGridViewModelTests: XCTestCase {
                                           possibleAnswers: [["a", "b"]],
                                           rows: 1, columns: 2)
 
-        let possibilities = [[Coordinate(row: 0, col: 0): "a", Coordinate(row: 0, col: 1): "b"],
-                             [Coordinate(row: 0, col: 0): "b", Coordinate(row: 0, col: 1): "a"]]
-
-        XCTAssert(possibilities.contains { $0 == viewModel.gridData },
-                  "ViewModel gridData on init is not empty")
         XCTAssertNil(viewModel.delegate,
                      "ViewModel delegate on init is not nil")
         XCTAssertEqual(0, viewModel.currentScore,
@@ -48,8 +43,6 @@ class BaseGridViewModelTests: XCTestCase {
 
         XCTAssertEqual(GameStatus.inProgress, viewModel.gameStatus,
                        "ViewModel game status when the game runs is not inProgress")
-        XCTAssertEqual(rows * columns, viewModel.gridData.count,
-                       "ViewModel gridData is not correctly populated")
         for row in 0..<rows {
             for col in 0..<columns {
                 XCTAssertNotNil(viewModel.gridData[Coordinate(row: row, col: col)],
@@ -129,9 +122,9 @@ class BaseGridViewModelTests: XCTestCase {
         var viewModel = BaseGridViewModel(time: time, tiles: ["a", "b"],
                                           possibleAnswers: [["a", "b"]],
                                           rows: rows, columns: columns)
-        var gridData: [Coordinate: String] = viewModel.gridData
+        var gridData = viewModel.gridData
 
-        while gridData != [Coordinate(row: 0, col: 0): "b", Coordinate(row: 0, col: 1): "a"] {
+        while gridData[Coordinate(row: 0, col: 0)] == "a" {
             viewModel = BaseGridViewModel(time: time, tiles: ["a", "b"],
                                           possibleAnswers: [["a", "b"]],
                                           rows: rows, columns: columns)

@@ -20,8 +20,6 @@ class CiHuiGridViewModelTests: XCTestCase {
             tiles += (hanzi + pinyin)
         }
 
-        XCTAssertEqual(Set(tiles), Set(viewModel.gridData.values),
-                       "ViewModel tiles on init is not correct")
         XCTAssertNil(viewModel.delegate,
                      "ViewModel delegate on init is not nil")
         XCTAssertEqual(0, viewModel.currentScore,

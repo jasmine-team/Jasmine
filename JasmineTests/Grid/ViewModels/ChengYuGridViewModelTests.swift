@@ -12,11 +12,6 @@ class ChengYuGridViewModelTests: XCTestCase {
 
         let viewModel = ChengYuGridViewModel(time: 10, gameData: gameData, numberOfPhrases: numberOfPhrases)
 
-        let phrases = gameData.phrases.next(count: numberOfPhrases)
-        let tiles = phrases.map { $0.chinese.characters.map { char in String(char) } }.flatMap { $0 }
-
-        XCTAssertEqual(Set(tiles), Set(viewModel.gridData.values),
-                       "ViewModel tiles on init is not correct")
         XCTAssertNil(viewModel.delegate,
                      "ViewModel delegate on init is not nil")
         XCTAssertEqual(0, viewModel.currentScore,
