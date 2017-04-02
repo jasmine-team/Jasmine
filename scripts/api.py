@@ -13,7 +13,7 @@ TRANSLATE_API_URL = 'https://glosbe.com/gapi/translate'
 # URL to get Chinese definitions
 CHINESE_DICT_API_URL = 'https://api.jisuapi.com/cidian/word'
 # URL to get Chinese idiom (cheng yu) definitions
-CHENG_YU_API_URL = 'https://v.juhe.cn/chengyu/query'
+CHENG_YU_API_URL = 'https://api.jisuapi.com/chengyu/detail'
 # CSV file to read and write to
 CSV_FILE_NAME = 'Phrase.csv'
 # CSV file path
@@ -72,6 +72,7 @@ def cheng_yu_api_query(phrase):
     })
     try:
         response = get_json(CHINESE_DICT_API_URL, query)
+        print(response)
         answer = response['result']
         return {
             'chinese': phrase,
@@ -88,10 +89,12 @@ def fill_row(row):
     else:
         endpoint = chinese_dict_api_query
     data = endpoint(row['chinese'])
-    new_row = {**row, **data}
-    return new_row
+    if data:
+        new_row = {**row, **data}
+        return new_row
+    return row
 
-def read_csv():
+def update_csv():
     """Reads csv and inputs new api data into it"""
     with open(CSV_FILE_PATH, 'r+') as csvfile:
         reader = csv.DictReader(csvfile)
@@ -103,7 +106,7 @@ def read_csv():
 
 def main():
     """Main function that processes apis and converts to output csv format"""
-    read_csv()
+    update_csv()
 
 if __name__ == "__main__":
     main()
