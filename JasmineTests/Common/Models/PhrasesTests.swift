@@ -39,4 +39,11 @@ class PhrasesTests: RealmTestCase {
         XCTAssertTrue(phrases.contains(chinese: "中文"), "String not found within phrases")
     }
 
+    func testPhrases_first() {
+        XCTAssertNil(phrases.first(whereChinese: ""), "Empty string found within phrases")
+        XCTAssertNil(phrases.first(whereChinese: "中"), "Partial string found within phrases")
+        XCTAssertEqual(phrases.first(whereChinese: "中文"), listOfPhrases.first,
+                       "String not found within phrases")
+    }
+
 }

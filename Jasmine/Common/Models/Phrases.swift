@@ -35,12 +35,29 @@ class Phrases {
         return self.phrases[nextIndex]
     }
 
-    /// Checks if the chinese text is a valid chinese phrase, regardless of position
+    /// Checks if the chinese text is a valid chinese phrase, must be exact match
     ///
     /// - Parameter chinese: chinese word to test for presence
     /// - Returns: true if there is such a word
     func contains(chinese: String) -> Bool {
-        return phrases.filter("chinese == '\(chinese)'").count >= 1
+        return filter(chinese: chinese).count >= 1
+    }
+
+    /// Returns valid phrase if chinese is in the database 
+    ///
+    /// - Parameter whereChinese: chinese word to look for
+    /// - Returns: phrase if there's such a word and nil if not
+    func first(whereChinese chinese: String) -> Phrase? {
+        return filter(chinese: chinese).first
+    }
+
+    /// Returns result after applying result predicate to realm db
+    /// Note: Will only result 0 or 1 result since chinese is guaranteed to be unique
+    ///
+    /// - Parameter chinese: chinese word
+    /// - Returns: result of phrase
+    private func filter(chinese: String) -> Results<Phrase> {
+        return phrases.filter("chinese == '\(chinese)'")
     }
 
 }
