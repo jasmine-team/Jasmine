@@ -39,9 +39,7 @@ class SwappingGameViewController: UIViewController {
     /// Method that manages the seguing to other view controllers from this view controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let squareSwappingView = segue.destination as? DraggableSquareGridViewController {
-            squareSwappingView.segueWith(viewModel.gridData.coordinateDictionary,
-                                         numRows: Constants.Game.Swapping.rows,
-                                         numCols: Constants.Game.Swapping.columns)
+            squareSwappingView.segueWith(viewModel.gridData)
             self.squareGridViewController = squareSwappingView
 
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
@@ -173,40 +171,15 @@ fileprivate extension SwappingGameViewController {
 
         squareGridViewController.snapDetachedTile(startingView, toCoordinate: endingCoord) {
             self.squareGridViewController.reattachDetachedTile(startingView)
-            self.squareGridViewController.reload(cellsAt: [endingCoord], withAnimation: false)
         }
         squareGridViewController.snapDetachedTile(endingView, toCoordinate: startingCoord) {
             self.squareGridViewController.reattachDetachedTile(endingView)
-            self.squareGridViewController.reload(cellsAt: [startingCoord], withAnimation: false)
         }
     }
 }
 
-// MARK: - Delegate for Swapping Game
+// MARK: - Delegate Conformance
 extension SwappingGameViewController: SwappingGameViewControllerDelegate {
-
-    /// Update the grid data stored in the Swapping Game View Controller with a new dataset.
-    func updateGridData() {
-        squareGridViewController.update(collectionData: viewModel.gridData.coordinateDictionary)
-    }
-
-    /// Refreshes the tiles based on the tiles information stored in the View Controller's grid data.
-    func redisplayAllTiles() {
-        squareGridViewController.reload(allCellsWithAnimation: true)
-    }
-
-    /// Refreshes a selected set of tiles based on the tiles information stored in the VC's grid data.
-    func redisplay(tilesAt coordinates: Set<Coordinate>) {
-        squareGridViewController.reload(cellsAt: coordinates, withAnimation: true)
-    }
-
-    /// Refreshes one particular tile based on the tiles information stored in the VC's grid data.
-    func redisplay(tileAt coordinate: Coordinate) {
-        squareGridViewController.reload(cellsAt: [coordinate], withAnimation: true)
-    }
-}
-
-extension SwappingGameViewController: BaseGameViewControllerDelegate {
     // MARK: Score Update
     /// Redisplay the score displayed on the view controller screen with a new score.
     func redisplay(newScore: Int) {

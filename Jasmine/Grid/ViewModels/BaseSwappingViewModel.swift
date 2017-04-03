@@ -94,8 +94,6 @@ class BaseSwappingViewModel: SwappingViewModelProtocol {
         }
 
         gridData.swap(coord1, coord2)
-        delegate?.updateGridData()
-
         if hasGameWon {
             gameStatus = .endedWithWon
             currentScore += Int(timeRemaining * Double(Constants.Game.Swapping.scoreMultiplierFromTime))
