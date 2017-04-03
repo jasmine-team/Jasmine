@@ -22,20 +22,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eKS-sV-Lr3">
-                                <rect key="frame" x="125.5" y="303.5" width="124" height="60"/>
+                                <rect key="frame" x="78.5" y="288.5" width="218" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nil-Gc-zGo">
-                                        <rect key="frame" x="0.0" y="0.0" width="124" height="30"/>
-                                        <state key="normal" title="Open Grid Game"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="218" height="30"/>
+                                        <state key="normal" title="Open Swapping Chengyu Game"/>
                                         <connections>
-                                            <segue destination="n7s-Ck-n8c" kind="show" id="ZuM-yK-y0B"/>
+                                            <segue destination="n7s-Ck-n8c" kind="show" id="odq-fT-zOs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvu-uL-ORH">
+                                        <rect key="frame" x="0.0" y="30" width="218" height="30"/>
+                                        <state key="normal" title="Open Swapping Cihui Game"/>
+                                        <connections>
+                                            <segue destination="n7s-Ck-n8c" kind="show" id="ttU-OF-6vh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iq-Ac-1yh">
-                                        <rect key="frame" x="0.0" y="30" width="124" height="30"/>
+                                        <rect key="frame" x="0.0" y="60" width="218" height="30"/>
                                         <state key="normal" title="Open Tetris Game"/>
                                         <connections>
                                             <segue destination="CTx-JF-hEy" kind="show" id="teM-ew-Hcb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDQ-IQ-GqK">
+                                        <rect key="frame" x="0.0" y="60" width="132" height="30"/>
+                                        <state key="normal" title="Open Sliding Game"/>
+                                        <connections>
+                                            <segue destination="8ZU-Hu-mvm" kind="show" id="MN3-qC-tx6"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -47,14 +61,18 @@
                             <constraint firstItem="eKS-sV-Lr3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Gso-5n-fSy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="swappingChengYuButton" destination="nil-Gc-zGo" id="sUZ-RF-Tlh"/>
+                        <outlet property="swappingCiHuiButton" destination="qvu-uL-ORH" id="g8b-qY-NZc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--GridGameViewController-->
+        <!--SwappingGameViewController-->
         <scene sceneID="a8W-Oz-04v">
             <objects>
-                <viewControllerPlaceholder storyboardName="GridStoryboard" referencedIdentifier="GridGameViewController" id="n7s-Ck-n8c" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SwappingStoryboard" referencedIdentifier="SwappingGameViewController" id="n7s-Ck-n8c" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WeS-BJ-Okb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="830" y="122"/>
@@ -67,5 +85,16 @@
             </objects>
             <point key="canvasLocation" x="818" y="179"/>
         </scene>
+        <!--SlidingGameViewContoller-->
+        <scene sceneID="61E-hi-Ljp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SlidingGameStoryboard" referencedIdentifier="SlidingGameViewContoller" id="8ZU-Hu-mvm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e9M-vg-btE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="799" y="229"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ttU-OF-6vh"/>
+    </inferredMetricsTieBreakers>
 </document>

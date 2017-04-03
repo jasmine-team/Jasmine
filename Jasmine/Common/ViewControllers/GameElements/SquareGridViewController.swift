@@ -14,11 +14,19 @@ class SquareGridViewController: UIViewController {
         = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
     // MARK: Properties
-    /// Stores the maximum number of rows that should be displayed in this view.
-    private(set) var numRows = 1
+    /// Caches the database that is used to display onto the collection view in this view controller.
+    /// This may not be in sync with the data in the grid.
+    fileprivate var gridDataCache: TextGrid!
 
-    /// Stores the maximum number of columns that should be displayed in this view.
-    private(set) var numCols = 1
+    /// Conveniently gets the maximum number of rows that should be displayed in this view.
+    var numRows: Int {
+        return gridDataCache.numRows
+    }
+
+    /// Conveniently gets the maximum number of columns that should be displayed in this view.
+    var numCols: Int {
+        return gridDataCache.numColumns
+    }
 
     /// Specifies the amount of space between each cell.
     fileprivate var cellSpacing: CGFloat = 0
@@ -49,14 +57,11 @@ class SquareGridViewController: UIViewController {
         return floatingTiles.union(tilesOnGrid)
     }
 
-    /// Stores the database that is used to display onto the collection view in this view controller.
-    fileprivate var collectionData: [Coordinate: String] = [:]
-
     /// Stores the properties that is used to apply onto all the tiles in that specified coordinate,
     /// that is inside this collection view.
     var tileProperties: [Coordinate: (SquareTileView) -> Void] = [:]
 
-    // MARK: View Controller Lifecycles
+    // MARK: - View Controller Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         initCollectionView()
@@ -68,75 +73,48 @@ class SquareGridViewController: UIViewController {
         gridCollectionView.performBatchUpdates(gridCollectionView.reloadData, completion: nil)
     }
 
-    // MARK: Segue Methods
-    /// Load the view controller with initial dataset, and the number of rows and columns in this
-    /// collection view. Note that needing space is assumed.
+    // MARK: - Segue Methods
+    /// Load the view controller with initial dataset in this collection view.
     ///
     /// - Parameters:
-    ///   - initialData: initial set of data to be displayed in this view.
-    ///   - numRows: maximum number of rows to be displayed in this grid.
-    ///   - numCols: maximum number of columns to be displayed in this grid.
-    func segueWith(_ initialData: [Coordinate: String], numRows: Int, numCols: Int) {
-        self.segueWith(initialData, numRows: numRows, numCols: numCols,
-                       withSpace: SquareGridViewController.standardCellSpacing)
-    }
-
-    /// Load the view controller with initial dataset, and the number of rows and columns in this
-    /// collection view.
-    ///
-    /// - Parameters:
-    ///   - initialData: initial set of data to be displayed in this view.
-    ///   - numRows: maximum number of rows to be displayed in this grid.
-    ///   - numCols: maximum number of columns to be displayed in this grid.
-    ///   - needSpace: when set to true, provides a spacing, else space is removed.
-    func segueWith(_ initialData: [Coordinate: String], numRows: Int, numCols: Int,
-                   withSpace space: CGFloat) {
-
-        self.collectionData = initialData
-        self.numCols = numCols
-        self.numRows = numRows
+    ///   - initialGridData: initial set of data to be displayed in this view.
+    ///   - space: the space between the tiles in the grid view controller.
+    func segueWith(_ initialGridData: TextGrid, withSpace space: CGFloat) {
+        self.gridDataCache = initialGridData
         self.cellSpacing = space
     }
 
-    // MARK: - Data Interaction
-    /// Call this method to update the data stored in this collection view.
-    /// However, this does not reload the data in this display.
-    ///
-    /// - Parameter collectionData: the data source to be updated.
-    func update(collectionData: [Coordinate: String]) {
-        self.collectionData = collectionData
-    }
-
-    /// Call this method to reload the data that is displayed in the collection view with the data
-    /// in the data set. However, if the data set is not updated with `update(...)`, no visual
-    /// differences will be noted.
+    /// Load the view controller with initial dataset in this collection view, with standard spacing.
     ///
     /// - Parameters:
-    ///   - coordinates: the cell coordinates that should be updated.
-    ///   - shouldAnimate: true to animate the reloading with fade animation, false otherwise.
-    func reload(cellsAt coordinates: Set<Coordinate>, withAnimation shouldAnimate: Bool) {
-        let indices = coordinates.map { $0.toIndexPath }
-        let basicReloadIndices = {
-            self.gridCollectionView.reloadItems(at: indices)
-        }
-
-        if shouldAnimate {
-            gridCollectionView.performBatchUpdates(basicReloadIndices, completion: nil)
-        } else {
-            UIView.setAnimationsEnabled(false)
-            basicReloadIndices()
-            UIView.setAnimationsEnabled(true)
-        }
+    ///   - initialGridData: initial set of data to be displayed in this view.
+    func segueWith(_ initialGridData: TextGrid) {
+        segueWith(initialGridData, withSpace: SquareGridViewController.standardCellSpacing)
     }
 
-    /// Call this method to reload all the data that is displayed in the collection view with the
-    /// data in the data set. However, if the data set is not updated with `update(...)`, no visual
-    /// differences will be noted.
+    /// Loads the view controller with an empty dataset in this collection view.
     ///
     /// - Parameters:
-    ///   - shouldAnimate: true to animate the reloading with fade animation, false otherwise.
-    func reload(allCellsWithAnimation shouldAnimate: Bool) {
-        reload(cellsAt: allCoordinates, withAnimation: shouldAnimate)
+    ///   - numRow: number of rows to display in this collection view.
+    ///   - numCol: number of columns to display in this collection view.
+    ///   - space: the space between the tiles in the grid view controller.
+    func segueWith(numRow: Int, numCol: Int, withSpace space: CGFloat) {
+        segueWith(TextGrid(numRows: numRow, numColumns: numCol), withSpace: space)
+    }
+
+    // MARK: - Reload Methods
+    /// Reloads the grid with a fresh grid data
+    ///
+    /// - Parameters:
+    ///   - gridData: the grid data to be reloaded with.
+    ///   - shouldAnimate: true to reload with a fade animation.
+    func reload(gridData: TextGrid, withAnimation shouldAnimate: Bool) {
+        self.gridDataCache = gridData
+        let indices = allCoordinates.map { $0.toIndexPath }
+
+        UIView.setAnimationsEnabled(shouldAnimate)
+        self.gridCollectionView.reloadItems(at: indices)
+        UIView.setAnimationsEnabled(true)
     }
 
     // MARK: - Collection View Properties
@@ -171,6 +149,14 @@ class SquareGridViewController: UIViewController {
     /// - Returns: the frame if coordinate is valid.
     func getFrame(at coordinate: Coordinate) -> CGRect? {
         return getCell(at: coordinate)?.frame
+    }
+
+    /// Get the cell center at the specified coordinate.
+    ///
+    /// - Parameter coordinate: the coordinate where the view cell's center should be obtained.
+    /// - Returns: the center if coordinate is valid.
+    func getCenter(from coordinate: Coordinate) -> CGPoint? {
+        return getCell(at: coordinate)?.center
     }
 
     /// Adds the specified tile to the collection view.
@@ -234,7 +220,7 @@ extension SquareGridViewController: UICollectionViewDataSource {
             fatalError("View Cell that extends from SquareTileViewCell is required.")
         }
 
-        squareCell.setOnlyText(collectionData[indexPath.toCoordinate])
+        squareCell.setOnlyText(gridDataCache[indexPath.toCoordinate])
         squareCell.tileProperties = self.tileProperties[indexPath.toCoordinate]
         return squareCell
     }

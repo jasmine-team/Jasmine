@@ -27,6 +27,13 @@ class TextGrid {
         grid = initialGrid
     }
 
+    /// Initializes a TextGrid with a given initial array. Produces a grid of a single row.
+    ///
+    /// - Parameter initalArray: the initial array to be morphed into a grid.
+    convenience init(fromInitialArray initalArray: [String?]) {
+        self.init(fromInitialGrid: [initalArray])
+    }
+
     /// Initializes a TextGrid filled with nils, given the dimensions of the grid.
     ///
     /// - Parameters:
@@ -93,12 +100,13 @@ class TextGrid {
         return texts
     }
 
-    /// Gets the texts at `coordinates`
+    /// Gets the texts at `coordinates` joined, optionally separated by a separator.
     ///
-    /// - Parameter coordinates: Array of Coordinate to get the text at
+    /// - Parameter coordinates: array of Coordinates to get the text at
+    /// - Parameter separator: separator of the strings, defaults to empty string
     /// - Returns: Concatenated string from texts at `coordinates`
     ///            Returns nil if any of the coordinates is out of bounds or has no text
-    func getConcatenatedTexts(at coordinates: [Coordinate]) -> String? {
-        return getTexts(at: coordinates)?.joined()
+    func getConcatenatedTexts(at coordinates: [Coordinate], separatedBy separator: String = "") -> String? {
+        return getTexts(at: coordinates)?.joined(separator: separator)
     }
 }

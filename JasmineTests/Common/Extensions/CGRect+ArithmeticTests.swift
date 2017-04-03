@@ -44,4 +44,20 @@ class CGRectArithmeticTests: XCTestCase {
         // Invalid size is not tested, because invalid size is not guarded in CGRect by Apple,
         // and is treated as undetermined behaviour instead.
     }
+
+    func testInit_minXYmaxXY() {
+
+        /// Helper method to test the construction of the CGRect
+        func testHelper(minX: CGFloat, maxX: CGFloat, minY: CGFloat, maxY: CGFloat) {
+            let rectOutcome = CGRect(minX: minX, maxX: maxX, minY: minY, maxY: maxY)
+            XCTAssertEqual(rectOutcome.minX, minX, "Min X should equate.")
+            XCTAssertEqual(rectOutcome.minY, minY, "Min Y should equate.")
+            XCTAssertEqual(rectOutcome.maxX, maxX, "Max X should equate.")
+            XCTAssertEqual(rectOutcome.maxY, maxY, "Max Y should equate.")
+        }
+
+        testHelper(minX: 0, maxX: 0, minY: 0, maxY: 0)
+        testHelper(minX: 0.1, maxX: 0.2, minY: 0.3, maxY: 0.4)
+        testHelper(minX: -0.5, maxX: 0.5, minY: -0.6, maxY: 0.6)
+    }
 }

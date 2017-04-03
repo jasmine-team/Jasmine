@@ -1,5 +1,6 @@
 import UIKit
 
+/// View Controller implementation for Tetris Game.
 class TetrisGameViewController: UIViewController {
 
     // MARK: - Constants
@@ -18,12 +19,8 @@ class TetrisGameViewController: UIViewController {
     // MARK: Game Properties
     fileprivate var viewModel: TetrisGameViewModelProtocol!
 
-    fileprivate var upcomingTiles: [Coordinate: String] {
-        var outcome: [Coordinate: String] = [:]
-        (0..<Constants.Game.Tetris.upcomingTilesCount)
-            .map { (location: $0, data: viewModel.upcomingTiles[$0]) }
-            .forEach { outcome[Coordinate(row: 0, col: $0.location)] = $0.data }
-        return outcome
+    fileprivate var upcomingTiles: TextGrid {
+        return TextGrid(fromInitialArray: viewModel.upcomingTiles)
     }
 
     // MARK: View Controller Lifecycles
@@ -40,8 +37,7 @@ class TetrisGameViewController: UIViewController {
             helperSegueIntoTetrisGridView()
 
         } else if let upcomingView = segue.destination as? SquareGridViewController {
-            upcomingView.segueWith(upcomingTiles, numRows: 1,
-                                   numCols: Constants.Game.Tetris.upcomingTilesCount)
+            upcomingView.segueWith(upcomingTiles)
             self.tetrisUpcomingTilesView = upcomingView
 
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
@@ -62,8 +58,8 @@ class TetrisGameViewController: UIViewController {
             return self.viewModel.canShiftFallingTile(to: coord)
         }
 
-        tetrisGameAreaView.segueWith([:], numRows: Constants.Game.Tetris.rows,
-                                     numCols: Constants.Game.Tetris.columns,
+        tetrisGameAreaView.segueWith(numRow: Constants.Game.Tetris.rows,
+                                     numCol: Constants.Game.Tetris.columns,
                                      withSpace: TetrisGameViewController.cellSpace)
     }
 
@@ -76,10 +72,13 @@ class TetrisGameViewController: UIViewController {
     }
 
     // MARK: Gestures and Listeners
+    /// Dismisses this view when the back button is pressed.
     @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
 
+    /// Switches the content of the falling tile with the latest upcoming tile when any tile in the
+    /// list of upcoming tile is tapped.
     @IBAction func onUpcomingTilesTouched(_ sender: UITapGestureRecognizer) {
         guard tetrisGameAreaView.hasFallingTile,
               let coord = tetrisUpcomingTilesView
@@ -89,16 +88,28 @@ class TetrisGameViewController: UIViewController {
         viewModel.swapFallingTile(withUpcomingAt: coord.col)
 
         tetrisGameAreaView.fallingTile?.text = viewModel.fallingTileText
-        tetrisUpcomingTilesView.update(collectionData: upcomingTiles)
-        tetrisUpcomingTilesView.reload(allCellsWithAnimation: true)
+        tetrisUpcomingTilesView.reload(gridData: upcomingTiles, withAnimation: true)
     }
 
+    /// Moves the falling tile when the view is swiped to a particular direction.
     @IBAction func onTilesSwiped(_ sender: UISwipeGestureRecognizer) {
         guard tetrisGameAreaView.hasFallingTile,
               sender.direction != .up else {
             return
         }
         tetrisGameAreaView.shiftFallingTile(towards: sender.direction.toDirection)
+    }
+
+    /// Moves the falling tile with respect to the position of the falling tile when the user taps
+    /// on the grid.
+    @IBAction func onTilesTapped(_ sender: UITapGestureRecognizer) {
+        guard let tilePosition = tetrisGameAreaView.fallingTile?.center else {
+            return
+        }
+
+        let touchedPosition = sender.location(in: tetrisGameAreaView.view)
+        let direction: Direction = touchedPosition.x > tilePosition.x ? .eastwards : .westwards
+        tetrisGameAreaView.shiftFallingTile(towards: direction)
     }
 
     // MARK: - Game State and Actions

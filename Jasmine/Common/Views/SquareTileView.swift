@@ -8,6 +8,8 @@ class SquareTileView: UILabel {
     // MARK: Constants
     private static let borderWidth: CGFloat = 2
 
+    private static let fontSizeRatio: CGFloat = 0.618
+
     // MARK: Text Properties
     /// Sets the text to be displayed in the UILabel, which derives from the `character` property in
     /// this class.
@@ -20,6 +22,15 @@ class SquareTileView: UILabel {
                 return
             }
             applyContextualTheme(whenFilled: !text.isEmpty)
+        }
+    }
+
+    override var frame: CGRect {
+        didSet {
+            guard frame.size != oldValue.size else {
+                return
+            }
+            adjustFontSize()
         }
     }
 
@@ -50,6 +61,13 @@ class SquareTileView: UILabel {
         textAlignment = .center
         font = Constants.Theme.tilesFont
         textColor = Constants.Theme.mainWhiteColor
+    }
+
+    private func adjustFontSize() {
+        guard let numChar = text?.characters.count else {
+            return
+        }
+        font = font.withSize(frame.height * SquareTileView.fontSizeRatio / sqrt(CGFloat(numChar)))
     }
 
     private func applyContextualTheme(whenFilled: Bool) {
