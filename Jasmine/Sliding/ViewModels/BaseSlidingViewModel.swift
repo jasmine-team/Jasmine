@@ -48,7 +48,6 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
         }
 
         gridData.swap(start, end)
-        delegate?.updateGridData()
         checkGameWon()
 
         return true

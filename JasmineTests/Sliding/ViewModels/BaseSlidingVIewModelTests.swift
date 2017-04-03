@@ -132,7 +132,6 @@ class BaseSlidingViewModelTests: XCTestCase {
         XCTAssert(viewModel.slideTile(from: start, to: end))
         XCTAssertEqual(gridData[start], viewModel.gridData[end])
         XCTAssertEqual(gridData[end], viewModel.gridData[start])
-        XCTAssert(delegate.gridDataUpdated)
         viewModel.slideTile(from: end, to: start)
     }
 
