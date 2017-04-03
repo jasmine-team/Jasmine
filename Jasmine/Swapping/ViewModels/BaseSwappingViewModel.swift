@@ -1,6 +1,6 @@
 import Foundation
 
-class BaseGridViewModel: GridViewModelProtocol {
+class BaseSwappingViewModel: SwappingViewModelProtocol {
     /// Stores the grid data that will be used to display in the view controller.
     private(set) var gridData: TextGrid
     /// Number of rows in the grid, according to the answers property
@@ -13,7 +13,7 @@ class BaseGridViewModel: GridViewModelProtocol {
     }
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
-    weak var delegate: GridGameViewControllerDelegate?
+    weak var delegate: SwappingGameViewControllerDelegate?
     /// Specifies the current score of the game. If the game has not started, it will be the initial
     /// displayed score.
     private(set) var currentScore: Int = 0 {
@@ -72,7 +72,7 @@ class BaseGridViewModel: GridViewModelProtocol {
 
     /// Tells the view model that the game has started.
     func startGame() {
-        timer.startTimer(timerInterval: Constants.Game.Grid.timerInterval)
+        timer.startTimer(timerInterval: Constants.Game.Swapping.timerInterval)
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
@@ -94,12 +94,9 @@ class BaseGridViewModel: GridViewModelProtocol {
         }
 
         gridData.swap(coord1, coord2)
-        delegate?.updateGridData()
-        delegate?.redisplay(tilesAt: [coord1, coord2])
-
         if hasGameWon {
             gameStatus = .endedWithWon
-            currentScore += Int(timeRemaining * Double(Constants.Game.Grid.scoreMultiplierFromTime))
+            currentScore += Int(timeRemaining * Double(Constants.Game.Swapping.scoreMultiplierFromTime))
         }
 
         return true

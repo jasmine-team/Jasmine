@@ -1,6 +1,6 @@
 import Foundation
 
-class ChengYuGridViewModel: BaseGridViewModel {
+class ChengYuSwappingViewModel: BaseSwappingViewModel {
     /// Initializes the game
     ///
     /// - Parameters:
@@ -12,10 +12,10 @@ class ChengYuGridViewModel: BaseGridViewModel {
         let tiles = phrases.flatMap { $0.chinese.characters.map { char in String(char) } }
 
         super.init(time: time, gameData: gameData, tiles: tiles,
-                   rows: numberOfPhrases, columns: Constants.Game.Grid.columns)
+                   rows: numberOfPhrases, columns: Constants.Game.Swapping.columns)
 
-        gameTitle = Constants.Game.Grid.ChengYu.gameTitle
-        gameInstruction = Constants.Game.Grid.ChengYu.gameInstruction
+        gameTitle = Constants.Game.Swapping.ChengYu.gameTitle
+        gameInstruction = Constants.Game.Swapping.ChengYu.gameInstruction
     }
 
     /// Returns if and only if the game is won, that is: every row is a valid Chengyu.

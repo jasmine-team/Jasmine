@@ -152,6 +152,7 @@
                             <constraint firstItem="64w-ac-iLZ" firstAttribute="trailing" secondItem="EvM-bs-WbZ" secondAttribute="trailing" id="xy4-Cu-Xh2"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGJ-pa-lSq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="clz-3h-Xvc" userLabel="Upcoming Tap Gesture Recognizer">

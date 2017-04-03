@@ -1,5 +1,6 @@
 import UIKit
 
+/// View Controller implementation for Tetris Game.
 class TetrisGameViewController: UIViewController {
 
     // MARK: - Constants
@@ -18,12 +19,8 @@ class TetrisGameViewController: UIViewController {
     // MARK: Game Properties
     fileprivate var viewModel: TetrisGameViewModelProtocol!
 
-    fileprivate var upcomingTiles: [Coordinate: String] {
-        var outcome: [Coordinate: String] = [:]
-        (0..<Constants.Game.Tetris.upcomingTilesCount)
-            .map { (location: $0, data: viewModel.upcomingTiles[$0]) }
-            .forEach { outcome[Coordinate(row: 0, col: $0.location)] = $0.data }
-        return outcome
+    fileprivate var upcomingTiles: TextGrid {
+        return TextGrid(fromInitialArray: viewModel.upcomingTiles)
     }
 
     // MARK: View Controller Lifecycles
@@ -40,8 +37,7 @@ class TetrisGameViewController: UIViewController {
             helperSegueIntoTetrisGridView()
 
         } else if let upcomingView = segue.destination as? SquareGridViewController {
-            upcomingView.segueWith(upcomingTiles, numRows: 1,
-                                   numCols: Constants.Game.Tetris.upcomingTilesCount)
+            upcomingView.segueWith(upcomingTiles)
             self.tetrisUpcomingTilesView = upcomingView
 
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
@@ -62,8 +58,8 @@ class TetrisGameViewController: UIViewController {
             return self.viewModel.canShiftFallingTile(to: coord)
         }
 
-        tetrisGameAreaView.segueWith([:], numRows: Constants.Game.Tetris.rows,
-                                     numCols: Constants.Game.Tetris.columns,
+        tetrisGameAreaView.segueWith(numRow: Constants.Game.Tetris.rows,
+                                     numCol: Constants.Game.Tetris.columns,
                                      withSpace: TetrisGameViewController.cellSpace)
     }
 
@@ -155,8 +151,7 @@ extension TetrisGameViewController: TetrisGameViewControllerDelegate {
     /// Tells the view controller to retrieve `upcomingTiles` and reload the view for the upcoming 
     /// tiles.
     func redisplayUpcomingTiles() {
-        tetrisUpcomingTilesView.update(collectionData: upcomingTiles)
-        tetrisUpcomingTilesView.reload(allCellsWithAnimation: true)
+        tetrisUpcomingTilesView.reload(gridData: upcomingTiles, withAnimation: true)
     }
 
     /// Tells the view controller to redisplay the falling tile with `tileText`
