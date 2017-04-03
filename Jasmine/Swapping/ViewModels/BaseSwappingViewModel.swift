@@ -31,7 +31,7 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
 
     /// Score for the game when it is won on the current state.
     override var score: Int {
-        return Int(timeRemaining * Double(Constants.Game.Swapping.scoreMultiplierFromTime))
+        return Int(timeRemaining * Constants.Game.Swapping.scoreMultiplierFromTime)
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap

@@ -9,7 +9,8 @@ class BaseSlidingViewModelTests: XCTestCase {
             return
         }
 
-        let viewModel = BaseSlidingViewModel(time: 3, gameData: gameData, tiles: ["a", "b"], rows: 1, columns: 2)
+        let viewModel = BaseSlidingViewModel(time: 3, gameData: gameData,
+                                             tiles: ["a", "b"], rows: 1, columns: 2)
 
         XCTAssertNil(viewModel.delegate,
                      "ViewModel delegate on init is not nil")
@@ -48,7 +49,7 @@ class BaseSlidingViewModelTests: XCTestCase {
         let time: TimeInterval = 3
 
         let viewModel = BaseSlidingViewModel(time: time, gameData: gameData, tiles: ["a", "b"],
-                                          rows: rows, columns: columns)
+                                             rows: rows, columns: columns)
         let delegate = SlidingGameViewControllerDelegateMock()
         viewModel.delegate = delegate
         viewModel.startGame()
@@ -67,5 +68,144 @@ class BaseSlidingViewModelTests: XCTestCase {
                        "Delegate timeRemaining is not correct")
         XCTAssertEqual(GameStatus.endedWithLost, viewModel.gameStatus,
                        "ViewModel game status when time's up is not endedWithLost")
+    }
+
+    func testCanTileSlide() {
+        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
+            XCTFail("Realm errors")
+            return
+        }
+
+        let grid = [String?](repeating: "a", count: 12) + [String?](repeating: nil, count: 4)
+
+        let rows = 4
+        let columns = 4
+        let time: TimeInterval = 3
+
+        for _ in 0..<3 { // do this 3 times due to randomness
+            let viewModel = BaseSlidingViewModel(time: time, gameData: gameData, tiles: grid,
+                                                 rows: rows, columns: columns)
+            let gridData = viewModel.gridData
+
+            for row in 0..<rows {
+                for col in 0..<columns {
+                    let coordinate = Coordinate(row: row, col: col)
+
+                    if !gridData.isInBounds(coordinate: coordinate) || gridData[coordinate] == nil {
+                        XCTAssertEqual([:], viewModel.canTileSlide(from: coordinate))
+                        continue
+                    }
+
+                    // From here onwards, the coordinate is in the grid data, and the contents is not nil.
+                    // Just need to check if the neighbors are in the grid and contents are nil.
+
+                    var result: [Direction: Coordinate] = [:]
+
+                    let top = Coordinate(row: row - 1, col: col)
+                    let bottom = Coordinate(row: row + 1, col: col)
+                    let left = Coordinate(row: row, col: col - 1)
+                    let right = Coordinate(row: row, col: col + 1)
+
+                    if gridData.isInBounds(coordinate: top) && gridData[top] == nil {
+                        result[.northwards] = top
+                    }
+                    if gridData.isInBounds(coordinate: bottom) && gridData[bottom] == nil {
+                        result[.southwards] = bottom
+                    }
+                    if gridData.isInBounds(coordinate: left) && gridData[left] == nil {
+                        result[.westwards] = left
+                    }
+                    if gridData.isInBounds(coordinate: right) && gridData[right] == nil {
+                        result[.eastwards] = right
+                    }
+
+                    XCTAssertEqual(result, viewModel.canTileSlide(from: coordinate),
+                                   "canTileSlide on \(coordinate) (\(gridData[coordinate])) is wrong.")
+                }
+            }
+        }
+    }
+
+    func slideTileHelper(viewModel: BaseSlidingViewModel, gridData: TextGrid,
+                         delegate: SlidingGameViewControllerDelegateMock,
+                         from start: Coordinate, to end: Coordinate) {
+        XCTAssert(viewModel.slideTile(from: start, to: end))
+        XCTAssertEqual(gridData[start], viewModel.gridData[end])
+        XCTAssertEqual(gridData[end], viewModel.gridData[start])
+        XCTAssert(delegate.gridDataUpdated)
+        viewModel.slideTile(from: end, to: start)
+    }
+
+    func testSlideTile() {
+        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
+            XCTFail("Realm errors")
+            return
+        }
+
+        let grid = [String?](repeating: "a", count: 15) + [String?](repeating: nil, count: 1)
+
+        let rows = 4
+        let columns = 4
+        let time: TimeInterval = 3
+
+        let viewModel = BaseSlidingViewModel(time: time, gameData: gameData, tiles: grid,
+                                             rows: rows, columns: columns)
+        let delegate = SlidingGameViewControllerDelegateMock()
+        viewModel.delegate = delegate
+
+        let gridData = viewModel.gridData
+
+        XCTAssertFalse(viewModel.slideTile(from: Coordinate(row: 0, col: 0),
+                                           to: Coordinate(row: 0, col: 2)))
+
+        for row in 0..<rows {
+            for col in 0..<columns {
+                let coordinate = Coordinate(row: row, col: col)
+                if gridData[coordinate] != nil {
+                    continue
+                }
+
+                let top = Coordinate(row: row - 1, col: col)
+                let bottom = Coordinate(row: row + 1, col: col)
+                let left = Coordinate(row: row, col: col - 1)
+                let right = Coordinate(row: row, col: col + 1)
+
+                if gridData.isInBounds(coordinate: top) {
+                    slideTileHelper(viewModel: viewModel, gridData: gridData, delegate: delegate,
+                                    from: top, to: coordinate)
+                }
+                if gridData.isInBounds(coordinate: bottom) {
+                    slideTileHelper(viewModel: viewModel, gridData: gridData, delegate: delegate,
+                                    from: bottom, to: coordinate)
+                }
+                if gridData.isInBounds(coordinate: left) {
+                    slideTileHelper(viewModel: viewModel, gridData: gridData, delegate: delegate,
+                                    from: left, to: coordinate)
+                }
+                if gridData.isInBounds(coordinate: right) {
+                    slideTileHelper(viewModel: viewModel, gridData: gridData, delegate: delegate,
+                                    from: right, to: coordinate)
+                }
+            }
+        }
+    }
+
+    func testScore() {
+        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
+            XCTFail("Realm errors")
+            return
+        }
+
+        let rows = 1
+        let columns = 2
+        let time: TimeInterval = 3
+
+        let viewModel = BaseSlidingViewModel(time: time, gameData: gameData, tiles: ["a", "b"],
+                                             rows: rows, columns: columns)
+        viewModel.startGame()
+
+        RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
+        let expectedScore = Int(viewModel.timeRemaining * Constants.Game.Sliding.scoreMultiplierFromTime)
+        XCTAssert(abs(expectedScore - viewModel.score) <= 10)
     }
 }

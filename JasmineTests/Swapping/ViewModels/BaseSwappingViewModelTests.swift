@@ -109,4 +109,23 @@ class BaseSwappingViewModelTests: XCTestCase {
             }
         }
     }
+
+    func testScore() {
+        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
+            XCTFail("Realm errors")
+            return
+        }
+
+        let rows = 1
+        let columns = 2
+        let time: TimeInterval = 3
+
+        let viewModel = BaseSwappingViewModel(time: time, gameData: gameData, tiles: ["a", "b"],
+                                              rows: rows, columns: columns)
+        viewModel.startGame()
+
+        RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
+        let expectedScore = Int(viewModel.timeRemaining * Constants.Game.Swapping.scoreMultiplierFromTime)
+        XCTAssert(abs(expectedScore - viewModel.score) <= 10)
+    }
 }

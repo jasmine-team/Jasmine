@@ -43,8 +43,7 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
     /// - Returns: Returns true if the tile successfully slided, false otherwise.
     @discardableResult
     func slideTile(from start: Coordinate, to end: Coordinate) -> Bool {
-        guard canTileSlide(from: start).contains(where: { $0.value == end }),
-              gridData[start] != nil, gridData[end] == nil else {
+        guard canTileSlide(from: start).contains(where: { $0.value == end }) else {
             return false
         }
 
@@ -57,7 +56,7 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
 
     /// Score for the game when it is won on the current state.
     override var score: Int {
-        return Int(timeRemaining * Double(Constants.Game.Sliding.scoreMultiplierFromTime))
+        return Int(timeRemaining * Constants.Game.Sliding.scoreMultiplierFromTime)
     }
 
     /// Ask the view model where the specified tile from the coordinate can be slided to.
@@ -69,7 +68,7 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
     /// - Note: if the tile from the `start` should never be slided in the first place, returns empty
     ///   dictionary
     func canTileSlide(from start: Coordinate) -> [Direction: Coordinate] {
-        guard gridData.isInBounds(coordinate: start) else {
+        guard gridData.isInBounds(coordinate: start), gridData[start] != nil else {
             return [:]
         }
 
@@ -80,16 +79,16 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
         let left = Coordinate(row: start.row, col: start.col - 1)
         let right = Coordinate(row: start.row, col: start.col + 1)
 
-        if gridData.isInBounds(coordinate: top) {
+        if gridData.isInBounds(coordinate: top) && gridData[top] == nil {
             result[.northwards] = top
         }
-        if gridData.isInBounds(coordinate: bottom) {
+        if gridData.isInBounds(coordinate: bottom) && gridData[bottom] == nil {
             result[.southwards] = bottom
         }
-        if gridData.isInBounds(coordinate: left) {
+        if gridData.isInBounds(coordinate: left) && gridData[left] == nil {
             result[.westwards] = left
         }
-        if gridData.isInBounds(coordinate: right) {
+        if gridData.isInBounds(coordinate: right) && gridData[right] == nil {
             result[.eastwards] = right
         }
 

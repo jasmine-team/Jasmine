@@ -21,7 +21,7 @@ enum Constants {
             static let rows = 4
             static let columns = 4
             static let time: TimeInterval = 60
-            static let scoreMultiplierFromTime = 100
+            static let scoreMultiplierFromTime: Double = 100
         }
 
         enum Sliding {
@@ -39,7 +39,7 @@ enum Constants {
             static let rows = 4
             static let columns = 4
             static let time: TimeInterval = 600
-            static let scoreMultiplierFromTime = 100
+            static let scoreMultiplierFromTime: Double = 100
         }
 
         enum Tetris {
