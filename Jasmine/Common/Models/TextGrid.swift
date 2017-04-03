@@ -11,7 +11,7 @@ struct TextGrid {
 
     /// The number of columns in the grid.
     var numColumns: Int {
-        return grid.first?.count ?? 0
+        return grid[0].count
     }
 
     /// Initializes a TextGrid, given the initial grid.
@@ -108,6 +108,6 @@ struct TextGrid {
     /// - Returns: true if and only if the coordinate is inside the grid
     func isInBounds(coordinate: Coordinate) -> Bool {
         return 0 <= coordinate.row && coordinate.row < numRows &&
-            0 <= coordinate.col && coordinate.col <= numColumns
+            0 <= coordinate.col && coordinate.col < numColumns
     }
 }
