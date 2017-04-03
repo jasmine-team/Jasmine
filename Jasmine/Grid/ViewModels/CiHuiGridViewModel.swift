@@ -28,14 +28,14 @@ class CiHuiGridViewModel: BaseGridViewModel {
                 .map { Coordinate(row: row, col: $0) }
 
             if let text = gridData.getConcatenatedTexts(at: firstHalfCoordinates),
-                let phrase = gameData.phrases.first(whereChinese: text) {
+               let phrase = gameData.phrases.first(whereChinese: text) {
                 // First half forms a hanzi phrase
                 let pinyin = gridData.getConcatenatedTexts(at: secondHalfCoordinates, separatedBy: " ")
                 if phrase.pinyin != pinyin {
                     return false
                 }
             } else if let text = gridData.getConcatenatedTexts(at: secondHalfCoordinates),
-                let phrase = gameData.phrases.first(whereChinese: text) {
+                      let phrase = gameData.phrases.first(whereChinese: text) {
                 // Second half forms a hanzi phrase
                 let pinyin = gridData.getConcatenatedTexts(at: firstHalfCoordinates, separatedBy: " ")
                 if phrase.pinyin != pinyin {
