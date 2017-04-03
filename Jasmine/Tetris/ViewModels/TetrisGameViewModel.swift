@@ -68,8 +68,8 @@ class TetrisGameViewModel {
     /// Checks for and returns coordinates of matching phrase, searching by row-wise then column-wise
     fileprivate func checkForMatchingPhrase() -> Set<Coordinate>? {
         let phraseLen = gameData.phrases.phraseLength
-        for row in 0..<Constants.Game.Tetris.rows - phraseLen {
-            for col in 0..<Constants.Game.Tetris.columns {
+        for row in 0..<Constants.Game.Tetris.rows {
+            for col in 0..<(Constants.Game.Tetris.columns - phraseLen) {
                 let phraseRange = col..<(col + phraseLen)
                 let coordinates = phraseRange.map { Coordinate(row: row, col: $0) }
                 if isPhraseValid(at: coordinates) {
@@ -79,7 +79,7 @@ class TetrisGameViewModel {
         }
 
         for col in 0..<Constants.Game.Tetris.columns {
-            for row in 0..<Constants.Game.Tetris.rows - phraseLen {
+            for row in 0..<(Constants.Game.Tetris.rows - phraseLen) {
                 let phraseRange = row..<(row + phraseLen)
                 let coordinates = phraseRange.map { Coordinate(row: $0, col: col) }
                 if isPhraseValid(at: coordinates) {
