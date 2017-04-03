@@ -5,15 +5,16 @@ import UIKit
 extension UISwipeGestureRecognizerDirection {
 
     var toDirection: Direction {
-        if self == .up {
+        switch self {
+        case UISwipeGestureRecognizerDirection.up:
             return .northwards
-        } else if self == .down {
+        case UISwipeGestureRecognizerDirection.down:
             return .southwards
-        } else if self == .left {
+        case UISwipeGestureRecognizerDirection.left:
             return .westwards
-        } else if self == .right {
+        case UISwipeGestureRecognizerDirection.right:
             return .eastwards
-        } else {
+        default:
             fatalError("Invalid direction.")
         }
     }
