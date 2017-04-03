@@ -1,6 +1,6 @@
 import Foundation
 
-class CiHuiGridViewModel: BaseGridViewModel {
+class CiHuiSwappingViewModel: BaseSwappingViewModel {
     init(time: TimeInterval, gameData: GameData, numberOfPhrases: Int) {
         let phrases = gameData.phrases.next(count: numberOfPhrases)
 
@@ -13,10 +13,10 @@ class CiHuiGridViewModel: BaseGridViewModel {
         }
 
         super.init(time: time, gameData: gameData, tiles: tiles,
-                   rows: numberOfPhrases, columns: Constants.Game.Grid.columns)
+                   rows: numberOfPhrases, columns: Constants.Game.Swapping.columns)
 
-        gameTitle = Constants.Game.Grid.CiHui.gameTitle
-        gameInstruction = Constants.Game.Grid.CiHui.gameInstruction
+        gameTitle = Constants.Game.Swapping.CiHui.gameTitle
+        gameInstruction = Constants.Game.Swapping.CiHui.gameInstruction
     }
 
     /// Returns if and only if the game is won, that is: every row contains a valid Cihui and its pinyin.

@@ -1,5 +1,6 @@
 import UIKit
 
+/// View Controller implementation for Tetris Game.
 class TetrisGameViewController: UIViewController {
 
     // MARK: - Constants
@@ -20,7 +21,7 @@ class TetrisGameViewController: UIViewController {
 
     fileprivate var upcomingTiles: [Coordinate: String] {
         var outcome: [Coordinate: String] = [:]
-        (0..<Constants.Game.Tetris.upcomingTilesCount)
+        (0..<viewModel.upcomingTiles.count)
             .map { (location: $0, data: viewModel.upcomingTiles[$0]) }
             .forEach { outcome[Coordinate(row: 0, col: $0.location)] = $0.data }
         return outcome

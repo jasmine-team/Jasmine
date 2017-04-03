@@ -12,20 +12,4 @@ protocol SlidingGameViewControllerDelegate: BaseGameViewControllerDelegate {
     /// Note to call `updateGridData` if any information in the grid data should be
     /// updated.
     func redisplayAllTiles()
-
-    /// Refreshes a selected set of tiles based on the tiles information stored in the VC's grid data.
-    ///
-    /// Note to call `update(tilesWith newGridData)` if any information in the grid data should be
-    /// updated.
-    ///
-    /// - Parameter coordinates: The set of coordinates to be redisplayed.
-    func redisplay(tilesAt coordinates: Set<Coordinate>)
-
-    /// Refreshes one particular tile based on the tiles information stored in the VC's grid data.
-    ///
-    /// Note to call `update(tilesWith newGridData)` if any information in the grid data should be
-    /// updated.
-    ///
-    /// - Parameter coordinate: The single coordinate to be redisplayed.
-    func redisplay(tileAt coordinate: Coordinate)
 }

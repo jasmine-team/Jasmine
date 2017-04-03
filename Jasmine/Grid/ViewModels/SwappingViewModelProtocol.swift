@@ -1,12 +1,12 @@
 import Foundation
 
-/// Implement this class to describe how a game can be played with a Grid Game board.
-protocol GridViewModelProtocol: BaseViewModelProtocol, CountdownTimable {
+/// Implement this class to describe how a game can be played with a Swapping Game board.
+protocol SwappingViewModelProtocol: BaseViewModelProtocol, CountdownTimable {
 
     // MARK: Properties
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
-    var delegate: GridGameViewControllerDelegate? { get set }
+    var delegate: SwappingGameViewControllerDelegate? { get set }
 
     /// Stores the grid data that will be used to display in the view controller.
     var gridData: TextGrid { get }
