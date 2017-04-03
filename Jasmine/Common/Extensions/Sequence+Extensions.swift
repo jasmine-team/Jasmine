@@ -6,6 +6,10 @@ extension Sequence {
         return result
     }
 
+    /// Returns true if and only if all elements in the array satisfy the given condition.
+    ///
+    /// - Parameter condition: the condition, that takes in an element and returns true/false
+    /// - Returns: true if and only if all elements in the array satisfies the condition
     func isAll(condition: (Iterator.Element) -> Bool) -> Bool {
         return reduce(true) { accum, next in
             return accum && condition(next)
