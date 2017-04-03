@@ -76,10 +76,13 @@ class TetrisGameViewController: UIViewController {
     }
 
     // MARK: Gestures and Listeners
+    /// Dismisses this view when the back button is pressed.
     @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
 
+    /// Switches the content of the falling tile with the latest upcoming tile when any tile in the
+    /// list of upcoming tile is tapped.
     @IBAction func onUpcomingTilesTouched(_ sender: UITapGestureRecognizer) {
         guard tetrisGameAreaView.hasFallingTile,
               let coord = tetrisUpcomingTilesView
@@ -89,12 +92,25 @@ class TetrisGameViewController: UIViewController {
         viewModel.swapFallingTile(withUpcomingAt: coord.col)
     }
 
+    /// Moves the falling tile when the view is swiped to a particular direction.
     @IBAction func onTilesSwiped(_ sender: UISwipeGestureRecognizer) {
         guard tetrisGameAreaView.hasFallingTile,
               sender.direction != .up else {
             return
         }
         tetrisGameAreaView.shiftFallingTile(towards: sender.direction.toDirection)
+    }
+
+    /// Moves the falling tile with respect to the position of the falling tile when the user taps
+    /// on the grid.
+    @IBAction func onTilesTapped(_ sender: UITapGestureRecognizer) {
+        guard let tilePosition = tetrisGameAreaView.fallingTile?.center else {
+            return
+        }
+
+        let touchedPosition = sender.location(in: tetrisGameAreaView.view)
+        let direction: Direction = touchedPosition.x > tilePosition.x ? .eastwards : .westwards
+        tetrisGameAreaView.shiftFallingTile(towards: direction)
     }
 
     // MARK: - Game State and Actions

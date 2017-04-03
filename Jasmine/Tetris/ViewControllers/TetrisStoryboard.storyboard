@@ -69,11 +69,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="Tetris Game Area" translatesAutoresizingMaskIntoConstraints="NO" id="64w-ac-iLZ" userLabel="Tetris Game Area">
-                                <rect key="frame" x="16" y="80" width="343" height="393"/>
+                                <rect key="frame" x="16" y="80" width="343" height="411"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="IxQ-me-Oov" appends="YES" id="gur-7k-JWm"/>
                                     <outletCollection property="gestureRecognizers" destination="foD-TI-dgZ" appends="YES" id="chf-Mb-uuL"/>
                                     <outletCollection property="gestureRecognizers" destination="5Rf-XV-Nsb" appends="YES" id="SNu-n8-Go0"/>
+                                    <outletCollection property="gestureRecognizers" destination="rgY-ND-0k5" appends="YES" id="SwR-aB-lHK"/>
                                     <segue destination="4Oq-id-eCE" kind="embed" id="mD0-vD-TBv"/>
                                 </connections>
                             </containerView>
@@ -112,9 +113,9 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="Tetris Upcoming Tiles" translatesAutoresizingMaskIntoConstraints="NO" id="EvM-bs-WbZ" userLabel="Tetris Upcoming Tiles">
-                                <rect key="frame" x="16" y="509" width="343" height="70"/>
+                                <rect key="frame" x="16" y="507" width="343" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="7xf-n5-kRY"/>
+                                    <constraint firstAttribute="height" constant="48" id="7xf-n5-kRY"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="clz-3h-Xvc" appends="YES" id="GYd-jE-f0p"/>
@@ -122,7 +123,7 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPCOMING TILES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5z-y8-XQq" userLabel="Tetris Upcoming Tiles Label">
-                                <rect key="frame" x="16" y="489" width="112.5" height="16"/>
+                                <rect key="frame" x="131" y="567" width="113" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                 <color key="textColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -131,29 +132,29 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="EvM-bs-WbZ" firstAttribute="top" secondItem="64w-ac-iLZ" secondAttribute="bottom" constant="16" id="0A5-Zx-saA"/>
                             <constraint firstItem="64w-ac-iLZ" firstAttribute="top" secondItem="vb6-rG-EyC" secondAttribute="bottom" constant="16" id="21H-G2-Cle"/>
                             <constraint firstItem="vPF-3v-g0Z" firstAttribute="top" secondItem="4Wh-bq-pwH" secondAttribute="top" id="2w0-a6-DH2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EvM-bs-WbZ" secondAttribute="trailing" id="2wv-Go-sk5"/>
                             <constraint firstAttribute="trailing" secondItem="LJA-n4-ff2" secondAttribute="trailing" id="Bv4-rt-7hu"/>
+                            <constraint firstItem="z5z-y8-XQq" firstAttribute="top" secondItem="EvM-bs-WbZ" secondAttribute="bottom" constant="12" id="E6n-ni-k2t"/>
                             <constraint firstAttribute="trailing" secondItem="vPF-3v-g0Z" secondAttribute="trailing" id="EbN-ii-fBh"/>
                             <constraint firstItem="EvM-bs-WbZ" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leadingMargin" id="HvE-yL-fri"/>
                             <constraint firstItem="vb6-rG-EyC" firstAttribute="top" secondItem="q8A-bO-b8u" secondAttribute="bottom" id="NaL-Vq-uvW"/>
-                            <constraint firstItem="LJA-n4-ff2" firstAttribute="top" secondItem="EvM-bs-WbZ" secondAttribute="bottom" constant="16" id="QhW-Y3-y3o"/>
+                            <constraint firstItem="LJA-n4-ff2" firstAttribute="top" secondItem="z5z-y8-XQq" secondAttribute="bottom" constant="12" id="PBD-Z1-edN"/>
+                            <constraint firstItem="z5z-y8-XQq" firstAttribute="centerX" secondItem="4Wh-bq-pwH" secondAttribute="centerX" id="Uag-uU-bBD"/>
                             <constraint firstItem="64w-ac-iLZ" firstAttribute="leading" secondItem="EvM-bs-WbZ" secondAttribute="leading" id="W4a-a4-9xB"/>
-                            <constraint firstItem="z5z-y8-XQq" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leadingMargin" id="aAF-yj-7AY"/>
                             <constraint firstItem="VPR-bF-iqZ" firstAttribute="top" secondItem="LJA-n4-ff2" secondAttribute="bottom" id="aeR-Ie-N7j"/>
                             <constraint firstItem="vb6-rG-EyC" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leading" id="eCB-HZ-mr8"/>
-                            <constraint firstItem="z5z-y8-XQq" firstAttribute="top" secondItem="64w-ac-iLZ" secondAttribute="bottom" constant="16" id="fCF-lD-XDE"/>
                             <constraint firstAttribute="trailing" secondItem="vb6-rG-EyC" secondAttribute="trailing" id="mA4-dq-bIn"/>
                             <constraint firstItem="LJA-n4-ff2" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leading" id="oCw-1Q-JVa"/>
                             <constraint firstItem="vPF-3v-g0Z" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leading" id="uSt-Au-r0Z"/>
-                            <constraint firstItem="EvM-bs-WbZ" firstAttribute="top" secondItem="z5z-y8-XQq" secondAttribute="bottom" constant="4" id="wOc-JH-1bz"/>
                             <constraint firstItem="64w-ac-iLZ" firstAttribute="trailing" secondItem="EvM-bs-WbZ" secondAttribute="trailing" id="xy4-Cu-Xh2"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGJ-pa-lSq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="clz-3h-Xvc">
+                <tapGestureRecognizer id="clz-3h-Xvc" userLabel="Upcoming Tap Gesture Recognizer">
                     <connections>
                         <action selector="onUpcomingTilesTouched:" destination="QxJ-8P-SqZ" id="i5e-r4-KXV"/>
                     </connections>
@@ -173,6 +174,11 @@
                         <action selector="onTilesSwiped:" destination="QxJ-8P-SqZ" id="spt-2g-ycI"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="rgY-ND-0k5" userLabel="Grid Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="onTilesTapped:" destination="QxJ-8P-SqZ" id="7AC-K2-YSF"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-44" y="98"/>
         </scene>
