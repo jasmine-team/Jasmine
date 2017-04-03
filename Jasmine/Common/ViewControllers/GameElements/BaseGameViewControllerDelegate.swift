@@ -2,7 +2,7 @@ import Foundation
 
 /// Sets the shared functionalities that are applicable across all game view controller delegates.
 /// This protocol will be inherited by all the specialsied game view controller delegates.
-protocol BaseGameViewControllerDelegate: class {
+protocol BaseGameViewControllerDelegate: TimeUpdateDelegate, ScoreUpdateDelegate {
 
     // MARK: Score Update
     /// Redisplay the score displayed on the view controller screen with a new score.
@@ -25,4 +25,5 @@ protocol BaseGameViewControllerDelegate: class {
     /// Note also that if the user has won/lost, the score in the `redisplay(_ newScore)` will be
     /// taken as the end game score. So update it before calling end game.
     func notifyGameStatusUpdated()
+
 }
