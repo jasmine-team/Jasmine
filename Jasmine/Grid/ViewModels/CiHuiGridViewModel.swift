@@ -30,6 +30,7 @@ class CiHuiGridViewModel: BaseGridViewModel {
             if let text = gridData.getConcatenatedTexts(at: firstHalfCoordinates),
                let phrase = gameData.phrases.first(whereChinese: text) {
                 // First half forms a hanzi phrase
+                // TODO: - Magic String
                 let pinyin = gridData.getConcatenatedTexts(at: secondHalfCoordinates, separatedBy: " ")
                 if phrase.pinyin != pinyin {
                     return false
@@ -37,6 +38,7 @@ class CiHuiGridViewModel: BaseGridViewModel {
             } else if let text = gridData.getConcatenatedTexts(at: secondHalfCoordinates),
                       let phrase = gameData.phrases.first(whereChinese: text) {
                 // Second half forms a hanzi phrase
+                // TODO: - Magic String
                 let pinyin = gridData.getConcatenatedTexts(at: firstHalfCoordinates, separatedBy: " ")
                 if phrase.pinyin != pinyin {
                     return false
