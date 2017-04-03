@@ -1,6 +1,7 @@
 /// An encapsulation of a grid of strings, mapping a Coordinate to a String.
 /// Stores text as String instead of Character to allow pinyin as text
-struct TextGrid {
+/// class is chosen over struct to allow inheritance and instance to be declared as constant let
+class TextGrid {
     /// The actual grid.
     private var grid: [[String?]]
 
@@ -50,7 +51,7 @@ struct TextGrid {
     /// - Parameters:
     ///   - coord1: the first coordinate
     ///   - coord2: the second coordinate
-    mutating func swap(_ coord1: Coordinate, _ coord2: Coordinate) {
+    func swap(_ coord1: Coordinate, _ coord2: Coordinate) {
         Swift.swap(&self[coord1], &self[coord2])
     }
 
@@ -69,7 +70,7 @@ struct TextGrid {
         return self[coordinate] != nil
     }
 
-    mutating func removeTexts(at coordinates: Set<Coordinate>) {
+    func removeTexts(at coordinates: Set<Coordinate>) {
         for coordinate in coordinates {
             self[coordinate] = nil
         }
@@ -80,7 +81,7 @@ struct TextGrid {
     ///
     /// - Parameter coordinates: Array of Coordinate to get the text at
     /// - Returns: Array of String correspond to the texts at `coordinates`
-    ///            Returns nil if there is no text at any of the coordinates
+    ///            Returns nil if any of the coordinates is out of bounds or has no text
     func getTexts(at coordinates: [Coordinate]) -> [String]? {
         var texts: [String] = []
         for coordinate in coordinates {
@@ -96,7 +97,7 @@ struct TextGrid {
     ///
     /// - Parameter coordinates: Array of Coordinate to get the text at
     /// - Returns: Concatenated string from texts at `coordinates`
-    ///            Returns nil if there is no text at any of the coordinates
+    ///            Returns nil if any of the coordinates is out of bounds or has no text
     func getConcatenatedTexts(at coordinates: [Coordinate]) -> String? {
         return getTexts(at: coordinates)?.joined()
     }

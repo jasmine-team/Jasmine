@@ -1,7 +1,7 @@
 import Foundation
 @testable import Jasmine
 
-class TetrisGameViewControllerDelegateMock: TetrisGameViewControllerDelegate {
+class TetrisGameViewControllerDelegateMock: BaseGameViewControllerDelegate {
     var score: Int?
     var timeRemaining: TimeInterval?
     var totalTime: TimeInterval!

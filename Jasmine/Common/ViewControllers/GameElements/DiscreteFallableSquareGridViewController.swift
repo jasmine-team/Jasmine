@@ -87,8 +87,8 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
         }
         snapDetachedTile(fallingTile) {
             self.reattachDetachedTile(fallingTile)
-            self.fallingTile = nil
             self.onFallingTileLanded?()
+            self.fallingTile = nil
         }
     }
 

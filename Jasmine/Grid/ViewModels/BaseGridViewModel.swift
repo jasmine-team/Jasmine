@@ -2,7 +2,7 @@ import Foundation
 
 class BaseGridViewModel: GridViewModelProtocol {
     /// Stores the grid data that will be used to display in the view controller.
-    private(set) var gridData: TextGrid
+    let gridData: TextGrid
     /// Number of rows in the grid, according to the answers property
     var numRows: Int {
         return gridData.numRows
