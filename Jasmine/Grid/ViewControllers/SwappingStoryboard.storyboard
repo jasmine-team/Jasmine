@@ -40,10 +40,10 @@
             </objects>
             <point key="canvasLocation" x="1014" y="23"/>
         </scene>
-        <!--Grid Game View Controller-->
+        <!--Swapping Game View Controller-->
         <scene sceneID="yeQ-RR-Dye">
             <objects>
-                <viewController storyboardIdentifier="GridGameViewController" id="WaX-Zk-8YX" customClass="GridGameViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SwappingGameViewController" id="WaX-Zk-8YX" customClass="SwappingGameViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SDT-OK-V7j"/>
                         <viewControllerLayoutGuide type="bottom" id="z1B-88-3dA"/>

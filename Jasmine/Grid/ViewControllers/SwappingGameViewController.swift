@@ -1,7 +1,7 @@
 import UIKit
 
-/// View Controller implementation for Grid Game.
-class GridGameViewController: UIViewController {
+/// View Controller implementation for Swapping Game.
+class SwappingGameViewController: UIViewController {
 
     // MARK: Layouts
     fileprivate var squareGridViewController: DraggableSquareGridViewController!
@@ -15,7 +15,7 @@ class GridGameViewController: UIViewController {
     fileprivate var draggingTile: (view: SquareTileView, originalCoord: Coordinate)?
 
     // MARK: Game Properties
-    fileprivate var viewModel: GridViewModelProtocol!
+    fileprivate var viewModel: SwappingViewModelProtocol!
 
     // MARK: View Controller Lifecycles
     /// Set its theme after the view controller `viewDidLoad` is called.
@@ -38,11 +38,11 @@ class GridGameViewController: UIViewController {
     // MARK: Segue methods
     /// Method that manages the seguing to other view controllers from this view controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let squareGridView = segue.destination as? DraggableSquareGridViewController {
-            squareGridView.segueWith(viewModel.gridData.coordinateDictionary,
-                                     numRows: Constants.Game.Grid.rows,
-                                     numCols: Constants.Game.Grid.columns)
-            self.squareGridViewController = squareGridView
+        if let squareSwappingView = segue.destination as? DraggableSquareGridViewController {
+            squareSwappingView.segueWith(viewModel.gridData.coordinateDictionary,
+                                         numRows: Constants.Game.Swapping.rows,
+                                         numCols: Constants.Game.Swapping.columns)
+            self.squareGridViewController = squareSwappingView
 
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
             statisticsView.segueWith(timeLeft: viewModel.timeRemaining,
@@ -54,7 +54,7 @@ class GridGameViewController: UIViewController {
     /// Feeds in the appropriate data for the use of seguing into this view.
     ///
     /// - Parameter viewModel: the game engine required to play this game.
-    func segueWith(_ viewModel: GridViewModelProtocol) {
+    func segueWith(_ viewModel: SwappingViewModelProtocol) {
         self.viewModel = viewModel
         self.viewModel.delegate = self
     }
@@ -100,7 +100,7 @@ class GridGameViewController: UIViewController {
 }
 
 // MARK: - Drag and Drop Tiles
-fileprivate extension GridGameViewController {
+fileprivate extension SwappingGameViewController {
 
     /// Handles the case when the tile is lifted from the collection view.
     /// Such a tile gets "detached" from the view by having its identity noted down in the
@@ -182,10 +182,10 @@ fileprivate extension GridGameViewController {
     }
 }
 
-// MARK: - Delegate for Grid Game
-extension GridGameViewController: GridGameViewControllerDelegate {
+// MARK: - Delegate for Swapping Game
+extension SwappingGameViewController: SwappingGameViewControllerDelegate {
 
-    /// Update the grid data stored in the Grid Game View Controller with a new dataset.
+    /// Update the grid data stored in the Swapping Game View Controller with a new dataset.
     func updateGridData() {
         squareGridViewController.update(collectionData: viewModel.gridData.coordinateDictionary)
     }
@@ -206,7 +206,7 @@ extension GridGameViewController: GridGameViewControllerDelegate {
     }
 }
 
-extension GridGameViewController: BaseGameViewControllerDelegate {
+extension SwappingGameViewController: BaseGameViewControllerDelegate {
     // MARK: Score Update
     /// Redisplay the score displayed on the view controller screen with a new score.
     func redisplay(newScore: Int) {

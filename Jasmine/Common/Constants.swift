@@ -4,15 +4,15 @@ import Foundation
 // swiftlint:disable nesting
 enum Constants {
     enum Game {
-        enum Grid {
+        enum Swapping {
             enum CiHui {
-                static let gameTitle = "Ci Hui (词汇) Grid Game"
+                static let gameTitle = "Ci Hui (词汇) Swapping Game"
                 static let gameInstruction = "Match the Chinese characters with their Pinyins " +
                                              "by putting them in one row."
             }
 
             enum ChengYu {
-                static let gameTitle = "Cheng Yu (成语) Grid Game"
+                static let gameTitle = "Cheng Yu (成语) Swapping Game"
                 static let gameInstruction = "Match the Cheng Yus by putting them in one row."
             }
 

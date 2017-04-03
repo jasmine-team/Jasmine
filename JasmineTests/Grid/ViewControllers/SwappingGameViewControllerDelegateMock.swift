@@ -1,7 +1,7 @@
 import Foundation
 @testable import Jasmine
 
-class GridGameViewControllerDelegateMock: GridGameViewControllerDelegate {
+class SwappingGameViewControllerDelegateMock: SwappingGameViewControllerDelegate {
     var gridDataUpdated = false
     var score = 0
     var timeRemaining: TimeInterval = 0
