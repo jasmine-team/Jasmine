@@ -109,9 +109,9 @@ fileprivate extension GridGameViewController {
     /// - Parameter position: location where the tile is selected.
     fileprivate func handleTileSelected(at position: CGPoint) {
         guard draggingTile == nil,
-            let coordTouched = squareGridViewController.getCoordinate(at: position),
-            let detachedCell = squareGridViewController.detachTile(fromCoord: coordTouched) else {
-                return
+              let coordTouched = squareGridViewController.getCoordinate(at: position),
+              let detachedCell = squareGridViewController.detachTile(fromCoord: coordTouched) else {
+            return
         }
         draggingTile = (detachedCell, coordTouched)
     }
@@ -136,9 +136,9 @@ fileprivate extension GridGameViewController {
             return
         }
         guard let landedCoord = squareGridViewController.getCoordinate(at: position),
-            viewModel.swapTiles(draggingTile.originalCoord, and: landedCoord) else {
-                handleTileFailedLanding()
-                return
+              viewModel.swapTiles(draggingTile.originalCoord, and: landedCoord) else {
+            handleTileFailedLanding()
+            return
         }
         handleTileSuccessfulLanding(on: landedCoord)
     }
