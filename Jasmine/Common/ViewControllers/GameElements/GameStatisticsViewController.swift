@@ -8,8 +8,12 @@ class GameStatisticsViewController: UIViewController {
     @IBOutlet private weak var timeLeftLabel: UILabel!
 
     // MARK: Properties
+    fileprivate var timeDescriptor: TimeDescriptorProtocol!
+    fileprivate var scoreDescriptor: ScoreDescriptorProtocol!
+
+    // TODO: Update them away.
     /// Sets the current score in this VC, which also updates the view elements automatically.
-    var currentScore: Int? {
+    fileprivate var currentScore: Int? {
         didSet {
             displayCurrentScore()
         }
@@ -17,7 +21,7 @@ class GameStatisticsViewController: UIViewController {
 
     /// Sets the time remaining in this VC, which also updates the view elements automatically,
     /// rounded to integers.
-    var timeLeft: TimeInterval? {
+    fileprivate var timeLeft: TimeInterval? {
         didSet {
             displayTimeRemaining()
         }
@@ -34,11 +38,15 @@ class GameStatisticsViewController: UIViewController {
     /// Feed in the appropriate data before seguing into this view.
     ///
     /// - Parameters:
-    ///   - timeLeft: the starting time left of this game.
-    ///   - currentScore: the starting current score of this game.
-    func segueWith(timeLeft: TimeInterval, currentScore: Int) {
-        self.currentScore = currentScore
-        self.timeLeft = timeLeft
+    ///   - timeDescriptor: a protocol conformance that describes the time (remaining)
+    ///   - currentScore: a protocol conformance that describes the current score.
+    func segueWith(time timeDescriptor: TimeDescriptorProtocol,
+                   score scoreDescriptor: ScoreDescriptorProtocol) {
+        self.timeDescriptor = timeDescriptor
+        self.timeDescriptor.timeDelegate = self
+
+        self.scoreDescriptor = scoreDescriptor
+        self.scoreDescriptor.scoreDelegate = self
     }
 
     // MARK: Helper Methods
@@ -64,5 +72,21 @@ class GameStatisticsViewController: UIViewController {
             return
         }
         timeLeftLabel.text = "\(Int(round(timeLeft)))"
+    }
+}
+
+extension GameStatisticsViewController: TimeUpdateDelegate {
+
+    /// Tells the implementor of the delegate that the time has been updated.
+    func timeDidUpdate() {
+        self.timeLeft = timeDescriptor.timeRemaining
+    }
+}
+
+extension GameStatisticsViewController: ScoreUpdateDelegate {
+
+    /// Tells the implementor of the delegate that the score has been updated.
+    func scoreDidUpdate() {
+        self.currentScore = scoreDescriptor.currentScore
     }
 }
