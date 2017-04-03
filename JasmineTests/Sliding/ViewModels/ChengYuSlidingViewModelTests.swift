@@ -10,7 +10,7 @@ class ChengYuSlidingViewModelTests: XCTestCase {
             return
         }
 
-        let viewModel = ChengYuSlidingViewModel(time: 10, gameData: gameData, numberOfPhrases: numberOfPhrases)
+        let viewModel = ChengYuSlidingViewModel(time: 10, gameData: gameData, rows: numberOfPhrases)
 
         XCTAssertNil(viewModel.delegate,
                      "ViewModel delegate on init is not nil")
@@ -26,9 +26,9 @@ class ChengYuSlidingViewModelTests: XCTestCase {
                        "ViewModel timeRemaining on init is not correct")
         XCTAssertEqual(GameStatus.notStarted, viewModel.gameStatus,
                        "ViewModel gameStatus on init is not correct")
-        XCTAssertEqual("Cheng Yu (成语) Grid Game", viewModel.gameTitle,
+        XCTAssertEqual("Cheng Yu (成语) Sliding Game", viewModel.gameTitle,
                        "ViewModel gameTitle on init is not correct")
-        XCTAssertEqual("Match the Cheng Yus by putting them in one row.",
+        XCTAssertEqual("Match the Cheng Yus by putting them in one row/column.",
                        viewModel.gameInstruction,
                        "ViewModel gameInstruction on init is not correct")
     }
