@@ -109,16 +109,4 @@ class BaseSwappingViewModelTests: XCTestCase {
             }
         }
     }
-
-    func testHasGameWon() {
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
-            XCTFail("Realm errors")
-            return
-        }
-
-        let viewModel = BaseSwappingViewModel(time: 3, gameData: gameData, tiles: ["a"], rows: 1, columns: 1)
-
-        XCTAssertFalse(viewModel.hasGameWon,
-                       "hasGameWon should always return false on BaseSwappingVM")
-    }
 }

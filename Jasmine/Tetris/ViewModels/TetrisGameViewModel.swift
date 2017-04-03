@@ -189,6 +189,6 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
             assertionFailure("startGame called when game is already ongoing")
             return
         }
-        timer.startTimer(timerInterval: Constants.Game.Tetris.timeInterval)
+        timer.startTimer(timerInterval: Constants.Game.timeInterval)
     }
 }

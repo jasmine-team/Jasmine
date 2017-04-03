@@ -19,15 +19,11 @@ class ChengYuSwappingViewModel: BaseSwappingViewModel {
     }
 
     /// Returns if and only if the game is won, that is: every row is a valid Chengyu.
-    override var hasGameWon: Bool {
-        for row in 0..<gridData.numRows {
-            let coordinates = (0..<gridData.numColumns).map { Coordinate(row: row, col: $0) }
-            guard let text = gridData.getConcatenatedTexts(at: coordinates),
-                  gameData.phrases.contains(chinese: text) else {
-                return false
-            }
+    override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
+        guard let text = gridData.getConcatenatedTexts(at: line),
+              gameData.phrases.contains(chinese: text) else {
+            return false
         }
-
         return true
     }
 }

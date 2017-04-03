@@ -101,4 +101,20 @@ struct TextGrid {
     func getConcatenatedTexts(at coordinates: [Coordinate], separatedBy separator: String = "") -> String? {
         return getTexts(at: coordinates)?.joined(separator: separator)
     }
+
+    /// Gets a row on the index given at the grid data given.
+    ///
+    /// - Parameter row: the row number
+    /// - Returns: the row in the grid
+    func getRow(at row: Int) -> [String?] {
+        return grid[row]
+    }
+
+    /// Gets a column on the index given at the grid data given.
+    ///
+    /// - Parameter column: the column number
+    /// - Returns: the column in the grid
+    func getColumn(at column: Int) -> [String?] {
+        return grid.map { $0[column] }
+    }
 }

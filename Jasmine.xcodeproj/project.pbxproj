@@ -19,6 +19,7 @@
 		502A29631E925A160024336A /* CGPoint+Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29621E925A160024336A /* CGPoint+Arithmetic.swift */; };
 		502A29651E925A190024336A /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29641E925A190024336A /* Array+Extensions.swift */; };
 		502A29671E925AB60024336A /* TetrisGameViewControllerDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29661E925AB60024336A /* TetrisGameViewControllerDelegateMock.swift */; };
+		502A29691E925C8D0024336A /* GridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29681E925C8D0024336A /* GridViewModel.swift */; };
 		505E07381E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E07371E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift */; };
 		505E073A1E7BE58E00CEE8BF /* SwappingGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E07391E7BE58E00CEE8BF /* SwappingGameViewControllerDelegate.swift */; };
 		505E073C1E7BE59300CEE8BF /* FlappyViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E073B1E7BE59300CEE8BF /* FlappyViewControllerDelegate.swift */; };
@@ -118,6 +119,7 @@
 		502A29621E925A160024336A /* CGPoint+Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Arithmetic.swift"; sourceTree = "<group>"; };
 		502A29641E925A190024336A /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		502A29661E925AB60024336A /* TetrisGameViewControllerDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TetrisGameViewControllerDelegateMock.swift; path = JasmineTests/Tetris/ViewModels/TetrisGameViewControllerDelegateMock.swift; sourceTree = SOURCE_ROOT; };
+		502A29681E925C8D0024336A /* GridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
 		505E07371E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		505E07391E7BE58E00CEE8BF /* SwappingGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwappingGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		505E073B1E7BE59300CEE8BF /* FlappyViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -250,7 +252,6 @@
 		502A29501E922ED90024336A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				502A29581E922FDA0024336A /* SlidingGameViewDelegateMock.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -258,9 +259,6 @@
 		502A29511E922EDD0024336A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				502A29521E922EF40024336A /* BaseSlidingVIewModelTests.swift */,
-				502A29541E922EFC0024336A /* ChengYuSlidingViewModelTests.swift */,
-				502A29561E922F080024336A /* CiHuiSlidingViewModelTests.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -385,6 +383,7 @@
 			children = (
 				DFB3426E1E77E77900D2FE09 /* BaseViewModelProtocol.swift */,
 				DF409FE61E8414F500389976 /* CountdownTimable.swift */,
+				502A29681E925C8D0024336A /* GridViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -529,13 +528,6 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		50F191AE1E7ADC8600EE9A75 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		50F191B01E7ADCA200EE9A75 /* Swapping */ = {
 			isa = PBXGroup;
 			children = (
@@ -662,9 +654,6 @@
 		DF21551E1E8E237F005A0927 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				5041A58B1E91B09C00DB4DE8 /* BaseSlidingViewModel.swift */,
-				5041A58D1E91B7C200DB4DE8 /* ChengYuSlidingViewModel.swift */,
-				5041A58F1E91B7C900DB4DE8 /* CiHuiSlidingViewModel.swift */,
 				DF21551F1E8E237F005A0927 /* SlidingViewModelProtocol.swift */,
 				502A29601E925A080024336A /* MockSlidingViewModel.swift */,
 			);
@@ -966,6 +955,7 @@
 				508BAF7F1E84C00D0088D0A6 /* ChengYuSwappingViewModel.swift in Sources */,
 				502669021E7D6C6A00112291 /* BaseViewModelProtocol.swift in Sources */,
 				DFCF3FC81E875D940027016E /* DiscreteFallableSquareGridViewController.swift in Sources */,
+				502A29691E925C8D0024336A /* GridViewModel.swift in Sources */,
 				502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */,
 				DF7CF7721E7E9E3500C6979A /* IndexPath+Coordinate.swift in Sources */,
 				DF7CF7781E7E9ECE00C6979A /* BaseGameViewControllerDelegate.swift in Sources */,
@@ -1035,13 +1025,11 @@
 				DF409FF91E84160C00389976 /* PlayerTests.swift in Sources */,
 				50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */,
 				DF2155181E8E2335005A0927 /* PhrasesTests.swift in Sources */,
-				502A29551E922EFC0024336A /* ChengYuSlidingViewModelTests.swift in Sources */,
 				DF71890A1E85032A009EA28E /* CountdownTimableTests.swift in Sources */,
 				DFD851B41E90F1E300C13967 /* TetrisGameViewModelTests.swift in Sources */,
 				50717AC01E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift in Sources */,
 				50269D451E83C96C0043C45D /* BaseSwappingViewModelTests.swift in Sources */,
 				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
-				502A29531E922EF40024336A /* BaseSlidingVIewModelTests.swift in Sources */,
 				DF7189091E85032A009EA28E /* CountdownTimableMock.swift in Sources */,
 				DF2155291E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift in Sources */,
 				DF71890C1E850359009EA28E /* SwappingGameViewControllerDelegateMock.swift in Sources */,

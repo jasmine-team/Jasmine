@@ -19,33 +19,29 @@ class CiHuiSwappingViewModel: BaseSwappingViewModel {
         gameInstruction = Constants.Game.Swapping.CiHui.gameInstruction
     }
 
-    /// Returns if and only if the game is won, that is: every row contains a valid Cihui and its pinyin.
-    override var hasGameWon: Bool {
-        for row in 0..<gridData.numRows {
-            let firstHalfCoordinates = (0..<(gridData.numColumns / 2))
-                .map { Coordinate(row: row, col: $0) }
-            let secondHalfCoordinates = ((gridData.numColumns / 2)..<gridData.numColumns)
-                .map { Coordinate(row: row, col: $0) }
+    /// Returns if and only if the game is won, that is: every row is a valid Chengyu.
+    override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
+        let firstHalfCoordinates = Array(line[0..<(line.count / 2)])
+        let secondHalfCoordinates = Array(line[(line.count / 2)..<line.count])
 
-            if let text = gridData.getConcatenatedTexts(at: firstHalfCoordinates),
-               let phrase = gameData.phrases.first(whereChinese: text) {
-                // First half forms a hanzi phrase
-                // TODO: - Magic String
-                let pinyin = gridData.getConcatenatedTexts(at: secondHalfCoordinates, separatedBy: " ")
-                if phrase.pinyin != pinyin {
-                    return false
-                }
-            } else if let text = gridData.getConcatenatedTexts(at: secondHalfCoordinates),
-                      let phrase = gameData.phrases.first(whereChinese: text) {
-                // Second half forms a hanzi phrase
-                // TODO: - Magic String
-                let pinyin = gridData.getConcatenatedTexts(at: firstHalfCoordinates, separatedBy: " ")
-                if phrase.pinyin != pinyin {
-                    return false
-                }
-            } else {
+        if let text = gridData.getConcatenatedTexts(at: firstHalfCoordinates),
+           let phrase = gameData.phrases.first(whereChinese: text) {
+            // First half forms a hanzi phrase
+            // TODO: - Magic String
+            let pinyin = gridData.getConcatenatedTexts(at: secondHalfCoordinates, separatedBy: " ")
+            if phrase.pinyin != pinyin {
                 return false
             }
+        } else if let text = gridData.getConcatenatedTexts(at: secondHalfCoordinates),
+                  let phrase = gameData.phrases.first(whereChinese: text) {
+            // Second half forms a hanzi phrase
+            // TODO: - Magic String
+            let pinyin = gridData.getConcatenatedTexts(at: firstHalfCoordinates, separatedBy: " ")
+            if phrase.pinyin != pinyin {
+                return false
+            }
+        } else {
+            return false
         }
 
         return true

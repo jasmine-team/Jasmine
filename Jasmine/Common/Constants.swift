@@ -4,6 +4,8 @@ import Foundation
 // swiftlint:disable nesting
 enum Constants {
     enum Game {
+        static let timeInterval: TimeInterval = 0.1
+
         enum Swapping {
             enum CiHui {
                 static let gameTitle = "Ci Hui (词汇) Swapping Game"
@@ -20,7 +22,6 @@ enum Constants {
             static let columns = 4
             static let time: TimeInterval = 60
             static let scoreMultiplierFromTime = 100
-            static let timerInterval: TimeInterval = 0.1
         }
 
         enum Sliding {
@@ -39,7 +40,6 @@ enum Constants {
             static let columns = 4
             static let time: TimeInterval = 60
             static let scoreMultiplierFromTime = 100
-            static let timerInterval: TimeInterval = 0.1
         }
 
         enum Tetris {
@@ -58,8 +58,6 @@ enum Constants {
 
             /// Total time allowed
             static let totalTime: TimeInterval = 120
-            /// Interval to update the time
-            static let timeInterval: TimeInterval = 1
 
             static let upcomingTilesCount = 4
 
