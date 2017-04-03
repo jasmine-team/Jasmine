@@ -19,7 +19,8 @@ class CiHuiSwappingViewModel: BaseSwappingViewModel {
         gameInstruction = Constants.Game.Swapping.CiHui.gameInstruction
     }
 
-    /// Returns if and only if the game is won, that is: every row is a valid Chengyu.
+    /// Returns if and only if the game is won, that is:
+    /// every row/column contains the cihui and the respective pinyin.
     override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
         let firstHalfCoordinates = Array(line[0..<(line.count / 2)])
         let secondHalfCoordinates = Array(line[(line.count / 2)..<line.count])

@@ -102,19 +102,12 @@ struct TextGrid {
         return getTexts(at: coordinates)?.joined(separator: separator)
     }
 
-    /// Gets a row on the index given at the grid data given.
+    /// Determines whether the given Coordinate is in the bounds of the grid.
     ///
-    /// - Parameter row: the row number
-    /// - Returns: the row in the grid
-    func getRow(at row: Int) -> [String?] {
-        return grid[row]
-    }
-
-    /// Gets a column on the index given at the grid data given.
-    ///
-    /// - Parameter column: the column number
-    /// - Returns: the column in the grid
-    func getColumn(at column: Int) -> [String?] {
-        return grid.map { $0[column] }
+    /// - Parameter coordinate: the coordinate to be determined
+    /// - Returns: true if and only if the coordinate is inside the grid
+    func isInBounds(coordinate: Coordinate) -> Bool {
+        return 0 <= coordinate.row && coordinate.row < numRows &&
+            0 <= coordinate.col && coordinate.col <= numColumns
     }
 }

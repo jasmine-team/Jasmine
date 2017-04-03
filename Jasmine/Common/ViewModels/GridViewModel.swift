@@ -63,11 +63,11 @@ class GridViewModel: BaseViewModelProtocol {
 
     /// Returns true iff the game is won.
     private var hasGameWon: Bool {
-        let allRowsCorrect = (0..<numRows).reduce(true) { accum, next in
-            return accum && lineIsCorrect((0..<numColumns).map { Coordinate(row: next, col: $0) })
+        let allRowsCorrect = (0..<numRows).isAll { row in
+            lineIsCorrect((0..<numColumns).map { column in Coordinate(row: row, col: column) })
         }
-        let allColumnsCorrect = (0..<numColumns).reduce(true) { accum, next in
-            return accum && lineIsCorrect((0..<numRows).map { Coordinate(row: $0, col: next) })
+        let allColumnsCorrect = (0..<numColumns).isAll { column in
+            lineIsCorrect((0..<numRows).map { row in Coordinate(row: row, col: column) })
         }
 
         return allRowsCorrect || allColumnsCorrect
@@ -77,5 +77,4 @@ class GridViewModel: BaseViewModelProtocol {
     func lineIsCorrect(_ line: [Coordinate]) -> Bool {
         return false
     }
-
 }

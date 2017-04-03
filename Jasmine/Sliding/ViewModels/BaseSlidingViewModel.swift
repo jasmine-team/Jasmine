@@ -1,49 +1,11 @@
 import Foundation
 
-class BaseSlidingViewModel: SlidingViewModelProtocol {
-    /// Stores the grid data that will be used to display in the view controller.
-    private(set) var gridData: TextGrid
-    /// Number of rows in the grid, according to the answers property
-    var numRows: Int {
-        return gridData.numRows
-    }
-    /// Number of columns in the grid, according to the answers property
-    var numColumns: Int {
-        return gridData.numColumns
-    }
+class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
     weak var delegate: SlidingGameViewControllerDelegate?
-    /// Specifies the current score of the game. If the game has not started, it will be the initial
-    /// displayed score.
-    private(set) var currentScore: Int = 0 {
-        didSet {
-            delegate?.redisplay(newScore: currentScore)
-        }
-    }
-    /// The timer of this game.
-    private(set) var timer: CountDownTimer
-    /// The status of the current game.
-    private(set) var gameStatus: GameStatus = .notStarted {
-        didSet {
-            delegate?.notifyGameStatusUpdated()
 
-            if gameStatus != .inProgress {
-                timer.stopTimer()
-            }
-        }
-    }
-    /// The game data of this game.
-    let gameData: GameData
-
-    /// Provide a brief title for this game. Note that this title should be able to fit within the
-    /// width of the display.
-    var gameTitle: String = ""
-    /// Provide of a brief description of its objectives and how this game is played.
-    /// There is no word count limit, but should be concise.
-    var gameInstruction: String = ""
-
-    /// Initializes the sliding VM.
+    /// Initializes the grid VM.
     ///
     /// - Parameters:
     ///   - time: total time allowed
@@ -51,71 +13,93 @@ class BaseSlidingViewModel: SlidingViewModelProtocol {
     ///   - possibleAnswers: all possible answers. The game is won if all rows in the game is in all possible answers.
     ///   - rows: number of rows in the grid.
     ///   - columns: number of columns in the grid.
-    init(time: TimeInterval, gameData: GameData, tiles: [String], rows: Int, columns: Int) {
+    init(time: TimeInterval, gameData: GameData, tiles: [String?], rows: Int, columns: Int) {
         assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
-        assert(tiles.count == rows * columns - 1, "Number of tiles should equal numRows * numColumns - 1")
+        assert(tiles.count == rows * columns, "Number of tiles should equal numRows * numColumns")
 
-        self.gameData = gameData
-
-        let shuffledTiles = tiles.evenPermutation()
+        let shuffledTiles = tiles.shuffled()
         let grid = (0..<rows).map { row in
             (0..<columns).map { col in
                 shuffledTiles[row * columns + col]
             }
         }
 
-        gridData = TextGrid(fromInitialGrid: grid)
+        super.init(time: time, gameData: gameData, textGrid: TextGrid(fromInitialGrid: grid))
 
-        timer = CountDownTimer(totalTimeAllowed: time)
-        timer.timerListener = slidingTimerListener
+        timer.timerListener = gridTimerListener
     }
 
-    /// Tells the view model that the game has started.
-    func startGame() {
-        timer.startTimer(timerInterval: Constants.Game.Sliding.timerInterval)
-    }
-
-    /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
-    /// the specified two tiles.
+    /// Tells the Game Engine View Model that the user from the View Controller attempts to slide
+    /// the tile.
     ///
-    /// Note that if the tiles are swapped, `delegate.updateTiles(...)` should be called to update
+    /// Note that if the tiles are slided, `delegate.updateGridData()` should be called to update
     /// the grid data of the cell stored in the view controller. However, there is no need to call
-    /// `delegate.redisplayTiles(...)` as it will be done implicitly by the view controller when
-    /// the swapping is successful (determined by the returned value).
+    /// `delegate.redisplayAllTiles` as it will be done implicitly by the view controller when
+    /// the sliding is successful (determined by the returned value).
     ///
     /// - Parameters:
-    ///   - coord1: One of the cells to be swapped.
-    ///   - coord2: The other cell to be swapped.
-    /// - Returns: Returns true if the two coordinates has be swapped, false otherwise.
+    ///   - start: The tile to be slided.
+    ///   - end: The destination of the sliding tile. Should be empty.
+    /// - Returns: Returns true if the tile successfully slided, false otherwise.
     @discardableResult
-    func slideTile(from coord1: Coordinate, to coord2: Coordinate) -> Bool {
-        // From must be not nil, to must be nil
-        guard gridData[coord1] != nil, gridData[coord2] == nil,
-              abs(coord1.row - coord2.row) + abs(coord1.col - coord2.col) == 1 else {
+    func slideTile(from start: Coordinate, to end: Coordinate) -> Bool {
+        guard canTileSlide(from: start).contains(where: { $0.value == end }),
+              gridData[start] != nil, gridData[end] == nil else {
             return false
         }
 
-        gridData.swap(coord1, coord2)
+        gridData.swap(start, end)
         delegate?.updateGridData()
-        delegate?.redisplay(tilesAt: [coord1, coord2])
-
-        if hasGameWon {
-            gameStatus = .endedWithWon
-            currentScore += Int(timeRemaining * Double(Constants.Game.Sliding.scoreMultiplierFromTime))
-        }
+        checkGameWon()
 
         return true
     }
 
-    /// Returns true iff the game is won. This is to be overriden
-    var hasGameWon: Bool {
-        return false
+    /// Score for the game when it is won on the current state.
+    override var score: Int {
+        return Int(timeRemaining * Double(Constants.Game.Sliding.scoreMultiplierFromTime))
+    }
+
+    /// Ask the view model where the specified tile from the coordinate can be slided to.
+    ///
+    /// - Parameters:
+    ///   - start: the starting coordinate where the tile slides from.
+    /// - Returns: returns a dictionary of direction and the last coordinate that the tile can slide
+    ///   towards. However, if that is not a valid direction, do not add as an entry to the dictionary.
+    /// - Note: if the tile from the `start` should never be slided in the first place, returns empty
+    ///   dictionary
+    func canTileSlide(from start: Coordinate) -> [Direction: Coordinate] {
+        guard gridData.isInBounds(coordinate: start) else {
+            return [:]
+        }
+
+        var result: [Direction: Coordinate] = [:]
+
+        let top = Coordinate(row: start.row - 1, col: start.col)
+        let bottom = Coordinate(row: start.row + 1, col: start.col)
+        let left = Coordinate(row: start.row, col: start.col - 1)
+        let right = Coordinate(row: start.row, col: start.col + 1)
+
+        if gridData.isInBounds(coordinate: top) {
+            result[.northwards] = top
+        }
+        if gridData.isInBounds(coordinate: bottom) {
+            result[.southwards] = bottom
+        }
+        if gridData.isInBounds(coordinate: left) {
+            result[.westwards] = left
+        }
+        if gridData.isInBounds(coordinate: right) {
+            result[.eastwards] = right
+        }
+
+        return result
     }
 
     /// The countdown timer for use in this ViewModel.
     ///
     /// - Returns: the countdown timer
-    private func slidingTimerListener(status: TimerStatus) {
+    private func gridTimerListener(status: TimerStatus) {
         switch status {
         case .start:
             gameStatus = .inProgress

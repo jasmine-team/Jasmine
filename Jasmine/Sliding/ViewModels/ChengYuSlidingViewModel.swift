@@ -6,28 +6,32 @@ class ChengYuSlidingViewModel: BaseSlidingViewModel {
     /// - Parameters:
     ///   - time: initial time
     ///   - gameData: game data
-    ///   - numberOfPhrases: number of phrases to be produced
-    init(time: TimeInterval, gameData: GameData, numberOfPhrases: Int) {
-        let phrases = gameData.phrases.next(count: numberOfPhrases)
+    ///   - rows: rows in the game
+    init(time: TimeInterval, gameData: GameData, rows: Int) {
+        let phrases = gameData.phrases.next(count: rows)
         let tiles = phrases.flatMap { $0.chinese.characters.map { char in String(char) } }
+        let tilesExceptLast = tiles.enumerated().map { (idx, tile) in
+            (idx == tiles.count - 1) ? nil : tile
+        }
 
-        super.init(time: time, gameData: gameData, tiles: tiles,
-                   rows: numberOfPhrases, columns: Constants.Game.Grid.columns)
+        super.init(time: time, gameData: gameData, tiles: tilesExceptLast,
+                   rows: rows, columns: Constants.Game.Sliding.columns)
 
         gameTitle = Constants.Game.Sliding.ChengYu.gameTitle
         gameInstruction = Constants.Game.Sliding.ChengYu.gameInstruction
     }
 
     /// Returns if and only if the game is won, that is: every row is a valid Chengyu.
-    override var hasGameWon: Bool {
-        for row in 0..<gridData.numRows {
-            let coordinates = (0..<gridData.numColumns).map { Coordinate(row: row, col: $0) }
-            guard let text = gridData.getConcatenatedTexts(at: coordinates),
-                  gameData.phrases.contains(chinese: text) else {
-                return false
-            }
+    override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
+        if line.isAll(condition: { $0.row == numRows - 1 }) ||
+            line.isAll(condition: { $0.col == numColumns - 1 }) {
+            return true
         }
 
+        guard let text = gridData.getConcatenatedTexts(at: line),
+              gameData.phrases.contains(chinese: text) else {
+            return false
+        }
         return true
     }
 }

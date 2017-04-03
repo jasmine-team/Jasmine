@@ -29,7 +29,7 @@ class CiHuiSwappingViewModelTests: XCTestCase {
                        "ViewModel gameStatus on init is not correct")
         XCTAssertEqual("Ci Hui (词汇) Swapping Game", viewModel.gameTitle,
                        "ViewModel gameTitle on init is not correct")
-        XCTAssertEqual("Match the Chinese characters with their Pinyins by putting them in one row.",
+        XCTAssertEqual("Match the Chinese characters with their Pinyins by putting them in one row/column.",
                        viewModel.gameInstruction,
                        "ViewModel gameInstruction on init is not correct")
     }

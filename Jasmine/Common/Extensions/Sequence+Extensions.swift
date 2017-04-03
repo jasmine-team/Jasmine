@@ -6,26 +6,10 @@ extension Sequence {
         return result
     }
 
-    /// Generates an even permutation (shuffle) of the array uniformly random. An even permutation
-    /// is defined such that the number of swaps from the original array to the produced array is
-    /// even.
-    ///
-    /// - Returns: an even permutation (shuffle) of the array
-    func evenPermutation() -> [Iterator.Element] {
-        let array = Array(self)
-        var indexShuffle = (0..<array.count).shuffled()
-
-        var swapDistance = 0
-        for (idx, elem) in indexShuffle.enumerated() {
-            swapDistance += abs(idx - elem)
+    func isAll(condition: (Iterator.Element) -> Bool) -> Bool {
+        return reduce(true) { accum, next in
+            return accum && condition(next)
         }
-
-        // Make swapDistance even
-        if swapDistance % 2 == 1 {
-            swap(&indexShuffle[0], &indexShuffle[1])
-        }
-
-        return indexShuffle.map { array[$0] }
     }
 }
 

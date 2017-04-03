@@ -10,12 +10,12 @@ enum Constants {
             enum CiHui {
                 static let gameTitle = "Ci Hui (词汇) Swapping Game"
                 static let gameInstruction = "Match the Chinese characters with their Pinyins " +
-                                             "by putting them in one row."
+                                             "by putting them in one row/column."
             }
 
             enum ChengYu {
                 static let gameTitle = "Cheng Yu (成语) Swapping Game"
-                static let gameInstruction = "Match the Cheng Yus by putting them in one row."
+                static let gameInstruction = "Match the Cheng Yus by putting them in one row/column."
             }
 
             static let rows = 4
@@ -26,19 +26,19 @@ enum Constants {
 
         enum Sliding {
             enum CiHui {
-                static let gameTitle = "Ci Hui (词汇) Grid Game"
+                static let gameTitle = "Ci Hui (词汇) Sliding Game"
                 static let gameInstruction = "Match the Chinese characters with their Pinyins " +
-                                             "by putting them in one row."
+                                             "by putting them in one row/column."
             }
 
             enum ChengYu {
-                static let gameTitle = "Cheng Yu (成语) Grid Game"
-                static let gameInstruction = "Match the Cheng Yus by putting them in one row."
+                static let gameTitle = "Cheng Yu (成语) Sliding Game"
+                static let gameInstruction = "Match the Cheng Yus by putting them in one row/column."
             }
 
             static let rows = 4
             static let columns = 4
-            static let time: TimeInterval = 60
+            static let time: TimeInterval = 600
             static let scoreMultiplierFromTime = 100
         }
 
