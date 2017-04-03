@@ -4,6 +4,12 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
     weak var delegate: SwappingGameViewControllerDelegate?
+    /// The status of the current game.
+    override var gameStatus: GameStatus {
+        didSet {
+            delegate?.notifyGameStatusUpdated()
+        }
+    }
 
     /// Initializes the grid VM.
     ///
@@ -27,6 +33,8 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
         super.init(time: time, gameData: gameData, textGrid: TextGrid(fromInitialGrid: grid))
 
         timer.timerListener = gridTimerListener
+
+        scoreDidUpdate = { self.delegate?.redisplay(newScore: self.score) }
     }
 
     /// Score for the game when it is won on the current state.

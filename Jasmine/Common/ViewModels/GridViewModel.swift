@@ -13,7 +13,11 @@ class GridViewModel: BaseViewModelProtocol, CountdownTimable {
     }
     /// Specifies the current score of the game. If the game has not started, it will be the initial
     /// displayed score.
-    private(set) var currentScore: Int = 0
+    private(set) var currentScore: Int = 0 {
+        didSet {
+            scoreDidUpdate()
+        }
+    }
     /// The timer of this game.
     var timer: CountDownTimer
     /// The status of the current game.
@@ -27,6 +31,9 @@ class GridViewModel: BaseViewModelProtocol, CountdownTimable {
     /// Provide of a brief description of its objectives and how this game is played.
     /// There is no word count limit, but should be concise.
     var gameInstruction: String = ""
+
+    /// Callback to be run when score is updated.
+    var scoreDidUpdate: () -> Void = {}
 
     /// Initializes the grid VM.
     ///
