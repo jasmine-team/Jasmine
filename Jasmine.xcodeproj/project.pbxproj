@@ -23,6 +23,11 @@
 		502A296E1E926DCA0024336A /* ChengYuSlidingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A296B1E926DCA0024336A /* ChengYuSlidingViewModel.swift */; };
 		502A296F1E926DCA0024336A /* CiHuiSlidingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A296C1E926DCA0024336A /* CiHuiSlidingViewModel.swift */; };
 		502A29711E9275770024336A /* Array+EquatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29701E9275770024336A /* Array+EquatableTests.swift */; };
+		502A29751E927B790024336A /* BaseSlidingVIewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29721E927B790024336A /* BaseSlidingVIewModelTests.swift */; };
+		502A29761E927B790024336A /* ChengYuSlidingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29731E927B790024336A /* ChengYuSlidingViewModelTests.swift */; };
+		502A29771E927B790024336A /* CiHuiSlidingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29741E927B790024336A /* CiHuiSlidingViewModelTests.swift */; };
+		502A29791E927B7D0024336A /* SlidingGameViewDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29781E927B7D0024336A /* SlidingGameViewDelegateMock.swift */; };
+		502A297B1E927B8E0024336A /* TextGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A297A1E927B8E0024336A /* TextGridTests.swift */; };
 		505E07381E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E07371E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift */; };
 		505E073A1E7BE58E00CEE8BF /* SwappingGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E07391E7BE58E00CEE8BF /* SwappingGameViewControllerDelegate.swift */; };
 		505E073C1E7BE59300CEE8BF /* FlappyViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E073B1E7BE59300CEE8BF /* FlappyViewControllerDelegate.swift */; };
@@ -120,12 +125,17 @@
 		502A295D1E925A040024336A /* SlidingGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingGameViewController.swift; sourceTree = "<group>"; };
 		502A29621E925A160024336A /* CGPoint+Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Arithmetic.swift"; sourceTree = "<group>"; };
 		502A29641E925A190024336A /* Array+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Equatable.swift"; sourceTree = "<group>"; };
-		502A29661E925AB60024336A /* TetrisGameViewControllerDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TetrisGameViewControllerDelegateMock.swift; path = JasmineTests/Tetris/ViewModels/TetrisGameViewControllerDelegateMock.swift; sourceTree = SOURCE_ROOT; };
+		502A29661E925AB60024336A /* TetrisGameViewControllerDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewControllerDelegateMock.swift; sourceTree = "<group>"; };
 		502A29681E925C8D0024336A /* GridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
 		502A296A1E926DCA0024336A /* BaseSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSlidingViewModel.swift; sourceTree = "<group>"; };
 		502A296B1E926DCA0024336A /* ChengYuSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSlidingViewModel.swift; sourceTree = "<group>"; };
 		502A296C1E926DCA0024336A /* CiHuiSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiSlidingViewModel.swift; sourceTree = "<group>"; };
 		502A29701E9275770024336A /* Array+EquatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+EquatableTests.swift"; sourceTree = "<group>"; };
+		502A29721E927B790024336A /* BaseSlidingVIewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSlidingVIewModelTests.swift; sourceTree = "<group>"; };
+		502A29731E927B790024336A /* ChengYuSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSlidingViewModelTests.swift; sourceTree = "<group>"; };
+		502A29741E927B790024336A /* CiHuiSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiSlidingViewModelTests.swift; sourceTree = "<group>"; };
+		502A29781E927B7D0024336A /* SlidingGameViewDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingGameViewDelegateMock.swift; sourceTree = "<group>"; };
+		502A297A1E927B8E0024336A /* TextGridTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextGridTests.swift; sourceTree = "<group>"; };
 		505E07371E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		505E07391E7BE58E00CEE8BF /* SwappingGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwappingGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		505E073B1E7BE59300CEE8BF /* FlappyViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -252,21 +262,25 @@
 				502A29501E922ED90024336A /* ViewControllers */,
 				502A29511E922EDD0024336A /* ViewModels */,
 			);
-			name = Sliding;
+			path = Sliding;
 			sourceTree = "<group>";
 		};
 		502A29501E922ED90024336A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				502A29781E927B7D0024336A /* SlidingGameViewDelegateMock.swift */,
 			);
-			name = ViewControllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		502A29511E922EDD0024336A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				502A29721E927B790024336A /* BaseSlidingVIewModelTests.swift */,
+				502A29731E927B790024336A /* ChengYuSlidingViewModelTests.swift */,
+				502A29741E927B790024336A /* CiHuiSlidingViewModelTests.swift */,
 			);
-			name = ViewModels;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		50989DB51E6D8B16009A86C8 /* Models */ = {
@@ -279,9 +293,9 @@
 		50989DB71E6D8B16009A86C8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DF409FFA1E84225200389976 /* TetrisGameViewController.swift */,
 				505E07371E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift */,
 				DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */,
-				DF409FFA1E84225200389976 /* TetrisGameViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -340,8 +354,7 @@
 				50989DBE1E6D8B16009A86C8 /* ViewControllers */,
 				50989DC01E6D8B16009A86C8 /* ViewModels */,
 			);
-			name = Swapping;
-			path = Grid;
+			path = Swapping;
 			sourceTree = "<group>";
 		};
 		50989DC41E6D8B16009A86C8 /* Helpers */ = {
@@ -349,9 +362,9 @@
 			children = (
 				DF409FDC1E84147400389976 /* CountDownTimer.swift */,
 				DF409FDD1E84147400389976 /* Prebundler.swift */,
-				DF409FDE1E84147400389976 /* TimerStatus.swift */,
 				A2187E6B1E7510B60033FC5B /* Random.swift */,
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
+				DF409FDE1E84147400389976 /* TimerStatus.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -359,8 +372,8 @@
 		50989DC81E6D8B16009A86C8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DF2155241E8E3F25005A0927 /* Direction.swift */,
 				DFB342701E77EB6700D2FE09 /* Coordinate.swift */,
+				DF2155241E8E3F25005A0927 /* Direction.swift */,
 				50989DC51E6D8B16009A86C8 /* GameData.swift */,
 				DF409FE21E84149F00389976 /* GameDataFactory.swift */,
 				DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */,
@@ -473,8 +486,8 @@
 		50F191A71E7ADC4500EE9A75 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				50717ABF1E7BD944005A2FE5 /* RandomTests.swift */,
 				DF409FF01E8415F400389976 /* CountDownTimerTest.swift */,
+				50717ABF1E7BD944005A2FE5 /* RandomTests.swift */,
 				DF409FF11E8415F400389976 /* RealmTestCase.swift */,
 			);
 			path = Helpers;
@@ -483,12 +496,13 @@
 		50F191A81E7ADC4800EE9A75 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DFD851AE1E90F1C100C13967 /* RealmIntegrationTests.swift */,
-				DF2155171E8E2335005A0927 /* PhrasesTests.swift */,
 				50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */,
-				DF409FF41E84160C00389976 /* GameDataFactoryTests.swift */,
-				DF409FF61E84160C00389976 /* PlayerTests.swift */,
 				DFBB11CA1E902D39005DDCFC /* DirectionTests.swift */,
+				DF409FF41E84160C00389976 /* GameDataFactoryTests.swift */,
+				DF2155171E8E2335005A0927 /* PhrasesTests.swift */,
+				DF409FF61E84160C00389976 /* PlayerTests.swift */,
+				DFD851AE1E90F1C100C13967 /* RealmIntegrationTests.swift */,
+				502A297A1E927B8E0024336A /* TextGridTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -540,8 +554,7 @@
 				50F191B31E7ADCB200EE9A75 /* ViewControllers */,
 				50F191B21E7ADCAE00EE9A75 /* ViewModels */,
 			);
-			name = Swapping;
-			path = Grid;
+			path = Swapping;
 			sourceTree = "<group>";
 		};
 		50F191B11E7ADCA600EE9A75 /* Flappy */ = {
@@ -630,9 +643,9 @@
 			children = (
 				50F191A61E7ADC3D00EE9A75 /* Common */,
 				50F191B11E7ADCA600EE9A75 /* Flappy */,
+				502A294F1E922E800024336A /* Sliding */,
 				50F191B01E7ADCA200EE9A75 /* Swapping */,
 				50F191AB1E7ADC6D00EE9A75 /* Tetris */,
-				502A294F1E922E800024336A /* Sliding */,
 				A260C6371E6AB30400782103 /* Info.plist */,
 			);
 			path = JasmineTests;
@@ -650,9 +663,9 @@
 		DF21551C1E8E237F005A0927 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DF21551D1E8E237F005A0927 /* SlidingGameViewControllerDelegate.swift */,
 				502A295C1E925A040024336A /* SlidingGameStoryboard.storyboard */,
 				502A295D1E925A040024336A /* SlidingGameViewController.swift */,
+				DF21551D1E8E237F005A0927 /* SlidingGameViewControllerDelegate.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -689,11 +702,11 @@
 			isa = PBXGroup;
 			children = (
 				DF7CF7741E7E9ECE00C6979A /* BaseGameViewControllerDelegate.swift */,
+				DFCF3FC71E875D940027016E /* DiscreteFallableSquareGridViewController.swift */,
+				DFCF3FC91E875DCB0027016E /* DraggableSquareGridViewController.swift */,
 				DF7CF7751E7E9ECE00C6979A /* GameElements.storyboard */,
 				DF7CF7761E7E9ECE00C6979A /* GameStatisticsViewController.swift */,
 				DF7CF7771E7E9ECE00C6979A /* SquareGridViewController.swift */,
-				DFCF3FC91E875DCB0027016E /* DraggableSquareGridViewController.swift */,
-				DFCF3FC71E875D940027016E /* DiscreteFallableSquareGridViewController.swift */,
 			);
 			path = GameElements;
 			sourceTree = "<group>";
@@ -711,8 +724,8 @@
 			isa = PBXGroup;
 			children = (
 				502A29701E9275770024336A /* Array+EquatableTests.swift */,
-				DF7CF7881E7E9FD700C6979A /* CGRect+ArithmeticTests.swift */,
 				DFBB11C81E902737005DDCFC /* CGPoint+ArithmeticTests.swift */,
+				DF7CF7881E7E9FD700C6979A /* CGRect+ArithmeticTests.swift */,
 				DF7CF7891E7E9FD700C6979A /* IndexPath+CoordinateTests.swift */,
 				50717ABE1E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift */,
 				50717AC21E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift */,
@@ -1027,14 +1040,18 @@
 			files = (
 				DF409FEF1E8415E000389976 /* UIApplicationTests.swift in Sources */,
 				DFD851AF1E90F1C100C13967 /* RealmIntegrationTests.swift in Sources */,
+				502A29761E927B790024336A /* ChengYuSlidingViewModelTests.swift in Sources */,
 				DF409FF21E8415F400389976 /* CountDownTimerTest.swift in Sources */,
 				50717AC31E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift in Sources */,
 				508BAF811E8510A90088D0A6 /* CiHuiSwappingViewModelTests.swift in Sources */,
 				DF409FF71E84160C00389976 /* GameDataFactoryTests.swift in Sources */,
+				502A29791E927B7D0024336A /* SlidingGameViewDelegateMock.swift in Sources */,
 				502A29711E9275770024336A /* Array+EquatableTests.swift in Sources */,
+				502A29771E927B790024336A /* CiHuiSlidingViewModelTests.swift in Sources */,
 				DFBB11C91E902737005DDCFC /* CGPoint+ArithmeticTests.swift in Sources */,
 				DF409FF31E8415F400389976 /* RealmTestCase.swift in Sources */,
 				DF409FF91E84160C00389976 /* PlayerTests.swift in Sources */,
+				502A29751E927B790024336A /* BaseSlidingVIewModelTests.swift in Sources */,
 				50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */,
 				DF2155181E8E2335005A0927 /* PhrasesTests.swift in Sources */,
 				DF71890A1E85032A009EA28E /* CountdownTimableTests.swift in Sources */,
@@ -1045,6 +1062,7 @@
 				DF7189091E85032A009EA28E /* CountdownTimableMock.swift in Sources */,
 				DF2155291E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift in Sources */,
 				DF71890C1E850359009EA28E /* SwappingGameViewControllerDelegateMock.swift in Sources */,
+				502A297B1E927B8E0024336A /* TextGridTests.swift in Sources */,
 				DF7CF78B1E7E9FD700C6979A /* IndexPath+CoordinateTests.swift in Sources */,
 				5071D26A1E8E2F32006878E6 /* ChengYuSwappingViewModelTests.swift in Sources */,
 				DF7CF78A1E7E9FD700C6979A /* CGRect+ArithmeticTests.swift in Sources */,
