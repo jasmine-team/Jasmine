@@ -23,7 +23,7 @@ class ChengYuGridViewModel: BaseGridViewModel {
         for row in 0..<gridData.numRows {
             let coordinates = (0..<gridData.numColumns).map { Coordinate(row: row, col: $0) }
             guard let text = gridData.getConcatenatedTexts(at: coordinates),
-                  !gameData.phrases.contains(chinese: text) else {
+                  gameData.phrases.contains(chinese: text) else {
                 return false
             }
         }
