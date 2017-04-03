@@ -17,9 +17,7 @@ class SlidingGameViewController: UIViewController {
     // MARK: - Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let slidingGridView = segue.destination as? DraggableSquareGridViewController {
-            slidingGridView.segueWith(viewModel.gridData,
-                                      numRows: Constants.Game.Sliding.rows,
-                                      numCols: Constants.Game.Sliding.columns)
+            slidingGridView.segueWith(viewModel.gridData)
             self.slidingGridView = slidingGridView
 
         } else if let gameStatisticsView = segue.destination as? GameStatisticsViewController {
@@ -118,7 +116,6 @@ fileprivate extension SlidingGameViewController {
         func helperSnapTile(toCoord coord: Coordinate) {
             slidingGridView.snapDetachedTile(movingTile.tile, toCoordinate: coord) {
                 self.slidingGridView.reattachDetachedTile(movingTile.tile)
-                self.redisplayAllTiles()
                 self.movingTile = nil
             }
         }
@@ -163,22 +160,8 @@ fileprivate extension SlidingGameViewController {
     }
 }
 
+// MARK: - Delegate Conformance
 extension SlidingGameViewController: SlidingGameViewControllerDelegate {
-    /// Update the grid data stored in the Grid Game View Controller with a new dataset.
-    func updateGridData() {
-        slidingGridView.update(collectionData: viewModel.gridData)
-    }
-
-    /// Refreshes the tiles based on the tiles information stored in the View Controller's grid data.
-    ///
-    /// Note to call `updateGridData` if any information in the grid data should be
-    /// updated.
-    func redisplayAllTiles() {
-        slidingGridView.reload(allCellsWithAnimation: true)
-    }
-}
-
-extension SlidingGameViewController: BaseGameViewControllerDelegate {
 
     // MARK: Score Update
     /// Redisplay the score displayed on the view controller screen with a new score.

@@ -26,6 +26,13 @@ struct TextGrid {
         grid = initialGrid
     }
 
+    /// Initializes a TextGrid with a given initial array. Produces a grid of a single row.
+    ///
+    /// - Parameter initalArray: the initial array to be morphed into a grid.
+    init(fromInitialArray initalArray: [String?]) {
+        self.init(fromInitialGrid: [initalArray])
+    }
+
     /// Initializes a TextGrid filled with nils, given the dimensions of the grid.
     ///
     /// - Parameters:

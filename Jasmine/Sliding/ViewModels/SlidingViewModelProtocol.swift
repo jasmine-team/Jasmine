@@ -9,7 +9,7 @@ protocol SlidingViewModelProtocol: BaseViewModelProtocol, CountdownTimable {
     var delegate: SlidingGameViewControllerDelegate? { get set }
 
     /// Stores the grid data that will be used to display in the view controller.
-    var gridData: [Coordinate: String] { get }
+    var gridData: TextGrid { get }
 
     // MARK: Game Operations
     /// Ask the view model where the specified tile from the coordinate can be slided to.
