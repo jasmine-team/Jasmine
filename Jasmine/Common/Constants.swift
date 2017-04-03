@@ -46,6 +46,11 @@ enum Constants {
 
             static let tileFallInterval: TimeInterval = 0.5
         }
+
+        enum Sliding {
+            static let rows = 4
+            static let columns = 4
+        }
     }
 
     enum Theme {

@@ -45,6 +45,13 @@
                                             <segue destination="CTx-JF-hEy" kind="show" id="teM-ew-Hcb"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDQ-IQ-GqK">
+                                        <rect key="frame" x="0.0" y="60" width="132" height="30"/>
+                                        <state key="normal" title="Open Sliding Game"/>
+                                        <connections>
+                                            <segue destination="8ZU-Hu-mvm" kind="show" id="MN3-qC-tx6"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -77,6 +84,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Nw-2l-f4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="818" y="179"/>
+        </scene>
+        <!--SlidingGameViewContoller-->
+        <scene sceneID="61E-hi-Ljp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SlidingGameStoryboard" referencedIdentifier="SlidingGameViewContoller" id="8ZU-Hu-mvm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e9M-vg-btE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="799" y="229"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
