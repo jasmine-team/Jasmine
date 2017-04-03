@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eKS-sV-Lr3">
-                                <rect key="frame" x="78.5" y="258.5" width="218" height="150"/>
+                                <rect key="frame" x="78.5" y="288.5" width="218" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nil-Gc-zGo">
                                         <rect key="frame" x="0.0" y="0.0" width="218" height="30"/>

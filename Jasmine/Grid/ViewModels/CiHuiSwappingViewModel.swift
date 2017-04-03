@@ -22,6 +22,11 @@ class CiHuiSwappingViewModel: BaseSwappingViewModel {
     /// Returns if and only if the game is won, that is:
     /// every row/column contains the cihui and the respective pinyin.
     override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
+        if line.isAll(condition: { $0.row == numRows - 1 }) ||
+            line.isAll(condition: { $0.col == numColumns - 1 }) {
+            return true
+        }
+
         let firstHalfCoordinates = Array(line[0..<(line.count / 2)])
         let secondHalfCoordinates = Array(line[(line.count / 2)..<line.count])
 
