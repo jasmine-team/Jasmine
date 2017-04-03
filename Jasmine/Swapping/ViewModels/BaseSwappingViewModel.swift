@@ -53,7 +53,6 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
         }
 
         gridData.swap(coord1, coord2)
-        delegate?.updateGridData()
         checkGameWon()
 
         return true
