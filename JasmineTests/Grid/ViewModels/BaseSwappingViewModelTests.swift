@@ -2,14 +2,15 @@ import XCTest
 import Foundation
 @testable import Jasmine
 
-class BaseGridViewModelTests: XCTestCase {
+class BaseSwappingViewModelTests: XCTestCase {
     func testInit() {
         guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
             XCTFail("Realm errors")
             return
         }
 
-        let viewModel = BaseGridViewModel(time: 3, gameData: gameData, tiles: ["a", "b"], rows: 1, columns: 2)
+        let viewModel = BaseSwappingViewModel(time: 3, gameData: gameData,
+                                              tiles: ["a", "b"], rows: 1, columns: 2)
 
         XCTAssertNil(viewModel.delegate,
                      "ViewModel delegate on init is not nil")
@@ -32,9 +33,9 @@ class BaseGridViewModelTests: XCTestCase {
 
         let gridData = viewModel.gridData
         XCTAssert(["a", "b"].contains { $0 == gridData[Coordinate(row: 0, col: 0)] },
-                  "Grid Data is not correct")
+                  "Swapping Data is not correct")
         XCTAssert(["a", "b"].contains { $0 == gridData[Coordinate(row: 0, col: 1)] },
-                  "Grid Data is not correct")
+                  "Swapping Data is not correct")
     }
 
     func testStartGame() {
@@ -47,9 +48,9 @@ class BaseGridViewModelTests: XCTestCase {
         let columns = 2
         let time: TimeInterval = 3
 
-        let viewModel = BaseGridViewModel(time: time, gameData: gameData, tiles: ["a", "b"],
-                                          rows: rows, columns: columns)
-        let delegate = GridGameViewControllerDelegateMock()
+        let viewModel = BaseSwappingViewModel(time: time, gameData: gameData, tiles: ["a", "b"],
+                                             rows: rows, columns: columns)
+        let delegate = SwappingGameViewControllerDelegateMock()
         viewModel.delegate = delegate
         viewModel.startGame()
 
@@ -79,9 +80,10 @@ class BaseGridViewModelTests: XCTestCase {
         let columns = 3
         let time: TimeInterval = 3
 
-        let viewModel = BaseGridViewModel(time: time, gameData: gameData, tiles: ["a", "b", "c", "d", "e", "f"],
-                                          rows: rows, columns: columns)
-        let delegate = GridGameViewControllerDelegateMock()
+        let viewModel = BaseSwappingViewModel(time: time, gameData: gameData,
+                                             tiles: ["a", "b", "c", "d", "e", "f"],
+                                             rows: rows, columns: columns)
+        let delegate = SwappingGameViewControllerDelegateMock()
         viewModel.delegate = delegate
         viewModel.startGame()
 
@@ -114,9 +116,9 @@ class BaseGridViewModelTests: XCTestCase {
             return
         }
 
-        let viewModel = BaseGridViewModel(time: 3, gameData: gameData, tiles: ["a"], rows: 1, columns: 1)
+        let viewModel = BaseSwappingViewModel(time: 3, gameData: gameData, tiles: ["a"], rows: 1, columns: 1)
 
         XCTAssertFalse(viewModel.hasGameWon,
-                       "hasGameWon should always return false on BaseGridVM")
+                       "hasGameWon should always return false on BaseSwappingVM")
     }
 }

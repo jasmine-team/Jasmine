@@ -1,16 +1,17 @@
 import XCTest
 @testable import Jasmine
 
-class ChengYuGridViewModelTests: XCTestCase {
+class CiHuiSwappingViewModelTests: XCTestCase {
     func testInit() {
         let numberOfPhrases = 3
 
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
+        guard let gameData = try? GameDataFactory().createGame(difficulty: 5, type: .ciHui) else {
             XCTFail("Realm errors")
             return
         }
 
-        let viewModel = ChengYuGridViewModel(time: 10, gameData: gameData, numberOfPhrases: numberOfPhrases)
+        let viewModel = CiHuiSwappingViewModel(time: 10, gameData: gameData,
+                                               numberOfPhrases: numberOfPhrases)
 
         XCTAssertNil(viewModel.delegate,
                      "ViewModel delegate on init is not nil")
@@ -26,9 +27,9 @@ class ChengYuGridViewModelTests: XCTestCase {
                        "ViewModel timeRemaining on init is not correct")
         XCTAssertEqual(GameStatus.notStarted, viewModel.gameStatus,
                        "ViewModel gameStatus on init is not correct")
-        XCTAssertEqual("Cheng Yu (成语) Grid Game", viewModel.gameTitle,
+        XCTAssertEqual("Ci Hui (词汇) Swapping Game", viewModel.gameTitle,
                        "ViewModel gameTitle on init is not correct")
-        XCTAssertEqual("Match the Cheng Yus by putting them in one row.",
+        XCTAssertEqual("Match the Chinese characters with their Pinyins by putting them in one row.",
                        viewModel.gameInstruction,
                        "ViewModel gameInstruction on init is not correct")
     }
