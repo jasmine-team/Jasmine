@@ -14,6 +14,10 @@
 		502669021E7D6C6A00112291 /* BaseViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426E1E77E77900D2FE09 /* BaseViewModelProtocol.swift */; };
 		502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342761E77F5F200D2FE09 /* FlappyViewModelProtocol.swift */; };
 		50269D451E83C96C0043C45D /* BaseGridViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50269D441E83C96C0043C45D /* BaseGridViewModelTests.swift */; };
+		502A29531E922EF40024336A /* BaseSlidingVIewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29521E922EF40024336A /* BaseSlidingVIewModelTests.swift */; };
+		502A29551E922EFC0024336A /* ChengYuSlidingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29541E922EFC0024336A /* ChengYuSlidingViewModelTests.swift */; };
+		502A29571E922F080024336A /* CiHuiSlidingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29561E922F080024336A /* CiHuiSlidingViewModelTests.swift */; };
+		502A29591E922FDA0024336A /* SlidingGameViewDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29581E922FDA0024336A /* SlidingGameViewDelegateMock.swift */; };
 		5041A58C1E91B09C00DB4DE8 /* BaseSlidingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5041A58B1E91B09C00DB4DE8 /* BaseSlidingViewModel.swift */; };
 		5041A58E1E91B7C200DB4DE8 /* ChengYuSlidingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5041A58D1E91B7C200DB4DE8 /* ChengYuSlidingViewModel.swift */; };
 		5041A5901E91B7C900DB4DE8 /* CiHuiSlidingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5041A58F1E91B7C900DB4DE8 /* CiHuiSlidingViewModel.swift */; };
@@ -111,6 +115,10 @@
 		3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasmine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
 		50269D441E83C96C0043C45D /* BaseGridViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGridViewModelTests.swift; sourceTree = "<group>"; };
+		502A29521E922EF40024336A /* BaseSlidingVIewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSlidingVIewModelTests.swift; sourceTree = "<group>"; };
+		502A29541E922EFC0024336A /* ChengYuSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSlidingViewModelTests.swift; sourceTree = "<group>"; };
+		502A29561E922F080024336A /* CiHuiSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiSlidingViewModelTests.swift; sourceTree = "<group>"; };
+		502A29581E922FDA0024336A /* SlidingGameViewDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingGameViewDelegateMock.swift; sourceTree = "<group>"; };
 		5041A58B1E91B09C00DB4DE8 /* BaseSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSlidingViewModel.swift; sourceTree = "<group>"; };
 		5041A58D1E91B7C200DB4DE8 /* ChengYuSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSlidingViewModel.swift; sourceTree = "<group>"; };
 		5041A58F1E91B7C900DB4DE8 /* CiHuiSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiSlidingViewModel.swift; sourceTree = "<group>"; };
@@ -232,6 +240,33 @@
 				5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		502A294F1E922E800024336A /* Sliding */ = {
+			isa = PBXGroup;
+			children = (
+				502A29501E922ED90024336A /* ViewControllers */,
+				502A29511E922EDD0024336A /* ViewModels */,
+			);
+			name = Sliding;
+			sourceTree = "<group>";
+		};
+		502A29501E922ED90024336A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				502A29581E922FDA0024336A /* SlidingGameViewDelegateMock.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		502A29511E922EDD0024336A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				502A29521E922EF40024336A /* BaseSlidingVIewModelTests.swift */,
+				502A29541E922EFC0024336A /* ChengYuSlidingViewModelTests.swift */,
+				502A29561E922F080024336A /* CiHuiSlidingViewModelTests.swift */,
+			);
+			name = ViewModels;
 			sourceTree = "<group>";
 		};
 		50989DB51E6D8B16009A86C8 /* Models */ = {
@@ -466,7 +501,6 @@
 		50F191AB1E7ADC6D00EE9A75 /* Tetris */ = {
 			isa = PBXGroup;
 			children = (
-				50F191AE1E7ADC8600EE9A75 /* Models */,
 				50F191AD1E7ADC8000EE9A75 /* ViewControllers */,
 				50F191AC1E7ADC7A00EE9A75 /* ViewModels */,
 			);
@@ -488,17 +522,9 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		50F191AE1E7ADC8600EE9A75 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		50F191B01E7ADCA200EE9A75 /* Grid */ = {
 			isa = PBXGroup;
 			children = (
-				50F191B41E7ADCB700EE9A75 /* Models */,
 				50F191B31E7ADCB200EE9A75 /* ViewControllers */,
 				50F191B21E7ADCAE00EE9A75 /* ViewModels */,
 			);
@@ -531,13 +557,6 @@
 				DF71890B1E850359009EA28E /* GridGameViewControllerDelegateMock.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		50F191B41E7ADCB700EE9A75 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		50F191B51E7ADCBE00EE9A75 /* ViewModels */ = {
@@ -600,6 +619,7 @@
 				50F191B11E7ADCA600EE9A75 /* Flappy */,
 				50F191B01E7ADCA200EE9A75 /* Grid */,
 				50F191AB1E7ADC6D00EE9A75 /* Tetris */,
+				502A294F1E922E800024336A /* Sliding */,
 				A260C6371E6AB30400782103 /* Info.plist */,
 			);
 			path = JasmineTests;
@@ -995,16 +1015,20 @@
 				DF409FF91E84160C00389976 /* PlayerTests.swift in Sources */,
 				50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */,
 				DF2155181E8E2335005A0927 /* PhrasesTests.swift in Sources */,
+				502A29551E922EFC0024336A /* ChengYuSlidingViewModelTests.swift in Sources */,
 				DF71890A1E85032A009EA28E /* CountdownTimableTests.swift in Sources */,
 				50717AC01E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift in Sources */,
 				50269D451E83C96C0043C45D /* BaseGridViewModelTests.swift in Sources */,
 				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
+				502A29531E922EF40024336A /* BaseSlidingVIewModelTests.swift in Sources */,
 				DF7189091E85032A009EA28E /* CountdownTimableMock.swift in Sources */,
 				DF2155291E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift in Sources */,
 				DF71890C1E850359009EA28E /* GridGameViewControllerDelegateMock.swift in Sources */,
 				42862A9B1E86C16000062D47 /* (null) in Sources */,
 				DF7CF78B1E7E9FD700C6979A /* IndexPath+CoordinateTests.swift in Sources */,
 				5071D26A1E8E2F32006878E6 /* ChengYuGridViewModelTests.swift in Sources */,
+				502A29571E922F080024336A /* CiHuiSlidingViewModelTests.swift in Sources */,
+				502A29591E922FDA0024336A /* SlidingGameViewDelegateMock.swift in Sources */,
 				50E3A98C1E8C9B0D00ADE87D /* Array+Extensions.swift in Sources */,
 				0044DD2D1E8FA5F400B9291F /* TetrisGameViewControllerDelegateMock.swift in Sources */,
 				DF7CF78A1E7E9FD700C6979A /* CGRect+ArithmeticTests.swift in Sources */,

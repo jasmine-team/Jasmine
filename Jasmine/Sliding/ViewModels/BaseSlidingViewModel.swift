@@ -88,12 +88,10 @@ class BaseSlidingViewModel: SlidingViewModelProtocol {
     ///   - coord2: The other cell to be swapped.
     /// - Returns: Returns true if the two coordinates has be swapped, false otherwise.
     @discardableResult
-    func slideTo(_ coord1: Coordinate, and coord2: Coordinate) -> Bool {
-        // One of them must be empty, and both must be adjacent
-        guard (gridData[coord1] != nil && gridData[coord2] == nil) ||
-              (gridData[coord1] == nil && gridData[coord2] != nil),
-              abs(coord1.row - coord2.row) + abs(coord1.col - coord2.col) == 1
-              else {
+    func slideTile(from coord1: Coordinate, to coord2: Coordinate) -> Bool {
+        // From must be not nil, to must be nil
+        guard gridData[coord1] != nil, gridData[coord2] == nil,
+              abs(coord1.row - coord2.row) + abs(coord1.col - coord2.col) == 1 else {
             return false
         }
 
