@@ -104,16 +104,13 @@ class TetrisGameViewController: UIViewController {
     /// Moves the falling tile with respect to the position of the falling tile when the user taps
     /// on the grid.
     @IBAction func onTilesTapped(_ sender: UITapGestureRecognizer) {
-        let touchedPosition = sender.location(in: tetrisGameAreaView.view)
         guard let tilePosition = tetrisGameAreaView.fallingTile?.center else {
             return
         }
 
-        if touchedPosition.x > tilePosition.x {
-            tetrisGameAreaView.shiftFallingTile(towards: .eastwards)
-        } else {
-            tetrisGameAreaView.shiftFallingTile(towards: .westwards)
-        }
+        let touchedPosition = sender.location(in: tetrisGameAreaView.view)
+        let direction: Direction = touchedPosition.x > tilePosition.x ? .eastwards : .westwards
+        tetrisGameAreaView.shiftFallingTile(towards: direction)
     }
 
     // MARK: - Game State and Actions
