@@ -64,7 +64,10 @@ class SquareTileView: UILabel {
     }
 
     private func adjustFontSize() {
-        font = font.withSize(frame.height * SquareTileView.fontSizeRatio)
+        guard let numChar = text?.characters.count else {
+            return
+        }
+        font = font.withSize(frame.height * SquareTileView.fontSizeRatio / sqrt(CGFloat(numChar)))
     }
 
     private func applyContextualTheme(whenFilled: Bool) {
