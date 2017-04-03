@@ -75,11 +75,9 @@
 		DF9854E21E92AA2F0047663D /* GameStatusUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9854DF1E92AA2F0047663D /* GameStatusUpdateDelegate.swift */; };
 		DF9854E31E92AA2F0047663D /* ScoreUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9854E01E92AA2F0047663D /* ScoreUpdateDelegate.swift */; };
 		DF9854E41E92AA2F0047663D /* TimeUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9854E11E92AA2F0047663D /* TimeUpdateDelegate.swift */; };
-		DF9854E91E92B0C80047663D /* TimeableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9854E81E92B0C80047663D /* TimeableProtocol.swift */; };
 		DF9854F01E92B19B0047663D /* GameDescriptionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9854EE1E92B19B0047663D /* GameDescriptionProtocol.swift */; };
 		DF9918C61E92B65F004E599B /* CGPoint+Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9918C51E92B65F004E599B /* CGPoint+Arithmetic.swift */; };
 		DF9918D11E92B6A3004E599B /* SwappingGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9918C91E92B6A3004E599B /* SwappingGameViewController.swift */; };
-		DF9918D21E92B6A3004E599B /* SwappingGameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9918CA1E92B6A3004E599B /* SwappingGameViewControllerDelegate.swift */; };
 		DF9918D31E92B6A3004E599B /* SwappingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9918CB1E92B6A3004E599B /* SwappingStoryboard.storyboard */; };
 		DF9918D41E92B6A3004E599B /* BaseSwappingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9918CD1E92B6A3004E599B /* BaseSwappingViewModel.swift */; };
 		DF9918D51E92B6A3004E599B /* ChengYuSwappingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9918CE1E92B6A3004E599B /* ChengYuSwappingViewModel.swift */; };
@@ -95,6 +93,8 @@
 		DF9918EC1E92B769004E599B /* BaseSwappingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9918E81E92B769004E599B /* BaseSwappingViewModelTests.swift */; };
 		DF9918ED1E92B769004E599B /* ChengYuSwappingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9918E91E92B769004E599B /* ChengYuSwappingViewModelTests.swift */; };
 		DF9918EE1E92B769004E599B /* CiHuiSwappingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9918EA1E92B769004E599B /* CiHuiSwappingViewModelTests.swift */; };
+		DF9918F01E92BAF0004E599B /* TimeDescriptorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9918EF1E92BAF0004E599B /* TimeDescriptorProtocol.swift */; };
+		DF9918F21E92BB17004E599B /* ScoreDescriptorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9918F11E92BB17004E599B /* ScoreDescriptorProtocol.swift */; };
 		DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342701E77EB6700D2FE09 /* Coordinate.swift */; };
 		DFCF3FC81E875D940027016E /* DiscreteFallableSquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF3FC71E875D940027016E /* DiscreteFallableSquareGridViewController.swift */; };
 		DFCF3FCA1E875DCB0027016E /* DraggableSquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF3FC91E875DCB0027016E /* DraggableSquareGridViewController.swift */; };
@@ -184,11 +184,9 @@
 		DF9854DF1E92AA2F0047663D /* GameStatusUpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameStatusUpdateDelegate.swift; path = Delegates/GameStatusUpdateDelegate.swift; sourceTree = "<group>"; };
 		DF9854E01E92AA2F0047663D /* ScoreUpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreUpdateDelegate.swift; path = Delegates/ScoreUpdateDelegate.swift; sourceTree = "<group>"; };
 		DF9854E11E92AA2F0047663D /* TimeUpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeUpdateDelegate.swift; path = Delegates/TimeUpdateDelegate.swift; sourceTree = "<group>"; };
-		DF9854E81E92B0C80047663D /* TimeableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeableProtocol.swift; path = Protocols/TimeableProtocol.swift; sourceTree = "<group>"; };
 		DF9854EE1E92B19B0047663D /* GameDescriptionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameDescriptionProtocol.swift; path = Protocols/GameDescriptionProtocol.swift; sourceTree = "<group>"; };
 		DF9918C51E92B65F004E599B /* CGPoint+Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Arithmetic.swift"; sourceTree = "<group>"; };
 		DF9918C91E92B6A3004E599B /* SwappingGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwappingGameViewController.swift; sourceTree = "<group>"; };
-		DF9918CA1E92B6A3004E599B /* SwappingGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwappingGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DF9918CB1E92B6A3004E599B /* SwappingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SwappingStoryboard.storyboard; sourceTree = "<group>"; };
 		DF9918CD1E92B6A3004E599B /* BaseSwappingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSwappingViewModel.swift; sourceTree = "<group>"; };
 		DF9918CE1E92B6A3004E599B /* ChengYuSwappingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSwappingViewModel.swift; sourceTree = "<group>"; };
@@ -204,6 +202,8 @@
 		DF9918E81E92B769004E599B /* BaseSwappingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSwappingViewModelTests.swift; sourceTree = "<group>"; };
 		DF9918E91E92B769004E599B /* ChengYuSwappingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSwappingViewModelTests.swift; sourceTree = "<group>"; };
 		DF9918EA1E92B769004E599B /* CiHuiSwappingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiSwappingViewModelTests.swift; sourceTree = "<group>"; };
+		DF9918EF1E92BAF0004E599B /* TimeDescriptorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeDescriptorProtocol.swift; sourceTree = "<group>"; };
+		DF9918F11E92BB17004E599B /* ScoreDescriptorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreDescriptorProtocol.swift; sourceTree = "<group>"; };
 		DFB3426E1E77E77900D2FE09 /* BaseViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModelProtocol.swift; sourceTree = "<group>"; };
 		DFB342701E77EB6700D2FE09 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		DFB342761E77F5F200D2FE09 /* FlappyViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -654,7 +654,8 @@
 			isa = PBXGroup;
 			children = (
 				DF9854EE1E92B19B0047663D /* GameDescriptionProtocol.swift */,
-				DF9854E81E92B0C80047663D /* TimeableProtocol.swift */,
+				DF9918EF1E92BAF0004E599B /* TimeDescriptorProtocol.swift */,
+				DF9918F11E92BB17004E599B /* ScoreDescriptorProtocol.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -672,7 +673,6 @@
 			isa = PBXGroup;
 			children = (
 				DF9918C91E92B6A3004E599B /* SwappingGameViewController.swift */,
-				DF9918CA1E92B6A3004E599B /* SwappingGameViewControllerDelegate.swift */,
 				DF9918CB1E92B6A3004E599B /* SwappingStoryboard.storyboard */,
 			);
 			path = ViewControllers;
@@ -681,10 +681,10 @@
 		DF9918CC1E92B6A3004E599B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				DF9918D01E92B6A3004E599B /* SwappingViewModelProtocol.swift */,
 				DF9918CD1E92B6A3004E599B /* BaseSwappingViewModel.swift */,
 				DF9918CE1E92B6A3004E599B /* ChengYuSwappingViewModel.swift */,
 				DF9918CF1E92B6A3004E599B /* CiHuiSwappingViewModel.swift */,
-				DF9918D01E92B6A3004E599B /* SwappingViewModelProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -958,6 +958,7 @@
 			files = (
 				502669021E7D6C6A00112291 /* BaseViewModelProtocol.swift in Sources */,
 				DF9854E21E92AA2F0047663D /* GameStatusUpdateDelegate.swift in Sources */,
+				DF9918F01E92BAF0004E599B /* TimeDescriptorProtocol.swift in Sources */,
 				DFCF3FC81E875D940027016E /* DiscreteFallableSquareGridViewController.swift in Sources */,
 				502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */,
 				50E3A98A1E8C99C000ADE87D /* Array+Extensions.swift in Sources */,
@@ -970,7 +971,6 @@
 				DF7CF7801E7E9EED00C6979A /* SquareTileViewCell.swift in Sources */,
 				DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */,
 				DF9918DF1E92B6E5004E599B /* MockSlidingViewModel.swift in Sources */,
-				DF9918D21E92B6A3004E599B /* SwappingGameViewControllerDelegate.swift in Sources */,
 				505E07381E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift in Sources */,
 				DF9918D51E92B6A3004E599B /* ChengYuSwappingViewModel.swift in Sources */,
 				A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */,
@@ -985,6 +985,7 @@
 				DF9918D41E92B6A3004E599B /* BaseSwappingViewModel.swift in Sources */,
 				DF9918D71E92B6A3004E599B /* SwappingViewModelProtocol.swift in Sources */,
 				50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */,
+				DF9918F21E92BB17004E599B /* ScoreDescriptorProtocol.swift in Sources */,
 				DF9918C61E92B65F004E599B /* CGPoint+Arithmetic.swift in Sources */,
 				DF7CF77B1E7E9ECE00C6979A /* SquareGridViewController.swift in Sources */,
 				50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */,
@@ -1011,7 +1012,6 @@
 				DF944C2D1E84EF250037437C /* UIView+Shadows.swift in Sources */,
 				DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */,
 				DF409FDF1E84147400389976 /* CountDownTimer.swift in Sources */,
-				DF9854E91E92B0C80047663D /* TimeableProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

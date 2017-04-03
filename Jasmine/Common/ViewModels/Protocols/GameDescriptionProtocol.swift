@@ -2,7 +2,7 @@ import Foundation
 
 /// Conform to this protocol (by the view model) to describe the state and the properties of this
 /// game.
-protocol GameDescriptionProtocol {
+protocol GameDescriptionProtocol: TimeDescriptorProtocol, ScoreDescriptorProtocol {
 
     // MARK: - Game Properties
     /// Provide a brief title for this game. Note that this title should be able to fit within the
@@ -16,16 +16,8 @@ protocol GameDescriptionProtocol {
     // MARK: - Game Status
     /// A delegate that notifies the implementing view controller that the game status has been
     /// updated.
-    weak var gameStatusDelegate: GameStatusUpdateDelegate? { get }
+    weak var gameStatusDelegate: GameStatusUpdateDelegate? { get set }
 
     /// The status of the current game.
     var gameStatus: GameStatus { get }
-
-    // MARK: - Game Scoring
-    /// A delegate that notifies the implementing view controller that the score has been updated.
-    weak var scoreDelegate: ScoreUpdateDelegate? { get }
-
-    /// Specifies the current score of the game. If the game has not started, it will be the initial
-    /// displayed score.
-    var currentScore: Int { get }
 }
