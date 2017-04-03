@@ -8,6 +8,10 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
     override var gameStatus: GameStatus {
         didSet {
             delegate?.notifyGameStatusUpdated()
+
+            if gameStatus == .endedWithWon {
+                timer.stopTimer()
+            }
         }
     }
 

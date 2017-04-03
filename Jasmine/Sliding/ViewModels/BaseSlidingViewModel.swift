@@ -8,6 +8,10 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
     override var gameStatus: GameStatus {
         didSet {
             delegate?.notifyGameStatusUpdated()
+
+            if gameStatus == .endedWithWon {
+                timer.stopTimer()
+            }
         }
     }
 
