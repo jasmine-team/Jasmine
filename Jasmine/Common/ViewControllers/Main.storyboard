@@ -22,24 +22,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eKS-sV-Lr3">
-                                <rect key="frame" x="97.5" y="288.5" width="180" height="90"/>
+                                <rect key="frame" x="78.5" y="288.5" width="218" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nil-Gc-zGo">
-                                        <rect key="frame" x="0.0" y="0.0" width="180" height="30"/>
-                                        <state key="normal" title="Open Grid Chengyu Game"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="218" height="30"/>
+                                        <state key="normal" title="Open Swapping Chengyu Game"/>
                                         <connections>
-                                            <segue destination="n7s-Ck-n8c" kind="show" id="ZuM-yK-y0B"/>
+                                            <segue destination="n7s-Ck-n8c" kind="show" id="odq-fT-zOs"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvu-uL-ORH">
-                                        <rect key="frame" x="0.0" y="30" width="180" height="30"/>
-                                        <state key="normal" title="Open Grid Cihui Game"/>
+                                        <rect key="frame" x="0.0" y="30" width="218" height="30"/>
+                                        <state key="normal" title="Open Swapping Cihui Game"/>
                                         <connections>
-                                            <segue destination="n7s-Ck-n8c" kind="show" id="bDS-4x-5hx"/>
+                                            <segue destination="n7s-Ck-n8c" kind="show" id="ttU-OF-6vh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iq-Ac-1yh">
-                                        <rect key="frame" x="0.0" y="60" width="180" height="30"/>
+                                        <rect key="frame" x="0.0" y="60" width="218" height="30"/>
                                         <state key="normal" title="Open Tetris Game"/>
                                         <connections>
                                             <segue destination="CTx-JF-hEy" kind="show" id="teM-ew-Hcb"/>
@@ -55,17 +55,17 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="gridChengYuButton" destination="nil-Gc-zGo" id="BNR-hu-Tus"/>
-                        <outlet property="gridCiHuiButton" destination="qvu-uL-ORH" id="oRC-UP-KX7"/>
+                        <outlet property="swappingChengYuButton" destination="nil-Gc-zGo" id="sUZ-RF-Tlh"/>
+                        <outlet property="swappingCiHuiButton" destination="qvu-uL-ORH" id="g8b-qY-NZc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--GridGameViewController-->
+        <!--SwappingGameViewController-->
         <scene sceneID="a8W-Oz-04v">
             <objects>
-                <viewControllerPlaceholder storyboardName="GridStoryboard" referencedIdentifier="GridGameViewController" id="n7s-Ck-n8c" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SwappingStoryboard" referencedIdentifier="SwappingGameViewController" id="n7s-Ck-n8c" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WeS-BJ-Okb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="830" y="122"/>
@@ -80,6 +80,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bDS-4x-5hx"/>
+        <segue reference="ttU-OF-6vh"/>
     </inferredMetricsTieBreakers>
 </document>
