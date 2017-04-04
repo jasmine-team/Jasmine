@@ -13,14 +13,15 @@ class ChengYuSwappingViewModelTests: XCTestCase {
         let viewModel = ChengYuSwappingViewModel(time: 10, gameData: gameData,
                                                  numberOfPhrases: numberOfPhrases)
 
-        XCTAssertNil(viewModel.delegate,
+        XCTAssertNil(viewModel.gameStatusDelegate,
                      "ViewModel delegate on init is not nil")
+        XCTAssertNil(viewModel.timeDelegate,
+                     "ViewModel delegate on init is not nil")
+        XCTAssertNil(viewModel.scoreDelegate,
+                     "ViewModel delegate on init is not nil")
+
         XCTAssertEqual(0, viewModel.currentScore,
                        "ViewModel currentScore on init is not zero")
-        XCTAssertEqual(3, viewModel.numRows,
-                       "ViewModel rows on init is not correct")
-        XCTAssertEqual(4, viewModel.numColumns,
-                       "ViewModel columns on init is not correct")
         XCTAssertEqual(10, viewModel.timeRemaining,
                        "ViewModel timeRemaining on init is not correct")
         XCTAssertEqual(10, viewModel.totalTimeAllowed,
