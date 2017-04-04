@@ -17,7 +17,7 @@ class GridViewModel: BaseViewModelProtocol {
 
     /// Provides a list of phrases that is being tested in this game.
     /// This is to be overriden in subclasses
-    var phrasesTested: [Phrase] = []
+    var phrasesTested: Set<Phrase> = []
 
     /// The timer of this game.
     var timer: CountDownTimer

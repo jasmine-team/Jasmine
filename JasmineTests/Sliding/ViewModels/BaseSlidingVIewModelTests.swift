@@ -92,7 +92,7 @@ class BaseSlidingViewModelTests: XCTestCase {
                     }
 
                     XCTAssertEqual(result, viewModel.canTileSlide(from: coordinate),
-                                   "canTileSlide on \(coordinate) (\(gridData[coordinate])) is wrong.")
+                                   "canTileSlide on \(coordinate) \(gridData[coordinate]) is wrong.")
                 }
             }
         }
