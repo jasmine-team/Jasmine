@@ -156,4 +156,19 @@ class TextGridTests: XCTestCase {
                                                separatedBy: "qwer"),
                      "Did not return nil when there's no text at a coordinate")
     }
+
+    func testIsInBounds() {
+        let gridSize = 4
+
+        let grid = TextGrid(numRows: gridSize, numColumns: gridSize)
+
+        for row in -3...10 {
+            for col in -3...10 {
+                let coordinate = Coordinate(row: row, col: col)
+                XCTAssertEqual((0 <= row && row < gridSize && 0 <= col && col < gridSize),
+                               grid.isInBounds(coordinate: coordinate),
+                               "\(coordinate) is in 4x4 grid")
+            }
+        }
+    }
 }

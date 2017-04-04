@@ -30,7 +30,7 @@ class ChengYuSwappingViewModelTests: XCTestCase {
                        "ViewModel gameStatus on init is not correct")
         XCTAssertEqual("Cheng Yu (成语) Swapping Game", viewModel.gameTitle,
                        "ViewModel gameTitle on init is not correct")
-        XCTAssertEqual("Match the Cheng Yus by putting them in one row.",
+        XCTAssertEqual("Match the Cheng Yus by putting them in one row/column.",
                        viewModel.gameInstruction,
                        "ViewModel gameInstruction on init is not correct")
     }

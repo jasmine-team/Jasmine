@@ -3,15 +3,25 @@ import Foundation
 @testable import Jasmine
 
 class BaseSwappingViewModelTests: XCTestCase {
-    func testInit() {
+
+    var gameData: GameData!
+    let rows = 2
+    let columns = 2
+    let time: TimeInterval = 3
+    var viewModel: BaseSwappingViewModel!
+
+    override func setUp() {
         guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
             XCTFail("Realm errors")
             return
         }
+        self.gameData = gameData
 
-        let viewModel = BaseSwappingViewModel(time: 3, gameData: gameData,
-                                              tiles: ["a", "b"], rows: 1, columns: 2)
+        viewModel = BaseSwappingViewModel(time: time, gameData: gameData,
+                                          tiles: ["a", "b", "c", "d"], rows: rows, columns: columns)
+    }
 
+    func testInit() {
         XCTAssertNil(viewModel.gameStatusDelegate,
                      "ViewModel delegate on init is not nil")
         XCTAssertNil(viewModel.timeDelegate,
@@ -33,24 +43,14 @@ class BaseSwappingViewModelTests: XCTestCase {
                        "ViewModel gameInstruction on init is not correct")
 
         let gridData = viewModel.gridData
-        XCTAssert(["a", "b"].contains { $0 == gridData[Coordinate(row: 0, col: 0)] },
-                  "Swapping Data is not correct")
-        XCTAssert(["a", "b"].contains { $0 == gridData[Coordinate(row: 0, col: 1)] },
-                  "Swapping Data is not correct")
+        for (row, col) in [(0, 0), (0, 1), (1, 0), (1, 1)] {
+            let coord = Coordinate(row: row, col: col)
+            XCTAssert(["a", "b", "c", "d"].contains { $0 == gridData[coord] },
+                      "Swapping Data is not correct")
+        }
     }
 
     func testStartGame() {
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
-            XCTFail("Realm errors")
-            return
-        }
-
-        let rows = 1
-        let columns = 2
-        let time: TimeInterval = 3
-
-        let viewModel = BaseSwappingViewModel(time: time, gameData: gameData, tiles: ["a", "b"],
-                                              rows: rows, columns: columns)
         let timeDelegate = TimeUpdateDelegateMock()
         let gameStatusDelegate = GameStatusUpdateDelegateMock()
         viewModel.timeDelegate = timeDelegate
@@ -65,7 +65,7 @@ class BaseSwappingViewModelTests: XCTestCase {
                        "Delegate game status not updated once -> inProgress")
 
         RunLoop.current.run(until: Date(timeIntervalSinceNow: time + 1))
-        XCTAssertEqual(3 * Int(1 / Constants.Game.Swapping.timerInterval),
+        XCTAssertEqual(3 * Int(1 / Constants.Game.timeInterval),
                        timeDelegate.timeUpdated - 1,
                        "Delegate time not updated time * timerInterval times")
         XCTAssertEqual(GameStatus.endedWithLost, viewModel.gameStatus,
@@ -75,18 +75,6 @@ class BaseSwappingViewModelTests: XCTestCase {
     }
 
     func testSwapTiles() {
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
-            XCTFail("Realm errors")
-            return
-        }
-
-        let rows = 2
-        let columns = 3
-        let time: TimeInterval = 3
-
-        let viewModel = BaseSwappingViewModel(time: time, gameData: gameData,
-                                             tiles: ["a", "b", "c", "d", "e", "f"],
-                                             rows: rows, columns: columns)
         viewModel.startGame()
 
         let initialGrid = viewModel.gridData
@@ -112,15 +100,13 @@ class BaseSwappingViewModelTests: XCTestCase {
         }
     }
 
-    func testHasGameWon() {
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
-            XCTFail("Realm errors")
-            return
-        }
+    func testScore() {
+        XCTAssertEqual(2_300, viewModel.score)
+        viewModel.swapTiles(Coordinate(row: 0, col: 0), and: Coordinate(row: 0, col: 1))
+        XCTAssertEqual(2_250, viewModel.score)
 
-        let viewModel = BaseSwappingViewModel(time: 3, gameData: gameData, tiles: ["a"], rows: 1, columns: 1)
-
-        XCTAssertFalse(viewModel.hasGameWon,
-                       "hasGameWon should always return false on BaseSwappingVM")
+        viewModel.startGame()
+        RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
+        XCTAssert(abs(2_150 - viewModel.score) <= 5)
     }
 }

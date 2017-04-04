@@ -5,6 +5,14 @@ extension Sequence {
         result.shuffle()
         return result
     }
+
+    /// Returns true if and only if all elements in the array satisfy the given condition.
+    ///
+    /// - Parameter predicate: the condition, that takes in an element and returns true/false
+    /// - Returns: true if and only if all elements in the array satisfies the condition
+    func isAllTrue(predicate: (Iterator.Element) -> Bool) -> Bool {
+        return first(where: { !predicate($0) }) == nil
+    }
 }
 
 extension Sequence where Iterator.Element: Hashable {
