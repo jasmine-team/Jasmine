@@ -51,6 +51,14 @@ enum Constants {
             static let rows = 4
             static let columns = 4
         }
+
+        static var possibleCombinations: [(gameMode: GameMode, gameType: GameType)] {
+            return [(gameMode: .sliding, gameType: .chengYu),
+                    (gameMode: .sliding, gameType: .ciHui),
+                    (gameMode: .swapping, gameType: .chengYu),
+                    (gameMode: .swapping, gameType: .ciHui),
+                    (gameMode: .tetris, gameType: .chengYu)]
+        }
     }
 
     enum Theme {
@@ -78,13 +86,5 @@ enum Constants {
 
     enum UserDefaultsKeys: String {
         case launchedBefore
-    }
-
-    static var possibleCombinations: [(gameMode: GameMode, gameType: GameType)] {
-        return [(gameMode: .sliding, gameType: .chengYu),
-                (gameMode: .sliding, gameType: .ciHui),
-                (gameMode: .swapping, gameType: .chengYu),
-                (gameMode: .swapping, gameType: .ciHui),
-                (gameMode: .tetris, gameType: .chengYu)]
     }
 }

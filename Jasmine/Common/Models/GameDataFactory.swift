@@ -53,8 +53,7 @@ class GameDataFactory {
         switch type {
         case .chengYu:
             return 4
-        case .ciHui,
-             .pinYin:
+        case .ciHui:
             return 2
         }
     }
