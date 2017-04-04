@@ -67,7 +67,6 @@ class TetrisGameViewController: UIViewController {
     /// - Parameter viewModel: the game engine required to play this game.
     func segueWith(_ viewModel: TetrisGameViewModelProtocol) {
         self.viewModel = viewModel
-        self.viewModel.delegate = self
         self.viewModel.gameStatusDelegate = self
     }
 

@@ -2,18 +2,14 @@ import Foundation
 
 /// The main view model for Tetris game
 class TetrisGameViewModel {
-    /// Provides a list of phrases that is being tested in this game.
-    // TODO: add accordingly
-    var phrasesTested: [Phrase] = []
 
     weak var scoreDelegate: ScoreUpdateDelegate?
     weak var timeDelegate: TimeUpdateDelegate?
     weak var gameStatusDelegate: GameStatusUpdateDelegate?
 
-    fileprivate var grid = TextGrid(numRows: Constants.Game.Tetris.rows, numColumns: Constants.Game.Tetris.columns)
-
-    fileprivate(set) var upcomingTiles: [String] = []
-    fileprivate(set) var fallingTileText: String! // Force unwrap so that self methods can be called in init
+    /// Provides a list of phrases that is being tested in this game.
+    // TODO: add accordingly
+    private(set) var phrasesTested: Set<Phrase> = []
 
     fileprivate(set) var currentScore: Int = 0 {
         didSet {
@@ -21,16 +17,13 @@ class TetrisGameViewModel {
         }
     }
 
-    let timer = CountDownTimer(totalTimeAllowed: Constants.Game.Tetris.totalTime)
+    fileprivate let timer = CountDownTimer(totalTimeAllowed: Constants.Game.Tetris.totalTime)
 
     fileprivate(set) var gameStatus = GameStatus.notStarted {
         didSet {
-            delegate?.gameStatusDidUpdate()
+            gameStatusDelegate?.gameStatusDidUpdate()
         }
     }
-
-    private let gameData: GameData
-    private var nextTexts: [String] = []
 
     // TODO : should be set from gameData instead
     var gameTitle: String {
@@ -39,6 +32,14 @@ class TetrisGameViewModel {
     var gameInstruction: String {
         return Constants.Game.Tetris.gameInstruction
     }
+
+    fileprivate var grid = TextGrid(numRows: Constants.Game.Tetris.rows, numColumns: Constants.Game.Tetris.columns)
+    
+    fileprivate(set) var upcomingTiles: [String] = []
+    fileprivate(set) var fallingTileText: String! // Force unwrap so that self methods can be called in init
+
+    private let gameData: GameData
+    private var nextTexts: [String] = []
 
     /// Populate upcomingTiles and set listeners for the timer
     required init(gameData: GameData) {

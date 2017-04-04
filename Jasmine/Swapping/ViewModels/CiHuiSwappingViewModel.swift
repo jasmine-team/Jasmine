@@ -15,7 +15,7 @@ class CiHuiSwappingViewModel: BaseSwappingViewModel {
         super.init(time: time, gameData: gameData, tiles: tiles,
                    rows: numberOfPhrases, columns: Constants.Game.Swapping.columns)
 
-        phrasesTested = phrases
+        phrasesTested = Set(phrases)
         gameTitle = Constants.Game.Swapping.CiHui.gameTitle
         gameInstruction = Constants.Game.Swapping.CiHui.gameInstruction
     }
