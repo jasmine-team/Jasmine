@@ -19,12 +19,10 @@ class GridViewModel: BaseViewModelProtocol {
     /// displayed score.
     private(set) var currentScore: Int = 0 {
         didSet {
-            scoreDidUpdate()
+            scoreDelegate?.scoreDidUpdate()
         }
     }
 
-    /// Callback to be run when score is updated.
-    var scoreDidUpdate: () -> Void = {}
     /// Provides a list of phrases that is being tested in this game.
     /// This is to be overriden in subclasses
     var phrasesTested: [Phrase] = []
@@ -70,6 +68,7 @@ class GridViewModel: BaseViewModelProtocol {
     /// Starts the game.
     func startGame() {
         timer.startTimer(timerInterval: Constants.Game.timeInterval)
+        scoreDelegate?.scoreDidUpdate()
     }
 
     /// Check what happens when game is won. If game is won, change game status and add score.
