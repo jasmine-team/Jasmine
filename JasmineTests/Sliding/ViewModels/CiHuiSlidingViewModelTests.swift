@@ -12,8 +12,6 @@ class CiHuiSlidingViewModelTests: XCTestCase {
 
         let viewModel = CiHuiSlidingViewModel(time: 10, gameData: gameData, rows: numberOfPhrases)
 
-        XCTAssertNil(viewModel.delegate,
-                     "ViewModel delegate on init is not nil")
         XCTAssertEqual(0, viewModel.currentScore,
                        "ViewModel currentScore on init is not zero")
         XCTAssertEqual(3, viewModel.numRows,

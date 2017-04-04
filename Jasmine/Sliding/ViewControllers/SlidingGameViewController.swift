@@ -21,8 +21,7 @@ class SlidingGameViewController: UIViewController {
             self.slidingGridView = slidingGridView
 
         } else if let gameStatisticsView = segue.destination as? GameStatisticsViewController {
-            gameStatisticsView.segueWith(timeLeft: viewModel.timeRemaining,
-                                         currentScore: viewModel.currentScore)
+            gameStatisticsView.segueWith(time: viewModel, score: viewModel)
             self.gameStatisticsView = gameStatisticsView
         }
     }
@@ -42,7 +41,7 @@ class SlidingGameViewController: UIViewController {
     /// - Parameter viewModel: the view model of this class.
     func segueWith(_ viewModel: SlidingViewModelProtocol) {
         self.viewModel = viewModel
-        self.viewModel.delegate = self
+        self.viewModel.gameStatusDelegate = self
     }
 
     // MARK: Gestures and Listeners
@@ -160,34 +159,11 @@ fileprivate extension SlidingGameViewController {
     }
 }
 
-// MARK: - Delegate Conformance
-extension SlidingGameViewController: SlidingGameViewControllerDelegate {
+// MARK: - Game Status
+extension SlidingGameViewController: GameStatusUpdateDelegate {
 
-    // MARK: Score Update
-    /// Redisplay the score displayed on the view controller screen with a new score.
-    ///
-    /// - Parameter newScore: the new score to be redisplayed.
-    func redisplay(newScore: Int) {
-        gameStatisticsView.currentScore = newScore
-    }
-
-    // MARK: Time Update
-    /// Redisplay the time remaining on the view controller against a total time.
-    ///
-    /// - Parameters:
-    ///   - timeRemaining: the time remaining, in seconds.
-    ///   - totalTime: the total time from the start of the game, in seconds.
-    func redisplay(timeRemaining: TimeInterval, outOf totalTime: TimeInterval) {
-        gameStatisticsView.timeLeft = timeRemaining
-    }
-
-    // MARK: Game Status
-    /// Notifies the view controller that the game state has changed.
-    ///
-    /// This is also the place to indicate when the user has won/lost.
-    /// Note also that if the user has won/lost, the score in the `redisplay(_ newScore)` will be
-    /// taken as the end game score. So update it before calling end game.
-    func notifyGameStatusUpdated() {
+    /// Tells the implementor of the delegate that the game status has been updated.
+    func gameStatusDidUpdate() {
 
     }
 }

@@ -1,6 +1,10 @@
 import Foundation
 
-class GridViewModel: BaseViewModelProtocol, CountdownTimable {
+class GridViewModel: BaseViewModelProtocol {
+    weak var timeDelegate: TimeUpdateDelegate?
+    weak var scoreDelegate: ScoreUpdateDelegate?
+    weak var gameStatusDelegate: GameStatusUpdateDelegate?
+
     /// Stores the grid data that will be used to display in the view controller.
     var gridData: TextGrid
     /// Number of rows in the grid, according to the answers property
@@ -21,8 +25,21 @@ class GridViewModel: BaseViewModelProtocol, CountdownTimable {
 
     /// Callback to be run when score is updated.
     var scoreDidUpdate: () -> Void = {}
+    /// Provides a list of phrases that is being tested in this game.
+    /// This is to be overriden in subclasses
+    var phrasesTested: [Phrase] = []
+
     /// The timer of this game.
     var timer: CountDownTimer
+
+    var timeRemaining: TimeInterval {
+        return timer.timeRemaining
+    }
+
+    var totalTimeAllowed: TimeInterval {
+        return timer.totalTimeAllowed
+    }
+
     /// The status of the current game.
     var gameStatus: GameStatus = .notStarted
     /// The game data of this game.

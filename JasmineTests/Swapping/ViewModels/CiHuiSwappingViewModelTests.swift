@@ -13,14 +13,8 @@ class CiHuiSwappingViewModelTests: XCTestCase {
         let viewModel = CiHuiSwappingViewModel(time: 10, gameData: gameData,
                                                numberOfPhrases: numberOfPhrases)
 
-        XCTAssertNil(viewModel.delegate,
-                     "ViewModel delegate on init is not nil")
         XCTAssertEqual(0, viewModel.currentScore,
                        "ViewModel currentScore on init is not zero")
-        XCTAssertEqual(3, viewModel.numRows,
-                       "ViewModel rows on init is not correct")
-        XCTAssertEqual(4, viewModel.numColumns,
-                       "ViewModel columns on init is not correct")
         XCTAssertEqual(10, viewModel.timeRemaining,
                        "ViewModel timeRemaining on init is not correct")
         XCTAssertEqual(10, viewModel.totalTimeAllowed,

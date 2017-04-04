@@ -1,21 +1,7 @@
 import Foundation
 
 /// Implement this class to describe how a game can be played with a Swapping Game board.
-protocol SwappingViewModelProtocol: BaseViewModelProtocol, CountdownTimable {
-
-    // MARK: Properties
-    /// The delegate that the View Controller will conform to in some way, so that the Game Engine
-    /// View Model can call.
-    var delegate: SwappingGameViewControllerDelegate? { get set }
-
-    /// Stores the grid data that will be used to display in the view controller.
-    var gridData: TextGrid { get }
-
-    /// Number of rows in the grid
-    var numRows: Int { get }
-
-    /// Number of columns in the grid
-    var numColumns: Int { get }
+protocol SwappingViewModelProtocol: BaseViewModelProtocol {
 
     // MARK: Game Operations
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap

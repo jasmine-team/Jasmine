@@ -12,8 +12,6 @@ class BaseSlidingViewModelTests: XCTestCase {
         let viewModel = BaseSlidingViewModel(time: 3, gameData: gameData,
                                              tiles: ["a", "b"], rows: 1, columns: 2)
 
-        XCTAssertNil(viewModel.delegate,
-                     "ViewModel delegate on init is not nil")
         XCTAssertEqual(0, viewModel.currentScore,
                        "ViewModel currentScore on init is not zero")
         XCTAssertEqual(1, viewModel.numRows,
@@ -50,22 +48,12 @@ class BaseSlidingViewModelTests: XCTestCase {
 
         let viewModel = BaseSlidingViewModel(time: time, gameData: gameData, tiles: ["a", "b"],
                                              rows: rows, columns: columns)
-        let delegate = SlidingGameViewControllerDelegateMock()
-        viewModel.delegate = delegate
         viewModel.startGame()
 
         XCTAssertEqual(GameStatus.inProgress, viewModel.gameStatus,
                        "ViewModel game status when the game runs is not inProgress")
-        XCTAssertEqual(time, delegate.totalTime,
-                       "Delegate totalTime is not correct")
-        XCTAssertEqual(time, delegate.timeRemaining,
-                       "Delegate timeRemaining is not correct")
 
         RunLoop.current.run(until: Date(timeIntervalSinceNow: time + 1))
-        XCTAssertEqual(time, delegate.totalTime,
-                       "Delegate totalTime is not correct")
-        XCTAssertEqualWithAccuracy(0, delegate.timeRemaining, accuracy: time / 10,
-                       "Delegate timeRemaining is not correct")
         XCTAssertEqual(GameStatus.endedWithLost, viewModel.gameStatus,
                        "ViewModel game status when time's up is not endedWithLost")
     }
@@ -127,7 +115,6 @@ class BaseSlidingViewModelTests: XCTestCase {
     }
 
     func slideTileHelper(viewModel: BaseSlidingViewModel, gridData: TextGrid,
-                         delegate: SlidingGameViewControllerDelegateMock,
                          from start: Coordinate, to end: Coordinate) {
         XCTAssert(viewModel.slideTile(from: start, to: end))
         XCTAssertEqual(gridData[start], viewModel.gridData[end])
@@ -149,8 +136,6 @@ class BaseSlidingViewModelTests: XCTestCase {
 
         let viewModel = BaseSlidingViewModel(time: time, gameData: gameData, tiles: grid,
                                              rows: rows, columns: columns)
-        let delegate = SlidingGameViewControllerDelegateMock()
-        viewModel.delegate = delegate
 
         let gridData = viewModel.gridData
 
@@ -170,19 +155,19 @@ class BaseSlidingViewModelTests: XCTestCase {
                 let right = Coordinate(row: row, col: col + 1)
 
                 if gridData.isInBounds(coordinate: top) {
-                    slideTileHelper(viewModel: viewModel, gridData: gridData, delegate: delegate,
+                    slideTileHelper(viewModel: viewModel, gridData: gridData,
                                     from: top, to: coordinate)
                 }
                 if gridData.isInBounds(coordinate: bottom) {
-                    slideTileHelper(viewModel: viewModel, gridData: gridData, delegate: delegate,
+                    slideTileHelper(viewModel: viewModel, gridData: gridData,
                                     from: bottom, to: coordinate)
                 }
                 if gridData.isInBounds(coordinate: left) {
-                    slideTileHelper(viewModel: viewModel, gridData: gridData, delegate: delegate,
+                    slideTileHelper(viewModel: viewModel, gridData: gridData,
                                     from: left, to: coordinate)
                 }
                 if gridData.isInBounds(coordinate: right) {
-                    slideTileHelper(viewModel: viewModel, gridData: gridData, delegate: delegate,
+                    slideTileHelper(viewModel: viewModel, gridData: gridData,
                                     from: right, to: coordinate)
                 }
             }
@@ -204,7 +189,7 @@ class BaseSlidingViewModelTests: XCTestCase {
         viewModel.startGame()
 
         RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
-        let expectedScore = Int(viewModel.timeRemaining * Constants.Game.Sliding.scoreMultiplierFromTime)
+        let expectedScore = Int(viewModel.timeRemaining * Constants.Game.Sliding.Score.multiplierFromTime)
         XCTAssert(abs(expectedScore - viewModel.score) <= 10)
     }
 }

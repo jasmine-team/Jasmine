@@ -1,15 +1,13 @@
 import Foundation
 
 class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
-    /// The delegate that the View Controller will conform to in some way, so that the Game Engine
-    /// View Model can call.
-    weak var delegate: SlidingGameViewControllerDelegate?
     /// The number of moves currently done.
     var moves: Int = 0
+
     /// The status of the current game.
     override var gameStatus: GameStatus {
         didSet {
-            delegate?.notifyGameStatusUpdated()
+            gameStatusDelegate?.gameStatusDidUpdate()
 
             if gameStatus == .endedWithWon {
                 timer.stopTimer()
@@ -39,8 +37,6 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
         super.init(time: time, gameData: gameData, textGrid: TextGrid(fromInitialGrid: grid))
 
         timer.timerListener = gridTimerListener
-
-        scoreDidUpdate = { self.delegate?.redisplay(newScore: self.score) }
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to slide
@@ -118,9 +114,9 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
         switch status {
         case .start:
             gameStatus = .inProgress
-            delegate?.redisplay(timeRemaining: timeRemaining, outOf: totalTimeAllowed)
+            timeDelegate?.timeDidUpdate()
         case .tick:
-            delegate?.redisplay(timeRemaining: timeRemaining, outOf: totalTimeAllowed)
+            timeDelegate?.timeDidUpdate()
         case .finish:
             gameStatus = .endedWithLost
         default:

@@ -26,7 +26,6 @@ class HomeScreenViewController: UIViewController {
         } else if let tetrisGame = segue.destination as? TetrisGameViewController {
             let gameData = gameDataFactory.createGame(difficulty: 0, type: .chengYu)
             tetrisGame.segueWith(TetrisGameViewModel(gameData: gameData))
-
         } else if let slidingGame = segue.destination as? SlidingGameViewController {
             if (sender as? UIButton) === slidingChengYuButton {
                 let gameData = gameDataFactory.createGame(difficulty: 0, type: .chengYu)
