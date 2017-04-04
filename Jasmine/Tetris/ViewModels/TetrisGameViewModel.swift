@@ -5,11 +5,10 @@ class TetrisGameViewModel {
 
     weak var delegate: BaseGameViewControllerDelegate?
 
-    fileprivate let grid = TextGrid(numRows: Constants.Game.Tetris.rows, numColumns: Constants.Game.Tetris.columns)
+    fileprivate var grid = TextGrid(numRows: Constants.Game.Tetris.rows, numColumns: Constants.Game.Tetris.columns)
 
     fileprivate(set) var upcomingTiles: [String] = []
-    var fallingTileText: String! // Force unwrap so that self methods can be called in init
-    fileprivate var landingCoordinate: Coordinate?
+    fileprivate(set) var fallingTileText: String! // Force unwrap so that self methods can be called in init
 
     fileprivate(set) var currentScore: Int = 0 {
         didSet {
@@ -75,21 +74,21 @@ class TetrisGameViewModel {
     /// search row-wise first as destroying rows are relatively more important than columns in Tetris
     /// if no row-wise match, column-wise search will proceed
     ///
-    /// - Parameter coordinate: the coordinate that has been changed
+    /// - Parameter coordinate: the coordinate at which a cell has been shifted or added to
     /// - Returns: the set of coordinates that contains the matching phrase
     fileprivate func checkForMatchingPhrase(at coordinate: Coordinate) -> Set<Coordinate>? {
-        let phraseLen = gameData.phrases.phraseLength
-        for col in (coordinate.col - phraseLen + 1)..<(coordinate.col + phraseLen) {
-            let phraseRange = col..<(col + phraseLen)
-            let coordinates = phraseRange.map { Coordinate(row: coordinate.row, col: $0) }
-            if isPhraseValid(at: coordinates) {
-                return Set(coordinates)
-            }
-        }
+        return checkForMatchingPhrase(at: coordinate, rowWise: true) ??
+               checkForMatchingPhrase(at: coordinate, rowWise: false)
+    }
 
-        for row in (coordinate.row - phraseLen + 1)..<(coordinate.row + phraseLen) {
-            let phraseRange = row..<(row + phraseLen)
-            let coordinates = phraseRange.map { Coordinate(row: $0, col: coordinate.col) }
+    private func checkForMatchingPhrase(at coordinate: Coordinate, rowWise: Bool) -> Set<Coordinate>? {
+        let phraseLen = gameData.phrases.phraseLength
+        let rowOrCol = rowWise ? coordinate.col : coordinate.row
+        for index in (rowOrCol - phraseLen + 1)..<(rowOrCol + phraseLen) {
+            let phraseRange = index..<(index + phraseLen)
+            let coordinates = phraseRange.map {
+                rowWise ? Coordinate(row: coordinate.row, col: $0) : Coordinate(row: $0, col: coordinate.col)
+            }
             if isPhraseValid(at: coordinates) {
                 return Set(coordinates)
             }
@@ -134,9 +133,30 @@ class TetrisGameViewModel {
         return nextTexts.remove(at: randInt)
     }
 
-    /// Checking if `coordinate` has text is not required 
-    fileprivate func canLandTile(at coordinate: Coordinate) -> Bool {
-        return (coordinate.row >= grid.numRows - 1) || grid.hasText(at: coordinate.nextRow)
+    fileprivate func checkIfGameOver(landedAt coordinate: Coordinate) {
+        if coordinate.row == Coordinate.origin.row {
+            gameStatus = .endedWithLost
+        }
+    }
+
+    fileprivate func destroyAndShiftTiles(landedAt coordinate: Coordinate) ->
+            [(destroyedTiles: Set<Coordinate>, shiftedTiles: [(from: Coordinate, to: Coordinate)])] {
+        var destroyedAndShiftedTiles: [(destroyedTiles: Set<Coordinate>,
+                                        shiftedTiles: [(from: Coordinate, to: Coordinate)])] = []
+        var changedCoordinates: Set<Coordinate> = []
+        changedCoordinates.insert(coordinate)
+        while let nextCoordinate = changedCoordinates.popFirst() {
+            guard let destroyedTiles = checkForMatchingPhrase(at: nextCoordinate) else {
+                continue
+            }
+            grid.removeTexts(at: destroyedTiles)
+            currentScore += destroyedTiles.count
+
+            let shiftedTiles = shiftDownTiles(destroyedTiles)
+            changedCoordinates.formUnion(shiftedTiles.map { $0.to })
+            destroyedAndShiftedTiles.append((destroyedTiles: destroyedTiles, shiftedTiles: shiftedTiles))
+        }
+        return destroyedAndShiftedTiles
     }
 }
 
@@ -151,47 +171,33 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
         return Coordinate(row: Coordinate.origin.row, col: randCol)
     }
 
-    func tryLandTile(at coordinate: Coordinate) -> Bool {
-        guard canLandTile(at: coordinate) else {
-            return false
-        }
+    func canLandTile(at coordinate: Coordinate) -> Bool {
+        let isNextRowOccupied = (coordinate.row == grid.numRows - 1) || grid.hasText(at: coordinate.nextRow)
+        return isNextRowOccupied && canShiftFallingTile(to: coordinate)
+    }
 
+    func getLandingCoordinate(from coordinate: Coordinate) -> Coordinate {
+        for row in (coordinate.row + 1)..<grid.numRows {
+            let landingCoordinate = Coordinate(row: row, col: coordinate.col)
+            if canLandTile(at: landingCoordinate) {
+                return landingCoordinate
+            }
+        }
+        fatalError("Failed to find landing coordinate")
+    }
+
+    func landTile(at coordinate: Coordinate) -> [(destroyedTiles: Set<Coordinate>,
+                                                  shiftedTiles: [(from: Coordinate, to: Coordinate)])] {
         grid[coordinate] = fallingTileText
         setNextFallingTile()
-        return true
-    }
 
-    func getDestroyedAndShiftedTiles(at coordinate: Coordinate) ->
-            [(destroyedTiles: Set<Coordinate>, shiftedTiles: [(from: Coordinate, to: Coordinate)])] {
-        var destroyedAndShiftedTiles: [(destroyedTiles: Set<Coordinate>,
-                                        shiftedTiles: [(from: Coordinate, to: Coordinate)])] = []
-        var changedCoordinates: Set<Coordinate> = []
-        changedCoordinates.insert(coordinate)
-        while let nextCoordinate = changedCoordinates.popFirst() {
-            guard let destroyedTiles = checkForMatchingPhrase(at: nextCoordinate) else {
-                continue
-            }
-            grid.removeTexts(at: destroyedTiles)
-            currentScore += destroyedTiles.count
+        let destroyedAndShiftedTiles = destroyAndShiftTiles(landedAt: coordinate)
 
-            let shiftedTiles = shiftDownTiles(destroyedTiles)
-            destroyedAndShiftedTiles.append((destroyedTiles: destroyedTiles, shiftedTiles: shiftedTiles))
+        if destroyedAndShiftedTiles.isEmpty {
+            checkIfGameOver(landedAt: coordinate)
         }
-        let hasLandedAtTopRow = (coordinate.row == Coordinate.origin.row)
-        if hasLandedAtTopRow && destroyedAndShiftedTiles.isEmpty {
-            gameStatus = .endedWithLost
-        }
+
         return destroyedAndShiftedTiles
-    }
-
-    func landTile(from coordinate: Coordinate) -> Coordinate {
-        for row in (coordinate.row + 1)..<grid.numRows {
-            let coordinateToLand = Coordinate(row: row, col: coordinate.col)
-            if tryLandTile(at: coordinateToLand) {
-                return coordinateToLand
-            }
-        }
-        fatalError("Failed to land tile")
     }
 
     func swapFallingTile(withUpcomingAt index: Int) {

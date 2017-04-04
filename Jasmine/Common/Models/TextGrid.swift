@@ -1,7 +1,6 @@
 /// An encapsulation of a grid of strings, mapping a Coordinate to a String.
 /// Stores text as String instead of Character to allow pinyin as text
-/// class is chosen over struct to allow inheritance and instance to be declared as constant let
-class TextGrid {
+struct TextGrid {
     /// The actual grid.
     private var grid: [[String?]]
 
@@ -30,7 +29,7 @@ class TextGrid {
     /// Initializes a TextGrid with a given initial array. Produces a grid of a single row.
     ///
     /// - Parameter initalArray: the initial array to be morphed into a grid.
-    convenience init(fromInitialArray initalArray: [String?]) {
+    init(fromInitialArray initalArray: [String?]) {
         self.init(fromInitialGrid: [initalArray])
     }
 
@@ -58,7 +57,7 @@ class TextGrid {
     /// - Parameters:
     ///   - coord1: the first coordinate
     ///   - coord2: the second coordinate
-    func swap(_ coord1: Coordinate, _ coord2: Coordinate) {
+    mutating func swap(_ coord1: Coordinate, _ coord2: Coordinate) {
         Swift.swap(&self[coord1], &self[coord2])
     }
 
@@ -77,7 +76,7 @@ class TextGrid {
         return self[coordinate] != nil
     }
 
-    func removeTexts(at coordinates: Set<Coordinate>) {
+    mutating func removeTexts(at coordinates: Set<Coordinate>) {
         for coordinate in coordinates {
             self[coordinate] = nil
         }
@@ -92,7 +91,9 @@ class TextGrid {
     func getTexts(at coordinates: [Coordinate]) -> [String]? {
         var texts: [String] = []
         for coordinate in coordinates {
-            guard let text = self[coordinate] else {
+
+            guard 0..<numRows ~= coordinate.row && 0..<numColumns ~= coordinate.col,
+                let text = self[coordinate] else {
                 return nil
             }
             texts.append(text)

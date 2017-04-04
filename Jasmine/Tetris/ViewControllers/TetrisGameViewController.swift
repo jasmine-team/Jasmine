@@ -126,21 +126,19 @@ class TetrisGameViewController: UIViewController {
         }
         tetrisGameAreaView.setFallingTile(withData: viewModel.fallingTileText,
                                           toCoord: viewModel.getNewTileCoordinate())
+        tetrisUpcomingTilesView.reload(gridData: upcomingTiles, withAnimation: true)
     }
 
     private func notifyTileHasRepositioned() {
         guard let coord = tetrisGameAreaView.fallingTileCoord,
-              viewModel.tryLandTile(at: coord) else {
+              viewModel.canLandTile(at: coord) else {
             return
         }
-        tetrisGameAreaView.landFallingTile()
+        tetrisGameAreaView.landFallingTile(at: coord)
     }
 
-    private func notifyTileHasLanded() {
-        guard let landingCoordinate = tetrisGameAreaView.fallingTileCoord else {
-            fatalError("Failed to get falling tile coordinate")
-        }
-        let destroyedAndShiftedTiles = viewModel.getDestroyedAndShiftedTiles(at: landingCoordinate)
+    private func notifyTileHasLanded(at coordinate: Coordinate) {
+        let destroyedAndShiftedTiles = viewModel.landTile(at: coordinate)
         // TODO : synchronize the animation of the sequence of destroyed and shifted tiles
         for tiles in destroyedAndShiftedTiles {
             animate(destroyedTiles: tiles.destroyedTiles, shiftedTiles: tiles.shiftedTiles)

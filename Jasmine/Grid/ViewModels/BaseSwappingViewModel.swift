@@ -2,7 +2,7 @@ import Foundation
 
 class BaseSwappingViewModel: SwappingViewModelProtocol {
     /// Stores the grid data that will be used to display in the view controller.
-    let gridData: TextGrid
+    var gridData: TextGrid
     /// Number of rows in the grid, according to the answers property
     var numRows: Int {
         return gridData.numRows

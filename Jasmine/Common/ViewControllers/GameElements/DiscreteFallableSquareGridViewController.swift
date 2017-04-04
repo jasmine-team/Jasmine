@@ -9,7 +9,7 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
     var onFallingTileRepositioned: (() -> Void)?
 
     /// Implement this function to get notified when the falling tile has landed.
-    var onFallingTileLanded: (() -> Void)?
+    var onFallingTileLanded: ((Coordinate) -> Void)?
 
     // MARK: - Properties
     /// Stores the current falling tiles. Empty implies that no tile is falling currently.
@@ -81,14 +81,14 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
 
     /// Lands the current falling tile, and attaches it to the grid.
     /// - Precondition: there is a falling tile, else results in no-op.
-    func landFallingTile() {
+    func landFallingTile(at coordinate: Coordinate) {
         guard let fallingTile = fallingTile else {
             return
         }
         snapDetachedTile(fallingTile) {
             self.reattachDetachedTile(fallingTile)
-            self.onFallingTileLanded?()
             self.fallingTile = nil
+            self.onFallingTileLanded?(coordinate)
         }
     }
 
