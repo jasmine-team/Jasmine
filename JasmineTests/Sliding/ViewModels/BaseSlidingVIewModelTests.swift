@@ -86,7 +86,7 @@ class BaseSlidingViewModelTests: XCTestCase {
                     ]
 
                     for (dir, coord) in result {
-                        if !gridData.isInBounds(coordinate: coord) || gridData[coord] == nil {
+                        if !gridData.isInBounds(coordinate: coord) || gridData[coord] != nil {
                             result[dir] = nil
                         }
                     }
@@ -149,6 +149,6 @@ class BaseSlidingViewModelTests: XCTestCase {
 
         viewModel.startGame()
         RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
-        XCTAssert(abs(10_175 - viewModel.score) <= 5)
+        XCTAssert(abs(10_175 - viewModel.score) <= 20)
     }
 }

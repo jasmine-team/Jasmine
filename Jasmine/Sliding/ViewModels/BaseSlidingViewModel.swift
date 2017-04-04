@@ -90,7 +90,7 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
         ]
 
         for (dir, coord) in result {
-            if !gridData.isInBounds(coordinate: coord) || gridData[coord] == nil {
+            if !gridData.isInBounds(coordinate: coord) || gridData[coord] != nil {
                 result[dir] = nil
             }
         }
