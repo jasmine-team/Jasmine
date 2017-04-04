@@ -5,11 +5,6 @@ import Foundation
 /// Note the convention that the top most target is index 0.
 protocol FlappyViewModelProtocol: BaseViewModelProtocol {
 
-    // MARK: Properties
-    /// The delegate that the View Controller will conform to in some way, so that the Game Engine
-    /// View Model can call.
-    var delegate: FlappyViewControllerDelegate? { get set }
-
     // MARK: Game Operations
     /// Requests a new question from the View Model.
     ///

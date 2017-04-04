@@ -43,8 +43,7 @@ class SwappingGameViewController: UIViewController {
             self.squareGridViewController = squareSwappingView
 
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
-            statisticsView.segueWith(timeLeft: viewModel.timeRemaining,
-                                     currentScore: viewModel.currentScore)
+            statisticsView.segueWith(time: viewModel, score: viewModel)
             self.statisticsViewController = statisticsView
         }
     }
@@ -54,7 +53,7 @@ class SwappingGameViewController: UIViewController {
     /// - Parameter viewModel: the game engine required to play this game.
     func segueWith(_ viewModel: SwappingViewModelProtocol) {
         self.viewModel = viewModel
-        self.viewModel.delegate = self
+        self.viewModel.gameStatusDelegate = self
     }
 
     // MARK: - Gesture Recognisers and Listeners
@@ -178,23 +177,11 @@ fileprivate extension SwappingGameViewController {
     }
 }
 
-// MARK: - Delegate Conformance
-extension SwappingGameViewController: SwappingGameViewControllerDelegate {
-    // MARK: Score Update
-    /// Redisplay the score displayed on the view controller screen with a new score.
-    func redisplay(newScore: Int) {
-        statisticsViewController.currentScore = newScore
-    }
+// MARK: - Game Status
+extension SwappingGameViewController: GameStatusUpdateDelegate {
 
-    // MARK: Time Update
-    /// Redisplay the time remaining on the view controller against a total time.
-    func redisplay(timeRemaining remainingTime: TimeInterval, outOf totalTime: TimeInterval) {
-        statisticsViewController.timeLeft = remainingTime
-    }
-
-    // MARK: Game Status
-    /// Notifies the view controller that the game state has changed.
-    func notifyGameStatusUpdated() {
+    /// Tells the implementor of the delegate that the game status has been updated.
+    func gameStatusDidUpdate() {
 
     }
 }
