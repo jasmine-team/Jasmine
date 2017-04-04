@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0044DD2D1E8FA5F400B9291F /* TetrisGameViewControllerDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0044DD2C1E8FA5F400B9291F /* TetrisGameViewControllerDelegateMock.swift */; };
 		0CF9D2BB3EBC822ACB7FF766 /* Pods_Jasmine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */; };
-		42862A9B1E86C16000062D47 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		42862A9B1E86C16000062D47 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		4EA886212AABEB7ED888C04C /* Pods_JasmineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */; };
 		502669021E7D6C6A00112291 /* BaseViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426E1E77E77900D2FE09 /* BaseViewModelProtocol.swift */; };
 		502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342761E77F5F200D2FE09 /* FlappyViewModelProtocol.swift */; };
@@ -114,9 +114,9 @@
 		0044DD2C1E8FA5F400B9291F /* TetrisGameViewControllerDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewControllerDelegateMock.swift; sourceTree = "<group>"; };
 		3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasmine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
-		5047D09A1E932B4300DD96BA /* GameStatusUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameStatusUpdateDelegateMock.swift; path = GameStatusUpdateDelegateMock.swift; sourceTree = "<group>"; };
-		5047D09C1E932B6700DD96BA /* TimeUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeUpdateDelegateMock.swift; path = TimeUpdateDelegateMock.swift; sourceTree = "<group>"; };
-		5047D09E1E932B7D00DD96BA /* ScoreUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreUpdateDelegateMock.swift; path = ScoreUpdateDelegateMock.swift; sourceTree = "<group>"; };
+		5047D09A1E932B4300DD96BA /* GameStatusUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatusUpdateDelegateMock.swift; sourceTree = "<group>"; };
+		5047D09C1E932B6700DD96BA /* TimeUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUpdateDelegateMock.swift; sourceTree = "<group>"; };
+		5047D09E1E932B7D00DD96BA /* ScoreUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreUpdateDelegateMock.swift; sourceTree = "<group>"; };
 		5047D0A01E932C7600DD96BA /* TetrisGameViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewModelTests.swift; sourceTree = "<group>"; };
 		505E07371E7BE58900CEE8BF /* TetrisGameViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		50717ABE1E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MutableCollection+ExtensionsTests.swift"; sourceTree = "<group>"; };
@@ -182,10 +182,10 @@
 		DF7CF7881E7E9FD700C6979A /* CGRect+ArithmeticTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+ArithmeticTests.swift"; sourceTree = "<group>"; };
 		DF7CF7891E7E9FD700C6979A /* IndexPath+CoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+CoordinateTests.swift"; sourceTree = "<group>"; };
 		DF944C2C1E84EF250037437C /* UIView+Shadows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shadows.swift"; sourceTree = "<group>"; };
-		DF9854DF1E92AA2F0047663D /* GameStatusUpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameStatusUpdateDelegate.swift; path = GameStatusUpdateDelegate.swift; sourceTree = "<group>"; };
-		DF9854E01E92AA2F0047663D /* ScoreUpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreUpdateDelegate.swift; path = ScoreUpdateDelegate.swift; sourceTree = "<group>"; };
-		DF9854E11E92AA2F0047663D /* TimeUpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeUpdateDelegate.swift; path = TimeUpdateDelegate.swift; sourceTree = "<group>"; };
-		DF9854EE1E92B19B0047663D /* GameDescriptorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameDescriptorProtocol.swift; path = GameDescriptorProtocol.swift; sourceTree = "<group>"; };
+		DF9854DF1E92AA2F0047663D /* GameStatusUpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatusUpdateDelegate.swift; sourceTree = "<group>"; };
+		DF9854E01E92AA2F0047663D /* ScoreUpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreUpdateDelegate.swift; sourceTree = "<group>"; };
+		DF9854E11E92AA2F0047663D /* TimeUpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUpdateDelegate.swift; sourceTree = "<group>"; };
+		DF9854EE1E92B19B0047663D /* GameDescriptorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDescriptorProtocol.swift; sourceTree = "<group>"; };
 		DF9918C51E92B65F004E599B /* CGPoint+Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Arithmetic.swift"; sourceTree = "<group>"; };
 		DF9918C91E92B6A3004E599B /* SwappingGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwappingGameViewController.swift; sourceTree = "<group>"; };
 		DF9918CB1E92B6A3004E599B /* SwappingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SwappingStoryboard.storyboard; sourceTree = "<group>"; };
@@ -249,15 +249,50 @@
 				5047D09E1E932B7D00DD96BA /* ScoreUpdateDelegateMock.swift */,
 				5047D09C1E932B6700DD96BA /* TimeUpdateDelegateMock.swift */,
 			);
-			name = Support;
 			path = Support;
 			sourceTree = "<group>";
 		};
-		50989DB51E6D8B16009A86C8 /* Models */ = {
+		509404CD1E93A4FA0049AF8C /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				50989DD41E6D8B16009A86C8 /* Flappy */,
+				DF21551B1E8E237F005A0927 /* Sliding */,
+				DF9918C71E92B6A3004E599B /* Swapping */,
+				50989DBA1E6D8B16009A86C8 /* Tetris */,
+			);
+			name = Games;
+			sourceTree = "<group>";
+		};
+		509404CE1E93A4FF0049AF8C /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				509404D11E93A53A0049AF8C /* CustomLevel */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
+		509404CF1E93A51D0049AF8C /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				50F191B11E7ADCA600EE9A75 /* Flappy */,
+				DF9918E41E92B769004E599B /* Swapping */,
+				50F191AB1E7ADC6D00EE9A75 /* Tetris */,
+			);
+			name = Games;
+			sourceTree = "<group>";
+		};
+		509404D01E93A5230049AF8C /* Others */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Models;
+			name = Others;
+			sourceTree = "<group>";
+		};
+		509404D11E93A53A0049AF8C /* CustomLevel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CustomLevel;
 			sourceTree = "<group>";
 		};
 		50989DB71E6D8B16009A86C8 /* ViewControllers */ = {
@@ -282,7 +317,6 @@
 		50989DBA1E6D8B16009A86C8 /* Tetris */ = {
 			isa = PBXGroup;
 			children = (
-				50989DB51E6D8B16009A86C8 /* Models */,
 				50989DB71E6D8B16009A86C8 /* ViewControllers */,
 				50989DB91E6D8B16009A86C8 /* ViewModels */,
 			);
@@ -499,7 +533,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -548,10 +581,8 @@
 			isa = PBXGroup;
 			children = (
 				50989DCD1E6D8B16009A86C8 /* Common */,
-				50989DD41E6D8B16009A86C8 /* Flappy */,
-				DF21551B1E8E237F005A0927 /* Sliding */,
-				DF9918C71E92B6A3004E599B /* Swapping */,
-				50989DBA1E6D8B16009A86C8 /* Tetris */,
+				509404CD1E93A4FA0049AF8C /* Games */,
+				509404CE1E93A4FF0049AF8C /* Others */,
 			);
 			path = Jasmine;
 			sourceTree = "<group>";
@@ -560,9 +591,8 @@
 			isa = PBXGroup;
 			children = (
 				50F191A61E7ADC3D00EE9A75 /* Common */,
-				50F191B11E7ADCA600EE9A75 /* Flappy */,
-				DF9918E41E92B769004E599B /* Swapping */,
-				50F191AB1E7ADC6D00EE9A75 /* Tetris */,
+				509404CF1E93A51D0049AF8C /* Games */,
+				509404D01E93A5230049AF8C /* Others */,
 				A260C6371E6AB30400782103 /* Info.plist */,
 			);
 			path = JasmineTests;
@@ -654,7 +684,6 @@
 				DF9854E01E92AA2F0047663D /* ScoreUpdateDelegate.swift */,
 				DF9854E11E92AA2F0047663D /* TimeUpdateDelegate.swift */,
 			);
-			name = Delegates;
 			path = Delegates;
 			sourceTree = "<group>";
 		};
@@ -665,7 +694,6 @@
 				DF9918F11E92BB17004E599B /* ScoreDescriptorProtocol.swift */,
 				DF9918EF1E92BAF0004E599B /* TimeDescriptorProtocol.swift */,
 			);
-			name = Protocols;
 			path = Protocols;
 			sourceTree = "<group>";
 		};
@@ -1046,7 +1074,7 @@
 				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
 				DF2155291E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift in Sources */,
 				DF9918EC1E92B769004E599B /* BaseSwappingViewModelTests.swift in Sources */,
-				42862A9B1E86C16000062D47 /* BuildFile in Sources */,
+				42862A9B1E86C16000062D47 /* (null) in Sources */,
 				DF7CF78B1E7E9FD700C6979A /* IndexPath+CoordinateTests.swift in Sources */,
 				DF9918EE1E92B769004E599B /* CiHuiSwappingViewModelTests.swift in Sources */,
 				50E3A98C1E8C9B0D00ADE87D /* Array+Extensions.swift in Sources */,
