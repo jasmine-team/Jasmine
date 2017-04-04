@@ -26,8 +26,10 @@ class HomeScreenViewController: UIViewController {
             let gameData = gameDataFactory.createGame(difficulty: 0, type: .chengYu)
             tetrisGame.segueWith(TetrisGameViewModel(gameData: gameData))
 
-        } else if let slidingGame = segue.destination as? SlidingGameViewController {
-            slidingGame.segueWith(MockSlidingViewModel())
         }
+
+        /*else if let slidingGame = segue.destination as? SlidingGameViewController {
+            slidingGame.segueWith(MockSlidingViewModel())
+        }*/ // TODO: Enable when done with sliding VM.
     }
 }

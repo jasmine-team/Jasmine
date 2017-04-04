@@ -12,14 +12,15 @@ class BaseSwappingViewModelTests: XCTestCase {
         let viewModel = BaseSwappingViewModel(time: 3, gameData: gameData,
                                               tiles: ["a", "b"], rows: 1, columns: 2)
 
-        XCTAssertNil(viewModel.delegate,
+        XCTAssertNil(viewModel.gameStatusDelegate,
                      "ViewModel delegate on init is not nil")
+        XCTAssertNil(viewModel.timeDelegate,
+                     "ViewModel delegate on init is not nil")
+        XCTAssertNil(viewModel.scoreDelegate,
+                     "ViewModel delegate on init is not nil")
+
         XCTAssertEqual(0, viewModel.currentScore,
                        "ViewModel currentScore on init is not zero")
-        XCTAssertEqual(1, viewModel.numRows,
-                       "ViewModel rows on init is not correct")
-        XCTAssertEqual(2, viewModel.numColumns,
-                       "ViewModel columns on init is not correct")
         XCTAssertEqual(3, viewModel.timeRemaining,
                        "ViewModel timeRemaining on init is not correct")
         XCTAssertEqual(3, viewModel.totalTimeAllowed,
@@ -49,25 +50,28 @@ class BaseSwappingViewModelTests: XCTestCase {
         let time: TimeInterval = 3
 
         let viewModel = BaseSwappingViewModel(time: time, gameData: gameData, tiles: ["a", "b"],
-                                             rows: rows, columns: columns)
-        let delegate = SwappingGameViewControllerDelegateMock()
-        viewModel.delegate = delegate
-        viewModel.startGame()
+                                              rows: rows, columns: columns)
+        let timeDelegate = TimeUpdateDelegateMock()
+        let gameStatusDelegate = GameStatusUpdateDelegateMock()
+        viewModel.timeDelegate = timeDelegate
+        viewModel.gameStatusDelegate = gameStatusDelegate
 
+        viewModel.startGame()
         XCTAssertEqual(GameStatus.inProgress, viewModel.gameStatus,
                        "ViewModel game status when the game runs is not inProgress")
-        XCTAssertEqual(time, delegate.totalTime,
-                       "Delegate totalTime is not correct")
-        XCTAssertEqual(time, delegate.timeRemaining,
-                       "Delegate timeRemaining is not correct")
+        XCTAssertEqual(1, timeDelegate.timeUpdated,
+                       "Delegate time not updated once")
+        XCTAssertEqual(1, gameStatusDelegate.gameStatusUpdated,
+                       "Delegate game status not updated once -> inProgress")
 
         RunLoop.current.run(until: Date(timeIntervalSinceNow: time + 1))
-        XCTAssertEqual(time, delegate.totalTime,
-                       "Delegate totalTime is not correct")
-        XCTAssertEqualWithAccuracy(0, delegate.timeRemaining, accuracy: time / 10,
-                       "Delegate timeRemaining is not correct")
+        XCTAssertEqual(3 * Int(1 / Constants.Game.Swapping.timerInterval),
+                       timeDelegate.timeUpdated - 1,
+                       "Delegate time not updated time * timerInterval times")
         XCTAssertEqual(GameStatus.endedWithLost, viewModel.gameStatus,
                        "ViewModel game status when time's up is not endedWithLost")
+        XCTAssertEqual(2, gameStatusDelegate.gameStatusUpdated,
+                       "Delegate game status not updated once -> inProgress -> endedWithLost")
     }
 
     func testSwapTiles() {
@@ -83,8 +87,6 @@ class BaseSwappingViewModelTests: XCTestCase {
         let viewModel = BaseSwappingViewModel(time: time, gameData: gameData,
                                              tiles: ["a", "b", "c", "d", "e", "f"],
                                              rows: rows, columns: columns)
-        let delegate = SwappingGameViewControllerDelegateMock()
-        viewModel.delegate = delegate
         viewModel.startGame()
 
         let initialGrid = viewModel.gridData

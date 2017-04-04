@@ -2,8 +2,13 @@ import Foundation
 
 /// The main view model for Tetris game
 class TetrisGameViewModel {
+    /// Provides a list of phrases that is being tested in this game.
+    // TODO: add accordingly
+    var phrasesTested: [Phrase] = []
 
-    weak var delegate: BaseGameViewControllerDelegate?
+    weak var scoreDelegate: ScoreUpdateDelegate?
+    weak var timeDelegate: TimeUpdateDelegate?
+    weak var gameStatusDelegate: GameStatusUpdateDelegate?
 
     fileprivate var grid = TextGrid(numRows: Constants.Game.Tetris.rows, numColumns: Constants.Game.Tetris.columns)
 
@@ -12,7 +17,7 @@ class TetrisGameViewModel {
 
     fileprivate(set) var currentScore: Int = 0 {
         didSet {
-            delegate?.redisplay(newScore: currentScore)
+            scoreDelegate?.scoreDidUpdate()
         }
     }
 
@@ -20,7 +25,7 @@ class TetrisGameViewModel {
 
     fileprivate(set) var gameStatus = GameStatus.notStarted {
         didSet {
-            delegate?.notifyGameStatusUpdated()
+            delegate?.gameStatusDidUpdate()
         }
     }
 
@@ -59,9 +64,9 @@ class TetrisGameViewModel {
             switch status {
             case .start:
                 self.gameStatus = .inProgress
-                self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
+                self.timeDelegate?.timeDidUpdate()
             case .tick:
-                self.delegate?.redisplay(timeRemaining: self.timeRemaining, outOf: self.totalTimeAllowed)
+                self.timeDelegate?.timeDidUpdate()
             case .finish:
                 self.gameStatus = .endedWithLost
             case .stop:
@@ -161,6 +166,9 @@ class TetrisGameViewModel {
 }
 
 extension TetrisGameViewModel: TetrisGameViewModelProtocol {
+    var gridData: TextGrid {
+        return grid
+    }
 
     func canShiftFallingTile(to coordinate: Coordinate) -> Bool {
         return !grid.hasText(at: coordinate)
@@ -213,5 +221,15 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
             return
         }
         timer.startTimer(timerInterval: Constants.Game.Tetris.timeInterval)
+    }
+}
+
+extension TetrisGameViewModel: TimeDescriptorProtocol {
+    var timeRemaining: TimeInterval {
+        return timer.timeRemaining
+    }
+
+    var totalTimeAllowed: TimeInterval {
+        return timer.totalTimeAllowed
     }
 }

@@ -41,8 +41,7 @@ class TetrisGameViewController: UIViewController {
             self.tetrisUpcomingTilesView = upcomingView
 
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
-            statisticsView.segueWith(timeLeft: viewModel.timeRemaining,
-                                     currentScore: viewModel.currentScore)
+            statisticsView.segueWith(time: viewModel, score: viewModel)
             self.gameStatisticsView = statisticsView
         }
     }
@@ -69,6 +68,7 @@ class TetrisGameViewController: UIViewController {
     func segueWith(_ viewModel: TetrisGameViewModelProtocol) {
         self.viewModel = viewModel
         self.viewModel.delegate = self
+        self.viewModel.gameStatusDelegate = self
     }
 
     // MARK: Gestures and Listeners
@@ -196,33 +196,11 @@ extension TetrisGameViewController {
     }
 }
 
-extension TetrisGameViewController: BaseGameViewControllerDelegate {
+// MARK: - Game Status
+extension TetrisGameViewController: GameStatusUpdateDelegate {
 
-    // MARK: Score Update
-    /// Redisplay the score displayed on the view controller screen with a new score.
-    ///
-    /// - Parameter newScore: the new score to be redisplayed.
-    func redisplay(newScore: Int) {
-        gameStatisticsView.currentScore = viewModel.currentScore
-    }
-
-    // MARK: Time Update
-    /// Redisplay the time remaining on the view controller against a total time.
-    ///
-    /// - Parameters:
-    ///   - timeRemaining: the time remaining, in seconds.
-    ///   - totalTime: the total time from the start of the game, in seconds.
-    func redisplay(timeRemaining: TimeInterval, outOf totalTime: TimeInterval) {
-        gameStatisticsView.timeLeft = timeRemaining
-    }
-
-    // MARK: Game Status
-    /// Notifies the view controller that the game state has changed.
-    ///
-    /// This is also the place to indicate when the user has won/lost.
-    /// Note also that if the user has won/lost, the score in the `redisplay(_ newScore)` will be
-    /// taken as the end game score. So update it before calling end game.
-    func notifyGameStatusUpdated() {
+    /// Tells the implementor of the delegate that the game status has been updated.
+    func gameStatusDidUpdate() {
         switch viewModel.gameStatus {
         case .endedWithWon:
             fallthrough

@@ -1,32 +1,39 @@
 import Foundation
 
 class BaseSwappingViewModel: SwappingViewModelProtocol {
+    /// Provides a list of phrases that is being tested in this game.
+    /// This is to be overriden in subclasses
+    var phrasesTested: [Phrase] = []
+
+    weak var timeDelegate: TimeUpdateDelegate?
+    weak var scoreDelegate: ScoreUpdateDelegate?
+    weak var gameStatusDelegate: GameStatusUpdateDelegate?
+
     /// Stores the grid data that will be used to display in the view controller.
-    var gridData: TextGrid
-    /// Number of rows in the grid, according to the answers property
-    var numRows: Int {
-        return gridData.numRows
-    }
-    /// Number of columns in the grid, according to the answers property
-    var numColumns: Int {
-        return gridData.numColumns
-    }
-    /// The delegate that the View Controller will conform to in some way, so that the Game Engine
-    /// View Model can call.
-    weak var delegate: SwappingGameViewControllerDelegate?
+    private(set) var gridData: TextGrid
+
     /// Specifies the current score of the game. If the game has not started, it will be the initial
     /// displayed score.
     private(set) var currentScore: Int = 0 {
         didSet {
-            delegate?.redisplay(newScore: currentScore)
+            scoreDelegate?.scoreDidUpdate()
         }
     }
     /// The timer of this game.
     private(set) var timer: CountDownTimer
+
+    var timeRemaining: TimeInterval {
+        return timer.timeRemaining
+    }
+
+    var totalTimeAllowed: TimeInterval {
+        return timer.totalTimeAllowed
+    }
+
     /// The status of the current game.
     private(set) var gameStatus: GameStatus = .notStarted {
         didSet {
-            delegate?.notifyGameStatusUpdated()
+            gameStatusDelegate?.gameStatusDidUpdate()
 
             if gameStatus != .inProgress {
                 timer.stopTimer()
@@ -114,9 +121,9 @@ class BaseSwappingViewModel: SwappingViewModelProtocol {
         switch status {
         case .start:
             gameStatus = .inProgress
-            delegate?.redisplay(timeRemaining: timeRemaining, outOf: totalTimeAllowed)
+            timeDelegate?.timeDidUpdate()
         case .tick:
-            delegate?.redisplay(timeRemaining: timeRemaining, outOf: totalTimeAllowed)
+            timeDelegate?.timeDidUpdate()
         case .finish:
             gameStatus = .endedWithLost
         default:

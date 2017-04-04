@@ -19,10 +19,6 @@ class TetrisGameViewControllerDelegateMock: BaseGameViewControllerDelegate {
         self.totalTime = totalTime
     }
 
-    func notifyGameStatusUpdated() {
-        gameStatusUpdated = true
-    }
-
     func redisplayUpcomingTiles() {
         upcomingTilesRedisplayed = true
     }
@@ -32,5 +28,9 @@ class TetrisGameViewControllerDelegateMock: BaseGameViewControllerDelegate {
     }
 
     func animate(destroyedTiles: Set<Coordinate>, shiftedTiles: [(from: Coordinate, to: Coordinate)]) {
+    }
+
+    func gameStatusDidUpdate() {
+        gameStatusUpdated = true
     }
 }

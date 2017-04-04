@@ -14,6 +14,7 @@ class ChengYuSwappingViewModel: BaseSwappingViewModel {
         super.init(time: time, gameData: gameData, tiles: tiles,
                    rows: numberOfPhrases, columns: Constants.Game.Swapping.columns)
 
+        phrasesTested = phrases
         gameTitle = Constants.Game.Swapping.ChengYu.gameTitle
         gameInstruction = Constants.Game.Swapping.ChengYu.gameInstruction
     }
