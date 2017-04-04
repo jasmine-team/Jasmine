@@ -2,6 +2,9 @@ import Foundation
 
 /// The main view model for Tetris game
 class TetrisGameViewModel {
+    /// Provides a list of phrases that is being tested in this game.
+    // TODO: add accordingly
+    var phrasesTested: [Phrase] = []
 
     weak var delegate: TetrisGameViewControllerDelegate?
     weak var scoreDelegate: ScoreUpdateDelegate?
@@ -132,7 +135,6 @@ class TetrisGameViewModel {
 }
 
 extension TetrisGameViewModel: TetrisGameViewModelProtocol {
-
     var gridData: TextGrid {
         return grid
     }

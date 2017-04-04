@@ -1,10 +1,13 @@
 import Foundation
 
 class BaseSwappingViewModel: SwappingViewModelProtocol {
+    /// Provides a list of phrases that is being tested in this game.
+    /// This is to be overriden in subclasses
+    var phrasesTested: [Phrase] = []
 
-    var timeDelegate: TimeUpdateDelegate?
-    var scoreDelegate: ScoreUpdateDelegate?
-    var gameStatusDelegate: GameStatusUpdateDelegate?
+    weak var timeDelegate: TimeUpdateDelegate?
+    weak var scoreDelegate: ScoreUpdateDelegate?
+    weak var gameStatusDelegate: GameStatusUpdateDelegate?
 
     /// Stores the grid data that will be used to display in the view controller.
     private(set) var gridData: TextGrid
