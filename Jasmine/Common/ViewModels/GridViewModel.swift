@@ -18,6 +18,9 @@ class GridViewModel: BaseViewModelProtocol, CountdownTimable {
             scoreDidUpdate()
         }
     }
+
+    /// Callback to be run when score is updated.
+    var scoreDidUpdate: () -> Void = {}
     /// The timer of this game.
     var timer: CountDownTimer
     /// The status of the current game.
@@ -31,9 +34,6 @@ class GridViewModel: BaseViewModelProtocol, CountdownTimable {
     /// Provide of a brief description of its objectives and how this game is played.
     /// There is no word count limit, but should be concise.
     var gameInstruction: String = ""
-
-    /// Callback to be run when score is updated.
-    var scoreDidUpdate: () -> Void = {}
 
     /// Initializes the grid VM.
     ///

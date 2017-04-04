@@ -4,6 +4,8 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
     weak var delegate: SwappingGameViewControllerDelegate?
+    /// The number of moves currently done.
+    var moves: Int = 0
     /// The status of the current game.
     override var gameStatus: GameStatus {
         didSet {
@@ -43,7 +45,9 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
 
     /// Score for the game when it is won on the current state.
     override var score: Int {
-        return Int(timeRemaining * Constants.Game.Swapping.scoreMultiplierFromTime)
+        return min(Constants.Game.Swapping.Score.base +
+            Int(timeRemaining * Constants.Game.Swapping.Score.multiplierFromTime)
+            - moves * Constants.Game.Swapping.Score.multiplierFromMoves, 0)
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
@@ -65,6 +69,8 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
         }
 
         gridData.swap(coord1, coord2)
+        moves += 1
+
         checkGameWon()
 
         return true

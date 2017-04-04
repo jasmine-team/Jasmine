@@ -18,10 +18,15 @@ enum Constants {
                 static let gameInstruction = "Match the Cheng Yus by putting them in one row/column."
             }
 
+            enum Score {
+                static let base = 2000
+                static let multiplierFromTime: Double = 100
+                static let multiplierFromMoves = 50
+            }
+
             static let rows = 4
             static let columns = 4
             static let time: TimeInterval = 60
-            static let scoreMultiplierFromTime: Double = 100
         }
 
         enum Sliding {
@@ -36,10 +41,15 @@ enum Constants {
                 static let gameInstruction = "Match the Cheng Yus by putting them in one row/column."
             }
 
+            enum Score {
+                static let base = 10000
+                static let multiplierFromTime: Double = 100
+                static let multiplierFromMoves = 25
+            }
+
             static let rows = 4
             static let columns = 4
             static let time: TimeInterval = 600
-            static let scoreMultiplierFromTime: Double = 100
         }
 
         enum Tetris {

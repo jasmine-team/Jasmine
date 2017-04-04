@@ -4,6 +4,8 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
     /// The delegate that the View Controller will conform to in some way, so that the Game Engine
     /// View Model can call.
     weak var delegate: SlidingGameViewControllerDelegate?
+    /// The number of moves currently done.
+    var moves: Int = 0
     /// The status of the current game.
     override var gameStatus: GameStatus {
         didSet {
@@ -60,6 +62,7 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
         }
 
         gridData.swap(start, end)
+        moves += 1
         checkGameWon()
 
         return true
@@ -67,7 +70,9 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
 
     /// Score for the game when it is won on the current state.
     override var score: Int {
-        return Int(timeRemaining * Constants.Game.Sliding.scoreMultiplierFromTime)
+        return min(Constants.Game.Sliding.Score.base +
+            Int(timeRemaining * Constants.Game.Sliding.Score.multiplierFromTime)
+            - moves * Constants.Game.Sliding.Score.multiplierFromMoves, 0)
     }
 
     /// Ask the view model where the specified tile from the coordinate can be slided to.
