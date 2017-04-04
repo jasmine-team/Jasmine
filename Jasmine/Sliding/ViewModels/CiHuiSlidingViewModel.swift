@@ -31,8 +31,8 @@ class CiHuiSlidingViewModel: BaseSlidingViewModel {
     /// Returns if and only if the game is won, that is:
     /// every row/column except the last contains the cihui and the respective pinyin.
     override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
-        if line.isAllTrue(predicate: { $0.row == numRows - 1 }) ||
-           line.isAllTrue(predicate: { $0.col == numColumns - 1 }) {
+        if line.isAllTrue(predicate: { $0.row == gridData.numRows - 1 }) ||
+           line.isAllTrue(predicate: { $0.col == gridData.numColumns - 1 }) {
             return true
         }
 
@@ -44,21 +44,17 @@ class CiHuiSlidingViewModel: BaseSlidingViewModel {
             // First half forms a hanzi phrase
             // TODO: - Magic String
             let pinyin = gridData.getConcatenatedTexts(at: secondHalfCoordinates, separatedBy: " ")
-            if phrase.pinyin != pinyin {
-                return false
-            }
+            return phrase.pinyin == pinyin
+
         } else if let text = gridData.getConcatenatedTexts(at: secondHalfCoordinates),
                   let phrase = gameData.phrases.first(whereChinese: text) {
             // Second half forms a hanzi phrase
             // TODO: - Magic String
             let pinyin = gridData.getConcatenatedTexts(at: firstHalfCoordinates, separatedBy: " ")
-            if phrase.pinyin != pinyin {
-                return false
-            }
+            return phrase.pinyin == pinyin
+
         } else {
             return false
         }
-
-        return true
     }
 }

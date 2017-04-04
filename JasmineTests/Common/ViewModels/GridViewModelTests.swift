@@ -17,10 +17,6 @@ class GridViewModelTests: XCTestCase {
 
         XCTAssertEqual(0, viewModel.currentScore,
                        "ViewModel currentScore not correct on init")
-        XCTAssertEqual(2, viewModel.numRows,
-                       "ViewModel numRows not correct on init")
-        XCTAssertEqual(2, viewModel.numColumns,
-                       "ViewModel numColumns not correct on init")
         XCTAssertEqual(GameStatus.notStarted, viewModel.gameStatus,
                        "ViewModel gameStatus not correct on init")
         XCTAssertEqual([Coordinate(row: 0, col: 0): "a",

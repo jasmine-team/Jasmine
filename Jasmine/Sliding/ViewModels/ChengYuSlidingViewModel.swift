@@ -23,8 +23,8 @@ class ChengYuSlidingViewModel: BaseSlidingViewModel {
 
     /// Returns if and only if the game is won, that is: every row is a valid Chengyu.
     override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
-        if line.isAllTrue(predicate: { $0.row == numRows - 1 }) ||
-           line.isAllTrue(predicate: { $0.col == numColumns - 1 }) {
+        if line.isAllTrue(predicate: { $0.row == gridData.numRows - 1 }) ||
+           line.isAllTrue(predicate: { $0.col == gridData.numColumns - 1 }) {
             return true
         }
 

@@ -26,10 +26,6 @@ class BaseSlidingViewModelTests: XCTestCase {
                        "ViewModel moves on init is not zero")
         XCTAssertEqual(0, viewModel.currentScore,
                        "ViewModel currentScore on init is not zero")
-        XCTAssertEqual(1, viewModel.numRows,
-                       "ViewModel rows on init is not correct")
-        XCTAssertEqual(2, viewModel.numColumns,
-                       "ViewModel columns on init is not correct")
         XCTAssertEqual(3, viewModel.timeRemaining,
                        "ViewModel timeRemaining on init is not correct")
         XCTAssertEqual(3, viewModel.totalTimeAllowed,
@@ -82,24 +78,17 @@ class BaseSlidingViewModelTests: XCTestCase {
                     // From here onwards, the coordinate is in the grid data, and the contents is not nil.
                     // Just need to check if the neighbors are in the grid and contents are nil.
 
-                    var result: [Direction: Coordinate] = [:]
+                    var result: [Direction: Coordinate] = [
+                        .northwards: Coordinate(row: row - 1, col: col),
+                        .southwards: Coordinate(row: row + 1, col: col),
+                        .westwards: Coordinate(row: row, col: col - 1),
+                        .eastwards: Coordinate(row: row, col: col + 1)
+                    ]
 
-                    let top = Coordinate(row: row - 1, col: col)
-                    let bottom = Coordinate(row: row + 1, col: col)
-                    let left = Coordinate(row: row, col: col - 1)
-                    let right = Coordinate(row: row, col: col + 1)
-
-                    if gridData.isInBounds(coordinate: top) && gridData[top] == nil {
-                        result[.northwards] = top
-                    }
-                    if gridData.isInBounds(coordinate: bottom) && gridData[bottom] == nil {
-                        result[.southwards] = bottom
-                    }
-                    if gridData.isInBounds(coordinate: left) && gridData[left] == nil {
-                        result[.westwards] = left
-                    }
-                    if gridData.isInBounds(coordinate: right) && gridData[right] == nil {
-                        result[.eastwards] = right
+                    for (dir, coord) in result {
+                        if !gridData.isInBounds(coordinate: coord) || gridData[coord] == nil {
+                            result[dir] = nil
+                        }
                     }
 
                     XCTAssertEqual(result, viewModel.canTileSlide(from: coordinate),
@@ -138,26 +127,12 @@ class BaseSlidingViewModelTests: XCTestCase {
                     continue
                 }
 
-                let top = Coordinate(row: row - 1, col: col)
-                let bottom = Coordinate(row: row + 1, col: col)
-                let left = Coordinate(row: row, col: col - 1)
-                let right = Coordinate(row: row, col: col + 1)
-
-                if gridData.isInBounds(coordinate: top) {
-                    slideTileHelper(viewModel: viewModel, gridData: gridData,
-                                    from: top, to: coordinate)
-                }
-                if gridData.isInBounds(coordinate: bottom) {
-                    slideTileHelper(viewModel: viewModel, gridData: gridData,
-                                    from: bottom, to: coordinate)
-                }
-                if gridData.isInBounds(coordinate: left) {
-                    slideTileHelper(viewModel: viewModel, gridData: gridData,
-                                    from: left, to: coordinate)
-                }
-                if gridData.isInBounds(coordinate: right) {
-                    slideTileHelper(viewModel: viewModel, gridData: gridData,
-                                    from: right, to: coordinate)
+                for coord in [Coordinate(row: row - 1, col: col), Coordinate(row: row + 1, col: col),
+                              Coordinate(row: row, col: col - 1), Coordinate(row: row, col: col + 1)] {
+                    if gridData.isInBounds(coordinate: coord) {
+                        slideTileHelper(viewModel: viewModel, gridData: gridData,
+                                        from: coord, to: coordinate)
+                    }
                 }
             }
         }

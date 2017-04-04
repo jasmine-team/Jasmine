@@ -43,14 +43,11 @@ class BaseSwappingViewModelTests: XCTestCase {
                        "ViewModel gameInstruction on init is not correct")
 
         let gridData = viewModel.gridData
-        XCTAssert(["a", "b", "c", "d"].contains { $0 == gridData[Coordinate(row: 0, col: 0)] },
-                  "Swapping Data is not correct")
-        XCTAssert(["a", "b", "c", "d"].contains { $0 == gridData[Coordinate(row: 0, col: 1)] },
-                  "Swapping Data is not correct")
-        XCTAssert(["a", "b", "c", "d"].contains { $0 == gridData[Coordinate(row: 1, col: 0)] },
-                  "Swapping Data is not correct")
-        XCTAssert(["a", "b", "c", "d"].contains { $0 == gridData[Coordinate(row: 1, col: 1)] },
-                  "Swapping Data is not correct")
+        for (row, col) in [(0, 0), (0, 1), (1, 0), (1, 1)] {
+            let coord = Coordinate(row: row, col: col)
+            XCTAssert(["a", "b", "c", "d"].contains { $0 == gridData[coord] },
+                      "Swapping Data is not correct")
+        }
     }
 
     func testStartGame() {

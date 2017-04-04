@@ -7,14 +7,6 @@ class GridViewModel: BaseViewModelProtocol {
 
     /// Stores the grid data that will be used to display in the view controller.
     var gridData: TextGrid
-    /// Number of rows in the grid, according to the answers property
-    var numRows: Int {
-        return gridData.numRows
-    }
-    /// Number of columns in the grid, according to the answers property
-    var numColumns: Int {
-        return gridData.numColumns
-    }
     /// Specifies the current score of the game. If the game has not started, it will be the initial
     /// displayed score.
     private(set) var currentScore: Int = 0 {
@@ -95,11 +87,11 @@ class GridViewModel: BaseViewModelProtocol {
 
     /// Returns true iff the game is won.
     private var hasGameWon: Bool {
-        let allRowsCorrect = (0..<numRows).isAllTrue { row in
-            lineIsCorrect((0..<numColumns).map { column in Coordinate(row: row, col: column) })
+        let allRowsCorrect = (0..<gridData.numRows).isAllTrue { row in
+            lineIsCorrect((0..<gridData.numColumns).map { column in Coordinate(row: row, col: column) })
         }
-        let allColumnsCorrect = (0..<numColumns).isAllTrue { column in
-            lineIsCorrect((0..<numRows).map { row in Coordinate(row: row, col: column) })
+        let allColumnsCorrect = (0..<gridData.numColumns).isAllTrue { column in
+            lineIsCorrect((0..<gridData.numRows).map { row in Coordinate(row: row, col: column) })
         }
 
         return allRowsCorrect || allColumnsCorrect

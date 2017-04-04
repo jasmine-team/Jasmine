@@ -82,26 +82,18 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
             return [:]
         }
 
-        var result: [Direction: Coordinate] = [:]
+        var result: [Direction: Coordinate] = [
+            .northwards: Coordinate(row: start.row - 1, col: start.col),
+            .southwards: Coordinate(row: start.row + 1, col: start.col),
+            .westwards: Coordinate(row: start.row, col: start.col - 1),
+            .eastwards: Coordinate(row: start.row, col: start.col + 1)
+        ]
 
-        let top = Coordinate(row: start.row - 1, col: start.col)
-        let bottom = Coordinate(row: start.row + 1, col: start.col)
-        let left = Coordinate(row: start.row, col: start.col - 1)
-        let right = Coordinate(row: start.row, col: start.col + 1)
-
-        if gridData.isInBounds(coordinate: top) && gridData[top] == nil {
-            result[.northwards] = top
+        for (dir, coord) in result {
+            if !gridData.isInBounds(coordinate: coord) || gridData[coord] == nil {
+                result[dir] = nil
+            }
         }
-        if gridData.isInBounds(coordinate: bottom) && gridData[bottom] == nil {
-            result[.southwards] = bottom
-        }
-        if gridData.isInBounds(coordinate: left) && gridData[left] == nil {
-            result[.westwards] = left
-        }
-        if gridData.isInBounds(coordinate: right) && gridData[right] == nil {
-            result[.eastwards] = right
-        }
-
         return result
     }
 
