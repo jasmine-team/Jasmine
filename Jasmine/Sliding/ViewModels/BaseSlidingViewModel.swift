@@ -66,7 +66,7 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
 
     /// Score for the game when it is won on the current state.
     override var score: Int {
-        return min(Constants.Game.Sliding.Score.base +
+        return max(Constants.Game.Sliding.Score.base +
             Int(timeRemaining * Constants.Game.Sliding.Score.multiplierFromTime)
             - moves * Constants.Game.Sliding.Score.multiplierFromMoves, 0)
     }

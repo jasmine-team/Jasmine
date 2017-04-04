@@ -49,6 +49,7 @@
 		50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */; };
 		50AE3A761E8B93D3005EC944 /* TextGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE3A751E8B93D3005EC944 /* TextGrid.swift */; };
 		50AE3A781E8BE020005EC944 /* TextGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE3A771E8BE020005EC944 /* TextGridTests.swift */; };
+		50B7A8B51E9393530052E9E2 /* BaseSwappingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B7A8B41E9393530052E9E2 /* BaseSwappingViewModelTests.swift */; };
 		50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */; };
 		A2187E6C1E7510B60033FC5B /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E6B1E7510B60033FC5B /* Random.swift */; };
 		A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E711E751C930033FC5B /* Sequence+Extensions.swift */; };
@@ -119,7 +120,6 @@
 /* Begin PBXFileReference section */
 		3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasmine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
-		50269D441E83C96C0043C45D /* BaseSwappingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSwappingViewModelTests.swift; sourceTree = "<group>"; };
 		502A29641E925A190024336A /* Array+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Equatable.swift"; sourceTree = "<group>"; };
 		502A29681E925C8D0024336A /* GridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
 		502A296A1E926DCA0024336A /* BaseSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSlidingViewModel.swift; sourceTree = "<group>"; };
@@ -159,6 +159,7 @@
 		50989DE61E6D8BBD009A86C8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50AE3A751E8B93D3005EC944 /* TextGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextGrid.swift; sourceTree = "<group>"; };
 		50AE3A771E8BE020005EC944 /* TextGridTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextGridTests.swift; sourceTree = "<group>"; };
+		50B7A8B41E9393530052E9E2 /* BaseSwappingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSwappingViewModelTests.swift; sourceTree = "<group>"; };
 		50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateTests.swift; sourceTree = "<group>"; };
 		5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2187E6B1E7510B60033FC5B /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
@@ -507,7 +508,6 @@
 		50F191B01E7ADCA200EE9A75 /* Swapping */ = {
 			isa = PBXGroup;
 			children = (
-				50F191B31E7ADCB200EE9A75 /* Support */,
 				50F191B21E7ADCAE00EE9A75 /* ViewModels */,
 			);
 			path = Swapping;
@@ -526,18 +526,11 @@
 		50F191B21E7ADCAE00EE9A75 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				50269D441E83C96C0043C45D /* BaseSwappingViewModelTests.swift */,
+				50B7A8B41E9393530052E9E2 /* BaseSwappingViewModelTests.swift */,
 				509036DB1E937C4C006548DE /* ChengYuSwappingViewModelTests.swift */,
 				509036DC1E937C4C006548DE /* CiHuiSwappingViewModelTests.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		50F191B31E7ADCB200EE9A75 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Support;
 			sourceTree = "<group>";
 		};
 		50F191B51E7ADCBE00EE9A75 /* ViewModels */ = {
@@ -1055,6 +1048,7 @@
 				502A29771E927B790024336A /* CiHuiSlidingViewModelTests.swift in Sources */,
 				502A29751E927B790024336A /* BaseSlidingVIewModelTests.swift in Sources */,
 				502A29801E9288290024336A /* GridViewModelMocks.swift in Sources */,
+				50B7A8B51E9393530052E9E2 /* BaseSwappingViewModelTests.swift in Sources */,
 				509036DD1E937C4C006548DE /* ChengYuSwappingViewModelTests.swift in Sources */,
 				509036D51E937BFB006548DE /* GameStatusUpdateDelegateMock.swift in Sources */,
 				509036DA1E937C04006548DE /* TetrisGameViewControllerDelegateMock.swift in Sources */,

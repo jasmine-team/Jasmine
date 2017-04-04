@@ -3,15 +3,27 @@ import Foundation
 @testable import Jasmine
 
 class BaseSlidingViewModelTests: XCTestCase {
-    func testInit() {
+
+    var gameData: GameData!
+    let rows = 1
+    let columns = 2
+    let time: TimeInterval = 3
+    var viewModel: BaseSlidingViewModel!
+
+    override func setUp() {
         guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
             XCTFail("Realm errors")
             return
         }
+        self.gameData = gameData
 
-        let viewModel = BaseSlidingViewModel(time: 3, gameData: gameData,
-                                             tiles: ["a", "b"], rows: 1, columns: 2)
+        viewModel = BaseSlidingViewModel(time: time, gameData: gameData, tiles: ["a", nil],
+                                         rows: rows, columns: columns)
+    }
 
+    func testInit() {
+        XCTAssertEqual(0, viewModel.moves,
+                       "ViewModel moves on init is not zero")
         XCTAssertEqual(0, viewModel.currentScore,
                        "ViewModel currentScore on init is not zero")
         XCTAssertEqual(1, viewModel.numRows,
@@ -30,24 +42,13 @@ class BaseSlidingViewModelTests: XCTestCase {
                        "ViewModel gameInstruction on init is not correct")
 
         let gridData = viewModel.gridData
-        XCTAssert(["a", "b"].contains { $0 == gridData[Coordinate(row: 0, col: 0)] },
+        XCTAssert(["a", nil].contains { $0 == gridData[Coordinate(row: 0, col: 0)] },
                   "Grid Data is not correct")
-        XCTAssert(["a", "b"].contains { $0 == gridData[Coordinate(row: 0, col: 1)] },
+        XCTAssert(["a", nil].contains { $0 == gridData[Coordinate(row: 0, col: 1)] },
                   "Grid Data is not correct")
     }
 
     func testStartGame() {
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
-            XCTFail("Realm errors")
-            return
-        }
-
-        let rows = 1
-        let columns = 2
-        let time: TimeInterval = 3
-
-        let viewModel = BaseSlidingViewModel(time: time, gameData: gameData, tiles: ["a", "b"],
-                                             rows: rows, columns: columns)
         viewModel.startGame()
 
         XCTAssertEqual(GameStatus.inProgress, viewModel.gameStatus,
@@ -59,16 +60,10 @@ class BaseSlidingViewModelTests: XCTestCase {
     }
 
     func testCanTileSlide() {
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
-            XCTFail("Realm errors")
-            return
-        }
-
         let grid = [String?](repeating: "a", count: 12) + [String?](repeating: nil, count: 4)
 
         let rows = 4
         let columns = 4
-        let time: TimeInterval = 3
 
         for _ in 0..<3 { // do this 3 times due to randomness
             let viewModel = BaseSlidingViewModel(time: time, gameData: gameData, tiles: grid,
@@ -123,16 +118,10 @@ class BaseSlidingViewModelTests: XCTestCase {
     }
 
     func testSlideTile() {
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
-            XCTFail("Realm errors")
-            return
-        }
-
         let grid = [String?](repeating: "a", count: 15) + [String?](repeating: nil, count: 1)
 
         let rows = 4
         let columns = 4
-        let time: TimeInterval = 3
 
         let viewModel = BaseSlidingViewModel(time: time, gameData: gameData, tiles: grid,
                                              rows: rows, columns: columns)
@@ -172,5 +161,19 @@ class BaseSlidingViewModelTests: XCTestCase {
                 }
             }
         }
+    }
+
+    func testScore() {
+        XCTAssertEqual(10_300, viewModel.score)
+        if viewModel.gridData[Coordinate(row: 0, col: 0)] != nil {
+            viewModel.slideTile(from: Coordinate(row: 0, col: 0), to: Coordinate(row: 0, col: 1))
+        } else {
+            viewModel.slideTile(from: Coordinate(row: 0, col: 1), to: Coordinate(row: 0, col: 0))
+        }
+        XCTAssertEqual(10_275, viewModel.score)
+
+        viewModel.startGame()
+        RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
+        XCTAssert(abs(10_175 - viewModel.score) <= 10)
     }
 }

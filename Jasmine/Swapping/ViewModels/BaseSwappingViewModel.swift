@@ -41,7 +41,7 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
 
     /// Score for the game when it is won on the current state.
     override var score: Int {
-        return min(Constants.Game.Swapping.Score.base +
+        return max(Constants.Game.Swapping.Score.base +
             Int(timeRemaining * Constants.Game.Swapping.Score.multiplierFromTime)
             - moves * Constants.Game.Swapping.Score.multiplierFromMoves, 0)
     }
