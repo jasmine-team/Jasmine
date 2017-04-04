@@ -1,6 +1,6 @@
 import Foundation
 
-/// Implement this class to describe how a game can be played with a Grid Game board.
+/// Implement this class to describe how a game can be played with a Swapping Game board.
 protocol SwappingViewModelProtocol: BaseViewModelProtocol {
 
     // MARK: Game Operations

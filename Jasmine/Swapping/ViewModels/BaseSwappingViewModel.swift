@@ -1,54 +1,8 @@
 import Foundation
 
-class BaseSwappingViewModel: SwappingViewModelProtocol {
-    /// Provides a list of phrases that is being tested in this game.
-    /// This is to be overriden in subclasses
-    var phrasesTested: [Phrase] = []
-
-    weak var timeDelegate: TimeUpdateDelegate?
-    weak var scoreDelegate: ScoreUpdateDelegate?
-    weak var gameStatusDelegate: GameStatusUpdateDelegate?
-
-    /// Stores the grid data that will be used to display in the view controller.
-    private(set) var gridData: TextGrid
-
-    /// Specifies the current score of the game. If the game has not started, it will be the initial
-    /// displayed score.
-    private(set) var currentScore: Int = 0 {
-        didSet {
-            scoreDelegate?.scoreDidUpdate()
-        }
-    }
-    /// The timer of this game.
-    private(set) var timer: CountDownTimer
-
-    var timeRemaining: TimeInterval {
-        return timer.timeRemaining
-    }
-
-    var totalTimeAllowed: TimeInterval {
-        return timer.totalTimeAllowed
-    }
-
-    /// The status of the current game.
-    private(set) var gameStatus: GameStatus = .notStarted {
-        didSet {
-            gameStatusDelegate?.gameStatusDidUpdate()
-
-            if gameStatus != .inProgress {
-                timer.stopTimer()
-            }
-        }
-    }
-    /// The game data of this game.
-    let gameData: GameData
-
-    /// Provide a brief title for this game. Note that this title should be able to fit within the
-    /// width of the display.
-    var gameTitle: String = ""
-    /// Provide of a brief description of its objectives and how this game is played.
-    /// There is no word count limit, but should be concise.
-    var gameInstruction: String = ""
+class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
+    /// The number of moves currently done.
+    var moves: Int = 0
 
     /// Initializes the grid VM.
     ///
@@ -62,8 +16,6 @@ class BaseSwappingViewModel: SwappingViewModelProtocol {
         assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
         assert(tiles.count == rows * columns, "Number of tiles should equal numRows * numColumns")
 
-        self.gameData = gameData
-
         let shuffledTiles = tiles.shuffled()
         let grid = (0..<rows).map { row in
             (0..<columns).map { col in
@@ -71,15 +23,14 @@ class BaseSwappingViewModel: SwappingViewModelProtocol {
             }
         }
 
-        gridData = TextGrid(fromInitialGrid: grid)
-
-        timer = CountDownTimer(totalTimeAllowed: time)
-        timer.timerListener = gridTimerListener
+        super.init(time: time, gameData: gameData, textGrid: TextGrid(fromInitialGrid: grid))
     }
 
-    /// Tells the view model that the game has started.
-    func startGame() {
-        timer.startTimer(timerInterval: Constants.Game.Swapping.timerInterval)
+    /// Score for the game when it is won on the current state.
+    override var score: Int {
+        return max(Constants.Game.Swapping.Score.base +
+            Int(timeRemaining * Constants.Game.Swapping.Score.multiplierFromTime)
+            - moves * Constants.Game.Swapping.Score.multiplierFromMoves, 0)
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
@@ -101,33 +52,10 @@ class BaseSwappingViewModel: SwappingViewModelProtocol {
         }
 
         gridData.swap(coord1, coord2)
-        if hasGameWon {
-            gameStatus = .endedWithWon
-            currentScore += Int(timeRemaining * Double(Constants.Game.Swapping.scoreMultiplierFromTime))
-        }
+        moves += 1
+
+        checkGameWon()
 
         return true
-    }
-
-    /// Returns true iff the game is won. This is to be overriden
-    var hasGameWon: Bool {
-        return false
-    }
-
-    /// The countdown timer for use in this viewmodel.
-    ///
-    /// - Returns: the countdown timer
-    private func gridTimerListener(status: TimerStatus) {
-        switch status {
-        case .start:
-            gameStatus = .inProgress
-            timeDelegate?.timeDidUpdate()
-        case .tick:
-            timeDelegate?.timeDidUpdate()
-        case .finish:
-            gameStatus = .endedWithLost
-        default:
-            break
-        }
     }
 }
