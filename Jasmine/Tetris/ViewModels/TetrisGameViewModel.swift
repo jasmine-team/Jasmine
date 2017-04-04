@@ -34,7 +34,7 @@ class TetrisGameViewModel {
     }
 
     fileprivate var grid = TextGrid(numRows: Constants.Game.Tetris.rows, numColumns: Constants.Game.Tetris.columns)
-    
+
     fileprivate(set) var upcomingTiles: [String] = []
     fileprivate(set) var fallingTileText: String! // Force unwrap so that self methods can be called in init
 
@@ -132,8 +132,10 @@ class TetrisGameViewModel {
     }
 
     fileprivate func getNextText() -> String {
-        if nextTexts.isEmpty {
-            nextTexts = gameData.phrases.next().chinese.characters.map { String($0) }
+        while nextTexts.count <= (gameData.phrases.phraseLength * (Constants.Game.Tetris.upcomingPhrasesCount - 1)) {
+            let newPhrase = gameData.phrases.next()
+            nextTexts += newPhrase.chinese.characters.map { String($0) }
+            phrasesTested.insert(newPhrase)
         }
         let randInt = Random.integer(toExclusive: nextTexts.count)
         return nextTexts.remove(at: randInt)

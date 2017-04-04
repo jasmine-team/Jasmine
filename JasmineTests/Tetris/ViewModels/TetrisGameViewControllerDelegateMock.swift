@@ -1,35 +1,26 @@
 import Foundation
 @testable import Jasmine
 
-class TetrisGameViewControllerDelegateMock: BaseGameViewControllerDelegate {
-    var score: Int?
-    var timeRemaining: TimeInterval?
-    var totalTime: TimeInterval!
+class TetrisGameViewControllerMock {
+
+    var scoreUpdated = false
+    var timeUpdated = false
     var gameStatusUpdated = false
+}
 
-    var fallingTileTextRedisplayed = false
-    var upcomingTilesRedisplayed = false
-
-    func redisplay(newScore: Int) {
-        score = newScore
+extension TetrisGameViewControllerMock: ScoreUpdateDelegate {
+    func scoreDidUpdate() {
+        scoreUpdated = true
     }
+}
 
-    func redisplay(timeRemaining: TimeInterval, outOf totalTime: TimeInterval) {
-        self.timeRemaining = timeRemaining
-        self.totalTime = totalTime
+extension TetrisGameViewControllerMock: TimeUpdateDelegate {
+    func timeDidUpdate() {
+        timeUpdated = true
     }
+}
 
-    func redisplayUpcomingTiles() {
-        upcomingTilesRedisplayed = true
-    }
-
-    func redisplayFallingTile(tileText: String) {
-        fallingTileTextRedisplayed = true
-    }
-
-    func animate(destroyedTiles: Set<Coordinate>, shiftedTiles: [(from: Coordinate, to: Coordinate)]) {
-    }
-
+extension TetrisGameViewControllerMock: GameStatusUpdateDelegate {
     func gameStatusDidUpdate() {
         gameStatusUpdated = true
     }

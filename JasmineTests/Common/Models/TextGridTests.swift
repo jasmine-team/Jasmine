@@ -55,7 +55,7 @@ class TextGridTests: XCTestCase {
 
     func testSubscriptSet() {
         let initialGrid = [["a", "b", "c"], ["d", "e", "f"]]
-        let grid = TextGrid(fromInitialGrid: initialGrid)
+        var grid = TextGrid(fromInitialGrid: initialGrid)
 
         grid[Coordinate(row: 0, col: 0)] = "f"
 
@@ -71,7 +71,7 @@ class TextGridTests: XCTestCase {
 
     func testSwap() {
         let initialGrid = [["a", "b", "c"], ["d", "e", "f"]]
-        let grid = TextGrid(fromInitialGrid: initialGrid)
+        var grid = TextGrid(fromInitialGrid: initialGrid)
 
         grid.swap(Coordinate(row: 0, col: 1), Coordinate(row: 1, col: 2))
 
@@ -86,7 +86,7 @@ class TextGridTests: XCTestCase {
     }
 
     func testHasText() {
-        let grid = TextGrid(numRows: 10, numColumns: 8)
+        var grid = TextGrid(numRows: 10, numColumns: 8)
         let coordinate = Coordinate(row: 1, col: 1)
         grid[coordinate] = "test"
         XCTAssertFalse(grid.hasText(at: Coordinate(row: 0, col: 0)), "hasText returns false positive")
@@ -94,7 +94,7 @@ class TextGridTests: XCTestCase {
     }
 
     func testRemoveTexts() {
-        let grid = TextGrid(numRows: 10, numColumns: 8)
+        var grid = TextGrid(numRows: 10, numColumns: 8)
         var coordinatesToRemove: Set<Coordinate> = []
         coordinatesToRemove.insert(Coordinate(row: 1, col: 1))
         coordinatesToRemove.insert(Coordinate(row: 0, col: 0))
