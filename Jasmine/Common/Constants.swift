@@ -80,4 +80,11 @@ enum Constants {
         case launchedBefore
     }
 
+    static var possibleCombinations: [(gameMode: GameMode, gameType: GameType)] {
+        return [(gameMode: .sliding, gameType: .chengYu),
+                (gameMode: .sliding, gameType: .ciHui),
+                (gameMode: .swapping, gameType: .chengYu),
+                (gameMode: .swapping, gameType: .ciHui),
+                (gameMode: .tetris, gameType: .chengYu)]
+    }
 }
