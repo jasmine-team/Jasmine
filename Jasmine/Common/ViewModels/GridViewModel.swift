@@ -1,17 +1,12 @@
 import Foundation
 
-class BaseSwappingViewModel: SwappingViewModelProtocol {
-    /// Provides a list of phrases that is being tested in this game.
-    /// This is to be overriden in subclasses
-    var phrasesTested: [Phrase] = []
-
+class GridViewModel: BaseViewModelProtocol {
     weak var timeDelegate: TimeUpdateDelegate?
     weak var scoreDelegate: ScoreUpdateDelegate?
     weak var gameStatusDelegate: GameStatusUpdateDelegate?
 
     /// Stores the grid data that will be used to display in the view controller.
-    private(set) var gridData: TextGrid
-
+    var gridData: TextGrid
     /// Specifies the current score of the game. If the game has not started, it will be the initial
     /// displayed score.
     private(set) var currentScore: Int = 0 {
@@ -19,8 +14,13 @@ class BaseSwappingViewModel: SwappingViewModelProtocol {
             scoreDelegate?.scoreDidUpdate()
         }
     }
+
+    /// Provides a list of phrases that is being tested in this game.
+    /// This is to be overriden in subclasses
+    var phrasesTested: [Phrase] = []
+
     /// The timer of this game.
-    private(set) var timer: CountDownTimer
+    var timer: CountDownTimer
 
     var timeRemaining: TimeInterval {
         return timer.timeRemaining
@@ -31,11 +31,11 @@ class BaseSwappingViewModel: SwappingViewModelProtocol {
     }
 
     /// The status of the current game.
-    private(set) var gameStatus: GameStatus = .notStarted {
+    var gameStatus: GameStatus = .notStarted {
         didSet {
             gameStatusDelegate?.gameStatusDidUpdate()
 
-            if gameStatus != .inProgress {
+            if gameStatus == .endedWithWon {
                 timer.stopTimer()
             }
         }
@@ -58,63 +58,51 @@ class BaseSwappingViewModel: SwappingViewModelProtocol {
     ///   - possibleAnswers: all possible answers. The game is won if all rows in the game is in all possible answers.
     ///   - rows: number of rows in the grid.
     ///   - columns: number of columns in the grid.
-    init(time: TimeInterval, gameData: GameData, tiles: [String], rows: Int, columns: Int) {
-        assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
-        assert(tiles.count == rows * columns, "Number of tiles should equal numRows * numColumns")
-
+    init(time: TimeInterval, gameData: GameData, textGrid: TextGrid) {
         self.gameData = gameData
-
-        let shuffledTiles = tiles.shuffled()
-        let grid = (0..<rows).map { row in
-            (0..<columns).map { col in
-                shuffledTiles[row * columns + col]
-            }
-        }
-
-        gridData = TextGrid(fromInitialGrid: grid)
+        gridData = textGrid
 
         timer = CountDownTimer(totalTimeAllowed: time)
         timer.timerListener = gridTimerListener
     }
 
-    /// Tells the view model that the game has started.
+    /// Starts the game.
     func startGame() {
-        timer.startTimer(timerInterval: Constants.Game.Swapping.timerInterval)
+        timer.startTimer(timerInterval: Constants.Game.timeInterval)
+        scoreDelegate?.scoreDidUpdate()
     }
 
-    /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
-    /// the specified two tiles.
-    ///
-    /// Note that if the tiles are swapped, `delegate.updateTiles(...)` should be called to update
-    /// the grid data of the cell stored in the view controller. However, there is no need to call
-    /// `delegate.redisplayTiles(...)` as it will be done implicitly by the view controller when
-    /// the swapping is successful (determined by the returned value).
-    ///
-    /// - Parameters:
-    ///   - coord1: One of the cells to be swapped.
-    ///   - coord2: The other cell to be swapped.
-    /// - Returns: Returns true if the two coordinates has be swapped, false otherwise.
-    @discardableResult
-    func swapTiles(_ coord1: Coordinate, and coord2: Coordinate) -> Bool {
-        guard gridData[coord1] != nil && gridData[coord2] != nil else {
-            return false
-        }
-
-        gridData.swap(coord1, coord2)
+    /// Check what happens when game is won. If game is won, change game status and add score.
+    func checkGameWon() {
         if hasGameWon {
             gameStatus = .endedWithWon
-            currentScore += Int(timeRemaining * Double(Constants.Game.Swapping.scoreMultiplierFromTime))
+            currentScore += score
         }
-
-        return true
     }
 
-    /// Returns true iff the game is won. This is to be overriden
-    var hasGameWon: Bool {
+    /// Score for the game when it is won on the current state. To be overriden.
+    var score: Int {
+        return 0
+    }
+
+    /// Returns true iff the game is won.
+    private var hasGameWon: Bool {
+        let allRowsCorrect = (0..<gridData.numRows).isAllTrue { row in
+            lineIsCorrect((0..<gridData.numColumns).map { column in Coordinate(row: row, col: column) })
+        }
+        let allColumnsCorrect = (0..<gridData.numColumns).isAllTrue { column in
+            lineIsCorrect((0..<gridData.numRows).map { row in Coordinate(row: row, col: column) })
+        }
+
+        return allRowsCorrect || allColumnsCorrect
+    }
+
+    /// Returns true iff the line given is correct. This is to be overriden.
+    func lineIsCorrect(_ line: [Coordinate]) -> Bool {
         return false
     }
 
-    /// The countdown timer for use in this viewmodel.
+    /// The countdown timer for use in this ViewModel.
     ///
     /// - Returns: the countdown timer
     private func gridTimerListener(status: TimerStatus) {

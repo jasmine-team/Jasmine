@@ -1,7 +1,7 @@
 import XCTest
 @testable import Jasmine
 
-class CiHuiSwappingViewModelTests: XCTestCase {
+class CiHuiSlidingViewModelTests: XCTestCase {
     func testInit() {
         let numberOfPhrases = 3
 
@@ -10,8 +10,7 @@ class CiHuiSwappingViewModelTests: XCTestCase {
             return
         }
 
-        let viewModel = CiHuiSwappingViewModel(time: 10, gameData: gameData,
-                                               numberOfPhrases: numberOfPhrases)
+        let viewModel = CiHuiSlidingViewModel(time: 10, gameData: gameData, rows: numberOfPhrases)
 
         XCTAssertEqual(0, viewModel.currentScore,
                        "ViewModel currentScore on init is not zero")
@@ -21,9 +20,9 @@ class CiHuiSwappingViewModelTests: XCTestCase {
                        "ViewModel timeRemaining on init is not correct")
         XCTAssertEqual(GameStatus.notStarted, viewModel.gameStatus,
                        "ViewModel gameStatus on init is not correct")
-        XCTAssertEqual("Ci Hui (词汇) Swapping Game", viewModel.gameTitle,
+        XCTAssertEqual("Ci Hui (词汇) Sliding Game", viewModel.gameTitle,
                        "ViewModel gameTitle on init is not correct")
-        XCTAssertEqual("Match the Chinese characters with their Pinyins by putting them in one row.",
+        XCTAssertEqual("Match the Chinese characters with their Pinyins by putting them in one row/column.",
                        viewModel.gameInstruction,
                        "ViewModel gameInstruction on init is not correct")
     }

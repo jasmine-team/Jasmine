@@ -1,5 +1,3 @@
-import Foundation
-
 /// Denotes the status of the current game play.
 ///
 /// - notStarted: the game has not started.
