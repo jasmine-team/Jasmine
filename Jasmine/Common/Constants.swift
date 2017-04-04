@@ -4,23 +4,52 @@ import Foundation
 // swiftlint:disable nesting
 enum Constants {
     enum Game {
+        static let timeInterval: TimeInterval = 0.1
+
         enum Swapping {
             enum CiHui {
                 static let gameTitle = "Ci Hui (词汇) Swapping Game"
                 static let gameInstruction = "Match the Chinese characters with their Pinyins " +
-                                             "by putting them in one row."
+                                             "by putting them in one row/column."
             }
 
             enum ChengYu {
                 static let gameTitle = "Cheng Yu (成语) Swapping Game"
-                static let gameInstruction = "Match the Cheng Yus by putting them in one row."
+                static let gameInstruction = "Match the Cheng Yus by putting them in one row/column."
+            }
+
+            enum Score {
+                static let base = 2_000
+                static let multiplierFromTime: Double = 100
+                static let multiplierFromMoves = 50
             }
 
             static let rows = 4
             static let columns = 4
             static let time: TimeInterval = 60
-            static let scoreMultiplierFromTime = 100
-            static let timerInterval: TimeInterval = 0.1
+        }
+
+        enum Sliding {
+            enum CiHui {
+                static let gameTitle = "Ci Hui (词汇) Sliding Game"
+                static let gameInstruction = "Match the Chinese characters with their Pinyins " +
+                                             "by putting them in one row/column."
+            }
+
+            enum ChengYu {
+                static let gameTitle = "Cheng Yu (成语) Sliding Game"
+                static let gameInstruction = "Match the Cheng Yus by putting them in one row/column."
+            }
+
+            enum Score {
+                static let base = 10_000
+                static let multiplierFromTime: Double = 100
+                static let multiplierFromMoves = 25
+            }
+
+            static let rows = 4
+            static let columns = 4
+            static let time: TimeInterval = 600
         }
 
         enum Tetris {
@@ -39,17 +68,10 @@ enum Constants {
 
             /// Total time allowed
             static let totalTime: TimeInterval = 120
-            /// Interval to update the time
-            static let timeInterval: TimeInterval = 1
 
             static let upcomingTilesCount = 4
 
             static let tileFallInterval: TimeInterval = 0.5
-        }
-
-        enum Sliding {
-            static let rows = 4
-            static let columns = 4
         }
 
         static var possibleCombinations: [(gameMode: GameMode, gameType: GameType)] {
@@ -75,7 +97,6 @@ enum Constants {
     }
 
     enum Graphics {
-
         enum Explosion {
             static let frames = [#imageLiteral(resourceName: "explode-0"), #imageLiteral(resourceName: "explode-1"), #imageLiteral(resourceName: "explode-2"), #imageLiteral(resourceName: "explode-3"), #imageLiteral(resourceName: "explode-4")]
             static let interval: TimeInterval = 0.1

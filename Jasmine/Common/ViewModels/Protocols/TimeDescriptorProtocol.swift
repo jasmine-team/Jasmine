@@ -12,5 +12,5 @@ protocol TimeDescriptorProtocol {
 
     /// Specifies the remaining time left in the game.
     var timeRemaining: TimeInterval { get }
-    
+
 }

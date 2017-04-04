@@ -1,7 +1,7 @@
 import XCTest
 @testable import Jasmine
 
-class ArrayExtensions: XCTestCase {
+class ArrayEquatableTests: XCTestCase {
 
     func equals() {
         let intArray: [Int] = [1, 2, 3]

@@ -1,7 +1,7 @@
 import Foundation
 
 protocol ScoreDescriptorProtocol {
-    
+
     // MARK: - Game Scoring
     /// A delegate that notifies the implementing view controller that the score has been updated.
     weak var scoreDelegate: ScoreUpdateDelegate? { get set }
