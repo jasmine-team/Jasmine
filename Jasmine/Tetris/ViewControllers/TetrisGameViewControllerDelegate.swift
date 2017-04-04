@@ -1,6 +1,6 @@
 /// Implement this delegate for `TetrisGameViewModel` to call for updating and commanding the
 /// implementing game view controller.
-protocol TetrisGameViewControllerDelegate {
+protocol TetrisGameViewControllerDelegate: class, GameStatusUpdateDelegate {
 
     /// Tells the view controller to retrieve `upcomingTiles` and reload the view for the upcoming tiles.
     func redisplayUpcomingTiles()
