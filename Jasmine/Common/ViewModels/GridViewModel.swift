@@ -95,10 +95,10 @@ class GridViewModel: BaseViewModelProtocol {
 
     /// Returns true iff the game is won.
     private var hasGameWon: Bool {
-        let allRowsCorrect = (0..<numRows).isAll { row in
+        let allRowsCorrect = (0..<numRows).isAllTrue { row in
             lineIsCorrect((0..<numColumns).map { column in Coordinate(row: row, col: column) })
         }
-        let allColumnsCorrect = (0..<numColumns).isAll { column in
+        let allColumnsCorrect = (0..<numColumns).isAllTrue { column in
             lineIsCorrect((0..<numRows).map { row in Coordinate(row: row, col: column) })
         }
 

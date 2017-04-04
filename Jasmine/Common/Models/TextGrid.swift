@@ -114,7 +114,6 @@ struct TextGrid {
     /// - Parameter coordinate: the coordinate to be determined
     /// - Returns: true if and only if the coordinate is inside the grid
     func isInBounds(coordinate: Coordinate) -> Bool {
-        return 0 <= coordinate.row && coordinate.row < numRows &&
-            0 <= coordinate.col && coordinate.col < numColumns
+        return (0..<numRows ~= coordinate.row) && (0..<numColumns ~= coordinate.col) 
     }
 }

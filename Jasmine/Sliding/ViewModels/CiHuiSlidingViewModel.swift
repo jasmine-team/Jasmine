@@ -31,8 +31,8 @@ class CiHuiSlidingViewModel: BaseSlidingViewModel {
     /// Returns if and only if the game is won, that is:
     /// every row/column except the last contains the cihui and the respective pinyin.
     override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
-        if line.isAll(condition: { $0.row == numRows - 1 }) ||
-            line.isAll(condition: { $0.col == numColumns - 1 }) {
+        if line.isAllTrue(predicate: { $0.row == numRows - 1 }) ||
+           line.isAllTrue(predicate: { $0.col == numColumns - 1 }) {
             return true
         }
 
