@@ -4,17 +4,6 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
     /// The number of moves currently done.
     var moves: Int = 0
 
-    /// The status of the current game.
-    override var gameStatus: GameStatus {
-        didSet {
-            gameStatusDelegate?.gameStatusDidUpdate()
-
-            if gameStatus == .endedWithWon {
-                timer.stopTimer()
-            }
-        }
-    }
-
     /// Initializes the grid VM.
     ///
     /// - Parameters:
@@ -35,8 +24,6 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
         }
 
         super.init(time: time, gameData: gameData, textGrid: TextGrid(fromInitialGrid: grid))
-
-        timer.timerListener = gridTimerListener
     }
 
     /// Score for the game when it is won on the current state.
@@ -70,22 +57,5 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
         checkGameWon()
 
         return true
-    }
-
-    /// The countdown timer for use in this ViewModel.
-    ///
-    /// - Returns: the countdown timer
-    private func gridTimerListener(status: TimerStatus) {
-        switch status {
-        case .start:
-            gameStatus = .inProgress
-            timeDelegate?.timeDidUpdate()
-        case .tick:
-            timeDelegate?.timeDidUpdate()
-        case .finish:
-            gameStatus = .endedWithLost
-        default:
-            break
-        }
     }
 }

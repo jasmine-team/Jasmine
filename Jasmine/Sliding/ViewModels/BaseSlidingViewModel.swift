@@ -35,8 +35,6 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
         }
 
         super.init(time: time, gameData: gameData, textGrid: TextGrid(fromInitialGrid: grid))
-
-        timer.timerListener = gridTimerListener
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to slide
@@ -107,20 +105,4 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
         return result
     }
 
-    /// The countdown timer for use in this ViewModel.
-    ///
-    /// - Returns: the countdown timer
-    private func gridTimerListener(status: TimerStatus) {
-        switch status {
-        case .start:
-            gameStatus = .inProgress
-            timeDelegate?.timeDidUpdate()
-        case .tick:
-            timeDelegate?.timeDidUpdate()
-        case .finish:
-            gameStatus = .endedWithLost
-        default:
-            break
-        }
-    }
 }

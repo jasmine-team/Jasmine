@@ -174,6 +174,6 @@ class BaseSlidingViewModelTests: XCTestCase {
 
         viewModel.startGame()
         RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
-        XCTAssert(abs(10_175 - viewModel.score) <= 10)
+        XCTAssert(abs(10_175 - viewModel.score) <= 5)
     }
 }

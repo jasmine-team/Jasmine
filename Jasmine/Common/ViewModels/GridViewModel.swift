@@ -39,7 +39,15 @@ class GridViewModel: BaseViewModelProtocol {
     }
 
     /// The status of the current game.
-    var gameStatus: GameStatus = .notStarted
+    var gameStatus: GameStatus = .notStarted {
+        didSet {
+            gameStatusDelegate?.gameStatusDidUpdate()
+
+            if gameStatus == .endedWithWon {
+                timer.stopTimer()
+            }
+        }
+    }
     /// The game data of this game.
     let gameData: GameData
 
@@ -63,6 +71,7 @@ class GridViewModel: BaseViewModelProtocol {
         gridData = textGrid
 
         timer = CountDownTimer(totalTimeAllowed: time)
+        timer.timerListener = gridTimerListener
     }
 
     /// Starts the game.
@@ -99,5 +108,22 @@ class GridViewModel: BaseViewModelProtocol {
     /// Returns true iff the line given is correct. This is to be overriden.
     func lineIsCorrect(_ line: [Coordinate]) -> Bool {
         return false
+    }
+
+    /// The countdown timer for use in this ViewModel.
+    ///
+    /// - Returns: the countdown timer
+    private func gridTimerListener(status: TimerStatus) {
+        switch status {
+        case .start:
+            gameStatus = .inProgress
+            timeDelegate?.timeDidUpdate()
+        case .tick:
+            timeDelegate?.timeDidUpdate()
+        case .finish:
+            gameStatus = .endedWithLost
+        default:
+            break
+        }
     }
 }

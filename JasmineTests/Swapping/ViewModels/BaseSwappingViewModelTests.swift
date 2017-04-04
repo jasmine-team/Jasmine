@@ -110,6 +110,6 @@ class BaseSwappingViewModelTests: XCTestCase {
 
         viewModel.startGame()
         RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
-        XCTAssert(abs(2_150 - viewModel.score) <= 10)
+        XCTAssert(abs(2_150 - viewModel.score) <= 5)
     }
 }

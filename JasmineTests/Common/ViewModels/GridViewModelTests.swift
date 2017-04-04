@@ -92,6 +92,7 @@ class GridViewModelTests: XCTestCase {
         let textGrid = TextGrid(fromInitialGrid: grid)
 
         let viewModel = GridViewModelSameRowMock(time: time, gameData: gameData, textGrid: textGrid)
+        viewModel.startGame()
 
         viewModel.checkGameWon()
 
@@ -113,6 +114,7 @@ class GridViewModelTests: XCTestCase {
         let textGrid = TextGrid(fromInitialGrid: grid)
 
         let viewModel = GridViewModelSameColumnMock(time: time, gameData: gameData, textGrid: textGrid)
+        viewModel.startGame()
 
         viewModel.checkGameWon()
 
