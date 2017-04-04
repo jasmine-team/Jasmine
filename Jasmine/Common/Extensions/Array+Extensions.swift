@@ -1,4 +1,4 @@
-func ==<T: Equatable>(lhs: [T], rhs: [T?]) -> Bool {
+func == <T: Equatable>(lhs: [T], rhs: [T?]) -> Bool {
     guard lhs.count == rhs.count else {
         return false
     }
@@ -12,14 +12,14 @@ func ==<T: Equatable>(lhs: [T], rhs: [T?]) -> Bool {
     return true
 }
 
-func ==<T: Equatable>(lhs: [T?], rhs: [T]) -> Bool {
+func == <T: Equatable>(lhs: [T?], rhs: [T]) -> Bool {
     return rhs == lhs
 }
 
-func !=<T: Equatable>(lhs: [T], rhs: [T?]) -> Bool {
+func != <T: Equatable>(lhs: [T], rhs: [T?]) -> Bool {
     return !(lhs == rhs)
 }
 
-func !=<T: Equatable>(lhs: [T?], rhs: [T]) -> Bool {
+func != <T: Equatable>(lhs: [T?], rhs: [T]) -> Bool {
     return rhs != lhs
 }

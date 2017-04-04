@@ -11,7 +11,7 @@ class TetrisGameViewModel {
     // TODO: add accordingly
     private(set) var phrasesTested: Set<Phrase> = []
 
-    fileprivate(set) var currentScore: Int = 0 {
+    private(set) var currentScore: Int = 0 {
         didSet {
             scoreDelegate?.scoreDidUpdate()
         }
@@ -82,7 +82,7 @@ class TetrisGameViewModel {
     ///
     /// - Parameter coordinate: the coordinate at which a cell has been shifted or added to
     /// - Returns: the set of coordinates that contains the matching phrase
-    fileprivate func checkForMatchingPhrase(at coordinate: Coordinate) -> Set<Coordinate>? {
+    private func checkForMatchingPhrase(at coordinate: Coordinate) -> Set<Coordinate>? {
         return checkForMatchingPhrase(at: coordinate, rowWise: true) ??
                checkForMatchingPhrase(at: coordinate, rowWise: false)
     }
@@ -115,7 +115,7 @@ class TetrisGameViewModel {
     /// Starts from the row right above the coordinates so that it can break once an empty tile is encountered
     ///
     /// Returns: array of coordinates shifted from `from` to `to`
-    fileprivate func shiftDownTiles(_ coordinates: Set<Coordinate>) -> [(from: Coordinate, to: Coordinate)] {
+    private func shiftDownTiles(_ coordinates: Set<Coordinate>) -> [(from: Coordinate, to: Coordinate)] {
         var shiftedTiles: [(from: Coordinate, to: Coordinate)] = []
         for coordinate in coordinates {
             for row in (0..<coordinate.row).reversed() {
@@ -131,11 +131,13 @@ class TetrisGameViewModel {
         return shiftedTiles
     }
 
-    fileprivate func getNextText() -> String {
-        while nextTexts.count <= (gameData.phrases.phraseLength * (Constants.Game.Tetris.upcomingPhrasesCount - 1)) {
-            let newPhrase = gameData.phrases.next()
-            nextTexts += newPhrase.chinese.characters.map { String($0) }
-            phrasesTested.insert(newPhrase)
+    private func getNextText() -> String {
+        if nextTexts.isEmpty {
+            let newPhrases = (0..<Constants.Game.Tetris.upcomingPhrasesCount).map { _ in
+                gameData.phrases.next()
+            }
+            phrasesTested.formUnion(newPhrases)
+            nextTexts += newPhrases.map { $0.chinese.characters.map { String($0) } }.flatMap { $0 }
         }
         let randInt = Random.integer(toExclusive: nextTexts.count)
         return nextTexts.remove(at: randInt)
@@ -173,13 +175,13 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
         return grid
     }
 
-    func canShiftFallingTile(to coordinate: Coordinate) -> Bool {
-        return !grid.hasText(at: coordinate)
-    }
-
     func getNewTileCoordinate() -> Coordinate {
         let randCol = Random.integer(toExclusive: grid.numColumns)
         return Coordinate(row: Coordinate.origin.row, col: randCol)
+    }
+
+    func canShiftFallingTile(to coordinate: Coordinate) -> Bool {
+        return !grid.hasText(at: coordinate)
     }
 
     func canLandTile(at coordinate: Coordinate) -> Bool {
