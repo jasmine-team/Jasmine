@@ -38,6 +38,10 @@ class GridViewModelFirstRowMock: GridViewModel {
         return 1_000
     }
 
+    override var score: Int {
+        return 10
+    }
+
     override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
         return line.isAllTrue { $0.row == 0 }
     }
