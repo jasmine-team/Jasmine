@@ -101,7 +101,7 @@ struct TextGrid {
     ///
     /// - Parameter coordinates: Array of Coordinate to get the text at
     /// - Returns: Array of String correspond to the texts at `coordinates`
-    ///            Returns nil if there is no text at any of the coordinates
+    ///            Returns nil if any of the coordinates has no text
     func getTexts(at coordinates: [Coordinate]) -> [String]? {
         var texts: [String] = []
         for coordinate in coordinates {
@@ -118,7 +118,7 @@ struct TextGrid {
     /// - Parameter coordinates: array of Coordinates to get the text at
     /// - Parameter separator: separator of the strings, defaults to empty string
     /// - Returns: Concatenated string from texts at `coordinates`
-    ///            Returns nil if there is no text at any of the coordinates
+    ///            Returns nil if any of the coordinates has no text
     func getConcatenatedTexts(at coordinates: [Coordinate], separatedBy separator: String = "") -> String? {
         return getTexts(at: coordinates)?.joined(separator: separator)
     }

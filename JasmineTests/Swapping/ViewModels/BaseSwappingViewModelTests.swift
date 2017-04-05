@@ -59,18 +59,18 @@ class BaseSwappingViewModelTests: XCTestCase {
         viewModel.startGame()
         XCTAssertEqual(GameStatus.inProgress, viewModel.gameStatus,
                        "ViewModel game status when the game runs is not inProgress")
-        XCTAssertEqual(1, timeDelegate.timeUpdated,
+        XCTAssertEqual(1, timeDelegate.timeUpdatedCount,
                        "Delegate time not updated once")
-        XCTAssertEqual(1, gameStatusDelegate.gameStatusUpdated,
+        XCTAssertEqual(1, gameStatusDelegate.gameStatusUpdatedCount,
                        "Delegate game status not updated once -> inProgress")
 
         RunLoop.current.run(until: Date(timeIntervalSinceNow: time + 1))
         XCTAssertEqual(3 * Int(1 / Constants.Game.timeInterval),
-                       timeDelegate.timeUpdated - 1,
+                       timeDelegate.timeUpdatedCount - 1,
                        "Delegate time not updated time * timerInterval times")
         XCTAssertEqual(GameStatus.endedWithLost, viewModel.gameStatus,
                        "ViewModel game status when time's up is not endedWithLost")
-        XCTAssertEqual(2, gameStatusDelegate.gameStatusUpdated,
+        XCTAssertEqual(2, gameStatusDelegate.gameStatusUpdatedCount,
                        "Delegate game status not updated once -> inProgress -> endedWithLost")
     }
 

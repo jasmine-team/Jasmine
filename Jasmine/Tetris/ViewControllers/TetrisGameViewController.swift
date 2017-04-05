@@ -72,7 +72,6 @@ class TetrisGameViewController: UIViewController {
     /// - Parameter viewModel: the game engine required to play this game.
     func segueWith(_ viewModel: TetrisGameViewModelProtocol) {
         self.viewModel = viewModel
-        self.viewModel.delegate = self
         self.viewModel.gameStatusDelegate = self
     }
 
@@ -91,6 +90,7 @@ class TetrisGameViewController: UIViewController {
             return
         }
         viewModel.swapFallingTile(withUpcomingAt: coord.col)
+        updateUpcomingAndFallingTiles()
     }
 
     /// Moves the falling tile when the view is swiped to a particular direction.
@@ -126,8 +126,14 @@ class TetrisGameViewController: UIViewController {
             assertionFailure("Current tile still falling! Cannot release a new tile for falling!")
             return
         }
-        let nextTile = viewModel.dropNextTile()
-        tetrisGameAreaView.setFallingTile(withData: nextTile.tileText, toCoord: nextTile.location)
+        tetrisGameAreaView.setFallingTile(withData: viewModel.fallingTileText,
+                                          toCoord: viewModel.fallingTileStartCoordinate)
+        updateUpcomingAndFallingTiles()
+    }
+
+    private func updateUpcomingAndFallingTiles() {
+        tetrisGameAreaView.fallingTile?.text = viewModel.fallingTileText
+        tetrisUpcomingTilesView.reload(gridData: upcomingTiles, withAnimation: true)
     }
 
     private func notifyTileHasRepositioned() {
@@ -135,11 +141,15 @@ class TetrisGameViewController: UIViewController {
               viewModel.canLandTile(at: coord) else {
             return
         }
-        tetrisGameAreaView.landFallingTile()
+        tetrisGameAreaView.landFallingTile(at: coord)
     }
 
-    private func notifyTileHasLanded() {
-        viewModel.tileHasLanded()
+    private func notifyTileHasLanded(at coordinate: Coordinate) {
+        let destroyedAndShiftedTiles = viewModel.landTile(at: coordinate)
+        // TODO : synchronize the animation of the sequence of destroyed and shifted tiles
+        for tiles in destroyedAndShiftedTiles {
+            animate(destroyedTiles: tiles.destroyedTiles, shiftedTiles: tiles.shiftedTiles)
+        }
         releaseNewTile()
     }
 
@@ -151,18 +161,7 @@ class TetrisGameViewController: UIViewController {
     }
 }
 
-extension TetrisGameViewController: TetrisGameViewControllerDelegate {
-
-    /// Tells the view controller to retrieve `upcomingTiles` and reload the view for the upcoming 
-    /// tiles.
-    func redisplayUpcomingTiles() {
-        tetrisUpcomingTilesView.reload(gridData: upcomingTiles, withAnimation: true)
-    }
-
-    /// Tells the view controller to redisplay the falling tile with `tileText`
-    func redisplayFallingTile(tileText: String) {
-        tetrisGameAreaView.fallingTile?.text = tileText
-    }
+extension TetrisGameViewController {
 
     // MARK: Animation
     /// Ask the view controller to animate the destruction of tiles at the specified coordinates,
