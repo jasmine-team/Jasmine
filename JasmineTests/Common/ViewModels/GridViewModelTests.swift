@@ -2,14 +2,18 @@ import XCTest
 @testable import Jasmine
 
 class GridViewModelTests: XCTestCase {
-    func testInit() {
+    var gameData: GameData!
+
+    override func setUp() {
         guard let gameDataFactory = try? GameDataFactory() else {
             XCTFail("Realm error")
             return
         }
+        gameData = gameDataFactory.createGame(difficulty: 1, type: .ciHui)
+    }
 
+    func testInit() {
         let time: TimeInterval = 10
-        let gameData = gameDataFactory.createGame(difficulty: 1, type: .ciHui)
         let grid = [["a", "b"], ["c", nil]]
         let textGrid = TextGrid(fromInitialGrid: grid)
 
@@ -35,13 +39,7 @@ class GridViewModelTests: XCTestCase {
     }
 
     func testStartGame() {
-        guard let gameDataFactory = try? GameDataFactory() else {
-            XCTFail("Realm error")
-            return
-        }
-
         let time: TimeInterval = 3
-        let gameData = gameDataFactory.createGame(difficulty: 1, type: .ciHui)
         let grid = [["a", "b"], ["c", nil]]
         let textGrid = TextGrid(fromInitialGrid: grid)
 
@@ -55,14 +53,8 @@ class GridViewModelTests: XCTestCase {
         XCTAssertEqual(time, viewModel.totalTimeAllowed, "Total time allowed not correct")
     }
 
-    func testCheckGameWonHasNotWon() {
-        guard let gameDataFactory = try? GameDataFactory() else {
-            XCTFail("Realm error")
-            return
-        }
-
+    func testCheckCorrectTilesHasNotWon() {
         let time: TimeInterval = 3
-        let gameData = gameDataFactory.createGame(difficulty: 1, type: .ciHui)
         let grid = [["a", "b"], ["c", nil]]
         let textGrid = TextGrid(fromInitialGrid: grid)
 
@@ -76,14 +68,8 @@ class GridViewModelTests: XCTestCase {
                        "When game is actually not won, score is incremented")
     }
 
-    func testCheckGameWonWithSameRow() {
-        guard let gameDataFactory = try? GameDataFactory() else {
-            XCTFail("Realm error")
-            return
-        }
-
+    func testCheckCorrectTilesWithSameRow() {
         let time: TimeInterval = 3
-        let gameData = gameDataFactory.createGame(difficulty: 1, type: .ciHui)
         let grid = [["a", "b"], ["c", nil]]
         let textGrid = TextGrid(fromInitialGrid: grid)
 
@@ -98,14 +84,8 @@ class GridViewModelTests: XCTestCase {
                        "Game should be able to win by all rows correct, and score should be updated")
     }
 
-    func testCheckGameWonWithSameColumn() {
-        guard let gameDataFactory = try? GameDataFactory() else {
-            XCTFail("Realm error")
-            return
-        }
-
+    func testCheckCorrectTilesWithSameColumn() {
         let time: TimeInterval = 3
-        let gameData = gameDataFactory.createGame(difficulty: 1, type: .ciHui)
         let grid = [["a", "b"], ["c", nil]]
         let textGrid = TextGrid(fromInitialGrid: grid)
 
@@ -118,5 +98,32 @@ class GridViewModelTests: XCTestCase {
                        "Game should be able to win by all columns correct, and game status should be updated")
         XCTAssertEqual(viewModel.score, viewModel.currentScore,
                        "Game should be able to win by all columns correct, and score should be updated")
+    }
+
+    func testCheckCorrectTilesHighlightedTiles() {
+        let time: TimeInterval = 3
+        let grid = [["a", "b"], ["c", nil]]
+        let textGrid = TextGrid(fromInitialGrid: grid)
+
+        let viewModel = GridViewModelFirstRowMock(time: time, gameData: gameData, textGrid: textGrid)
+        let highlightedDelegate = HighlightedUpdateDelegateMock()
+        viewModel.highlightedDelegate = highlightedDelegate
+        viewModel.startGame()
+
+        let highlightedCoordinates: Set<Coordinate> = [Coordinate(row: 0, col: 0), Coordinate(row: 0, col: 1)]
+
+        viewModel.checkCorrectTiles()
+
+        XCTAssertEqual(highlightedCoordinates, viewModel.highlightedCoordinates,
+                       "Game highlighted tiles not correct")
+        XCTAssertEqual(1, highlightedDelegate.highlightedUpdated,
+                       "Game highlighted delegate not uppated")
+
+        viewModel.checkCorrectTiles()
+
+        XCTAssertEqual(highlightedCoordinates, viewModel.highlightedCoordinates,
+                       "Game highlighted tiles not correct")
+        XCTAssertEqual(1, highlightedDelegate.highlightedUpdated,
+                       "Game highlighted delegate should not be updated again")
     }
 }

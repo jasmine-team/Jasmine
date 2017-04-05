@@ -16,6 +16,7 @@ class GridViewModel: BaseViewModelProtocol {
         }
     }
 
+    /// Highlighted coordinates in the grid.
     var highlightedCoordinates: Set<Coordinate> = [] {
         didSet {
             highlightedDelegate?.highlightedCoordinatesDidUpdate()
@@ -81,6 +82,7 @@ class GridViewModel: BaseViewModelProtocol {
 
     /// Check what happens when game is won. If game is won, change game status and add score.
     func checkCorrectTiles() {
+        var highlightedCoordinates: Set<Coordinate> = []
         for row in 0..<gridData.numRows {
             let rowTiles = (0..<gridData.numColumns).map { column in Coordinate(row: row, col: column) }
             if lineIsCorrect(rowTiles) {
@@ -97,6 +99,10 @@ class GridViewModel: BaseViewModelProtocol {
         if highlightedCoordinates.count == gridData.count {
             gameStatus = .endedWithWon
             currentScore += score
+        }
+
+        if self.highlightedCoordinates != highlightedCoordinates {
+            self.highlightedCoordinates = highlightedCoordinates
         }
     }
 
