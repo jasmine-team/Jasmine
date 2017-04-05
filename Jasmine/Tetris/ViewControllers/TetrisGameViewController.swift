@@ -122,10 +122,10 @@ class TetrisGameViewController: UIViewController {
             return
         }
         tetrisGameAreaView.setFallingTile(withData: viewModel.fallingTileText,
-                                          toCoord: viewModel.getNewTileCoordinate())
+                                          toCoord: viewModel.fallingTileStartCoordinate)
         updateUpcomingAndFallingTiles()
     }
-    
+
     private func updateUpcomingAndFallingTiles() {
         tetrisGameAreaView.fallingTile?.text = viewModel.fallingTileText
         tetrisUpcomingTilesView.reload(gridData: upcomingTiles, withAnimation: true)

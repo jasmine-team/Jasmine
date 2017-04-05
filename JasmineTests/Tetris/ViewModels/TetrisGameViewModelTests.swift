@@ -45,11 +45,12 @@ class TetrisGameViewModelTests: RealmTestCase {
                   "ViewModel fallingTileText is not initialized properly")
     }
 
-    func testGetNewTileCoordinate() {
-        for _ in 0..<10 {
+    func testFallingTileStartCoordinate() {
+        let iterations = 10
+        for _ in 0..<iterations {
             XCTAssert((0..<Constants.Game.Tetris.columns).map { Coordinate(row: 0, col: $0) }
-                                                         .contains(viewModel.getNewTileCoordinate()),
-                      "getNewTileCoordinate returned wrong value")
+                                                         .contains(viewModel.fallingTileStartCoordinate),
+                      "fallingTileStartCoordinate returned wrong value")
         }
     }
 

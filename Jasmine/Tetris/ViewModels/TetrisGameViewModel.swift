@@ -166,7 +166,7 @@ class TetrisGameViewModel {
 
 extension TetrisGameViewModel: TetrisGameViewModelProtocol {
 
-    var fallingTileStartCoordinate -> Coordinate {
+    var fallingTileStartCoordinate: Coordinate {
         let randCol = Random.integer(toExclusive: gridData.numColumns)
         return Coordinate(row: Coordinate.origin.row, col: randCol)
     }
