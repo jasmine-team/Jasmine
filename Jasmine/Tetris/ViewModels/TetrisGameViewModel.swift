@@ -153,6 +153,7 @@ class TetrisGameViewModel {
             guard let destroyedTiles = checkForMatchingPhrase(at: nextCoordinate) else {
                 continue
             }
+            destroyedTiles.forEach { changedCoordinates.remove($0) }
             gridData.removeTexts(at: destroyedTiles)
             currentScore += destroyedTiles.count
 
