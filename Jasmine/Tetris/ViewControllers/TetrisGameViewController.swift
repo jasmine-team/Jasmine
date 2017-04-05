@@ -85,9 +85,7 @@ class TetrisGameViewController: UIViewController {
             return
         }
         viewModel.swapFallingTile(withUpcomingAt: coord.col)
-
-        tetrisGameAreaView.fallingTile?.text = viewModel.fallingTileText
-        tetrisUpcomingTilesView.reload(gridData: upcomingTiles, withAnimation: true)
+        updateUpcomingAndFallingTiles()
     }
 
     /// Moves the falling tile when the view is swiped to a particular direction.
@@ -125,6 +123,11 @@ class TetrisGameViewController: UIViewController {
         }
         tetrisGameAreaView.setFallingTile(withData: viewModel.fallingTileText,
                                           toCoord: viewModel.getNewTileCoordinate())
+        tetrisUpcomingTilesView.reload(gridData: upcomingTiles, withAnimation: true)
+    }
+    
+    private func updateUpcomingAndFallingTiles() {
+        tetrisGameAreaView.fallingTile?.text = viewModel.fallingTileText
         tetrisUpcomingTilesView.reload(gridData: upcomingTiles, withAnimation: true)
     }
 
