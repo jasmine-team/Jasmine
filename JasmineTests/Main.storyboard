@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -182,7 +183,20 @@
                     <view key="view" contentMode="scaleToFill" id="zx7-hp-NII">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app-banner" translatesAutoresizingMaskIntoConstraints="NO" id="qM5-5i-1mb">
+                                <rect key="frame" x="16" y="50" width="343" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Zk9-0u-aGR"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qM5-5i-1mb" firstAttribute="leading" secondItem="zx7-hp-NII" secondAttribute="leadingMargin" id="O5d-qR-UFU"/>
+                            <constraint firstItem="qM5-5i-1mb" firstAttribute="top" secondItem="WSa-Je-HwQ" secondAttribute="bottom" constant="30" id="Vh1-lW-Ti0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qM5-5i-1mb" secondAttribute="trailing" id="zAM-Mm-oPr"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="llQ-rl-fYY"/>
                 </viewController>
@@ -230,6 +244,9 @@
             <point key="canvasLocation" x="-3" y="1582"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="app-banner" width="765" height="234"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="djo-h3-zHX"/>
         <segue reference="ttU-OF-6vh"/>

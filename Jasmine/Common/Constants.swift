@@ -19,7 +19,7 @@ enum Constants {
             }
 
             enum Score {
-                static let base = 2000
+                static let base = 2_000
                 static let multiplierFromTime: Double = 100
                 static let multiplierFromMoves = 50
             }
@@ -42,7 +42,7 @@ enum Constants {
             }
 
             enum Score {
-                static let base = 10000
+                static let base = 10_000
                 static let multiplierFromTime: Double = 100
                 static let multiplierFromMoves = 25
             }
@@ -97,6 +97,11 @@ enum Constants {
             static let frames = [#imageLiteral(resourceName: "explode-0"), #imageLiteral(resourceName: "explode-1"), #imageLiteral(resourceName: "explode-2"), #imageLiteral(resourceName: "explode-3"), #imageLiteral(resourceName: "explode-4")]
             static let interval: TimeInterval = 0.1
             static let duration: TimeInterval = 0.5
+        }
+
+        enum Petals {
+            static let frames = [#imageLiteral(resourceName: "petal-0"), #imageLiteral(resourceName: "petal-1"), #imageLiteral(resourceName: "petal-2"), #imageLiteral(resourceName: "petal-3"),
+                                 #imageLiteral(resourceName: "petal-4"), #imageLiteral(resourceName: "petal-5"), #imageLiteral(resourceName: "petal-6"), #imageLiteral(resourceName: "petal-7")]
         }
 
     }

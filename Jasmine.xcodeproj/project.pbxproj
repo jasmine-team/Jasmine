@@ -109,6 +109,7 @@
 		DFBE8F7E1E9527F70036CCC6 /* TimeDescriptorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F721E9527F70036CCC6 /* TimeDescriptorProtocol.swift */; };
 		DFBE8F801E9528100036CCC6 /* CommonsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBE8F7F1E9528100036CCC6 /* CommonsStoryboard.storyboard */; };
 		DFBE8F821E9528370036CCC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBE8F811E9528370036CCC6 /* LaunchScreen.storyboard */; };
+		DFBE8F881E9533510036CCC6 /* SettingsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBE8F871E9533510036CCC6 /* SettingsStoryboard.storyboard */; };
 		DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */; };
 /* End PBXBuildFile section */
 
@@ -233,6 +234,7 @@
 		DFBE8F721E9527F70036CCC6 /* TimeDescriptorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeDescriptorProtocol.swift; sourceTree = "<group>"; };
 		DFBE8F7F1E9528100036CCC6 /* CommonsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommonsStoryboard.storyboard; sourceTree = "<group>"; };
 		DFBE8F811E9528370036CCC6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DFBE8F871E9533510036CCC6 /* SettingsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SettingsStoryboard.storyboard; path = Settings/ViewControllers/SettingsStoryboard.storyboard; sourceTree = "<group>"; };
 		DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
 		FC0AD02B711C61B2492AE255 /* Pods-Jasmine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.release.xcconfig"; sourceTree = "<group>"; };
 		FF297B9535BBD99F827421B6 /* Pods-JasmineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -575,6 +577,7 @@
 				DFBE8F1B1E951E310036CCC6 /* Home */,
 				DFBE8F211E951FE70036CCC6 /* Levels */,
 				DFBE8F261E9520AF0036CCC6 /* Profile */,
+				DFBE8F831E9533050036CCC6 /* Settings */,
 				DFBE8F621E9527F70036CCC6 /* GameCommons */,
 				50989DD41E6D8B16009A86C8 /* Flappy */,
 				DF21551B1E8E237F005A0927 /* Sliding */,
@@ -811,6 +814,22 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		DFBE8F831E9533050036CCC6 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DFBE8F841E95330F0036CCC6 /* ViewControllers */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		DFBE8F841E95330F0036CCC6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DFBE8F871E9533510036CCC6 /* SettingsStoryboard.storyboard */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -910,6 +929,7 @@
 				DF409FEC1E8415AB00389976 /* prebundled.realm in Resources */,
 				A260C6281E6AB30400782103 /* Assets.xcassets in Resources */,
 				DFBE8F201E951FC00036CCC6 /* Main.storyboard in Resources */,
+				DFBE8F881E9533510036CCC6 /* SettingsStoryboard.storyboard in Resources */,
 				DFBE8F251E9520450036CCC6 /* LevelSelectionStoryboard.storyboard in Resources */,
 				DF9918D31E92B6A3004E599B /* SwappingStoryboard.storyboard in Resources */,
 				DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */,
