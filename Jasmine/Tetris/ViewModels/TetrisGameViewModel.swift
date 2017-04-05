@@ -28,7 +28,7 @@ class TetrisGameViewModel {
                                              numColumns: Constants.Game.Tetris.columns)
 
     fileprivate(set) var upcomingTiles: [String] = []
-    fileprivate(set) var fallingTileText: String! // Force unwrap so that self methods can be called in init
+    fileprivate(set) var fallingTileText: String!
 
     private let gameData: GameData
     private var nextTexts: [String] = []
@@ -166,7 +166,7 @@ class TetrisGameViewModel {
 
 extension TetrisGameViewModel: TetrisGameViewModelProtocol {
 
-    func getNewTileCoordinate() -> Coordinate {
+    var fallingTileStartCoordinate -> Coordinate {
         let randCol = Random.integer(toExclusive: gridData.numColumns)
         return Coordinate(row: Coordinate.origin.row, col: randCol)
     }

@@ -5,14 +5,16 @@ protocol TetrisGameViewModelProtocol: BaseViewModelProtocol {
     var upcomingTiles: [String] { get }
 
     /// Stores the falling tile text
+    /// Initialized in init and gets changed in `landTile` and `swapFallingTile`
+    /// Force unwrap so that self methods can be called in init
     var fallingTileText: String! { get }
 
-    // MARK: Game Operations
-    /// Asks the game engine the coordinate for a new tile
+    /// Returns the starting coordinate for a new falling tile
     ///
     /// - Returns: The coordinate to drop the new tile from
-    func getNewTileCoordinate() -> Coordinate
+    var fallingTileStartCoordinate: Coordinate { get }
 
+    // MARK: Game Operations
     /// Swaps the falling tile with the upcoming tile at `index`
     ///
     /// - Parameter index: The index of `upcomingTiles` to be swapped
