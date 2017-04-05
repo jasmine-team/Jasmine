@@ -54,7 +54,7 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
         gridData.swap(coord1, coord2)
         moves += 1
 
-        checkGameWon()
+        checkCorrectTiles()
 
         return true
     }
