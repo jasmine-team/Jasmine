@@ -1,7 +1,7 @@
 import Foundation
 
 /// Implement this class to describe how a game can be played with a Sliding Game board.
-protocol SlidingViewModelProtocol: BaseViewModelProtocol {
+protocol SlidingViewModelProtocol: GridViewModelProtocol {
 
     // MARK: Game Operations
     /// Ask the view model where the specified tile from the coordinate can be slided to.

@@ -1,6 +1,6 @@
 import Foundation
 
-class GridViewModel: BaseViewModelProtocol {
+class GridViewModel: GridViewModelProtocol {
     weak var timeDelegate: TimeUpdateDelegate?
     weak var scoreDelegate: ScoreUpdateDelegate?
     weak var gameStatusDelegate: GameStatusUpdateDelegate?
