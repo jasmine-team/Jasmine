@@ -81,33 +81,44 @@ class GridViewModel: BaseViewModelProtocol {
     }
 
     /// Check what happens when game is won. If game is won, change game status and add score.
-    func checkCorrectTiles() {
+    final func checkCorrectTiles() {
         var highlightedCoordinates: Set<Coordinate> = []
+        var score = 0
+
         for row in 0..<gridData.numRows {
             let rowTiles = (0..<gridData.numColumns).map { column in Coordinate(row: row, col: column) }
             if lineIsCorrect(rowTiles) {
                 highlightedCoordinates.formUnion(rowTiles)
+                score += scoreOnCorrectLine
             }
         }
         for column in 0..<gridData.numColumns {
             let columnTiles = (0..<gridData.numRows).map { row in Coordinate(row: row, col: column) }
             if lineIsCorrect(columnTiles) {
                 highlightedCoordinates.formUnion(columnTiles)
+                score += scoreOnCorrectLine
             }
-        }
-
-        if highlightedCoordinates.count == gridData.count {
-            gameStatus = .endedWithWon
-            currentScore += score
         }
 
         if self.highlightedCoordinates != highlightedCoordinates {
             self.highlightedCoordinates = highlightedCoordinates
         }
+
+        if highlightedCoordinates.count == gridData.count {
+            gameStatus = .endedWithWon
+            score += scoreOnWon
+        }
+
+        currentScore = score
     }
 
     /// Score for the game when it is won on the current state. To be overriden.
-    var score: Int {
+    var scoreOnWon: Int {
+        return 0
+    }
+
+    /// Score for the game when a line is correct. To be overriden.
+    var scoreOnCorrectLine: Int {
         return 0
     }
 

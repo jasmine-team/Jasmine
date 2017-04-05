@@ -63,10 +63,15 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
     }
 
     /// Score for the game when it is won on the current state.
-    override var score: Int {
-        return max(Constants.Game.Sliding.Score.base +
+    override var scoreOnWon: Int {
+        return max(Constants.Game.Sliding.Score.win +
             Int(timeRemaining * Constants.Game.Sliding.Score.multiplierFromTime)
             - moves * Constants.Game.Sliding.Score.multiplierFromMoves, 0)
+    }
+
+    /// Score for the game when a line is correct. To be overriden.
+    override var scoreOnCorrectLine: Int {
+        return Constants.Game.Sliding.Score.line
     }
 
     /// Ask the view model where the specified tile from the coordinate can be slided to.

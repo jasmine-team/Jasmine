@@ -32,7 +32,9 @@ class GridViewModelTests: XCTestCase {
                        "ViewModel gameTitle not correct on init")
         XCTAssertEqual("", viewModel.gameInstruction,
                        "ViewModel gameInstruction not correct on init")
-        XCTAssertEqual(0, viewModel.score,
+        XCTAssertEqual(0, viewModel.scoreOnWon,
+                       "ViewModel score not correct on init")
+        XCTAssertEqual(0, viewModel.scoreOnCorrectLine,
                        "ViewModel score not correct on init")
         XCTAssertFalse(viewModel.lineIsCorrect([]),
                        "ViewModel lineIsCorrect not correct on init")
@@ -80,7 +82,8 @@ class GridViewModelTests: XCTestCase {
 
         XCTAssertEqual(GameStatus.endedWithWon, viewModel.gameStatus,
                        "Game should be able to win by all rows correct, and game status should be updated")
-        XCTAssertEqual(viewModel.score, viewModel.currentScore,
+        XCTAssertEqual(2 * viewModel.scoreOnCorrectLine + viewModel.scoreOnWon,
+                       viewModel.currentScore,
                        "Game should be able to win by all rows correct, and score should be updated")
     }
 
@@ -96,7 +99,8 @@ class GridViewModelTests: XCTestCase {
 
         XCTAssertEqual(GameStatus.endedWithWon, viewModel.gameStatus,
                        "Game should be able to win by all columns correct, and game status should be updated")
-        XCTAssertEqual(viewModel.score, viewModel.currentScore,
+        XCTAssertEqual(2 * viewModel.scoreOnCorrectLine + viewModel.scoreOnWon,
+                       viewModel.currentScore,
                        "Game should be able to win by all columns correct, and score should be updated")
     }
 

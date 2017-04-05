@@ -19,7 +19,8 @@ enum Constants {
             }
 
             enum Score {
-                static let base = 2000
+                static let line = 1_000
+                static let win = 5_000
                 static let multiplierFromTime: Double = 100
                 static let multiplierFromMoves = 50
             }
@@ -42,7 +43,8 @@ enum Constants {
             }
 
             enum Score {
-                static let base = 10000
+                static let line = 1_000
+                static let win = 5_000
                 static let multiplierFromTime: Double = 100
                 static let multiplierFromMoves = 25
             }

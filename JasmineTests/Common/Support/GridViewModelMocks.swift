@@ -2,8 +2,12 @@ import Foundation
 @testable import Jasmine
 
 class GridViewModelSameRowMock: GridViewModel {
-    override var score: Int {
+    override var scoreOnCorrectLine: Int {
         return 10
+    }
+
+    override var scoreOnWon: Int {
+        return 1_000
     }
 
     override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
@@ -12,8 +16,12 @@ class GridViewModelSameRowMock: GridViewModel {
 }
 
 class GridViewModelSameColumnMock: GridViewModel {
-    override var score: Int {
+    override var scoreOnCorrectLine: Int {
         return 10
+    }
+
+    override var scoreOnWon: Int {
+        return 1_000
     }
 
     override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
@@ -22,8 +30,12 @@ class GridViewModelSameColumnMock: GridViewModel {
 }
 
 class GridViewModelFirstRowMock: GridViewModel {
-    override var score: Int {
+    override var scoreOnCorrectLine: Int {
         return 10
+    }
+
+    override var scoreOnWon: Int {
+        return 1_000
     }
 
     override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
