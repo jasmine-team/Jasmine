@@ -102,7 +102,7 @@
 		DFBE8F0D1E94FEC80036CCC6 /* GridViewModelMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F0A1E94FEC80036CCC6 /* GridViewModelMocks.swift */; };
 		DFBE8F0E1E94FEC80036CCC6 /* HighlightedUpdateDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F0B1E94FEC80036CCC6 /* HighlightedUpdateDelegateMock.swift */; };
 		DFBE8F0F1E94FEC80036CCC6 /* RealmTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F0C1E94FEC80036CCC6 /* RealmTestCase.swift */; };
-		DFBE8F151E94FF020036CCC6 /* BaseSlidingVIewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F121E94FF020036CCC6 /* BaseSlidingVIewModelTests.swift */; };
+		DFBE8F151E94FF020036CCC6 /* BaseSlidingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F121E94FF020036CCC6 /* BaseSlidingViewModelTests.swift */; };
 		DFBE8F161E94FF020036CCC6 /* ChengYuSlidingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F131E94FF020036CCC6 /* ChengYuSlidingViewModelTests.swift */; };
 		DFBE8F171E94FF020036CCC6 /* CiHuiSlidingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F141E94FF020036CCC6 /* CiHuiSlidingViewModelTests.swift */; };
 		DFBE8F1A1E94FF290036CCC6 /* TetrisGameViewControllerDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F191E94FF290036CCC6 /* TetrisGameViewControllerDelegateMock.swift */; };
@@ -224,7 +224,7 @@
 		DFBE8F0A1E94FEC80036CCC6 /* GridViewModelMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModelMocks.swift; sourceTree = "<group>"; };
 		DFBE8F0B1E94FEC80036CCC6 /* HighlightedUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightedUpdateDelegateMock.swift; sourceTree = "<group>"; };
 		DFBE8F0C1E94FEC80036CCC6 /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
-		DFBE8F121E94FF020036CCC6 /* BaseSlidingVIewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseSlidingVIewModelTests.swift; path = Sliding/ViewModels/BaseSlidingVIewModelTests.swift; sourceTree = "<group>"; };
+		DFBE8F121E94FF020036CCC6 /* BaseSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseSlidingViewModelTests.swift; path = Sliding/ViewModels/BaseSlidingViewModelTests.swift; sourceTree = "<group>"; };
 		DFBE8F131E94FF020036CCC6 /* ChengYuSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChengYuSlidingViewModelTests.swift; path = Sliding/ViewModels/ChengYuSlidingViewModelTests.swift; sourceTree = "<group>"; };
 		DFBE8F141E94FF020036CCC6 /* CiHuiSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CiHuiSlidingViewModelTests.swift; path = Sliding/ViewModels/CiHuiSlidingViewModelTests.swift; sourceTree = "<group>"; };
 		DFBE8F191E94FF290036CCC6 /* TetrisGameViewControllerDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TetrisGameViewControllerDelegateMock.swift; path = Support/TetrisGameViewControllerDelegateMock.swift; sourceTree = "<group>"; };
@@ -766,7 +766,7 @@
 		DFBE8F111E94FEF10036CCC6 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				DFBE8F121E94FF020036CCC6 /* BaseSlidingVIewModelTests.swift */,
+				DFBE8F121E94FF020036CCC6 /* BaseSlidingViewModelTests.swift */,
 				DFBE8F131E94FF020036CCC6 /* ChengYuSlidingViewModelTests.swift */,
 				DFBE8F141E94FF020036CCC6 /* CiHuiSlidingViewModelTests.swift */,
 			);
@@ -1090,7 +1090,7 @@
 			files = (
 				DF409FEF1E8415E000389976 /* UIApplicationTests.swift in Sources */,
 				A27B6E541E90B33400825AF3 /* RealmIntegrationTests.swift in Sources */,
-				DFBE8F151E94FF020036CCC6 /* BaseSlidingVIewModelTests.swift in Sources */,
+				DFBE8F151E94FF020036CCC6 /* BaseSlidingViewModelTests.swift in Sources */,
 				DF409FF21E8415F400389976 /* CountDownTimerTest.swift in Sources */,
 				50717AC31E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift in Sources */,
 				50AE3A781E8BE020005EC944 /* TextGridTests.swift in Sources */,
