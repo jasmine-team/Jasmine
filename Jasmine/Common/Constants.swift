@@ -51,6 +51,14 @@ enum Constants {
             static let rows = 4
             static let columns = 4
         }
+
+        enum GameOver {
+            static let titleLose = "GAME OVER"
+            static let subtitleLose = "PLEASE TRY AGAIN NEXT TIME"
+
+            static let titleWin = "CONGRATULATIONS"
+            static let subtitleWin = "YOU HAVE CLEARED THIS LEVEL"
+        }
     }
 
     enum Theme {
