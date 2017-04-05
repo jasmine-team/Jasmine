@@ -42,7 +42,8 @@ class GameOverViewController: UIViewController {
 
     /// Dismisses this view controller, and the previous game view controller.
     @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        self.presentingViewController?.presentingViewController?
+            .dismiss(animated: true, completion: nil)
     }
 
     // MARK: - Helper Methods
