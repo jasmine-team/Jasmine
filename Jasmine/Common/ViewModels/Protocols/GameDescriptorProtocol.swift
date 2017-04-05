@@ -14,7 +14,7 @@ protocol GameDescriptorProtocol: TimeDescriptorProtocol, ScoreDescriptorProtocol
     var gameInstruction: String { get }
 
     /// Provides a list of phrases that is being tested in this game.
-    var phrasesTested: [Phrase] { get }
+    var phrasesTested: Set<Phrase> { get }
 
     // MARK: - Game Status
     /// A delegate that notifies the implementing view controller that the game status has been
