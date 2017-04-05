@@ -68,7 +68,7 @@ class GridViewModelTests: XCTestCase {
 
         let viewModel = GridViewModel(time: time, gameData: gameData, textGrid: textGrid)
 
-        viewModel.checkGameWon()
+        viewModel.checkCorrectTiles()
 
         XCTAssertNotEqual(GameStatus.endedWithWon, viewModel.gameStatus,
                           "When game is actually not won, game status changed wrongly to endedWithWon")
@@ -90,7 +90,7 @@ class GridViewModelTests: XCTestCase {
         let viewModel = GridViewModelSameRowMock(time: time, gameData: gameData, textGrid: textGrid)
         viewModel.startGame()
 
-        viewModel.checkGameWon()
+        viewModel.checkCorrectTiles()
 
         XCTAssertEqual(GameStatus.endedWithWon, viewModel.gameStatus,
                        "Game should be able to win by all rows correct, and game status should be updated")
@@ -112,7 +112,7 @@ class GridViewModelTests: XCTestCase {
         let viewModel = GridViewModelSameColumnMock(time: time, gameData: gameData, textGrid: textGrid)
         viewModel.startGame()
 
-        viewModel.checkGameWon()
+        viewModel.checkCorrectTiles()
 
         XCTAssertEqual(GameStatus.endedWithWon, viewModel.gameStatus,
                        "Game should be able to win by all columns correct, and game status should be updated")

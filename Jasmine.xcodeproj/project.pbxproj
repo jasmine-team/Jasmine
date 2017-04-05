@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0CF9D2BB3EBC822ACB7FF766 /* Pods_Jasmine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */; };
 		4EA886212AABEB7ED888C04C /* Pods_JasmineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */; };
+		5007FD101E94CC11003F0A24 /* HighlightedUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007FD0F1E94CC11003F0A24 /* HighlightedUpdateDelegate.swift */; };
 		502669021E7D6C6A00112291 /* BaseViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB3426E1E77E77900D2FE09 /* BaseViewModelProtocol.swift */; };
 		502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342761E77F5F200D2FE09 /* FlappyViewModelProtocol.swift */; };
 		502A29651E925A190024336A /* Array+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29641E925A190024336A /* Array+Equatable.swift */; };
@@ -120,6 +121,7 @@
 /* Begin PBXFileReference section */
 		3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasmine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
+		5007FD0F1E94CC11003F0A24 /* HighlightedUpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightedUpdateDelegate.swift; sourceTree = "<group>"; };
 		502A29641E925A190024336A /* Array+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Equatable.swift"; sourceTree = "<group>"; };
 		502A29681E925C8D0024336A /* GridViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
 		502A296A1E926DCA0024336A /* BaseSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSlidingViewModel.swift; sourceTree = "<group>"; };
@@ -685,6 +687,7 @@
 			isa = PBXGroup;
 			children = (
 				DF9854DF1E92AA2F0047663D /* GameStatusUpdateDelegate.swift */,
+				5007FD0F1E94CC11003F0A24 /* HighlightedUpdateDelegate.swift */,
 				DF9854E01E92AA2F0047663D /* ScoreUpdateDelegate.swift */,
 				DF9854E11E92AA2F0047663D /* TimeUpdateDelegate.swift */,
 			);
@@ -998,6 +1001,7 @@
 				DF9918D41E92B6A3004E599B /* BaseSwappingViewModel.swift in Sources */,
 				DF9918D71E92B6A3004E599B /* SwappingViewModelProtocol.swift in Sources */,
 				50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */,
+				5007FD101E94CC11003F0A24 /* HighlightedUpdateDelegate.swift in Sources */,
 				DF9918F21E92BB17004E599B /* ScoreDescriptorProtocol.swift in Sources */,
 				DF9918C61E92B65F004E599B /* CGPoint+Arithmetic.swift in Sources */,
 				DF7CF77B1E7E9ECE00C6979A /* SquareGridViewController.swift in Sources */,

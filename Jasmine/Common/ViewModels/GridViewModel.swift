@@ -4,6 +4,7 @@ class GridViewModel: BaseViewModelProtocol {
     weak var timeDelegate: TimeUpdateDelegate?
     weak var scoreDelegate: ScoreUpdateDelegate?
     weak var gameStatusDelegate: GameStatusUpdateDelegate?
+    weak var highlightedDelegate: HighlightedUpdateDelegate?
 
     /// Stores the grid data that will be used to display in the view controller.
     var gridData: TextGrid
@@ -12,6 +13,12 @@ class GridViewModel: BaseViewModelProtocol {
     private(set) var currentScore: Int = 0 {
         didSet {
             scoreDelegate?.scoreDidUpdate()
+        }
+    }
+
+    var highlightedCoordinates: Set<Coordinate> = [] {
+        didSet {
+            highlightedDelegate?.highlightedCoordinatesDidUpdate()
         }
     }
 
@@ -73,8 +80,21 @@ class GridViewModel: BaseViewModelProtocol {
     }
 
     /// Check what happens when game is won. If game is won, change game status and add score.
-    func checkGameWon() {
-        if hasGameWon {
+    func checkCorrectTiles() {
+        for row in 0..<gridData.numRows {
+            let rowTiles = (0..<gridData.numColumns).map { column in Coordinate(row: row, col: column) }
+            if lineIsCorrect(rowTiles) {
+                highlightedCoordinates.formUnion(rowTiles)
+            }
+        }
+        for column in 0..<gridData.numColumns {
+            let columnTiles = (0..<gridData.numRows).map { row in Coordinate(row: row, col: column) }
+            if lineIsCorrect(columnTiles) {
+                highlightedCoordinates.formUnion(columnTiles)
+            }
+        }
+
+        if highlightedCoordinates.count == gridData.count {
             gameStatus = .endedWithWon
             currentScore += score
         }
@@ -83,18 +103,6 @@ class GridViewModel: BaseViewModelProtocol {
     /// Score for the game when it is won on the current state. To be overriden.
     var score: Int {
         return 0
-    }
-
-    /// Returns true iff the game is won.
-    private var hasGameWon: Bool {
-        let allRowsCorrect = (0..<gridData.numRows).isAllTrue { row in
-            lineIsCorrect((0..<gridData.numColumns).map { column in Coordinate(row: row, col: column) })
-        }
-        let allColumnsCorrect = (0..<gridData.numColumns).isAllTrue { column in
-            lineIsCorrect((0..<gridData.numRows).map { row in Coordinate(row: row, col: column) })
-        }
-
-        return allRowsCorrect || allColumnsCorrect
     }
 
     /// Returns true iff the line given is correct. This is to be overriden.
