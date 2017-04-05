@@ -57,7 +57,7 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
 
         gridData.swap(start, end)
         moves += 1
-        checkGameWon()
+        checkCorrectTiles()
 
         return true
     }

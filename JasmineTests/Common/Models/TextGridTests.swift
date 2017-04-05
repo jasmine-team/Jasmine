@@ -171,4 +171,12 @@ class TextGridTests: XCTestCase {
             }
         }
     }
+
+    func testCount() {
+        for (row, col) in [(1, 1), (1, 2), (1, 100), (2, 1), (100, 1), (33, 55)] {
+            XCTAssertEqual(row * col,
+                           TextGrid(numRows: row, numColumns: col).count,
+                           "Count not correct")
+        }
+    }
 }

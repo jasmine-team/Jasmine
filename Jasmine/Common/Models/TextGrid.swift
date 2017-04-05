@@ -72,10 +72,17 @@ struct TextGrid {
         return result
     }
 
+    /// Checks if there is a text in the coordinate (i.e. it's not nil).
+    ///
+    /// - Parameter coordinate: the coordinate to be checked
+    /// - Returns: true if and only if it's not nil
     func hasText(at coordinate: Coordinate) -> Bool {
         return self[coordinate] != nil
     }
 
+    /// Remvoe the texts given at the coordinates, by setting them to nil
+    ///
+    /// - Parameter coordinates: the coordinates to be removed
     mutating func removeTexts(at coordinates: Set<Coordinate>) {
         for coordinate in coordinates {
             self[coordinate] = nil
@@ -114,6 +121,11 @@ struct TextGrid {
     /// - Parameter coordinate: the coordinate to be determined
     /// - Returns: true if and only if the coordinate is inside the grid
     func isInBounds(coordinate: Coordinate) -> Bool {
-        return (0..<numRows ~= coordinate.row) && (0..<numColumns ~= coordinate.col) 
+        return (0..<numRows ~= coordinate.row) && (0..<numColumns ~= coordinate.col)
+    }
+
+    /// Number of cells in the grid.
+    var count: Int {
+        return numRows * numColumns
     }
 }

@@ -1,7 +1,7 @@
 import Foundation
 
 /// Implement this class to describe how a game can be played with a Swapping Game board.
-protocol SwappingViewModelProtocol: BaseViewModelProtocol {
+protocol SwappingViewModelProtocol: GridViewModelProtocol {
 
     // MARK: Game Operations
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
