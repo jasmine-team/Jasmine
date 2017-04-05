@@ -4,5 +4,8 @@ import Foundation
 protocol GridViewModelProtocol: BaseViewModelProtocol {
 
     /// Highlighted coordinates in the grid.
-    var highlightedCoordinates: Set<Coordinate>
+    var highlightedCoordinates: Set<Coordinate> { get }
+
+    /// A delegate that notifies the implementing view controller that some tiles are highlighted.
+    weak var highlightedDelegate: HighlightedUpdateDelegate? { get set }
 }
