@@ -123,7 +123,7 @@ class TetrisGameViewController: UIViewController {
         }
         tetrisGameAreaView.setFallingTile(withData: viewModel.fallingTileText,
                                           toCoord: viewModel.getNewTileCoordinate())
-        tetrisUpcomingTilesView.reload(gridData: upcomingTiles, withAnimation: true)
+        updateUpcomingAndFallingTiles()
     }
     
     private func updateUpcomingAndFallingTiles() {
