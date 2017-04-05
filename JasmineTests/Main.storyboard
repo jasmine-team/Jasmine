@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fdz-8j-kDQ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Debug-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="HomeScreenViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eKS-sV-Lr3">
+                                <rect key="frame" x="78.5" y="258.5" width="218" height="150"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nil-Gc-zGo">
+                                        <rect key="frame" x="0.0" y="0.0" width="218" height="30"/>
+                                        <state key="normal" title="Open Swapping Chengyu Game"/>
+                                        <connections>
+                                            <segue destination="n7s-Ck-n8c" kind="show" id="odq-fT-zOs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvu-uL-ORH">
+                                        <rect key="frame" x="0.0" y="30" width="218" height="30"/>
+                                        <state key="normal" title="Open Swapping Cihui Game"/>
+                                        <connections>
+                                            <segue destination="n7s-Ck-n8c" kind="show" id="ttU-OF-6vh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iq-Ac-1yh">
+                                        <rect key="frame" x="0.0" y="60" width="218" height="30"/>
+                                        <state key="normal" title="Open Tetris Game"/>
+                                        <connections>
+                                            <segue destination="CTx-JF-hEy" kind="show" id="teM-ew-Hcb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDQ-IQ-GqK">
+                                        <rect key="frame" x="0.0" y="90" width="218" height="30"/>
+                                        <state key="normal" title="Open Sliding Chengyu Game"/>
+                                        <connections>
+                                            <segue destination="8ZU-Hu-mvm" kind="show" id="MN3-qC-tx6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hhd-Gn-BwK">
+                                        <rect key="frame" x="0.0" y="120" width="218" height="30"/>
+                                        <state key="normal" title="Open Sliding Cihui Game"/>
+                                        <connections>
+                                            <segue destination="8ZU-Hu-mvm" kind="show" id="djo-h3-zHX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eKS-sV-Lr3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E9k-4T-tsJ"/>
+                            <constraint firstItem="eKS-sV-Lr3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Gso-5n-fSy"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Debug" id="mm0-Ag-qnB"/>
+                    <connections>
+                        <outlet property="slidingChengYuButton" destination="oDQ-IQ-GqK" id="c8Y-Ws-9rI"/>
+                        <outlet property="slidingCiHuiButton" destination="Hhd-Gn-BwK" id="lCN-eT-pld"/>
+                        <outlet property="swappingChengYuButton" destination="nil-Gc-zGo" id="sUZ-RF-Tlh"/>
+                        <outlet property="swappingCiHuiButton" destination="qvu-uL-ORH" id="g8b-qY-NZc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="17" y="162"/>
+        </scene>
+        <!--SwappingGameViewController-->
+        <scene sceneID="a8W-Oz-04v">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SwappingStoryboard" referencedIdentifier="SwappingGameViewController" id="n7s-Ck-n8c" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WeS-BJ-Okb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="830" y="122"/>
+        </scene>
+        <!--TetrisGameViewController-->
+        <scene sceneID="aKU-oO-5kC">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Tetris Game View Controller" storyboardName="TetrisStoryboard" referencedIdentifier="TetrisGameViewController" id="CTx-JF-hEy" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Nw-2l-f4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="818" y="179"/>
+        </scene>
+        <!--SlidingGameViewContoller-->
+        <scene sceneID="61E-hi-Ljp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SlidingGameStoryboard" referencedIdentifier="SlidingGameViewContoller" id="8ZU-Hu-mvm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e9M-vg-btE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="799" y="229"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="Yj8-SC-wqm">
+            <objects>
+                <viewController id="cqH-cK-nvp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FRU-sS-Zij"/>
+                        <viewControllerLayoutGuide type="bottom" id="2sS-j8-r77"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MuE-Xm-Cr4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dyt-O2-QcZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <connections>
+                                    <segue destination="eaP-WS-yN0" kind="embed" id="9It-rT-jxO"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dyt-O2-QcZ" secondAttribute="trailing" id="9kk-iu-Cbf"/>
+                            <constraint firstItem="dyt-O2-QcZ" firstAttribute="bottom" secondItem="2sS-j8-r77" secondAttribute="top" id="Ihz-79-8AS"/>
+                            <constraint firstItem="dyt-O2-QcZ" firstAttribute="top" secondItem="MuE-Xm-Cr4" secondAttribute="top" id="fPi-9X-W8w"/>
+                            <constraint firstItem="dyt-O2-QcZ" firstAttribute="leading" secondItem="MuE-Xm-Cr4" secondAttribute="leading" id="oc3-XB-PPw"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" id="09z-P5-Ecf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vFP-q1-dvZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-605" y="1583"/>
+        </scene>
+        <!--Levels-->
+        <scene sceneID="Mq1-C8-s4U">
+            <objects>
+                <viewController id="Rng-e6-PxE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ln6-0i-eqa"/>
+                        <viewControllerLayoutGuide type="bottom" id="JrQ-r5-nqi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cOi-vs-XvF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zu1-i7-nG7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <connections>
+                                    <segue destination="ka7-Kp-EOJ" kind="embed" id="Zep-1j-HOr"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zu1-i7-nG7" firstAttribute="bottom" secondItem="JrQ-r5-nqi" secondAttribute="top" id="GBo-Xg-jOr"/>
+                            <constraint firstItem="Zu1-i7-nG7" firstAttribute="top" secondItem="cOi-vs-XvF" secondAttribute="top" id="bZG-Io-PTP"/>
+                            <constraint firstAttribute="trailing" secondItem="Zu1-i7-nG7" secondAttribute="trailing" id="nfy-hN-yjU"/>
+                            <constraint firstItem="Zu1-i7-nG7" firstAttribute="leading" secondItem="cOi-vs-XvF" secondAttribute="leading" id="tgh-JD-JO9"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Levels" id="OXU-ym-UV3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dJq-ac-xTC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="522" y="1583"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="Nel-Uo-A3s">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CGc-qz-ogX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="V3l-Bo-jgy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WSa-Je-HwQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="40Y-VW-xVG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zx7-hp-NII">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" id="llQ-rl-fYY"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="702" y="797"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="DER-yx-s8u">
+            <objects>
+                <tabBarController id="fdz-8j-kDQ" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="hoV-me-ZHc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="6hQ-Kf-gQC"/>
+                        <segue destination="V3l-Bo-jgy" kind="relationship" relationship="viewControllers" id="TWJ-40-PAW"/>
+                        <segue destination="Rng-e6-PxE" kind="relationship" relationship="viewControllers" id="oz2-uB-ONO"/>
+                        <segue destination="cqH-cK-nvp" kind="relationship" relationship="viewControllers" id="Als-bi-P5c"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qPc-Wy-L85" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-764" y="797"/>
+        </scene>
+        <!--LevelSelectionViewController-->
+        <scene sceneID="W8j-9p-cbB">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="LevelSelectionStoryboard" storyboardName="LevelSelectionStoryboard" referencedIdentifier="LevelSelectionViewController" id="ka7-Kp-EOJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="bFD-pg-1KR"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M4w-TR-JJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1272" y="1582"/>
+        </scene>
+        <!--ProfileViewController-->
+        <scene sceneID="qQC-44-DTO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ProfileStoryboard" referencedIdentifier="ProfileViewController" id="eaP-WS-yN0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="B1N-zA-AHD"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WhZ-lY-NDZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3" y="1582"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="djo-h3-zHX"/>
+        <segue reference="ttU-OF-6vh"/>
+    </inferredMetricsTieBreakers>
+</document>
