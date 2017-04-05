@@ -279,6 +279,7 @@
 			children = (
 				504C59C51E93E97C004FE1A2 /* ViewModels */,
 			);
+			name = Swapping;
 			path = Swapping;
 			sourceTree = "<group>";
 		};
@@ -287,6 +288,7 @@
 			children = (
 				504C59C21E93E96C004FE1A2 /* ViewModels */,
 			);
+			name = Sliding;
 			path = Sliding;
 			sourceTree = "<group>";
 		};
@@ -310,48 +312,12 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		509404CD1E93A4FA0049AF8C /* Games */ = {
-			isa = PBXGroup;
-			children = (
-				50989DD41E6D8B16009A86C8 /* Flappy */,
-				DF21551B1E8E237F005A0927 /* Sliding */,
-				DF9918C71E92B6A3004E599B /* Swapping */,
-				50989DBA1E6D8B16009A86C8 /* Tetris */,
-			);
-			path = Games;
-			sourceTree = "<group>";
-		};
-		509404CE1E93A4FF0049AF8C /* Others */ = {
-			isa = PBXGroup;
-			children = (
-				509404D11E93A53A0049AF8C /* CustomLevel */,
-			);
-			path = Others;
-			sourceTree = "<group>";
-		};
-		509404CF1E93A51D0049AF8C /* Games */ = {
-			isa = PBXGroup;
-			children = (
-				50F191B11E7ADCA600EE9A75 /* Flappy */,
-				504C59C11E93E950004FE1A2 /* Sliding */,
-				504C59C01E93E948004FE1A2 /* Swapping */,
-				50F191AB1E7ADC6D00EE9A75 /* Tetris */,
-			);
-			path = Games;
-			sourceTree = "<group>";
-		};
-		509404D01E93A5230049AF8C /* Others */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Others;
-			sourceTree = "<group>";
-		};
 		509404D11E93A53A0049AF8C /* CustomLevel */ = {
 			isa = PBXGroup;
 			children = (
 				509404D41E93A5A10049AF8C /* ViewModels */,
 			);
+			name = CustomLevel;
 			path = CustomLevel;
 			sourceTree = "<group>";
 		};
@@ -388,6 +354,7 @@
 				50989DB71E6D8B16009A86C8 /* ViewControllers */,
 				50989DB91E6D8B16009A86C8 /* ViewModels */,
 			);
+			name = Tetris;
 			path = Tetris;
 			sourceTree = "<group>";
 		};
@@ -491,6 +458,7 @@
 				50989DD11E6D8B16009A86C8 /* ViewControllers */,
 				50989DD31E6D8B16009A86C8 /* ViewModels */,
 			);
+			name = Flappy;
 			path = Flappy;
 			sourceTree = "<group>";
 		};
@@ -554,6 +522,7 @@
 				50F191AD1E7ADC8000EE9A75 /* Support */,
 				50F191AC1E7ADC7A00EE9A75 /* ViewModels */,
 			);
+			name = Tetris;
 			path = Tetris;
 			sourceTree = "<group>";
 		};
@@ -580,6 +549,7 @@
 				50F191B61E7ADCC200EE9A75 /* ViewControllers */,
 				50F191B51E7ADCBE00EE9A75 /* ViewModels */,
 			);
+			name = Flappy;
 			path = Flappy;
 			sourceTree = "<group>";
 		};
@@ -628,8 +598,11 @@
 			isa = PBXGroup;
 			children = (
 				50989DCD1E6D8B16009A86C8 /* Common */,
-				509404CD1E93A4FA0049AF8C /* Games */,
-				509404CE1E93A4FF0049AF8C /* Others */,
+				509404D11E93A53A0049AF8C /* CustomLevel */,
+				50989DD41E6D8B16009A86C8 /* Flappy */,
+				DF21551B1E8E237F005A0927 /* Sliding */,
+				DF9918C71E92B6A3004E599B /* Swapping */,
+				50989DBA1E6D8B16009A86C8 /* Tetris */,
 			);
 			path = Jasmine;
 			sourceTree = "<group>";
@@ -638,8 +611,10 @@
 			isa = PBXGroup;
 			children = (
 				50F191A61E7ADC3D00EE9A75 /* Common */,
-				509404CF1E93A51D0049AF8C /* Games */,
-				509404D01E93A5230049AF8C /* Others */,
+				50F191B11E7ADCA600EE9A75 /* Flappy */,
+				504C59C11E93E950004FE1A2 /* Sliding */,
+				504C59C01E93E948004FE1A2 /* Swapping */,
+				50F191AB1E7ADC6D00EE9A75 /* Tetris */,
 				A260C6371E6AB30400782103 /* Info.plist */,
 			);
 			path = JasmineTests;
@@ -651,6 +626,7 @@
 				DF21551C1E8E237F005A0927 /* ViewControllers */,
 				DF21551E1E8E237F005A0927 /* ViewModels */,
 			);
+			name = Sliding;
 			path = Sliding;
 			sourceTree = "<group>";
 		};
@@ -753,6 +729,7 @@
 				DF9918C81E92B6A3004E599B /* ViewControllers */,
 				DF9918CC1E92B6A3004E599B /* ViewModels */,
 			);
+			name = Swapping;
 			path = Swapping;
 			sourceTree = "<group>";
 		};
