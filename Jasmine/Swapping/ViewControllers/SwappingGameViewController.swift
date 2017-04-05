@@ -3,6 +3,9 @@ import UIKit
 /// View Controller implementation for Swapping Game.
 class SwappingGameViewController: UIViewController {
 
+    // MARK: - Constants
+    fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
+
     // MARK: Layouts
     fileprivate var squareGridViewController: DraggableSquareGridViewController!
 
@@ -45,6 +48,9 @@ class SwappingGameViewController: UIViewController {
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
             statisticsView.segueWith(time: viewModel, score: viewModel)
             self.statisticsViewController = statisticsView
+
+        } else if let gameOverView = segue.destination as? GameOverViewController {
+            gameOverView.segueWith(viewModel)
         }
     }
 
@@ -182,6 +188,9 @@ extension SwappingGameViewController: GameStatusUpdateDelegate {
 
     /// Tells the implementor of the delegate that the game status has been updated.
     func gameStatusDidUpdate() {
-
+        if viewModel.gameStatus.hasGameEnded {
+            self.performSegue(withIdentifier: SwappingGameViewController.segueToGameOverView,
+                              sender: nil)
+        }
     }
 }

@@ -6,6 +6,8 @@ class TetrisGameViewController: UIViewController {
     // MARK: - Constants
     private static let cellSpace: CGFloat = 2.0
 
+    fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
+
     /// Denotes the delay in animation between explosion and falling.
     fileprivate static let animationDelay = 0.5
 
@@ -20,7 +22,7 @@ class TetrisGameViewController: UIViewController {
     fileprivate var viewModel: TetrisGameViewModelProtocol!
 
     fileprivate var upcomingTiles: TextGrid {
-        return TextGrid(fromInitialArray: viewModel.upcomingTiles)
+        return TextGrid(fromInitialRow: viewModel.upcomingTiles)
     }
 
     // MARK: View Controller Lifecycles
@@ -43,6 +45,9 @@ class TetrisGameViewController: UIViewController {
         } else if let statisticsView = segue.destination as? GameStatisticsViewController {
             statisticsView.segueWith(time: viewModel, score: viewModel)
             self.gameStatisticsView = statisticsView
+
+        } else if let gameOverView = segue.destination as? GameOverViewController {
+            gameOverView.segueWith(viewModel)
         }
     }
 
@@ -204,13 +209,9 @@ extension TetrisGameViewController: GameStatusUpdateDelegate {
 
     /// Tells the implementor of the delegate that the game status has been updated.
     func gameStatusDidUpdate() {
-        switch viewModel.gameStatus {
-        case .endedWithWon:
-            fallthrough
-        case .endedWithLost:
-            tetrisGameAreaView.pauseFallingTiles()
-        default:
-            break
+        if viewModel.gameStatus.hasGameEnded {
+            self.performSegue(withIdentifier: TetrisGameViewController.segueToGameOverView,
+                              sender: nil)
         }
     }
 }
