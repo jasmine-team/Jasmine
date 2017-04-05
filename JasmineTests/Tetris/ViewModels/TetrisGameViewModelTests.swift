@@ -8,16 +8,18 @@ class TetrisGameViewModelTests: RealmTestCase {
     private var viewModel: TetrisGameViewModel! // Initialize in setUp
     private var gameData: GameData! // Initialize in setUp
     private let testPhrases = [["脱", "颖", "而", "出"], ["司", "空", "见", "惯"]]
-    private let tetrisGameViewControllerMock = TetrisGameViewControllerMock()
+    private let scoreUpdateDelegateMock = ScoreUpdateDelegateMock()
+    private let gameStatusUpdateDelegateMock = GameStatusUpdateDelegateMock()
+    private let timeUpdateDelegateMock = TimeUpdateDelegateMock()
 
     override func setUp() {
         super.setUp()
         let phrases = testPhrases.map { Phrase(value: ["chinese": $0.joined()]) }
         gameData = createGameData(phrases: phrases, difficulty: 1, type: .chengYu)
         viewModel = TetrisGameViewModel(gameData: gameData)
-        viewModel.timeDelegate = tetrisGameViewControllerMock
-        viewModel.scoreDelegate = tetrisGameViewControllerMock
-        viewModel.gameStatusDelegate = tetrisGameViewControllerMock
+        viewModel.timeDelegate = timeUpdateDelegateMock
+        viewModel.scoreDelegate = scoreUpdateDelegateMock
+        viewModel.gameStatusDelegate = gameStatusUpdateDelegateMock
     }
 
     func testInit() {
@@ -118,6 +120,8 @@ class TetrisGameViewModelTests: RealmTestCase {
     }
 
     func testDestroyTiles() {
+        let scoreUpdatedCount = scoreUpdateDelegateMock.scoreUpdatedCount
+
         var landedCoordinates: Set<Coordinate> = []
         var destroyedAndShiftedTiles: [(destroyedTiles: Set<Coordinate>,
                                         shiftedTiles: [(from: Coordinate, to: Coordinate)])] = []
@@ -135,26 +139,25 @@ class TetrisGameViewModelTests: RealmTestCase {
         XCTAssertEqual(Set(destroyedAndShiftedTiles.map { $0.destroyedTiles }.flatMap { $0 }), landedCoordinates,
                        "Tiles destroyed are wrong")
         XCTAssertEqual(viewModel.currentScore, 8)
+        XCTAssertEqual(scoreUpdateDelegateMock.scoreUpdatedCount, scoreUpdatedCount + 2,
+                       "Score did not get update in VC")
     }
 
     func testStartGame() {
+        let timeUpdatedCount = timeUpdateDelegateMock.timeUpdatedCount
+        let gameStatusUpdatedCount = gameStatusUpdateDelegateMock.gameStatusUpdatedCount
+
         viewModel.startGame()
-
-        XCTAssertEqual(GameStatus.inProgress, viewModel.gameStatus,
-                       "ViewModel game status when the game runs is not inProgress")
-
         RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
-        // TODO: Fix this
-        // XCTAssertEqual(Constants.Game.Tetris.totalTime, delegate.totalTime,
-        //                "Delegate totalTime is not correct")
-        // if let timeRemaining = delegate.timeRemaining {
-        //     XCTAssertEqualWithAccuracy(timeRemaining, delegate.totalTime - 1,
-        //                                accuracy: Constants.Game.Tetris.totalTime / 10,
-        //                                "Delegate timeRemaining is not correct")
-        // } else {
-        //     XCTAssert(false, "Delegate time remaining is not set")
-        // }
+         XCTAssertEqual(Constants.Game.Tetris.totalTime, viewModel.totalTimeAllowed,
+                        "ViewModel totalTime is not correct")
+             XCTAssertEqualWithAccuracy(viewModel.timeRemaining, viewModel.totalTimeAllowed - 1,
+                                        accuracy: Constants.Game.Tetris.totalTime / 10,
+                                        "ViewModel timeRemaining is not correct")
         XCTAssertEqual(viewModel.gameStatus, GameStatus.inProgress,
-                       "ViewModel game status is not in progress")
+                       "ViewModel game status when the game runs is not inProgress")
+        XCTAssertEqual(gameStatusUpdateDelegateMock.gameStatusUpdatedCount, gameStatusUpdatedCount + 1,
+                       "Game status did not get updated in VC")
+        XCTAssertGreaterThan(timeUpdateDelegateMock.timeUpdatedCount, timeUpdatedCount, "Timedid not get updated in VC")
     }
 }

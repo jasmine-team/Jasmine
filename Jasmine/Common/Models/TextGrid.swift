@@ -87,13 +87,11 @@ struct TextGrid {
     ///
     /// - Parameter coordinates: Array of Coordinate to get the text at
     /// - Returns: Array of String correspond to the texts at `coordinates`
-    ///            Returns nil if any of the coordinates is out of bounds or has no text
+    ///            Returns nil if any of the coordinates has no text
     func getTexts(at coordinates: [Coordinate]) -> [String]? {
         var texts: [String] = []
         for coordinate in coordinates {
-
-            guard 0..<numRows ~= coordinate.row && 0..<numColumns ~= coordinate.col,
-                let text = self[coordinate] else {
+            guard let text = self[coordinate] else {
                 return nil
             }
             texts.append(text)
@@ -106,7 +104,7 @@ struct TextGrid {
     /// - Parameter coordinates: array of Coordinates to get the text at
     /// - Parameter separator: separator of the strings, defaults to empty string
     /// - Returns: Concatenated string from texts at `coordinates`
-    ///            Returns nil if any of the coordinates is out of bounds or has no text
+    ///            Returns nil if any of the coordinates has no text
     func getConcatenatedTexts(at coordinates: [Coordinate], separatedBy separator: String = "") -> String? {
         return getTexts(at: coordinates)?.joined(separator: separator)
     }
@@ -116,6 +114,6 @@ struct TextGrid {
     /// - Parameter coordinate: the coordinate to be determined
     /// - Returns: true if and only if the coordinate is inside the grid
     func isInBounds(coordinate: Coordinate) -> Bool {
-        return (0..<numRows ~= coordinate.row) && (0..<numColumns ~= coordinate.col) 
+        return (0..<numRows ~= coordinate.row) && (0..<numColumns ~= coordinate.col)
     }
 }

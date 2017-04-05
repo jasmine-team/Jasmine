@@ -8,7 +8,6 @@ class TetrisGameViewModel {
     weak var gameStatusDelegate: GameStatusUpdateDelegate?
 
     /// Provides a list of phrases that is being tested in this game.
-    // TODO: add accordingly
     private(set) var phrasesTested: Set<Phrase> = []
 
     private(set) var currentScore: Int = 0 {
@@ -25,15 +24,8 @@ class TetrisGameViewModel {
         }
     }
 
-    // TODO : should be set from gameData instead
-    var gameTitle: String {
-        return Constants.Game.Tetris.gameTitle
-    }
-    var gameInstruction: String {
-        return Constants.Game.Tetris.gameInstruction
-    }
-
-    fileprivate var grid = TextGrid(numRows: Constants.Game.Tetris.rows, numColumns: Constants.Game.Tetris.columns)
+    fileprivate(set) var gridData = TextGrid(numRows: Constants.Game.Tetris.rows,
+                                             numColumns: Constants.Game.Tetris.columns)
 
     fileprivate(set) var upcomingTiles: [String] = []
     fileprivate(set) var fallingTileText: String! // Force unwrap so that self methods can be called in init
@@ -90,7 +82,9 @@ class TetrisGameViewModel {
     private func checkForMatchingPhrase(at coordinate: Coordinate, rowWise: Bool) -> Set<Coordinate>? {
         let phraseLen = gameData.phrases.phraseLength
         let rowOrCol = rowWise ? coordinate.col : coordinate.row
-        for index in (rowOrCol - phraseLen + 1)..<(rowOrCol + phraseLen) {
+        let startIndex = max(0, rowOrCol - phraseLen + 1)
+        let endIndex = min((rowWise ? gridData.numColumns : gridData.numRows) - phraseLen, rowOrCol)
+        for index in startIndex...endIndex {
             let phraseRange = index..<(index + phraseLen)
             let coordinates = phraseRange.map {
                 rowWise ? Coordinate(row: coordinate.row, col: $0) : Coordinate(row: $0, col: coordinate.col)
@@ -105,7 +99,7 @@ class TetrisGameViewModel {
 
     /// Concatenate the tile texts at `coordinates` and check if it is a valid phrase
     private func isPhraseValid(at coordinates: [Coordinate]) -> Bool {
-        guard let phrase = grid.getConcatenatedTexts(at: coordinates) else {
+        guard let phrase = gridData.getConcatenatedTexts(at: coordinates) else {
             return false
         }
         return gameData.phrases.contains(chinese: phrase)
@@ -120,11 +114,11 @@ class TetrisGameViewModel {
         for coordinate in coordinates {
             for row in (0..<coordinate.row).reversed() {
                 let currentCoordinate = Coordinate(row: row, col: coordinate.col)
-                guard grid.hasText(at: currentCoordinate) else {
+                guard gridData.hasText(at: currentCoordinate) else {
                     break
                 }
                 let newCoordinate = currentCoordinate.nextRow
-                grid.swap(currentCoordinate, newCoordinate)
+                gridData.swap(currentCoordinate, newCoordinate)
                 shiftedTiles.append((from: currentCoordinate, to: newCoordinate))
             }
         }
@@ -159,7 +153,7 @@ class TetrisGameViewModel {
             guard let destroyedTiles = checkForMatchingPhrase(at: nextCoordinate) else {
                 continue
             }
-            grid.removeTexts(at: destroyedTiles)
+            gridData.removeTexts(at: destroyedTiles)
             currentScore += destroyedTiles.count
 
             let shiftedTiles = shiftDownTiles(destroyedTiles)
@@ -171,26 +165,23 @@ class TetrisGameViewModel {
 }
 
 extension TetrisGameViewModel: TetrisGameViewModelProtocol {
-    var gridData: TextGrid {
-        return grid
-    }
 
     func getNewTileCoordinate() -> Coordinate {
-        let randCol = Random.integer(toExclusive: grid.numColumns)
+        let randCol = Random.integer(toExclusive: gridData.numColumns)
         return Coordinate(row: Coordinate.origin.row, col: randCol)
     }
 
     func canShiftFallingTile(to coordinate: Coordinate) -> Bool {
-        return !grid.hasText(at: coordinate)
+        return !gridData.hasText(at: coordinate)
     }
 
     func canLandTile(at coordinate: Coordinate) -> Bool {
-        let isNextRowOccupied = (coordinate.row == grid.numRows - 1) || grid.hasText(at: coordinate.nextRow)
+        let isNextRowOccupied = (coordinate.row == gridData.numRows - 1) || gridData.hasText(at: coordinate.nextRow)
         return isNextRowOccupied && canShiftFallingTile(to: coordinate)
     }
 
     func getLandingCoordinate(from coordinate: Coordinate) -> Coordinate {
-        for row in (coordinate.row + 1)..<grid.numRows {
+        for row in (coordinate.row + 1)..<gridData.numRows {
             let landingCoordinate = Coordinate(row: row, col: coordinate.col)
             if canLandTile(at: landingCoordinate) {
                 return landingCoordinate
@@ -201,7 +192,7 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
 
     func landTile(at coordinate: Coordinate) -> [(destroyedTiles: Set<Coordinate>,
                                                   shiftedTiles: [(from: Coordinate, to: Coordinate)])] {
-        grid[coordinate] = fallingTileText
+        gridData[coordinate] = fallingTileText
         setNextFallingTile()
 
         let destroyedAndShiftedTiles = destroyAndShiftTiles(landedAt: coordinate)
@@ -236,5 +227,15 @@ extension TetrisGameViewModel: TimeDescriptorProtocol {
 
     var totalTimeAllowed: TimeInterval {
         return timer.totalTimeAllowed
+    }
+}
+
+extension TetrisGameViewModel: GameDescriptorProtocol {
+    // TODO : should be set from gameData instead
+    var gameTitle: String {
+        return Constants.Game.Tetris.gameTitle
+    }
+    var gameInstruction: String {
+        return Constants.Game.Tetris.gameInstruction
     }
 }
