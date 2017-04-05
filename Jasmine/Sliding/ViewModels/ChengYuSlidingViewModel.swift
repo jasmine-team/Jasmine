@@ -1,8 +1,6 @@
 import Foundation
 
 class ChengYuSlidingViewModel: BaseSlidingViewModel {
-    typealias Score = Constants.Game.Sliding.Score
-
     /// Initializes the game
     ///
     /// - Parameters:
@@ -24,45 +22,12 @@ class ChengYuSlidingViewModel: BaseSlidingViewModel {
     }
 
     /// Returns true if and only if the given line is valid (i.e. forms a Chengyu)
-    private func lineIsCorrect(_ line: [Coordinate]) -> Bool {
+    override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
         guard let text = gridData.getConcatenatedTexts(at: line),
               gameData.phrases.contains(chinese: text) else {
             return false
         }
         return true
-    }
-
-    /// Check what happens when game is won. If game is won, change game status and add score.
-    private func checkCorrectTiles() {
-        var highlightedCoordinates: Set<Coordinate> = []
-        var score = 0
-
-        for row in 0..<gridData.numRows {
-            let rowTiles = (0..<gridData.numColumns).map { column in Coordinate(row: row, col: column) }
-            if lineIsCorrect(rowTiles) {
-                highlightedCoordinates.formUnion(rowTiles)
-                score += Score.line
-            }
-        }
-        for column in 0..<gridData.numColumns {
-            let columnTiles = (0..<gridData.numRows).map { row in Coordinate(row: row, col: column) }
-            if lineIsCorrect(columnTiles) {
-                highlightedCoordinates.formUnion(columnTiles)
-                score += Score.line
-            }
-        }
-
-        if self.highlightedCoordinates != highlightedCoordinates {
-            self.highlightedCoordinates = highlightedCoordinates
-        }
-
-        if highlightedCoordinates.count == gridData.count {
-            gameStatus = .endedWithWon
-            score += max(Score.win + Int(timeRemaining * Score.multiplierFromTime) -
-                moves * Score.multiplierFromMoves, 0)
-        }
-
-        currentScore = score
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to slide

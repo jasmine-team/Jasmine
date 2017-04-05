@@ -21,7 +21,7 @@
 		502A296E1E926DCA0024336A /* ChengYuSlidingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A296B1E926DCA0024336A /* ChengYuSlidingViewModel.swift */; };
 		502A296F1E926DCA0024336A /* CiHuiSlidingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A296C1E926DCA0024336A /* CiHuiSlidingViewModel.swift */; };
 		502A29711E9275770024336A /* Array+EquatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29701E9275770024336A /* Array+EquatableTests.swift */; };
-		502A29751E927B790024336A /* BaseSlidingVIewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29721E927B790024336A /* BaseSlidingVIewModelTests.swift */; };
+		502A29751E927B790024336A /* BaseSlidingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29721E927B790024336A /* BaseSlidingViewModelTests.swift */; };
 		502A29761E927B790024336A /* ChengYuSlidingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29731E927B790024336A /* ChengYuSlidingViewModelTests.swift */; };
 		502A29771E927B790024336A /* CiHuiSlidingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29741E927B790024336A /* CiHuiSlidingViewModelTests.swift */; };
 		502A297D1E927D580024336A /* GridViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A297C1E927D580024336A /* GridViewModelTests.swift */; };
@@ -131,7 +131,7 @@
 		502A296B1E926DCA0024336A /* ChengYuSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSlidingViewModel.swift; sourceTree = "<group>"; };
 		502A296C1E926DCA0024336A /* CiHuiSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiSlidingViewModel.swift; sourceTree = "<group>"; };
 		502A29701E9275770024336A /* Array+EquatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+EquatableTests.swift"; sourceTree = "<group>"; };
-		502A29721E927B790024336A /* BaseSlidingVIewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSlidingVIewModelTests.swift; sourceTree = "<group>"; };
+		502A29721E927B790024336A /* BaseSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSlidingViewModelTests.swift; sourceTree = "<group>"; };
 		502A29731E927B790024336A /* ChengYuSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSlidingViewModelTests.swift; sourceTree = "<group>"; };
 		502A29741E927B790024336A /* CiHuiSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiSlidingViewModelTests.swift; sourceTree = "<group>"; };
 		502A297C1E927D580024336A /* GridViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModelTests.swift; sourceTree = "<group>"; };
@@ -271,7 +271,7 @@
 		502A29511E922EDD0024336A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				502A29721E927B790024336A /* BaseSlidingVIewModelTests.swift */,
+				502A29721E927B790024336A /* BaseSlidingViewModelTests.swift */,
 				502A29731E927B790024336A /* ChengYuSlidingViewModelTests.swift */,
 				502A29741E927B790024336A /* CiHuiSlidingViewModelTests.swift */,
 			);
@@ -1052,7 +1052,7 @@
 				DF409FF71E84160C00389976 /* GameDataFactoryTests.swift in Sources */,
 				502A29711E9275770024336A /* Array+EquatableTests.swift in Sources */,
 				502A29771E927B790024336A /* CiHuiSlidingViewModelTests.swift in Sources */,
-				502A29751E927B790024336A /* BaseSlidingVIewModelTests.swift in Sources */,
+				502A29751E927B790024336A /* BaseSlidingViewModelTests.swift in Sources */,
 				50B7A8B51E9393530052E9E2 /* BaseSwappingViewModelTests.swift in Sources */,
 				509036DD1E937C4C006548DE /* ChengYuSwappingViewModelTests.swift in Sources */,
 				509036D51E937BFB006548DE /* GameStatusUpdateDelegateMock.swift in Sources */,

@@ -14,20 +14,20 @@ class GridViewModelTests: XCTestCase {
 
     func testInit() {
         let time: TimeInterval = 10
-        let grid = [["a", "b"], ["c", nil]]
-        let textGrid = TextGrid(fromInitialGrid: grid)
+        let tiles = ["a", "b", "c", nil]
 
-        let viewModel = GridViewModel(time: time, gameData: gameData, textGrid: textGrid)
+        let viewModel = GridViewModel(time: time, gameData: gameData, tiles: tiles, rows: 2, columns: 2)
 
         XCTAssertEqual(0, viewModel.currentScore,
                        "ViewModel currentScore not correct on init")
         XCTAssertEqual(GameStatus.notStarted, viewModel.gameStatus,
                        "ViewModel gameStatus not correct on init")
-        XCTAssertEqual([Coordinate(row: 0, col: 0): "a",
-                        Coordinate(row: 0, col: 1): "b",
-                        Coordinate(row: 1, col: 0): "c"],
-                       viewModel.gridData.coordinateDictionary,
-                       "ViewModel gridData not correct on init")
+
+        for (_, value) in viewModel.gridData.coordinateDictionary {
+            XCTAssert(tiles.contains { $0 == value },
+                      "ViewModel gridData not correct on init")
+        }
+
         XCTAssertEqual("", viewModel.gameTitle,
                        "ViewModel gameTitle not correct on init")
         XCTAssertEqual("", viewModel.gameInstruction,
@@ -36,10 +36,9 @@ class GridViewModelTests: XCTestCase {
 
     func testStartGame() {
         let time: TimeInterval = 3
-        let grid = [["a", "b"], ["c", nil]]
-        let textGrid = TextGrid(fromInitialGrid: grid)
+        let tiles = ["a", "b", "c", nil]
 
-        let viewModel = GridViewModel(time: time, gameData: gameData, textGrid: textGrid)
+        let viewModel = GridViewModel(time: time, gameData: gameData, tiles: tiles, rows: 2, columns: 2)
 
         viewModel.startGame()
         RunLoop.current.run(until: Date(timeIntervalSinceNow: time + 1))
