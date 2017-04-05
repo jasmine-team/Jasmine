@@ -23,6 +23,8 @@ class CiHuiSwappingViewModel: BaseSwappingViewModel {
 
         gameTitle = Constants.Game.Swapping.CiHui.gameTitle
         gameInstruction = Constants.Game.Swapping.CiHui.gameInstruction
+
+        phrasesTested = Set(phrases)
     }
 
     /// Returns if and only if the game is won, that is:

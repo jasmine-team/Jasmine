@@ -26,6 +26,10 @@ class CiHuiSlidingViewModel: BaseSlidingViewModel {
 
         gameTitle = Constants.Game.Sliding.CiHui.gameTitle
         gameInstruction = Constants.Game.Sliding.CiHui.gameInstruction
+
+        var validPhrases = phrases
+        validPhrases.removeLast()
+        phrasesTested = Set(validPhrases)
     }
 
     /// Returns true if and only if the given line is valid (i.e. forms a Hanzi with its Pinyin)

@@ -109,6 +109,6 @@ class GridViewModel: GridViewModelProtocol {
 
     /// Returns true if and only if the given line is valid. To be overriden.
     func lineIsCorrect(_ line: [Coordinate]) -> Bool {
-        return false
+        fatalError("Classes subclassing GridViewModel need to override lineIsCorrect")
     }
 }
