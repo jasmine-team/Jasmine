@@ -26,18 +26,6 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
         super.init(time: time, gameData: gameData, textGrid: TextGrid(fromInitialGrid: grid))
     }
 
-    /// Score for the game when it is won on the current state.
-    override var scoreOnWon: Int {
-        return max(Constants.Game.Swapping.Score.win +
-            Int(timeRemaining * Constants.Game.Swapping.Score.multiplierFromTime)
-            - moves * Constants.Game.Swapping.Score.multiplierFromMoves, 0)
-    }
-
-    /// Score for the game when a line is correct. To be overriden.
-    override var scoreOnCorrectLine: Int {
-        return Constants.Game.Swapping.Score.line
-    }
-
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
     /// the specified two tiles.
     ///
@@ -58,8 +46,6 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
 
         gridData.swap(coord1, coord2)
         moves += 1
-
-        checkCorrectTiles()
 
         return true
     }

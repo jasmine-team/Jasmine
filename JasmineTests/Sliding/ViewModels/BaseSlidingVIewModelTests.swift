@@ -137,18 +137,4 @@ class BaseSlidingViewModelTests: XCTestCase {
             }
         }
     }
-
-    func testScore() {
-        XCTAssertEqual(5_300, viewModel.scoreOnWon)
-        if viewModel.gridData[Coordinate(row: 0, col: 0)] != nil {
-            viewModel.slideTile(from: Coordinate(row: 0, col: 0), to: Coordinate(row: 0, col: 1))
-        } else {
-            viewModel.slideTile(from: Coordinate(row: 0, col: 1), to: Coordinate(row: 0, col: 0))
-        }
-        XCTAssertEqual(5_275, viewModel.scoreOnWon)
-
-        viewModel.startGame()
-        RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
-        XCTAssert(abs(5_175 - viewModel.scoreOnWon) <= 20)
-    }
 }

@@ -10,7 +10,7 @@ class GridViewModel: GridViewModelProtocol {
     var gridData: TextGrid
     /// Specifies the current score of the game. If the game has not started, it will be the initial
     /// displayed score.
-    private(set) var currentScore: Int = 0 {
+    var currentScore: Int = 0 {
         didSet {
             scoreDelegate?.scoreDidUpdate()
         }
@@ -78,53 +78,6 @@ class GridViewModel: GridViewModelProtocol {
     func startGame() {
         timer.startTimer(timerInterval: Constants.Game.timeInterval)
         scoreDelegate?.scoreDidUpdate()
-    }
-
-    /// Check what happens when game is won. If game is won, change game status and add score.
-    final func checkCorrectTiles() {
-        var highlightedCoordinates: Set<Coordinate> = []
-        var score = 0
-
-        for row in 0..<gridData.numRows {
-            let rowTiles = (0..<gridData.numColumns).map { column in Coordinate(row: row, col: column) }
-            if lineIsCorrect(rowTiles) {
-                highlightedCoordinates.formUnion(rowTiles)
-                score += scoreOnCorrectLine
-            }
-        }
-        for column in 0..<gridData.numColumns {
-            let columnTiles = (0..<gridData.numRows).map { row in Coordinate(row: row, col: column) }
-            if lineIsCorrect(columnTiles) {
-                highlightedCoordinates.formUnion(columnTiles)
-                score += scoreOnCorrectLine
-            }
-        }
-
-        if self.highlightedCoordinates != highlightedCoordinates {
-            self.highlightedCoordinates = highlightedCoordinates
-        }
-
-        if highlightedCoordinates.count == gridData.count {
-            gameStatus = .endedWithWon
-            score += scoreOnWon
-        }
-
-        currentScore = score
-    }
-
-    /// Score for the game when it is won on the current state. To be overriden.
-    var scoreOnWon: Int {
-        return 0
-    }
-
-    /// Score for the game when a line is correct. To be overriden.
-    var scoreOnCorrectLine: Int {
-        return 0
-    }
-
-    /// Returns true iff the line given is correct. This is to be overriden.
-    func lineIsCorrect(_ line: [Coordinate]) -> Bool {
-        return false
     }
 
     /// The countdown timer for use in this ViewModel.
