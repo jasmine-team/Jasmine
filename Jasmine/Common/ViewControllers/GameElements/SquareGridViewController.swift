@@ -86,6 +86,7 @@ class SquareGridViewController: UIViewController {
     func segueWith(_ initialGridData: TextGrid, withSpace space: CGFloat, customSize: CGSize) {
         self.gridDataCache = initialGridData
         self.cellSpacing = space
+        self.customSize = customSize
     }
 
     /// Load the view controller with initial dataset in this collection view.
