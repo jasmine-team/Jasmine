@@ -34,6 +34,9 @@
                                     <navigationItem title="Choose a Level" id="bsC-PO-6bs">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="tQC-fc-pmS">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <segue destination="iXK-Ql-xwZ" kind="show" id="89u-qd-ld7"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -61,6 +64,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OHT-81-1qc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-178" y="133"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="iqN-qe-F6D">
+            <objects>
+                <viewController storyboardIdentifier="LevelDesignerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iXK-Ql-xwZ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RlK-vJ-hMd"/>
+                        <viewControllerLayoutGuide type="bottom" id="dnM-tj-pmz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uRO-fx-Ik2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QR2-Vp-IXo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="T23-fY-nXb"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Level Designer" id="0sn-JR-Nn6">
+                                        <barButtonItem key="leftBarButtonItem" title="CANCEL" id="X05-t6-t9T">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="SAVE" id="9ru-gG-FDP">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QR2-Vp-IXo" firstAttribute="leading" secondItem="uRO-fx-Ik2" secondAttribute="leading" id="7n6-gF-Xcy"/>
+                            <constraint firstAttribute="trailing" secondItem="QR2-Vp-IXo" secondAttribute="trailing" id="GjU-BZ-i5b"/>
+                            <constraint firstItem="QR2-Vp-IXo" firstAttribute="top" secondItem="uRO-fx-Ik2" secondAttribute="top" id="kRN-PP-ser"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BsB-lQ-CxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="612" y="133"/>
         </scene>
     </scenes>
 </document>
