@@ -59,7 +59,7 @@ class GameOverViewController: UIViewController {
             self.gameOverSubtitle.text = Constants.Game.GameOver.subtitleLose
 
         } else {
-            // TODO: assertionFailure("Game must be concluded in order to view this screen.")
+            assertionFailure("Game must be concluded in order to view this screen.")
         }
     }
 }
