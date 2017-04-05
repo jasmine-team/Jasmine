@@ -11,7 +11,7 @@ struct TextGrid {
 
     /// The number of columns in the grid.
     var numColumns: Int {
-        return grid.first?.count ?? 0
+        return grid[0].count
     }
 
     /// Initializes a TextGrid, given the initial grid.
@@ -79,10 +79,17 @@ struct TextGrid {
         return result
     }
 
+    /// Checks if there is a text in the coordinate (i.e. it's not nil).
+    ///
+    /// - Parameter coordinate: the coordinate to be checked
+    /// - Returns: true if and only if it's not nil
     func hasText(at coordinate: Coordinate) -> Bool {
         return self[coordinate] != nil
     }
 
+    /// Remvoe the texts given at the coordinates, by setting them to nil
+    ///
+    /// - Parameter coordinates: the coordinates to be removed
     mutating func removeTexts(at coordinates: Set<Coordinate>) {
         for coordinate in coordinates {
             self[coordinate] = nil
@@ -114,5 +121,18 @@ struct TextGrid {
     ///            Returns nil if there is no text at any of the coordinates
     func getConcatenatedTexts(at coordinates: [Coordinate], separatedBy separator: String = "") -> String? {
         return getTexts(at: coordinates)?.joined(separator: separator)
+    }
+
+    /// Determines whether the given Coordinate is in the bounds of the grid.
+    ///
+    /// - Parameter coordinate: the coordinate to be determined
+    /// - Returns: true if and only if the coordinate is inside the grid
+    func isInBounds(coordinate: Coordinate) -> Bool {
+        return (0..<numRows ~= coordinate.row) && (0..<numColumns ~= coordinate.col)
+    }
+
+    /// Number of cells in the grid.
+    var count: Int {
+        return numRows * numColumns
     }
 }
