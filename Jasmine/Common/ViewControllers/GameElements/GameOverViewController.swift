@@ -25,7 +25,7 @@ class GameOverViewController: UIViewController {
         if let testedPhrase = segue.destination as? SelectableSquareGridViewController {
 
             displayedPhases = Array(gameDesriptor.phrasesTested)
-            let phrasesString = TextGrid(fromInitialCol: displayedPhases.map { $0.chinese })
+            let phrasesString = TextGrid(fromInitialCol: displayedPhases.map { $0.chinese.joined() })
             testedPhrase.segueScrollableWith(phrasesString,
                                              withSpace: GameOverViewController.tileSpace,
                                              customSize: GameOverViewController.tileSize)

@@ -10,7 +10,6 @@ class ChengYuSwappingViewModel: BaseSwappingViewModel {
     init(time: TimeInterval, gameData: GameData, numberOfPhrases: Int) {
         let phrases = gameData.phrases.next(count: numberOfPhrases)
         let tiles = phrases.flatMap { $0.chinese }
-
         super.init(time: time, gameData: gameData, tiles: tiles,
                    rows: numberOfPhrases, columns: Constants.Game.Swapping.columns)
 

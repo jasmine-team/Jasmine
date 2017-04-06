@@ -22,7 +22,9 @@ class Phrase: Object {
 
     /// MARK: non-persisted properties
     var chinese: [String] {
-        return rawChinese.components(separatedBy: "")
+        return rawChinese.characters.map {
+            String($0)
+        }
     }
     var pinyin: [String] {
         return rawPinyin.components(separatedBy: " ")

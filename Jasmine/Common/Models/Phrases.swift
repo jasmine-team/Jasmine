@@ -57,7 +57,7 @@ class Phrases {
     /// - Parameter chinese: chinese word
     /// - Returns: result of phrase
     private func filter(chinese: String) -> Results<Phrase> {
-        return phrases.filter("chinese == '\(chinese)'")
+        return phrases.filter("rawChinese == '\(chinese)'")
     }
 
 }
