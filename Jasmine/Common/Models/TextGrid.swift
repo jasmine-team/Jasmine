@@ -35,9 +35,9 @@ struct TextGrid {
 
     /// Initializes a TextGrid with a given initial column. Produces a grid of a single column.
     ///
-    /// - Parameter initalArray: the initial array to be morphed into a grid.
-    init(fromInitialCol initalCol: [String?]) {
-        self.init(fromInitialGrid: initalCol.map { [$0] })
+    /// - Parameter initialArray: the initial array to be morphed into a grid.
+    init(fromInitialCol initialCol: [String?]) {
+        self.init(fromInitialGrid: initialCol.map { [$0] })
     }
 
     /// Initializes a TextGrid filled with nils, given the dimensions of the grid.
