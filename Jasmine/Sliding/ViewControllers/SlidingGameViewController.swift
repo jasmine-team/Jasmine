@@ -3,6 +3,9 @@ import UIKit
 /// View Controller implementation for Sliding Grid Game.
 class SlidingGameViewController: UIViewController {
 
+    // MARK: - Constants
+    fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
+
     // MARK: - Layouts
     fileprivate var gameStatisticsView: GameStatisticsViewController!
 
@@ -23,6 +26,9 @@ class SlidingGameViewController: UIViewController {
         } else if let gameStatisticsView = segue.destination as? GameStatisticsViewController {
             gameStatisticsView.segueWith(time: viewModel, score: viewModel)
             self.gameStatisticsView = gameStatisticsView
+
+        } else if let gameOverView = segue.destination as? GameOverViewController {
+            gameOverView.segueWith(viewModel)
         }
     }
 
@@ -164,7 +170,10 @@ extension SlidingGameViewController: GameStatusUpdateDelegate {
 
     /// Tells the implementor of the delegate that the game status has been updated.
     func gameStatusDidUpdate() {
-
+        if viewModel.gameStatus.hasGameEnded {
+            self.performSegue(withIdentifier: SlidingGameViewController.segueToGameOverView,
+                              sender: nil)
+        }
     }
 }
 

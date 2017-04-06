@@ -11,4 +11,9 @@ enum GameStatus {
     case inProgress
     case endedWithWon
     case endedWithLost
+
+    /// Returns true if the game has ended.
+    var hasGameEnded: Bool {
+        return self == .endedWithWon || self == .endedWithLost
+    }
 }
