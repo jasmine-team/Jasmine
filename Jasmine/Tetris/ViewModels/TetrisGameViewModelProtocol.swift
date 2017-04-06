@@ -36,7 +36,7 @@ protocol TetrisGameViewModelProtocol: BaseViewModelProtocol {
     ///
     /// - Parameter coordinate: The coordinate that the falling tile is currently at
     /// - Returns: The coordinate that the tile will end up landing at
-    /// - Precondition: There must be an empty tile somewhere below `from` to land the tile at.
+    /// - Precondition: There must be an empty tile at or below `from` to land the tile at.
     ///                 This will hold as long as tile falls from top to bottom 
     ///                 and game ends when a tile lands on the top row without getting destroyed
     func getLandingCoordinate(from coordinate: Coordinate) -> Coordinate
