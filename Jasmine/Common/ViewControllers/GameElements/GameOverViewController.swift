@@ -17,14 +17,19 @@ class GameOverViewController: UIViewController {
     // MARK: - Properties
     fileprivate var gameDesriptor: GameDescriptorProtocol!
 
+    fileprivate var displayedPhases: [Phrase]!
+
     // MARK: - Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let testedPhrase = segue.destination as? SquareGridViewController {
-            let phrasesString = TextGrid(
-                fromInitialCol: gameDesriptor.phrasesTested.map { $0.chinese })
+        if let testedPhrase = segue.destination as? SelectableSquareGridViewController {
+
+            displayedPhases = Array(gameDesriptor.phrasesTested)
+            let phrasesString = TextGrid(fromInitialCol: displayedPhases.map { $0.chinese })
             testedPhrase.segueScrollableWith(phrasesString,
                                              withSpace: GameOverViewController.tileSpace,
                                              customSize: GameOverViewController.tileSize)
+
+            testedPhrase.onTileSelected = segueToPhrase(at:)
         }
     }
 
@@ -62,5 +67,12 @@ class GameOverViewController: UIViewController {
         } else {
             assertionFailure("Game must be concluded in order to view this screen.")
         }
+    }
+
+    /// Opens the definition to the phrase
+    private func segueToPhrase(at coord: Coordinate) {
+        // TODO: Complete this.
+        let index = coord.row
+        print(displayedPhases[index])
     }
 }

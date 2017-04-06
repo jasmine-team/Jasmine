@@ -119,7 +119,7 @@
                                 <color key="textColor" red="0.15101002156734467" green="0.56891876459121704" blue="0.43715286254882812" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU HAVE CLEARED THIS LEVEL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYh-ET-rJZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU HAVE CLEARED THIS LEVEL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYh-ET-rJZ">
                                 <rect key="frame" x="16" y="254" width="342.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                 <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -252,10 +252,14 @@
             </objects>
             <point key="canvasLocation" x="187" y="9"/>
         </scene>
-        <!--Square Grid View Controller-->
+        <!--Selectable Square Grid View Controller-->
         <scene sceneID="9P0-fp-edA">
             <objects>
-                <viewController id="EI1-em-TmQ" customClass="SquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EI1-em-TmQ" customClass="SelectableSquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sGR-nE-KfD"/>
+                        <viewControllerLayoutGuide type="bottom" id="eYS-BR-dhc"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mQ4-5p-ofG">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="295"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -264,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bbo-Sq-XVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="753"/>
+            <point key="canvasLocation" x="862" y="615"/>
         </scene>
     </scenes>
 </document>
