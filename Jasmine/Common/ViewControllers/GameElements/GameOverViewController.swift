@@ -22,9 +22,9 @@ class GameOverViewController: UIViewController {
         if let testedPhrase = segue.destination as? SquareGridViewController {
             let phrasesString = TextGrid(
                 fromInitialCol: gameDesriptor.phrasesTested.map { $0.chinese })
-            testedPhrase.segueWith(phrasesString,
-                                   withSpace: GameOverViewController.tileSpace,
-                                   customSize: GameOverViewController.tileSize)
+            testedPhrase.segueScrollableWith(phrasesString,
+                                             withSpace: GameOverViewController.tileSpace,
+                                             customSize: GameOverViewController.tileSize)
         }
     }
 

@@ -34,6 +34,10 @@ class SquareGridViewController: UIViewController {
     /// Specifies the custom size of each tile. If nil, implies that a square is desired.
     fileprivate var customSize: CGSize?
 
+    fileprivate var isScrollable = false
+
+    fileprivate var shouldClipToBounds = false
+
     /// A lazily computed property that gives all the coordinates that is used in this view.
     var allCoordinates: Set<Coordinate> {
         var outcome: Set<Coordinate> = []
@@ -83,10 +87,16 @@ class SquareGridViewController: UIViewController {
     ///   - initialGridData: initial set of data to be displayed in this view.
     ///   - space: the space between the tiles in the grid view controller.
     ///   - size: custom size per cell in this view.
-    func segueWith(_ initialGridData: TextGrid, withSpace space: CGFloat, customSize: CGSize) {
+    /// - Postcondition:
+    ///   - produces a grid view that is scrollable, and clipped (since it is scrollable)
+    func segueScrollableWith(_ initialGridData: TextGrid,
+                             withSpace space: CGFloat, customSize: CGSize) {
+
         self.gridDataCache = initialGridData
         self.cellSpacing = space
         self.customSize = customSize
+        self.isScrollable = true
+        self.shouldClipToBounds = true
     }
 
     /// Load the view controller with initial dataset in this collection view.
@@ -97,6 +107,8 @@ class SquareGridViewController: UIViewController {
     func segueWith(_ initialGridData: TextGrid, withSpace space: CGFloat) {
         self.gridDataCache = initialGridData
         self.cellSpacing = space
+        self.isScrollable = false
+        self.shouldClipToBounds = false
     }
 
     /// Load the view controller with initial dataset in this collection view, with standard spacing.
@@ -192,8 +204,8 @@ class SquareGridViewController: UIViewController {
     private func initCollectionView() {
         gridCollectionView.delegate = self
         gridCollectionView.dataSource = self
-        gridCollectionView.isScrollEnabled = false
-        gridCollectionView.clipsToBounds = false
+        gridCollectionView.isScrollEnabled = isScrollable
+        gridCollectionView.clipsToBounds = shouldClipToBounds
         gridCollectionView.backgroundColor = UIColor.clear
         gridCollectionView.register(
             SquareTileViewCell.self,
