@@ -77,6 +77,8 @@ enum Constants {
             static let upcomingPhrasesCount = 2
 
             static let tileFallInterval: TimeInterval = 0.5
+
+            static let scoreIncrement = 1
         }
 
         enum GameOver {
