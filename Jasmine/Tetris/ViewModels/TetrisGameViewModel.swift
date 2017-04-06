@@ -31,7 +31,11 @@ class TetrisGameViewModel {
     fileprivate(set) var fallingTileText: String!
 
     private let gameData: GameData
+
+    // Stores the pool of upcoming texts shuffled randomly to pick from for the new pcoming tile
     private var nextTexts: [String] = []
+    // Stores the current index of `nextTexts` for the new upcoming tile
+    private var nextTextIndex: Int = 0
 
     /// Populate upcomingTiles and set listeners for the timer
     required init(gameData: GameData) {
@@ -71,6 +75,8 @@ class TetrisGameViewModel {
     /// Checks for and returns coordinates of matching phrase
     /// search row-wise first as destroying rows are relatively more important than columns in Tetris
     /// if no row-wise match, column-wise search will proceed
+    /// If a match is found, adds all coordinates on the grid 
+    /// with text that is contained in the matching phrase to the result
     ///
     /// - Parameter coordinate: the coordinate at which a cell has been shifted or added to
     /// - Returns: the set of coordinates that contains the matching phrase
@@ -89,26 +95,26 @@ class TetrisGameViewModel {
             let coordinates = phraseRange.map {
                 rowWise ? Coordinate(row: coordinate.row, col: $0) : Coordinate(row: $0, col: coordinate.col)
             }
-            if isPhraseValid(at: coordinates) {
-                return Set(coordinates)
+            if let phrase = isPhraseValid(at: coordinates) {
+                return Set(coordinates).union(gridData.getCoordinates(containing: Set(phrase)))
             }
         }
 
         return nil
     }
 
-    /// Concatenate the tile texts at `coordinates` and check if it is a valid phrase
-    private func isPhraseValid(at coordinates: [Coordinate]) -> Bool {
-        guard let phrase = gridData.getConcatenatedTexts(at: coordinates) else {
-            return false
+    /// Gets the tile texts at `coordinates` and check if it is a valid phrase
+    private func isPhraseValid(at coordinates: [Coordinate]) -> [String]? {
+        guard let phrase = gridData.getTexts(at: coordinates) else {
+            return nil
         }
-        return gameData.phrases.contains(chinese: phrase)
+        return gameData.phrases.contains(chinese: phrase.joined()) ? phrase : nil
     }
 
     /// Shifts all the tiles above `coordinates` 1 row down.
     /// Starts from the row right above the coordinates so that it can break once an empty tile is encountered
     ///
-    /// Returns: array of coordinates shifted from `from` to `to`
+    /// - Returns: array of coordinates shifted from `from` to `to`
     private func shiftDownTiles(_ coordinates: Set<Coordinate>) -> [(from: Coordinate, to: Coordinate)] {
         var shiftedTiles: [(from: Coordinate, to: Coordinate)] = []
         for coordinate in coordinates {
@@ -125,16 +131,47 @@ class TetrisGameViewModel {
         return shiftedTiles
     }
 
+    /// Returns the next text for a new upcoming tile.
+    /// if current text pool is exhausted, a new text pool will be generated and randomly shuffled
     private func getNextText() -> String {
-        if nextTexts.isEmpty {
-            let newPhrases = (0..<Constants.Game.Tetris.upcomingPhrasesCount).map { _ in
-                gameData.phrases.next()
-            }
-            phrasesTested.formUnion(newPhrases)
-            nextTexts += newPhrases.map { $0.chinese }.flatMap { $0 }
+        if nextTextIndex == nextTexts.count {
+            nextTextIndex = 0
+            nextTexts = (getFailedTexts() ?? getNewTexts()).shuffled()
         }
-        let randInt = Random.integer(toExclusive: nextTexts.count)
-        return nextTexts.remove(at: randInt)
+
+        let nextText = nextTexts[nextTextIndex]
+        nextTextIndex += 1
+        return nextText
+    }
+
+    /// Finds a text on the grid that is not in `nextTexts` 
+    /// i.e. player has failed to correctly destroy the phrase associated with the text when it was dropped.
+    /// currentScore will be deducted accordingly so that the subsequent destruction does not award any point
+    ///
+    /// - Returns: a phrase containing that text from the phrase tested set
+    private func getFailedTexts() -> [String]? {
+        guard let failedText = gridData.texts.subtracting(nextTexts).first else {
+            return nil
+        }
+
+        for phrase in phrasesTested {
+            let texts = phrase.chinese
+            if texts.contains(failedText) {
+                currentScore = max(0, currentScore - Constants.Game.Tetris.scoreIncrement)
+                return texts
+            }
+        }
+
+        fatalError("Could not find failed text in phrasesTested")
+    }
+
+    /// Returns `Constants.Game.Tetris.upcomingPhrasesCount` number of new phrases and add them to the phrases tested
+    private func getNewTexts() -> [String] {
+        let newPhrases = (0..<Constants.Game.Tetris.upcomingPhrasesCount).map { _ in
+            gameData.phrases.next()
+        }
+        phrasesTested.formUnion(newPhrases)
+        return newPhrases.map { $0.chinese }.flatMap { $0 }
     }
 
     fileprivate func checkIfGameOver(landedAt coordinate: Coordinate) {
@@ -153,9 +190,9 @@ class TetrisGameViewModel {
             guard let destroyedTiles = checkForMatchingPhrase(at: nextCoordinate) else {
                 continue
             }
-            destroyedTiles.forEach { changedCoordinates.remove($0) }
+            currentScore += Constants.Game.Tetris.scoreIncrement
+            changedCoordinates.subtract(destroyedTiles)
             gridData.removeTexts(at: destroyedTiles)
-            currentScore += destroyedTiles.count
 
             let shiftedTiles = shiftDownTiles(destroyedTiles)
             changedCoordinates.formUnion(shiftedTiles.map { $0.to })

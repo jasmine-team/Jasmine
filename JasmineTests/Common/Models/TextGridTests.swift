@@ -89,6 +89,12 @@ class TextGridTests: XCTestCase {
         }
     }
 
+    func testTexts() {
+        let initialGrid = [["a", nil], ["d", "a"]]
+        let grid = TextGrid(fromInitialGrid: initialGrid)
+        XCTAssertEqual(grid.texts, Set(["a", "d"]))
+    }
+
     func testSwap() {
         let initialGrid = [["a", "b", "c"], ["d", "e", "f"]]
         var grid = TextGrid(fromInitialGrid: initialGrid)
@@ -198,5 +204,16 @@ class TextGridTests: XCTestCase {
                            TextGrid(numRows: row, numColumns: col).count,
                            "Count not correct")
         }
+    }
+
+    func testGetCoordinates() {
+        let coordinates: Set<Coordinate> = [Coordinate(row: 0, col: 0), Coordinate(row: 1, col: 2)]
+        let texts: Set<String> = ["a", "b"]
+        var grid = TextGrid(numRows: 5, numColumns: 5)
+        for (coordinate, text) in zip(coordinates, texts) {
+            grid[coordinate] = text
+        }
+        grid[Coordinate(row: 3, col: 3)] = "c"
+        XCTAssertEqual(grid.getCoordinates(containing: texts), coordinates, "getCoordinates returned wrong values")
     }
 }
