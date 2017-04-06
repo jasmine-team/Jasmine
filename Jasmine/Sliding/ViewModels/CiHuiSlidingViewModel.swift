@@ -12,8 +12,8 @@ class CiHuiSlidingViewModel: BaseSlidingViewModel {
 
         var tiles: [String] = []
         for phrase in phrases {
-            let hanzi = phrase.chinese.characters.map { String($0) }
-            let pinyin = phrase.pinyin.components(separatedBy: " ")
+            let hanzi = phrase.chinese
+            let pinyin = phrase.pinyin
 
             tiles += (hanzi + pinyin)
         }
@@ -37,23 +37,19 @@ class CiHuiSlidingViewModel: BaseSlidingViewModel {
         let firstHalfCoordinates = Array(line[0..<(line.count / 2)])
         let secondHalfCoordinates = Array(line[(line.count / 2)..<line.count])
 
-        if let text = gridData.getConcatenatedTexts(at: firstHalfCoordinates),
-           let phrase = gameData.phrases.first(whereChinese: text) {
-            // First half forms a hanzi phrase
-            // TODO: - Magic String
-            let pinyin = gridData.getConcatenatedTexts(at: secondHalfCoordinates, separatedBy: " ")
-            return phrase.pinyin == pinyin
-
-        } else if let text = gridData.getConcatenatedTexts(at: secondHalfCoordinates),
-                  let phrase = gameData.phrases.first(whereChinese: text) {
-            // Second half forms a hanzi phrase
-            // TODO: - Magic String
-            let pinyin = gridData.getConcatenatedTexts(at: firstHalfCoordinates, separatedBy: " ")
-            return phrase.pinyin == pinyin
-
-        } else {
-            return false
+        let possibleArrangements = [
+            (firstHalfCoordinates, secondHalfCoordinates),
+            (secondHalfCoordinates, firstHalfCoordinates)
+        ]
+        for (first, second) in possibleArrangements {
+            guard let text = gridData.getConcatenatedTexts(at: first),
+                let phrase = gameData.phrases.first(whereChinese: text),
+                let pinyin = gridData.getTexts(at: second),
+                phrase.pinyin != pinyin else {
+                    return false
+            }
         }
+        return true
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to slide

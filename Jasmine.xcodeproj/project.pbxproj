@@ -72,6 +72,8 @@
 		DF409FF21E8415F400389976 /* CountDownTimerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FF01E8415F400389976 /* CountDownTimerTest.swift */; };
 		DF409FF71E84160C00389976 /* GameDataFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FF41E84160C00389976 /* GameDataFactoryTests.swift */; };
 		DF409FFB1E84225200389976 /* TetrisGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FFA1E84225200389976 /* TetrisGameViewController.swift */; };
+		DF40F9E21E9676C1001EAAA8 /* LevelResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40F9E11E9676C1001EAAA8 /* LevelResult.swift */; };
+		DF40F9E41E967708001EAAA8 /* PhraseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40F9E31E967708001EAAA8 /* PhraseTests.swift */; };
 		DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */; };
 		DF7CF7711E7E9E3500C6979A /* CGRect+Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF76F1E7E9E3500C6979A /* CGRect+Arithmetic.swift */; };
 		DF7CF7721E7E9E3500C6979A /* IndexPath+Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */; };
@@ -197,6 +199,8 @@
 		DF409FF41E84160C00389976 /* GameDataFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataFactoryTests.swift; sourceTree = "<group>"; };
 		DF409FF61E84160C00389976 /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 		DF409FFA1E84225200389976 /* TetrisGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewController.swift; sourceTree = "<group>"; };
+		DF40F9E11E9676C1001EAAA8 /* LevelResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelResult.swift; sourceTree = "<group>"; };
+		DF40F9E31E967708001EAAA8 /* PhraseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseTests.swift; sourceTree = "<group>"; };
 		DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TetrisStoryboard.storyboard; sourceTree = "<group>"; };
 		DF7CF76F1E7E9E3500C6979A /* CGRect+Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Arithmetic.swift"; sourceTree = "<group>"; };
 		DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+Coordinate.swift"; sourceTree = "<group>"; };
@@ -352,6 +356,7 @@
 		50989DC81E6D8B16009A86C8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DF40F9E11E9676C1001EAAA8 /* LevelResult.swift */,
 				DFB342701E77EB6700D2FE09 /* Coordinate.swift */,
 				DF2155241E8E3F25005A0927 /* Direction.swift */,
 				50989DC51E6D8B16009A86C8 /* GameData.swift */,
@@ -462,6 +467,7 @@
 				50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */,
 				DF9918E21E92B730004E599B /* DirectionTests.swift */,
 				DF409FF41E84160C00389976 /* GameDataFactoryTests.swift */,
+				DF40F9E31E967708001EAAA8 /* PhraseTests.swift */,
 				DF2155171E8E2335005A0927 /* PhrasesTests.swift */,
 				DF409FF61E84160C00389976 /* PlayerTests.swift */,
 				A27B6E531E90B33400825AF3 /* RealmIntegrationTests.swift */,
@@ -1097,6 +1103,7 @@
 				502A29651E925A190024336A /* Array+Equatable.swift in Sources */,
 				507AC1951E90AAB00033B4E6 /* TetrisGameViewModel.swift in Sources */,
 				DFBE8F781E9527F70036CCC6 /* GameStatisticsViewController.swift in Sources */,
+				DF40F9E21E9676C1001EAAA8 /* LevelResult.swift in Sources */,
 				DF9918D61E92B6A3004E599B /* CiHuiSwappingViewModel.swift in Sources */,
 				DF9918DC1E92B6D6004E599B /* SlidingGameViewController.swift in Sources */,
 				DFBE8F3B1E9526BE0036CCC6 /* DraggableSquareGridViewController.swift in Sources */,
@@ -1167,6 +1174,7 @@
 				50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */,
 				DF2155181E8E2335005A0927 /* PhrasesTests.swift in Sources */,
 				50717AC01E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift in Sources */,
+				DF40F9E41E967708001EAAA8 /* PhraseTests.swift in Sources */,
 				DF9918E11E92B71A004E599B /* CGPoint+ArithmeticTests.swift in Sources */,
 				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
 				DF2155291E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift in Sources */,

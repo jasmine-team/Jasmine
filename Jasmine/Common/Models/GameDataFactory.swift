@@ -45,7 +45,7 @@ class GameDataFactory {
     /// - Parameter count: numebr of characters for the chinese phrase
     /// - Returns: a string that follows NSPredicate format
     private func filterChinese(ofLength count: Int) -> String {
-        return "chinese LIKE '\(String(repeating: "?", count: count))'"
+        return "rawChinese LIKE '\(String(repeating: "?", count: count))'"
     }
 
     // Returns the length of phrases for the specified game type
