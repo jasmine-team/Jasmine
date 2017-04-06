@@ -219,7 +219,7 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
     }
 
     func getLandingCoordinate(from coordinate: Coordinate) -> Coordinate {
-        for row in (coordinate.row + 1)..<gridData.numRows {
+        for row in coordinate.row..<gridData.numRows {
             let landingCoordinate = Coordinate(row: row, col: coordinate.col)
             if canLandTile(at: landingCoordinate) {
                 return landingCoordinate

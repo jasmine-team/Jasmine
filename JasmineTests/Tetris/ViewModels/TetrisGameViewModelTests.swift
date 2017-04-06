@@ -173,6 +173,17 @@ class TetrisGameViewModelTests: RealmTestCase {
         XCTAssert(viewModel.gridData.texts.isEmpty, "Failed to destroy tiles with text containing matched phrase")
     }
 
+    func testGameEndWhenTopRowOccupied() {
+        let viewModel = TetrisGameViewModel(gameData: gameData)
+        let startCoordinate = Coordinate(row: 0, col: 0)
+        while !viewModel.gridData.hasText(at: startCoordinate) && viewModel.gameStatus != .endedWithLost {
+            let landingCoordinate = viewModel.getLandingCoordinate(from: startCoordinate)
+            _ = viewModel.landTile(at: landingCoordinate)
+            print(viewModel.gameStatus, landingCoordinate)
+        }
+        XCTAssertEqual(viewModel.gameStatus, .endedWithLost, "Game did not end when top row occupied")
+    }
+
     func testStartGame() {
         let timeUpdatedCount = timeUpdateDelegateMock.timeUpdatedCount
         let gameStatusUpdatedCount = gameStatusUpdateDelegateMock.gameStatusUpdatedCount
