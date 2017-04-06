@@ -10,7 +10,7 @@ class GridViewModel: GridViewModelProtocol {
     var gridData: TextGrid
     /// Specifies the current score of the game. If the game has not started, it will be the initial
     /// displayed score.
-    private(set) var currentScore: Int = 0 {
+    var currentScore: Int = 0 {
         didSet {
             scoreDelegate?.scoreDidUpdate()
         }
@@ -61,14 +61,24 @@ class GridViewModel: GridViewModelProtocol {
     /// Initializes the grid VM.
     ///
     /// - Parameters:
-    ///   - time: total time allowed
-    ///   - tiles: tiles in the game
-    ///   - possibleAnswers: all possible answers. The game is won if all rows in the game is in all possible answers.
-    ///   - rows: number of rows in the grid.
-    ///   - columns: number of columns in the grid.
-    init(time: TimeInterval, gameData: GameData, textGrid: TextGrid) {
+    ///   - time: the time allowed
+    ///   - gameData: the game data
+    ///   - tiles: the tiles in the game, will be shuffled
+    ///   - rows: number of rows
+    ///   - columns: number of columns
+    init(time: TimeInterval, gameData: GameData, tiles: [String?], rows: Int, columns: Int) {
+        assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
+        assert(tiles.count == rows * columns, "Number of tiles should equal numRows * numColumns")
+
+        let shuffledTiles = tiles.shuffled()
+        let grid = (0..<rows).map { row in
+            (0..<columns).map { col in
+                shuffledTiles[row * columns + col]
+            }
+        }
+
         self.gameData = gameData
-        gridData = textGrid
+        gridData = TextGrid(fromInitialGrid: grid)
 
         timer = CountDownTimer(totalTimeAllowed: time)
         timer.timerListener = gridTimerListener
@@ -78,42 +88,6 @@ class GridViewModel: GridViewModelProtocol {
     func startGame() {
         timer.startTimer(timerInterval: Constants.Game.timeInterval)
         scoreDelegate?.scoreDidUpdate()
-    }
-
-    /// Check what happens when game is won. If game is won, change game status and add score.
-    func checkCorrectTiles() {
-        var highlightedCoordinates: Set<Coordinate> = []
-        for row in 0..<gridData.numRows {
-            let rowTiles = (0..<gridData.numColumns).map { column in Coordinate(row: row, col: column) }
-            if lineIsCorrect(rowTiles) {
-                highlightedCoordinates.formUnion(rowTiles)
-            }
-        }
-        for column in 0..<gridData.numColumns {
-            let columnTiles = (0..<gridData.numRows).map { row in Coordinate(row: row, col: column) }
-            if lineIsCorrect(columnTiles) {
-                highlightedCoordinates.formUnion(columnTiles)
-            }
-        }
-
-        if highlightedCoordinates.count == gridData.count {
-            gameStatus = .endedWithWon
-            currentScore += score
-        }
-
-        if self.highlightedCoordinates != highlightedCoordinates {
-            self.highlightedCoordinates = highlightedCoordinates
-        }
-    }
-
-    /// Score for the game when it is won on the current state. To be overriden.
-    var score: Int {
-        return 0
-    }
-
-    /// Returns true iff the line given is correct. This is to be overriden.
-    func lineIsCorrect(_ line: [Coordinate]) -> Bool {
-        return false
     }
 
     /// The countdown timer for use in this ViewModel.
@@ -131,5 +105,10 @@ class GridViewModel: GridViewModelProtocol {
         default:
             break
         }
+    }
+
+    /// Returns true if and only if the given line is valid. To be overriden.
+    func lineIsCorrect(_ line: [Coordinate]) -> Bool {
+        fatalError("Classes subclassing GridViewModel need to override lineIsCorrect")
     }
 }
