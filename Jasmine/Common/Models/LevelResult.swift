@@ -3,12 +3,9 @@ import RealmSwift
 /// Simple container for information necessary at the end of every game
 class LevelResult: Object {
 
-    private static let rawLostInt = 0
-    private static let rawWonInt = 1
-
     /// Set time played at moment of creation
     private(set) dynamic var timePlayed: Date = Date()
-    private dynamic var rawGameResult: Int = -1
+    private dynamic var rawGameResult: String = ""
 
     let rawPhrases = List<Phrase>()
 
@@ -18,9 +15,9 @@ class LevelResult: Object {
 
         switch result {
         case .endedWithLost:
-            rawGameResult = LevelResult.rawLostInt
+            rawGameResult = result.rawValue
         case .endedWithWon:
-            rawGameResult = LevelResult.rawWonInt
+            rawGameResult = result.rawValue
         default:
             assertionFailure("Game result is not valid")
         }
@@ -28,15 +25,7 @@ class LevelResult: Object {
 
     /// MARK: non-persisted properties
     var gameResult: GameStatus {
-        switch rawGameResult {
-        case LevelResult.rawWonInt:
-            return .endedWithLost
-        case LevelResult.rawWonInt:
-            return .endedWithWon
-        default:
-            assertionFailure("Game result is not set")
-            return .endedWithWon
-        }
+        return GameStatus(rawValue: rawGameResult)
     }
 
     override static func ignoredProperties() -> [String] {
