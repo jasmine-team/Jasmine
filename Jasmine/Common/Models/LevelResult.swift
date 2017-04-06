@@ -25,7 +25,11 @@ class LevelResult: Object {
 
     /// MARK: non-persisted properties
     var gameResult: GameStatus {
-        return GameStatus(rawValue: rawGameResult)
+        guard let gameStatus = GameStatus(rawValue: rawGameResult) else {
+            assertionFailure("Game result is not valid")
+            return .endedWithWon
+        }
+        return gameStatus 
     }
 
     override static func ignoredProperties() -> [String] {
