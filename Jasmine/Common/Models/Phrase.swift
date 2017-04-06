@@ -20,7 +20,7 @@ class Phrase: Object {
         return "rawChinese"
     }
 
-    /// MARK: ignoredProperties
+    /// MARK: non-persisted properties
     var chinese: [String] {
         return rawChinese.components(separatedBy: "")
     }
