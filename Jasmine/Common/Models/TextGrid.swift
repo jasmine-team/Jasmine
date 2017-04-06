@@ -141,6 +141,10 @@ struct TextGrid {
         return (0..<numRows ~= coordinate.row) && (0..<numColumns ~= coordinate.col)
     }
 
+    /// Gets the coordinates in the grid that has the text in the `texts` set
+    ///
+    /// - Parameter texts: The set of texts to find in the grid
+    /// - Returns: The set of coordinates with text in `texts`
     func getCoordinates(containing texts: Set<String>) -> Set<Coordinate> {
         var coordinates: Set<Coordinate> = []
         for row in 0..<numRows {
