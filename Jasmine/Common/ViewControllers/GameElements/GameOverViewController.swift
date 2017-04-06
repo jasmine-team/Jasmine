@@ -17,6 +17,7 @@ class GameOverViewController: UIViewController {
     // MARK: - Properties
     fileprivate var gameDesriptor: GameDescriptorProtocol!
 
+    // TODO: Delete this away when SquareGridVC does not store grid data.
     fileprivate var displayedPhases: [Phrase]!
 
     // MARK: - Segue Methods
