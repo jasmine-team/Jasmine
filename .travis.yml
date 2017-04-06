@@ -1,19 +1,12 @@
 language: objective-c
-osx_image: xcode8.2
+osx_image: xcode8.3
 
 env:
     global:
         - WORKSPACE=Jasmine.xcworkspace
         - SCHEME=Jasmine
-        - SDK=iphonesimulator10.2
+        - SDK=iphonesimulator10.3
         - DESTINATION="platform=iOS Simulator,OS=latest,name=iPhone 7"
-before_install:
-    # This command will fix Travis CI duplicated simulators build issue
-    # happening while using Xcode 8.2 + iOS simulator 10.2 configuration. Be
-    # sure to check GitHub issue #7031
-    # (https://github.com/travis-ci/travis-ci/issues/7031) for updates and, as
-    # soon as the Travis team fix the issue, remove this line.
-    - xcrun simctl delete E40727B3-41FB-4D6E-B4CB-BFA87109EB12
 
 script:
     - xcodebuild test -workspace "$WORKSPACE" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -parallelizeTargets -enableCodeCoverage YES -quiet ONLY_ACTIVE_ARCH=YES
