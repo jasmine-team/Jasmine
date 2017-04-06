@@ -38,6 +38,8 @@
 		A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E711E751C930033FC5B /* Sequence+Extensions.swift */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
 		A27B6E541E90B33400825AF3 /* RealmIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B6E531E90B33400825AF3 /* RealmIntegrationTests.swift */; };
+		A2FD7A3F1E962537008C41DF /* LevelResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FD7A3E1E962537008C41DF /* LevelResult.swift */; };
+		A2FD7A411E962540008C41DF /* PhraseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FD7A401E962540008C41DF /* PhraseTests.swift */; };
 		DF2052C81E8BDD5A00D66B0B /* UIImageView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2052C71E8BDD5A00D66B0B /* UIImageView+Animation.swift */; };
 		DF2155181E8E2335005A0927 /* PhrasesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2155171E8E2335005A0927 /* PhrasesTests.swift */; };
 		DF21551A1E8E234D005A0927 /* Phrases.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2155191E8E234D005A0927 /* Phrases.swift */; };
@@ -155,6 +157,8 @@
 		A260C6311E6AB30400782103 /* JasmineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JasmineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6371E6AB30400782103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A27B6E531E90B33400825AF3 /* RealmIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmIntegrationTests.swift; sourceTree = "<group>"; };
+		A2FD7A3E1E962537008C41DF /* LevelResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelResult.swift; sourceTree = "<group>"; };
+		A2FD7A401E962540008C41DF /* PhraseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseTests.swift; sourceTree = "<group>"; };
 		B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF6F46CAE49685937742BCB /* Pods-JasmineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2052C71E8BDD5A00D66B0B /* UIImageView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animation.swift"; sourceTree = "<group>"; };
@@ -223,9 +227,9 @@
 		DFBE8F081E94FE8C0036CCC6 /* Array+EquatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+EquatableTests.swift"; sourceTree = "<group>"; };
 		DFBE8F0B1E94FEC80036CCC6 /* HighlightedUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightedUpdateDelegateMock.swift; sourceTree = "<group>"; };
 		DFBE8F0C1E94FEC80036CCC6 /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
-		DFBE8F121E94FF020036CCC6 /* BaseSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseSlidingViewModelTests.swift; path = Sliding/ViewModels/BaseSlidingViewModelTests.swift; sourceTree = "<group>"; };
-		DFBE8F131E94FF020036CCC6 /* ChengYuSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChengYuSlidingViewModelTests.swift; path = Sliding/ViewModels/ChengYuSlidingViewModelTests.swift; sourceTree = "<group>"; };
-		DFBE8F141E94FF020036CCC6 /* CiHuiSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CiHuiSlidingViewModelTests.swift; path = Sliding/ViewModels/CiHuiSlidingViewModelTests.swift; sourceTree = "<group>"; };
+		DFBE8F121E94FF020036CCC6 /* BaseSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSlidingViewModelTests.swift; sourceTree = "<group>"; };
+		DFBE8F131E94FF020036CCC6 /* ChengYuSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSlidingViewModelTests.swift; sourceTree = "<group>"; };
+		DFBE8F141E94FF020036CCC6 /* CiHuiSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiSlidingViewModelTests.swift; sourceTree = "<group>"; };
 		DFCAC7891E9393020028BCCC /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		DFCF3FC71E875D940027016E /* DiscreteFallableSquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscreteFallableSquareGridViewController.swift; sourceTree = "<group>"; };
 		DFCF3FC91E875DCB0027016E /* DraggableSquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableSquareGridViewController.swift; sourceTree = "<group>"; };
@@ -267,9 +271,9 @@
 		5047D0971E932B1000DD96BA /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				5047D09A1E932B4300DD96BA /* GameStatusUpdateDelegateMock.swift */,
 				DFBE8F0B1E94FEC80036CCC6 /* HighlightedUpdateDelegateMock.swift */,
 				DFBE8F0C1E94FEC80036CCC6 /* RealmTestCase.swift */,
-				5047D09A1E932B4300DD96BA /* GameStatusUpdateDelegateMock.swift */,
 				5047D09E1E932B7D00DD96BA /* ScoreUpdateDelegateMock.swift */,
 				5047D09C1E932B6700DD96BA /* TimeUpdateDelegateMock.swift */,
 			);
@@ -332,6 +336,7 @@
 				DF409FE21E84149F00389976 /* GameDataFactory.swift */,
 				DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */,
 				509894A21E6E6CAE00FC9CF3 /* GameType.swift */,
+				A2FD7A3E1E962537008C41DF /* LevelResult.swift */,
 				50989DC71E6D8B16009A86C8 /* Phrase.swift */,
 				DF2155191E8E234D005A0927 /* Phrases.swift */,
 				DF409FE41E8414B000389976 /* Player.swift */,
@@ -453,6 +458,7 @@
 				50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */,
 				DF9918E21E92B730004E599B /* DirectionTests.swift */,
 				DF409FF41E84160C00389976 /* GameDataFactoryTests.swift */,
+				A2FD7A401E962540008C41DF /* PhraseTests.swift */,
 				DF2155171E8E2335005A0927 /* PhrasesTests.swift */,
 				DF409FF61E84160C00389976 /* PlayerTests.swift */,
 				A27B6E531E90B33400825AF3 /* RealmIntegrationTests.swift */,
@@ -478,8 +484,8 @@
 		50F191AB1E7ADC6D00EE9A75 /* Tetris */ = {
 			isa = PBXGroup;
 			children = (
-				DFBE8F181E94FF210036CCC6 /* Support */,
 				50F191AE1E7ADC8600EE9A75 /* Models */,
+				DFBE8F181E94FF210036CCC6 /* Support */,
 				50F191AD1E7ADC8000EE9A75 /* ViewControllers */,
 				50F191AC1E7ADC7A00EE9A75 /* ViewModels */,
 			);
@@ -581,9 +587,9 @@
 		A260C6341E6AB30400782103 /* JasmineTests */ = {
 			isa = PBXGroup;
 			children = (
-				DFBE8F101E94FEE60036CCC6 /* Sliding */,
 				50F191A61E7ADC3D00EE9A75 /* Common */,
 				50F191B11E7ADCA600EE9A75 /* Flappy */,
+				DFBE8F101E94FEE60036CCC6 /* Sliding */,
 				DF9918E41E92B769004E599B /* Swapping */,
 				50F191AB1E7ADC6D00EE9A75 /* Tetris */,
 				A260C6371E6AB30400782103 /* Info.plist */,
@@ -624,10 +630,10 @@
 			isa = PBXGroup;
 			children = (
 				DFBE8EFA1E94FDC50036CCC6 /* Array+Equatable.swift */,
-				DF7960571E95545900C3C530 /* Matrix+Equatable.swift */,
 				DF9918C51E92B65F004E599B /* CGPoint+Arithmetic.swift */,
 				DF7CF76F1E7E9E3500C6979A /* CGRect+Arithmetic.swift */,
 				DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */,
+				DF7960571E95545900C3C530 /* Matrix+Equatable.swift */,
 				A2187E6D1E7511470033FC5B /* MutableCollection+Extensions.swift */,
 				A2187E711E751C930033FC5B /* Sequence+Extensions.swift */,
 				DF409FDA1E84145800389976 /* UIApplication+isFirstLaunch.swift */,
@@ -643,11 +649,11 @@
 			children = (
 				DFCF3FC71E875D940027016E /* DiscreteFallableSquareGridViewController.swift */,
 				DFCF3FC91E875DCB0027016E /* DraggableSquareGridViewController.swift */,
-				DF7CF7771E7E9ECE00C6979A /* SquareGridViewController.swift */,
 				DF7CF7751E7E9ECE00C6979A /* GameElements.storyboard */,
-				DF7CF7761E7E9ECE00C6979A /* GameStatisticsViewController.swift */,
 				DFCAC7891E9393020028BCCC /* GameOverViewController.swift */,
+				DF7CF7761E7E9ECE00C6979A /* GameStatisticsViewController.swift */,
 				DF2321511E95E03300417ED2 /* SelectableSquareGridViewController.swift */,
+				DF7CF7771E7E9ECE00C6979A /* SquareGridViewController.swift */,
 			);
 			path = GameElements;
 			sourceTree = "<group>";
@@ -679,8 +685,8 @@
 		DF9854DE1E92A9870047663D /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				DFBE8EFC1E94FDE70036CCC6 /* HighlightedUpdateDelegate.swift */,
 				DF9854DF1E92AA2F0047663D /* GameStatusUpdateDelegate.swift */,
+				DFBE8EFC1E94FDE70036CCC6 /* HighlightedUpdateDelegate.swift */,
 				DF9854E01E92AA2F0047663D /* ScoreUpdateDelegate.swift */,
 				DF9854E11E92AA2F0047663D /* TimeUpdateDelegate.swift */,
 			);
@@ -758,7 +764,7 @@
 			children = (
 				DFBE8F111E94FEF10036CCC6 /* ViewModels */,
 			);
-			name = Sliding;
+			path = Sliding;
 			sourceTree = "<group>";
 		};
 		DFBE8F111E94FEF10036CCC6 /* ViewModels */ = {
@@ -768,14 +774,14 @@
 				DFBE8F131E94FF020036CCC6 /* ChengYuSlidingViewModelTests.swift */,
 				DFBE8F141E94FF020036CCC6 /* CiHuiSlidingViewModelTests.swift */,
 			);
-			name = ViewModels;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		DFBE8F181E94FF210036CCC6 /* Support */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = Support;
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -786,7 +792,6 @@
 			buildConfigurationList = A260C6451E6AB30400782103 /* Build configuration list for PBXNativeTarget "Jasmine" */;
 			buildPhases = (
 				7E0A70CF6F2BAA3DCED4965E /* [CP] Check Pods Manifest.lock */,
-				505E073D1E7BE7CE00CEE8BF /* Synx */,
 				A260C64E1E6AB3DC00782103 /* Swiftlint Autocorrect */,
 				A260C6191E6AB30400782103 /* Sources */,
 				A260C61A1E6AB30400782103 /* Frameworks */,
@@ -937,20 +942,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		505E073D1E7BE7CE00CEE8BF /* Synx */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Synx;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which synx > /dev/null; then\n    synx \"$PROJECT_FILE_PATH\"\nelse\n    echo \"Synx is not installed!\"\nfi";
-		};
 		6C30C7D33289147D19E045E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1038,6 +1029,7 @@
 				DF2052C81E8BDD5A00D66B0B /* UIImageView+Animation.swift in Sources */,
 				507AC1951E90AAB00033B4E6 /* TetrisGameViewModel.swift in Sources */,
 				DF9854F01E92B19B0047663D /* GameDescriptorProtocol.swift in Sources */,
+				A2FD7A3F1E962537008C41DF /* LevelResult.swift in Sources */,
 				DFBE8F071E94FE6A0036CCC6 /* CiHuiSlidingViewModel.swift in Sources */,
 				DF9918D61E92B6A3004E599B /* CiHuiSwappingViewModel.swift in Sources */,
 				DF9918DC1E92B6D6004E599B /* SlidingGameViewController.swift in Sources */,
@@ -1107,6 +1099,7 @@
 				DF9918E11E92B71A004E599B /* CGPoint+ArithmeticTests.swift in Sources */,
 				DF9918ED1E92B769004E599B /* ChengYuSwappingViewModelTests.swift in Sources */,
 				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
+				A2FD7A411E962540008C41DF /* PhraseTests.swift in Sources */,
 				DF2155291E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift in Sources */,
 				DF9918EC1E92B769004E599B /* BaseSwappingViewModelTests.swift in Sources */,
 				DFBE8F0F1E94FEC80036CCC6 /* RealmTestCase.swift in Sources */,

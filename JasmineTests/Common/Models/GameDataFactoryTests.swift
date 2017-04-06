@@ -13,19 +13,19 @@ class GameDataFactoryTests: RealmTestCase {
 
     func testGameDataFactory_createGame_ciHui() {
         let phrases = [
-            Phrase(value: ["chinese": "中文"]),
-            Phrase(value: ["chinese": "刷新"]),
-            Phrase(value: ["chinese": "脱颖而出"]),
-        ]
+            Phrase(value: ["rawChinese": "中文"]),
+            Phrase(value: ["rawChinese": "刷新"]),
+            Phrase(value: ["rawChinese": "脱颖而出"]),
+            ]
         testGameDataFactory_createGame_generic(phrases: phrases, type: .ciHui, count: 2)
     }
 
     func testGameDataFactory_createPhrases_chengYu() {
         let phrases = [
-            Phrase(value: ["chinese": "刷新"]),
-            Phrase(value: ["chinese": "脱颖而出"]),
-            Phrase(value: ["chinese": "马马虎虎"]),
-        ]
+            Phrase(value: ["rawChinese": "刷新"]),
+            Phrase(value: ["rawChinese": "脱颖而出"]),
+            Phrase(value: ["rawChinese": "马马虎虎"]),
+            ]
         testGameDataFactory_createGame_generic(phrases: phrases, type: .chengYu, count: 2)
     }
 

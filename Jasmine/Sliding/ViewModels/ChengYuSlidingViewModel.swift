@@ -9,7 +9,7 @@ class ChengYuSlidingViewModel: BaseSlidingViewModel {
     ///   - rows: rows in the game
     init(time: TimeInterval, gameData: GameData, rows: Int) {
         let phrases = gameData.phrases.next(count: rows)
-        let tiles = phrases.flatMap { $0.chinese.characters.map { char in String(char) } }
+        let tiles = phrases.flatMap { $0.chinese }
         let tilesExceptLast = tiles.enumerated().map { (idx, tile) in
             (idx == tiles.count - 1) ? nil : tile
         }
