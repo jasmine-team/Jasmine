@@ -99,14 +99,4 @@ class BaseSwappingViewModelTests: XCTestCase {
             }
         }
     }
-
-    func testScore() {
-        XCTAssertEqual(2_300, viewModel.score)
-        viewModel.swapTiles(Coordinate(row: 0, col: 0), and: Coordinate(row: 0, col: 1))
-        XCTAssertEqual(2_250, viewModel.score)
-
-        viewModel.startGame()
-        RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
-        XCTAssert(abs(2_150 - viewModel.score) <= 5)
-    }
 }

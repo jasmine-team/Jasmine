@@ -1,37 +1,10 @@
 import Foundation
 
 class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
+    typealias Score = Constants.Game.Swapping.Score
+
     /// The number of moves currently done.
     var moves: Int = 0
-
-    /// Initializes the grid VM.
-    ///
-    /// - Parameters:
-    ///   - time: total time allowed
-    ///   - tiles: tiles in the game
-    ///   - possibleAnswers: all possible answers. The game is won if all rows in the game is in all possible answers.
-    ///   - rows: number of rows in the grid.
-    ///   - columns: number of columns in the grid.
-    init(time: TimeInterval, gameData: GameData, tiles: [String], rows: Int, columns: Int) {
-        assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
-        assert(tiles.count == rows * columns, "Number of tiles should equal numRows * numColumns")
-
-        let shuffledTiles = tiles.shuffled()
-        let grid = (0..<rows).map { row in
-            (0..<columns).map { col in
-                shuffledTiles[row * columns + col]
-            }
-        }
-
-        super.init(time: time, gameData: gameData, textGrid: TextGrid(fromInitialGrid: grid))
-    }
-
-    /// Score for the game when it is won on the current state.
-    override var score: Int {
-        return max(Constants.Game.Swapping.Score.base +
-            Int(timeRemaining * Constants.Game.Swapping.Score.multiplierFromTime)
-            - moves * Constants.Game.Swapping.Score.multiplierFromMoves, 0)
-    }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to swap
     /// the specified two tiles.
@@ -54,8 +27,39 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
         gridData.swap(coord1, coord2)
         moves += 1
 
-        checkCorrectTiles()
-
         return true
+    }
+
+    /// Check what happens when game is won. If game is won, change game status and add score.
+    func checkCorrectTiles() {
+        var highlightedCoordinates: Set<Coordinate> = []
+        var score = 0
+
+        for row in 0..<gridData.numRows {
+            let rowTiles = (0..<gridData.numColumns).map { column in Coordinate(row: row, col: column) }
+            if lineIsCorrect(rowTiles) {
+                highlightedCoordinates.formUnion(rowTiles)
+                score += Score.line
+            }
+        }
+        for column in 0..<gridData.numColumns {
+            let columnTiles = (0..<gridData.numRows).map { row in Coordinate(row: row, col: column) }
+            if lineIsCorrect(columnTiles) {
+                highlightedCoordinates.formUnion(columnTiles)
+                score += Score.line
+            }
+        }
+
+        if self.highlightedCoordinates != highlightedCoordinates {
+            self.highlightedCoordinates = highlightedCoordinates
+        }
+
+        if highlightedCoordinates.count == gridData.count {
+            gameStatus = .endedWithWon
+            score += max(Score.win + Int(timeRemaining * Score.multiplierFromTime) -
+                moves * Score.multiplierFromMoves, 0)
+        }
+
+        currentScore = score
     }
 }

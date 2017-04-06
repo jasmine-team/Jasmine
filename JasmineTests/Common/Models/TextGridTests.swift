@@ -15,6 +15,26 @@ class TextGridTests: XCTestCase {
         }
     }
 
+    func testInitFromInitialRow() {
+        let initialRow = ["a", "b", "c", "d", nil, "f", "g"]
+        let grid = TextGrid(fromInitialRow: initialRow)
+        XCTAssertEqual(grid.numRows, 1, "Number of rows is wrong.")
+        XCTAssertEqual(grid.numColumns, 7, "Number of columns is wrong.")
+        for col in 0..<7 {
+            XCTAssertEqual(initialRow[col], grid[Coordinate(row: 0, col: col)], "Value is wrong.")
+        }
+    }
+
+    func testInitFromInitialCol() {
+        let initialCol = ["a", "b", "c", "d", nil, "f", "g"]
+        let grid = TextGrid(fromInitialCol: initialCol)
+        XCTAssertEqual(grid.numRows, 7, "Number of rows is wrong.")
+        XCTAssertEqual(grid.numColumns, 1, "Number of columns is wrong.")
+        for row in 0..<7 {
+            XCTAssertEqual(initialCol[row], grid[Coordinate(row: row, col: 0)], "Value is wrong.")
+        }
+    }
+
     func testNumRowsColumns() {
         let initialGrid = [["a", nil, "c"], ["d", "e", "f"], ["g", "h", nil], [nil, nil, nil]]
         let grid = TextGrid(fromInitialGrid: initialGrid)

@@ -19,7 +19,8 @@ enum Constants {
             }
 
             enum Score {
-                static let base = 2000
+                static let line = 1_000
+                static let win = 5_000
                 static let multiplierFromTime: Double = 100
                 static let multiplierFromMoves = 50
             }
@@ -42,7 +43,8 @@ enum Constants {
             }
 
             enum Score {
-                static let base = 10000
+                static let line = 1_000
+                static let win = 5_000
                 static let multiplierFromTime: Double = 100
                 static let multiplierFromMoves = 25
             }
@@ -75,6 +77,14 @@ enum Constants {
             static let upcomingPhrasesCount = 2
 
             static let tileFallInterval: TimeInterval = 0.5
+        }
+
+        enum GameOver {
+            static let titleLose = "GAME OVER"
+            static let subtitleLose = "PLEASE TRY AGAIN NEXT TIME"
+
+            static let titleWin = "CONGRATULATIONS"
+            static let subtitleWin = "YOU HAVE CLEARED THIS LEVEL"
         }
     }
 

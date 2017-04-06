@@ -1,6 +1,8 @@
 import Foundation
 
 class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
+    typealias Score = Constants.Game.Sliding.Score
+
     /// The number of moves currently done.
     var moves: Int = 0
 
@@ -13,28 +15,6 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
                 timer.stopTimer()
             }
         }
-    }
-
-    /// Initializes the grid VM.
-    ///
-    /// - Parameters:
-    ///   - time: total time allowed
-    ///   - tiles: tiles in the game
-    ///   - possibleAnswers: all possible answers. The game is won if all rows in the game is in all possible answers.
-    ///   - rows: number of rows in the grid.
-    ///   - columns: number of columns in the grid.
-    init(time: TimeInterval, gameData: GameData, tiles: [String?], rows: Int, columns: Int) {
-        assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
-        assert(tiles.count == rows * columns, "Number of tiles should equal numRows * numColumns")
-
-        let shuffledTiles = tiles.shuffled()
-        let grid = (0..<rows).map { row in
-            (0..<columns).map { col in
-                shuffledTiles[row * columns + col]
-            }
-        }
-
-        super.init(time: time, gameData: gameData, textGrid: TextGrid(fromInitialGrid: grid))
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to slide
@@ -57,16 +37,8 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
 
         gridData.swap(start, end)
         moves += 1
-        checkCorrectTiles()
 
         return true
-    }
-
-    /// Score for the game when it is won on the current state.
-    override var score: Int {
-        return max(Constants.Game.Sliding.Score.base +
-            Int(timeRemaining * Constants.Game.Sliding.Score.multiplierFromTime)
-            - moves * Constants.Game.Sliding.Score.multiplierFromMoves, 0)
     }
 
     /// Ask the view model where the specified tile from the coordinate can be slided to.
@@ -97,4 +69,37 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
         return result
     }
 
+    /// Check what happens when game is won. If game is won, change game status and add score.
+    func checkCorrectTiles() {
+        var highlightedCoordinates: Set<Coordinate> = []
+        var score = 0
+
+        for row in 0..<gridData.numRows {
+            let rowTiles = (0..<gridData.numColumns).map { column in Coordinate(row: row, col: column) }
+            if lineIsCorrect(rowTiles) {
+                highlightedCoordinates.formUnion(rowTiles)
+                score += Score.line
+            }
+        }
+        for column in 0..<gridData.numColumns {
+            let columnTiles = (0..<gridData.numRows).map { row in Coordinate(row: row, col: column) }
+            if lineIsCorrect(columnTiles) {
+                highlightedCoordinates.formUnion(columnTiles)
+                score += Score.line
+            }
+        }
+
+        if self.highlightedCoordinates != highlightedCoordinates {
+            self.highlightedCoordinates = highlightedCoordinates
+        }
+
+        // In the sliding game, it is enough to have (rows - 1) rows correct
+        if highlightedCoordinates.count == gridData.count - Constants.Game.Sliding.columns {
+            gameStatus = .endedWithWon
+            score += max(Score.win + Int(timeRemaining * Score.multiplierFromTime) -
+                moves * Score.multiplierFromMoves, 0)
+        }
+
+        currentScore = score
+    }
 }

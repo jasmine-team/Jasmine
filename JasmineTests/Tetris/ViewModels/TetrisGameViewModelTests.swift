@@ -14,7 +14,7 @@ class TetrisGameViewModelTests: RealmTestCase {
 
     override func setUp() {
         super.setUp()
-        let phrases = testPhrases.map { Phrase(value: ["chinese": $0.joined()]) }
+        let phrases = testPhrases.map { Phrase(value: ["rawChinese": $0.joined()]) }
         gameData = createGameData(phrases: phrases, difficulty: 1, type: .chengYu)
         viewModel = TetrisGameViewModel(gameData: gameData)
         viewModel.timeDelegate = timeUpdateDelegateMock
@@ -24,7 +24,7 @@ class TetrisGameViewModelTests: RealmTestCase {
 
     func testInit() {
         XCTAssert(testPhrases.sorted { $0.joined() > $1.joined() } ==
-                  viewModel.phrasesTested.map { $0.chinese.characters.map { String($0) } }
+                  viewModel.phrasesTested.map { $0.chinese }
                                          .sorted { $0.joined() > $1.joined() },
                   "ViewModel phrasesTested on init is not correct")
         XCTAssertEqual(viewModel.currentScore, 0,

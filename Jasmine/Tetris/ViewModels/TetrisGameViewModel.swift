@@ -131,7 +131,7 @@ class TetrisGameViewModel {
                 gameData.phrases.next()
             }
             phrasesTested.formUnion(newPhrases)
-            nextTexts += newPhrases.map { $0.chinese.characters.map { String($0) } }.flatMap { $0 }
+            nextTexts += newPhrases.map { $0.chinese }.flatMap { $0 }
         }
         let randInt = Random.integer(toExclusive: nextTexts.count)
         return nextTexts.remove(at: randInt)

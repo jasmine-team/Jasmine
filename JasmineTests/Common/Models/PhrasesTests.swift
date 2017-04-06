@@ -4,9 +4,9 @@ import XCTest
 class PhrasesTests: RealmTestCase {
 
     let listOfPhrases = [
-        Phrase(value: ["chinese": "中文"]),
-        Phrase(value: ["chinese": "汉语"]),
-        Phrase(value: ["chinese": "电脑"]),
+        Phrase(value: ["rawChinese": "中文"]),
+        Phrase(value: ["rawChinese": "汉语"]),
+        Phrase(value: ["rawChinese": "电脑"]),
     ]
     var phrases: Phrases!
 
@@ -14,7 +14,7 @@ class PhrasesTests: RealmTestCase {
         super.setUp()
         listOfPhrases.forEach(save)
         let phraseResults = realm.objects(Phrase.self)
-        guard let phraseLength = listOfPhrases.first?.chinese.characters.count else {
+        guard let phraseLength = listOfPhrases.first?.chinese.count else {
             fatalError("Failed to get phrase length")
         }
         phrases = Phrases(phraseResults, range: 0..<phraseResults.count, phraseLength: phraseLength)
