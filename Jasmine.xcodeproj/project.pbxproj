@@ -99,7 +99,6 @@
 		DFBE8F061E94FE6A0036CCC6 /* ChengYuSlidingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F031E94FE6A0036CCC6 /* ChengYuSlidingViewModel.swift */; };
 		DFBE8F071E94FE6A0036CCC6 /* CiHuiSlidingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F041E94FE6A0036CCC6 /* CiHuiSlidingViewModel.swift */; };
 		DFBE8F091E94FE8C0036CCC6 /* Array+EquatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F081E94FE8C0036CCC6 /* Array+EquatableTests.swift */; };
-		DFBE8F0D1E94FEC80036CCC6 /* GridViewModelMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F0A1E94FEC80036CCC6 /* GridViewModelMocks.swift */; };
 		DFBE8F0E1E94FEC80036CCC6 /* HighlightedUpdateDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F0B1E94FEC80036CCC6 /* HighlightedUpdateDelegateMock.swift */; };
 		DFBE8F0F1E94FEC80036CCC6 /* RealmTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F0C1E94FEC80036CCC6 /* RealmTestCase.swift */; };
 		DFBE8F151E94FF020036CCC6 /* BaseSlidingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F121E94FF020036CCC6 /* BaseSlidingViewModelTests.swift */; };
@@ -220,7 +219,6 @@
 		DFBE8F031E94FE6A0036CCC6 /* ChengYuSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSlidingViewModel.swift; sourceTree = "<group>"; };
 		DFBE8F041E94FE6A0036CCC6 /* CiHuiSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiSlidingViewModel.swift; sourceTree = "<group>"; };
 		DFBE8F081E94FE8C0036CCC6 /* Array+EquatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+EquatableTests.swift"; sourceTree = "<group>"; };
-		DFBE8F0A1E94FEC80036CCC6 /* GridViewModelMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModelMocks.swift; sourceTree = "<group>"; };
 		DFBE8F0B1E94FEC80036CCC6 /* HighlightedUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightedUpdateDelegateMock.swift; sourceTree = "<group>"; };
 		DFBE8F0C1E94FEC80036CCC6 /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
 		DFBE8F121E94FF020036CCC6 /* BaseSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseSlidingViewModelTests.swift; path = Sliding/ViewModels/BaseSlidingViewModelTests.swift; sourceTree = "<group>"; };
@@ -267,7 +265,6 @@
 		5047D0971E932B1000DD96BA /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				DFBE8F0A1E94FEC80036CCC6 /* GridViewModelMocks.swift */,
 				DFBE8F0B1E94FEC80036CCC6 /* HighlightedUpdateDelegateMock.swift */,
 				DFBE8F0C1E94FEC80036CCC6 /* RealmTestCase.swift */,
 				5047D09A1E932B4300DD96BA /* GameStatusUpdateDelegateMock.swift */,
@@ -1100,7 +1097,6 @@
 				DF9918E31E92B730004E599B /* DirectionTests.swift in Sources */,
 				50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */,
 				5047D09B1E932B4300DD96BA /* GameStatusUpdateDelegateMock.swift in Sources */,
-				DFBE8F0D1E94FEC80036CCC6 /* GridViewModelMocks.swift in Sources */,
 				DF2155181E8E2335005A0927 /* PhrasesTests.swift in Sources */,
 				50717AC01E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift in Sources */,
 				5047D09F1E932B7D00DD96BA /* ScoreUpdateDelegateMock.swift in Sources */,
