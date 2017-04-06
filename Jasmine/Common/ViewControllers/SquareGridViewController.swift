@@ -31,6 +31,13 @@ class SquareGridViewController: UIViewController {
     /// Specifies the amount of space between each cell.
     fileprivate var cellSpacing: CGFloat = 0
 
+    /// Specifies the custom size of each tile. If nil, implies that a square is desired.
+    fileprivate var customSize: CGSize?
+
+    fileprivate var isScrollable = false
+
+    fileprivate var shouldClipToBounds = false
+
     /// A lazily computed property that gives all the coordinates that is used in this view.
     var allCoordinates: Set<Coordinate> {
         var outcome: Set<Coordinate> = []
@@ -79,9 +86,29 @@ class SquareGridViewController: UIViewController {
     /// - Parameters:
     ///   - initialGridData: initial set of data to be displayed in this view.
     ///   - space: the space between the tiles in the grid view controller.
+    ///   - size: custom size per cell in this view.
+    /// - Postcondition:
+    ///   - produces a grid view that is scrollable, and clipped (since it is scrollable)
+    func segueScrollableWith(_ initialGridData: TextGrid,
+                             withSpace space: CGFloat, customSize: CGSize) {
+
+        self.gridDataCache = initialGridData
+        self.cellSpacing = space
+        self.customSize = customSize
+        self.isScrollable = true
+        self.shouldClipToBounds = true
+    }
+
+    /// Load the view controller with initial dataset in this collection view.
+    ///
+    /// - Parameters:
+    ///   - initialGridData: initial set of data to be displayed in this view.
+    ///   - space: the space between the tiles in the grid view controller.
     func segueWith(_ initialGridData: TextGrid, withSpace space: CGFloat) {
         self.gridDataCache = initialGridData
         self.cellSpacing = space
+        self.isScrollable = false
+        self.shouldClipToBounds = false
     }
 
     /// Load the view controller with initial dataset in this collection view, with standard spacing.
@@ -177,8 +204,8 @@ class SquareGridViewController: UIViewController {
     private func initCollectionView() {
         gridCollectionView.delegate = self
         gridCollectionView.dataSource = self
-        gridCollectionView.isScrollEnabled = false
-        gridCollectionView.clipsToBounds = false
+        gridCollectionView.isScrollEnabled = isScrollable
+        gridCollectionView.clipsToBounds = shouldClipToBounds
         gridCollectionView.backgroundColor = UIColor.clear
         gridCollectionView.register(
             SquareTileViewCell.self,
@@ -231,8 +258,11 @@ extension SquareGridViewController: UICollectionViewDelegateFlowLayout {
 
     /// Computes the size of a cell.
     fileprivate var cellSize: CGSize {
-        let viewSize = gridCollectionView.bounds.size
+        if let customSize = customSize {
+            return customSize
+        }
 
+        let viewSize = gridCollectionView.bounds.size
         let spacing = cellSpacing
         let numColSpacing = CGFloat(numCols - 1)
         let numRowSpacing = CGFloat(numRows - 1)
