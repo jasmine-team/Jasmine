@@ -22,10 +22,10 @@ class CiHuiSlidingViewModel: BaseSlidingViewModel {
         }
 
         super.init(time: time, gameData: gameData, tiles: tilesExceptLast,
-                   rows: rows, columns: Constants.Game.Sliding.columns)
+                   rows: rows, columns: GameConstants.Sliding.columns)
 
-        gameTitle = Constants.Game.Sliding.CiHui.gameTitle
-        gameInstruction = Constants.Game.Sliding.CiHui.gameInstruction
+        gameTitle = GameConstants.Sliding.CiHui.gameTitle
+        gameInstruction = GameConstants.Sliding.CiHui.gameInstruction
 
         var validPhrases = phrases
         validPhrases.removeLast()
