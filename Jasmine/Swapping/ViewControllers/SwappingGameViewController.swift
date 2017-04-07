@@ -82,7 +82,7 @@ class SwappingGameViewController: UIViewController {
         case .ended:
             handleTileLanding(at: position)
         default:
-            break
+            handleTileFailedLanding()
         }
     }
 
@@ -147,7 +147,7 @@ fileprivate extension SwappingGameViewController {
     }
 
     /// Helper method to let the dragged tile to return to its original position.
-    private func handleTileFailedLanding() {
+    fileprivate func handleTileFailedLanding() {
         guard let tile = draggingTile else {
             return
         }

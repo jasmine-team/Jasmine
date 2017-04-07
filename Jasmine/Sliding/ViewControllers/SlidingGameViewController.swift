@@ -117,19 +117,19 @@ fileprivate extension SlidingGameViewController {
         guard let movingTile = movingTile else {
             return
         }
+        self.movingTile = nil
 
         func helperSnapTile(toCoord coord: Coordinate) {
             slidingGridView.snapDetachedTile(movingTile.tile, toCoordinate: coord) {
                 self.slidingGridView.reattachDetachedTile(movingTile.tile)
-                self.movingTile = nil
             }
         }
 
         guard let endingCoord = slidingGridView.getCoordinate(at: movingTile.tile.center),
-            viewModel.slideTile(from: movingTile.fromCoord, to: endingCoord) else {
+              viewModel.slideTile(from: movingTile.fromCoord, to: endingCoord) else {
 
-                helperSnapTile(toCoord: movingTile.fromCoord)
-                return
+            helperSnapTile(toCoord: movingTile.fromCoord)
+            return
         }
         helperSnapTile(toCoord: endingCoord)
     }
