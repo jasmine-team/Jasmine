@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0017D0DC1E97CAD0006940A8 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0017D0DB1E97CAD0006940A8 /* GameKit.framework */; };
 		005D4DDE1E9418F500E8DD0B /* Matrix+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D4DDD1E9418F500E8DD0B /* Matrix+Equatable.swift */; };
+		008294431E977A8A0053ED07 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008294421E977A8A0053ED07 /* SettingsViewController.swift */; };
 		0CF9D2BB3EBC822ACB7FF766 /* Pods_Jasmine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */; };
 		4EA886212AABEB7ED888C04C /* Pods_JasmineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */; };
 		5007FD121E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007FD111E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift */; };
@@ -136,7 +138,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0017D0DB1E97CAD0006940A8 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		005D4DDD1E9418F500E8DD0B /* Matrix+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Matrix+Equatable.swift"; sourceTree = "<group>"; };
+		008294421E977A8A0053ED07 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasmine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
 		5007FD111E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightedUpdateDelegateMock.swift; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CF9D2BB3EBC822ACB7FF766 /* Pods_Jasmine.framework in Frameworks */,
+				0017D0DC1E97CAD0006940A8 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +292,7 @@
 		4F925529F1FCEF5E5A4CE750 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0017D0DB1E97CAD0006940A8 /* GameKit.framework */,
 				3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */,
 				B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */,
 				5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */,
@@ -868,6 +874,7 @@
 		DFBE8F841E95330F0036CCC6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				008294421E977A8A0053ED07 /* SettingsViewController.swift */,
 				DFBE8F871E9533510036CCC6 /* SettingsStoryboard.storyboard */,
 			);
 			path = ViewControllers;
@@ -932,6 +939,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = QX6E2SX99X;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 					A260C6301E6AB30400782103 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1142,6 +1154,7 @@
 				DF9918D41E92B6A3004E599B /* BaseSwappingViewModel.swift in Sources */,
 				DF9918D71E92B6A3004E599B /* SwappingViewModelProtocol.swift in Sources */,
 				DFBE8F7B1E9527F70036CCC6 /* GridViewModelProtocol.swift in Sources */,
+				008294431E977A8A0053ED07 /* SettingsViewController.swift in Sources */,
 				50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */,
 				DFBE8F761E9527F70036CCC6 /* TimeUpdateDelegate.swift in Sources */,
 				DF9918C61E92B65F004E599B /* CGPoint+Arithmetic.swift in Sources */,
