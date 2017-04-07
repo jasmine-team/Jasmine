@@ -12,8 +12,12 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
     var onFallingTileLanded: ((Coordinate) -> Void)?
 
     // MARK: - Properties
-    /// Stores the current falling tiles. Empty implies that no tile is falling currently.
-    private(set) var fallingTile: SquareTileView?
+    /// Gets the current falling tiles. Empty implies that no tile is falling currently.
+    var fallingTile: SquareTileView? {
+        get {
+            return detachedTiles.first
+        }
+    }
 
     /// Returns true if there is a falling tile.
     var hasFallingTile: Bool {
@@ -67,19 +71,14 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
     ///   - there is no existing falling tile, else results in no-op.
     ///   - the coordinate is valid (within grid boundary) and is true for 
     ///     `canRepositionDetachedTileToCoord`.
-    /// - Postcondition:
-    ///   - `onFallingTileRepositioned` is called as the tile is initially placed.
     func setFallingTile(withData data: String, toCoord coordinate: Coordinate) {
         guard !hasFallingTile else {
-            assertionFailure("A falling tile is still present!")
             return
         }
-        guard let view = addDetachedTile(withData: data, toCoord: coordinate) else {
+        guard addDetachedTile(withData: data, toCoord: coordinate) != nil else {
             assertionFailure("A tile has failed to generate at \(coordinate)")
             return
         }
-        self.fallingTile = view
-        self.onFallingTileRepositioned?()
     }
 
     /// Lands the current falling tile, and attaches it to the grid.
@@ -90,7 +89,6 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
         }
         snapDetachedTile(fallingTile) {
             self.reattachDetachedTile(fallingTile)
-            self.fallingTile = nil
             self.onFallingTileLanded?(coordinate)
         }
     }

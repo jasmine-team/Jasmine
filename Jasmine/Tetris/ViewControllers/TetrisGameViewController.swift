@@ -8,6 +8,8 @@ class TetrisGameViewController: UIViewController {
 
     fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
 
+    fileprivate static let segueDelay = 0.5
+
     /// Denotes the delay in animation between explosion and falling.
     fileprivate static let animationDelay = 0.5
 
@@ -177,8 +179,8 @@ class TetrisGameViewController: UIViewController {
 
     // MARK: - Helper Methods
     private func setFirstUpcomingTileStyle() {
-        tetrisUpcomingTilesView.tileProperties[.origin] = { (tile: SquareTileView) in
-            tile.textColor = Constants.Theme.secondaryColor
+        tetrisUpcomingTilesView.tileProperties[.origin] = { tile in
+            tile.shouldHighlight = true
         }
     }
 }
@@ -238,7 +240,12 @@ extension TetrisGameViewController: GameStatusUpdateDelegate {
 
     /// Tells the implementor of the delegate that the game status has been updated.
     func gameStatusDidUpdate() {
-        if viewModel.gameStatus.hasGameEnded {
+        guard viewModel.gameStatus.hasGameEnded else {
+            return
+        }
+
+        tetrisGameAreaView.pauseFallingTiles()
+        DispatchQueue.main.asyncAfter(deadline: .now() + TetrisGameViewController.segueDelay) {
             self.performSegue(withIdentifier: TetrisGameViewController.segueToGameOverView,
                               sender: nil)
         }
