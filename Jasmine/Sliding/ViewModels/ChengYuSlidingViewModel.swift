@@ -15,10 +15,10 @@ class ChengYuSlidingViewModel: BaseSlidingViewModel {
         }
 
         super.init(time: time, gameData: gameData, tiles: tilesExceptLast,
-                   rows: rows, columns: Constants.Game.Sliding.columns)
+                   rows: rows, columns: GameConstants.Sliding.columns)
 
-        gameTitle = Constants.Game.Sliding.ChengYu.gameTitle
-        gameInstruction = Constants.Game.Sliding.ChengYu.gameInstruction
+        gameTitle = GameConstants.Sliding.ChengYu.gameTitle
+        gameInstruction = GameConstants.Sliding.ChengYu.gameInstruction
 
         var validPhrases = phrases
         validPhrases.removeLast()

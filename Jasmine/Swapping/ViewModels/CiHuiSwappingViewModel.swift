@@ -19,10 +19,10 @@ class CiHuiSwappingViewModel: BaseSwappingViewModel {
         }
 
         super.init(time: time, gameData: gameData, tiles: tiles,
-                   rows: numberOfPhrases, columns: Constants.Game.Swapping.columns)
+                   rows: numberOfPhrases, columns: GameConstants.Swapping.columns)
 
-        gameTitle = Constants.Game.Swapping.CiHui.gameTitle
-        gameInstruction = Constants.Game.Swapping.CiHui.gameInstruction
+        gameTitle = GameConstants.Swapping.CiHui.gameTitle
+        gameInstruction = GameConstants.Swapping.CiHui.gameInstruction
 
         phrasesTested = Set(phrases)
     }

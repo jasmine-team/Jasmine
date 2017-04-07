@@ -58,12 +58,12 @@ class GameOverViewController: UIViewController {
         self.scoreLabel.text = "\(gameDesriptor.currentScore)"
 
         if gameDesriptor.gameStatus == .endedWithWon {
-            self.gameOverTitle.text = Constants.Game.GameOver.titleWin
-            self.gameOverSubtitle.text = Constants.Game.GameOver.subtitleWin
+            self.gameOverTitle.text = GameConstants.GameOver.titleWin
+            self.gameOverSubtitle.text = GameConstants.GameOver.subtitleWin
 
         } else if gameDesriptor.gameStatus == .endedWithLost {
-            self.gameOverTitle.text = Constants.Game.GameOver.titleLose
-            self.gameOverSubtitle.text = Constants.Game.GameOver.subtitleLose
+            self.gameOverTitle.text = GameConstants.GameOver.titleLose
+            self.gameOverSubtitle.text = GameConstants.GameOver.subtitleLose
 
         } else {
             assertionFailure("Game must be concluded in order to view this screen.")
