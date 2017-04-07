@@ -55,6 +55,9 @@
 		A2FD7AE31E973F20008C41DF /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A2FD7AE21E973F20008C41DF /* test.mp3 */; };
 		A2FD7AE51E973F36008C41DF /* AVAudioPlayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FD7AE41E973F36008C41DF /* AVAudioPlayer+Extensions.swift */; };
 		A2FD7AE91E974D50008C41DF /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FD7AE81E974D50008C41DF /* GameMode.swift */; };
+		A2FD7AEE1E974FC3008C41DF /* dog_days.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A2FD7AEB1E974FC3008C41DF /* dog_days.mp3 */; };
+		A2FD7AEF1E974FC3008C41DF /* green_star.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A2FD7AEC1E974FC3008C41DF /* green_star.mp3 */; };
+		A2FD7AF01E974FC3008C41DF /* grid.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A2FD7AED1E974FC3008C41DF /* grid.mp3 */; };
 		DF2052C81E8BDD5A00D66B0B /* UIImageView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2052C71E8BDD5A00D66B0B /* UIImageView+Animation.swift */; };
 		DF2155181E8E2335005A0927 /* PhrasesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2155171E8E2335005A0927 /* PhrasesTests.swift */; };
 		DF21551A1E8E234D005A0927 /* Phrases.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2155191E8E234D005A0927 /* Phrases.swift */; };
@@ -183,6 +186,9 @@
 		A2FD7AE21E973F20008C41DF /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 		A2FD7AE41E973F36008C41DF /* AVAudioPlayer+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Extensions.swift"; sourceTree = "<group>"; };
 		A2FD7AE81E974D50008C41DF /* GameMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
+		A2FD7AEB1E974FC3008C41DF /* dog_days.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dog_days.mp3; path = Common/Sounds/dog_days.mp3; sourceTree = "<group>"; };
+		A2FD7AEC1E974FC3008C41DF /* green_star.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = green_star.mp3; path = Common/Sounds/green_star.mp3; sourceTree = "<group>"; };
+		A2FD7AED1E974FC3008C41DF /* grid.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = grid.mp3; path = Common/Sounds/grid.mp3; sourceTree = "<group>"; };
 		B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF6F46CAE49685937742BCB /* Pods-JasmineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2052C71E8BDD5A00D66B0B /* UIImageView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animation.swift"; sourceTree = "<group>"; };
@@ -390,6 +396,7 @@
 		50989DCD1E6D8B16009A86C8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A2FD7AEA1E974FAD008C41DF /* Sounds */,
 				DF7CF76E1E7E9E2B00C6979A /* Extensions */,
 				50989DC41E6D8B16009A86C8 /* Helpers */,
 				50989DC81E6D8B16009A86C8 /* Models */,
@@ -615,6 +622,17 @@
 				A2FD7AE21E973F20008C41DF /* test.mp3 */,
 			);
 			path = JasmineTests;
+			sourceTree = "<group>";
+		};
+		A2FD7AEA1E974FAD008C41DF /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				A2FD7AEB1E974FC3008C41DF /* dog_days.mp3 */,
+				A2FD7AEC1E974FC3008C41DF /* green_star.mp3 */,
+				A2FD7AED1E974FC3008C41DF /* grid.mp3 */,
+			);
+			name = Sounds;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		DF21551B1E8E237F005A0927 /* Sliding */ = {
@@ -941,15 +959,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2FD7AEF1E974FC3008C41DF /* green_star.mp3 in Resources */,
 				DFBE8F801E9528100036CCC6 /* CommonsStoryboard.storyboard in Resources */,
 				DF9918DB1E92B6D6004E599B /* SlidingGameStoryboard.storyboard in Resources */,
 				DFBE8F771E9527F70036CCC6 /* GameElements.storyboard in Resources */,
 				DF409FEC1E8415AB00389976 /* prebundled.realm in Resources */,
 				A260C6281E6AB30400782103 /* Assets.xcassets in Resources */,
+				A2FD7AEE1E974FC3008C41DF /* dog_days.mp3 in Resources */,
 				DFBE8F201E951FC00036CCC6 /* Main.storyboard in Resources */,
 				DFBE8F881E9533510036CCC6 /* SettingsStoryboard.storyboard in Resources */,
 				DFBE8F251E9520450036CCC6 /* LevelSelectionStoryboard.storyboard in Resources */,
 				DF9918D31E92B6A3004E599B /* SwappingStoryboard.storyboard in Resources */,
+				A2FD7AF01E974FC3008C41DF /* grid.mp3 in Resources */,
 				DF2321581E961CA300417ED2 /* ProfileStoryboard.storyboard in Resources */,
 				DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */,
 				DFBE8F821E9528370036CCC6 /* LaunchScreen.storyboard in Resources */,

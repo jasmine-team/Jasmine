@@ -59,8 +59,6 @@ class AVAudioPlayerExtensionsTests: XCTestCase {
         advanceTimeByHalf(withAdditional: 0.2)
         XCTAssertEqualWithAccuracy(player.volume, Volume.max, accuracy: finalDurationAllowance,
                                    "Player volume is not max after duration has passed")
-
-        XCTAssertTrue(player.isPlaying, "Player is not playing after fade in")
     }
 
     func testfadeOut() {
