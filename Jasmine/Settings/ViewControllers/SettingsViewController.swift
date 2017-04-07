@@ -48,17 +48,18 @@ class SettingsViewController: UIViewController {
 
     private func promptSignIn() -> Bool {
         let localPlayer = GKLocalPlayer.localPlayer()
-        if localPlayer.authenticateHandler == nil {
-            localPlayer.authenticateHandler = { viewController, error in
-                if let viewController = viewController {
-                    self.present(viewController, animated: true)
-                } else {
-                    self.setSignInButtonText()
-                }
-            }
-            return true
+        guard localPlayer.authenticateHandler == nil else {
+            return false
         }
-        return false
+
+        localPlayer.authenticateHandler = { viewController, error in
+            if let viewController = viewController {
+                self.present(viewController, animated: true)
+            } else {
+                self.setSignInButtonText()
+            }
+        }
+        return true
     }
 
     private func showAlert(title: String, message: String) {
