@@ -126,6 +126,31 @@ enum Constants {
 
     }
 
+    enum Sound {
+        enum Volume {
+            static let min: Float = 0.0
+            static let max: Float = 1.0
+            static let range = min...max
+        }
+
+        enum Background: String {
+            static let allValues = [greenStar, dogDays]
+            static let defaultPlaylist = [greenStar, dogDays]
+
+            case greenStar = "green_star.mp3"
+            case dogDays = "dog_days.mp3"
+        }
+
+        enum Effect: String {
+            /// Enable max of 5 effect sounds to be played at the same time
+            static let concurrentLimit = 5
+            static let allValues = [grid]
+
+            case grid = "grid.mp3"
+        }
+
+    }
+
     enum UserDefaultsKeys: String {
         case launchedBefore
     }
