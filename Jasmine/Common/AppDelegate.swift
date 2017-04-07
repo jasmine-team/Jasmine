@@ -9,6 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // swiftlint:disable:previous vertical_parameter_alignment
 
+        SoundService.sharedInstance.play(.dogDays)
         if UIApplication.isFirstLaunch {
             Prebundler.hydrateRealm() // add phrases
         }
