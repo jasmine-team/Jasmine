@@ -38,6 +38,10 @@ class HomeScreenViewController: UIViewController {
                                                             gameData: gameData,
                                                             rows: Constants.Game.Sliding.rows))
             }
+        } else if let phraseVC = segue.destination as? PhraseViewController {
+            let gameData = gameDataFactory.createGame(difficulty: 0, type: .chengYu)
+            let phrase = gameData.phrases.next()
+            phraseVC.segueWith(PhraseViewModel(phrase: phrase))
         }
     }
 }
