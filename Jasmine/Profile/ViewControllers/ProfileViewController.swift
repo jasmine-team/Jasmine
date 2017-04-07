@@ -3,12 +3,12 @@ import GameKit
 
 class ProfileViewController: UIViewController {
 
-    @IBAction func showLeaderboards(_ sender: UIButton) {
-        segueTo(.leaderboards)
-    }
-
     @IBAction func showAchievements(_ sender: UIButton) {
         segueTo(.achievements)
+    }
+
+    @IBAction func showLeaderboards(_ sender: UIButton) {
+        segueTo(.leaderboards)
     }
 
 }
