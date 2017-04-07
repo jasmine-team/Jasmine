@@ -6,7 +6,7 @@ class PhraseViewModel {
     }
 
     var pinYin: String {
-        return phrase.pinyin.joined()
+        return phrase.pinyin.joined(separator: " ")
     }
 
     var english: String {
