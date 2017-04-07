@@ -11,6 +11,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--GameHelpViewController-->
+        <scene sceneID="AL9-Vc-0fs">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GameElements" referencedIdentifier="GameHelpViewController" id="TET-9F-kag" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VFG-Dh-reQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="415" y="-209"/>
+        </scene>
         <!--GameOverViewController-->
         <scene sceneID="YeG-Vy-Ckf">
             <objects>
@@ -46,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cGc-ZY-3lX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1014" y="23"/>
+            <point key="canvasLocation" x="601" y="295"/>
         </scene>
         <!--Swapping Game View Controller-->
         <scene sceneID="yeQ-RR-Dye">
@@ -91,6 +99,14 @@
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="onBackPressed:" destination="WaX-Zk-8YX" id="kNH-v7-oGA"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="HELP" id="SDE-ZL-fVV">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <segue destination="TET-9F-kag" kind="popoverPresentation" popoverAnchorBarButtonItem="SDE-ZL-fVV" id="hbr-XK-WzY">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

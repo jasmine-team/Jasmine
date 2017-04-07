@@ -34,10 +34,18 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Sliding Game Title" id="yBU-LY-YCc">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" width="35" id="46u-oQ-3zi">
+                                        <barButtonItem key="leftBarButtonItem" title="BACK" width="35" id="46u-oQ-3zi">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="onBackPressed:" destination="39S-vZ-Zyw" id="BtU-R3-TVc"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="HELP" id="9xh-As-27w">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <segue destination="Nnz-Fe-m64" kind="popoverPresentation" popoverAnchorBarButtonItem="9xh-As-27w" id="YIK-mX-WJj">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -103,6 +111,14 @@
                 </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="17" y="107"/>
+        </scene>
+        <!--GameHelpViewController-->
+        <scene sceneID="TVS-j9-viA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GameElements" referencedIdentifier="GameHelpViewController" id="Nnz-Fe-m64" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PVW-Rj-LIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="655" y="-161"/>
         </scene>
         <!--GameOverViewController-->
         <scene sceneID="Ycb-g2-8Kd">

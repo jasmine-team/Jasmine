@@ -94,10 +94,18 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Tetris Game Title" id="R5p-HH-gxO">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" width="35" id="YXs-Km-Pak">
+                                        <barButtonItem key="leftBarButtonItem" title="BACK" width="35" id="YXs-Km-Pak">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="onBackPressed:" destination="QxJ-8P-SqZ" id="Ba4-ZR-qCE"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="HELP" id="vIO-y1-r6Y">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <segue destination="LIF-2d-dmQ" kind="popoverPresentation" popoverAnchorBarButtonItem="vIO-y1-r6Y" id="SSJ-ax-OSF">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -154,7 +162,7 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
-                        <segue destination="7a0-En-wY5" kind="presentation" identifier="SegueToGameOverViewController" id="R2p-LX-wQh"/>
+                        <segue destination="7a0-En-wY5" kind="presentation" identifier="SegueToGameOverViewController" modalTransitionStyle="flipHorizontal" id="R2p-LX-wQh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGJ-pa-lSq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -186,13 +194,21 @@
             </objects>
             <point key="canvasLocation" x="-44" y="98"/>
         </scene>
+        <!--GameHelpViewController-->
+        <scene sceneID="Yi0-nN-Rde">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GameElements" referencedIdentifier="GameHelpViewController" id="LIF-2d-dmQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="52b-6V-Snz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="553" y="-68"/>
+        </scene>
         <!--GameOverViewController-->
         <scene sceneID="KbY-Sd-Zna">
             <objects>
                 <viewControllerPlaceholder storyboardName="GameElements" referencedIdentifier="GameOverViewController" id="7a0-En-wY5" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SDJ-OD-j1y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="548" y="30"/>
+            <point key="canvasLocation" x="674" y="30"/>
         </scene>
         <!--Game Statistics View Controller-->
         <scene sceneID="dwX-hO-08x">
