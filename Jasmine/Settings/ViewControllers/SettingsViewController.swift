@@ -46,6 +46,9 @@ class SettingsViewController: UIViewController {
         }
     }
 
+    /// Prompt the user to sign in if the user has not been prompted to sign in previously
+    ///
+    /// - Returns: true if user gets prompted to sign in (i.e. this is the first time getting prompted)
     private func promptSignIn() -> Bool {
         let localPlayer = GKLocalPlayer.localPlayer()
         guard localPlayer.authenticateHandler == nil else {
