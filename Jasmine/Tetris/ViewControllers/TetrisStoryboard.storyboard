@@ -103,9 +103,7 @@
                                         <barButtonItem key="rightBarButtonItem" title="HELP" id="vIO-y1-r6Y">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
-                                                <segue destination="LIF-2d-dmQ" kind="popoverPresentation" popoverAnchorBarButtonItem="vIO-y1-r6Y" id="SSJ-ax-OSF">
-                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                </segue>
+                                                <segue destination="LIF-2d-dmQ" kind="presentation" modalPresentationStyle="overCurrentContext" id="SSJ-ax-OSF"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -200,7 +198,7 @@
                 <viewControllerPlaceholder storyboardName="GameElements" referencedIdentifier="GameHelpViewController" id="LIF-2d-dmQ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52b-6V-Snz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="553" y="-68"/>
+            <point key="canvasLocation" x="546" y="44"/>
         </scene>
         <!--GameOverViewController-->
         <scene sceneID="KbY-Sd-Zna">
@@ -208,7 +206,7 @@
                 <viewControllerPlaceholder storyboardName="GameElements" referencedIdentifier="GameOverViewController" id="7a0-En-wY5" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SDJ-OD-j1y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="674" y="30"/>
+            <point key="canvasLocation" x="547" y="155"/>
         </scene>
         <!--Game Statistics View Controller-->
         <scene sceneID="dwX-hO-08x">

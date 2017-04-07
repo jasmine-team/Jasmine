@@ -33,6 +33,9 @@ class SlidingGameViewController: UIViewController {
 
         } else if let gameOverView = segue.destination as? GameOverViewController {
             gameOverView.segueWith(viewModel)
+
+        } else if let gameHelpView = segue.destination as? GameHelpViewController {
+            gameHelpView.segueWith(viewModel)
         }
     }
 
