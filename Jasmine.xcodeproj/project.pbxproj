@@ -30,6 +30,7 @@
 		507194F11E8E1512002A6BC0 /* TetrisGameViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507194F01E8E1512002A6BC0 /* TetrisGameViewModelProtocol.swift */; };
 		507AC1931E90AA830033B4E6 /* SquareTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507AC1921E90AA830033B4E6 /* SquareTileView.swift */; };
 		507AC1951E90AAB00033B4E6 /* TetrisGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507AC1941E90AAB00033B4E6 /* TetrisGameViewModel.swift */; };
+		508859A31E9754C40079BBE5 /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508859A21E9754C40079BBE5 /* GameConstants.swift */; };
 		509036D51E937BFB006548DE /* GameStatusUpdateDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509036D11E937BFB006548DE /* GameStatusUpdateDelegateMock.swift */; };
 		509036D61E937BFB006548DE /* ScoreUpdateDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509036D21E937BFB006548DE /* ScoreUpdateDelegateMock.swift */; };
 		509036D71E937BFB006548DE /* TimeUpdateDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509036D31E937BFB006548DE /* TimeUpdateDelegateMock.swift */; };
@@ -53,6 +54,7 @@
 		A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E711E751C930033FC5B /* Sequence+Extensions.swift */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
 		A27B6E541E90B33400825AF3 /* RealmIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B6E531E90B33400825AF3 /* RealmIntegrationTests.swift */; };
+		A28365B81E975811000A3BC1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28365B71E975811000A3BC1 /* ProfileViewController.swift */; };
 		A2FD7AE11E973F13008C41DF /* AVAudioPlayer+ExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FD7AE01E973F13008C41DF /* AVAudioPlayer+ExtensionsTest.swift */; };
 		A2FD7AE31E973F20008C41DF /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A2FD7AE21E973F20008C41DF /* test.mp3 */; };
 		A2FD7AE51E973F36008C41DF /* AVAudioPlayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FD7AE41E973F36008C41DF /* AVAudioPlayer+Extensions.swift */; };
@@ -158,6 +160,7 @@
 		507194F01E8E1512002A6BC0 /* TetrisGameViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewModelProtocol.swift; sourceTree = "<group>"; };
 		507AC1921E90AA830033B4E6 /* SquareTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareTileView.swift; sourceTree = "<group>"; };
 		507AC1941E90AAB00033B4E6 /* TetrisGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewModel.swift; sourceTree = "<group>"; };
+		508859A21E9754C40079BBE5 /* GameConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
 		509036D11E937BFB006548DE /* GameStatusUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatusUpdateDelegateMock.swift; sourceTree = "<group>"; };
 		509036D21E937BFB006548DE /* ScoreUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreUpdateDelegateMock.swift; sourceTree = "<group>"; };
 		509036D31E937BFB006548DE /* TimeUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUpdateDelegateMock.swift; sourceTree = "<group>"; };
@@ -186,6 +189,7 @@
 		A260C6311E6AB30400782103 /* JasmineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JasmineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6371E6AB30400782103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A27B6E531E90B33400825AF3 /* RealmIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmIntegrationTests.swift; sourceTree = "<group>"; };
+		A28365B71E975811000A3BC1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A2FD7AE01E973F13008C41DF /* AVAudioPlayer+ExtensionsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+ExtensionsTest.swift"; sourceTree = "<group>"; };
 		A2FD7AE21E973F20008C41DF /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 		A2FD7AE41E973F36008C41DF /* AVAudioPlayer+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Extensions.swift"; sourceTree = "<group>"; };
@@ -788,6 +792,7 @@
 			isa = PBXGroup;
 			children = (
 				DF2321571E961CA300417ED2 /* ProfileStoryboard.storyboard */,
+				A28365B71E975811000A3BC1 /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -810,6 +815,7 @@
 			children = (
 				DFBE8F631E9527F70036CCC6 /* ViewControllers */,
 				DFBE8F6B1E9527F70036CCC6 /* ViewModels */,
+				508859A21E9754C40079BBE5 /* GameConstants.swift */,
 			);
 			path = GameCommons;
 			sourceTree = "<group>";
@@ -1117,6 +1123,7 @@
 				DFBE8F1F1E951FC00036CCC6 /* HomeScreenViewController.swift in Sources */,
 				DFBE8F401E95272B0036CCC6 /* SquareGridViewController.swift in Sources */,
 				A2FD7AE91E974D50008C41DF /* GameMode.swift in Sources */,
+				A28365B81E975811000A3BC1 /* ProfileViewController.swift in Sources */,
 				502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */,
 				DF7CF7721E7E9E3500C6979A /* IndexPath+Coordinate.swift in Sources */,
 				50AE3A761E8B93D3005EC944 /* TextGrid.swift in Sources */,
@@ -1140,6 +1147,7 @@
 				DFBE8F3B1E9526BE0036CCC6 /* DraggableSquareGridViewController.swift in Sources */,
 				DF2155211E8E237F005A0927 /* SlidingViewModelProtocol.swift in Sources */,
 				DFBE8F7C1E9527F70036CCC6 /* GameDescriptorProtocol.swift in Sources */,
+				508859A31E9754C40079BBE5 /* GameConstants.swift in Sources */,
 				509036E01E937CB9006548DE /* SwappingGameViewController.swift in Sources */,
 				DFBE8F751E9527F70036CCC6 /* ScoreUpdateDelegate.swift in Sources */,
 				DF2321541E961A4100417ED2 /* SelectableSquareGridViewController.swift in Sources */,

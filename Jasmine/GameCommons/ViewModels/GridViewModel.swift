@@ -86,7 +86,7 @@ class GridViewModel: GridViewModelProtocol {
 
     /// Starts the game.
     func startGame() {
-        timer.startTimer(timerInterval: Constants.Game.timeInterval)
+        timer.startTimer(timerInterval: GameConstants.timeInterval)
         scoreDelegate?.scoreDidUpdate()
     }
 
