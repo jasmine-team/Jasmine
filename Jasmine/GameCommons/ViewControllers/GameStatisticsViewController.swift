@@ -63,11 +63,11 @@ class GameStatisticsViewController: UIViewController {
     /// Animates effect that highlights the update of the label (e.g. grow shrinking)
     private func flashLabel(_ label: UILabel) {
         let scale = GameStatisticsViewController.flashScale
-
         label.transform = label.transform.scaledBy(x: scale, y: scale)
-        UIView.animate(withDuration: GameStatisticsViewController.flashDuration) {
-            label.transform = label.transform.scaledBy(x: 1 / scale, y: 1 / scale)
-        }
+        label.textColor = Constants.Theme.secondaryColor
+        UIView.animate(withDuration: GameStatisticsViewController.flashDuration,
+                       animations: { label.transform = label.transform.scaledBy(x: 1 / scale, y: 1 / scale) },
+                       completion: { _ in label.textColor = UIColor.white })
     }
 }
 
