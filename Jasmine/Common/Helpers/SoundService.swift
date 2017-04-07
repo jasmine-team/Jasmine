@@ -79,7 +79,7 @@ extension SoundService: AVAudioPlayerDelegate {
         DispatchQueue.global(qos: .background).async {
             player.prepareToPlay()
         }
-        print("DID FINISH PLAYING", player)
+
         // ignore if other background sound is playing
         guard isBackgroundPlaying == false else {
             assertionFailure("No two background sound should be playing at the same time")
@@ -88,7 +88,7 @@ extension SoundService: AVAudioPlayerDelegate {
         let nextSound = Background.defaultPlaylist.shuffled().first(where: { sound in
             return backgroundPlayers[sound] != player
         })
-        print("NEXT PLAYER", nextSound ?? "No available players")
+
         if let nextSound = nextSound {
             play(nextSound)
         }
