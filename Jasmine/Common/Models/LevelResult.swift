@@ -14,9 +14,8 @@ class LevelResult: Object {
         rawPhrases.append(objectsIn: phrasesUserSeen)
 
         switch result {
-        case .endedWithLost:
-            rawGameResult = result.rawValue
-        case .endedWithWon:
+        case .endedWithLost,
+             .endedWithWon:
             rawGameResult = result.rawValue
         default:
             assertionFailure("Game result is not valid")

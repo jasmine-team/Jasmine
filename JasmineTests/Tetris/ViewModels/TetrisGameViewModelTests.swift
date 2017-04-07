@@ -29,15 +29,15 @@ class TetrisGameViewModelTests: RealmTestCase {
                   "ViewModel phrasesTested on init is not correct")
         XCTAssertEqual(viewModel.currentScore, 0,
                        "ViewModel currentScore on init is not zero")
-        XCTAssertEqual(viewModel.totalTimeAllowed, Constants.Game.Tetris.totalTime,
+        XCTAssertEqual(viewModel.totalTimeAllowed, GameConstants.Tetris.totalTime,
                        "ViewModel timer on init is not correct")
-        XCTAssertEqual(viewModel.timeRemaining, Constants.Game.Tetris.totalTime,
+        XCTAssertEqual(viewModel.timeRemaining, GameConstants.Tetris.totalTime,
                        "ViewModel timer on init is not correct")
         XCTAssertEqual(viewModel.gameStatus, GameStatus.notStarted,
                        "ViewModel gameStatus on init is not correct")
-        XCTAssertEqual(viewModel.gameTitle, Constants.Game.Tetris.gameTitle,
+        XCTAssertEqual(viewModel.gameTitle, GameConstants.Tetris.gameTitle,
                        "ViewModel gameTitle on init is not correct")
-        XCTAssertEqual(viewModel.gameInstruction, Constants.Game.Tetris.gameInstruction,
+        XCTAssertEqual(viewModel.gameInstruction, GameConstants.Tetris.gameInstruction,
                        "ViewModel gameInstruction on init is not correct")
         XCTAssert(Set(testPhrases.flatMap { $0 }).isSuperset(of: viewModel.upcomingTiles),
                        "ViewModel upcomingTiles on init is not correct")
@@ -50,7 +50,7 @@ class TetrisGameViewModelTests: RealmTestCase {
     func testFallingTileStartCoordinate() {
         let iterations = 10
         for _ in 0..<iterations {
-            XCTAssert((0..<Constants.Game.Tetris.columns).map { Coordinate(row: 0, col: $0) }
+            XCTAssert((0..<GameConstants.Tetris.columns).map { Coordinate(row: 0, col: $0) }
                                                          .contains(viewModel.fallingTileStartCoordinate),
                       "fallingTileStartCoordinate returned wrong value")
         }
@@ -83,7 +83,7 @@ class TetrisGameViewModelTests: RealmTestCase {
 
     func testCanLandTile() {
         let viewModel = TetrisGameViewModel(gameData: gameData)
-        let landingCoordinate = Coordinate(row: Constants.Game.Tetris.rows - 1, col: 0)
+        let landingCoordinate = Coordinate(row: GameConstants.Tetris.rows - 1, col: 0)
         XCTAssert(viewModel.canLandTile(at: landingCoordinate), "canLandTile returns wrong result")
 
         _ = viewModel.landTile(at: landingCoordinate)
@@ -96,14 +96,14 @@ class TetrisGameViewModelTests: RealmTestCase {
         XCTAssertFalse(viewModel.canLandTile(at: Coordinate(row: 0, col: 0)),
                        "canLandTile returns wrong result")
 
-        let landedCoordinate = Coordinate(row: Constants.Game.Tetris.rows - 1, col: 0)
+        let landedCoordinate = Coordinate(row: GameConstants.Tetris.rows - 1, col: 0)
         _ = viewModel.landTile(at: landedCoordinate)
         XCTAssertFalse(viewModel.canLandTile(at: landedCoordinate), "canLandTile returns wrong result")
     }
 
     func testGetLandingCoordinate(from coordinate: Coordinate) {
         let viewModel = TetrisGameViewModel(gameData: gameData)
-        let landedCoordinate = Coordinate(row: Constants.Game.Tetris.rows - 1, col: 0)
+        let landedCoordinate = Coordinate(row: GameConstants.Tetris.rows - 1, col: 0)
         XCTAssertEqual(viewModel.getLandingCoordinate(from: Coordinate(row: 0, col: 0)), landedCoordinate,
                        "canLandTile returns wrong result")
 
@@ -115,7 +115,7 @@ class TetrisGameViewModelTests: RealmTestCase {
     func testLandTile() {
         let viewModel = TetrisGameViewModel(gameData: gameData)
         let upcomingTiles = viewModel.upcomingTiles
-        XCTAssert(viewModel.landTile(at: Coordinate(row: Constants.Game.Tetris.rows - 1, col: 0)).isEmpty,
+        XCTAssert(viewModel.landTile(at: Coordinate(row: GameConstants.Tetris.rows - 1, col: 0)).isEmpty,
                   "tile landed wrongly")
         XCTAssertEqual(viewModel.fallingTileText, upcomingTiles.first, "Failed to get new tile after landing")
         XCTAssertEqual(viewModel.upcomingTiles[0..<upcomingTiles.count - 1], upcomingTiles[1..<upcomingTiles.count],
@@ -137,14 +137,14 @@ class TetrisGameViewModelTests: RealmTestCase {
                 XCTAssert(false, "Falling tile text is invalid")
                 return
             }
-            let landingCoordinate = Coordinate(row: Constants.Game.Tetris.rows - 1, col: columnToLand)
+            let landingCoordinate = Coordinate(row: GameConstants.Tetris.rows - 1, col: columnToLand)
             landedCoordinates.insert(landingCoordinate)
             destroyedAndShiftedTiles += viewModel.landTile(at: landingCoordinate)
         }
         print(destroyedAndShiftedTiles.map { $0.destroyedTiles })
         XCTAssertEqual(Set(destroyedAndShiftedTiles.map { $0.destroyedTiles }.flatMap { $0 }), landedCoordinates,
                        "Tiles destroyed are wrong")
-        XCTAssertEqual(viewModel.currentScore, Constants.Game.Tetris.scoreIncrement * 2)
+        XCTAssertEqual(viewModel.currentScore, GameConstants.Tetris.scoreIncrement * 2)
         XCTAssertEqual(scoreUpdateDelegateMock.scoreUpdatedCount, scoreUpdatedCount + 2,
                        "Score did not get updated in VC")
     }
@@ -190,10 +190,10 @@ class TetrisGameViewModelTests: RealmTestCase {
 
         viewModel.startGame()
         RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
-         XCTAssertEqual(Constants.Game.Tetris.totalTime, viewModel.totalTimeAllowed,
+         XCTAssertEqual(GameConstants.Tetris.totalTime, viewModel.totalTimeAllowed,
                         "ViewModel totalTime is not correct")
              XCTAssertEqualWithAccuracy(viewModel.timeRemaining, viewModel.totalTimeAllowed - 1,
-                                        accuracy: Constants.Game.Tetris.totalTime / 10,
+                                        accuracy: GameConstants.Tetris.totalTime / 10,
                                         "ViewModel timeRemaining is not correct")
         XCTAssertEqual(viewModel.gameStatus, GameStatus.inProgress,
                        "ViewModel game status when the game runs is not inProgress")

@@ -1,7 +1,7 @@
 import Foundation
 
 class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
-    typealias Score = Constants.Game.Sliding.Score
+    typealias Score = GameConstants.Sliding.Score
 
     /// The number of moves currently done.
     var moves: Int = 0
@@ -94,7 +94,7 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
         }
 
         // In the sliding game, it is enough to have (rows - 1) rows correct
-        if highlightedCoordinates.count == gridData.count - Constants.Game.Sliding.columns {
+        if highlightedCoordinates.count == gridData.count - GameConstants.Sliding.columns {
             score += max(Score.win + Int(timeRemaining * Score.multiplierFromTime) -
                 moves * Score.multiplierFromMoves, 0)
             gameStatus = .endedWithWon

@@ -1,7 +1,7 @@
 import Foundation
 
 class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
-    typealias Score = Constants.Game.Swapping.Score
+    typealias Score = GameConstants.Swapping.Score
 
     /// The number of moves currently done.
     var moves: Int = 0

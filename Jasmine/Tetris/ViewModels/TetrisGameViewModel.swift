@@ -16,7 +16,7 @@ class TetrisGameViewModel {
         }
     }
 
-    fileprivate let timer = CountDownTimer(totalTimeAllowed: Constants.Game.Tetris.totalTime)
+    fileprivate let timer = CountDownTimer(totalTimeAllowed: GameConstants.Tetris.totalTime)
 
     fileprivate(set) var gameStatus = GameStatus.notStarted {
         didSet {
@@ -24,8 +24,8 @@ class TetrisGameViewModel {
         }
     }
 
-    fileprivate(set) var gridData = TextGrid(numRows: Constants.Game.Tetris.rows,
-                                             numColumns: Constants.Game.Tetris.columns)
+    fileprivate(set) var gridData = TextGrid(numRows: GameConstants.Tetris.rows,
+                                             numColumns: GameConstants.Tetris.columns)
 
     fileprivate(set) var upcomingTiles: [String] = []
     fileprivate(set) var fallingTileText: String!
@@ -46,7 +46,7 @@ class TetrisGameViewModel {
     }
 
     private func populateUpcomingTiles() {
-        for _ in 0..<Constants.Game.Tetris.upcomingTilesCount {
+        for _ in 0..<GameConstants.Tetris.upcomingTilesCount {
             upcomingTiles.append(getNextText())
         }
     }
@@ -157,7 +157,7 @@ class TetrisGameViewModel {
         for phrase in phrasesTested {
             let texts = phrase.chinese
             if texts.contains(failedText) {
-                currentScore = max(0, currentScore - Constants.Game.Tetris.scoreIncrement)
+                currentScore = max(0, currentScore - GameConstants.Tetris.scoreIncrement)
                 return texts
             }
         }
@@ -167,7 +167,7 @@ class TetrisGameViewModel {
 
     /// Returns `Constants.Game.Tetris.upcomingPhrasesCount` number of new phrases and add them to the phrases tested
     private func getNewTexts() -> [String] {
-        let newPhrases = (0..<Constants.Game.Tetris.upcomingPhrasesCount).map { _ in
+        let newPhrases = (0..<GameConstants.Tetris.upcomingPhrasesCount).map { _ in
             gameData.phrases.next()
         }
         phrasesTested.formUnion(newPhrases)
@@ -190,7 +190,7 @@ class TetrisGameViewModel {
             guard let destroyedTiles = checkForMatchingPhrase(at: nextCoordinate) else {
                 continue
             }
-            currentScore += Constants.Game.Tetris.scoreIncrement
+            currentScore += GameConstants.Tetris.scoreIncrement
             changedCoordinates.subtract(destroyedTiles)
             gridData.removeTexts(at: destroyedTiles)
 
@@ -254,7 +254,7 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
             assertionFailure("startGame called when game is already ongoing")
             return
         }
-        timer.startTimer(timerInterval: Constants.Game.timeInterval)
+        timer.startTimer(timerInterval: GameConstants.timeInterval)
     }
 }
 
@@ -271,9 +271,9 @@ extension TetrisGameViewModel: TimeDescriptorProtocol {
 extension TetrisGameViewModel: GameDescriptorProtocol {
     // TODO : should be set from gameData instead
     var gameTitle: String {
-        return Constants.Game.Tetris.gameTitle
+        return GameConstants.Tetris.gameTitle
     }
     var gameInstruction: String {
-        return Constants.Game.Tetris.gameInstruction
+        return GameConstants.Tetris.gameInstruction
     }
 }
