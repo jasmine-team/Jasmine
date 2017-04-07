@@ -29,7 +29,7 @@ class LevelResult: Object {
             assertionFailure("Game result is not valid")
             return .endedWithWon
         }
-        return gameStatus 
+        return gameStatus
     }
 
     override static func ignoredProperties() -> [String] {

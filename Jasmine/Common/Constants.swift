@@ -111,6 +111,11 @@ enum Constants {
             static let duration: TimeInterval = 0.5
         }
 
+        enum Petals {
+            static let frames = [#imageLiteral(resourceName: "petal-0"), #imageLiteral(resourceName: "petal-1"), #imageLiteral(resourceName: "petal-2"), #imageLiteral(resourceName: "petal-3"),
+                                 #imageLiteral(resourceName: "petal-4"), #imageLiteral(resourceName: "petal-5"), #imageLiteral(resourceName: "petal-6"), #imageLiteral(resourceName: "petal-7")]
+        }
+
     }
 
     enum UserDefaultsKeys: String {

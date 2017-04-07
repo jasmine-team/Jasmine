@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="SDv-jy-RVT">
+            <objects>
+                <viewController storyboardIdentifier="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q6d-CF-olC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lAf-mx-Gcy"/>
+                        <viewControllerLayoutGuide type="bottom" id="GEt-Tt-8mp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ccW-Bu-g3k">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVn-ns-ZkY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="glp-Kf-sPs"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Your Profile" id="VF0-UI-Jgw"/>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ANI-4i-1bx">
+                                <rect key="frame" x="0.0" y="88" width="375" height="143"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR STREAKS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVM-VK-Reh">
+                                        <rect key="frame" x="133.5" y="0.0" width="108.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                        <color key="textColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="petal-5" translatesAutoresizingMaskIntoConstraints="NO" id="cLg-Ub-iBI">
+                                        <rect key="frame" x="37.5" y="23" width="300" height="120"/>
+                                        <color key="backgroundColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="iew-ZO-LpS"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="cLg-Ub-iBI" firstAttribute="leading" secondItem="ANI-4i-1bx" secondAttribute="leading" constant="37.5" id="616-ZB-n9j"/>
+                                    <constraint firstAttribute="trailing" secondItem="cLg-Ub-iBI" secondAttribute="trailing" constant="37.5" id="Fkq-Fd-CFA"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DVn-ns-ZkY" secondAttribute="trailing" id="Mtr-fh-6wR"/>
+                            <constraint firstItem="DVn-ns-ZkY" firstAttribute="leading" secondItem="ccW-Bu-g3k" secondAttribute="leading" id="PZF-Zp-n9X"/>
+                            <constraint firstAttribute="trailing" secondItem="ANI-4i-1bx" secondAttribute="trailing" id="S3K-ZG-Uf2"/>
+                            <constraint firstItem="ANI-4i-1bx" firstAttribute="top" secondItem="DVn-ns-ZkY" secondAttribute="bottom" constant="24" id="TuC-e4-nV3"/>
+                            <constraint firstItem="ANI-4i-1bx" firstAttribute="leading" secondItem="ccW-Bu-g3k" secondAttribute="leading" id="jD5-HI-N2O"/>
+                            <constraint firstItem="DVn-ns-ZkY" firstAttribute="top" secondItem="ccW-Bu-g3k" secondAttribute="top" id="nF4-Z4-J3e"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k3j-92-Uyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="106" y="-234"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="petal-5" width="300" height="300"/>
+    </resources>
+</document>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="cAS-lR-SW1">
+            <objects>
+                <viewController storyboardIdentifier="PhraseExplorerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PWD-mm-Vqa" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IR0-bE-9P4"/>
+                        <viewControllerLayoutGuide type="bottom" id="ncI-bH-3db"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1mp-X2-ZcW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRz-oO-Zb3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="Cix-Ii-6aI"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Phrases Explorer" id="OHB-Pz-Qmo">
+                                        <barButtonItem key="leftBarButtonItem" title="BACK" id="Ulq-dO-dWO">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fRz-oO-Zb3" firstAttribute="top" secondItem="1mp-X2-ZcW" secondAttribute="top" id="JOX-Z8-mHt"/>
+                            <constraint firstAttribute="trailing" secondItem="fRz-oO-Zb3" secondAttribute="trailing" id="bwa-Oi-s9u"/>
+                            <constraint firstItem="fRz-oO-Zb3" firstAttribute="leading" secondItem="1mp-X2-ZcW" secondAttribute="leading" id="caJ-dw-3Pl"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jxV-6g-0cO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-463" y="121"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="RRb-n2-vxW">
+            <objects>
+                <viewController storyboardIdentifier="Phrase" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4gj-Nr-GkG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sLg-5N-rOm"/>
+                        <viewControllerLayoutGuide type="bottom" id="ogM-Is-jRi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1U0-16-NkD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kSs-Rg-kmX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="NYK-u2-2at"/>
+                                    <constraint firstAttribute="height" constant="64" id="ejU-eF-Hx1"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Phrase View" id="TYH-Ei-pQ5">
+                                        <barButtonItem key="leftBarButtonItem" title="BACK" id="7Qv-NA-djQ">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="kSs-Rg-kmX" secondAttribute="trailing" id="ExX-LQ-dV8"/>
+                            <constraint firstItem="kSs-Rg-kmX" firstAttribute="top" secondItem="1U0-16-NkD" secondAttribute="top" id="Q3l-TW-1FY"/>
+                            <constraint firstItem="kSs-Rg-kmX" firstAttribute="leading" secondItem="1U0-16-NkD" secondAttribute="leading" id="sDu-6u-0mF"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cw6-BI-H0t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="311" y="121"/>
+        </scene>
+    </scenes>
+</document>
