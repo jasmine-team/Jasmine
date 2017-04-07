@@ -7,21 +7,13 @@ class SquareTileView: UILabel {
 
     // MARK: Constants
     private static let borderWidth: CGFloat = 2
-
     private static let fontSizeRatio: CGFloat = 0.618
+    private static let highlightAnimation: TimeInterval = 0.4
 
-    // MARK: Text Properties
-    /// Sets the text to be displayed in the UILabel, which derives from the `character` property in
-    /// this class.
-    ///
-    /// Also sets the theme of this class here.
-    override var text: String? {
+    // MARK: Properties
+    var shouldHighlight = false {
         didSet {
-            guard let text = text else {
-                applyContextualTheme(whenFilled: false)
-                return
-            }
-            applyContextualTheme(whenFilled: !text.isEmpty)
+            setHighlightStyle()
         }
     }
 
@@ -48,19 +40,23 @@ class SquareTileView: UILabel {
     // MARK: Theming and Styling
     /// A helper method to apply this class with styling.
     private func applyBaseTheme() {
-        applyBorder()
         applyFont()
-    }
-
-    private func applyBorder() {
-        layer.borderColor = Constants.Theme.mainColor.cgColor
-        layer.borderWidth = SquareTileView.borderWidth
+        applyDefaultBackground()
     }
 
     private func applyFont() {
         textAlignment = .center
         font = Constants.Theme.tilesFont
         textColor = Constants.Theme.mainWhiteColor
+    }
+
+    private func applyDefaultBackground() {
+        backgroundColor = Constants.Theme.mainColor
+    }
+
+    private func applyDefaultBorder() {
+        self.layer.borderWidth = SquareTileView.borderWidth
+        self.layer.backgroundColor = Constants.Theme.mainColor.cgColor
     }
 
     private func adjustFontSize() {
@@ -70,9 +66,8 @@ class SquareTileView: UILabel {
         font = font.withSize(frame.height * SquareTileView.fontSizeRatio / sqrt(CGFloat(numChar)))
     }
 
-    private func applyContextualTheme(whenFilled: Bool) {
-        backgroundColor = whenFilled
-                        ? Constants.Theme.mainColor
-                        : UIColor.clear
+    private func setHighlightStyle() {
+        self.backgroundColor = shouldHighlight ? Constants.Theme.secondaryColor : Constants.Theme.mainColor
+        self.textColor = shouldHighlight ? Constants.Theme.mainFontColor : Constants.Theme.mainWhiteColor
     }
 }

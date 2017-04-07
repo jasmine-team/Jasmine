@@ -6,6 +6,10 @@ class SlidingGameViewController: UIViewController {
     // MARK: - Constants
     fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
 
+    fileprivate static let segueDelay = 0.5
+
+    fileprivate static let highlightDelay = 0.2
+
     // MARK: - Layouts
     fileprivate var gameStatisticsView: GameStatisticsViewController!
 
@@ -48,6 +52,7 @@ class SlidingGameViewController: UIViewController {
     func segueWith(_ viewModel: SlidingViewModelProtocol) {
         self.viewModel = viewModel
         self.viewModel.gameStatusDelegate = self
+        self.viewModel.highlightedDelegate = self
     }
 
     // MARK: Gestures and Listeners
@@ -170,7 +175,10 @@ extension SlidingGameViewController: GameStatusUpdateDelegate {
 
     /// Tells the implementor of the delegate that the game status has been updated.
     func gameStatusDidUpdate() {
-        if viewModel.gameStatus.hasGameEnded {
+        guard viewModel.gameStatus.hasGameEnded else {
+            return
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + SlidingGameViewController.segueDelay) {
             self.performSegue(withIdentifier: SlidingGameViewController.segueToGameOverView,
                               sender: nil)
         }
@@ -178,9 +186,17 @@ extension SlidingGameViewController: GameStatusUpdateDelegate {
 }
 
 extension SlidingGameViewController: HighlightedUpdateDelegate {
-    /// Tells the implementor of the delegate that the highlighted coordinates have been changed.
-    /// - Note: This method can be used to update the highlighted coordinates that is displayed on views.
-    internal func highlightedCoordinatesDidUpdate() {
 
+    /// Tells the implementor of the delegate that the highlighted coordinates have been changed.
+    func highlightedCoordinatesDidUpdate() {
+        let highlightedCoords = viewModel.highlightedCoordinates
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + SlidingGameViewController.highlightDelay) {
+            self.slidingGridView.allCoordinates.forEach { coord in
+                self.slidingGridView.tileProperties[coord] = { tile in
+                    tile.shouldHighlight = highlightedCoords.contains(coord)
+                }
+            }
+        }
     }
 }
