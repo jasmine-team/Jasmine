@@ -76,7 +76,7 @@ enum Constants {
             // Number of distinct phrases in the upcoming tiles pool
             static let upcomingPhrasesCount = 2
 
-            static let tileFallInterval: TimeInterval = 0.5
+            static let tileFallInterval: TimeInterval = 0.4
 
             static let scoreIncrement = 1
         }

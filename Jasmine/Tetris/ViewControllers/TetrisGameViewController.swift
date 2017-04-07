@@ -95,23 +95,37 @@ class TetrisGameViewController: UIViewController {
 
     /// Moves the falling tile when the view is swiped to a particular direction.
     @IBAction func onTilesSwiped(_ sender: UISwipeGestureRecognizer) {
-        guard tetrisGameAreaView.hasFallingTile,
-              sender.direction != .up else {
+        guard tetrisGameAreaView.hasFallingTile else {
             return
         }
-        tetrisGameAreaView.shiftFallingTile(towards: sender.direction.toDirection)
+
+        let direction = sender.direction.toDirection
+        if direction.isHorizontal {
+            tetrisGameAreaView.shiftFallingTile(towards: direction)
+        } else if direction == .southwards {
+            dropFallingTile()
+        }
+
     }
 
     /// Moves the falling tile with respect to the position of the falling tile when the user taps
     /// on the grid.
     @IBAction func onTilesTapped(_ sender: UITapGestureRecognizer) {
-        guard let tilePosition = tetrisGameAreaView.fallingTile?.center else {
+        guard let tileFrame = tetrisGameAreaView.fallingTile?.frame else {
             return
         }
 
         let touchedPosition = sender.location(in: tetrisGameAreaView.view)
-        let direction: Direction = touchedPosition.x > tilePosition.x ? .eastwards : .westwards
-        tetrisGameAreaView.shiftFallingTile(towards: direction)
+        let tileCenter = tileFrame.center
+        let hasTouchedSouth = tileFrame.minX...tileFrame.maxX ~= touchedPosition.x
+            && tileFrame.midY < touchedPosition.y
+
+        if hasTouchedSouth {
+            dropFallingTile()
+        } else {
+            let direction: Direction = touchedPosition.x > tileCenter.x ? .eastwards : .westwards
+            tetrisGameAreaView.shiftFallingTile(towards: direction)
+        }
     }
 
     // MARK: - Game State and Actions
@@ -129,6 +143,14 @@ class TetrisGameViewController: UIViewController {
         tetrisGameAreaView.setFallingTile(withData: viewModel.fallingTileText,
                                           toCoord: viewModel.fallingTileStartCoordinate)
         updateUpcomingAndFallingTiles()
+    }
+
+    private func dropFallingTile() {
+        guard let initCoord = tetrisGameAreaView.fallingTileCoord else {
+            return
+        }
+        let finalCoord = viewModel.getLandingCoordinate(from: initCoord)
+        tetrisGameAreaView.shiftFallingTile(to: finalCoord)
     }
 
     private func updateUpcomingAndFallingTiles() {
@@ -150,7 +172,7 @@ class TetrisGameViewController: UIViewController {
         releaseNewTile()
     }
 
-    // MARK: - Layout Helper Methods
+    // MARK: - Helper Methods
     private func setFirstUpcomingTileStyle() {
         tetrisUpcomingTilesView.tileProperties[.origin] = { (tile: SquareTileView) in
             tile.textColor = Constants.Theme.secondaryColor
