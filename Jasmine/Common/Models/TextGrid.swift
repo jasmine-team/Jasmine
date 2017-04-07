@@ -14,6 +14,16 @@ struct TextGrid {
         return grid[0].count
     }
 
+    /// Number of cells in the grid.
+    var count: Int {
+        return numRows * numColumns
+    }
+
+    /// The set of texts in the grid.
+    var texts: Set<String> {
+        return Set(grid.flatMap { $0 }.flatMap { $0 })
+    }
+
     /// Initializes a TextGrid, given the initial grid.
     ///
     /// - Parameters:
@@ -131,8 +141,21 @@ struct TextGrid {
         return (0..<numRows ~= coordinate.row) && (0..<numColumns ~= coordinate.col)
     }
 
-    /// Number of cells in the grid.
-    var count: Int {
-        return numRows * numColumns
+    /// Gets the coordinates in the grid that has the text in the `texts` set
+    ///
+    /// - Parameter texts: The set of texts to find in the grid
+    /// - Returns: The set of coordinates with text in `texts`
+    func getCoordinates(containing texts: Set<String>) -> Set<Coordinate> {
+        var coordinates: Set<Coordinate> = []
+        for row in 0..<numRows {
+            for col in 0..<numColumns {
+                guard let text = grid[row][col],
+                      texts.contains(text) else {
+                    continue
+                }
+                coordinates.insert(Coordinate(row: row, col: col))
+            }
+        }
+        return coordinates
     }
 }
