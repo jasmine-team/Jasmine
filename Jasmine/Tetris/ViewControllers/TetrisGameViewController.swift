@@ -29,7 +29,10 @@ class TetrisGameViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setFirstUpcomingTileStyle()
-        startGame()
+
+        if viewModel.gameStatus == .notStarted {
+            startGame()
+        }
     }
 
     // MARK: Segue Methods
