@@ -42,14 +42,14 @@ class CiHuiSlidingViewModel: BaseSlidingViewModel {
             (secondHalfCoordinates, firstHalfCoordinates)
         ]
         for (first, second) in possibleArrangements {
-            guard let text = gridData.getConcatenatedTexts(at: first),
-                let phrase = gameData.phrases.first(whereChinese: text),
-                let pinyin = gridData.getTexts(at: second),
-                phrase.pinyin != pinyin else {
-                    return false
+            if let text = gridData.getConcatenatedTexts(at: first),
+               let phrase = gameData.phrases.first(whereChinese: text),
+               let pinyin = gridData.getTexts(at: second),
+               phrase.pinyin == pinyin {
+                return true
             }
         }
-        return true
+        return false
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to slide
