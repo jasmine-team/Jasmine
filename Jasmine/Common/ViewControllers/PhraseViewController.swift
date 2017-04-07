@@ -1,4 +1,5 @@
 import UIKit
+import AVFoundation
 
 class PhraseViewController: UIViewController {
 
@@ -6,7 +7,13 @@ class PhraseViewController: UIViewController {
     @IBOutlet private weak var pinYinLabel: UILabel!
     @IBOutlet private weak var englishLabel: UILabel!
 
+    private let synthesizer = AVSpeechSynthesizer()
+
     private var viewModel: PhraseViewModel!
+
+    @IBAction private func playButtonPressed(_ sender: Any) {
+        synthesizer.speak(viewModel.speech)
+    }
 
     override func viewDidLoad() {
         hanZiLabel.text = viewModel.hanZi

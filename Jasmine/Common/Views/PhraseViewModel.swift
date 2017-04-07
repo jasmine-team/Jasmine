@@ -1,3 +1,5 @@
+import AVFoundation
+
 class PhraseViewModel {
     private let phrase: Phrase
 
@@ -11,6 +13,12 @@ class PhraseViewModel {
 
     var english: String {
         return phrase.english
+    }
+
+    var speech: AVSpeechUtterance {
+        let speech = AVSpeechUtterance(string: hanZi)
+        speech.voice = AVSpeechSynthesisVoice(language: "zh-CN")
+        return speech
     }
 
     init(phrase: Phrase) {
