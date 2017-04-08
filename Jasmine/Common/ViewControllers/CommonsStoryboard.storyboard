@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -74,7 +75,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Phrase View" id="TYH-Ei-pQ5">
+                                    <navigationItem title="Dictionary" id="TYH-Ei-pQ5">
                                         <barButtonItem key="leftBarButtonItem" title="BACK" id="7Qv-NA-djQ">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
@@ -98,17 +99,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="时候" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yys-DC-rDE">
-                                <rect key="frame" x="170" y="106" width="35" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时候" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yys-DC-rDE">
+                                <rect key="frame" x="36" y="94" width="303" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-VZ-TB2">
-                                <rect key="frame" x="168" y="433" width="30" height="30"/>
+                                <rect key="frame" x="297" y="136" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Play"/>
+                                <state key="normal" title="Listen"/>
                                 <connections>
                                     <action selector="playButtonPressed:" destination="4gj-Nr-GkG" eventType="touchUpInside" id="Tzv-XA-qT7"/>
                                 </connections>
@@ -118,6 +118,9 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="kSs-Rg-kmX" secondAttribute="trailing" id="ExX-LQ-dV8"/>
                             <constraint firstItem="kSs-Rg-kmX" firstAttribute="top" secondItem="1U0-16-NkD" secondAttribute="top" id="Q3l-TW-1FY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Yys-DC-rDE" secondAttribute="trailing" constant="20" id="VDS-hQ-TLs"/>
+                            <constraint firstItem="Yys-DC-rDE" firstAttribute="top" secondItem="kSs-Rg-kmX" secondAttribute="bottom" constant="30" id="cxB-9X-VG8"/>
+                            <constraint firstItem="Yys-DC-rDE" firstAttribute="leading" secondItem="1U0-16-NkD" secondAttribute="leadingMargin" constant="20" id="ms6-xq-kDf"/>
                             <constraint firstItem="kSs-Rg-kmX" firstAttribute="leading" secondItem="1U0-16-NkD" secondAttribute="leading" id="sDu-6u-0mF"/>
                         </constraints>
                     </view>
