@@ -13,7 +13,7 @@ class PhrasesTableViewController: UITableViewController {
 
         let row = indexPath.row
         let cellContents = viewModel.get(at: row)
-        cell.textLabel?.text = cellContents.chinese
+        cell.textLabel?.text = "\(cellContents.chinese) (\(cellContents.english))"
         if cellContents.selected {
             cell.accessoryType = .checkmark
         } else {

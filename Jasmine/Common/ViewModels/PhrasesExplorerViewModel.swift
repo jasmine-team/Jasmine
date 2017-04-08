@@ -24,10 +24,12 @@ class PhrasesExplorerViewModel {
     ///
     /// - Parameter row: the row of the table
     /// - Returns: the string and whether it's selected or not
-    func get(at row: Int) -> (chinese: String, selected: Bool) {
+    func get(at row: Int) -> (chinese: String, english: String, selected: Bool) {
         let realIndex = rowIndices[row]
         let phraseWithSelection = allPhrasesWithSelection[realIndex]
-        return (chinese: phraseWithSelection.phrase.chinese.joined(), selected: phraseWithSelection.selected)
+        return (chinese: phraseWithSelection.phrase.chinese.joined(),
+                english: phraseWithSelection.phrase.english,
+                selected: phraseWithSelection.selected)
     }
 
     /// Toggles the index given at the indices selected, i.e. remove if it exists, insert if not.
@@ -45,7 +47,7 @@ class PhrasesExplorerViewModel {
         let keyword = keyword.lowercased()
         rowIndices = []
         for (idx, (phrase: phrase, selected: _)) in allPhrasesWithSelection.enumerated() {
-            if phrase.pinyin.contains(where: { $0 == keyword }) {
+            if [phrase.pinyin, phrase.chinese].flatMap({ $0 }).contains(where: { $0 == keyword }) {
                 rowIndices.append(idx)
             }
         }
