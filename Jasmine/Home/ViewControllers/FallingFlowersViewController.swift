@@ -5,10 +5,10 @@ import CoreMotion
 class FallingFlowersViewController: UIViewController {
 
     // MARK: Constants
-    private static let spawnCount = 220
+    private static let spawnCount = 180
 
-    private static let flowerSizeMin = 30.0
-    private static let flowerSizeMax = 80.0
+    private static let flowerSizeMin = 20.0
+    private static let flowerSizeMax = 60.0
 
     private static let accelerometerUpdateInterval = 0.05
 
@@ -31,7 +31,7 @@ class FallingFlowersViewController: UIViewController {
     private var flowerSource: CGPoint {
         let randomX = Random.double(from: Double(view.bounds.minX),
                                     toInclusive: Double(view.bounds.maxX))
-        return CGPoint(x: randomX, y: -10)
+        return CGPoint(x: randomX, y: 0)
     }
 
     // MARK: View Controller Lifecycle
@@ -50,11 +50,6 @@ class FallingFlowersViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         accelerometer.stopAccelerometerUpdates()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     /// Generates a flower and paste it in the current view.
