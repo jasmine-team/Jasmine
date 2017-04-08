@@ -5,7 +5,9 @@ class CiHuiSlidingViewModelTests: XCTestCase {
     func testInit() {
         let numberOfPhrases = 3
 
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 5, type: .ciHui) else {
+        let level = Level()
+        level.gameType = .ciHui
+        guard let gameData = try? GameDataFactory().createGame(fromLevel: level) else {
             XCTFail("Realm errors")
             return
         }

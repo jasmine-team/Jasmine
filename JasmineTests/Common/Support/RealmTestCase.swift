@@ -31,6 +31,8 @@ class RealmTestCase: XCTestCase {
 
     func createGameData(phrases: [Phrase], difficulty: Int, type: GameType) -> GameData {
         phrases.forEach(save)
-        return gameDataFactory.createGame(difficulty: difficulty, type: type)
+        let level = Level()
+        level.gameType = type
+        return gameDataFactory.createGame(fromLevel: level)
     }
 }

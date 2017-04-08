@@ -9,7 +9,7 @@ class GridViewModelTests: XCTestCase {
             XCTFail("Realm error")
             return
         }
-        gameData = gameDataFactory.createGame(difficulty: 1, type: .ciHui)
+        gameData = gameDataFactory.createGame(fromLevel: Level())
     }
 
     func testInit() {

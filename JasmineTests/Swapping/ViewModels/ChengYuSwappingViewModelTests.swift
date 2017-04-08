@@ -5,7 +5,9 @@ class ChengYuSwappingViewModelTests: XCTestCase {
     func testInit() {
         let numberOfPhrases = 3
 
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
+        let level = Level()
+        level.gameType = .chengYu
+        guard let gameData = try? GameDataFactory().createGame(fromLevel: level) else {
             XCTFail("Realm errors")
             return
         }

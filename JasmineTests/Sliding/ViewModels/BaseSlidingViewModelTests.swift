@@ -11,7 +11,7 @@ class BaseSlidingViewModelTests: XCTestCase {
     var viewModel: BaseSlidingViewModel!
 
     override func setUp() {
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
+        guard let gameData = try? GameDataFactory().createGame(fromLevel: Level()) else {
             XCTFail("Realm errors")
             return
         }

@@ -18,7 +18,9 @@ class RealmIntegrationTests: XCTestCase {
     func testRealm_phrases() {
         let gameTypes: [GameType] = [.chengYu, .ciHui]
         gameTypes.forEach { type in
-            let gameData = factory.createGame(difficulty: 1, type: type)
+            let level = Level()
+            level.gameType = type
+            let gameData = factory.createGame(fromLevel: level)
             XCTAssertNotNil(gameData.phrases.next(), "Game data does not contain phrases")
             XCTAssertEqual(gameData.phrases.next(count: 5).count, 5, "Incorrect amount of phrases")
         }
