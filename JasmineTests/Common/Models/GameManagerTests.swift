@@ -17,7 +17,7 @@ class GameManagerTests: RealmTestCase {
             Phrase(value: ["rawChinese": "刷新"]),
             Phrase(value: ["rawChinese": "脱颖而出"]),
             ]
-        testGameDataFactory_createGame_generic(phrases: phrases, type: .ciHui, count: 2)
+        testGameManager_createGame_generic(phrases: phrases, type: .ciHui, count: 2)
     }
 
     func testGameManager_createPhrases_chengYu() {
@@ -26,7 +26,7 @@ class GameManagerTests: RealmTestCase {
             Phrase(value: ["rawChinese": "脱颖而出"]),
             Phrase(value: ["rawChinese": "马马虎虎"]),
             ]
-        testGameDataFactory_createGame_generic(phrases: phrases, type: .chengYu, count: 2)
+        testGameManager_createGame_generic(phrases: phrases, type: .chengYu, count: 2)
     }
 
     /// Tests createGame generically
@@ -36,8 +36,8 @@ class GameManagerTests: RealmTestCase {
     ///   - type: GameType for factory to generate
     ///   - count: actual number of results in assert against
     private func testGameManager_createGame_generic(phrases: [Phrase],
-                                                        type: GameType,
-                                                        count: Int) {
+                                                    type: GameType,
+                                                    count: Int) {
         let difficulty = 1
         let gameData = createGameData(phrases: phrases, difficulty: difficulty, type: type)
         let result = Set(gameData.phrases.next(count: phrases.count))
