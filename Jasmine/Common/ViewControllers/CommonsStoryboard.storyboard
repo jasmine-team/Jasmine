@@ -94,7 +94,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUV-1w-24N">
-                                <rect key="frame" x="36" y="252" width="38" height="21"/>
+                                <rect key="frame" x="36" y="252" width="303" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -133,6 +133,7 @@
                             <constraint firstItem="kSs-Rg-kmX" firstAttribute="top" secondItem="1U0-16-NkD" secondAttribute="top" id="Q3l-TW-1FY"/>
                             <constraint firstItem="Yys-DC-rDE" firstAttribute="top" secondItem="kSs-Rg-kmX" secondAttribute="bottom" constant="30" id="cxB-9X-VG8"/>
                             <constraint firstItem="r7D-06-ny7" firstAttribute="leading" secondItem="IIJ-bC-LHw" secondAttribute="leading" id="dWI-Ka-Xa4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cUV-1w-24N" secondAttribute="trailing" constant="20" id="djt-5T-aI8"/>
                             <constraint firstItem="BUP-VZ-TB2" firstAttribute="bottom" secondItem="Yys-DC-rDE" secondAttribute="bottom" multiplier="0.97" id="eZK-PB-4yx"/>
                             <constraint firstItem="BUP-VZ-TB2" firstAttribute="leading" secondItem="Yys-DC-rDE" secondAttribute="trailing" constant="7.5" id="m1m-DA-AA9"/>
                             <constraint firstItem="Yys-DC-rDE" firstAttribute="leading" secondItem="1U0-16-NkD" secondAttribute="leadingMargin" multiplier="0.8" constant="20" id="ms6-xq-kDf"/>
@@ -155,6 +156,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="speaker-on" width="128" height="128"/>
+        <image name="speaker-on" width="32" height="32"/>
     </resources>
 </document>
