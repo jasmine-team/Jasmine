@@ -19,10 +19,6 @@ class PhraseViewController: UIViewController {
         hanZiLabel.text = viewModel.hanZi
         pinYinLabel.text = viewModel.pinYin
         englishLabel.text = viewModel.english
-
-        for label in [hanZiLabel, pinYinLabel, englishLabel] {
-            label?.sizeToFit()
-        }
     }
 
     /// Injects the required data before opening this view.
