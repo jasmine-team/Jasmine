@@ -2,17 +2,9 @@ import UIKit
 
 class PhrasesExplorerViewController: UIViewController {
 
-    @IBOutlet private weak var phrasesTable: UITableView!
-    fileprivate var viewModel: PhrasesExplorerViewModel!
-    private var tableDelegate: PhrasesTableViewDelegate!
-
-    override func viewDidLoad() {
-        tableDelegate = PhrasesTableViewDelegate()
-        tableDelegate.viewModel = viewModel
-        tableDelegate.tableView = phrasesTable
-
-        phrasesTable.delegate = tableDelegate
-    }
+    private var phrasesTable: PhrasesTableViewController!
+    private var viewModel: PhrasesExplorerViewModel!
+    private var searchController: UISearchController!
 
     /// Dismisses this current screen when "Back" button is pressed.
     @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
@@ -25,25 +17,12 @@ class PhrasesExplorerViewController: UIViewController {
     func segueWith(_ viewModel: PhrasesExplorerViewModel) {
         self.viewModel = viewModel
     }
-}
 
-extension PhrasesExplorerViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.amount
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PhraseExplorerCell", for: indexPath)
-
-        let row = indexPath.row
-        let cellContents = viewModel.get(at: row)
-        cell.textLabel?.text = cellContents.chinese
-        if cellContents.selected {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let table = segue.destination as? PhrasesTableViewController {
+            phrasesTable = table
+            phrasesTable.viewModel = viewModel
+            searchController = UISearchController(searchResultsController: phrasesTable)
         }
-
-        return cell
     }
 }
