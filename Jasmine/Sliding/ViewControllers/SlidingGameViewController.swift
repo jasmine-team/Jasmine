@@ -224,7 +224,7 @@ extension SlidingGameViewController: HighlightedUpdateDelegate {
         let highlightedCoords = viewModel.highlightedCoordinates
 
         DispatchQueue.main.asyncAfter(deadline: .now() + SlidingGameViewController.highlightDelay) {
-            self.slidingGridView.allCoordinates.forEach { coord in
+            for coord in self.slidingGridView.allCoordinates {
                 self.slidingGridView.tileProperties[coord] = { tile in
                     tile.shouldHighlight = highlightedCoords.contains(coord)
                 }

@@ -96,11 +96,11 @@ class SquareTileViewCell: UICollectionViewCell {
 
     /// Clear all the tiles except the top most tile in this cell.
     func clearExceptFirst() {
-        tiles.forEach {
-            guard $0 != displayedTile else {
+        for tile in tiles {
+            guard tile != displayedTile else {
                 return
             }
-            $0.removeFromSuperview()
+            tile.removeFromSuperview()
         }
     }
 

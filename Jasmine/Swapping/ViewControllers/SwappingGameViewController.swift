@@ -221,7 +221,7 @@ extension SwappingGameViewController: HighlightedUpdateDelegate {
         let highlightedCoords = viewModel.highlightedCoordinates
 
         DispatchQueue.main.asyncAfter(deadline: .now() + SwappingGameViewController.highlightDelay) {
-            self.squareGridViewController.allCoordinates.forEach { coord in
+            for coord in self.squareGridViewController.allCoordinates {
                 self.squareGridViewController.tileProperties[coord] = { tile in
                     tile.shouldHighlight = highlightedCoords.contains(coord)
                 }

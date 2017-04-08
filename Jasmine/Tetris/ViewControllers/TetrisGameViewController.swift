@@ -247,11 +247,11 @@ extension TetrisGameViewController {
     ///
     /// - Parameter coordinatesShifted: array of coordinates to shift
     fileprivate func animate(shiftTiles coordinatesToShift: [(from: Coordinate, to: Coordinate)]) {
-        coordinatesToShift.forEach {
-            guard let tile = self.tetrisGameAreaView.detachTile(fromCoord: $0.from) else {
+        for (start, end) in coordinatesToShift {
+            guard let tile = self.tetrisGameAreaView.detachTile(fromCoord: start) else {
                 return
             }
-            self.tetrisGameAreaView.snapDetachedTile(tile, toCoordinate: $0.to) {
+            self.tetrisGameAreaView.snapDetachedTile(tile, toCoordinate: end) {
                 self.tetrisGameAreaView.reattachDetachedTile(tile)
             }
         }
