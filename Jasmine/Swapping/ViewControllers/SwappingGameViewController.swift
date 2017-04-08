@@ -71,7 +71,7 @@ class SwappingGameViewController: UIViewController {
     /// to another location.
     ///
     /// Note that if the game status is not in progress, results in no-op.
-    @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
+    @IBAction private func onTilesDragged(_ sender: UIPanGestureRecognizer) {
         startGameIfPossible()
         guard viewModel.gameStatus == .inProgress else {
             return
@@ -92,7 +92,7 @@ class SwappingGameViewController: UIViewController {
     }
 
     /// Quit this screen when the back button is pressed.
-    @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
+    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
 

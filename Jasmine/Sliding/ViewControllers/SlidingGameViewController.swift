@@ -67,12 +67,12 @@ class SlidingGameViewController: UIViewController {
 
     // MARK: Gestures and Listeners
     /// Dismisses this current screen when "Back" button is pressed.
-    @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
+    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
 
     /// Handles the gesture where the user drags the tile to an empty slot.
-    @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
+    @IBAction private func onTilesDragged(_ sender: UIPanGestureRecognizer) {
         startGameIfPossible()
         guard viewModel.gameStatus == .inProgress else {
             return

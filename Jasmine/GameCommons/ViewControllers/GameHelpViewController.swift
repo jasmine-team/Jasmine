@@ -24,7 +24,7 @@ class GameHelpViewController: UIViewController {
         self.gameDescriptor = gameDescriptor
     }
 
-    @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
+    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
 
