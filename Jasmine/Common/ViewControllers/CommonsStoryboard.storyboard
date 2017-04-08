@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -74,7 +77,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Phrase View" id="TYH-Ei-pQ5">
+                                    <navigationItem title="Dictionary" id="TYH-Ei-pQ5">
                                         <barButtonItem key="leftBarButtonItem" title="BACK" id="7Qv-NA-djQ">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
@@ -84,31 +87,39 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="shi hou" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIJ-bC-LHw">
-                                <rect key="frame" x="159" y="157" width="56" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="shi hou" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIJ-bC-LHw">
+                                <rect key="frame" x="36" y="166" width="79" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUV-1w-24N">
-                                <rect key="frame" x="168" y="225" width="38" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUV-1w-24N">
+                                <rect key="frame" x="36" y="252" width="38" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="时候" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yys-DC-rDE">
-                                <rect key="frame" x="170" y="106" width="35" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时候" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yys-DC-rDE">
+                                <rect key="frame" x="33" y="94" width="120.5" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-VZ-TB2">
-                                <rect key="frame" x="168" y="433" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Play"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENGLISH MEANING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7D-06-ny7">
+                                <rect key="frame" x="36" y="226" width="135" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-VZ-TB2">
+                                <rect key="frame" x="161" y="131" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Fjg-AQ-LSe"/>
+                                    <constraint firstAttribute="width" secondItem="BUP-VZ-TB2" secondAttribute="height" multiplier="1:1" id="LQy-El-Sft"/>
+                                </constraints>
+                                <state key="normal" image="speaker-on">
+                                    <color key="titleColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="playButtonPressed:" destination="4gj-Nr-GkG" eventType="touchUpInside" id="Tzv-XA-qT7"/>
                                 </connections>
@@ -116,15 +127,26 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cUV-1w-24N" firstAttribute="top" secondItem="r7D-06-ny7" secondAttribute="bottom" constant="8" id="8fX-2J-lMH"/>
                             <constraint firstAttribute="trailing" secondItem="kSs-Rg-kmX" secondAttribute="trailing" id="ExX-LQ-dV8"/>
+                            <constraint firstItem="r7D-06-ny7" firstAttribute="top" secondItem="IIJ-bC-LHw" secondAttribute="bottom" constant="30" id="OAx-FM-Rsj"/>
                             <constraint firstItem="kSs-Rg-kmX" firstAttribute="top" secondItem="1U0-16-NkD" secondAttribute="top" id="Q3l-TW-1FY"/>
+                            <constraint firstItem="Yys-DC-rDE" firstAttribute="top" secondItem="kSs-Rg-kmX" secondAttribute="bottom" constant="30" id="cxB-9X-VG8"/>
+                            <constraint firstItem="r7D-06-ny7" firstAttribute="leading" secondItem="IIJ-bC-LHw" secondAttribute="leading" id="dWI-Ka-Xa4"/>
+                            <constraint firstItem="BUP-VZ-TB2" firstAttribute="bottom" secondItem="Yys-DC-rDE" secondAttribute="bottom" multiplier="0.97" id="eZK-PB-4yx"/>
+                            <constraint firstItem="BUP-VZ-TB2" firstAttribute="leading" secondItem="Yys-DC-rDE" secondAttribute="trailing" constant="7.5" id="m1m-DA-AA9"/>
+                            <constraint firstItem="Yys-DC-rDE" firstAttribute="leading" secondItem="1U0-16-NkD" secondAttribute="leadingMargin" multiplier="0.8" constant="20" id="ms6-xq-kDf"/>
+                            <constraint firstItem="cUV-1w-24N" firstAttribute="leading" secondItem="IIJ-bC-LHw" secondAttribute="leading" id="nxF-mu-Wbd"/>
+                            <constraint firstItem="IIJ-bC-LHw" firstAttribute="leading" secondItem="Yys-DC-rDE" secondAttribute="leading" constant="3" id="rjw-J5-PtU"/>
                             <constraint firstItem="kSs-Rg-kmX" firstAttribute="leading" secondItem="1U0-16-NkD" secondAttribute="leading" id="sDu-6u-0mF"/>
+                            <constraint firstItem="IIJ-bC-LHw" firstAttribute="top" secondItem="Yys-DC-rDE" secondAttribute="bottom" id="uwE-oH-M2p"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="englishLabel" destination="cUV-1w-24N" id="BNP-Xw-Rkg"/>
                         <outlet property="hanZiLabel" destination="Yys-DC-rDE" id="C7k-gE-10G"/>
                         <outlet property="pinYinLabel" destination="IIJ-bC-LHw" id="3wj-7C-L4X"/>
+                        <outlet property="speechButton" destination="BUP-VZ-TB2" id="N57-FL-c4i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cw6-BI-H0t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -132,4 +154,7 @@
             <point key="canvasLocation" x="309.60000000000002" y="120.98950524737631"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="speaker-on" width="128" height="128"/>
+    </resources>
 </document>
