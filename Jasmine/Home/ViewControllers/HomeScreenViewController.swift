@@ -11,29 +11,32 @@ class HomeScreenViewController: UIViewController {
             fatalError("Error with Realm")
         }
 
+        let level = Level()
         if let swappingGame = segue.destination as? SwappingGameViewController {
             if (sender as? UIButton) === swappingChengYuButton {
-                let gameData = gameDataFactory.createGame(difficulty: 0, type: .chengYu)
+                let gameData = gameDataFactory.createGame(fromLevel: level)
                 swappingGame.segueWith(ChengYuSwappingViewModel(time: GameConstants.Swapping.time,
                                                                 gameData: gameData,
                                                                 numberOfPhrases: GameConstants.Swapping.rows))
             } else if (sender as? UIButton) === swappingCiHuiButton {
-                let gameData = gameDataFactory.createGame(difficulty: 0, type: .ciHui)
+                level.gameType = .ciHui
+                let gameData = gameDataFactory.createGame(fromLevel: level)
                 swappingGame.segueWith(CiHuiSwappingViewModel(time: GameConstants.Swapping.time,
                                                               gameData: gameData,
                                                               numberOfPhrases: GameConstants.Swapping.rows))
             }
         } else if let tetrisGame = segue.destination as? TetrisGameViewController {
-            let gameData = gameDataFactory.createGame(difficulty: 0, type: .chengYu)
+            let gameData = gameDataFactory.createGame(fromLevel: level)
             tetrisGame.segueWith(TetrisGameViewModel(gameData: gameData))
         } else if let slidingGame = segue.destination as? SlidingGameViewController {
             if (sender as? UIButton) === slidingChengYuButton {
-                let gameData = gameDataFactory.createGame(difficulty: 0, type: .chengYu)
+                let gameData = gameDataFactory.createGame(fromLevel: level)
                 slidingGame.segueWith(ChengYuSlidingViewModel(time: GameConstants.Sliding.time,
                                                               gameData: gameData,
                                                               rows: GameConstants.Sliding.rows))
             } else if (sender as? UIButton) === slidingCiHuiButton {
-                let gameData = gameDataFactory.createGame(difficulty: 0, type: .ciHui)
+                level.gameType = .ciHui
+                let gameData = gameDataFactory.createGame(fromLevel: level)
                 slidingGame.segueWith(CiHuiSlidingViewModel(time: GameConstants.Sliding.time,
                                                             gameData: gameData,
                                                             rows: GameConstants.Sliding.rows))
