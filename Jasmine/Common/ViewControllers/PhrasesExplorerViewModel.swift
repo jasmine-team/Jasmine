@@ -7,14 +7,15 @@ class PhrasesExplorerViewModel {
     /// The indices of allPhrasesWithSelection that are shown to the user.
     private var rowIndices: [Int]
 
-    /// Number of phrases in this ViewModel
-    let amount: Int
+    /// Number of phrases that will be shown in the view
+    var rowsShown: Int {
+        return rowIndices.count
+    }
 
     /// The ViewController that contains this ViewModel
     weak var viewControllerDelegate: PhrasesExplorerViewController?
 
     init(phrases: Phrases, amount: Int) {
-        self.amount = amount
         allPhrasesWithSelection = phrases.next(count: amount).map { ($0, false) }
         rowIndices = Array(0..<amount)
     }
@@ -37,9 +38,13 @@ class PhrasesExplorerViewModel {
         allPhrasesWithSelection[toggledIndex].selected = !allPhrasesWithSelection[toggledIndex].selected
     }
 
+    /// Searches with the given keyword. Updates rowIndices
+    ///
+    /// - Parameter keyword: the keyword for search
     func search(keyword: String) {
+        let keyword = keyword.lowercased()
         rowIndices = []
-        for (offset: idx, (phrase: phrase, selected: _)) in allPhrasesWithSelection.enumerated() {
+        for (idx, (phrase: phrase, selected: _)) in allPhrasesWithSelection.enumerated() {
             if phrase.pinyin.contains(where: { $0 == keyword }) {
                 rowIndices.append(idx)
             }

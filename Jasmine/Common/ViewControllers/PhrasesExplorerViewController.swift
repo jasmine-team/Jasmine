@@ -2,8 +2,8 @@ import UIKit
 
 class PhrasesExplorerViewController: UIViewController {
 
-    private var phrasesTable: PhrasesTableViewController!
-    private var viewModel: PhrasesExplorerViewModel!
+    fileprivate var phrasesTable: PhrasesTableViewController!
+    fileprivate var viewModel: PhrasesExplorerViewModel!
     private var searchController: UISearchController!
 
     /// Dismisses this current screen when "Back" button is pressed.
@@ -24,5 +24,19 @@ class PhrasesExplorerViewController: UIViewController {
             phrasesTable.viewModel = viewModel
             searchController = UISearchController(searchResultsController: phrasesTable)
         }
+    }
+}
+
+extension PhrasesExplorerViewController: UISearchBarDelegate {
+    /// Does the fucking search.
+    ///
+    /// - Parameter searchBar: the search bar
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else {
+            return
+        }
+
+        viewModel.search(keyword: text)
+        phrasesTable.tableView.reloadData()
     }
 }
