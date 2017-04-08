@@ -112,12 +112,6 @@
                                                 <action selector="onBackPressed:" destination="WaX-Zk-8YX" id="kNH-v7-oGA"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="HELP" id="SDE-ZL-fVV">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <segue destination="TET-9F-kag" kind="presentation" modalPresentationStyle="overCurrentContext" id="hbr-XK-WzY"/>
-                                            </connections>
-                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

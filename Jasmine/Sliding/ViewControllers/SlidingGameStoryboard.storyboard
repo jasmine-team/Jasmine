@@ -77,12 +77,6 @@
                                                 <action selector="onBackPressed:" destination="39S-vZ-Zyw" id="BtU-R3-TVc"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="HELP" id="9xh-As-27w">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <segue destination="Nnz-Fe-m64" kind="presentation" modalPresentationStyle="overCurrentContext" id="YIK-mX-WJj"/>
-                                            </connections>
-                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

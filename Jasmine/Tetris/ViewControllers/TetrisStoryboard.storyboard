@@ -128,12 +128,6 @@
                                                 <action selector="onBackPressed:" destination="QxJ-8P-SqZ" id="Ba4-ZR-qCE"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="HELP" id="vIO-y1-r6Y">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <segue destination="LIF-2d-dmQ" kind="presentation" modalPresentationStyle="overCurrentContext" id="SSJ-ax-OSF"/>
-                                            </connections>
-                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

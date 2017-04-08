@@ -13,6 +13,7 @@
         <!--Game Help View Controller-->
         <scene sceneID="cEO-vG-pDG">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rDN-PM-pPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="GameHelpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ski-nx-7S0" customClass="GameHelpViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="My4-x6-lbE"/>
@@ -85,7 +86,6 @@
                         <outlet property="gameTitleLabel" destination="OMF-76-x3m" id="QlJ-tn-y4n"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rDN-PM-pPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-819.20000000000005" y="614.392803598201"/>
         </scene>
