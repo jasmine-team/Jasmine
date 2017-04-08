@@ -65,6 +65,8 @@
                                         <state key="normal" title="Phrases Explorer"/>
                                         <connections>
                                             <segue destination="4Cz-aW-33f" kind="show" id="kwm-v0-aGq"/>
+										</connections>
+									</button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gp-IY-vsy">
                                         <rect key="frame" x="0.0" y="150" width="218" height="30"/>
                                         <state key="normal" title="Open Phrase"/>
