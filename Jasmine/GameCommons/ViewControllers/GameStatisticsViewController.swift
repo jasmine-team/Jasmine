@@ -6,6 +6,7 @@ class GameStatisticsViewController: UIViewController {
     // MARK: Constants
     private static let flashScale: CGFloat = 2.0
     private static let flashDuration = 0.3
+    private static let timeRemainingToFlash = 10.0
 
     // MARK: Layout
     @IBOutlet private weak var scoreLabel: UILabel!
@@ -42,29 +43,41 @@ class GameStatisticsViewController: UIViewController {
     /// Displays the current score in the label, in integer.
     fileprivate func redisplayCurrentScore() {
         let text = "\(scoreDescriptor.currentScore)"
-        setTextAndFlashIfNeeded(text, toLabel: scoreLabel)
+        setTextAndFlashIfNeeded(text, toLabel: scoreLabel, withColor: Constants.Theme.secondaryColor)
     }
 
     /// Displays the time remaining in the label, in integer.
     fileprivate func redisplayTimeRemaining() {
         let text = "\(Int(round(timeDescriptor.timeRemaining)))"
-        setTextAndFlashIfNeeded(text, toLabel: timeLeftLabel)
+
+        let timeIsRunningOut = timeDescriptor.timeRemaining
+            <= GameStatisticsViewController.timeRemainingToFlash
+        
+        if timeIsRunningOut {
+            setTextAndFlashIfNeeded(text, toLabel: timeLeftLabel, withColor: UIColor.flatRed)
+        } else {
+            setTextWithoutFlashing(text, toLabel: timeLeftLabel)
+        }
+    }
+
+    private func setTextWithoutFlashing(_ text: String, toLabel label: UILabel) {
+        label.text = text
     }
 
     /// Helper method to set text and flash label if there is a change in string.
-    private func setTextAndFlashIfNeeded(_ text: String, toLabel label: UILabel) {
+    private func setTextAndFlashIfNeeded(_ text: String, toLabel label: UILabel, withColor color: UIColor?) {
         guard text != label.text else {
             return
         }
         label.text = text
-        flashLabel(label)
+        flashLabel(label, withColor: color)
     }
 
     /// Animates effect that highlights the update of the label (e.g. grow shrinking)
-    private func flashLabel(_ label: UILabel) {
+    private func flashLabel(_ label: UILabel, withColor color: UIColor?) {
         let scale = GameStatisticsViewController.flashScale
         label.transform = label.transform.scaledBy(x: scale, y: scale)
-        label.textColor = Constants.Theme.secondaryColor
+        label.textColor = color
         UIView.animate(withDuration: GameStatisticsViewController.flashDuration,
                        animations: { label.transform = label.transform.scaledBy(x: 1 / scale, y: 1 / scale) },
                        completion: { _ in label.textColor = UIColor.white })
