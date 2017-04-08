@@ -15,6 +15,10 @@ class SlidingGameViewController: UIViewController {
 
     fileprivate var slidingGridView: DraggableSquareGridViewController!
 
+    @IBOutlet fileprivate weak var startGameLabel: UILabel!
+
+    @IBOutlet fileprivate weak var navigationBar: UINavigationBar!
+
     // MARK: - Properties
     fileprivate var viewModel: SlidingViewModelProtocol!
 
@@ -40,13 +44,10 @@ class SlidingGameViewController: UIViewController {
     }
 
     // MARK: - View Controller Lifecycle
-    /// Starts the game when the view appears.
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        if viewModel.gameStatus == .notStarted {
-            viewModel.startGame()
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setTheme()
+        setGameDescriptions()
     }
 
     /// Injects the required data before opening this view.
@@ -66,6 +67,7 @@ class SlidingGameViewController: UIViewController {
 
     /// Handles the gesture where the user drags the tile to an empty slot.
     @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
+        startGameIfPossible()
         guard viewModel.gameStatus == .inProgress else {
             return
         }
@@ -81,6 +83,19 @@ class SlidingGameViewController: UIViewController {
         default:
             break
         }
+    }
+
+    // MARK: Theming
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    private func setTheme() {
+        navigationBar.backgroundColor = Constants.Theme.mainColorDark
+    }
+
+    private func setGameDescriptions() {
+        navigationBar.topItem?.title = viewModel.gameTitle
     }
 }
 
@@ -185,6 +200,14 @@ extension SlidingGameViewController: GameStatusUpdateDelegate {
             self.performSegue(withIdentifier: SlidingGameViewController.segueToGameOverView,
                               sender: nil)
         }
+    }
+
+    fileprivate func startGameIfPossible() {
+        guard viewModel.gameStatus == .notStarted else {
+            return
+        }
+        viewModel.startGame()
+        startGameLabel.isHidden = true
     }
 }
 

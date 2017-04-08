@@ -20,6 +20,10 @@ class TetrisGameViewController: UIViewController {
 
     fileprivate var gameStatisticsView: GameStatisticsViewController!
 
+    @IBOutlet fileprivate weak var startGameLabel: UILabel!
+
+    @IBOutlet fileprivate weak var navigationBar: UINavigationBar!
+
     // MARK: Game Properties
     fileprivate var viewModel: TetrisGameViewModelProtocol!
 
@@ -31,9 +35,11 @@ class TetrisGameViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setFirstUpcomingTileStyle()
+        setGameDescriptions()
+        setTheme()
 
         if viewModel.gameStatus == .notStarted {
-            startGame()
+            releaseNewTile()
         }
     }
 
@@ -103,6 +109,7 @@ class TetrisGameViewController: UIViewController {
 
     /// Moves the falling tile when the view is swiped to a particular direction.
     @IBAction func onTilesSwiped(_ sender: UISwipeGestureRecognizer) {
+        startGameIfPossible()
         guard tetrisGameAreaView.hasFallingTile else {
             return
         }
@@ -119,6 +126,7 @@ class TetrisGameViewController: UIViewController {
     /// Moves the falling tile with respect to the position of the falling tile when the user taps
     /// on the grid.
     @IBAction func onTilesTapped(_ sender: UITapGestureRecognizer) {
+        startGameIfPossible()
         guard let tileFrame = tetrisGameAreaView.fallingTile?.frame else {
             return
         }
@@ -137,12 +145,6 @@ class TetrisGameViewController: UIViewController {
     }
 
     // MARK: - Game State and Actions
-    private func startGame() {
-        viewModel.startGame()
-        tetrisGameAreaView.startFallingTiles(with: Constants.Game.Tetris.tileFallInterval)
-        releaseNewTile()
-    }
-
     private func releaseNewTile() {
         guard !tetrisGameAreaView.hasFallingTile else {
             assertionFailure("Current tile still falling! Cannot release a new tile for falling!")
@@ -185,6 +187,18 @@ class TetrisGameViewController: UIViewController {
         tetrisUpcomingTilesView.tileProperties[.origin] = { tile in
             tile.shouldHighlight = true
         }
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    private func setTheme() {
+        navigationBar.backgroundColor = Constants.Theme.mainColorDark
+    }
+
+    private func setGameDescriptions() {
+        navigationBar.topItem?.title = viewModel.gameTitle
     }
 }
 
@@ -252,5 +266,14 @@ extension TetrisGameViewController: GameStatusUpdateDelegate {
             self.performSegue(withIdentifier: TetrisGameViewController.segueToGameOverView,
                               sender: nil)
         }
+    }
+
+    fileprivate func startGameIfPossible() {
+        guard viewModel.gameStatus == .notStarted else {
+            return
+        }
+        viewModel.startGame()
+        startGameLabel.isHidden = true
+        tetrisGameAreaView.startFallingTiles(with: Constants.Game.Tetris.tileFallInterval)
     }
 }

@@ -17,7 +17,7 @@ class SwappingGameViewController: UIViewController {
 
     @IBOutlet private weak var navigationBar: UINavigationBar!
 
-    @IBOutlet private weak var statusBarBackgroundView: UIView!
+    @IBOutlet fileprivate weak var startGameLabel: UILabel!
 
     fileprivate var draggingTile: (view: SquareTileView, originalCoord: Coordinate)?
 
@@ -29,17 +29,7 @@ class SwappingGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTheme()
-    }
-
-    /// This also starts the game if have not done so.
-    ///
-    /// - Parameter animated: true if the appearance of the view is animated
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        if viewModel.gameStatus == .notStarted {
-            viewModel.startGame()
-        }
+        setGameDescriptions()
     }
 
     // MARK: Segue methods
@@ -76,6 +66,7 @@ class SwappingGameViewController: UIViewController {
     ///
     /// Note that if the game status is not in progress, results in no-op.
     @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
+        startGameIfPossible()
         guard viewModel.gameStatus == .inProgress else {
             return
         }
@@ -105,8 +96,11 @@ class SwappingGameViewController: UIViewController {
     }
 
     private func setTheme() {
-        statusBarBackgroundView.backgroundColor = Constants.Theme.mainColorDark
         navigationBar.backgroundColor = Constants.Theme.mainColorDark
+    }
+
+    private func setGameDescriptions() {
+        navigationBar.topItem?.title = viewModel.gameTitle
     }
 }
 
@@ -203,6 +197,14 @@ extension SwappingGameViewController: GameStatusUpdateDelegate {
             self.performSegue(withIdentifier: SwappingGameViewController.segueToGameOverView,
                               sender: nil)
         }
+    }
+
+    fileprivate func startGameIfPossible() {
+        guard viewModel.gameStatus == .notStarted else {
+            return
+        }
+        viewModel.startGame()
+        startGameLabel.isHidden = true
     }
 }
 

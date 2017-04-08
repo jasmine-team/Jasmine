@@ -87,15 +87,28 @@
                                     <segue destination="Ana-Ub-Zvc" kind="embed" id="dha-SW-4fc"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DRAG TO START" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fd-16-hTt">
+                                <rect key="frame" x="0.0" y="284" width="375" height="100"/>
+                                <color key="backgroundColor" red="0.15101002156734467" green="0.56891876459121704" blue="0.43715286254882812" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="cFp-rU-diN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iE-qM-XqH">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="jwJ-iW-Mzd"/>
+                                </constraints>
                                 <color key="barTintColor" red="0.15101002156734467" green="0.56891876459121704" blue="0.43715286254882812" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Grid Game Title" id="4dc-xX-Or9">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" width="35" id="Zwe-14-X0B">
+                                        <barButtonItem key="leftBarButtonItem" title="BACK" width="35" id="Zwe-14-X0B">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="onBackPressed:" destination="WaX-Zk-8YX" id="kNH-v7-oGA"/>
@@ -110,33 +123,26 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a03-AG-f4q" userLabel="Status Bar Background">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
-                                <color key="backgroundColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="deW-2v-RZ8"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="z1B-88-3dA" firstAttribute="top" secondItem="aDe-Ia-KAl" secondAttribute="bottom" id="8Ff-66-SXU"/>
-                            <constraint firstItem="a03-AG-f4q" firstAttribute="top" secondItem="Eab-wS-66c" secondAttribute="top" id="HKW-cU-vNN"/>
                             <constraint firstAttribute="trailing" secondItem="aDe-Ia-KAl" secondAttribute="trailing" id="L0v-Gh-AsI"/>
                             <constraint firstItem="1hV-fi-ivC" firstAttribute="centerY" secondItem="Eab-wS-66c" secondAttribute="centerY" id="LtI-fb-nee"/>
-                            <constraint firstItem="9iE-qM-XqH" firstAttribute="top" secondItem="SDT-OK-V7j" secondAttribute="bottom" id="OlG-8t-KkV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1hV-fi-ivC" secondAttribute="trailing" id="aK3-bZ-z8D"/>
+                            <constraint firstItem="0Fd-16-hTt" firstAttribute="leading" secondItem="Eab-wS-66c" secondAttribute="leading" id="bdP-ie-k9j"/>
+                            <constraint firstItem="0Fd-16-hTt" firstAttribute="centerY" secondItem="Eab-wS-66c" secondAttribute="centerY" id="ern-2Y-VQh"/>
                             <constraint firstItem="aDe-Ia-KAl" firstAttribute="leading" secondItem="Eab-wS-66c" secondAttribute="leading" id="gTP-lj-DhX"/>
-                            <constraint firstAttribute="trailing" secondItem="a03-AG-f4q" secondAttribute="trailing" id="hjO-Oe-2C2"/>
                             <constraint firstItem="1hV-fi-ivC" firstAttribute="leading" secondItem="Eab-wS-66c" secondAttribute="leadingMargin" id="kIA-6n-LSo"/>
+                            <constraint firstAttribute="trailing" secondItem="0Fd-16-hTt" secondAttribute="trailing" id="n9D-re-aSk"/>
+                            <constraint firstItem="9iE-qM-XqH" firstAttribute="top" secondItem="Eab-wS-66c" secondAttribute="top" id="qL0-pY-X0d"/>
                             <constraint firstAttribute="trailing" secondItem="9iE-qM-XqH" secondAttribute="trailing" id="sZp-A0-Aok"/>
-                            <constraint firstItem="a03-AG-f4q" firstAttribute="leading" secondItem="Eab-wS-66c" secondAttribute="leading" id="tiM-zY-2rg"/>
                             <constraint firstItem="9iE-qM-XqH" firstAttribute="leading" secondItem="Eab-wS-66c" secondAttribute="leading" id="ztj-XD-afm"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="navigationBar" destination="9iE-qM-XqH" id="ylU-dV-rRp"/>
-                        <outlet property="statusBarBackgroundView" destination="a03-AG-f4q" id="HJ6-lK-Ulm"/>
+                        <outlet property="startGameLabel" destination="0Fd-16-hTt" id="TBb-BF-ASz"/>
                         <segue destination="unE-jP-T2K" kind="presentation" identifier="SegueToGameOverViewController" modalTransitionStyle="flipHorizontal" id="1Mv-vW-3Bh"/>
                     </connections>
                 </viewController>
