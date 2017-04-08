@@ -5,13 +5,15 @@ class LevelResult: Object {
 
     /// Set time played at moment of creation
     private(set) dynamic var timePlayed: Date = Date()
+    private(set) dynamic var score: Int = 0
     private dynamic var rawGameResult: String = ""
 
-    let rawPhrases = List<Phrase>()
+    let phrases = List<Phrase>()
 
-    convenience init(phrasesUserSeen: Set<Phrase>, result: GameStatus) {
+    convenience init(phrasesUserSeen: Set<Phrase>, result: GameStatus, score: Int) {
         self.init()
-        rawPhrases.append(objectsIn: phrasesUserSeen)
+        phrases.append(objectsIn: phrasesUserSeen)
+        self.score = score
 
         switch result {
         case .endedWithLost,
@@ -20,6 +22,10 @@ class LevelResult: Object {
         default:
             assertionFailure("Game result is not valid")
         }
+    }
+
+    override static func primaryKey() -> String? {
+        return "timePlayed"
     }
 
     /// MARK: non-persisted properties
@@ -32,7 +38,7 @@ class LevelResult: Object {
     }
 
     override static func ignoredProperties() -> [String] {
-        return ["phrases", "gameResult"]
+        return ["gameResult"]
     }
 
 }

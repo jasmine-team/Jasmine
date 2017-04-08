@@ -4,17 +4,20 @@ class Level: Object {
 
     dynamic var name: String = "Untitled Level"
     // difficulty of the level, higher means more difficult
-    // 1 since realm doesn't allow non-default values
-    dynamic var difficulty: Int = 1
+    // 0 since realm doesn't allow non-default values
+    dynamic var difficulty: Int = 0
 
     private dynamic var rawGameType: String = GameType.ciHui.rawValue
     private dynamic var rawGameMode: String = GameMode.swapping.rawValue
+
+    let history = List<LevelResult>()
 
     override static func primaryKey() -> String? {
         return "name"
     }
 
     /// MARK: non-persisted properties
+
     /// GameType of level, returns cihui by default
     var gameType: GameType {
         get {
@@ -44,7 +47,7 @@ class Level: Object {
     }
 
     override static func ignoredProperties() -> [String] {
-        return ["gameType", "gameMode"]
+        return ["gameType", "gameMode", "phrases"]
     }
 
 }
