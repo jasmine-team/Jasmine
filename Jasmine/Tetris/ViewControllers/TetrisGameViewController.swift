@@ -82,8 +82,8 @@ class TetrisGameViewController: UIViewController {
             return self.viewModel.canShiftFallingTile(to: coord)
         }
 
-        tetrisGameAreaView.segueWith(numRow: Constants.Game.Tetris.rows,
-                                     numCol: Constants.Game.Tetris.columns,
+        tetrisGameAreaView.segueWith(numRow: GameConstants.Tetris.rows,
+                                     numCol: GameConstants.Tetris.columns,
                                      withSpace: TetrisGameViewController.cellSpace)
     }
 
@@ -280,6 +280,6 @@ extension TetrisGameViewController: GameStatusUpdateDelegate {
         }
         viewModel.startGame()
         gameStartView.view.isHidden = true
-        tetrisGameAreaView.startFallingTiles(with: Constants.Game.Tetris.tileFallInterval)
+        tetrisGameAreaView.startFallingTiles(with: GameConstants.Tetris.tileFallInterval)
     }
 }
