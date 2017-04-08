@@ -10,12 +10,14 @@ class SlidingGameViewController: UIViewController {
 
     fileprivate static let highlightDelay = 0.2
 
+    fileprivate static let startGameText = "SLIDE TO START"
+
     // MARK: - Layouts
     fileprivate var gameStatisticsView: GameStatisticsViewController!
 
     fileprivate var slidingGridView: DraggableSquareGridViewController!
 
-    @IBOutlet fileprivate weak var startGameLabel: UILabel!
+    fileprivate var gameStartView: SimpleStartGameViewController!
 
     @IBOutlet fileprivate weak var navigationBar: UINavigationBar!
 
@@ -40,6 +42,10 @@ class SlidingGameViewController: UIViewController {
 
         } else if let gameHelpView = segue.destination as? GameHelpViewController {
             gameHelpView.segueWith(viewModel)
+
+        } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
+            self.gameStartView = gameStartView
+            gameStartView.segueWith(viewModel, startGameText: SlidingGameViewController.startGameText)
         }
     }
 
@@ -207,7 +213,7 @@ extension SlidingGameViewController: GameStatusUpdateDelegate {
             return
         }
         viewModel.startGame()
-        startGameLabel.isHidden = true
+        gameStartView.view.isHidden = true
     }
 }
 

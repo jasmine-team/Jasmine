@@ -10,6 +10,8 @@ class SwappingGameViewController: UIViewController {
 
     fileprivate static let highlightDelay = 0.3
 
+    fileprivate static let startGameText = "DRAG TO START"
+
     // MARK: Layouts
     fileprivate var squareGridViewController: DraggableSquareGridViewController!
 
@@ -17,7 +19,7 @@ class SwappingGameViewController: UIViewController {
 
     @IBOutlet private weak var navigationBar: UINavigationBar!
 
-    @IBOutlet fileprivate weak var startGameLabel: UILabel!
+    fileprivate var gameStartView: SimpleStartGameViewController!
 
     fileprivate var draggingTile: (view: SquareTileView, originalCoord: Coordinate)?
 
@@ -48,6 +50,10 @@ class SwappingGameViewController: UIViewController {
 
         } else if let gameHelpView = segue.destination as? GameHelpViewController {
             gameHelpView.segueWith(viewModel)
+
+        } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
+            self.gameStartView = gameStartView
+            gameStartView.segueWith(viewModel, startGameText: SwappingGameViewController.startGameText)
         }
     }
 
@@ -204,7 +210,7 @@ extension SwappingGameViewController: GameStatusUpdateDelegate {
             return
         }
         viewModel.startGame()
-        startGameLabel.isHidden = true
+        gameStartView.view.isHidden = true
     }
 }
 

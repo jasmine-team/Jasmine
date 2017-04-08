@@ -31,7 +31,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pFs-F6-KFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-692" y="740"/>
+            <point key="canvasLocation" x="-386" y="740"/>
         </scene>
         <!--Square Grid View Controller-->
         <scene sceneID="t1o-aH-0OC">
@@ -55,6 +55,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V6C-vL-diE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="210" y="590"/>
+        </scene>
+        <!--SimpleStartGameViewController-->
+        <scene sceneID="xTd-P3-p4I">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GameElements" referencedIdentifier="SimpleStartGameViewController" id="HkD-fC-X9R" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zpX-MN-4kA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1024" y="548"/>
         </scene>
         <!--Tetris Game View Controller-->
         <scene sceneID="Krm-gK-4xY">
@@ -103,16 +111,6 @@
                                 <color key="textColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIPE TO START" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjY-MB-ySM">
-                                <rect key="frame" x="0.0" y="283.5" width="375" height="100"/>
-                                <color key="backgroundColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Q7w-1N-B5O"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vb6-rG-EyC">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <constraints>
@@ -139,6 +137,15 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <containerView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6h1-GZ-CAv">
+                                <rect key="frame" x="0.0" y="268" width="375" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="zLx-yv-8Ux"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="HkD-fC-X9R" kind="embed" id="JWf-fJ-Kdw"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -147,10 +154,9 @@
                             <constraint firstItem="64w-ac-iLZ" firstAttribute="top" secondItem="vb6-rG-EyC" secondAttribute="bottom" constant="16" id="21H-G2-Cle"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EvM-bs-WbZ" secondAttribute="trailing" id="2wv-Go-sk5"/>
                             <constraint firstItem="vb6-rG-EyC" firstAttribute="top" secondItem="4Wh-bq-pwH" secondAttribute="top" id="3RE-PB-L62"/>
-                            <constraint firstAttribute="trailing" secondItem="PjY-MB-ySM" secondAttribute="trailing" id="BrA-gD-reh"/>
+                            <constraint firstItem="6h1-GZ-CAv" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leading" id="4Bs-bv-bUw"/>
                             <constraint firstAttribute="trailing" secondItem="LJA-n4-ff2" secondAttribute="trailing" id="Bv4-rt-7hu"/>
                             <constraint firstItem="z5z-y8-XQq" firstAttribute="top" secondItem="EvM-bs-WbZ" secondAttribute="bottom" constant="12" id="E6n-ni-k2t"/>
-                            <constraint firstItem="PjY-MB-ySM" firstAttribute="centerY" secondItem="4Wh-bq-pwH" secondAttribute="centerY" id="Eag-2e-daI"/>
                             <constraint firstItem="EvM-bs-WbZ" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leadingMargin" id="HvE-yL-fri"/>
                             <constraint firstItem="LJA-n4-ff2" firstAttribute="top" secondItem="z5z-y8-XQq" secondAttribute="bottom" constant="12" id="PBD-Z1-edN"/>
                             <constraint firstItem="z5z-y8-XQq" firstAttribute="centerX" secondItem="4Wh-bq-pwH" secondAttribute="centerX" id="Uag-uU-bBD"/>
@@ -159,14 +165,14 @@
                             <constraint firstItem="vb6-rG-EyC" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leading" id="eCB-HZ-mr8"/>
                             <constraint firstAttribute="trailing" secondItem="vb6-rG-EyC" secondAttribute="trailing" id="mA4-dq-bIn"/>
                             <constraint firstItem="LJA-n4-ff2" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leading" id="oCw-1Q-JVa"/>
-                            <constraint firstItem="PjY-MB-ySM" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leading" id="tP0-D8-XiV"/>
+                            <constraint firstAttribute="trailing" secondItem="6h1-GZ-CAv" secondAttribute="trailing" id="pYq-Fc-MMs"/>
+                            <constraint firstItem="6h1-GZ-CAv" firstAttribute="centerY" secondItem="4Wh-bq-pwH" secondAttribute="centerY" id="uIN-sF-Gfw"/>
                             <constraint firstItem="64w-ac-iLZ" firstAttribute="trailing" secondItem="EvM-bs-WbZ" secondAttribute="trailing" id="xy4-Cu-Xh2"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="navigationBar" destination="vb6-rG-EyC" id="0qH-xQ-MWs"/>
-                        <outlet property="startGameLabel" destination="PjY-MB-ySM" id="k8O-1q-FB2"/>
                         <segue destination="7a0-En-wY5" kind="presentation" identifier="SegueToGameOverViewController" modalTransitionStyle="flipHorizontal" id="R2p-LX-wQh"/>
                     </connections>
                 </viewController>

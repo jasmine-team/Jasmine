@@ -10,6 +10,8 @@ class TetrisGameViewController: UIViewController {
 
     fileprivate static let segueDelay = 0.5
 
+    fileprivate static let startGameText = "SWIPE TO START"
+
     /// Denotes the delay in animation between explosion and falling.
     fileprivate static let animationDelay = 0.5
 
@@ -20,7 +22,7 @@ class TetrisGameViewController: UIViewController {
 
     fileprivate var gameStatisticsView: GameStatisticsViewController!
 
-    @IBOutlet fileprivate weak var startGameLabel: UILabel!
+    fileprivate var gameStartView: SimpleStartGameViewController!
 
     @IBOutlet fileprivate weak var navigationBar: UINavigationBar!
 
@@ -62,6 +64,10 @@ class TetrisGameViewController: UIViewController {
 
         } else if let gameHelpView = segue.destination as? GameHelpViewController {
             gameHelpView.segueWith(viewModel)
+
+        } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
+            self.gameStartView = gameStartView
+            gameStartView.segueWith(viewModel, startGameText: TetrisGameViewController.startGameText)
         }
     }
 
@@ -273,7 +279,7 @@ extension TetrisGameViewController: GameStatusUpdateDelegate {
             return
         }
         viewModel.startGame()
-        startGameLabel.isHidden = true
+        gameStartView.view.isHidden = true
         tetrisGameAreaView.startFallingTiles(with: Constants.Game.Tetris.tileFallInterval)
     }
 }
