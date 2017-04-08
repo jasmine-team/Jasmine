@@ -1,94 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Game Help View Controller-->
-        <scene sceneID="cEO-vG-pDG">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rDN-PM-pPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="GameHelpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ski-nx-7S0" customClass="GameHelpViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="My4-x6-lbE"/>
-                        <viewControllerLayoutGuide type="bottom" id="oEW-Ke-viO"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="ls8-Er-7cq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kdz-DK-IPG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="RMy-Vr-JcC"/>
-                                </constraints>
-                                <color key="barTintColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="How To Play" id="fBN-xX-9hx">
-                                        <barButtonItem key="leftBarButtonItem" title="DISMISS" id="eQJ-dn-lh2">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <action selector="onBackPressed:" destination="ski-nx-7S0" id="ndz-U9-MVv"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tms-HN-qev">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uS3-iG-LxU">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="GAME TITLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMF-76-x3m">
-                                <rect key="frame" x="16" y="84" width="343" height="24"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                <color key="textColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some very long and very veryveryvery very very very very long text" lineBreakMode="wordWrap" numberOfLines="40" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHj-TF-jz1">
-                                <rect key="frame" x="16" y="128" width="343" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="Kdz-DK-IPG" firstAttribute="leading" secondItem="tms-HN-qev" secondAttribute="leading" id="Brv-Ld-ut3"/>
-                            <constraint firstItem="OMF-76-x3m" firstAttribute="trailing" secondItem="eHj-TF-jz1" secondAttribute="trailing" id="CUt-FX-DXC"/>
-                            <constraint firstItem="Kdz-DK-IPG" firstAttribute="trailing" secondItem="tms-HN-qev" secondAttribute="trailing" id="O4d-0g-8Tb"/>
-                            <constraint firstItem="eHj-TF-jz1" firstAttribute="top" secondItem="OMF-76-x3m" secondAttribute="bottom" constant="20" id="R7q-mx-fiz"/>
-                            <constraint firstItem="Kdz-DK-IPG" firstAttribute="centerX" secondItem="OMF-76-x3m" secondAttribute="centerX" id="Wdd-nU-vqa"/>
-                            <constraint firstItem="tms-HN-qev" firstAttribute="top" secondItem="Kdz-DK-IPG" secondAttribute="bottom" id="dTn-WA-dzk"/>
-                            <constraint firstItem="Kdz-DK-IPG" firstAttribute="leading" secondItem="ls8-Er-7cq" secondAttribute="leading" id="eP3-cl-LMQ"/>
-                            <constraint firstItem="OMF-76-x3m" firstAttribute="leading" secondItem="ls8-Er-7cq" secondAttribute="leadingMargin" id="eff-qA-9bR"/>
-                            <constraint firstAttribute="trailing" secondItem="Kdz-DK-IPG" secondAttribute="trailing" id="fpZ-jd-Meb"/>
-                            <constraint firstItem="OMF-76-x3m" firstAttribute="top" secondItem="Kdz-DK-IPG" secondAttribute="bottom" constant="20" id="jCg-Tx-cE6"/>
-                            <constraint firstItem="OMF-76-x3m" firstAttribute="leading" secondItem="eHj-TF-jz1" secondAttribute="leading" id="m0c-OT-wFn"/>
-                            <constraint firstItem="tms-HN-qev" firstAttribute="bottom" secondItem="oEW-Ke-viO" secondAttribute="top" id="qx0-n4-q61"/>
-                            <constraint firstItem="Kdz-DK-IPG" firstAttribute="top" secondItem="ls8-Er-7cq" secondAttribute="top" id="xAf-HQ-I9w"/>
-                        </constraints>
-                    </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <connections>
-                        <outlet property="gameInstructionsLabel" destination="eHj-TF-jz1" id="cnj-HY-gR8"/>
-                        <outlet property="gameTitleLabel" destination="OMF-76-x3m" id="QlJ-tn-y4n"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="-819.20000000000005" y="614.392803598201"/>
-        </scene>
         <!--Game Over-->
         <scene sceneID="THF-db-lLQ">
             <objects>
