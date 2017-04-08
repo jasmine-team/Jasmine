@@ -1,0 +1,21 @@
+name,difficulty,rawGameType,rawGameMode,history
+Level 1,1,ciHui,swapping,<LevelResult>{}
+Level 2,2,ciHui,tetris,<LevelResult>{}
+Level 3,3,ciHui,sliding,<LevelResult>{}
+Level 4,4,chengYu,swapping,<LevelResult>{}
+Level 5,5,chengYu,tetris,<LevelResult>{}
+Level 6,6,chengYu,swapping,<LevelResult>{}
+Level 7,7,ciHui,swapping,<LevelResult>{}
+Level 8,8,ciHui,tetris,<LevelResult>{}
+Level 9,9,ciHui,sliding,<LevelResult>{}
+Level 10,10,chengYu,swapping,<LevelResult>{}
+Level 11,11,chengYu,tetris,<LevelResult>{}
+Level 12,12,chengYu,sliding,<LevelResult>{}
+Level 13,13,ciHui,swapping,<LevelResult>{}
+Level 14,14,ciHui,tetris,<LevelResult>{}
+Level 15,15,ciHui,sliding,<LevelResult>{}
+Level 16,16,chengYu,swapping,<LevelResult>{}
+Level 17,17,chengYu,tetris,<LevelResult>{}
+Level 18,18,chengYu,sliding,<LevelResult>{}
+Level 19,19,chengYu,swapping,<LevelResult>{}
+Level 20,20,chengYu,swapping,<LevelResult>{}
