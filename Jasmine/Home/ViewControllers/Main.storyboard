@@ -60,6 +60,13 @@
                                             <segue destination="8ZU-Hu-mvm" kind="show" id="djo-h3-zHX"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pQ-1T-20y">
+                                        <rect key="frame" x="0.0" y="150" width="218" height="30"/>
+                                        <state key="normal" title="Phrases Explorer"/>
+                                        <connections>
+                                            <segue destination="4Cz-aW-33f" kind="show" id="kwm-v0-aGq"/>
+										</connections>
+									</button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gp-IY-vsy">
                                         <rect key="frame" x="0.0" y="150" width="218" height="30"/>
                                         <state key="normal" title="Open Phrase"/>
@@ -119,6 +126,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zt0-G3-AcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="776" y="273"/>
+        </scene>
+        <!--PhrasesExplorerViewController-->
+        <scene sceneID="L8I-Hn-bVq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CommonsStoryboard" referencedIdentifier="PhrasesExplorerViewController" id="4Cz-aW-33f" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XmM-vH-bBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="798" y="277"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Yj8-SC-wqm">
