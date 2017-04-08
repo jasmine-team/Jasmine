@@ -41,9 +41,12 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PKS-MP-Ju5">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="KVZ-Pg-UvA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PKS-MP-Ju5">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PhraseExplorerCell" textLabel="8GV-mo-beJ" style="IBUITableViewCellStyleDefault" id="dzV-7d-xEU">
@@ -72,9 +75,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PKS-MP-Ju5" secondAttribute="trailing" id="45g-PX-XpX"/>
+                            <constraint firstItem="PKS-MP-Ju5" firstAttribute="leading" secondItem="1mp-X2-ZcW" secondAttribute="leading" id="Arc-gm-Rpj"/>
+                            <constraint firstAttribute="trailing" secondItem="KVZ-Pg-UvA" secondAttribute="trailing" id="C9v-MX-5Do"/>
                             <constraint firstItem="fRz-oO-Zb3" firstAttribute="top" secondItem="1mp-X2-ZcW" secondAttribute="top" id="JOX-Z8-mHt"/>
+                            <constraint firstItem="KVZ-Pg-UvA" firstAttribute="top" secondItem="fRz-oO-Zb3" secondAttribute="bottom" id="VKR-Jh-8bc"/>
                             <constraint firstAttribute="trailing" secondItem="fRz-oO-Zb3" secondAttribute="trailing" id="bwa-Oi-s9u"/>
+                            <constraint firstItem="KVZ-Pg-UvA" firstAttribute="leading" secondItem="1mp-X2-ZcW" secondAttribute="leading" id="cOS-gq-Vlw"/>
                             <constraint firstItem="fRz-oO-Zb3" firstAttribute="leading" secondItem="1mp-X2-ZcW" secondAttribute="leading" id="caJ-dw-3Pl"/>
+                            <constraint firstItem="ncI-bH-3db" firstAttribute="top" secondItem="PKS-MP-Ju5" secondAttribute="bottom" id="hp6-Qb-dZM"/>
+                            <constraint firstItem="PKS-MP-Ju5" firstAttribute="top" secondItem="KVZ-Pg-UvA" secondAttribute="bottom" id="kDr-IO-8wk"/>
+                            <constraint firstItem="PKS-MP-Ju5" firstAttribute="top" secondItem="KVZ-Pg-UvA" secondAttribute="bottom" id="tNQ-ga-Pdh"/>
                         </constraints>
                     </view>
                     <connections>
