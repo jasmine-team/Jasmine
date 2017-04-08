@@ -82,7 +82,7 @@
 		DF409FEC1E8415AB00389976 /* prebundled.realm in Resources */ = {isa = PBXBuildFile; fileRef = DF409FE91E8415AB00389976 /* prebundled.realm */; };
 		DF409FEF1E8415E000389976 /* UIApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FEE1E8415E000389976 /* UIApplicationTests.swift */; };
 		DF409FF21E8415F400389976 /* CountDownTimerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FF01E8415F400389976 /* CountDownTimerTest.swift */; };
-		DF409FF71E84160C00389976 /* GameDataFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FF41E84160C00389976 /* GameDataFactoryTests.swift */; };
+		DF409FF71E84160C00389976 /* GameManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FF41E84160C00389976 /* GameManagerTests.swift */; };
 		DF409FFB1E84225200389976 /* TetrisGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FFA1E84225200389976 /* TetrisGameViewController.swift */; };
 		DF40F9E21E9676C1001EAAA8 /* LevelResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40F9E11E9676C1001EAAA8 /* LevelResult.swift */; };
 		DF40F9E41E967708001EAAA8 /* PhraseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40F9E31E967708001EAAA8 /* PhraseTests.swift */; };
@@ -220,7 +220,7 @@
 		DF409FE91E8415AB00389976 /* prebundled.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = prebundled.realm; sourceTree = "<group>"; };
 		DF409FEE1E8415E000389976 /* UIApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationTests.swift; sourceTree = "<group>"; };
 		DF409FF01E8415F400389976 /* CountDownTimerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownTimerTest.swift; sourceTree = "<group>"; };
-		DF409FF41E84160C00389976 /* GameDataFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataFactoryTests.swift; sourceTree = "<group>"; };
+		DF409FF41E84160C00389976 /* GameManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManagerTests.swift; sourceTree = "<group>"; };
 		DF409FF61E84160C00389976 /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 		DF409FFA1E84225200389976 /* TetrisGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewController.swift; sourceTree = "<group>"; };
 		DF40F9E11E9676C1001EAAA8 /* LevelResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelResult.swift; sourceTree = "<group>"; };
@@ -495,7 +495,7 @@
 			children = (
 				50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */,
 				DF9918E21E92B730004E599B /* DirectionTests.swift */,
-				DF409FF41E84160C00389976 /* GameDataFactoryTests.swift */,
+				DF409FF41E84160C00389976 /* GameManagerTests.swift */,
 				DF40F9E31E967708001EAAA8 /* PhraseTests.swift */,
 				DF2155171E8E2335005A0927 /* PhrasesTests.swift */,
 				DF409FF61E84160C00389976 /* PlayerTests.swift */,
@@ -1206,7 +1206,7 @@
 				509036D61E937BFB006548DE /* ScoreUpdateDelegateMock.swift in Sources */,
 				50717AC31E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift in Sources */,
 				50AE3A781E8BE020005EC944 /* TextGridTests.swift in Sources */,
-				DF409FF71E84160C00389976 /* GameDataFactoryTests.swift in Sources */,
+				DF409FF71E84160C00389976 /* GameManagerTests.swift in Sources */,
 				502A29711E9275770024336A /* Array+EquatableTests.swift in Sources */,
 				502A29771E927B790024336A /* CiHuiSlidingViewModelTests.swift in Sources */,
 				502A29751E927B790024336A /* BaseSlidingViewModelTests.swift in Sources */,

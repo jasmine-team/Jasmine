@@ -33,6 +33,7 @@ class RealmTestCase: XCTestCase {
         phrases.forEach(save)
         let level = Level()
         level.gameType = type
+        level.difficulty = difficulty
         return gameDataFactory.createGame(fromLevel: level)
     }
 }
