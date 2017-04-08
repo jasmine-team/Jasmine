@@ -64,9 +64,40 @@ class SquareGridViewController: UIViewController {
         return floatingTiles.union(tilesOnGrid)
     }
 
-    /// Stores the properties that is used to apply onto all the tiles in that specified coordinate,
+    /// Stores the properties that is used to apply onto the cell in that specified coordinate,
     /// that is inside this collection view.
-    var tileProperties: [Coordinate: (SquareTileView) -> Void] = [:]
+    /// - Postcondition: the properties described in the closure will get applied immediately.
+    /// - Note: 
+    ///   - This is required because cells can get recycled.
+    ///   - Properties of the tiles in this cell can be applied with this as well.
+    var cellProperties: [Coordinate: (SquareTileViewCell) -> Void] = [:] {
+        didSet {
+            for (coord, applyProperty) in cellProperties {
+                guard let cell = getCell(at: coord) else {
+                    continue
+                }
+                applyProperty(cell)
+            }
+        }
+    }
+
+    /// Stores the properties that is used to apply onto the tiles in that specified coordinate,
+    /// that is inside this collection view.
+    /// - Postcondition: the properties described in the closure will get applied immediately.
+    /// - Note:
+    ///   - This is required because cells can get recycled.
+    ///   - To apply properties to the cell, call `cellProperties`.
+    var tileProperties: [Coordinate: (SquareTileView) -> Void] = [:] {
+        didSet {
+            for (coord, applyProperty) in tileProperties {
+                guard let cell = getCell(at: coord) else {
+                    continue
+                }
+                cell.tileProperties = applyProperty
+                cell.applyTileProperties()
+            }
+        }
+    }
 
     // MARK: - View Controller Lifecycles
     override func viewDidLoad() {
@@ -248,7 +279,8 @@ extension SquareGridViewController: UICollectionViewDataSource {
         }
 
         squareCell.setOnlyText(gridDataCache[indexPath.toCoordinate])
-        squareCell.tileProperties = self.tileProperties[indexPath.toCoordinate]
+        squareCell.tileProperties = tileProperties[indexPath.toCoordinate]
+        cellProperties[indexPath.toCoordinate]?(squareCell)
         return squareCell
     }
 }

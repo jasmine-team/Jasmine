@@ -226,6 +226,7 @@ class DraggableSquareGridViewController: SquareGridViewController {
               let destinationCell = getCell(at: coordinate) else {
             return
         }
+        detachedTiles.remove(tile)
         tile.removeFromSuperview()
         destinationCell.pushTileToTop(tile)
         tile.removeDropShadow()

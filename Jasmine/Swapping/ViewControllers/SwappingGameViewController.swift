@@ -6,6 +6,12 @@ class SwappingGameViewController: UIViewController {
     // MARK: - Constants
     fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
 
+    fileprivate static let segueDelay = 0.5
+
+    fileprivate static let highlightDelay = 0.3
+
+    fileprivate static let startGameText = "DRAG TO START"
+
     // MARK: Layouts
     fileprivate var squareGridViewController: DraggableSquareGridViewController!
 
@@ -13,7 +19,7 @@ class SwappingGameViewController: UIViewController {
 
     @IBOutlet private weak var navigationBar: UINavigationBar!
 
-    @IBOutlet private weak var statusBarBackgroundView: UIView!
+    fileprivate var gameStartView: SimpleStartGameViewController!
 
     fileprivate var draggingTile: (view: SquareTileView, originalCoord: Coordinate)?
 
@@ -25,17 +31,7 @@ class SwappingGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTheme()
-    }
-
-    /// This also starts the game if have not done so.
-    ///
-    /// - Parameter animated: true if the appearance of the view is animated
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        if viewModel.gameStatus == .notStarted {
-            viewModel.startGame()
-        }
+        setGameDescriptions()
     }
 
     // MARK: Segue methods
@@ -51,6 +47,10 @@ class SwappingGameViewController: UIViewController {
 
         } else if let gameOverView = segue.destination as? GameOverViewController {
             gameOverView.segueWith(viewModel)
+
+        } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
+            self.gameStartView = gameStartView
+            gameStartView.segueWith(viewModel, startGameText: SwappingGameViewController.startGameText)
         }
     }
 
@@ -60,6 +60,7 @@ class SwappingGameViewController: UIViewController {
     func segueWith(_ viewModel: SwappingViewModelProtocol) {
         self.viewModel = viewModel
         self.viewModel.gameStatusDelegate = self
+        self.viewModel.highlightedDelegate = self
     }
 
     // MARK: - Gesture Recognisers and Listeners
@@ -67,7 +68,8 @@ class SwappingGameViewController: UIViewController {
     /// to another location.
     ///
     /// Note that if the game status is not in progress, results in no-op.
-    @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
+    @IBAction private func onTilesDragged(_ sender: UIPanGestureRecognizer) {
+        startGameIfPossible()
         guard viewModel.gameStatus == .inProgress else {
             return
         }
@@ -82,12 +84,12 @@ class SwappingGameViewController: UIViewController {
         case .ended:
             handleTileLanding(at: position)
         default:
-            break
+            handleTileFailedLanding()
         }
     }
 
     /// Quit this screen when the back button is pressed.
-    @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
+    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
 
@@ -97,8 +99,11 @@ class SwappingGameViewController: UIViewController {
     }
 
     private func setTheme() {
-        statusBarBackgroundView.backgroundColor = Constants.Theme.mainColorDark
         navigationBar.backgroundColor = Constants.Theme.mainColorDark
+    }
+
+    private func setGameDescriptions() {
+        navigationBar.topItem?.title = viewModel.gameTitle
     }
 }
 
@@ -147,7 +152,7 @@ fileprivate extension SwappingGameViewController {
     }
 
     /// Helper method to let the dragged tile to return to its original position.
-    private func handleTileFailedLanding() {
+    fileprivate func handleTileFailedLanding() {
         guard let tile = draggingTile else {
             return
         }
@@ -188,17 +193,36 @@ extension SwappingGameViewController: GameStatusUpdateDelegate {
 
     /// Tells the implementor of the delegate that the game status has been updated.
     func gameStatusDidUpdate() {
-        if viewModel.gameStatus.hasGameEnded {
+        guard viewModel.gameStatus.hasGameEnded else {
+            return
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + SwappingGameViewController.segueDelay) {
             self.performSegue(withIdentifier: SwappingGameViewController.segueToGameOverView,
                               sender: nil)
         }
     }
+
+    fileprivate func startGameIfPossible() {
+        guard viewModel.gameStatus == .notStarted else {
+            return
+        }
+        viewModel.startGame()
+        gameStartView.view.isHidden = true
+    }
 }
 
 extension SwappingGameViewController: HighlightedUpdateDelegate {
-    /// Tells the implementor of the delegate that the highlighted coordinates have been changed.
-    /// - Note: This method can be used to update the highlighted coordinates that is displayed on views.
-    internal func highlightedCoordinatesDidUpdate() {
 
+    /// Tells the implementor of the delegate that the highlighted coordinates have been changed.
+    func highlightedCoordinatesDidUpdate() {
+        let highlightedCoords = viewModel.highlightedCoordinates
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + SwappingGameViewController.highlightDelay) {
+            for coord in self.squareGridViewController.allCoordinates {
+                self.squareGridViewController.tileProperties[coord] = { tile in
+                    tile.shouldHighlight = highlightedCoords.contains(coord)
+                }
+            }
+        }
     }
 }

@@ -26,6 +26,15 @@ class SquareTileViewCell: UICollectionViewCell {
         return displayedTile?.text
     }
 
+    override var bounds: CGRect {
+        didSet {
+            tiles.forEach { $0.frame = bounds }
+        }
+    }
+
+    private let animationView = UIImageView()
+
+    // MARK: Tile Properties
     /// Set this method to set the properties to all the tiles in this cell.
     var tileProperties: ((SquareTileView) -> Void)? {
         didSet {
@@ -40,13 +49,13 @@ class SquareTileViewCell: UICollectionViewCell {
         }
     }
 
-    override var bounds: CGRect {
-        didSet {
-            tiles.forEach { $0.frame = bounds }
+    /// Applies the tile properties function to all the tiles in this view cell.
+    func applyTileProperties() {
+        guard let tileProperties = tileProperties else {
+            return
         }
+        tiles.forEach { tileProperties($0) }
     }
-
-    private let animationView = UIImageView()
 
     // MARK: Tile Stack
     /// Pushes a tile to the top of the cell view stack.
@@ -58,7 +67,6 @@ class SquareTileViewCell: UICollectionViewCell {
     func pushTileToTop(_ tile: SquareTileView) {
         contentView.addSubview(tile)
         contentView.bringSubview(toFront: tile)
-
         tileProperties?(tile)
         tile.frame = bounds
     }
@@ -88,11 +96,11 @@ class SquareTileViewCell: UICollectionViewCell {
 
     /// Clear all the tiles except the top most tile in this cell.
     func clearExceptFirst() {
-        tiles.forEach {
-            guard $0 != displayedTile else {
+        for tile in tiles {
+            guard tile != displayedTile else {
                 return
             }
-            $0.removeFromSuperview()
+            tile.removeFromSuperview()
         }
     }
 
