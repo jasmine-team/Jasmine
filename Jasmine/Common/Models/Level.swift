@@ -7,6 +7,7 @@ class Level: Object {
     // difficulty of the level, higher means more difficult
     // 0 since realm doesn't allow non-default values
     dynamic private(set) var difficulty: Int = 0
+    dynamic private(set) var isReadOnly: Bool = false
 
     private dynamic var rawGameType: String = GameType.ciHui.rawValue
     private dynamic var rawGameMode: String = GameMode.swapping.rawValue
