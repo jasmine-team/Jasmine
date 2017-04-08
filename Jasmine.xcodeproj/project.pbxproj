@@ -12,9 +12,9 @@
 		008294431E977A8A0053ED07 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008294421E977A8A0053ED07 /* SettingsViewController.swift */; };
 		0CF9D2BB3EBC822ACB7FF766 /* Pods_Jasmine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */; };
 		5007FD121E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007FD111E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift */; };
+		500DC49A1E97FE6900CBC65F /* PhraseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500DC4991E97FE6900CBC65F /* PhraseViewModel.swift */; };
 		500DC49D1E98081B00CBC65F /* PhrasesExplorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500DC49C1E98081B00CBC65F /* PhrasesExplorerViewController.swift */; };
 		500DC49F1E987E2C00CBC65F /* PhrasesExplorerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500DC49E1E987E2C00CBC65F /* PhrasesExplorerViewModel.swift */; };
-		500DC49A1E97FE6900CBC65F /* PhraseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500DC4991E97FE6900CBC65F /* PhraseViewModel.swift */; };
 		502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342761E77F5F200D2FE09 /* FlappyViewModelProtocol.swift */; };
 		502A29651E925A190024336A /* Array+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29641E925A190024336A /* Array+Equatable.swift */; };
 		502A296D1E926DCA0024336A /* BaseSlidingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A296A1E926DCA0024336A /* BaseSlidingViewModel.swift */; };
@@ -148,9 +148,9 @@
 		3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasmine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
 		5007FD111E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightedUpdateDelegateMock.swift; sourceTree = "<group>"; };
+		500DC4991E97FE6900CBC65F /* PhraseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhraseViewModel.swift; path = PhraseViewModel.swift; sourceTree = "<group>"; };
 		500DC49C1E98081B00CBC65F /* PhrasesExplorerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesExplorerViewController.swift; sourceTree = "<group>"; };
-		500DC49E1E987E2C00CBC65F /* PhrasesExplorerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesExplorerViewModel.swift; sourceTree = "<group>"; };
-		500DC4991E97FE6900CBC65F /* PhraseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhraseViewModel.swift; path = Views/PhraseViewModel.swift; sourceTree = "<group>"; };
+		500DC49E1E987E2C00CBC65F /* PhrasesExplorerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhrasesExplorerViewModel.swift; path = PhrasesExplorerViewModel.swift; sourceTree = "<group>"; };
 		502A29641E925A190024336A /* Array+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Equatable.swift"; sourceTree = "<group>"; };
 		502A296A1E926DCA0024336A /* BaseSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSlidingViewModel.swift; sourceTree = "<group>"; };
 		502A296B1E926DCA0024336A /* ChengYuSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSlidingViewModel.swift; sourceTree = "<group>"; };
@@ -202,9 +202,9 @@
 		A2FD7AE21E973F20008C41DF /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 		A2FD7AE41E973F36008C41DF /* AVAudioPlayer+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Extensions.swift"; sourceTree = "<group>"; };
 		A2FD7AE81E974D50008C41DF /* GameMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
-		A2FD7AEB1E974FC3008C41DF /* dog_days.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dog_days.mp3; path = dog_days.mp3; sourceTree = "<group>"; };
-		A2FD7AEC1E974FC3008C41DF /* green_star.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = green_star.mp3; path = green_star.mp3; sourceTree = "<group>"; };
-		A2FD7AED1E974FC3008C41DF /* grid.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = grid.mp3; path = grid.mp3; sourceTree = "<group>"; };
+		A2FD7AEB1E974FC3008C41DF /* dog_days.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog_days.mp3; sourceTree = "<group>"; };
+		A2FD7AEC1E974FC3008C41DF /* green_star.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = green_star.mp3; sourceTree = "<group>"; };
+		A2FD7AED1E974FC3008C41DF /* grid.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = grid.mp3; sourceTree = "<group>"; };
 		CDF6F46CAE49685937742BCB /* Pods-JasmineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2052C71E8BDD5A00D66B0B /* UIImageView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animation.swift"; sourceTree = "<group>"; };
 		DF2155171E8E2335005A0927 /* PhrasesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesTests.swift; sourceTree = "<group>"; };
@@ -308,8 +308,10 @@
 			isa = PBXGroup;
 			children = (
 				500DC4991E97FE6900CBC65F /* PhraseViewModel.swift */,
+				500DC49E1E987E2C00CBC65F /* PhrasesExplorerViewModel.swift */,
 			);
 			name = ViewModels;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		502A294F1E922E800024336A /* Sliding */ = {
@@ -612,12 +614,12 @@
 			isa = PBXGroup;
 			children = (
 				50989DCD1E6D8B16009A86C8 /* Common */,
+				50989DD41E6D8B16009A86C8 /* Flappy */,
+				DFBE8F621E9527F70036CCC6 /* GameCommons */,
 				DFBE8F1B1E951E310036CCC6 /* Home */,
 				DFBE8F211E951FE70036CCC6 /* Levels */,
 				DFBE8F261E9520AF0036CCC6 /* Profile */,
 				DFBE8F831E9533050036CCC6 /* Settings */,
-				DFBE8F621E9527F70036CCC6 /* GameCommons */,
-				50989DD41E6D8B16009A86C8 /* Flappy */,
 				DF21551B1E8E237F005A0927 /* Sliding */,
 				DF9918C71E92B6A3004E599B /* Swapping */,
 				50989DBA1E6D8B16009A86C8 /* Tetris */,
@@ -646,7 +648,6 @@
 				A2FD7AEC1E974FC3008C41DF /* green_star.mp3 */,
 				A2FD7AED1E974FC3008C41DF /* grid.mp3 */,
 			);
-			name = Sounds;
 			path = Sounds;
 			sourceTree = "<group>";
 		};
@@ -806,14 +807,12 @@
 			isa = PBXGroup;
 			children = (
 				DFBE8F7F1E9528100036CCC6 /* CommonsStoryboard.storyboard */,
-				DFBE8F811E9528370036CCC6 /* LaunchScreen.storyboard */,
 				DFBE8F311E9526BE0036CCC6 /* DiscreteFallableSquareGridViewController.swift */,
 				DFBE8F321E9526BE0036CCC6 /* DraggableSquareGridViewController.swift */,
 				DFBE8F811E9528370036CCC6 /* LaunchScreen.storyboard */,
-				500DC49C1E98081B00CBC65F /* PhrasesExplorerViewController.swift */,
-				500DC49E1E987E2C00CBC65F /* PhrasesExplorerViewModel.swift */,
-				5047712B1E98ABA600E0F858 /* PhrasesTableViewController.swift */,
 				50FD4BBB1E9797C800748784 /* PhraseViewController.swift */,
+				500DC49C1E98081B00CBC65F /* PhrasesExplorerViewController.swift */,
+				5047712B1E98ABA600E0F858 /* PhrasesTableViewController.swift */,
 				DF2321531E961A4100417ED2 /* SelectableSquareGridViewController.swift */,
 				DFBE8F3F1E95272B0036CCC6 /* SquareGridViewController.swift */,
 			);
@@ -884,8 +883,8 @@
 		DFBE8F841E95330F0036CCC6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				008294421E977A8A0053ED07 /* SettingsViewController.swift */,
 				DFBE8F871E9533510036CCC6 /* SettingsStoryboard.storyboard */,
+				008294421E977A8A0053ED07 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
