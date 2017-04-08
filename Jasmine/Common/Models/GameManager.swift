@@ -34,10 +34,7 @@ class GameManager {
     /// - Returns: game data containing relevant phrases and difficulty
     func createGame(fromLevel level: Level) -> GameData {
         assert(currentLevel == nil, "A game is still ongoing, have you saved the game?")
-        let phraseLength = lengthOf(type: level.gameType)
-        let predicate = filterChinesePredicate(ofLength: phraseLength)
-        let phrases = realm.objects(Phrase.self).filter(predicate)
-        let gamePhrases = Phrases(phrases, range: 0..<phrases.count, phraseLength: phraseLength)
+        let gamePhrases = Phrases(level.phrases, isShuffled: true)
         let gameData = GameData(name: level.name,
                                 phrases: gamePhrases,
                                 difficulty: level.difficulty)
