@@ -5,21 +5,16 @@ import CoreMotion
 class FallingFlowersViewController: UIViewController {
 
     // MARK: Constants
-    private static let spawnCount = 200
+    private static let spawnCount = 220
 
     private static let flowerSizeMin = 30.0
-    private static let flowerSizeMax = 70.0
+    private static let flowerSizeMax = 80.0
 
-    private static let flowerSpeedMin = 30.0
-    private static let flowerSpeedMax = 50.0
-
-    private static let flowerAngleMin = -30.0
-    private static let flowerAngleMax = 30.0
+    private static let accelerometerUpdateInterval = 0.05
 
     // MARK: Animation Properties
     private var animator: UIDynamicAnimator!
     private var gravityBehaviour: UIGravityBehavior!
-    private var itemBehaviour: UIDynamicItemBehavior!
     private var collisionBehaviour: UICollisionBehavior!
 
     private let accelerometer = CMMotionManager()
@@ -39,30 +34,18 @@ class FallingFlowersViewController: UIViewController {
         return CGPoint(x: randomX, y: -10)
     }
 
-    private var flowerLinearSpeed: CGPoint {
-        let speedY = Random.double(from: FallingFlowersViewController.flowerSpeedMin,
-                                   toInclusive: FallingFlowersViewController.flowerSpeedMax)
-        return CGPoint(x: 0, y: speedY)
-    }
-
-    private var flowerAngularSpeed: CGFloat {
-        let angularSpeed = Random.double(from: FallingFlowersViewController.flowerAngleMin,
-                                         toInclusive: FallingFlowersViewController.flowerAngleMax)
-        return CGFloat(angularSpeed)
-    }
-
+    // MARK: View Controller Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard !hasSpawned else {
-            return
-        }
-        hasSpawned = true
 
-        startAnimation()
-        startAccelerometerUpdate()
-        for _ in 0..<FallingFlowersViewController.spawnCount {
-            generateFlower()
+        if !hasSpawned {
+            startAnimation()
+            for _ in 0..<FallingFlowersViewController.spawnCount {
+                generateFlower()
+            }
+            hasSpawned = true
         }
+        startAccelerometerUpdate()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -82,25 +65,22 @@ class FallingFlowersViewController: UIViewController {
 
         gravityBehaviour.addItem(flower)
         collisionBehaviour.addItem(flower)
-        itemBehaviour.addItem(flower)
-        itemBehaviour.addLinearVelocity(flowerLinearSpeed, for: flower)
-        itemBehaviour.addAngularVelocity(flowerAngularSpeed, for: flower)
     }
 
     // MARK: Animation Methods
     private func startAnimation() {
-        specifyItemBehaviour()
         specifyGravityBehaviour()
         specifyCollisionBehaviour()
 
         animator = UIDynamicAnimator(referenceView: view)
-        animator.addBehavior(itemBehaviour)
         animator.addBehavior(gravityBehaviour)
         animator.addBehavior(collisionBehaviour)
     }
 
     private func startAccelerometerUpdate() {
-        accelerometer.accelerometerUpdateInterval = 0.1
+        accelerometer.accelerometerUpdateInterval
+            = FallingFlowersViewController.accelerometerUpdateInterval
+
         accelerometer.startAccelerometerUpdates(to: .main) { data, _ in
             guard let data = data else {
                 return
@@ -113,10 +93,6 @@ class FallingFlowersViewController: UIViewController {
     private func specifyGravityBehaviour() {
         gravityBehaviour = UIGravityBehavior()
         gravityBehaviour.magnitude = 0.001
-    }
-
-    private func specifyItemBehaviour() {
-        itemBehaviour = UIDynamicItemBehavior()
     }
 
     private func specifyCollisionBehaviour() {
