@@ -13,7 +13,7 @@
         <!--Game Over-->
         <scene sceneID="THF-db-lLQ">
             <objects>
-                <viewController storyboardIdentifier="GameOverViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xPG-LZ-f8P" customClass="GameOverViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameOverViewController" modalTransitionStyle="partialCurl" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xPG-LZ-f8P" customClass="GameOverViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oxa-fl-HHv"/>
                         <viewControllerLayoutGuide type="bottom" id="ua6-3U-1JL"/>
@@ -115,6 +115,7 @@
                         <outlet property="gameOverTitle" destination="2lx-hb-ypC" id="q0z-eI-6Zs"/>
                         <outlet property="navigationBar" destination="CsK-Nr-eZH" id="xYi-SK-9AB"/>
                         <outlet property="scoreLabel" destination="Y03-iS-lOu" id="7eE-Kc-Y3X"/>
+                        <segue destination="l3o-b1-w2j" kind="presentation" identifier="PhraseViewController" id="fSP-pm-PCH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UuQ-jm-ZSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -250,6 +251,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ByK-yA-dJr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="176" y="124"/>
+        </scene>
+        <!--PhraseViewController-->
+        <scene sceneID="n7m-MZ-uMf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CommonsStoryboard" referencedIdentifier="PhraseViewController" id="l3o-b1-w2j" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ddI-v0-w6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="794" y="380"/>
         </scene>
         <!--Selectable Square Grid View Controller-->
         <scene sceneID="9P0-fp-edA">

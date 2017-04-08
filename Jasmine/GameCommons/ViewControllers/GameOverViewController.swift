@@ -5,6 +5,7 @@ class GameOverViewController: UIViewController {
     // MARK: - Constants
     private static let tileSpace: CGFloat = 8.0
     private static let tileSize = CGSize(width: 232, height: 80)
+    private static let segueToPhraseView = "PhraseViewController"
 
     // MARK: - Layouts
     @IBOutlet fileprivate weak var scoreLabel: UILabel!
@@ -17,8 +18,8 @@ class GameOverViewController: UIViewController {
     // MARK: - Properties
     fileprivate var gameDesriptor: GameDescriptorProtocol!
 
-    // TODO: Delete this away when SquareGridVC does not store grid data.
     fileprivate var displayedPhases: [Phrase]!
+    private var selectedPhrase: Phrase!
 
     // MARK: - Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -31,6 +32,9 @@ class GameOverViewController: UIViewController {
                                              customSize: GameOverViewController.tileSize)
 
             testedPhrase.onTileSelected = segueToPhrase(at:)
+
+        } else if let phraseView = segue.destination as? PhraseViewController {
+            phraseView.segueWith(PhraseViewModel(phrase: selectedPhrase))
         }
     }
 
@@ -72,8 +76,8 @@ class GameOverViewController: UIViewController {
 
     /// Opens the definition to the phrase
     private func segueToPhrase(at coord: Coordinate) {
-        // TODO: Complete this.
         let index = coord.row
-        print(displayedPhases[index])
+        selectedPhrase = displayedPhases[index]
+        performSegue(withIdentifier: GameOverViewController.segueToPhraseView, sender: nil)
     }
 }
