@@ -100,7 +100,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时候" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yys-DC-rDE">
-                                <rect key="frame" x="36" y="94" width="120.5" height="72"/>
+                                <rect key="frame" x="33" y="94" width="120.5" height="72"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -112,7 +112,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-VZ-TB2">
-                                <rect key="frame" x="164" y="131" width="30" height="30"/>
+                                <rect key="frame" x="161" y="131" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="Fjg-AQ-LSe"/>
                                     <constraint firstAttribute="width" secondItem="BUP-VZ-TB2" secondAttribute="height" multiplier="1:1" id="LQy-El-Sft"/>
@@ -132,12 +132,12 @@
                             <constraint firstItem="r7D-06-ny7" firstAttribute="top" secondItem="IIJ-bC-LHw" secondAttribute="bottom" constant="30" id="OAx-FM-Rsj"/>
                             <constraint firstItem="kSs-Rg-kmX" firstAttribute="top" secondItem="1U0-16-NkD" secondAttribute="top" id="Q3l-TW-1FY"/>
                             <constraint firstItem="Yys-DC-rDE" firstAttribute="top" secondItem="kSs-Rg-kmX" secondAttribute="bottom" constant="30" id="cxB-9X-VG8"/>
+                            <constraint firstItem="r7D-06-ny7" firstAttribute="leading" secondItem="IIJ-bC-LHw" secondAttribute="leading" id="dWI-Ka-Xa4"/>
                             <constraint firstItem="BUP-VZ-TB2" firstAttribute="bottom" secondItem="Yys-DC-rDE" secondAttribute="bottom" multiplier="0.97" id="eZK-PB-4yx"/>
-                            <constraint firstItem="r7D-06-ny7" firstAttribute="leading" secondItem="Yys-DC-rDE" secondAttribute="leading" id="g3t-La-T9Y"/>
-                            <constraint firstItem="cUV-1w-24N" firstAttribute="leading" secondItem="Yys-DC-rDE" secondAttribute="leading" id="lIj-4a-pUM"/>
                             <constraint firstItem="BUP-VZ-TB2" firstAttribute="leading" secondItem="Yys-DC-rDE" secondAttribute="trailing" constant="7.5" id="m1m-DA-AA9"/>
-                            <constraint firstItem="Yys-DC-rDE" firstAttribute="leading" secondItem="1U0-16-NkD" secondAttribute="leadingMargin" constant="20" id="ms6-xq-kDf"/>
-                            <constraint firstItem="IIJ-bC-LHw" firstAttribute="leading" secondItem="Yys-DC-rDE" secondAttribute="leading" id="rjw-J5-PtU"/>
+                            <constraint firstItem="Yys-DC-rDE" firstAttribute="leading" secondItem="1U0-16-NkD" secondAttribute="leadingMargin" multiplier="0.8" constant="20" id="ms6-xq-kDf"/>
+                            <constraint firstItem="cUV-1w-24N" firstAttribute="leading" secondItem="IIJ-bC-LHw" secondAttribute="leading" id="nxF-mu-Wbd"/>
+                            <constraint firstItem="IIJ-bC-LHw" firstAttribute="leading" secondItem="Yys-DC-rDE" secondAttribute="leading" constant="3" id="rjw-J5-PtU"/>
                             <constraint firstItem="kSs-Rg-kmX" firstAttribute="leading" secondItem="1U0-16-NkD" secondAttribute="leading" id="sDu-6u-0mF"/>
                             <constraint firstItem="IIJ-bC-LHw" firstAttribute="top" secondItem="Yys-DC-rDE" secondAttribute="bottom" id="uwE-oH-M2p"/>
                         </constraints>
