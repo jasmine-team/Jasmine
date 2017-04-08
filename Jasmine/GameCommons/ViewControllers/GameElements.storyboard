@@ -208,7 +208,7 @@
                         <viewControllerLayoutGuide type="top" id="C23-FK-xnm"/>
                         <viewControllerLayoutGuide type="bottom" id="DW4-yx-beb"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MZ7-IM-ZyO">
+                    <view key="view" alpha="0.84999999999999998" contentMode="scaleToFill" id="MZ7-IM-ZyO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
