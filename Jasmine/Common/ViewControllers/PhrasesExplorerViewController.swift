@@ -28,7 +28,7 @@ class PhrasesExplorerViewController: UIViewController {
 }
 
 extension PhrasesExplorerViewController: UISearchBarDelegate {
-    /// Does the fucking search.
+    /// Does the search.
     ///
     /// - Parameter searchBar: the search bar
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
