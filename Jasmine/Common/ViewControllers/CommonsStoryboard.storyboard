@@ -41,7 +41,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="KVZ-Pg-UvA">
+                            <searchBar contentMode="redraw" placeholder="Search for phrase..." translatesAutoresizingMaskIntoConstraints="NO" id="KVZ-Pg-UvA">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>

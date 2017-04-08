@@ -36,8 +36,9 @@ extension PhrasesExplorerViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PhraseExplorerCell", for: indexPath)
 
         let row = indexPath.row
-        cell.textLabel?.text = viewModel.chineseSet[row] as? String
-        if viewModel.indicesSelected.contains(row) {
+        let cellContents = viewModel.get(at: row)
+        cell.textLabel?.text = cellContents.chinese
+        if cellContents.selected {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none

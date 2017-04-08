@@ -2,34 +2,47 @@ import Foundation
 
 class PhrasesExplorerViewModel {
     /// The phrases inside this ViewModel
-    private let phrases: Phrases
+    private var allPhrasesWithSelection: [(phrase: Phrase, selected: Bool)]
 
-    /// The Chinese characters used for display
-    let chineseSet: NSOrderedSet
-
-    /// The set of indices that are selected
-    var indicesSelected: Set<Int>
+    /// The indices of allPhrasesWithSelection that are shown to the user.
+    private var rowIndices: [Int]
 
     /// Number of phrases in this ViewModel
     let amount: Int
 
+    /// The ViewController that contains this ViewModel
     weak var viewControllerDelegate: PhrasesExplorerViewController?
 
-    init(phrases: Phrases, amount: Int, indicesSelected: Set<Int> = []) {
-        self.phrases = phrases
+    init(phrases: Phrases, amount: Int) {
         self.amount = amount
-        self.indicesSelected = indicesSelected
-        chineseSet = NSOrderedSet(array: phrases.next(count: amount).map { $0.chinese.joined() })
+        allPhrasesWithSelection = phrases.next(count: amount).map { ($0, false) }
+        rowIndices = Array(0..<amount)
+    }
+
+    /// Gets the Chinese string and selected status of the given row.
+    ///
+    /// - Parameter row: the row of the table
+    /// - Returns: the string and whether it's selected or not
+    func get(at row: Int) -> (chinese: String, selected: Bool) {
+        let realIndex = rowIndices[row]
+        let phraseWithSelection = allPhrasesWithSelection[realIndex]
+        return (chinese: phraseWithSelection.phrase.chinese.joined(), selected: phraseWithSelection.selected)
     }
 
     /// Toggles the index given at the indices selected, i.e. remove if it exists, insert if not.
     ///
-    /// - Parameter index: the index to be toggled
-    func toggle(at index: Int) {
-        if indicesSelected.contains(index) {
-            indicesSelected.remove(index)
-        } else {
-            indicesSelected.insert(index)
+    /// - Parameter row: the row to be toggled
+    func toggle(at row: Int) {
+        let toggledIndex = rowIndices[row]
+        allPhrasesWithSelection[toggledIndex].selected = !allPhrasesWithSelection[toggledIndex].selected
+    }
+
+    func search(keyword: String) {
+        rowIndices = []
+        for (offset: idx, (phrase: phrase, selected: _)) in allPhrasesWithSelection.enumerated() {
+            if phrase.pinyin.contains(where: { $0 == keyword }) {
+                rowIndices.append(idx)
+            }
         }
     }
 }
