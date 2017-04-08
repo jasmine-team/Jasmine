@@ -8,6 +8,10 @@ class TetrisGameViewController: UIViewController {
 
     fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
 
+    fileprivate static let segueDelay = 0.5
+
+    fileprivate static let startGameText = "SWIPE TO START"
+
     /// Denotes the delay in animation between explosion and falling.
     fileprivate static let animationDelay = 0.5
 
@@ -17,6 +21,10 @@ class TetrisGameViewController: UIViewController {
     fileprivate var tetrisUpcomingTilesView: SquareGridViewController!
 
     fileprivate var gameStatisticsView: GameStatisticsViewController!
+
+    fileprivate var gameStartView: SimpleStartGameViewController!
+
+    @IBOutlet fileprivate weak var navigationBar: UINavigationBar!
 
     // MARK: Game Properties
     fileprivate var viewModel: TetrisGameViewModelProtocol!
@@ -29,7 +37,12 @@ class TetrisGameViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setFirstUpcomingTileStyle()
-        startGame()
+        setGameDescriptions()
+        setTheme()
+
+        if viewModel.gameStatus == .notStarted {
+            releaseNewTile()
+        }
     }
 
     // MARK: Segue Methods
@@ -48,6 +61,10 @@ class TetrisGameViewController: UIViewController {
 
         } else if let gameOverView = segue.destination as? GameOverViewController {
             gameOverView.segueWith(viewModel)
+
+        } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
+            self.gameStartView = gameStartView
+            gameStartView.segueWith(viewModel, startGameText: TetrisGameViewController.startGameText)
         }
     }
 
@@ -77,13 +94,13 @@ class TetrisGameViewController: UIViewController {
 
     // MARK: Gestures and Listeners
     /// Dismisses this view when the back button is pressed.
-    @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
+    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
 
     /// Switches the content of the falling tile with the latest upcoming tile when any tile in the
     /// list of upcoming tile is tapped.
-    @IBAction func onUpcomingTilesTouched(_ sender: UITapGestureRecognizer) {
+    @IBAction private func onUpcomingTilesTouched(_ sender: UITapGestureRecognizer) {
         guard tetrisGameAreaView.hasFallingTile,
               let coord = tetrisUpcomingTilesView
                   .getCoordinate(at: sender.location(in: tetrisUpcomingTilesView.view)) else {
@@ -94,33 +111,43 @@ class TetrisGameViewController: UIViewController {
     }
 
     /// Moves the falling tile when the view is swiped to a particular direction.
-    @IBAction func onTilesSwiped(_ sender: UISwipeGestureRecognizer) {
-        guard tetrisGameAreaView.hasFallingTile,
-              sender.direction != .up else {
+    @IBAction private func onTilesSwiped(_ sender: UISwipeGestureRecognizer) {
+        startGameIfPossible()
+        guard tetrisGameAreaView.hasFallingTile else {
             return
         }
-        tetrisGameAreaView.shiftFallingTile(towards: sender.direction.toDirection)
+
+        let direction = sender.direction.toDirection
+        if direction.isHorizontal {
+            tetrisGameAreaView.shiftFallingTile(towards: direction)
+        } else if direction == .southwards {
+            dropFallingTile()
+        }
+
     }
 
     /// Moves the falling tile with respect to the position of the falling tile when the user taps
     /// on the grid.
-    @IBAction func onTilesTapped(_ sender: UITapGestureRecognizer) {
-        guard let tilePosition = tetrisGameAreaView.fallingTile?.center else {
+    @IBAction private func onTilesTapped(_ sender: UITapGestureRecognizer) {
+        startGameIfPossible()
+        guard let tileFrame = tetrisGameAreaView.fallingTile?.frame else {
             return
         }
 
         let touchedPosition = sender.location(in: tetrisGameAreaView.view)
-        let direction: Direction = touchedPosition.x > tilePosition.x ? .eastwards : .westwards
-        tetrisGameAreaView.shiftFallingTile(towards: direction)
+        let tileCenter = tileFrame.center
+        let hasTouchedSouth = tileFrame.minX...tileFrame.maxX ~= touchedPosition.x
+            && tileFrame.midY < touchedPosition.y
+
+        if hasTouchedSouth {
+            dropFallingTile()
+        } else {
+            let direction: Direction = touchedPosition.x > tileCenter.x ? .eastwards : .westwards
+            tetrisGameAreaView.shiftFallingTile(towards: direction)
+        }
     }
 
     // MARK: - Game State and Actions
-    private func startGame() {
-        viewModel.startGame()
-        tetrisGameAreaView.startFallingTiles(with: GameConstants.Tetris.tileFallInterval)
-        releaseNewTile()
-    }
-
     private func releaseNewTile() {
         guard !tetrisGameAreaView.hasFallingTile else {
             assertionFailure("Current tile still falling! Cannot release a new tile for falling!")
@@ -129,6 +156,14 @@ class TetrisGameViewController: UIViewController {
         tetrisGameAreaView.setFallingTile(withData: viewModel.fallingTileText,
                                           toCoord: viewModel.fallingTileStartCoordinate)
         updateUpcomingAndFallingTiles()
+    }
+
+    private func dropFallingTile() {
+        guard let initCoord = tetrisGameAreaView.fallingTileCoord else {
+            return
+        }
+        let finalCoord = viewModel.getLandingCoordinate(from: initCoord)
+        tetrisGameAreaView.shiftFallingTile(to: finalCoord)
     }
 
     private func updateUpcomingAndFallingTiles() {
@@ -146,18 +181,27 @@ class TetrisGameViewController: UIViewController {
 
     private func notifyTileHasLanded(at coordinate: Coordinate) {
         let destroyedAndShiftedTiles = viewModel.landTile(at: coordinate)
-        // TODO : synchronize the animation of the sequence of destroyed and shifted tiles
-        for tiles in destroyedAndShiftedTiles {
-            animate(destroyedTiles: tiles.destroyedTiles, shiftedTiles: tiles.shiftedTiles)
-        }
+        animate(removeAll: destroyedAndShiftedTiles)
         releaseNewTile()
     }
 
-    // MARK: - Layout Helper Methods
+    // MARK: - Helper Methods
     private func setFirstUpcomingTileStyle() {
-        tetrisUpcomingTilesView.tileProperties[.origin] = { (tile: SquareTileView) in
-            tile.textColor = Constants.Theme.secondaryColor
+        tetrisUpcomingTilesView.tileProperties[.origin] = { tile in
+            tile.shouldHighlight = true
         }
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    private func setTheme() {
+        navigationBar.backgroundColor = Constants.Theme.mainColorDark
+    }
+
+    private func setGameDescriptions() {
+        navigationBar.topItem?.title = viewModel.gameTitle
     }
 }
 
@@ -165,25 +209,33 @@ extension TetrisGameViewController {
 
     // MARK: Animation
     /// Ask the view controller to animate the destruction of tiles at the specified coordinates,
-    /// and then shift the content of the tiles from Coordinate `from` to Coordinate `to`.
+    /// and then shift the content of the tiles from Coordinate `from` to Coordinate `to`, in this
+    /// order as governed by the coords array.
     ///
-    /// - Parameters:
-    ///   - coodinates: the set of coordinates to be destroyed.
-    ///   - coordinatesShifted: array of coordinates to shift
-    func animate(destroyedTiles coordinates: Set<Coordinate>,
-                 shiftedTiles coordinatesToShift: [(from: Coordinate, to: Coordinate)]) {
+    /// - Parameter coords: the list of coordinates to perform destroy and then shift in order.
+    fileprivate func animate(
+        removeAll coords: [(destroyedTiles: Set<Coordinate>, shiftedTiles: [(from: Coordinate, to: Coordinate)])]) {
 
-        self.animate(destroyTilesAt: coordinates)
+        var count = 0.0
+        for (destroyedTiles, shiftedTiles) in coords {
+            DispatchQueue.main
+                .asyncAfter(deadline: .now() + TetrisGameViewController.animationDelay * count) {
+                    self.animate(destroyTilesAt: destroyedTiles)
+                }
+            count += 1.0
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + TetrisGameViewController.animationDelay) {
-            self.animate(shiftTiles: coordinatesToShift)
+            DispatchQueue.main
+                .asyncAfter(deadline: .now() + TetrisGameViewController.animationDelay * count) {
+                    self.animate(shiftTiles: shiftedTiles)
+                }
+            count += 1.0
         }
     }
 
     /// Ask the view controller to animate the destruction of tiles at the specified coordinates.
     ///
     /// - Parameter coodinates: the set of coordinates to be destroyed.
-    private func animate(destroyTilesAt coordinates: Set<Coordinate>) {
+    fileprivate func animate(destroyTilesAt coordinates: Set<Coordinate>) {
         coordinates.flatMap { self.tetrisGameAreaView.getCell(at: $0) }
             .forEach { $0.animateExplosion() }
     }
@@ -191,12 +243,12 @@ extension TetrisGameViewController {
     /// Shifts the content of the tiles from Coordinate `from` to Coordinate `to`
     ///
     /// - Parameter coordinatesShifted: array of coordinates to shift
-    private func animate(shiftTiles coordinatesToShift: [(from: Coordinate, to: Coordinate)]) {
-        coordinatesToShift.forEach {
-            guard let tile = self.tetrisGameAreaView.detachTile(fromCoord: $0.from) else {
+    fileprivate func animate(shiftTiles coordinatesToShift: [(from: Coordinate, to: Coordinate)]) {
+        for (start, end) in coordinatesToShift {
+            guard let tile = self.tetrisGameAreaView.detachTile(fromCoord: start) else {
                 return
             }
-            self.tetrisGameAreaView.snapDetachedTile(tile, toCoordinate: $0.to) {
+            self.tetrisGameAreaView.snapDetachedTile(tile, toCoordinate: end) {
                 self.tetrisGameAreaView.reattachDetachedTile(tile)
             }
         }
@@ -208,9 +260,23 @@ extension TetrisGameViewController: GameStatusUpdateDelegate {
 
     /// Tells the implementor of the delegate that the game status has been updated.
     func gameStatusDidUpdate() {
-        if viewModel.gameStatus.hasGameEnded {
+        guard viewModel.gameStatus.hasGameEnded else {
+            return
+        }
+
+        tetrisGameAreaView.pauseFallingTiles()
+        DispatchQueue.main.asyncAfter(deadline: .now() + TetrisGameViewController.segueDelay) {
             self.performSegue(withIdentifier: TetrisGameViewController.segueToGameOverView,
                               sender: nil)
         }
+    }
+
+    fileprivate func startGameIfPossible() {
+        guard viewModel.gameStatus == .notStarted else {
+            return
+        }
+        viewModel.startGame()
+        gameStartView.view.isHidden = true
+        tetrisGameAreaView.startFallingTiles(with: GameConstants.Tetris.tileFallInterval)
     }
 }

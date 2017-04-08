@@ -12,8 +12,12 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
     var onFallingTileLanded: ((Coordinate) -> Void)?
 
     // MARK: - Properties
-    /// Stores the current falling tiles. Empty implies that no tile is falling currently.
-    private(set) var fallingTile: SquareTileView?
+    /// Gets the current falling tiles. Empty implies that no tile is falling currently.
+    var fallingTile: SquareTileView? {
+        get {
+            return detachedTiles.first
+        }
+    }
 
     /// Returns true if there is a falling tile.
     var hasFallingTile: Bool {
@@ -69,14 +73,12 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
     ///     `canRepositionDetachedTileToCoord`.
     func setFallingTile(withData data: String, toCoord coordinate: Coordinate) {
         guard !hasFallingTile else {
-            assertionFailure("A falling tile is still present!")
             return
         }
-        guard let view = addDetachedTile(withData: data, toCoord: coordinate) else {
+        guard addDetachedTile(withData: data, toCoord: coordinate) != nil else {
             assertionFailure("A tile has failed to generate at \(coordinate)")
             return
         }
-        self.fallingTile = view
     }
 
     /// Lands the current falling tile, and attaches it to the grid.
@@ -87,7 +89,6 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
         }
         snapDetachedTile(fallingTile) {
             self.reattachDetachedTile(fallingTile)
-            self.fallingTile = nil
             self.onFallingTileLanded?(coordinate)
         }
     }
@@ -100,6 +101,17 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
             return
         }
         snapDetachedTile(fallingTile, towards: direction) {
+            self.onFallingTileRepositioned?()
+        }
+    }
+
+    /// Shifts the falling tile to the specified coordinate.
+    /// - Parameter coordinate: the coordinate where the falling tile should shift to.
+    func shiftFallingTile(to coordinate: Coordinate) {
+        guard let fallingTile = fallingTile else {
+            return
+        }
+        snapDetachedTile(fallingTile, toCoordinate: coordinate) {
             self.onFallingTileRepositioned?()
         }
     }

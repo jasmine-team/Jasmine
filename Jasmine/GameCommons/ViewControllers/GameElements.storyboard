@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -68,7 +68,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WORDS PLAYED IN THIS LEVEL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOZ-Mf-JWd">
-                                <rect key="frame" x="16" y="322" width="342.5" height="18"/>
+                                <rect key="frame" x="16" y="322" width="343" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                 <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -121,6 +121,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UuQ-jm-ZSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="156" y="614.84257871064472"/>
+        </scene>
+        <!--Simple Start Game View Controller-->
+        <scene sceneID="38b-Wd-9Mh">
+            <objects>
+                <viewController storyboardIdentifier="SimpleStartGameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JBL-F3-ecd" customClass="SimpleStartGameViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C23-FK-xnm"/>
+                        <viewControllerLayoutGuide type="bottom" id="DW4-yx-beb"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.84999999999999998" contentMode="scaleToFill" id="MZ7-IM-ZyO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="eJH-oB-Ech">
+                                <rect key="frame" x="16" y="40" width="343" height="71"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is how a game should play" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Zfp-kH-jVB">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="XXXX TO START" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="4B2-ja-Wk3">
+                                        <rect key="frame" x="0.0" y="23" width="343" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Zfp-kH-jVB" secondAttribute="trailing" id="HBB-qc-EB3"/>
+                                    <constraint firstItem="Zfp-kH-jVB" firstAttribute="leading" secondItem="eJH-oB-Ech" secondAttribute="leading" id="LoL-fY-Mk8"/>
+                                    <constraint firstAttribute="trailing" secondItem="4B2-ja-Wk3" secondAttribute="trailing" id="No1-EM-fDn"/>
+                                    <constraint firstItem="4B2-ja-Wk3" firstAttribute="leading" secondItem="eJH-oB-Ech" secondAttribute="leading" id="rcW-vy-Vje"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="eJH-oB-Ech" secondAttribute="trailing" id="B0X-LW-DIe"/>
+                            <constraint firstItem="eJH-oB-Ech" firstAttribute="leading" secondItem="MZ7-IM-ZyO" secondAttribute="leadingMargin" id="EL7-LG-UJ3"/>
+                            <constraint firstItem="eJH-oB-Ech" firstAttribute="centerY" secondItem="MZ7-IM-ZyO" secondAttribute="centerY" id="rf5-DH-CZH"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="150"/>
+                    <connections>
+                        <outlet property="gameInstructionLabel" destination="Zfp-kH-jVB" id="ZFM-Pd-Znw"/>
+                        <outlet property="gameStartActionLabel" destination="4B2-ja-Wk3" id="Nvy-2C-c9e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1xo-sK-agc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-820" y="123"/>
         </scene>
         <!--Game Statistics View Controller-->
         <scene sceneID="Yk7-9i-JNA">
@@ -193,7 +250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ByK-yA-dJr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="187" y="9"/>
+            <point key="canvasLocation" x="176" y="124"/>
         </scene>
         <!--PhraseViewController-->
         <scene sceneID="n7m-MZ-uMf">
