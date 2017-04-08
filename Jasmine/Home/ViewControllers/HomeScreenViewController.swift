@@ -14,6 +14,7 @@ class HomeScreenViewController: UIViewController {
         let level = Level()
         if let swappingGame = segue.destination as? SwappingGameViewController {
             if (sender as? UIButton) === swappingChengYuButton {
+                level.gameType = .chengYu
                 let gameData = gameManager.createGame(fromLevel: level)
                 swappingGame.segueWith(ChengYuSwappingViewModel(time: GameConstants.Swapping.time,
                                                                 gameData: gameData,
@@ -26,10 +27,12 @@ class HomeScreenViewController: UIViewController {
                                                               numberOfPhrases: GameConstants.Swapping.rows))
             }
         } else if let tetrisGame = segue.destination as? TetrisGameViewController {
+            level.gameType = .chengYu
             let gameData = gameManager.createGame(fromLevel: level)
             tetrisGame.segueWith(TetrisGameViewModel(gameData: gameData))
         } else if let slidingGame = segue.destination as? SlidingGameViewController {
             if (sender as? UIButton) === slidingChengYuButton {
+                level.gameType = .chengYu
                 let gameData = gameManager.createGame(fromLevel: level)
                 slidingGame.segueWith(ChengYuSlidingViewModel(time: GameConstants.Sliding.time,
                                                               gameData: gameData,
