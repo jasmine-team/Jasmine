@@ -48,9 +48,6 @@ class SwappingGameViewController: UIViewController {
         } else if let gameOverView = segue.destination as? GameOverViewController {
             gameOverView.segueWith(viewModel)
 
-        } else if let gameHelpView = segue.destination as? GameHelpViewController {
-            gameHelpView.segueWith(viewModel)
-
         } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
             self.gameStartView = gameStartView
             gameStartView.segueWith(viewModel, startGameText: SwappingGameViewController.startGameText)
