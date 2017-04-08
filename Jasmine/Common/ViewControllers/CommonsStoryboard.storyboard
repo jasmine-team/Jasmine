@@ -102,10 +102,10 @@
             </objects>
             <point key="canvasLocation" x="-463.19999999999999" y="120.98950524737631"/>
         </scene>
-        <!--View Controller-->
+        <!--Phrase View Controller-->
         <scene sceneID="RRb-n2-vxW">
             <objects>
-                <viewController storyboardIdentifier="Phrase" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4gj-Nr-GkG" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhraseViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4gj-Nr-GkG" customClass="PhraseViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sLg-5N-rOm"/>
                         <viewControllerLayoutGuide type="bottom" id="ogM-Is-jRi"/>
@@ -128,10 +128,42 @@
                                     <navigationItem title="Phrase View" id="TYH-Ei-pQ5">
                                         <barButtonItem key="leftBarButtonItem" title="BACK" id="7Qv-NA-djQ">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="onBackPressed:" destination="4gj-Nr-GkG" id="f7E-rD-GGY"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="shi hou" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIJ-bC-LHw">
+                                <rect key="frame" x="159" y="157" width="56" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUV-1w-24N">
+                                <rect key="frame" x="168" y="225" width="38" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="时候" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yys-DC-rDE">
+                                <rect key="frame" x="170" y="106" width="35" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-VZ-TB2">
+                                <rect key="frame" x="168" y="433" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playButtonPressed:" destination="4gj-Nr-GkG" eventType="touchUpInside" id="Tzv-XA-qT7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -140,10 +172,15 @@
                             <constraint firstItem="kSs-Rg-kmX" firstAttribute="leading" secondItem="1U0-16-NkD" secondAttribute="leading" id="sDu-6u-0mF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="englishLabel" destination="cUV-1w-24N" id="BNP-Xw-Rkg"/>
+                        <outlet property="hanZiLabel" destination="Yys-DC-rDE" id="C7k-gE-10G"/>
+                        <outlet property="pinYinLabel" destination="IIJ-bC-LHw" id="3wj-7C-L4X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cw6-BI-H0t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="311" y="121"/>
+            <point key="canvasLocation" x="309.60000000000002" y="120.98950524737631"/>
         </scene>
     </scenes>
 </document>

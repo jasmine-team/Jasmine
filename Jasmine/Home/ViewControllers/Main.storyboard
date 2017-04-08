@@ -65,6 +65,11 @@
                                         <state key="normal" title="Phrases Explorer"/>
                                         <connections>
                                             <segue destination="4Cz-aW-33f" kind="show" id="kwm-v0-aGq"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gp-IY-vsy">
+                                        <rect key="frame" x="0.0" y="150" width="218" height="30"/>
+                                        <state key="normal" title="Open Phrase"/>
+                                        <connections>
+                                            <segue destination="rYh-KJ-YNp" kind="show" id="RG9-Ac-fGg"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -94,7 +99,7 @@
                 <viewControllerPlaceholder storyboardName="SwappingStoryboard" referencedIdentifier="SwappingGameViewController" id="n7s-Ck-n8c" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WeS-BJ-Okb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="830" y="122"/>
+            <point key="canvasLocation" x="816" y="74"/>
         </scene>
         <!--TetrisGameViewController-->
         <scene sceneID="aKU-oO-5kC">
@@ -102,7 +107,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="Tetris Game View Controller" storyboardName="TetrisStoryboard" referencedIdentifier="TetrisGameViewController" id="CTx-JF-hEy" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Nw-2l-f4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818" y="179"/>
+            <point key="canvasLocation" x="798" y="141"/>
         </scene>
         <!--SlidingGameViewContoller-->
         <scene sceneID="61E-hi-Ljp">
@@ -110,7 +115,15 @@
                 <viewControllerPlaceholder storyboardName="SlidingGameStoryboard" referencedIdentifier="SlidingGameViewContoller" id="8ZU-Hu-mvm" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9M-vg-btE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="799" y="229"/>
+            <point key="canvasLocation" x="798" y="206"/>
+        </scene>
+        <!--PhraseViewController-->
+        <scene sceneID="4M4-bA-S8x">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CommonsStoryboard" storyboardName="CommonsStoryboard" referencedIdentifier="PhraseViewController" id="rYh-KJ-YNp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zt0-G3-AcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="776" y="273"/>
         </scene>
         <!--PhrasesExplorerViewController-->
         <scene sceneID="L8I-Hn-bVq">
