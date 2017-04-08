@@ -24,10 +24,6 @@ class LevelResult: Object {
         }
     }
 
-    override static func primaryKey() -> String? {
-        return "timePlayed"
-    }
-
     /// MARK: non-persisted properties
     var gameResult: GameStatus {
         guard let gameStatus = GameStatus(rawValue: rawGameResult) else {
