@@ -25,6 +25,8 @@
 		502A29761E927B790024336A /* ChengYuSlidingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29731E927B790024336A /* ChengYuSlidingViewModelTests.swift */; };
 		502A29771E927B790024336A /* CiHuiSlidingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29741E927B790024336A /* CiHuiSlidingViewModelTests.swift */; };
 		502A297D1E927D580024336A /* GridViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A297C1E927D580024336A /* GridViewModelTests.swift */; };
+		5045A5C21E990F8C00BEE629 /* PhraseViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5045A5C11E990F8C00BEE629 /* PhraseViewModelTests.swift */; };
+		5045A5C41E99107A00BEE629 /* PhrasesExplorerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5045A5C31E99107A00BEE629 /* PhrasesExplorerViewModelTests.swift */; };
 		5047712C1E98ABA600E0F858 /* PhrasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5047712B1E98ABA600E0F858 /* PhrasesTableViewController.swift */; };
 		5047D0A11E932C7600DD96BA /* TetrisGameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5047D0A01E932C7600DD96BA /* TetrisGameViewModelTests.swift */; };
 		50717AC01E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50717ABE1E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift */; };
@@ -148,9 +150,9 @@
 		3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasmine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
 		5007FD111E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightedUpdateDelegateMock.swift; sourceTree = "<group>"; };
-		500DC4991E97FE6900CBC65F /* PhraseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhraseViewModel.swift; path = PhraseViewModel.swift; sourceTree = "<group>"; };
+		500DC4991E97FE6900CBC65F /* PhraseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseViewModel.swift; sourceTree = "<group>"; };
 		500DC49C1E98081B00CBC65F /* PhrasesExplorerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesExplorerViewController.swift; sourceTree = "<group>"; };
-		500DC49E1E987E2C00CBC65F /* PhrasesExplorerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhrasesExplorerViewModel.swift; path = PhrasesExplorerViewModel.swift; sourceTree = "<group>"; };
+		500DC49E1E987E2C00CBC65F /* PhrasesExplorerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesExplorerViewModel.swift; sourceTree = "<group>"; };
 		502A29641E925A190024336A /* Array+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Equatable.swift"; sourceTree = "<group>"; };
 		502A296A1E926DCA0024336A /* BaseSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSlidingViewModel.swift; sourceTree = "<group>"; };
 		502A296B1E926DCA0024336A /* ChengYuSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSlidingViewModel.swift; sourceTree = "<group>"; };
@@ -160,6 +162,8 @@
 		502A29731E927B790024336A /* ChengYuSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSlidingViewModelTests.swift; sourceTree = "<group>"; };
 		502A29741E927B790024336A /* CiHuiSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiSlidingViewModelTests.swift; sourceTree = "<group>"; };
 		502A297C1E927D580024336A /* GridViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModelTests.swift; sourceTree = "<group>"; };
+		5045A5C11E990F8C00BEE629 /* PhraseViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseViewModelTests.swift; sourceTree = "<group>"; };
+		5045A5C31E99107A00BEE629 /* PhrasesExplorerViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesExplorerViewModelTests.swift; sourceTree = "<group>"; };
 		5047712B1E98ABA600E0F858 /* PhrasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesTableViewController.swift; sourceTree = "<group>"; };
 		5047D0A01E932C7600DD96BA /* TetrisGameViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewModelTests.swift; sourceTree = "<group>"; };
 		50717ABE1E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MutableCollection+ExtensionsTests.swift"; sourceTree = "<group>"; };
@@ -310,7 +314,6 @@
 				500DC4991E97FE6900CBC65F /* PhraseViewModel.swift */,
 				500DC49E1E987E2C00CBC65F /* PhrasesExplorerViewModel.swift */,
 			);
-			name = ViewModels;
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
@@ -513,6 +516,8 @@
 			isa = PBXGroup;
 			children = (
 				502A297C1E927D580024336A /* GridViewModelTests.swift */,
+				5045A5C11E990F8C00BEE629 /* PhraseViewModelTests.swift */,
+				5045A5C31E99107A00BEE629 /* PhrasesExplorerViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1229,6 +1234,7 @@
 				DF2155181E8E2335005A0927 /* PhrasesTests.swift in Sources */,
 				50717AC01E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift in Sources */,
 				DF40F9E41E967708001EAAA8 /* PhraseTests.swift in Sources */,
+				5045A5C21E990F8C00BEE629 /* PhraseViewModelTests.swift in Sources */,
 				A2FD7AE11E973F13008C41DF /* AVAudioPlayer+ExtensionsTest.swift in Sources */,
 				DF9918E11E92B71A004E599B /* CGPoint+ArithmeticTests.swift in Sources */,
 				50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */,
@@ -1236,6 +1242,7 @@
 				502A297D1E927D580024336A /* GridViewModelTests.swift in Sources */,
 				509036D81E937BFB006548DE /* RealmTestCase.swift in Sources */,
 				DF7CF78B1E7E9FD700C6979A /* IndexPath+CoordinateTests.swift in Sources */,
+				5045A5C41E99107A00BEE629 /* PhrasesExplorerViewModelTests.swift in Sources */,
 				DF7CF78A1E7E9FD700C6979A /* CGRect+ArithmeticTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
