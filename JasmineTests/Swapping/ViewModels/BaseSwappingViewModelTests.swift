@@ -11,7 +11,7 @@ class BaseSwappingViewModelTests: XCTestCase {
     var viewModel: BaseSwappingViewModel!
 
     override func setUp() {
-        guard let gameData = try? GameDataFactory().createGame(fromLevel: Level()) else {
+        guard let gameData = try? GameManager().createGame(fromLevel: Level()) else {
             XCTFail("Realm errors")
             return
         }

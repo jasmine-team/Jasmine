@@ -4,12 +4,12 @@ import XCTest
 /// Unlike other tests that involves realm, this uses the real db to ensure it is usuable
 class RealmIntegrationTests: XCTestCase {
 
-    var factory: GameDataFactory!
+    var factory: GameManager!
 
     override func setUp() {
         super.setUp()
         do {
-            factory = try GameDataFactory()
+            factory = try GameManager()
         } catch {
             XCTFail(error.localizedDescription)
         }

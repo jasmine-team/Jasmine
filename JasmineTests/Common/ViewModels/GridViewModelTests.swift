@@ -5,7 +5,7 @@ class GridViewModelTests: XCTestCase {
     var gameData: GameData!
 
     override func setUp() {
-        guard let gameDataFactory = try? GameDataFactory() else {
+        guard let gameDataFactory = try? GameManager() else {
             XCTFail("Realm error")
             return
         }

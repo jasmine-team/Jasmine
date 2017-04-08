@@ -5,7 +5,7 @@ import RealmSwift
 class RealmTestCase: XCTestCase {
 
     var realm: Realm!
-    var gameDataFactory: GameDataFactory!
+    var gameDataFactory: GameManager!
 
     override func setUp() {
         super.setUp()
@@ -16,7 +16,7 @@ class RealmTestCase: XCTestCase {
             fatalError("Could not instantiate realm")
         }
 
-        gameDataFactory = GameDataFactory(realm: realm)
+        gameDataFactory = GameManager(realm: realm)
     }
 
     func save(_ object: Object) {

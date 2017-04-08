@@ -77,7 +77,7 @@
 		DF409FDF1E84147400389976 /* CountDownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FDC1E84147400389976 /* CountDownTimer.swift */; };
 		DF409FE01E84147400389976 /* Prebundler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FDD1E84147400389976 /* Prebundler.swift */; };
 		DF409FE11E84147400389976 /* TimerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FDE1E84147400389976 /* TimerStatus.swift */; };
-		DF409FE31E84149F00389976 /* GameDataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FE21E84149F00389976 /* GameDataFactory.swift */; };
+		DF409FE31E84149F00389976 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FE21E84149F00389976 /* GameManager.swift */; };
 		DF409FE51E8414B000389976 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FE41E8414B000389976 /* Player.swift */; };
 		DF409FEC1E8415AB00389976 /* prebundled.realm in Resources */ = {isa = PBXBuildFile; fileRef = DF409FE91E8415AB00389976 /* prebundled.realm */; };
 		DF409FEF1E8415E000389976 /* UIApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FEE1E8415E000389976 /* UIApplicationTests.swift */; };
@@ -215,7 +215,7 @@
 		DF409FDC1E84147400389976 /* CountDownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownTimer.swift; sourceTree = "<group>"; };
 		DF409FDD1E84147400389976 /* Prebundler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prebundler.swift; sourceTree = "<group>"; };
 		DF409FDE1E84147400389976 /* TimerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerStatus.swift; sourceTree = "<group>"; };
-		DF409FE21E84149F00389976 /* GameDataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataFactory.swift; sourceTree = "<group>"; };
+		DF409FE21E84149F00389976 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		DF409FE41E8414B000389976 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		DF409FE91E8415AB00389976 /* prebundled.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = prebundled.realm; sourceTree = "<group>"; };
 		DF409FEE1E8415E000389976 /* UIApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationTests.swift; sourceTree = "<group>"; };
@@ -386,7 +386,7 @@
 				A2FD7AE81E974D50008C41DF /* GameMode.swift */,
 				DFB342701E77EB6700D2FE09 /* Coordinate.swift */,
 				DF2155241E8E3F25005A0927 /* Direction.swift */,
-				DF409FE21E84149F00389976 /* GameDataFactory.swift */,
+				DF409FE21E84149F00389976 /* GameManager.swift */,
 				DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */,
 				509894A21E6E6CAE00FC9CF3 /* GameType.swift */,
 				DF40F9E11E9676C1001EAAA8 /* LevelResult.swift */,
@@ -1168,7 +1168,7 @@
 				DF2155251E8E3F25005A0927 /* Direction.swift in Sources */,
 				DF409FE51E8414B000389976 /* Player.swift in Sources */,
 				A2187E6C1E7510B60033FC5B /* Random.swift in Sources */,
-				DF409FE31E84149F00389976 /* GameDataFactory.swift in Sources */,
+				DF409FE31E84149F00389976 /* GameManager.swift in Sources */,
 				A2FFEBF31E98972200243651 /* GameData.swift in Sources */,
 				DF21551A1E8E234D005A0927 /* Phrases.swift in Sources */,
 				DF409FE01E84147400389976 /* Prebundler.swift in Sources */,
