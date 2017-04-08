@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fdz-8j-kDQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fdz-8j-kDQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eKS-sV-Lr3">
-                                <rect key="frame" x="78.5" y="234" width="218" height="150"/>
+                                <rect key="frame" x="78.5" y="219" width="218" height="180"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nil-Gc-zGo">
                                         <rect key="frame" x="0.0" y="0.0" width="218" height="30"/>
@@ -58,6 +58,13 @@
                                         <state key="normal" title="Open Sliding Cihui Game"/>
                                         <connections>
                                             <segue destination="8ZU-Hu-mvm" kind="show" id="djo-h3-zHX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pQ-1T-20y">
+                                        <rect key="frame" x="0.0" y="150" width="218" height="30"/>
+                                        <state key="normal" title="Phrases Explorer"/>
+                                        <connections>
+                                            <segue destination="4Cz-aW-33f" kind="show" id="kwm-v0-aGq"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -104,6 +111,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9M-vg-btE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="799" y="229"/>
+        </scene>
+        <!--PhrasesExplorerViewController-->
+        <scene sceneID="L8I-Hn-bVq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CommonsStoryboard" referencedIdentifier="PhrasesExplorerViewController" id="4Cz-aW-33f" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XmM-vH-bBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="798" y="277"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Yj8-SC-wqm">
@@ -174,7 +189,6 @@
         <!--Home-->
         <scene sceneID="Nel-Uo-A3s">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CGc-qz-ogX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="V3l-Bo-jgy" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WSa-Je-HwQ"/>
@@ -200,6 +214,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="llQ-rl-fYY"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CGc-qz-ogX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="702" y="797"/>
         </scene>
