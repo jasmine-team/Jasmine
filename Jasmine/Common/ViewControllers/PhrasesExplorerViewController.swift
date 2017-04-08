@@ -12,8 +12,6 @@ class PhrasesExplorerViewController: UIViewController {
         tableDelegate.tableView = phrasesTable
 
         phrasesTable.delegate = tableDelegate
-
-        phrasesTable.reloadRows(at: [], with: .none)
     }
 
     /// Dismisses this current screen when "Back" button is pressed.
