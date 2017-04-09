@@ -1,6 +1,6 @@
 import RealmSwift
 
-/// Represents a data for a level, has history of game results, is immutable except for history
+/// Represents a data for a level, has history of game results, is immutable
 class Level: Object {
 
     dynamic private(set) var name: String = "Untitled Level"
@@ -12,8 +12,7 @@ class Level: Object {
     private dynamic var rawGameType: String = GameType.ciHui.rawValue
     private dynamic var rawGameMode: String = GameMode.swapping.rawValue
 
-    let history = List<LevelResult>()
-
+    private let history = List<LevelResult>()
     private let rawPhrases = List<Phrase>()
 
     /// MARK: non-persisted properties
@@ -43,6 +42,25 @@ class Level: Object {
 
     override static func ignoredProperties() -> [String] {
         return ["gameType", "gameMode", "phrases"]
+    }
+    
+    /// Adds result to history
+    ///
+    /// - Parameter result: result of game to be added to history
+    /// - Throws: throws error if unable to save
+    func addResult(_ result: LevelResult) throws {
+        try realm?.write {
+            history.append(result)
+        }
+    }
+    
+    /// Resets game history
+    ///
+    /// - Throws: throws error if unable to save
+    func resetAll() throws {
+        try realm?.write {
+            history.removeAll()
+        }
     }
 
 }
