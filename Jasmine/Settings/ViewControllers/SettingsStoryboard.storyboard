@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,50 +35,94 @@
                                     <navigationItem title="Settings" id="SDe-1T-vTg">
                                         <barButtonItem key="leftBarButtonItem" title="BACK" id="jTL-k3-eL3">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="onBackPressed:" destination="pnc-EG-hbf" id="ITY-eq-Ff6"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Background Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTF-fi-SQA">
-                                <rect key="frame" x="111" y="117" width="142" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3gV-GK-Ix4">
-                                <rect key="frame" x="98" y="250" width="169" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="onSoundEffectsSliderPressed:" destination="pnc-EG-hbf" eventType="valueChanged" id="brB-E5-rfA"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sound Effects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQd-uI-xkj">
-                                <rect key="frame" x="116" y="215" width="142" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="itB-8b-VZh">
-                                <rect key="frame" x="98" y="152" width="169" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="onBackgroundMusicSliderPressed:" destination="pnc-EG-hbf" eventType="valueChanged" id="Rdc-Vd-EKM"/>
-                                </connections>
-                            </slider>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2He-kT-kJM">
-                                <rect key="frame" x="49" y="369" width="276" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Log out"/>
-                                <connections>
-                                    <action selector="onSignInButtonPressed:" destination="pnc-EG-hbf" eventType="touchUpInside" id="Kq2-xX-osu"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0SQ-2z-ZRx">
+                                <rect key="frame" x="36" y="104" width="303" height="186"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ub0-XT-ueZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="52"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BACKGROUND MUSIC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTF-fi-SQA">
+                                                <rect key="frame" x="0.0" y="0.0" width="303" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" minimumValueImage="speaker-off-small" maximumValueImage="speaker-on-small" translatesAutoresizingMaskIntoConstraints="NO" id="itB-8b-VZh">
+                                                <rect key="frame" x="-2" y="22" width="307" height="31"/>
+                                                <color key="minimumTrackTintColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="onBackgroundMusicSliderPressed:" destination="pnc-EG-hbf" eventType="valueChanged" id="Rdc-Vd-EKM"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="NXr-qU-4tJ">
+                                        <rect key="frame" x="0.0" y="67" width="303" height="52"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOUND EFFECTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQd-uI-xkj">
+                                                <rect key="frame" x="0.0" y="0.0" width="303" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" minimumValueImage="speaker-off-small" maximumValueImage="speaker-on-small" translatesAutoresizingMaskIntoConstraints="NO" id="3gV-GK-Ix4">
+                                                <rect key="frame" x="-2" y="22" width="307" height="31"/>
+                                                <color key="minimumTrackTintColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="onSoundEffectsSliderPressed:" destination="pnc-EG-hbf" eventType="valueChanged" id="brB-E5-rfA"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Jsz-KE-1GM">
+                                        <rect key="frame" x="0.0" y="134" width="303" height="52"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME CENTER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rhx-4e-zFs">
+                                                <rect key="frame" x="0.0" y="0.0" width="102.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2He-kT-kJM">
+                                                <rect key="frame" x="0.0" y="22" width="303" height="30"/>
+                                                <color key="backgroundColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="LOG OUT">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onSignInButtonPressed:" destination="pnc-EG-hbf" eventType="touchUpInside" id="Kq2-xX-osu"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="2He-kT-kJM" firstAttribute="leading" secondItem="Jsz-KE-1GM" secondAttribute="leading" id="P4E-rO-wfN"/>
+                                            <constraint firstAttribute="trailing" secondItem="2He-kT-kJM" secondAttribute="trailing" id="tiC-qr-xhh"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ub0-XT-ueZ" secondAttribute="trailing" id="M2o-rV-Bnb"/>
+                                    <constraint firstItem="Jsz-KE-1GM" firstAttribute="leading" secondItem="0SQ-2z-ZRx" secondAttribute="leading" id="a8B-yE-f9H"/>
+                                    <constraint firstItem="NXr-qU-4tJ" firstAttribute="leading" secondItem="0SQ-2z-ZRx" secondAttribute="leading" id="jDq-JI-vfO"/>
+                                    <constraint firstItem="ub0-XT-ueZ" firstAttribute="leading" secondItem="0SQ-2z-ZRx" secondAttribute="leading" id="kgW-bl-USN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jsz-KE-1GM" secondAttribute="trailing" id="mmf-3G-cU6"/>
+                                    <constraint firstAttribute="trailing" secondItem="NXr-qU-4tJ" secondAttribute="trailing" id="xG1-Xe-T80"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="3X9-Zk-bKI" secondAttribute="trailing" id="3T1-HT-m3Y"/>
+                            <constraint firstItem="0SQ-2z-ZRx" firstAttribute="leading" secondItem="Q2Z-y8-Wkf" secondAttribute="leadingMargin" constant="20" id="Dae-ho-LIr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0SQ-2z-ZRx" secondAttribute="trailing" constant="20" id="EI2-wp-QeQ"/>
+                            <constraint firstItem="0SQ-2z-ZRx" firstAttribute="top" secondItem="3X9-Zk-bKI" secondAttribute="bottom" constant="40" id="PRD-UE-4X7"/>
                             <constraint firstItem="3X9-Zk-bKI" firstAttribute="leading" secondItem="Q2Z-y8-Wkf" secondAttribute="leading" id="fin-7M-msB"/>
                             <constraint firstItem="3X9-Zk-bKI" firstAttribute="top" secondItem="Q2Z-y8-Wkf" secondAttribute="top" id="tRz-pM-vQL"/>
                         </constraints>
@@ -91,4 +136,8 @@
             <point key="canvasLocation" x="-114.40000000000001" y="137.18140929535232"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="speaker-off-small" width="24" height="24"/>
+        <image name="speaker-on-small" width="24" height="24"/>
+    </resources>
 </document>
