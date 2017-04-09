@@ -14,7 +14,7 @@ class Phrases {
 
     private var phrases: List<Phrase>
     private var range: [Int] = []
-    var isShuffled: Bool
+    let isShuffled: Bool
     let phraseLength: Int
 
     /// Creates an encapsulated list of phrases for usage outside of models 

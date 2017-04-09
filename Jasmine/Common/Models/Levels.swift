@@ -15,8 +15,6 @@ class Levels {
     var custom: [Level] {
         return Array(self.filterIsReadOnly(bool: false))
     }
-//    private(set) lazy var original: [Level] = Array(self.filterIsReadOnly(bool: true))
-//    private(set) lazy var custom: [Level] = Array(self.rawCustomLevels)
 
     init(realm: Realm) {
         self.realm = realm
@@ -32,10 +30,6 @@ class Levels {
         try realm.write {
             realm.add(level)
         }
-//        realm.beginWrite()
-//        realm.add(level)
-//        // Making sure the change notification doesn't apply the change a second time
-//        try realm.commitWrite(withoutNotifying: [token])
     }
 
     func deleteLevel(_ level: Level) throws {

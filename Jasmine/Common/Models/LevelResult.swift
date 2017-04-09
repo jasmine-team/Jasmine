@@ -10,15 +10,15 @@ class LevelResult: Object {
 
     let phrases = List<Phrase>()
 
-    convenience init(phrasesUserSeen: Set<Phrase>, result: GameStatus, score: Int) {
+    convenience init(gameData: GameData) {
         self.init()
-        phrases.append(objectsIn: phrasesUserSeen)
-        self.score = score
+        phrases.append(objectsIn: gameData.phrasesTested)
+        score = gameData.score
 
-        switch result {
+        switch gameData.gameStatus {
         case .endedWithLost,
              .endedWithWon:
-            rawGameResult = result.rawValue
+            rawGameResult = gameData.gameStatus.rawValue
         default:
             assertionFailure("Game result is not valid")
         }

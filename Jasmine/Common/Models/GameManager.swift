@@ -33,12 +33,13 @@ class GameManager {
         return gameData
     }
 
-    func saveGame(result: LevelResult) {
+    func saveGame(result: GameData) {
         guard let currentLevel = currentLevel else {
             assertionFailure("No game ongoing, failed to save")
             return
         }
-        currentLevel.history.append(result)
+        let finalResult = LevelResult(gameData: result) // convert game data to LevelResult
+        currentLevel.history.append(finalResult)
         do {
             try realm.write {
                 realm.add(currentLevel, update: true) // will create level if not in db
