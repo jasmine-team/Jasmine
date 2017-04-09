@@ -52,6 +52,8 @@
 		50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */; };
 		50AE3A761E8B93D3005EC944 /* TextGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE3A751E8B93D3005EC944 /* TextGrid.swift */; };
 		50AE3A781E8BE020005EC944 /* TextGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE3A771E8BE020005EC944 /* TextGridTests.swift */; };
+		50B0C06F1E99FF7A00D3D420 /* LevelSelectViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0C06E1E99FF7A00D3D420 /* LevelSelectViewModelProtocol.swift */; };
+		50B0C0711E9A02C800D3D420 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0C0701E9A02C800D3D420 /* GameInfo.swift */; };
 		50B7A8B51E9393530052E9E2 /* BaseSwappingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B7A8B41E9393530052E9E2 /* BaseSwappingViewModelTests.swift */; };
 		50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */; };
 		A2187E6C1E7510B60033FC5B /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E6B1E7510B60033FC5B /* Random.swift */; };
@@ -189,6 +191,8 @@
 		50989DE61E6D8BBD009A86C8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50AE3A751E8B93D3005EC944 /* TextGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextGrid.swift; sourceTree = "<group>"; };
 		50AE3A771E8BE020005EC944 /* TextGridTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextGridTests.swift; sourceTree = "<group>"; };
+		50B0C06E1E99FF7A00D3D420 /* LevelSelectViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectViewModelProtocol.swift; sourceTree = "<group>"; };
+		50B0C0701E9A02C800D3D420 /* GameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
 		50B7A8B41E9393530052E9E2 /* BaseSwappingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSwappingViewModelTests.swift; sourceTree = "<group>"; };
 		50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateTests.swift; sourceTree = "<group>"; };
 		5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -393,6 +397,7 @@
 				DF2155241E8E3F25005A0927 /* Direction.swift */,
 				50989DC51E6D8B16009A86C8 /* GameData.swift */,
 				DF409FE21E84149F00389976 /* GameDataFactory.swift */,
+				50B0C0701E9A02C800D3D420 /* GameInfo.swift */,
 				5045A5C91E99215200BEE629 /* GameMode.swift */,
 				DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */,
 				509894A21E6E6CAE00FC9CF3 /* GameType.swift */,
@@ -890,6 +895,7 @@
 		DFE111461E98BDA900F8860E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				50B0C06E1E99FF7A00D3D420 /* LevelSelectViewModelProtocol.swift */,
 				DFE111471E98BDA900F8860E /* PhraseViewModel.swift */,
 				5045A5C71E9920F800BEE629 /* PhrasesExplorerViewModel.swift */,
 			);
@@ -1149,6 +1155,7 @@
 				DFBE8F1F1E951FC00036CCC6 /* HomeScreenViewController.swift in Sources */,
 				DFBE8F401E95272B0036CCC6 /* SquareGridViewController.swift in Sources */,
 				502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */,
+				50B0C06F1E99FF7A00D3D420 /* LevelSelectViewModelProtocol.swift in Sources */,
 				5045A5CC1E99216E00BEE629 /* PhrasesExplorerViewController.swift in Sources */,
 				DFE1113A1E98BD3300F8860E /* AVAudioPlayer+Extensions.swift in Sources */,
 				DF7CF7721E7E9E3500C6979A /* IndexPath+Coordinate.swift in Sources */,
@@ -1169,6 +1176,7 @@
 				DF40F9E21E9676C1001EAAA8 /* LevelResult.swift in Sources */,
 				DF9918D61E92B6A3004E599B /* CiHuiSwappingViewModel.swift in Sources */,
 				DF9918DC1E92B6D6004E599B /* SlidingGameViewController.swift in Sources */,
+				50B0C0711E9A02C800D3D420 /* GameInfo.swift in Sources */,
 				DFBE8F3B1E9526BE0036CCC6 /* DraggableSquareGridViewController.swift in Sources */,
 				DF2155211E8E237F005A0927 /* SlidingViewModelProtocol.swift in Sources */,
 				5047712C1E98ABA600E0F858 /* PhrasesTableViewController.swift in Sources */,
