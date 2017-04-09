@@ -1,4 +1,5 @@
 import XCTest
+import RealmSwift
 @testable import Jasmine
 
 class PhrasesTests: RealmTestCase {
@@ -14,10 +15,7 @@ class PhrasesTests: RealmTestCase {
         super.setUp()
         listOfPhrases.forEach(save)
         let phraseResults = realm.objects(Phrase.self)
-        guard let phraseLength = listOfPhrases.first?.chinese.count else {
-            fatalError("Failed to get phrase length")
-        }
-        phrases = Phrases(phraseResults, phraseLength: phraseLength)
+        phrases = Phrases(List(phraseResults))
     }
 
     func testPhrases_next() {

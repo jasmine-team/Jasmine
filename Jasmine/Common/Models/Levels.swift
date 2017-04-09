@@ -8,7 +8,7 @@ class Levels {
     weak var delegate: LevelsDelegate?
 
     private lazy var rawCustomLevels: Results<Level> = self.filterIsReadOnly(bool: false)
-    
+
     private(set) lazy var original: [Level] = Array(self.filterIsReadOnly(bool: true))
     private(set) lazy var custom: [Level] = Array(self.rawCustomLevels)
 
@@ -16,8 +16,7 @@ class Levels {
         self.realm = realm
     }
 
-    @discardableResult
-    func addCustomLevel(name: String, gameType: GameType, gameMode: GameMode, phrases: Phrases) -> Bool {
+    func addCustomLevel(name: String, gameType: GameType, gameMode: GameMode, phrases: Phrases) throws {
         let level = Level(value: [
             "name": name,
             "rawGameType": gameType,
@@ -27,30 +26,30 @@ class Levels {
         realm.beginWrite()
         realm.add(level)
         // Making sure the change notification doesn't apply the change a second time
-        do {
-            try realm.commitWrite(withoutNotifying: [token])
-            return true
-        } catch {
-            assertionFailure(error.localizedDescription)
-            return false
-        }
+        try realm.commitWrite(withoutNotifying: [token])
     }
 
-    func deleteLevel(_ level: Level) {
-        if rawCustomLevels.contains(level){
+    func deleteLevel(_ level: Level) throws {
+        if !rawCustomLevels.contains(level) {
+            assertionFailure("Cannot delete original levels")
+            return
+        }
+        try realm.write {
             realm.delete(level)
         }
     }
-    
-    func resetAll() {
-        realm.delete(rawCustomLevels)
+
+    func resetAll() throws {
+        try realm.write {
+            realm.delete(rawCustomLevels)
+        }
     }
 
     // MARK: Helper functions
 
     private func filterIsReadOnly(bool: Bool) -> Results<Level> {
         return realm.objects(Level.self)
-            .filter("isReadOnly == '\(bool)'")
+            .filter("isReadOnly == \(bool)")
             .sorted(byKeyPath: Levels.difficultyKey)
     }
 

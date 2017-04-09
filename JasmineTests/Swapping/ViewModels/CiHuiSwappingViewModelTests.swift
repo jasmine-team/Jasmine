@@ -5,8 +5,7 @@ class CiHuiSwappingViewModelTests: XCTestCase {
     func testInit() {
         let numberOfPhrases = 3
 
-        let level = Level()
-        level.gameType = .ciHui
+        let level = Level(value: ["rawGameType": "ciHui"])
         guard let gameData = try? GameManager().createGame(fromLevel: level) else {
             XCTFail("Realm errors")
             return

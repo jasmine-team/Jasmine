@@ -16,10 +16,6 @@ class Level: Object {
 
     private let rawPhrases = List<Phrase>()
 
-    override static func primaryKey() -> String? {
-        return "name"
-    }
-
     /// MARK: non-persisted properties
 
     /// GameType of level, returns cihui by default
