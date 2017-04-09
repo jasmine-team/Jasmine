@@ -21,6 +21,10 @@ class GameOverViewController: UIViewController {
     fileprivate var displayedPhases: [Phrase]!
     private var selectedPhrase: Phrase!
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     // MARK: - Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let testedPhrase = segue.destination as? SelectableSquareGridViewController {

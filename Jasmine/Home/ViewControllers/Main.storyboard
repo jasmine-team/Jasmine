@@ -256,6 +256,9 @@
                                         <state key="normal" title="SETTINGS">
                                             <color key="titleColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="eid-4f-5c7" kind="show" id="zD3-i0-V4z"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -312,6 +315,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qPc-Wy-L85" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-764" y="797"/>
+        </scene>
+        <!--SettingsViewController-->
+        <scene sceneID="ArE-jE-I2U">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SettingsStoryboard" referencedIdentifier="SettingsViewController" id="eid-4f-5c7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="thF-rc-tPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1301" y="1241"/>
         </scene>
         <!--LevelSelectionViewController-->
         <scene sceneID="W8j-9p-cbB">
