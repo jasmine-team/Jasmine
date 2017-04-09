@@ -10,27 +10,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // swiftlint:disable:previous vertical_parameter_alignment
 
-        do {
-            Realm.Configuration.defaultConfiguration = Realm.Configuration(
-                schemaVersion: 1, // Set the new schema version.
-                // We haven't migrated anything, so oldSchemaVersion = 0.
-                // Realm will automatically detect new properties and removed properties
-                // by accessing the oldSchemaVersion property.
-                migrationBlock: { _, oldSchemaVersion in _ = oldSchemaVersion }
-            )
-            let realm = try Realm()
-            let levels = Levels(realm: realm)
-            for level in levels.original {
-                print(level)
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
-
-        SoundService.sharedInstance.play(.dogDays)
         if UIApplication.isFirstLaunch {
             Prebundler.hydrateRealm() // add phrases
         }
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            schemaVersion: 1, // Set the new schema version.
+            // We haven't migrated anything, so oldSchemaVersion = 0.
+            // Realm will automatically detect new properties and removed properties
+            // by accessing the oldSchemaVersion property.
+            migrationBlock: { _, oldSchemaVersion in _ = oldSchemaVersion }
+        )
+
+        SoundService.sharedInstance.play(.dogDays)
         return true
     }
 

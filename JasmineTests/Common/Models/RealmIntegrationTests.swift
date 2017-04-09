@@ -10,6 +10,13 @@ class RealmIntegrationTests: XCTestCase {
     var levels: Levels!
 
     override func setUp() {
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            schemaVersion: 1, // Set the new schema version.
+            // We haven't migrated anything, so oldSchemaVersion = 0.
+            // Realm will automatically detect new properties and removed properties
+            // by accessing the oldSchemaVersion property.
+            migrationBlock: { _, oldSchemaVersion in _ = oldSchemaVersion }
+        )
         super.setUp()
         do {
             realm = try Realm()
