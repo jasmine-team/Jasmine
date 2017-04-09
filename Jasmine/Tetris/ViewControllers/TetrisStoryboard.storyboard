@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +31,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pFs-F6-KFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-692" y="740"/>
+            <point key="canvasLocation" x="-158" y="849"/>
         </scene>
         <!--Square Grid View Controller-->
         <scene sceneID="t1o-aH-0OC">
@@ -56,6 +56,14 @@
             </objects>
             <point key="canvasLocation" x="210" y="590"/>
         </scene>
+        <!--SimpleStartGameViewController-->
+        <scene sceneID="xTd-P3-p4I">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GameElements" referencedIdentifier="SimpleStartGameViewController" id="HkD-fC-X9R" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zpX-MN-4kA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-347" y="559"/>
+        </scene>
         <!--Tetris Game View Controller-->
         <scene sceneID="Krm-gK-4xY">
             <objects>
@@ -78,31 +86,6 @@
                                     <segue destination="4Oq-id-eCE" kind="embed" id="mD0-vD-TBv"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPF-3v-g0Z" userLabel="Status Bar Background">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
-                                <color key="backgroundColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="GcO-Rh-iRz"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="i8T-Hf-UCL"/>
-                                </constraints>
-                            </view>
-                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vb6-rG-EyC">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <color key="barTintColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Tetris Game Title" id="R5p-HH-gxO">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" width="35" id="YXs-Km-Pak">
-                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="onBackPressed:" destination="QxJ-8P-SqZ" id="Ba4-ZR-qCE"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJA-n4-ff2" userLabel="Game Statistics View">
                                 <rect key="frame" x="0.0" y="595" width="375" height="72"/>
                                 <constraints>
@@ -128,19 +111,47 @@
                                 <color key="textColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vb6-rG-EyC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="pvE-OC-tTd"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Tetris Game Title" id="R5p-HH-gxO">
+                                        <barButtonItem key="leftBarButtonItem" title="BACK" width="35" id="YXs-Km-Pak">
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="onBackPressed:" destination="QxJ-8P-SqZ" id="Ba4-ZR-qCE"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <containerView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6h1-GZ-CAv">
+                                <rect key="frame" x="0.0" y="268" width="375" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="zLx-yv-8Ux"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="HkD-fC-X9R" kind="embed" id="JWf-fJ-Kdw"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="EvM-bs-WbZ" firstAttribute="top" secondItem="64w-ac-iLZ" secondAttribute="bottom" constant="16" id="0A5-Zx-saA"/>
                             <constraint firstItem="64w-ac-iLZ" firstAttribute="top" secondItem="vb6-rG-EyC" secondAttribute="bottom" constant="16" id="21H-G2-Cle"/>
-                            <constraint firstItem="vPF-3v-g0Z" firstAttribute="top" secondItem="4Wh-bq-pwH" secondAttribute="top" id="2w0-a6-DH2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EvM-bs-WbZ" secondAttribute="trailing" id="2wv-Go-sk5"/>
+                            <constraint firstItem="vb6-rG-EyC" firstAttribute="top" secondItem="4Wh-bq-pwH" secondAttribute="top" id="3RE-PB-L62"/>
+                            <constraint firstItem="6h1-GZ-CAv" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leading" id="4Bs-bv-bUw"/>
                             <constraint firstAttribute="trailing" secondItem="LJA-n4-ff2" secondAttribute="trailing" id="Bv4-rt-7hu"/>
                             <constraint firstItem="z5z-y8-XQq" firstAttribute="top" secondItem="EvM-bs-WbZ" secondAttribute="bottom" constant="12" id="E6n-ni-k2t"/>
-                            <constraint firstAttribute="trailing" secondItem="vPF-3v-g0Z" secondAttribute="trailing" id="EbN-ii-fBh"/>
                             <constraint firstItem="EvM-bs-WbZ" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leadingMargin" id="HvE-yL-fri"/>
-                            <constraint firstItem="vb6-rG-EyC" firstAttribute="top" secondItem="q8A-bO-b8u" secondAttribute="bottom" id="NaL-Vq-uvW"/>
                             <constraint firstItem="LJA-n4-ff2" firstAttribute="top" secondItem="z5z-y8-XQq" secondAttribute="bottom" constant="12" id="PBD-Z1-edN"/>
                             <constraint firstItem="z5z-y8-XQq" firstAttribute="centerX" secondItem="4Wh-bq-pwH" secondAttribute="centerX" id="Uag-uU-bBD"/>
                             <constraint firstItem="64w-ac-iLZ" firstAttribute="leading" secondItem="EvM-bs-WbZ" secondAttribute="leading" id="W4a-a4-9xB"/>
@@ -148,13 +159,15 @@
                             <constraint firstItem="vb6-rG-EyC" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leading" id="eCB-HZ-mr8"/>
                             <constraint firstAttribute="trailing" secondItem="vb6-rG-EyC" secondAttribute="trailing" id="mA4-dq-bIn"/>
                             <constraint firstItem="LJA-n4-ff2" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leading" id="oCw-1Q-JVa"/>
-                            <constraint firstItem="vPF-3v-g0Z" firstAttribute="leading" secondItem="4Wh-bq-pwH" secondAttribute="leading" id="uSt-Au-r0Z"/>
+                            <constraint firstAttribute="trailing" secondItem="6h1-GZ-CAv" secondAttribute="trailing" id="pYq-Fc-MMs"/>
+                            <constraint firstItem="6h1-GZ-CAv" firstAttribute="centerY" secondItem="4Wh-bq-pwH" secondAttribute="centerY" id="uIN-sF-Gfw"/>
                             <constraint firstItem="64w-ac-iLZ" firstAttribute="trailing" secondItem="EvM-bs-WbZ" secondAttribute="trailing" id="xy4-Cu-Xh2"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
-                        <segue destination="7a0-En-wY5" kind="presentation" identifier="SegueToGameOverViewController" id="R2p-LX-wQh"/>
+                        <outlet property="navigationBar" destination="vb6-rG-EyC" id="0qH-xQ-MWs"/>
+                        <segue destination="7a0-En-wY5" kind="presentation" identifier="SegueToGameOverViewController" modalTransitionStyle="flipHorizontal" id="R2p-LX-wQh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGJ-pa-lSq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -184,7 +197,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-44" y="98"/>
+            <point key="canvasLocation" x="-44" y="97.601199400299862"/>
         </scene>
         <!--GameOverViewController-->
         <scene sceneID="KbY-Sd-Zna">
@@ -192,7 +205,7 @@
                 <viewControllerPlaceholder storyboardName="GameElements" referencedIdentifier="GameOverViewController" id="7a0-En-wY5" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SDJ-OD-j1y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="548" y="30"/>
+            <point key="canvasLocation" x="547" y="155"/>
         </scene>
         <!--Game Statistics View Controller-->
         <scene sceneID="dwX-hO-08x">

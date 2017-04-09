@@ -6,10 +6,20 @@ class SlidingGameViewController: UIViewController {
     // MARK: - Constants
     fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
 
+    fileprivate static let segueDelay = 0.5
+
+    fileprivate static let highlightDelay = 0.2
+
+    fileprivate static let startGameText = "SLIDE TO START"
+
     // MARK: - Layouts
     fileprivate var gameStatisticsView: GameStatisticsViewController!
 
     fileprivate var slidingGridView: DraggableSquareGridViewController!
+
+    fileprivate var gameStartView: SimpleStartGameViewController!
+
+    @IBOutlet fileprivate weak var navigationBar: UINavigationBar!
 
     // MARK: - Properties
     fileprivate var viewModel: SlidingViewModelProtocol!
@@ -29,17 +39,18 @@ class SlidingGameViewController: UIViewController {
 
         } else if let gameOverView = segue.destination as? GameOverViewController {
             gameOverView.segueWith(viewModel)
+
+        } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
+            self.gameStartView = gameStartView
+            gameStartView.segueWith(viewModel, startGameText: SlidingGameViewController.startGameText)
         }
     }
 
     // MARK: - View Controller Lifecycle
-    /// Starts the game when the view appears.
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        if viewModel.gameStatus == .notStarted {
-            viewModel.startGame()
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setTheme()
+        setGameDescriptions()
     }
 
     /// Injects the required data before opening this view.
@@ -48,16 +59,18 @@ class SlidingGameViewController: UIViewController {
     func segueWith(_ viewModel: SlidingViewModelProtocol) {
         self.viewModel = viewModel
         self.viewModel.gameStatusDelegate = self
+        self.viewModel.highlightedDelegate = self
     }
 
     // MARK: Gestures and Listeners
     /// Dismisses this current screen when "Back" button is pressed.
-    @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
+    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
 
     /// Handles the gesture where the user drags the tile to an empty slot.
-    @IBAction func onTilesDragged(_ sender: UIPanGestureRecognizer) {
+    @IBAction private func onTilesDragged(_ sender: UIPanGestureRecognizer) {
+        startGameIfPossible()
         guard viewModel.gameStatus == .inProgress else {
             return
         }
@@ -73,6 +86,19 @@ class SlidingGameViewController: UIViewController {
         default:
             break
         }
+    }
+
+    // MARK: Theming
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    private func setTheme() {
+        navigationBar.backgroundColor = Constants.Theme.mainColorDark
+    }
+
+    private func setGameDescriptions() {
+        navigationBar.topItem?.title = viewModel.gameTitle
     }
 }
 
@@ -117,19 +143,19 @@ fileprivate extension SlidingGameViewController {
         guard let movingTile = movingTile else {
             return
         }
+        self.movingTile = nil
 
         func helperSnapTile(toCoord coord: Coordinate) {
             slidingGridView.snapDetachedTile(movingTile.tile, toCoordinate: coord) {
                 self.slidingGridView.reattachDetachedTile(movingTile.tile)
-                self.movingTile = nil
             }
         }
 
         guard let endingCoord = slidingGridView.getCoordinate(at: movingTile.tile.center),
-            viewModel.slideTile(from: movingTile.fromCoord, to: endingCoord) else {
+              viewModel.slideTile(from: movingTile.fromCoord, to: endingCoord) else {
 
-                helperSnapTile(toCoord: movingTile.fromCoord)
-                return
+            helperSnapTile(toCoord: movingTile.fromCoord)
+            return
         }
         helperSnapTile(toCoord: endingCoord)
     }
@@ -170,17 +196,36 @@ extension SlidingGameViewController: GameStatusUpdateDelegate {
 
     /// Tells the implementor of the delegate that the game status has been updated.
     func gameStatusDidUpdate() {
-        if viewModel.gameStatus.hasGameEnded {
+        guard viewModel.gameStatus.hasGameEnded else {
+            return
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + SlidingGameViewController.segueDelay) {
             self.performSegue(withIdentifier: SlidingGameViewController.segueToGameOverView,
                               sender: nil)
         }
     }
+
+    fileprivate func startGameIfPossible() {
+        guard viewModel.gameStatus == .notStarted else {
+            return
+        }
+        viewModel.startGame()
+        gameStartView.view.isHidden = true
+    }
 }
 
 extension SlidingGameViewController: HighlightedUpdateDelegate {
-    /// Tells the implementor of the delegate that the highlighted coordinates have been changed.
-    /// - Note: This method can be used to update the highlighted coordinates that is displayed on views.
-    internal func highlightedCoordinatesDidUpdate() {
 
+    /// Tells the implementor of the delegate that the highlighted coordinates have been changed.
+    func highlightedCoordinatesDidUpdate() {
+        let highlightedCoords = viewModel.highlightedCoordinates
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + SlidingGameViewController.highlightDelay) {
+            for coord in self.slidingGridView.allCoordinates {
+                self.slidingGridView.tileProperties[coord] = { tile in
+                    tile.shouldHighlight = highlightedCoords.contains(coord)
+                }
+            }
+        }
     }
 }

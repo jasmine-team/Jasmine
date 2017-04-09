@@ -39,6 +39,14 @@ class HomeScreenViewController: UIViewController {
                                                             gameData: gameData,
                                                             rows: GameConstants.Sliding.rows))
             }
+        } else if let phrasesExplorer = segue.destination as? PhrasesExplorerViewController {
+            let gameData = gameDataFactory.createGame(difficulty: 0, type: .ciHui)
+            let viewModel = PhrasesExplorerViewModel(phrases: gameData.phrases, amount: 50)
+            phrasesExplorer.segueWith(viewModel)
+        } else if let phraseVC = segue.destination as? PhraseViewController {
+            let gameData = gameDataFactory.createGame(difficulty: 0, type: .chengYu)
+            let phrase = gameData.phrases.next()
+            phraseVC.segueWith(PhraseViewModel(phrase: phrase))
         }
     }
 }
