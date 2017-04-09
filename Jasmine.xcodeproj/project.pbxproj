@@ -128,6 +128,11 @@
 		DFE111521E98BE4000F8860E /* AVAudioPlayer+ExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE111511E98BE4000F8860E /* AVAudioPlayer+ExtensionsTest.swift */; };
 		DFE111541E99133F00F8860E /* FallingFlowersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE111531E99133F00F8860E /* FallingFlowersViewController.swift */; };
 		DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */; };
+		DFF45A7A1E99E41000DFD3D9 /* PhrasesExplorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF45A791E99E41000DFD3D9 /* PhrasesExplorerViewController.swift */; };
+		DFF45A7C1E99E41700DFD3D9 /* PhrasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF45A7B1E99E41700DFD3D9 /* PhrasesTableViewController.swift */; };
+		DFF45A7E1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF45A7D1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift */; };
+		DFF45A811E99E46000DFD3D9 /* PhrasesExplorerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF45A7F1E99E46000DFD3D9 /* PhrasesExplorerViewModelTests.swift */; };
+		DFF45A821E99E46000DFD3D9 /* PhraseViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF45A801E99E46000DFD3D9 /* PhraseViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -270,6 +275,11 @@
 		DFE111511E98BE4000F8860E /* AVAudioPlayer+ExtensionsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+ExtensionsTest.swift"; sourceTree = "<group>"; };
 		DFE111531E99133F00F8860E /* FallingFlowersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FallingFlowersViewController.swift; path = Jasmine/Home/ViewControllers/FallingFlowersViewController.swift; sourceTree = SOURCE_ROOT; };
 		DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
+		DFF45A791E99E41000DFD3D9 /* PhrasesExplorerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesExplorerViewController.swift; sourceTree = "<group>"; };
+		DFF45A7B1E99E41700DFD3D9 /* PhrasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesTableViewController.swift; sourceTree = "<group>"; };
+		DFF45A7D1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesExplorerViewModel.swift; sourceTree = "<group>"; };
+		DFF45A7F1E99E46000DFD3D9 /* PhrasesExplorerViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesExplorerViewModelTests.swift; sourceTree = "<group>"; };
+		DFF45A801E99E46000DFD3D9 /* PhraseViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseViewModelTests.swift; sourceTree = "<group>"; };
 		FC0AD02B711C61B2492AE255 /* Pods-Jasmine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.release.xcconfig"; sourceTree = "<group>"; };
 		FF297B9535BBD99F827421B6 /* Pods-JasmineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -403,6 +413,7 @@
 		50989DCC1E6D8B16009A86C8 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				DFF45A7D1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -510,6 +521,8 @@
 		50F191AA1E7ADC5000EE9A75 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				DFF45A7F1E99E46000DFD3D9 /* PhrasesExplorerViewModelTests.swift */,
+				DFF45A801E99E46000DFD3D9 /* PhraseViewModelTests.swift */,
 				502A297C1E927D580024336A /* GridViewModelTests.swift */,
 			);
 			path = ViewModels;
@@ -797,6 +810,8 @@
 		DFBE8F2B1E9526BE0036CCC6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DFF45A7B1E99E41700DFD3D9 /* PhrasesTableViewController.swift */,
+				DFF45A791E99E41000DFD3D9 /* PhrasesExplorerViewController.swift */,
 				DFE111441E98BD7E00F8860E /* PhraseViewController.swift */,
 				DFBE8F811E9528370036CCC6 /* LaunchScreen.storyboard */,
 				DFBE8F311E9526BE0036CCC6 /* DiscreteFallableSquareGridViewController.swift */,
@@ -1177,8 +1192,11 @@
 				DF2321541E961A4100417ED2 /* SelectableSquareGridViewController.swift in Sources */,
 				DFE111541E99133F00F8860E /* FallingFlowersViewController.swift in Sources */,
 				DF9918D41E92B6A3004E599B /* BaseSwappingViewModel.swift in Sources */,
+				DFF45A7A1E99E41000DFD3D9 /* PhrasesExplorerViewController.swift in Sources */,
 				DF9918D71E92B6A3004E599B /* SwappingViewModelProtocol.swift in Sources */,
 				DFBE8F7B1E9527F70036CCC6 /* GridViewModelProtocol.swift in Sources */,
+				DFF45A7C1E99E41700DFD3D9 /* PhrasesTableViewController.swift in Sources */,
+				DFF45A7E1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift in Sources */,
 				50989DDF1E6D8B16009A86C8 /* Phrase.swift in Sources */,
 				DFBE8F761E9527F70036CCC6 /* TimeUpdateDelegate.swift in Sources */,
 				DFE111481E98BDA900F8860E /* PhraseViewModel.swift in Sources */,
@@ -1227,6 +1245,7 @@
 				DF409FEF1E8415E000389976 /* UIApplicationTests.swift in Sources */,
 				502A29761E927B790024336A /* ChengYuSlidingViewModelTests.swift in Sources */,
 				509036DE1E937C4C006548DE /* CiHuiSwappingViewModelTests.swift in Sources */,
+				DFF45A811E99E46000DFD3D9 /* PhrasesExplorerViewModelTests.swift in Sources */,
 				509036D71E937BFB006548DE /* TimeUpdateDelegateMock.swift in Sources */,
 				A27B6E541E90B33400825AF3 /* RealmIntegrationTests.swift in Sources */,
 				DF409FF21E8415F400389976 /* CountDownTimerTest.swift in Sources */,
@@ -1238,6 +1257,7 @@
 				502A29771E927B790024336A /* CiHuiSlidingViewModelTests.swift in Sources */,
 				502A29751E927B790024336A /* BaseSlidingViewModelTests.swift in Sources */,
 				50B7A8B51E9393530052E9E2 /* BaseSwappingViewModelTests.swift in Sources */,
+				DFF45A821E99E46000DFD3D9 /* PhraseViewModelTests.swift in Sources */,
 				509036DD1E937C4C006548DE /* ChengYuSwappingViewModelTests.swift in Sources */,
 				509036D51E937BFB006548DE /* GameStatusUpdateDelegateMock.swift in Sources */,
 				5047D0A11E932C7600DD96BA /* TetrisGameViewModelTests.swift in Sources */,
