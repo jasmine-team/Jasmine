@@ -6,8 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -226,8 +226,8 @@
                                     <constraint firstAttribute="height" constant="100" id="kBk-qY-RQ6"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="NDb-mH-hBp">
-                                <rect key="frame" x="87.5" y="333.5" width="200" height="252"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NDb-mH-hBp">
+                                <rect key="frame" x="87.5" y="300" width="200" height="210"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCN-Rg-5OF">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="45"/>
@@ -237,21 +237,21 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwx-Q3-Qbp">
-                                        <rect key="frame" x="0.0" y="69" width="200" height="45"/>
+                                        <rect key="frame" x="0.0" y="55" width="200" height="45"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="27"/>
                                         <state key="normal" title="HELP">
                                             <color key="titleColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVG-8k-YOe">
-                                        <rect key="frame" x="0.0" y="138" width="200" height="45"/>
+                                        <rect key="frame" x="0.0" y="110" width="200" height="45"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="27"/>
                                         <state key="normal" title="ABOUT">
                                             <color key="titleColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcO-UB-C9p">
-                                        <rect key="frame" x="0.0" y="207" width="200" height="45"/>
+                                        <rect key="frame" x="0.0" y="165" width="200" height="45"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="27"/>
                                         <state key="normal" title="SETTINGS">
                                             <color key="titleColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -277,7 +277,7 @@
                             <constraint firstItem="qM5-5i-1mb" firstAttribute="trailing" secondItem="zx7-hp-NII" secondAttribute="trailingMargin" id="7a4-gm-UJl"/>
                             <constraint firstItem="ezj-du-bkm" firstAttribute="centerX" secondItem="zx7-hp-NII" secondAttribute="centerX" id="9y9-pp-tpi"/>
                             <constraint firstItem="qM5-5i-1mb" firstAttribute="top" secondItem="WSa-Je-HwQ" secondAttribute="bottom" constant="80" id="CkW-5u-Ecl"/>
-                            <constraint firstItem="NDb-mH-hBp" firstAttribute="top" secondItem="zx7-hp-NII" secondAttribute="centerY" id="GRE-WG-ckg"/>
+                            <constraint firstItem="NDb-mH-hBp" firstAttribute="top" secondItem="zx7-hp-NII" secondAttribute="centerY" multiplier="0.9" id="GRE-WG-ckg"/>
                             <constraint firstItem="qM5-5i-1mb" firstAttribute="leading" secondItem="zx7-hp-NII" secondAttribute="leadingMargin" id="PXL-81-epC"/>
                             <constraint firstAttribute="trailing" secondItem="r6K-jI-15r" secondAttribute="trailing" id="SKs-ss-sJx"/>
                             <constraint firstItem="r6K-jI-15r" firstAttribute="leading" secondItem="zx7-hp-NII" secondAttribute="leading" id="bQM-tj-faH"/>

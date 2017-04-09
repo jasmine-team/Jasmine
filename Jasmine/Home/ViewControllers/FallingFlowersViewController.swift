@@ -11,6 +11,7 @@ class FallingFlowersViewController: UIViewController {
     private static let flowerSizeMax = 60.0
 
     private static let accelerometerUpdateInterval = 0.05
+    private static let gravityMagnitude: CGFloat = 0.001
 
     // MARK: Animation Properties
     private var animator: UIDynamicAnimator!
@@ -87,7 +88,7 @@ class FallingFlowersViewController: UIViewController {
 
     private func specifyGravityBehaviour() {
         gravityBehaviour = UIGravityBehavior()
-        gravityBehaviour.magnitude = 0.001
+        gravityBehaviour.magnitude = FallingFlowersViewController.gravityMagnitude
     }
 
     private func specifyCollisionBehaviour() {
