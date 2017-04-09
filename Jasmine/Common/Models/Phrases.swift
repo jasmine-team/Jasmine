@@ -20,7 +20,6 @@ class Phrases {
     private var range: [Int] = []
     var isShuffled: Bool
     let phraseLength: Int
-    
 
     /// Creates an encapsulated list of phrases for usage outside of models 
     ///
@@ -35,7 +34,7 @@ class Phrases {
         self.phraseLength = firstPhrase.chinese.count
         self.isShuffled = isShuffled
     }
-     
+
     /// Creates a copy of the phrase
     ///
     /// - Parameters:
@@ -68,7 +67,7 @@ class Phrases {
         let nextIndex = range.removeFirst()
         return self.phrases[nextIndex]
     }
-    
+
     /// Converts underlying collection to an array.
     /// NOTE: This process is inefficient, i.e. don't use this unless you need to
     ///
@@ -107,7 +106,7 @@ class Phrases {
     subscript(index: Int) -> Phrase {
         return phrases[index % phrases.count]
     }
-    
+
     /// Returns the phrases count
     var count: Int {
         return phrases.count
