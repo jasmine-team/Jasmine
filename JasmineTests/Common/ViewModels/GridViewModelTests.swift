@@ -1,15 +1,12 @@
 import XCTest
 @testable import Jasmine
 
-class GridViewModelTests: XCTestCase {
+class GridViewModelTests: RealmTestCase {
     var gameData: GameData!
 
     override func setUp() {
-        guard let gameDataFactory = try? GameManager() else {
-            XCTFail("Realm error")
-            return
-        }
-        gameData = gameDataFactory.createGame(fromLevel: Level())
+        super.setUp()
+        gameData = createGameData(difficulty: 1, type: .ciHui)
     }
 
     func testInit() {

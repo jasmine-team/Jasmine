@@ -4,16 +4,12 @@ import RealmSwift
 class Phrases {
 
     private lazy var allPhrases: AnyRealmCollection<Phrase> = {
-        do {
-            let realm = try Realm()
-            let results = realm.objects(Phrase.self).filter(self.chineseLengthPredicate)
-            return AnyRealmCollection(results)
-        } catch {
-            assertionFailure(error.localizedDescription +
-                "Failed to instantiate" +
+        guard let realm = self.phrases.first?.realm else {
+            assertionFailure("Failed to instantiate" +
                 "Did you call phrases through Level or PlayerManager?")
+            return AnyRealmCollection(self.phrases)
         }
-        return AnyRealmCollection(self.phrases)
+        return AnyRealmCollection(realm.objects(Phrase.self))
     }()
 
     private var phrases: List<Phrase>
@@ -26,7 +22,7 @@ class Phrases {
     /// - Parameters:
     ///   - phrases: realm list of phrases
     ///   - isShuffled: whether retrieval of this list should be shuffled
-    init(_ phrases: List<Phrase>, isShuffled: Bool = false) {
+    init(realm: Realm? = nil, _ phrases: List<Phrase>, isShuffled: Bool = false) {
         self.phrases = phrases
         guard let firstPhrase = phrases.first else {
             fatalError("Phrases is empty")

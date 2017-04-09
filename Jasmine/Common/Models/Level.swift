@@ -29,7 +29,7 @@ class Level: Object {
 
     /// GameMode of the level, returns swapping by default
     var gameMode: GameMode {
-        guard let gameMode = GameMode(rawValue: rawGameType) else {
+        guard let gameMode = GameMode(rawValue: rawGameMode) else {
             assertionFailure("Game mode is invalid")
             return GameMode.swapping
         }

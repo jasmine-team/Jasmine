@@ -1,16 +1,11 @@
 import XCTest
 @testable import Jasmine
 
-class CiHuiSlidingViewModelTests: XCTestCase {
+class CiHuiSlidingViewModelTests: RealmTestCase {
     func testInit() {
         let numberOfPhrases = 3
 
-        let level = Level(value: ["rawGameType": "ciHui"])
-        guard let gameData = try? GameManager().createGame(fromLevel: level) else {
-            XCTFail("Realm errors")
-            return
-        }
-
+        let gameData = createGameData(difficulty: 1, type: .ciHui)
         let viewModel = CiHuiSlidingViewModel(time: 10, gameData: gameData, rows: numberOfPhrases)
 
         XCTAssertEqual(0, viewModel.currentScore,

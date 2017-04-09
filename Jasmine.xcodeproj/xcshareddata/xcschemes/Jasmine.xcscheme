@@ -38,6 +38,11 @@
                BlueprintName = "JasmineTests"
                ReferencedContainer = "container:Jasmine.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "RealmIntegrationTests/testRealm_phrases()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">

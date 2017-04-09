@@ -13,9 +13,10 @@ class PhrasesTests: RealmTestCase {
 
     override func setUp() {
         super.setUp()
+        let list = List<Phrase>()
         listOfPhrases.forEach(save)
-        let phraseResults = realm.objects(Phrase.self)
-        phrases = Phrases(List(phraseResults))
+        listOfPhrases.forEach(list.append)
+        phrases = Phrases(list)
     }
 
     func testPhrases_next() {

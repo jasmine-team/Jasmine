@@ -4,33 +4,35 @@ import RealmSwift
 
 class LevelsTests: RealmTestCase {
 
-    let listOfLevels = [
-        Level(value: ["isReadOnly": true]),
-        Level(value: ["isReadOnly": false]),
-        Level(value: ["isReadOnly": false]),
+    let originalLevels = [
+        Level(value: ["name": "test1", "isReadOnly": true]),
+    ]
+    let customLevels = [
+        Level(value: ["name": "test2", "isReadOnly": false]),
+        Level(value: ["name": "test3", "isReadOnly": false]),
     ]
     var levels: Levels!
 
     override func setUp() {
         super.setUp()
-        listOfLevels.forEach(save)
+        originalLevels.forEach(save)
+        customLevels.forEach(save)
         levels = Levels(realm: realm)
     }
 
     func testLevels_original() {
-        XCTAssertEqual(levels.original, Array(listOfLevels.prefix(1)), "original does not return read only levels")
+        XCTAssertEqual(levels.original, originalLevels, "original does not return read only levels")
     }
 
     func testLevels_custom() {
-        XCTAssertEqual(levels.custom, Array(listOfLevels.suffix(2)), "custom does not return all non read levels")
+        XCTAssertEqual(levels.custom, customLevels, "custom does not return all non read levels")
     }
 
     func testAddLevel() {
         let name = "test"
         let gameType: GameType = .ciHui
         let gameMode: GameMode = .sliding
-        save(Phrase(value: ["rawChinese": "隨意"]))
-        let phrases = Phrases(List(realm.objects(Phrase.self)))
+        let phrases = [Phrase(value: ["rawChinese": "x y"])]
 
         XCTAssertNoThrow(try levels.addCustomLevel(
             name: name,
@@ -46,17 +48,17 @@ class LevelsTests: RealmTestCase {
         XCTAssertEqual(latestLevel.name, name, "Name not persisted")
         XCTAssertEqual(latestLevel.gameType, gameType, "Game type not persisted")
         XCTAssertEqual(latestLevel.gameMode, gameMode, "Game mode not persisted")
-        XCTAssertEqual(latestLevel.phrases.toArray(), phrases.toArray(), "Phrases not persisted")
+        XCTAssertEqual(latestLevel.phrases.toArray(), phrases, "Phrases not persisted")
     }
 
     func testDeleteLevel() {
-        XCTAssertEqual(levels.custom, listOfLevels, "Levels are not instantiated")
-        XCTAssertNoThrow(try levels.deleteLevel(listOfLevels[1]), "Failed to delete level")
-        XCTAssertEqual(levels.custom, Array(listOfLevels.suffix(1)), "custom level not deleted from levels")
+        XCTAssertEqual(levels.custom, customLevels, "Levels are not instantiated")
+        XCTAssertNoThrow(try levels.deleteLevel(customLevels[1]), "Failed to delete level")
+        XCTAssertEqual(levels.custom, [customLevels[0]], "custom level not deleted from levels")
     }
 
     func testResetAll() {
-        XCTAssertEqual(levels.custom, listOfLevels, "Levels are not instantiated")
+        XCTAssertEqual(levels.custom, customLevels, "Levels are not instantiated")
         XCTAssertNoThrow(try levels.resetAll(), "Failed to delete all custom levels")
         XCTAssertTrue(levels.custom.isEmpty, "All custom levels are not erased")
     }

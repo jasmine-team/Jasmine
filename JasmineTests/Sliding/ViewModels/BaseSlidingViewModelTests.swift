@@ -13,17 +13,8 @@ class BaseSlidingViewModelTests: RealmTestCase {
     override func setUp() {
         super.setUp()
         self.gameData = createGameData(difficulty: 1, type: .ciHui)
-
         viewModel = BaseSlidingViewModel(time: time, gameData: gameData, tiles: ["a", nil],
                                          rows: rows, columns: columns)
-    }
-
-    func testX() {
-        viewModel.startGame()
-
-        XCTAssertEqual(GameStatus.inProgress, viewModel.gameStatus,
-                       "ViewModel game status when the game runs is not inProgress")
-
     }
 
     func testInit() {
