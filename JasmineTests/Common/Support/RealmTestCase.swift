@@ -6,7 +6,7 @@ class RealmTestCase: XCTestCase {
 
     var realm: Realm!
     var gameDataFactory: GameManager!
-    
+
     static let defaultPhrases = [
         Phrase(value: ["rawChinese": "什么", "rawPinYin": "shen me", "english": "test"]),
         Phrase(value: ["rawChinese": "没有", "rawPinYin": "mei you", "english": "test"]),
@@ -26,7 +26,7 @@ class RealmTestCase: XCTestCase {
         } catch {
             fatalError("Could not instantiate realm")
         }
-
+        RealmTestCase.defaultPhrases.forEach(save)
         gameDataFactory = GameManager(realm: realm)
     }
 
@@ -40,12 +40,12 @@ class RealmTestCase: XCTestCase {
         }
     }
 
-    func createGameData(phrases: [Phrase] = RealmTestCase.defaultPhrases, 
+    func createGameData(phrases: [Phrase] = RealmTestCase.defaultPhrases,
                         difficulty: Int, type: GameType) -> GameData {
-        phrases.forEach(save)
         let level = Level(value: [
             "rawGameType": type.rawValue,
-            "difficulty": difficulty
+            "rawPhrases": phrases,
+            "difficulty": difficulty,
         ])
         return gameDataFactory.createGame(fromLevel: level)
     }
