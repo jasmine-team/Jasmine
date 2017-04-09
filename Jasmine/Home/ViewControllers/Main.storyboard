@@ -20,11 +20,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eKS-sV-Lr3">
-                                <rect key="frame" x="78.5" y="219" width="218" height="180"/>
+                                <rect key="frame" x="78.5" y="243.5" width="218" height="180"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nil-Gc-zGo">
                                         <rect key="frame" x="0.0" y="0.0" width="218" height="30"/>
@@ -130,7 +130,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2sS-j8-r77"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MuE-Xm-Cr4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dyt-O2-QcZ">
@@ -148,7 +148,7 @@
                             <constraint firstItem="dyt-O2-QcZ" firstAttribute="leading" secondItem="MuE-Xm-Cr4" secondAttribute="leading" id="oc3-XB-PPw"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="09z-P5-Ecf"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="icon-user-small" selectedImage="icon-user-small-selected" id="09z-P5-Ecf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vFP-q1-dvZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -163,7 +163,7 @@
                         <viewControllerLayoutGuide type="bottom" id="JrQ-r5-nqi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cOi-vs-XvF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zu1-i7-nG7">
@@ -181,7 +181,7 @@
                             <constraint firstItem="Zu1-i7-nG7" firstAttribute="leading" secondItem="cOi-vs-XvF" secondAttribute="leading" id="tgh-JD-JO9"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Levels" id="OXU-ym-UV3"/>
+                    <tabBarItem key="tabBarItem" title="Levels" image="icon-grid-small" selectedImage="icon-grid-small-selected" id="OXU-ym-UV3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dJq-ac-xTC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -196,11 +196,11 @@
                         <viewControllerLayoutGuide type="bottom" id="40Y-VW-xVG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zx7-hp-NII">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r6K-jI-15r">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
                                 <connections>
                                     <segue destination="oJw-qz-qli" kind="embed" id="Ll1-wc-kpr"/>
                                 </connections>
@@ -212,7 +212,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="NDb-mH-hBp">
-                                <rect key="frame" x="87.5" y="309" width="200" height="252"/>
+                                <rect key="frame" x="87.5" y="333.5" width="200" height="252"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCN-Rg-5OF">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="45"/>
@@ -265,11 +265,13 @@
                             <constraint firstItem="r6K-jI-15r" firstAttribute="leading" secondItem="zx7-hp-NII" secondAttribute="leading" id="bQM-tj-faH"/>
                             <constraint firstItem="NDb-mH-hBp" firstAttribute="centerX" secondItem="zx7-hp-NII" secondAttribute="centerX" id="bQO-cJ-axc"/>
                             <constraint firstItem="ezj-du-bkm" firstAttribute="top" secondItem="qM5-5i-1mb" secondAttribute="bottom" constant="8" id="eIZ-xU-h11"/>
-                            <constraint firstItem="40Y-VW-xVG" firstAttribute="top" secondItem="r6K-jI-15r" secondAttribute="bottom" id="kGx-x4-dhJ"/>
+                            <constraint firstItem="40Y-VW-xVG" firstAttribute="top" secondItem="r6K-jI-15r" secondAttribute="bottom" constant="-50" id="kGx-x4-dhJ"/>
                             <constraint firstItem="r6K-jI-15r" firstAttribute="top" secondItem="zx7-hp-NII" secondAttribute="top" id="ppV-LI-6lX"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="llQ-rl-fYY"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="icon-home-small" selectedImage="icon-home-small-selected" id="llQ-rl-fYY">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CGc-qz-ogX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -279,18 +281,16 @@
         <scene sceneID="DER-yx-s8u">
             <objects>
                 <tabBarController id="fdz-8j-kDQ" sceneMemberID="viewController">
-                    <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" translucent="NO" id="hoV-me-ZHc">
+                    <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" id="hoV-me-ZHc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="1" green="0.84795724028700714" blue="0.18925817159429048" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="barTintColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="selectedImageTintColor" red="1" green="0.84795724029999997" blue="0.1892581716" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="V3l-Bo-jgy" kind="relationship" relationship="viewControllers" id="TWJ-40-PAW"/>
                         <segue destination="Rng-e6-PxE" kind="relationship" relationship="viewControllers" id="oz2-uB-ONO"/>
                         <segue destination="cqH-cK-nvp" kind="relationship" relationship="viewControllers" id="Als-bi-P5c"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="6hQ-Kf-gQC"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qPc-Wy-L85" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -321,8 +321,12 @@
         <scene sceneID="9v0-iv-5lj">
             <objects>
                 <viewController id="oJw-qz-qli" customClass="FallingFlowersViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x18-A1-H2J"/>
+                        <viewControllerLayoutGuide type="bottom" id="7mk-HV-1YV"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EaW-dT-bHH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -334,6 +338,12 @@
     </scenes>
     <resources>
         <image name="app-banner" width="765" height="234"/>
+        <image name="icon-grid-small" width="32" height="32"/>
+        <image name="icon-grid-small-selected" width="32" height="32"/>
+        <image name="icon-home-small" width="32" height="32"/>
+        <image name="icon-home-small-selected" width="32" height="32"/>
+        <image name="icon-user-small" width="32" height="32"/>
+        <image name="icon-user-small-selected" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="djo-h3-zHX"/>
