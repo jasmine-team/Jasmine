@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 class HomeScreenViewController: UIViewController {
     @IBOutlet private weak var swappingChengYuButton: UIButton!
@@ -6,46 +7,56 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet private weak var slidingChengYuButton: UIButton!
     @IBOutlet private weak var slidingCiHuiButton: UIButton!
 
+    var realm: Realm!
+    var levels: Levels!
+
+    /// TODO: Move realm dependency else where
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        do {
+            realm = try Realm()
+            levels = Levels(realm: realm)
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let gameManager = try? GameManager() else {
             fatalError("Error with Realm")
         }
 
-        let level = Level()
+        // Refer to levels.csv
+        let chengYuGameData = gameManager.createGame(fromLevel: levels.original[3])
+        let ciHuiGameData = gameManager.createGame(fromLevel: levels.original[0])
         if let swappingGame = segue.destination as? SwappingGameViewController {
             if (sender as? UIButton) === swappingChengYuButton {
-                let gameData = gameManager.createGame(fromLevel: level)
+
                 swappingGame.segueWith(ChengYuSwappingViewModel(time: GameConstants.Swapping.time,
-                                                                gameData: gameData,
+                                                                gameData: chengYuGameData,
                                                                 numberOfPhrases: GameConstants.Swapping.rows))
             } else if (sender as? UIButton) === swappingCiHuiButton {
-                let gameData = gameManager.createGame(fromLevel: level)
                 swappingGame.segueWith(CiHuiSwappingViewModel(time: GameConstants.Swapping.time,
-                                                              gameData: gameData,
+                                                              gameData: ciHuiGameData,
                                                               numberOfPhrases: GameConstants.Swapping.rows))
             }
         } else if let tetrisGame = segue.destination as? TetrisGameViewController {
-            let gameData = gameManager.createGame(fromLevel: level)
-            tetrisGame.segueWith(TetrisGameViewModel(gameData: gameData))
+            tetrisGame.segueWith(TetrisGameViewModel(gameData: chengYuGameData))
         } else if let slidingGame = segue.destination as? SlidingGameViewController {
             if (sender as? UIButton) === slidingChengYuButton {
-                let gameData = gameManager.createGame(fromLevel: level)
                 slidingGame.segueWith(ChengYuSlidingViewModel(time: GameConstants.Sliding.time,
-                                                              gameData: gameData,
+                                                              gameData: chengYuGameData,
                                                               rows: GameConstants.Sliding.rows))
             } else if (sender as? UIButton) === slidingCiHuiButton {
-                let gameData = gameManager.createGame(fromLevel: level)
                 slidingGame.segueWith(CiHuiSlidingViewModel(time: GameConstants.Sliding.time,
-                                                            gameData: gameData,
+                                                            gameData: ciHuiGameData,
                                                             rows: GameConstants.Sliding.rows))
             }
         } else if let phrasesExplorer = segue.destination as? PhrasesExplorerViewController {
-            let gameData = gameDataFactory.createGame(difficulty: 0, type: .ciHui)
-            let viewModel = PhrasesExplorerViewModel(phrases: gameData.phrases, amount: 50)
+            let viewModel = PhrasesExplorerViewModel(phrases: ciHuiGameData.phrases, amount: 50)
             phrasesExplorer.segueWith(viewModel)
         } else if let phraseVC = segue.destination as? PhraseViewController {
-            let gameData = gameDataFactory.createGame(difficulty: 0, type: .chengYu)
-            let phrase = gameData.phrases.next()
+            let phrase = ciHuiGameData.phrases.next()
             phraseVC.segueWith(PhraseViewModel(phrase: phrase))
         }
     }

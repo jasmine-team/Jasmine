@@ -39,11 +39,8 @@ class GameManager {
             return
         }
         let finalResult = LevelResult(gameData: result) // convert game data to LevelResult
-        currentLevel.history.append(finalResult)
         do {
-            try realm.write {
-                realm.add(currentLevel, update: true) // will create level if not in db
-            }
+            try currentLevel.addResult(finalResult)
         } catch {
             fatalError(error.localizedDescription)
         }
