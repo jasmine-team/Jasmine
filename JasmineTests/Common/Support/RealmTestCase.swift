@@ -13,7 +13,7 @@ class RealmTestCase: XCTestCase {
         do {
             realm = try Realm()
         } catch {
-            fatalError("Could not instantiate realm")
+            XCTFail("Could not instantiate realm")
         }
 
         gameDataFactory = GameDataFactory(realm: realm)
