@@ -1,15 +1,11 @@
 import XCTest
 @testable import Jasmine
 
-class CiHuiSwappingViewModelTests: XCTestCase {
+class CiHuiSwappingViewModelTests: RealmTestCase {
     func testInit() {
         let numberOfPhrases = 3
 
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 5, type: .ciHui) else {
-            XCTFail("Realm errors")
-            return
-        }
-
+        let gameData = createGameData(difficulty: 1, type: .ciHui)
         let viewModel = CiHuiSwappingViewModel(time: 10, gameData: gameData,
                                                numberOfPhrases: numberOfPhrases)
 

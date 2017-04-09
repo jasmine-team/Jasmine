@@ -15,6 +15,7 @@ class TetrisGameViewModelTests: RealmTestCase {
     override func setUp() {
         super.setUp()
         let phrases = testPhrases.map { Phrase(value: ["rawChinese": $0.joined()]) }
+        phrases.forEach(save)
         gameData = createGameData(phrases: phrases, difficulty: 1, type: .chengYu)
         viewModel = TetrisGameViewModel(gameData: gameData)
         viewModel.timeDelegate = timeUpdateDelegateMock

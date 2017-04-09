@@ -2,7 +2,7 @@ import XCTest
 import Foundation
 @testable import Jasmine
 
-class BaseSwappingViewModelTests: XCTestCase {
+class BaseSwappingViewModelTests: RealmTestCase {
 
     var gameData: GameData!
     let rows = 2
@@ -11,12 +11,8 @@ class BaseSwappingViewModelTests: XCTestCase {
     var viewModel: BaseSwappingViewModel!
 
     override func setUp() {
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
-            XCTFail("Realm errors")
-            return
-        }
-        self.gameData = gameData
-
+        super.setUp()
+        self.gameData = createGameData(difficulty: 1, type: .ciHui)
         viewModel = BaseSwappingViewModel(time: time, gameData: gameData,
                                           tiles: ["a", "b", "c", "d"], rows: rows, columns: columns)
     }

@@ -1,16 +1,14 @@
 import XCTest
 @testable import Jasmine
 
-class PhrasesExplorerViewModelTests: XCTestCase {
+class PhrasesExplorerViewModelTests: RealmTestCase {
     let count = 10
     var phrases: Phrases!
     var viewModel: PhrasesExplorerViewModel!
 
     override func setUp() {
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 0, type: .ciHui) else {
-            XCTFail("Realm errors")
-            return
-        }
+        super.setUp()
+        let gameData = createGameData(difficulty: 1, type: .ciHui)
         phrases = gameData.phrases
         viewModel = PhrasesExplorerViewModel(phrases: phrases, amount: count)
     }
