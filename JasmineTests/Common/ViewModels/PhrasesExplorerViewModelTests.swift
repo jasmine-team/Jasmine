@@ -7,6 +7,7 @@ class PhrasesExplorerViewModelTests: RealmTestCase {
     var viewModel: PhrasesExplorerViewModel!
 
     override func setUp() {
+        super.setUp()
         let gameData = createGameData(difficulty: 1, type: .ciHui)
         phrases = gameData.phrases
         viewModel = PhrasesExplorerViewModel(phrases: phrases, amount: count)
