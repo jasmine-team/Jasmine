@@ -40,10 +40,6 @@ class RealmTestCase: XCTestCase {
         gameDataFactory = GameManager(realm: realm)
     }
 
-    func savePhrase(_ phrase: Phrase) {
-
-    }
-
     func save(_ object: Object) {
         do {
             try realm.write {
