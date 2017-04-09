@@ -15,7 +15,8 @@ class PhrasesTests: RealmTestCase {
         listOfPhrases.forEach(save)
         let phraseResults = realm.objects(Phrase.self)
         guard let phraseLength = listOfPhrases.first?.chinese.count else {
-            fatalError("Failed to get phrase length")
+            XCTFail("Failed to get phrase length")
+            return
         }
         phrases = Phrases(phraseResults, range: 0..<phraseResults.count, phraseLength: phraseLength)
     }
