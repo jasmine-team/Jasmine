@@ -31,7 +31,6 @@ class LevelsTests: RealmTestCase {
         let gameMode: GameMode = .sliding
         save(Phrase(value: ["rawChinese": "隨意"]))
         let phrases = Phrases(List(realm.objects(Phrase.self)))
-        print(phrases.toArray())
 
         XCTAssertNoThrow(try levels.addCustomLevel(
             name: name,

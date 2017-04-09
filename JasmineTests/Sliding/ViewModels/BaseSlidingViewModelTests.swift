@@ -2,7 +2,7 @@ import XCTest
 import Foundation
 @testable import Jasmine
 
-class BaseSlidingViewModelTests: XCTestCase {
+class BaseSlidingViewModelTests: RealmTestCase {
 
     var gameData: GameData!
     let rows = 1
@@ -11,14 +11,19 @@ class BaseSlidingViewModelTests: XCTestCase {
     var viewModel: BaseSlidingViewModel!
 
     override func setUp() {
-        guard let gameData = try? GameManager().createGame(fromLevel: Level()) else {
-            XCTFail("Realm errors")
-            return
-        }
-        self.gameData = gameData
+        super.setUp()
+        self.gameData = createGameData(difficulty: 1, type: .ciHui)
 
         viewModel = BaseSlidingViewModel(time: time, gameData: gameData, tiles: ["a", nil],
                                          rows: rows, columns: columns)
+    }
+
+    func testX() {
+        viewModel.startGame()
+
+        XCTAssertEqual(GameStatus.inProgress, viewModel.gameStatus,
+                       "ViewModel game status when the game runs is not inProgress")
+
     }
 
     func testInit() {
