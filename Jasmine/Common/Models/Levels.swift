@@ -20,6 +20,14 @@ class Levels {
         self.realm = realm
     }
 
+    /// Adds the level with indicated settings
+    ///
+    /// - Parameters:
+    ///   - name: name of level
+    ///   - gameType: game type of level
+    ///   - gameMode: game mode of level
+    ///   - phrases: list of phrases to level
+    /// - Throws: Error if cannot add data
     func addCustomLevel(name: String, gameType: GameType, gameMode: GameMode, phrases: [Phrase]) throws {
         let level = Level(value: [
             "name": name,
@@ -32,6 +40,10 @@ class Levels {
         }
     }
 
+    /// Deletes the indicated level
+    ///
+    /// - Parameter level: level to be deleted
+    /// - Throws: Error if cannot delete data
     func deleteLevel(_ level: Level) throws {
         if !rawCustomLevels.contains(level) {
             assertionFailure("Cannot delete original levels")
@@ -42,6 +54,9 @@ class Levels {
         }
     }
 
+    /// Resets all custom levels
+    ///
+    /// - Throws: Error if cannot delete data
     func resetAll() throws {
         try realm.write {
             realm.delete(rawCustomLevels)
