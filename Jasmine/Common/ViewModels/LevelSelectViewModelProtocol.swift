@@ -1,4 +1,5 @@
-protocol LevelSelectViewModelProtocol {
+/// The ViewModel for the level selector part.
+protocol LevelSelectorViewModelProtocol {
     /// The defaults levels in the game.
     var defaultLevels: [GameInfo] { get }
     /// The custom levels in the game.
@@ -9,11 +10,6 @@ protocol LevelSelectViewModelProtocol {
     /// - Parameter levelID: the level ID
     /// - Returns: all phrases in the level ID
     func getLevelPhrases(from levelID: Int) -> [String]
-
-    /// Update the phrases from the given custom level
-    ///
-    /// - Parameter levelID: the ID for the level
-    func updateLevelPhrases(from levelID: Int)
 
     /// Updates the custom level
     ///
