@@ -4,8 +4,8 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet private var signInButton: UIButton!
 
-    private static let signInLabel = "Sign in"
-    private static let signOutLabel = "Sign out"
+    private static let signInLabel = "SIGN IN"
+    private static let signOutLabel = "SIGN OUT"
 
     private static let signInDisabledTitle = "Sign in instruction"
     private static let signInDisabledMessage = "To sign in, go to Settings > Game Center"
@@ -31,6 +31,10 @@ class SettingsViewController: UIViewController {
 
     @IBAction private func onSoundEffectsSliderPressed(_ slider: UISlider) {
         SoundService.sharedInstance.effectVolume = slider.value
+    }
+
+    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
 
     /// If user is signed in, display instruction to sign out.
