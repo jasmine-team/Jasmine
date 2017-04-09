@@ -1,15 +1,11 @@
 import XCTest
 @testable import Jasmine
 
-class ChengYuSwappingViewModelTests: XCTestCase {
+class ChengYuSwappingViewModelTests: RealmTestCase {
     func testInit() {
         let numberOfPhrases = 3
 
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 1, type: .chengYu) else {
-            XCTFail("Realm errors")
-            return
-        }
-
+        let gameData = createGameData(difficulty: 1, type: .chengYu)
         let viewModel = ChengYuSwappingViewModel(time: 10, gameData: gameData,
                                                  numberOfPhrases: numberOfPhrases)
 

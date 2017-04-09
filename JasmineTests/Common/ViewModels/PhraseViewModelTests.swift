@@ -1,12 +1,9 @@
 import XCTest
 @testable import Jasmine
 
-class PhraseViewModelTests: XCTestCase {
+class PhraseViewModelTests: RealmTestCase {
     func testInit() {
-        guard let gameData = try? GameDataFactory().createGame(difficulty: 0, type: .ciHui) else {
-            XCTFail("Realm errors")
-            return
-        }
+        let gameData = createGameData(difficulty: 1, type: .ciHui)
 
         for phrase in gameData.phrases.next(count: 10) {
             let viewModel = PhraseViewModel(phrase: phrase)

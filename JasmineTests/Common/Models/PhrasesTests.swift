@@ -1,4 +1,5 @@
 import XCTest
+import RealmSwift
 @testable import Jasmine
 
 class PhrasesTests: RealmTestCase {
@@ -12,12 +13,10 @@ class PhrasesTests: RealmTestCase {
 
     override func setUp() {
         super.setUp()
+        let list = List<Phrase>()
         listOfPhrases.forEach(save)
-        let phraseResults = realm.objects(Phrase.self)
-        guard let phraseLength = listOfPhrases.first?.chinese.count else {
-            fatalError("Failed to get phrase length")
-        }
-        phrases = Phrases(phraseResults, range: 0..<phraseResults.count, phraseLength: phraseLength)
+        listOfPhrases.forEach(list.append)
+        phrases = Phrases(list)
     }
 
     func testPhrases_next() {
@@ -33,10 +32,16 @@ class PhrasesTests: RealmTestCase {
         XCTAssertEqual(resultingPhrases.count, length, "length of array returned is incorrect")
     }
 
-    func testPhrases_contains() {
+    func testPhrases_contains_string() {
         XCTAssertFalse(phrases.contains(chinese: ""), "Empty string found within phrases")
         XCTAssertFalse(phrases.contains(chinese: "中"), "Partial string found within phrases")
         XCTAssertTrue(phrases.contains(chinese: "中文"), "String not found within phrases")
+    }
+
+    func testPhrases_contains_array() {
+        XCTAssertFalse(phrases.contains(chineseArr: [""]), "Empty string array found within phrases")
+        XCTAssertFalse(phrases.contains(chineseArr: ["中"]), "Partial array found within phrases")
+        XCTAssertTrue(phrases.contains(chineseArr: ["中", "文"]), "Array not found within phrases")
     }
 
     func testPhrases_first() {
