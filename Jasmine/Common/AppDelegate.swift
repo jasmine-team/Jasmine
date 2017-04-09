@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -9,10 +10,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // swiftlint:disable:previous vertical_parameter_alignment
 
-        SoundService.sharedInstance.play(.dogDays)
         if UIApplication.isFirstLaunch {
             Prebundler.hydrateRealm() // add phrases
         }
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            schemaVersion: 1, // Set the new schema version.
+            // We haven't migrated anything, so oldSchemaVersion = 0.
+            // Realm will automatically detect new properties and removed properties
+            // by accessing the oldSchemaVersion property.
+            migrationBlock: { _, oldSchemaVersion in _ = oldSchemaVersion }
+        )
+
+        SoundService.sharedInstance.play(.dogDays)
         return true
     }
 

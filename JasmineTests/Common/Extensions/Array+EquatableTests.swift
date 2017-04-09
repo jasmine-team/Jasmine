@@ -3,7 +3,7 @@ import XCTest
 
 class ArrayEquatableTests: XCTestCase {
 
-    func equals() {
+    func testEquals() {
         let intArray: [Int] = [1, 2, 3]
         let intOptionalArray: [Int?] = [1, 2, 3]
         let intNilArray: [Int?] = [1, nil, 3]
