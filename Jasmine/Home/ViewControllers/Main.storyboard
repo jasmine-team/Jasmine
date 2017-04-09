@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eKS-sV-Lr3">
-                                <rect key="frame" x="78.5" y="243.5" width="218" height="180"/>
+                                <rect key="frame" x="78.5" y="228.5" width="218" height="210"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nil-Gc-zGo">
                                         <rect key="frame" x="0.0" y="0.0" width="218" height="30"/>
@@ -66,10 +66,10 @@
                                         <state key="normal" title="Phrases Explorer"/>
                                         <connections>
                                             <segue destination="4Cz-aW-33f" kind="show" id="kwm-v0-aGq"/>
-										</connections>
-									</button>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gp-IY-vsy">
-                                        <rect key="frame" x="0.0" y="150" width="218" height="30"/>
+                                        <rect key="frame" x="0.0" y="180" width="218" height="30"/>
                                         <state key="normal" title="Open Phrase"/>
                                         <connections>
                                             <segue destination="rYh-KJ-YNp" kind="show" id="RG9-Ac-fGg"/>
@@ -306,6 +306,7 @@
                         <segue destination="V3l-Bo-jgy" kind="relationship" relationship="viewControllers" id="TWJ-40-PAW"/>
                         <segue destination="Rng-e6-PxE" kind="relationship" relationship="viewControllers" id="oz2-uB-ONO"/>
                         <segue destination="cqH-cK-nvp" kind="relationship" relationship="viewControllers" id="Als-bi-P5c"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="mQ5-cA-khq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qPc-Wy-L85" userLabel="First Responder" sceneMemberID="firstResponder"/>
