@@ -14,5 +14,5 @@ protocol LevelSelectorViewModelProtocol {
     /// Deletes the custom level
     ///
     /// - Parameter gameInfo: the game info
-    func deleteLevel(from gameInfo: String)
+    func deleteLevel(from gameInfo: GameInfo)
 }
