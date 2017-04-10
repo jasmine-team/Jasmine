@@ -34,16 +34,8 @@ class LevelsTests: RealmTestCase {
         let gameMode: GameMode = .sliding
         let phrases = [Phrase(value: ["rawChinese": "x y"])]
 
-        guard (try? levels.addCustomLevel(
-            name: name,
-            gameType: gameType,
-            gameMode: gameMode,
-            phrases: phrases
-        )) != nil else {
-            XCTFail("Failed to add level")
-            return
-        }
-
+        XCTAssertNoThrow(try levels.addCustomLevel(name: name, gameType: gameType,
+                                                   gameMode: gameMode, phrases: phrases))
         guard let latestLevel = levels.custom.last else {
             XCTFail("Unable to retrieve level")
             return
@@ -56,19 +48,13 @@ class LevelsTests: RealmTestCase {
 
     func testDeleteLevel() {
         XCTAssertEqual(levels.custom, customLevels, "Levels are not instantiated")
-        guard (try? levels.deleteLevel(customLevels[1])) != nil else {
-            XCTFail("Failed to delete level")
-            return
-        }
+        XCTAssertNoThrow(try levels.deleteLevel(customLevels[1]))
         XCTAssertEqual(levels.custom, [customLevels[0]], "custom level not deleted from levels")
     }
 
     func testResetAll() {
         XCTAssertEqual(levels.custom, customLevels, "Levels are not instantiated")
-        guard (try? levels.resetAll()) != nil else {
-            XCTFail("Failed to delete all custom levels")
-            return
-        }
+        XCTAssertNoThrow(try levels.resetAll())
         XCTAssertTrue(levels.custom.isEmpty, "All custom levels are not erased")
     }
 }

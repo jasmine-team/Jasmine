@@ -16,17 +16,17 @@ class Levels {
         return Array(self.filterIsReadOnly(bool: false))
     }
 
-    private static let defaultName = "Untitled"
+    private static let defaultName = "Untitled Level %d"
     /// Returns the next available default name (append numeric to `defaultName`) to save as
-    /// If none is available (used up all integers), returns `defaultName`
+    /// If none is available (used up all integers), returns `defaultName` with 0 appended
     var nextAvailableDefaultName: String {
         for i in 0...Int.max {
-            let name = Levels.defaultName + "\(i)"
+            let name = String(format: Levels.defaultName, i)
             if !levelNameExists(name) {
                 return name
             }
         }
-        return Levels.defaultName
+        return String(format: Levels.defaultName, 0)
     }
 
     init(realm: Realm) {
@@ -64,9 +64,7 @@ class Levels {
     /// - Throws: LevelsError.duplicateLevelName if name already exists
     private func getValidName(_ name: String?) throws -> String {
         var trimmedName = name?.trimmingCharacters(in: .whitespaces)
-        if let isNameEmpty = trimmedName?.isEmpty, isNameEmpty {
-            trimmedName = nil
-        }
+        trimmedName = (trimmedName?.isEmpty ?? true) ? nil : trimmedName
         let name = trimmedName ?? nextAvailableDefaultName
 
         guard !levelNameExists(name) else {
@@ -80,7 +78,7 @@ class Levels {
     /// - Parameter name: the level name to check
     /// - Returns: true if the level name already exists
     func levelNameExists(_ name: String) -> Bool {
-        return getLevel(name: name) == nil
+        return getLevel(name: name) != nil
     }
 
     /// Gets the level with the given level name
