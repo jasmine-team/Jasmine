@@ -10,7 +10,7 @@ class SoundService: NSObject {
 
     var backgroundVolume: Float = Volume.max {
         didSet {
-            backgroundPlayers.forEach { _, player in
+            for (_, player) in backgroundPlayers {
                 player.volume = backgroundVolume
             }
         }
