@@ -5,12 +5,6 @@ protocol LevelSelectorViewModelProtocol {
     /// The custom levels in the game.
     var customLevels: [GameInfo] { get }
 
-    /// Get all the phrases from the given GameInfo
-    ///
-    /// - Parameter gameInfo: the game info
-    /// - Returns: all phrases in the game info
-    func getLevelPhrases(from gameInfo: GameInfo) -> [String]
-
     /// Deletes the custom level
     ///
     /// - Parameter gameInfo: the game info
