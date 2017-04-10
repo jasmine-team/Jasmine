@@ -19,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="7fA-1a-Xfh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ax7-I2-bsu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="604"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="D27-9J-LfR">
-                                <rect key="frame" x="0.0" y="52" width="375" height="552"/>
+                                <rect key="frame" x="0.0" y="52" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GEb-ul-fzT">
                                     <size key="itemSize" width="352" height="83"/>
@@ -49,7 +49,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AtS-h0-a3D">
-                                                            <rect key="frame" x="8" y="42" width="263" height="18"/>
+                                                            <rect key="frame" x="8" y="42" width="157.5" height="18"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="GameModeLabel" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="RD4-W9-dD0">
                                                                     <rect key="frame" x="0.0" y="0.0" width="77" height="18"/>
@@ -74,20 +74,6 @@
                                                                                 <color key="NSColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <font key="NSFont" metaFont="system" size="15"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                            </attributes>
-                                                                        </fragment>
-                                                                    </attributedString>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="HighScoreLabel" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRd-ml-rtu">
-                                                                    <rect key="frame" x="165.5" y="0.0" width="97.5" height="18"/>
-                                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <attributedString key="attributedText">
-                                                                        <fragment content="BEST: 100000">
-                                                                            <attributes>
-                                                                                <color key="NSColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                <font key="NSFont" metaFont="system" size="15"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
@@ -137,6 +123,9 @@
                                         <size key="customSize" width="352" height="68"/>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="xdv-u9-tZk" id="Cal-qS-kPO"/>
+                                </connections>
                             </collectionView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QCO-VE-fVt">
                                 <rect key="frame" x="84" y="12" width="207" height="29"/>
@@ -146,11 +135,12 @@
                                 </segments>
                                 <color key="tintColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="onLevelsCategoriesSwitched:" destination="xdv-u9-tZk" eventType="valueChanged" id="1E1-SR-RvR"/>
+                                    <action selector="onLevelsCategoriesSwitched" destination="xdv-u9-tZk" eventType="valueChanged" id="ZsJ-HP-Rnd"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="QCO-VE-fVt" firstAttribute="top" secondItem="ZKm-h3-6Cy" secondAttribute="bottom" constant="12" id="7An-ay-vt8"/>
                             <constraint firstItem="D27-9J-LfR" firstAttribute="leading" secondItem="Ax7-I2-bsu" secondAttribute="leading" id="8GY-yf-TlQ"/>
@@ -159,6 +149,9 @@
                             <constraint firstAttribute="trailing" secondItem="D27-9J-LfR" secondAttribute="trailing" id="TDP-c6-1Fz"/>
                             <constraint firstItem="7fA-1a-Xfh" firstAttribute="top" secondItem="D27-9J-LfR" secondAttribute="bottom" id="m7w-Az-js8"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="9Kg-pE-kqH" appends="YES" id="DKb-4f-zGx"/>
+                        </connections>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -169,6 +162,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6J-zA-pue" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="9Kg-pE-kqH" userLabel="Level Tap Gesture Recogniser">
+                    <connections>
+                        <action selector="onLevelSelected:" destination="xdv-u9-tZk" id="9FG-P3-rUR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-607" y="873"/>
         </scene>
@@ -335,6 +333,6 @@
         <image name="icon-menu" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jPy-cZ-L7Q"/>
+        <segue reference="sQK-wM-js2"/>
     </inferredMetricsTieBreakers>
 </document>

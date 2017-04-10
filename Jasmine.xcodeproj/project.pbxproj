@@ -83,6 +83,11 @@
 		DF7CF7801E7E9EED00C6979A /* SquareTileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF77E1E7E9EED00C6979A /* SquareTileViewCell.swift */; };
 		DF7CF78A1E7E9FD700C6979A /* CGRect+ArithmeticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF7881E7E9FD700C6979A /* CGRect+ArithmeticTests.swift */; };
 		DF7CF78B1E7E9FD700C6979A /* IndexPath+CoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF7891E7E9FD700C6979A /* IndexPath+CoordinateTests.swift */; };
+		DF8593761E9B5FA3005B3647 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8593751E9B5FA3005B3647 /* GameInfo.swift */; };
+		DF8593781E9B6056005B3647 /* LevelSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8593771E9B6056005B3647 /* LevelSelectionViewController.swift */; };
+		DF8593811E9B6B4C005B3647 /* GameLevelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF85937E1E9B6B4C005B3647 /* GameLevelListViewController.swift */; };
+		DF8593821E9B6B4C005B3647 /* GameLevelListViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF85937F1E9B6B4C005B3647 /* GameLevelListViewDelegate.swift */; };
+		DF8593831E9B6B4C005B3647 /* GameLevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8593801E9B6B4C005B3647 /* GameLevelViewCell.swift */; };
 		DF944C2D1E84EF250037437C /* UIView+Shadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF944C2C1E84EF250037437C /* UIView+Shadows.swift */; };
 		DF9918C61E92B65F004E599B /* CGPoint+Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9918C51E92B65F004E599B /* CGPoint+Arithmetic.swift */; };
 		DF9918D31E92B6A3004E599B /* SwappingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9918CB1E92B6A3004E599B /* SwappingStoryboard.storyboard */; };
@@ -232,6 +237,11 @@
 		DF7CF77E1E7E9EED00C6979A /* SquareTileViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareTileViewCell.swift; sourceTree = "<group>"; };
 		DF7CF7881E7E9FD700C6979A /* CGRect+ArithmeticTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+ArithmeticTests.swift"; sourceTree = "<group>"; };
 		DF7CF7891E7E9FD700C6979A /* IndexPath+CoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+CoordinateTests.swift"; sourceTree = "<group>"; };
+		DF8593751E9B5FA3005B3647 /* GameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameInfo.swift; path = Models/GameInfo.swift; sourceTree = "<group>"; };
+		DF8593771E9B6056005B3647 /* LevelSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectionViewController.swift; sourceTree = "<group>"; };
+		DF85937E1E9B6B4C005B3647 /* GameLevelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameLevelListViewController.swift; path = GameLevelList/GameLevelListViewController.swift; sourceTree = "<group>"; };
+		DF85937F1E9B6B4C005B3647 /* GameLevelListViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameLevelListViewDelegate.swift; path = GameLevelList/GameLevelListViewDelegate.swift; sourceTree = "<group>"; };
+		DF8593801E9B6B4C005B3647 /* GameLevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameLevelViewCell.swift; path = GameLevelList/GameLevelViewCell.swift; sourceTree = "<group>"; };
 		DF944C2C1E84EF250037437C /* UIView+Shadows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shadows.swift"; sourceTree = "<group>"; };
 		DF9918C51E92B65F004E599B /* CGPoint+Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Arithmetic.swift"; sourceTree = "<group>"; };
 		DF9918CB1E92B6A3004E599B /* SwappingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SwappingStoryboard.storyboard; sourceTree = "<group>"; };
@@ -418,14 +428,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		50989DCC1E6D8B16009A86C8 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				DFF45A7D1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		50989DCD1E6D8B16009A86C8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,7 +437,6 @@
 				DFE1113D1E98BD5D00F8860E /* Sounds */,
 				DFBE8F2B1E9526BE0036CCC6 /* ViewControllers */,
 				DFE111461E98BDA900F8860E /* ViewModels */,
-				50989DCC1E6D8B16009A86C8 /* ViewModels */,
 				DF7CF77C1E7E9EED00C6979A /* Views */,
 				50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */,
 				A260C6271E6AB30400782103 /* Assets.xcassets */,
@@ -734,6 +735,24 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		DF8593741E9B5F8D005B3647 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DF8593751E9B5FA3005B3647 /* GameInfo.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		DF85937D1E9B6B13005B3647 /* GameLevelList */ = {
+			isa = PBXGroup;
+			children = (
+				DF85937E1E9B6B4C005B3647 /* GameLevelListViewController.swift */,
+				DF85937F1E9B6B4C005B3647 /* GameLevelListViewDelegate.swift */,
+				DF8593801E9B6B4C005B3647 /* GameLevelViewCell.swift */,
+			);
+			name = GameLevelList;
+			sourceTree = "<group>";
+		};
 		DF9918C71E92B6A3004E599B /* Swapping */ = {
 			isa = PBXGroup;
 			children = (
@@ -784,6 +803,7 @@
 		DFBE8F211E951FE70036CCC6 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				DF8593741E9B5F8D005B3647 /* Models */,
 				DFBE8F221E9520020036CCC6 /* ViewControllers */,
 			);
 			path = Levels;
@@ -792,7 +812,9 @@
 		DFBE8F221E9520020036CCC6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DF85937D1E9B6B13005B3647 /* GameLevelList */,
 				DFBE8F241E9520450036CCC6 /* LevelSelectionStoryboard.storyboard */,
+				DF8593771E9B6056005B3647 /* LevelSelectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -915,6 +937,7 @@
 			isa = PBXGroup;
 			children = (
 				DFE111471E98BDA900F8860E /* PhraseViewModel.swift */,
+				DFF45A7D1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1152,6 +1175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFBE8F791E9527F70036CCC6 /* BaseViewModelProtocol.swift in Sources */,
+				DF8593831E9B6B4C005B3647 /* GameLevelViewCell.swift in Sources */,
 				A2FF83961E9A536F00677FA2 /* Level.swift in Sources */,
 				DFBE8F3A1E9526BE0036CCC6 /* DiscreteFallableSquareGridViewController.swift in Sources */,
 				DF2321561E961A6900417ED2 /* GameOverViewController.swift in Sources */,
@@ -1169,6 +1193,7 @@
 				DF9918D51E92B6A3004E599B /* ChengYuSwappingViewModel.swift in Sources */,
 				A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */,
 				DF2052C81E8BDD5A00D66B0B /* UIImageView+Animation.swift in Sources */,
+				DF8593781E9B6056005B3647 /* LevelSelectionViewController.swift in Sources */,
 				502A296E1E926DCA0024336A /* ChengYuSlidingViewModel.swift in Sources */,
 				DFBE8F7A1E9527F70036CCC6 /* GridViewModel.swift in Sources */,
 				502A29651E925A190024336A /* Array+Equatable.swift in Sources */,
@@ -1181,6 +1206,7 @@
 				DF2155211E8E237F005A0927 /* SlidingViewModelProtocol.swift in Sources */,
 				DFBE8F7C1E9527F70036CCC6 /* GameDescriptorProtocol.swift in Sources */,
 				509036E01E937CB9006548DE /* SwappingGameViewController.swift in Sources */,
+				DF8593761E9B5FA3005B3647 /* GameInfo.swift in Sources */,
 				A2FF83971E9A536F00677FA2 /* Levels.swift in Sources */,
 				DFBE8F751E9527F70036CCC6 /* ScoreUpdateDelegate.swift in Sources */,
 				DF2321541E961A4100417ED2 /* SelectableSquareGridViewController.swift in Sources */,
@@ -1221,9 +1247,11 @@
 				50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */,
 				DFBE8F7D1E9527F70036CCC6 /* ScoreDescriptorProtocol.swift in Sources */,
 				DF7CF7711E7E9E3500C6979A /* CGRect+Arithmetic.swift in Sources */,
+				DF8593821E9B6B4C005B3647 /* GameLevelListViewDelegate.swift in Sources */,
 				DF944C2D1E84EF250037437C /* UIView+Shadows.swift in Sources */,
 				DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */,
 				502A296D1E926DCA0024336A /* BaseSlidingViewModel.swift in Sources */,
+				DF8593811E9B6B4C005B3647 /* GameLevelListViewController.swift in Sources */,
 				005D4DDE1E9418F500E8DD0B /* Matrix+Equatable.swift in Sources */,
 				DF409FDF1E84147400389976 /* CountDownTimer.swift in Sources */,
 				DFE111451E98BD7E00F8860E /* PhraseViewController.swift in Sources */,
