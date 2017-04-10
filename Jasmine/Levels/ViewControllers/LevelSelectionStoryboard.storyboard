@@ -253,7 +253,7 @@
         <!--Levels-->
         <scene sceneID="hdW-K8-Ioq">
             <objects>
-                <viewController storyboardIdentifier="LevelSelectionViewController" title="Level Selection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ve2-s0-e3H" userLabel="Levels" customClass="LevelSelectionViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LevelSelectorViewController" title="Level Selection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ve2-s0-e3H" userLabel="Levels" customClass="LevelSelectorViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Efn-qG-IRW"/>
                         <viewControllerLayoutGuide type="bottom" id="lDT-8y-rjI"/>
