@@ -1,6 +1,6 @@
 import Foundation
 
-protocol GameLevelListDataDelegate: class {
+protocol GameLevelListViewDelegate: class {
 
     /// Gets the number of levels.
     ///
@@ -21,4 +21,7 @@ protocol GameLevelListDataDelegate: class {
     /// Notifies the user of this view controller that a level has been selected.
     func notifyLevelSelected(fromDefault isDefaultLevels: Bool, at index: Int,
                              withCell levelCell: GameLevelViewCell)
+
+    /// Notifies the user of this view controller to open the list of menu for the specified level.
+    func notifyOpenMenuForLevel(fromDefault isDefaultLevels: Bool, at index: Int)
 }

@@ -15,7 +15,7 @@ class GameLevelListViewController: UIViewController {
 
     // MARK: Properties
     /// Specifies a delegate to read the data from.
-    weak var dataDelegate: GameLevelListDataDelegate?
+    weak var delegate: GameLevelListViewDelegate?
 
     /// Returna true if default levels should be shown.
     fileprivate var isShowingDefaultLevels: Bool {
@@ -25,14 +25,14 @@ class GameLevelListViewController: UIViewController {
 
     /// Gets all the indices displayed in this view.
     private var allIndices: Set<IndexPath> {
-        let numItems = dataDelegate?.getNumberOfLevels(fromDefault: isShowingDefaultLevels) ?? 0
+        let numItems = delegate?.getNumberOfLevels(fromDefault: isShowingDefaultLevels) ?? 0
         return Set((0..<numItems).map { IndexPath(row: $0, section: 0) })
     }
 
     // MARK: Segue Methods
     /// Supply this view with a data delegate.
-    func segueWith(dataDelegate: GameLevelListDataDelegate) {
-        self.dataDelegate = dataDelegate
+    func segueWith(delegate: GameLevelListViewDelegate) {
+        self.delegate = delegate
     }
     
     // MARK: Gestures and Listeners
@@ -48,14 +48,16 @@ class GameLevelListViewController: UIViewController {
               let cell = gameLevelListCollection.cellForItem(at: indexPath) as? GameLevelViewCell else {
             return
         }
-        dataDelegate?.notifyLevelSelected(fromDefault: isShowingDefaultLevels, at: indexPath.item,
+        delegate?.notifyLevelSelected(fromDefault: isShowingDefaultLevels, at: indexPath.item,
                                           withCell: cell)
     }
 
     // MARK: Interfacing Methods
     /// Reloads all the data in this view.
     func reloadAllData() {
-        gameLevelListCollection.reloadItems(at: Array(allIndices))
+        gameLevelListCollection.performBatchUpdates({
+            self.gameLevelListCollection.reloadItems(at: Array(self.allIndices))
+        }, completion: nil)
     }
 }
 
@@ -66,7 +68,7 @@ extension GameLevelListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
 
-        return dataDelegate?.getNumberOfLevels(fromDefault: isShowingDefaultLevels) ?? 0
+        return delegate?.getNumberOfLevels(fromDefault: isShowingDefaultLevels) ?? 0
     }
 
     /// Feed in the level data itself.
@@ -81,7 +83,7 @@ extension GameLevelListViewController: UICollectionViewDataSource {
             fatalError("View Cell that extends from GameLevelViewCell is required.")
         }
 
-        guard let dataDelegate = dataDelegate else {
+        guard let dataDelegate = delegate else {
             assertionFailure("Data Delegate is missing.")
             return levelCell
         }

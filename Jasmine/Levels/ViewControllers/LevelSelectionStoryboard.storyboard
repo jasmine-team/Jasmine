@@ -19,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="7fA-1a-Xfh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ax7-I2-bsu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="604"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="D27-9J-LfR">
-                                <rect key="frame" x="0.0" y="52" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="52" width="375" height="552"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GEb-ul-fzT">
                                     <size key="itemSize" width="352" height="83"/>
@@ -252,6 +252,7 @@
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="tQC-fc-pmS">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
+                                                <action selector="onDesignNewLevelPressed:" destination="ve2-s0-e3H" id="qlC-0B-4gy"/>
                                                 <segue destination="iXK-Ql-xwZ" kind="show" id="89u-qd-ld7"/>
                                             </connections>
                                         </barButtonItem>
@@ -333,6 +334,6 @@
         <image name="icon-menu" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sQK-wM-js2"/>
+        <segue reference="jPy-cZ-L7Q"/>
     </inferredMetricsTieBreakers>
 </document>
