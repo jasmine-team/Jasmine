@@ -1,6 +1,9 @@
 import UIKit
 
 class PhrasesTableViewController: UITableViewController {
+
+    private static let cellIdentifier = "PhrasesTableCell"
+
     /// The ViewModel of this ViewController
     var viewModel: PhrasesExplorerViewModel!
 
@@ -9,7 +12,8 @@ class PhrasesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PhrasesTableCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: PhrasesTableViewController.cellIdentifier,
+                                                 for: indexPath)
 
         let row = indexPath.row
         let cellContents = viewModel.get(at: row)
