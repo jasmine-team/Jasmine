@@ -86,7 +86,6 @@
 		DF7CF7801E7E9EED00C6979A /* SquareTileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF77E1E7E9EED00C6979A /* SquareTileViewCell.swift */; };
 		DF7CF78A1E7E9FD700C6979A /* CGRect+ArithmeticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF7881E7E9FD700C6979A /* CGRect+ArithmeticTests.swift */; };
 		DF7CF78B1E7E9FD700C6979A /* IndexPath+CoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF7891E7E9FD700C6979A /* IndexPath+CoordinateTests.swift */; };
-		DF8593761E9B5FA3005B3647 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8593751E9B5FA3005B3647 /* GameInfo.swift */; };
 		DF8593781E9B6056005B3647 /* LevelSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8593771E9B6056005B3647 /* LevelSelectionViewController.swift */; };
 		DF8593811E9B6B4C005B3647 /* GameLevelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF85937E1E9B6B4C005B3647 /* GameLevelListViewController.swift */; };
 		DF8593821E9B6B4C005B3647 /* GameLevelListViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF85937F1E9B6B4C005B3647 /* GameLevelListViewDelegate.swift */; };
@@ -243,7 +242,6 @@
 		DF7CF77E1E7E9EED00C6979A /* SquareTileViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareTileViewCell.swift; sourceTree = "<group>"; };
 		DF7CF7881E7E9FD700C6979A /* CGRect+ArithmeticTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+ArithmeticTests.swift"; sourceTree = "<group>"; };
 		DF7CF7891E7E9FD700C6979A /* IndexPath+CoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+CoordinateTests.swift"; sourceTree = "<group>"; };
-		DF8593751E9B5FA3005B3647 /* GameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameInfo.swift; path = Models/GameInfo.swift; sourceTree = "<group>"; };
 		DF8593771E9B6056005B3647 /* LevelSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectionViewController.swift; sourceTree = "<group>"; };
 		DF85937E1E9B6B4C005B3647 /* GameLevelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameLevelListViewController.swift; path = GameLevelList/GameLevelListViewController.swift; sourceTree = "<group>"; };
 		DF85937F1E9B6B4C005B3647 /* GameLevelListViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameLevelListViewDelegate.swift; path = GameLevelList/GameLevelListViewDelegate.swift; sourceTree = "<group>"; };
@@ -744,7 +742,6 @@
 		DF8593741E9B5F8D005B3647 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DF8593751E9B5FA3005B3647 /* GameInfo.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1217,7 +1214,6 @@
 				DF2155211E8E237F005A0927 /* SlidingViewModelProtocol.swift in Sources */,
 				DFBE8F7C1E9527F70036CCC6 /* GameDescriptorProtocol.swift in Sources */,
 				509036E01E937CB9006548DE /* SwappingGameViewController.swift in Sources */,
-				DF8593761E9B5FA3005B3647 /* GameInfo.swift in Sources */,
 				A2FF83971E9A536F00677FA2 /* Levels.swift in Sources */,
 				DFBE8F751E9527F70036CCC6 /* ScoreUpdateDelegate.swift in Sources */,
 				DF2321541E961A4100417ED2 /* SelectableSquareGridViewController.swift in Sources */,

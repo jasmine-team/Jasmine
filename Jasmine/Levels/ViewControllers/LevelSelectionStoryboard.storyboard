@@ -226,6 +226,30 @@
             </objects>
             <point key="canvasLocation" x="-1030" y="139"/>
         </scene>
+        <!--TetrisGameViewController-->
+        <scene sceneID="5wB-9M-tUY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TetrisStoryboard" referencedIdentifier="TetrisGameViewController" id="9P3-ir-krG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2d7-SE-7tM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="441" y="-169"/>
+        </scene>
+        <!--SwappingGameViewController-->
+        <scene sceneID="ZzH-es-8Ts">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SwappingStoryboard" referencedIdentifier="SwappingGameViewController" id="M3n-s0-qwR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dmr-bR-7AC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="479" y="-102"/>
+        </scene>
+        <!--SlidingGameViewController-->
+        <scene sceneID="xd3-hB-ztw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SlidingGameStoryboard" referencedIdentifier="SlidingGameViewController" id="NXA-aA-ypY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nAD-gd-PMq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="446" y="-236"/>
+        </scene>
         <!--Levels-->
         <scene sceneID="hdW-K8-Ioq">
             <objects>
@@ -252,8 +276,7 @@
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="tQC-fc-pmS">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
-                                                <action selector="onDesignNewLevelPressed:" destination="ve2-s0-e3H" id="qlC-0B-4gy"/>
-                                                <segue destination="iXK-Ql-xwZ" kind="show" id="89u-qd-ld7"/>
+                                                <segue destination="iXK-Ql-xwZ" kind="show" id="ILt-sX-hvj"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -278,6 +301,11 @@
                         </constraints>
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <segue destination="9P3-ir-krG" kind="show" identifier="SegueToTetrisGame" id="GxO-Gp-3Vt"/>
+                        <segue destination="M3n-s0-qwR" kind="show" identifier="SegueToSwappingGame" id="ZtB-WK-kJc"/>
+                        <segue destination="NXA-aA-ypY" kind="show" identifier="SegueToSlidingGame" id="3jU-xG-Hc2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OHT-81-1qc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -326,7 +354,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BsB-lQ-CxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="612" y="133"/>
+            <point key="canvasLocation" x="1111" y="149"/>
         </scene>
     </scenes>
     <resources>
