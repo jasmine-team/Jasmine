@@ -1,14 +1,13 @@
 import Foundation
 
 /// Random generator that generates and exhausts the entire collection before starting over
-class RandomGenerator<T> where T: Collection {
+class RandomGenerator<T> where T: Collection, T.Indices.Iterator.Element == T.Index {
 
     var collection: T
-    var nextIndex: T.Index
+    var range: [T.Index] = []
 
     init(of collection: T) {
         self.collection = collection
-        self.nextIndex = collection.startIndex
     }
 
     /// Returns a list of phrases
@@ -25,12 +24,11 @@ class RandomGenerator<T> where T: Collection {
     ///
     /// - Returns: Phrase
     func next() -> T.Iterator.Element {
-        if nextIndex > collection.endIndex {
-            nextIndex = collection.startIndex
+        if range.isEmpty {
+            range = collection.indices.shuffled()
         }
-        let phrase = collection[nextIndex]
-        nextIndex = collection.index(after: nextIndex)
-        return phrase
+        let nextIndex = range.removeFirst()
+        return collection[nextIndex]
     }
 
 }

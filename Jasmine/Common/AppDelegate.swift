@@ -20,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // by accessing the oldSchemaVersion property.
             migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion < 2 {
-                    // The enumerateObjects(ofType:_:) method iterates
-                    // over every Person object stored in the Realm file
                     migration.enumerateObjects(ofType: Level.className()) { _, newObject in
                         // combine name fields into a single field
                         newObject!["uuid"] = UUID().uuidString

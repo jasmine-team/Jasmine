@@ -20,15 +20,13 @@ class PhrasesTests: RealmTestCase {
     }
 
     func testPhrases_next() {
-        let resultingPhrases = (0..<10).map { _ in
-            phrases.next()
-        }
+        let resultingPhrases = phrases.makeRandomGenerator().next(count: 10)
         XCTAssertEqual(Set(listOfPhrases), Set(resultingPhrases), "next does not return input variables")
     }
 
     func testPhrases_of() {
         let length = 4
-        let resultingPhrases = phrases.next(count: 4)
+        let resultingPhrases = phrases.makeRandomGenerator().next(count: 4)
         XCTAssertEqual(resultingPhrases.count, length, "length of array returned is incorrect")
     }
 

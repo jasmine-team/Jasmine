@@ -1,6 +1,6 @@
 import Foundation
 
-extension Collection {
+extension Collection where Indices.Iterator.Element == Index {
 
     /// Makes a random generator over the collection
     ///

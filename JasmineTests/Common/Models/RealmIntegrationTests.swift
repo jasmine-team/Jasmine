@@ -11,12 +11,19 @@ class RealmIntegrationTests: XCTestCase {
 
     override func setUp() {
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
-            schemaVersion: 1, // Set the new schema version.
+            schemaVersion: 2, // Set the new schema version.
             // We haven't migrated anything, so oldSchemaVersion = 0.
             // Realm will automatically detect new properties and removed properties
             // by accessing the oldSchemaVersion property.
-            migrationBlock: { _, oldSchemaVersion in _ = oldSchemaVersion }
-        )
+            migrationBlock: { migration, oldSchemaVersion in
+                if oldSchemaVersion < 2 {
+                    migration.enumerateObjects(ofType: Level.className()) { _, newObject in
+                        // combine name fields into a single field
+                        print(newObject!["name"]!)
+                        newObject!["uuid"] = UUID().uuidString
+                    }
+                }
+        })
         super.setUp()
         do {
             realm = try Realm()
@@ -32,8 +39,9 @@ class RealmIntegrationTests: XCTestCase {
         gameTypes.forEach { _ in
             let level = levels.original[0]
             let gameData = factory.createGame(fromLevel: level)
-            XCTAssertNotNil(gameData.phrases.next(), "Game data does not contain phrases")
-            XCTAssertEqual(gameData.phrases.next(count: 5).count, 5, "Incorrect amount of phrases")
+            XCTAssertNotNil(gameData.phrases.makeRandomGenerator().next(), "Game data does not contain phrases")
+            let phrases = gameData.phrases.makeRandomGenerator().next(count: 5)
+            XCTAssertEqual(phrases.count, 5, "Incorrect amount of phrases")
         }
     }
 

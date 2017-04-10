@@ -29,7 +29,7 @@ class GameManagerTests: RealmTestCase {
                                                     type: GameType) {
         let difficulty = 1
         let gameData = createGameData(phrases: phrases, difficulty: difficulty, type: type)
-        let result = Set(gameData.phrases.next(count: phrases.count))
+        let result = Set(gameData.phrases.makeRandomGenerator().next(count: phrases.count))
         XCTAssertEqual(result.count, phrases.count, "game phrases is incorrect")
         XCTAssertEqual(gameData.difficulty, difficulty, "game difficulty is incorrect")
     }

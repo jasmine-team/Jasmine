@@ -5,7 +5,7 @@ class PhraseViewModelTests: RealmTestCase {
     func testInit() {
         let gameData = createGameData(difficulty: 1, type: .ciHui)
 
-        for phrase in gameData.phrases.next(count: 10) {
+        for phrase in gameData.phrases.makeRandomGenerator().next(count: 10) {
             let viewModel = PhraseViewModel(phrase: phrase)
             XCTAssertEqual(phrase.chinese.joined(), viewModel.hanZi)
             XCTAssertEqual(phrase.pinyin.joined(separator: " "), viewModel.pinYin)
