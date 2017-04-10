@@ -823,11 +823,11 @@
 				DFBE8F321E9526BE0036CCC6 /* DraggableSquareGridViewController.swift */,
 				DFBE8F811E9528370036CCC6 /* LaunchScreen.storyboard */,
 				50A5F5B01E9B7A4D00E94C91 /* LevelSelectorViewControllerDelegate.swift */,
-				DFE111441E98BD7E00F8860E /* PhraseViewController.swift */,
 				5048F3C61E9BD63900B379F0 /* PhrasesDetailTableViewController.swift */,
 				DFF45A791E99E41000DFD3D9 /* PhrasesExplorerViewController.swift */,
 				DFF45A7B1E99E41700DFD3D9 /* PhrasesSelectionTableViewController.swift */,
 				5048F3C81E9BD7FD00B379F0 /* PhrasesTableViewController.swift */,
+				DFE111441E98BD7E00F8860E /* PhraseViewController.swift */,
 				DF2321531E961A4100417ED2 /* SelectableSquareGridViewController.swift */,
 				DFBE8F3F1E95272B0036CCC6 /* SquareGridViewController.swift */,
 			);

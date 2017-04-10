@@ -2,10 +2,26 @@ import UIKit
 
 class PhrasesExplorerViewController: UIViewController {
 
+    @IBOutlet private weak var phrasesTableView: UIView!
     fileprivate var phrasesTable: PhrasesTableViewController!
     fileprivate var viewModel: PhrasesExplorerViewModel!
     private var searchController: UISearchController!
     private var selectTableMode: Bool!
+
+    override func viewDidLoad() {
+        if selectTableMode == true {
+            phrasesTable = PhrasesSelectionTableViewController()
+        } else {
+            phrasesTable = PhrasesDetailTableViewController()
+        }
+
+        phrasesTable.viewModel = viewModel
+        searchController = UISearchController(searchResultsController: phrasesTable)
+
+        addChildViewController(phrasesTable)
+        phrasesTableView.addSubview(phrasesTable.view)
+        phrasesTable.didMove(toParentViewController: self)
+    }
 
     /// Dismisses this current screen when "Back" button is pressed.
     @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
@@ -23,23 +39,6 @@ class PhrasesExplorerViewController: UIViewController {
     func segueWith(_ viewModel: PhrasesExplorerViewModel, selectTableMode: Bool) {
         self.viewModel = viewModel
         self.selectTableMode = selectTableMode
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let table: PhrasesTableViewController?
-        if selectTableMode == true {
-            table = segue.destination as? PhrasesSelectionTableViewController
-        } else {
-            table = segue.destination as? PhrasesDetailTableViewController
-        }
-
-        guard table != nil else {
-            return
-        }
-
-        phrasesTable = table
-        phrasesTable.viewModel = viewModel
-        searchController = UISearchController(searchResultsController: phrasesTable)
     }
 }
 

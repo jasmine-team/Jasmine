@@ -7,12 +7,17 @@ class PhrasesTableViewController: UITableViewController {
     /// The ViewModel of this ViewController
     var viewModel: PhrasesExplorerViewModel!
 
+    override func viewDidLoad() {
+        tableView.register(UITableViewCell.self,
+                           forCellReuseIdentifier: PhrasesTableViewController.cellIdentifier)
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.rowsShown
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PhrasesSelectionTableViewController.cellIdentifier,
+        let cell = tableView.dequeueReusableCell(withIdentifier: PhrasesTableViewController.cellIdentifier,
                                                  for: indexPath)
 
         let row = indexPath.row

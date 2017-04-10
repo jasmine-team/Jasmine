@@ -71,6 +71,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sl2-Co-6ct">
                                         <rect key="frame" x="0.0" y="180" width="233" height="30"/>
                                         <state key="normal" title="Phrases Explorer With Phrase Info"/>
+                                        <connections>
+                                            <segue destination="4Cz-aW-33f" kind="show" id="6eB-CR-JTH"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gp-IY-vsy">
                                         <rect key="frame" x="0.0" y="210" width="233" height="30"/>
@@ -132,7 +135,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zt0-G3-AcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardIdentifier="CommonsStoryboard" storyboardName="CommonsStoryboard" referencedIdentifier="PhraseViewController" id="rYh-KJ-YNp" sceneMemberID="viewController"/>
             </objects>
-            <point key="canvasLocation" x="776" y="273"/>
+            <point key="canvasLocation" x="776" y="346"/>
         </scene>
         <!--PhrasesExplorerViewController-->
         <scene sceneID="L8I-Hn-bVq">
@@ -140,7 +143,7 @@
                 <viewControllerPlaceholder storyboardName="CommonsStoryboard" referencedIdentifier="PhrasesExplorerViewController" id="4Cz-aW-33f" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XmM-vH-bBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="797" y="319"/>
+            <point key="canvasLocation" x="797" y="280"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Yj8-SC-wqm">
@@ -379,7 +382,8 @@
         <image name="icon-user-small-selected" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="djo-h3-zHX"/>
+        <segue reference="kwm-v0-aGq"/>
         <segue reference="ttU-OF-6vh"/>
+        <segue reference="djo-h3-zHX"/>
     </inferredMetricsTieBreakers>
 </document>
