@@ -16,7 +16,7 @@ class PhrasesExplorerViewModel {
     weak var viewControllerDelegate: PhrasesExplorerViewController?
 
     init(phrases: Phrases, amount: Int) {
-        allPhrasesWithSelection = phrases.next(count: amount).map { ($0, false) }
+        allPhrasesWithSelection = phrases.makeRandomGenerator().next(count: amount).map { ($0, false) }
         rowIndices = Array(0..<amount)
     }
 
@@ -46,9 +46,10 @@ class PhrasesExplorerViewModel {
     func search(keyword: String) {
         let keyword = keyword.lowercased()
         rowIndices = []
-        for (idx, (phrase: phrase, selected: _)) in allPhrasesWithSelection.enumerated() {
+        for index in allPhrasesWithSelection.indices {
+            let phrase = allPhrasesWithSelection[index].phrase
             if [phrase.pinyin, phrase.chinese].flatMap({ $0 }).contains(where: { $0 == keyword }) {
-                rowIndices.append(idx)
+                rowIndices.append(index)
             }
         }
     }

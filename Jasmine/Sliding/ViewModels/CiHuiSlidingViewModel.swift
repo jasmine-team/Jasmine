@@ -8,7 +8,7 @@ class CiHuiSlidingViewModel: BaseSlidingViewModel {
     ///   - gameData: game data
     ///   - rows: rows in the game
     init(time: TimeInterval, gameData: GameData, rows: Int) {
-        let phrases = gameData.phrases.next(count: rows)
+        let phrases = gameData.phrases.makeRandomGenerator().next(count: rows)
 
         var tiles: [String] = []
         for phrase in phrases {

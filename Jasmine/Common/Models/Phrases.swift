@@ -1,7 +1,7 @@
 import RealmSwift
 
 /// Phrases contains list of phrases for a particular difficulty
-class Phrases: Sequence, IteratorProtocol {
+class Phrases {
 
     static let all: Phrases = Phrases(List(allRawPhrases))
 
@@ -13,19 +13,10 @@ class Phrases: Sequence, IteratorProtocol {
         }
     }()
 
-    func next() -> Phrase? {
-        if range.isEmpty {
-            range = Array(0..<phrases.count)
-        }
-        let nextIndex = range.removeFirst()
-        return self.phrases[nextIndex]
-    }
-
-    private var phrases: List<Phrase>
-    private var range: [Int] = []
+    fileprivate var phrases: List<Phrase>
     let phraseLength: Int
 
-    /// Creates an encapsulated list of phrases for usage outside of models 
+    /// Creates an encapsulated list of phrases for usage outside of models
     ///
     /// - Parameters:
     ///   - phrases: realm list of phrases
@@ -70,11 +61,6 @@ class Phrases: Sequence, IteratorProtocol {
         return filter(chinese: chinese).first
     }
 
-    /// Returns the phrases count
-    var count: Int {
-        return phrases.count
-    }
-
     /// MARK: Helper functions
 
     /// Creates a predicate that filters based on character count
@@ -92,6 +78,31 @@ class Phrases: Sequence, IteratorProtocol {
     /// - Returns: result of phrase
     private func filter(chinese: String) -> Results<Phrase> {
         return Phrases.allRawPhrases.filter("rawChinese == '\(chinese)'")
+    }
+
+}
+
+extension Phrases: Collection {
+
+    var startIndex: Int {
+        return 0
+    }
+
+    var endIndex: Int {
+        return phrases.count
+    }
+
+    /// Returns the phrases count
+    var count: Int {
+        return phrases.count
+    }
+
+    func index(after: Int) -> Int {
+        return after + 1
+    }
+
+    subscript(position: Int) -> Phrase {
+        return self.phrases[position]
     }
 
 }
