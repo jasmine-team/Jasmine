@@ -11,6 +11,11 @@ class PhrasesExplorerViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+    /// Displays the level selection screen upon import pressed.
+    @IBAction func onImportPressed(_ sender: UIBarButtonItem) {
+        // TODO: Complete this when level import is done.
+    }
+
     /// Injects the required data before opening this view.
     ///
     /// - Parameter viewModel: the view model of this class.

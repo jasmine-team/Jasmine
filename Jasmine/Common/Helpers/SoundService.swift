@@ -8,8 +8,21 @@ class SoundService: NSObject {
 
     static let sharedInstance = SoundService()
 
-    var backgroundVolume: Float = Volume.max
-    var effectVolume: Float = Volume.max
+    var backgroundVolume: Float = Volume.max {
+        didSet {
+            for (_, player) in backgroundPlayers {
+                player.volume = backgroundVolume
+            }
+        }
+    }
+    var effectVolume: Float = Volume.max {
+        didSet {
+            let allPlayers = effectPlayers.flatMap { $0.value }
+            allPlayers.forEach { player in
+                player.volume = effectVolume
+            }
+        }
+    }
 
     fileprivate var backgroundPlayers: [Background: AVAudioPlayer] = [:]
     fileprivate var effectPlayers: [Effect: [AVAudioPlayer]] = [:]
