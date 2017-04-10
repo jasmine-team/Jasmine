@@ -17,16 +17,23 @@ class GameLevelListViewController: UIViewController {
     /// Specifies a delegate to read the data from.
     weak var delegate: GameLevelListViewDelegate?
 
-    /// Returna true if default levels should be shown.
-    fileprivate var isShowingDefaultLevels: Bool {
-        return levelsCategoriesToggle.selectedSegmentIndex
-            == GameLevelListViewController.builtInLevelsIndex
+    /// Returns true if default levels should be shown.
+    var isShowingDefaultLevels: Bool {
+        get {
+            return levelsCategoriesToggle.selectedSegmentIndex
+                == GameLevelListViewController.builtInLevelsIndex
+        }
+        set {
+            levelsCategoriesToggle.selectedSegmentIndex
+                = newValue ? GameLevelListViewController.builtInLevelsIndex
+                           : GameLevelListViewController.customLevelsIndex
+        }
     }
 
     /// Gets all the indices displayed in this view.
     private var allIndices: Set<IndexPath> {
         let numItems = delegate?.getNumberOfLevels(fromDefault: isShowingDefaultLevels) ?? 0
-        return Set((0..<numItems).map { IndexPath(row: $0, section: 0) })
+        return Set((0..<numItems).map { IndexPath(item: $0, section: 0) })
     }
 
     // MARK: Segue Methods
@@ -55,8 +62,20 @@ class GameLevelListViewController: UIViewController {
     // MARK: Interfacing Methods
     /// Reloads all the data in this view.
     func reloadAllData() {
+        helperReloadLevels(at: allIndices)
+    }
+
+    /// Reloads data at the specified index.
+    func reloadData(fromDefault isDefault: Bool, at index: Int) {
+        guard isShowingDefaultLevels == isDefault else {
+            return
+        }
+        helperReloadLevels(at: [IndexPath(item: index, section: 0)])
+    }
+
+    private func helperReloadLevels(at indices: Set<IndexPath>) {
         gameLevelListCollection.performBatchUpdates({
-            self.gameLevelListCollection.reloadItems(at: Array(self.allIndices))
+            self.gameLevelListCollection.reloadItems(at: Array(indices))
         }, completion: nil)
     }
 }

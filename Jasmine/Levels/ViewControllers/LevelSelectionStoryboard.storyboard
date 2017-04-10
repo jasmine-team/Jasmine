@@ -242,6 +242,14 @@
             </objects>
             <point key="canvasLocation" x="479" y="-102"/>
         </scene>
+        <!--PhrasesExplorerViewController-->
+        <scene sceneID="HqA-2F-rSs">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CommonsStoryboard" referencedIdentifier="PhrasesExplorerViewController" id="9hv-Ep-FLn" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Njt-fb-HsE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="500" y="-40"/>
+        </scene>
         <!--SlidingGameViewController-->
         <scene sceneID="xd3-hB-ztw">
             <objects>
@@ -305,6 +313,7 @@
                         <segue destination="9P3-ir-krG" kind="show" identifier="SegueToTetrisGame" id="GxO-Gp-3Vt"/>
                         <segue destination="M3n-s0-qwR" kind="show" identifier="SegueToSwappingGame" id="ZtB-WK-kJc"/>
                         <segue destination="NXA-aA-ypY" kind="show" identifier="SegueToSlidingGame" id="3jU-xG-Hc2"/>
+                        <segue destination="9hv-Ep-FLn" kind="show" identifier="SegueToPhrasesExplorer" id="Cwi-nj-NvM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OHT-81-1qc" userLabel="First Responder" sceneMemberID="firstResponder"/>
