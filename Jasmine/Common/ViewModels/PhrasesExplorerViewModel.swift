@@ -52,11 +52,8 @@ class PhrasesExplorerViewModel {
         let keyword = keyword.lowercased()
         rowIndices = []
         for (idx, (phrase: phrase, selected: _)) in allPhrasesWithSelection.enumerated() {
-            for text in [phrase.pinyin.joined(), phrase.chinese.joined(), phrase.english] {
-                if text.hasPrefix(keyword) {
-                    rowIndices.append(idx)
-                    break
-                }
+            for txt in [phrase.pinyin.joined(), phrase.chinese.joined(), phrase.english] where txt.hasPrefix(keyword) {
+                rowIndices.append(idx)
             }
         }
     }
