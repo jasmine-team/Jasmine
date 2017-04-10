@@ -14,18 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Prebundler.hydrateRealm() // add phrases
         }
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
-            schemaVersion: 2, // Set the new schema version.
+            schemaVersion: 1, // Set the new schema version.
             // We haven't migrated anything, so oldSchemaVersion = 0.
             // Realm will automatically detect new properties and removed properties
             // by accessing the oldSchemaVersion property.
-            migrationBlock: { migration, oldSchemaVersion in
-                if oldSchemaVersion < 2 {
-                    migration.enumerateObjects(ofType: Level.className()) { _, newObject in
-                        // combine name fields into a single field
-                        newObject!["uuid"] = UUID().uuidString
-                    }
-                }
-        })
+            migrationBlock: { _, oldSchemaVersion in _ = oldSchemaVersion }
+        )
 
         SoundService.sharedInstance.play(.dogDays)
         return true

@@ -3,8 +3,6 @@ import RealmSwift
 /// Represents a data for a level, has history of game results, is immutable
 class Level: Object {
 
-    dynamic private(set) var uuid: String = UUID().uuidString
-
     dynamic private(set) var name: String = "Untitled Level"
     // difficulty of the level, higher means more difficult
     // 0 since realm doesn't allow non-default values
@@ -16,10 +14,6 @@ class Level: Object {
 
     private let history = List<LevelResult>()
     private let rawPhrases = List<Phrase>()
-
-    override static func primaryKey() -> String? {
-        return "uuid"
-    }
 
     /// MARK: non-persisted properties
 
