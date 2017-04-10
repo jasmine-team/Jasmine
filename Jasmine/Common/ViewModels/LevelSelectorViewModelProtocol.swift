@@ -9,4 +9,14 @@ protocol LevelSelectorViewModelProtocol {
     ///
     /// - Parameter gameInfo: the game info
     func deleteLevel(from gameInfo: GameInfo)
+
+    /// Get the phrase explorer VM from the game info
+    ///
+    /// - Parameter gameInfo: the game info to be passed
+    func getPhraseExplorerViewModel(from gameInfo: GameInfo) -> PhrasesExplorerViewModel
+
+    /// Play the game 
+    ///
+    /// - Parameter gameInfo: the game info to be passed
+    func playGame(from gameInfo: GameInfo) -> BaseViewModelProtocol
 }
