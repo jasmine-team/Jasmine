@@ -36,14 +36,14 @@ class Level: Object {
     }
 
     /// All phrases for this level
-    lazy private(set) var phrases: Phrases = {
+    var phrases: Phrases {
         return Phrases(self.rawPhrases)
-    }()
+    }
 
     override static func ignoredProperties() -> [String] {
         return ["gameType", "gameMode", "phrases"]
     }
-    
+
     /// Adds result to history
     ///
     /// - Parameter result: result of game to be added to history
@@ -53,7 +53,7 @@ class Level: Object {
             history.append(result)
         }
     }
-    
+
     /// Resets game history
     ///
     /// - Throws: throws error if unable to save
