@@ -71,7 +71,7 @@ class TetrisGameViewModelTests: RealmTestCase {
         let originalUpcomingTiles = viewModel.upcomingTiles
         let swapIndex: Int = 1
         guard let fallingTileText = viewModel.fallingTileText else {
-            XCTAssert(false, "Failed to get falling tile text")
+            XCTFail("Failed to get falling tile text")
             return
         }
         let upcomingTileText = viewModel.upcomingTiles[swapIndex]
@@ -135,7 +135,7 @@ class TetrisGameViewModelTests: RealmTestCase {
         let testWords = testPhrases.flatMap { $0 }
         for _ in 0..<testWords.count {
             guard let columnToLand = testWords.index(of: viewModel.fallingTileText) else {
-                XCTAssert(false, "Falling tile text is invalid")
+                XCTFail("Falling tile text is invalid")
                 return
             }
             let landingCoordinate = Coordinate(row: GameConstants.Tetris.rows - 1, col: columnToLand)
@@ -165,7 +165,7 @@ class TetrisGameViewModelTests: RealmTestCase {
 
         for _ in 0..<testWords.count {
             guard let columnToLand = testWords.index(of: viewModel.fallingTileText) else {
-                XCTAssert(false, "Falling tile text is invalid")
+                XCTFail("Falling tile text is invalid")
                 return
             }
             let landingCoordinate = Coordinate(row: viewModel.gridData.numRows - 1, col: columnToLand)
