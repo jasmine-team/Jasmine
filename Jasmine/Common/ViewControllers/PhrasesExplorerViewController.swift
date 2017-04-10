@@ -5,6 +5,7 @@ class PhrasesExplorerViewController: UIViewController {
     fileprivate var phrasesTable: PhrasesTableViewController!
     fileprivate var viewModel: PhrasesExplorerViewModel!
     private var searchController: UISearchController!
+    private var selectTableMode: Bool!
 
     /// Dismisses this current screen when "Back" button is pressed.
     @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
@@ -19,16 +20,26 @@ class PhrasesExplorerViewController: UIViewController {
     /// Injects the required data before opening this view.
     ///
     /// - Parameter viewModel: the view model of this class.
-    func segueWith(_ viewModel: PhrasesExplorerViewModel) {
+    func segueWith(_ viewModel: PhrasesExplorerViewModel, selectTableMode: Bool) {
         self.viewModel = viewModel
+        self.selectTableMode = selectTableMode
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let table = segue.destination as? PhrasesTableViewController {
-            phrasesTable = table
-            phrasesTable.viewModel = viewModel
-            searchController = UISearchController(searchResultsController: phrasesTable)
+        let table: PhrasesTableViewController?
+        if selectTableMode == true {
+            table = segue.destination as? PhrasesSelectionTableViewController
+        } else {
+            table = segue.destination as? PhrasesDetailTableViewController
         }
+
+        guard table != nil else {
+            return
+        }
+
+        phrasesTable = table
+        phrasesTable.viewModel = viewModel
+        searchController = UISearchController(searchResultsController: phrasesTable)
     }
 }
 

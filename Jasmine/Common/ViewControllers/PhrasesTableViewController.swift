@@ -12,7 +12,7 @@ class PhrasesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PhrasesTableViewController.cellIdentifier,
+        let cell = tableView.dequeueReusableCell(withIdentifier: PhrasesSelectionTableViewController.cellIdentifier,
                                                  for: indexPath)
 
         let row = indexPath.row
@@ -25,15 +25,5 @@ class PhrasesTableViewController: UITableViewController {
         }
 
         return cell
-    }
-
-    /// Executed when rows of the table is selected
-    ///
-    /// - Parameters:
-    ///   - tableView: the table view
-    ///   - indexPath: the index path selected
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.toggle(at: indexPath.row)
-        tableView.reloadRows(at: [indexPath], with: .none)
     }
 }

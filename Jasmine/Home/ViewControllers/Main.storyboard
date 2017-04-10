@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fdz-8j-kDQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fdz-8j-kDQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,52 +24,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eKS-sV-Lr3">
-                                <rect key="frame" x="78.5" y="228.5" width="218" height="210"/>
+                                <rect key="frame" x="71" y="213.5" width="233" height="240"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nil-Gc-zGo">
-                                        <rect key="frame" x="0.0" y="0.0" width="218" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="233" height="30"/>
                                         <state key="normal" title="Open Swapping Chengyu Game"/>
                                         <connections>
                                             <segue destination="n7s-Ck-n8c" kind="show" id="odq-fT-zOs"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvu-uL-ORH">
-                                        <rect key="frame" x="0.0" y="30" width="218" height="30"/>
+                                        <rect key="frame" x="0.0" y="30" width="233" height="30"/>
                                         <state key="normal" title="Open Swapping Cihui Game"/>
                                         <connections>
                                             <segue destination="n7s-Ck-n8c" kind="show" id="ttU-OF-6vh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iq-Ac-1yh">
-                                        <rect key="frame" x="0.0" y="60" width="218" height="30"/>
+                                        <rect key="frame" x="0.0" y="60" width="233" height="30"/>
                                         <state key="normal" title="Open Tetris Game"/>
                                         <connections>
                                             <segue destination="CTx-JF-hEy" kind="show" id="teM-ew-Hcb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDQ-IQ-GqK">
-                                        <rect key="frame" x="0.0" y="90" width="218" height="30"/>
+                                        <rect key="frame" x="0.0" y="90" width="233" height="30"/>
                                         <state key="normal" title="Open Sliding Chengyu Game"/>
                                         <connections>
                                             <segue destination="8ZU-Hu-mvm" kind="show" id="MN3-qC-tx6"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hhd-Gn-BwK">
-                                        <rect key="frame" x="0.0" y="120" width="218" height="30"/>
+                                        <rect key="frame" x="0.0" y="120" width="233" height="30"/>
                                         <state key="normal" title="Open Sliding Cihui Game"/>
                                         <connections>
                                             <segue destination="8ZU-Hu-mvm" kind="show" id="djo-h3-zHX"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pQ-1T-20y">
-                                        <rect key="frame" x="0.0" y="150" width="218" height="30"/>
-                                        <state key="normal" title="Phrases Explorer"/>
+                                        <rect key="frame" x="0.0" y="150" width="233" height="30"/>
+                                        <state key="normal" title="Phrases Explorer With Select"/>
                                         <connections>
                                             <segue destination="4Cz-aW-33f" kind="show" id="kwm-v0-aGq"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sl2-Co-6ct">
+                                        <rect key="frame" x="0.0" y="180" width="233" height="30"/>
+                                        <state key="normal" title="Phrases Explorer With Phrase Info"/>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gp-IY-vsy">
-                                        <rect key="frame" x="0.0" y="180" width="218" height="30"/>
+                                        <rect key="frame" x="0.0" y="210" width="233" height="30"/>
                                         <state key="normal" title="Open Phrase"/>
                                         <connections>
                                             <segue destination="rYh-KJ-YNp" kind="show" id="RG9-Ac-fGg"/>
@@ -86,6 +90,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Debug" id="mm0-Ag-qnB"/>
                     <connections>
+                        <outlet property="phrasesWithInfoButton" destination="Sl2-Co-6ct" id="wgA-87-lby"/>
+                        <outlet property="phrasesWithSelectButton" destination="4pQ-1T-20y" id="Ti8-Dy-l9k"/>
                         <outlet property="slidingChengYuButton" destination="oDQ-IQ-GqK" id="c8Y-Ws-9rI"/>
                         <outlet property="slidingCiHuiButton" destination="Hhd-Gn-BwK" id="lCN-eT-pld"/>
                         <outlet property="swappingChengYuButton" destination="nil-Gc-zGo" id="sUZ-RF-Tlh"/>
@@ -123,8 +129,8 @@
         <!--PhraseViewController-->
         <scene sceneID="4M4-bA-S8x">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="CommonsStoryboard" storyboardName="CommonsStoryboard" referencedIdentifier="PhraseViewController" id="rYh-KJ-YNp" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zt0-G3-AcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="CommonsStoryboard" storyboardName="CommonsStoryboard" referencedIdentifier="PhraseViewController" id="rYh-KJ-YNp" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="776" y="273"/>
         </scene>
@@ -134,7 +140,7 @@
                 <viewControllerPlaceholder storyboardName="CommonsStoryboard" referencedIdentifier="PhrasesExplorerViewController" id="4Cz-aW-33f" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XmM-vH-bBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="798" y="277"/>
+            <point key="canvasLocation" x="797" y="319"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Yj8-SC-wqm">
