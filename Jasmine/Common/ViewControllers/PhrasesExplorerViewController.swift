@@ -33,21 +33,26 @@ class PhrasesExplorerViewController: UIViewController {
 }
 
 extension PhrasesExplorerViewController: UISearchBarDelegate {
+    /// When search bar starts editing: show cancel button.
+    ///
+    /// - Parameter searchBar: the search bar
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
     }
 
+    /// When the search bar text is changed: search for the text.
+    ///
+    /// - Parameters:
+    ///   - searchBar: the search bar
+    ///   - searchText: the text to be searched
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchBar.setShowsCancelButton(true, animated: true)
-
-        guard let text = searchBar.text else {
-            return
-        }
-
-        viewModel.search(keyword: text)
+        viewModel.search(keyword: searchText)
         phrasesTable.tableView.reloadData()
     }
 
+    /// When the cancel button is clicked: resign first responder and reset search.
+    ///
+    /// - Parameter searchBar: the search bar
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         viewModel.reset()
