@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		005D4DDE1E9418F500E8DD0B /* Matrix+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D4DDD1E9418F500E8DD0B /* Matrix+Equatable.swift */; };
+		00C6006F1E9B2F99006BA74A /* LevelDesignerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C6006E1E9B2F99006BA74A /* LevelDesignerStoryboard.storyboard */; };
+		00C600711E9B2FD0006BA74A /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C600701E9B2FD0006BA74A /* LevelDesignerViewController.swift */; };
+		00C600731E9B636E006BA74A /* LevelsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C600721E9B636E006BA74A /* LevelsError.swift */; };
+		00C600751E9B78DB006BA74A /* UIVIewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C600741E9B78DB006BA74A /* UIVIewController+Alert.swift */; };
 		0CF9D2BB3EBC822ACB7FF766 /* Pods_Jasmine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */; };
 		4EA886212AABEB7ED888C04C /* Pods_JasmineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */; };
 		5007FD121E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007FD111E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift */; };
@@ -150,6 +154,10 @@
 
 /* Begin PBXFileReference section */
 		005D4DDD1E9418F500E8DD0B /* Matrix+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Matrix+Equatable.swift"; sourceTree = "<group>"; };
+		00C6006E1E9B2F99006BA74A /* LevelDesignerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LevelDesignerStoryboard.storyboard; sourceTree = "<group>"; };
+		00C600701E9B2FD0006BA74A /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
+		00C600721E9B636E006BA74A /* LevelsError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelsError.swift; sourceTree = "<group>"; };
+		00C600741E9B78DB006BA74A /* UIVIewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Alert.swift"; sourceTree = "<group>"; };
 		3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasmine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
 		5007FD111E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightedUpdateDelegateMock.swift; sourceTree = "<group>"; };
@@ -310,6 +318,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00C6006C1E9B2F66006BA74A /* LevelDesigner */ = {
+			isa = PBXGroup;
+			children = (
+				00C6006D1E9B2F7E006BA74A /* ViewControllers */,
+			);
+			name = LevelDesigner;
+			sourceTree = "<group>";
+		};
+		00C6006D1E9B2F7E006BA74A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				00C6006E1E9B2F99006BA74A /* LevelDesignerStoryboard.storyboard */,
+				00C600701E9B2FD0006BA74A /* LevelDesignerViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		4F925529F1FCEF5E5A4CE750 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +418,7 @@
 				A2187E6B1E7510B60033FC5B /* Random.swift */,
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
 				DF409FDE1E84147400389976 /* TimerStatus.swift */,
+				00C600721E9B636E006BA74A /* LevelsError.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -418,14 +444,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		50989DCC1E6D8B16009A86C8 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				DFF45A7D1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		50989DCD1E6D8B16009A86C8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,7 +453,6 @@
 				DFE1113D1E98BD5D00F8860E /* Sounds */,
 				DFBE8F2B1E9526BE0036CCC6 /* ViewControllers */,
 				DFE111461E98BDA900F8860E /* ViewModels */,
-				50989DCC1E6D8B16009A86C8 /* ViewModels */,
 				DF7CF77C1E7E9EED00C6979A /* Views */,
 				50989DE51E6D8BBD009A86C8 /* AppDelegate.swift */,
 				A260C6271E6AB30400782103 /* Assets.xcassets */,
@@ -638,6 +655,7 @@
 				DFBE8F621E9527F70036CCC6 /* GameCommons */,
 				DFBE8F1B1E951E310036CCC6 /* Home */,
 				DFBE8F211E951FE70036CCC6 /* Levels */,
+				00C6006C1E9B2F66006BA74A /* LevelDesigner */,
 				DFBE8F261E9520AF0036CCC6 /* Profile */,
 				DFBE8F831E9533050036CCC6 /* Settings */,
 				DF21551B1E8E237F005A0927 /* Sliding */,
@@ -705,6 +723,7 @@
 				DF2052C71E8BDD5A00D66B0B /* UIImageView+Animation.swift */,
 				DF2155261E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift */,
 				DF944C2C1E84EF250037437C /* UIView+Shadows.swift */,
+				00C600741E9B78DB006BA74A /* UIVIewController+Alert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -915,6 +934,7 @@
 			isa = PBXGroup;
 			children = (
 				DFE111471E98BDA900F8860E /* PhraseViewModel.swift */,
+				DFF45A7D1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1018,6 +1038,7 @@
 				DF409FEC1E8415AB00389976 /* prebundled.realm in Resources */,
 				A260C6281E6AB30400782103 /* Assets.xcassets in Resources */,
 				DFE111411E98BD5D00F8860E /* dog_days.mp3 in Resources */,
+				00C6006F1E9B2F99006BA74A /* LevelDesignerStoryboard.storyboard in Resources */,
 				DFBE8F201E951FC00036CCC6 /* Main.storyboard in Resources */,
 				DFBE8F881E9533510036CCC6 /* SettingsStoryboard.storyboard in Resources */,
 				DFBE8F251E9520450036CCC6 /* LevelSelectionStoryboard.storyboard in Resources */,
@@ -1157,6 +1178,7 @@
 				DF2321561E961A6900417ED2 /* GameOverViewController.swift in Sources */,
 				DFBE8F1F1E951FC00036CCC6 /* HomeScreenViewController.swift in Sources */,
 				DFBE8F401E95272B0036CCC6 /* SquareGridViewController.swift in Sources */,
+				00C600731E9B636E006BA74A /* LevelsError.swift in Sources */,
 				502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */,
 				DFE1113A1E98BD3300F8860E /* AVAudioPlayer+Extensions.swift in Sources */,
 				DF7CF7721E7E9E3500C6979A /* IndexPath+Coordinate.swift in Sources */,
@@ -1165,6 +1187,7 @@
 				DF409FDB1E84145800389976 /* UIApplication+isFirstLaunch.swift in Sources */,
 				DF7CF7801E7E9EED00C6979A /* SquareTileViewCell.swift in Sources */,
 				DFBE8F731E9527F70036CCC6 /* GameStatusUpdateDelegate.swift in Sources */,
+				00C600711E9B2FD0006BA74A /* LevelDesignerViewController.swift in Sources */,
 				DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */,
 				DF9918D51E92B6A3004E599B /* ChengYuSwappingViewModel.swift in Sources */,
 				A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */,
@@ -1220,6 +1243,7 @@
 				DF409FE11E84147400389976 /* TimerStatus.swift in Sources */,
 				50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */,
 				DFBE8F7D1E9527F70036CCC6 /* ScoreDescriptorProtocol.swift in Sources */,
+				00C600751E9B78DB006BA74A /* UIVIewController+Alert.swift in Sources */,
 				DF7CF7711E7E9E3500C6979A /* CGRect+Arithmetic.swift in Sources */,
 				DF944C2D1E84EF250037437C /* UIView+Shadows.swift in Sources */,
 				DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */,

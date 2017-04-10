@@ -3,7 +3,7 @@ import UIKit
 class PhrasesExplorerViewController: UIViewController {
 
     fileprivate var phrasesTable: PhrasesTableViewController!
-    fileprivate var viewModel: PhrasesExplorerViewModel!
+    fileprivate(set) var viewModel: PhrasesExplorerViewModel!
     private var searchController: UISearchController!
 
     /// Dismisses this current screen when "Back" button is pressed.
