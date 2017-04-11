@@ -15,10 +15,9 @@ class PhrasesExplorerViewModel {
     /// The ViewController that contains this ViewModel
     weak var viewControllerDelegate: PhrasesExplorerViewController?
 
-    init(phrases: Phrases, amount: Int) {
-        let listOfPhrases = phrases.randomGenerator.next(count: amount)
-        allPhrasesWithSelection = listOfPhrases.map { ($0, false) }
-        rowIndices = Array(0..<amount)
+    init(phrases: Phrases) {
+        allPhrasesWithSelection = phrases.map { ($0, false) }
+        rowIndices = Array(0..<phrases.count)
     }
 
     /// Gets the Chinese string and selected status of the given row.
@@ -62,5 +61,14 @@ class PhrasesExplorerViewModel {
     /// Resets the table from search.
     func reset() {
         rowIndices = Array(0..<allPhrasesWithSelection.count)
+    }
+
+    /// Returns the PhraseViewModel associated with the given row (index of the table).
+    ///
+    /// - Parameter row: the row that is pressed
+    /// - Returns: the phrase VM to be segued with (to the PhraseVC)
+    func getPhraseViewModel(at row: Int) -> PhraseViewModel {
+        let index = rowIndices[row]
+        return PhraseViewModel(phrase: allPhrasesWithSelection[index].phrase)
     }
 }

@@ -2,7 +2,6 @@ import XCTest
 @testable import Jasmine
 
 class PhrasesExplorerViewModelTests: RealmTestCase {
-    let count = 10
     var phrases: Phrases!
     var viewModel: PhrasesExplorerViewModel!
 
@@ -10,22 +9,22 @@ class PhrasesExplorerViewModelTests: RealmTestCase {
         super.setUp()
         let gameData = createGameData(difficulty: 1, type: .ciHui)
         phrases = gameData.phrases
-        viewModel = PhrasesExplorerViewModel(phrases: phrases, amount: count)
+        viewModel = PhrasesExplorerViewModel(phrases: phrases)
     }
 
     func testInit() {
-        XCTAssertEqual(10, viewModel.rowsShown)
+        XCTAssertEqual(phrases.count, viewModel.rowsShown)
     }
 
     func testGet() {
-        for idx in 0..<10 {
+        for idx in 0..<phrases.count {
             let phraseTuple = viewModel.get(at: idx)
             XCTAssertFalse(phraseTuple.selected)
         }
     }
 
     func testToggle() {
-        for idx in 0..<10 {
+        for idx in 0..<phrases.count {
             viewModel.toggle(at: idx)
             XCTAssert(viewModel.get(at: idx).selected)
             viewModel.toggle(at: idx)
