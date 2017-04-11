@@ -19,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="7fA-1a-Xfh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ax7-I2-bsu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="604"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="D27-9J-LfR">
-                                <rect key="frame" x="0.0" y="52" width="375" height="552"/>
+                                <rect key="frame" x="0.0" y="52" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GEb-ul-fzT">
                                     <size key="itemSize" width="352" height="83"/>
@@ -170,10 +170,10 @@
             </objects>
             <point key="canvasLocation" x="-607" y="873"/>
         </scene>
-        <!--View Controller-->
+        <!--Level Import View Controller-->
         <scene sceneID="BfO-L7-6Ga">
             <objects>
-                <viewController id="9wZ-YH-6LY" sceneMemberID="viewController">
+                <viewController id="9wZ-YH-6LY" customClass="LevelImportViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HTh-Yc-Tzr"/>
                         <viewControllerLayoutGuide type="bottom" id="tBN-tw-kU4"/>
@@ -193,7 +193,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Import Levels" id="T5S-R4-7oj">
+                                    <navigationItem title="Select Levels" id="T5S-R4-7oj">
                                         <barButtonItem key="leftBarButtonItem" title="BACK" id="XNV-3s-fy2">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </barButtonItem>
@@ -371,6 +371,6 @@
         <image name="icon-menu" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jPy-cZ-L7Q"/>
+        <segue reference="sQK-wM-js2"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -19,8 +19,7 @@ protocol GameLevelListViewDelegate: class {
     func shouldMarkAsSelected(fromDefault isDefaultLevels: Bool, at index: Int) -> Bool
 
     /// Notifies the user of this view controller that a level has been selected.
-    func notifyLevelSelected(fromDefault isDefaultLevels: Bool, at index: Int,
-                             withCell levelCell: GameLevelViewCell)
+    func notifyLevelSelected(fromDefault isDefaultLevels: Bool, at index: Int)
 
     /// Notifies the user of this view controller to open the list of menu for the specified level.
     func notifyOpenMenuForLevel(fromDefault isDefaultLevels: Bool, at index: Int)

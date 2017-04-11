@@ -91,20 +91,23 @@ class LevelSelectorViewController: UIViewController {
 
         let phrasesAction = UIAlertAction(
             title: LevelSelectorViewController.actionSheetPhrases, style: .default) { _ in
-                self.segueToPhrasesExplorerView(forLevel: level) }
+                self.segueToPhrasesExplorerView(forLevel: level)
+        }
         actionSheetController.addAction(phrasesAction)
 
         if level.isEditable {
             let editAction = UIAlertAction(
-            title: LevelSelectorViewController.actionSheetEdit, style: .default) { _ in
-                self.segueToEditLevelView(forLevel: level) }
+                title: LevelSelectorViewController.actionSheetEdit, style: .default) { _ in
+                    self.segueToEditLevelView(forLevel: level)
+            }
             actionSheetController.addAction(editAction)
         }
 
         if level.isEditable {
             let deleteAction = UIAlertAction(
-            title: LevelSelectorViewController.actionSheetDelete, style: .destructive) { _ in
-                self.viewModel.deleteLevel(from: level) }
+                title: LevelSelectorViewController.actionSheetDelete, style: .destructive) { _ in
+                    self.viewModel.deleteLevel(from: level)
+            }
             actionSheetController.addAction(deleteAction)
         }
 
@@ -142,9 +145,7 @@ extension LevelSelectorViewController: GameLevelListViewDelegate {
     }
 
     /// Notifies the user of this view controller that a level has been selected.
-    func notifyLevelSelected(fromDefault isDefaultLevels: Bool, at index: Int,
-                             withCell levelCell: GameLevelViewCell) {
-
+    func notifyLevelSelected(fromDefault isDefaultLevels: Bool, at index: Int) {
         self.selectedLevel = getLevels(fromDefault: isDefaultLevels)[index]
         guard let segueIdentifier = LevelSelectorViewController
                   .segueToGameIdentifier[selectedLevel.gameMode] else {
