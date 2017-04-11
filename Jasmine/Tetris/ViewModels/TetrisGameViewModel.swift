@@ -168,7 +168,7 @@ class TetrisGameViewModel {
     /// Returns `Constants.Game.Tetris.upcomingPhrasesCount` number of new phrases and add them to the phrases tested
     private func getNewTexts() -> [String] {
         let count = GameConstants.Tetris.upcomingPhrasesCount
-        let newPhrases = gameData.phrases.makeRandomGenerator().next(count: count)
+        let newPhrases = gameData.phrases.randomGenerator.next(count: count)
         phrasesTested.formUnion(newPhrases)
         return newPhrases.map { $0.chinese }.flatMap { $0 }
     }

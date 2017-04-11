@@ -8,7 +8,7 @@ class ChengYuSwappingViewModel: BaseSwappingViewModel {
     ///   - gameData: game data
     ///   - numberOfPhrases: number of phrases to be produced
     init(time: TimeInterval, gameData: GameData, numberOfPhrases: Int) {
-        let phrases = gameData.phrases.makeRandomGenerator().next(count: numberOfPhrases)
+        let phrases = gameData.phrases.randomGenerator.next(count: numberOfPhrases)
         let tiles = phrases.flatMap { $0.chinese }
         super.init(time: time, gameData: gameData, tiles: tiles,
                    rows: numberOfPhrases, columns: GameConstants.Swapping.columns)

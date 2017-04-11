@@ -53,7 +53,7 @@ class HomeScreenViewController: UIViewController {
             let viewModel = PhrasesExplorerViewModel(phrases: ciHuiGameData.phrases, amount: 50)
             phrasesExplorer.segueWith(viewModel)
         } else if let phraseVC = segue.destination as? PhraseViewController {
-            let phrase = ciHuiGameData.phrases.makeRandomGenerator().next()
+            let phrase = ciHuiGameData.phrases.randomGenerator.next()
             phraseVC.segueWith(PhraseViewModel(phrase: phrase))
         }
     }

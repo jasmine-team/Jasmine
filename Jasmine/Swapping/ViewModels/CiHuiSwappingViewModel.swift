@@ -8,7 +8,7 @@ class CiHuiSwappingViewModel: BaseSwappingViewModel {
     ///   - gameData: game data
     ///   - numberOfPhrases: number of phrases to be produced
     init(time: TimeInterval, gameData: GameData, numberOfPhrases: Int) {
-        let phrases = gameData.phrases.makeRandomGenerator().next(count: numberOfPhrases)
+        let phrases = gameData.phrases.randomGenerator.next(count: numberOfPhrases)
 
         var tiles: [String] = []
         for phrase in phrases {

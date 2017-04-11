@@ -62,6 +62,7 @@
 		A2FF839A1E9A538800677FA2 /* GameManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF83981E9A538800677FA2 /* GameManagerTests.swift */; };
 		A2FF839B1E9A538800677FA2 /* LevelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF83991E9A538800677FA2 /* LevelsTests.swift */; };
 		A2FF839D1E9C9D1800677FA2 /* JasmineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF839C1E9C9D1800677FA2 /* JasmineManager.swift */; };
+		A2FF839F1E9CA26000677FA2 /* RandomGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF839E1E9CA26000677FA2 /* RandomGeneratorTests.swift */; };
 		DF2052C81E8BDD5A00D66B0B /* UIImageView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2052C71E8BDD5A00D66B0B /* UIImageView+Animation.swift */; };
 		DF2155181E8E2335005A0927 /* PhrasesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2155171E8E2335005A0927 /* PhrasesTests.swift */; };
 		DF21551A1E8E234D005A0927 /* Phrases.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2155191E8E234D005A0927 /* Phrases.swift */; };
@@ -214,6 +215,7 @@
 		A2FF83981E9A538800677FA2 /* GameManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManagerTests.swift; sourceTree = "<group>"; };
 		A2FF83991E9A538800677FA2 /* LevelsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelsTests.swift; sourceTree = "<group>"; };
 		A2FF839C1E9C9D1800677FA2 /* JasmineManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JasmineManager.swift; sourceTree = "<group>"; };
+		A2FF839E1E9CA26000677FA2 /* RandomGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomGeneratorTests.swift; sourceTree = "<group>"; };
 		B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF6F46CAE49685937742BCB /* Pods-JasmineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2052C71E8BDD5A00D66B0B /* UIImageView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animation.swift"; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 			children = (
 				DF409FF01E8415F400389976 /* CountDownTimerTest.swift */,
 				50717ABF1E7BD944005A2FE5 /* RandomTests.swift */,
+				A2FF839E1E9CA26000677FA2 /* RandomGeneratorTests.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1274,6 +1277,7 @@
 				DF9918E31E92B730004E599B /* DirectionTests.swift in Sources */,
 				50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */,
 				DF2155181E8E2335005A0927 /* PhrasesTests.swift in Sources */,
+				A2FF839F1E9CA26000677FA2 /* RandomGeneratorTests.swift in Sources */,
 				50717AC01E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift in Sources */,
 				DF40F9E41E967708001EAAA8 /* PhraseTests.swift in Sources */,
 				DFE111521E98BE4000F8860E /* AVAudioPlayer+ExtensionsTest.swift in Sources */,
