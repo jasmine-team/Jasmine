@@ -404,10 +404,10 @@
 		50989DC41E6D8B16009A86C8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A27CA52F1E9BBE650002614C /* RandomGenerator.swift */,
 				DF409FDC1E84147400389976 /* CountDownTimer.swift */,
 				DF409FDD1E84147400389976 /* Prebundler.swift */,
 				A2187E6B1E7510B60033FC5B /* Random.swift */,
+				A27CA52F1E9BBE650002614C /* RandomGenerator.swift */,
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
 				DF409FDE1E84147400389976 /* TimerStatus.swift */,
 			);
@@ -424,6 +424,7 @@
 				DFE1113B1E98BD4300F8860E /* GameMode.swift */,
 				DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */,
 				509894A21E6E6CAE00FC9CF3 /* GameType.swift */,
+				A2FF839C1E9C9D1800677FA2 /* JasmineManager.swift */,
 				A2FF83931E9A536F00677FA2 /* Level.swift */,
 				DF40F9E11E9676C1001EAAA8 /* LevelResult.swift */,
 				A2FF83941E9A536F00677FA2 /* Levels.swift */,
@@ -431,7 +432,6 @@
 				DF2155191E8E234D005A0927 /* Phrases.swift */,
 				DF409FE41E8414B000389976 /* Player.swift */,
 				50AE3A751E8B93D3005EC944 /* TextGrid.swift */,
-				A2FF839C1E9C9D1800677FA2 /* JasmineManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

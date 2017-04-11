@@ -50,7 +50,7 @@ class HomeScreenViewController: UIViewController {
                                                             rows: GameConstants.Sliding.rows))
             }
         } else if let phrasesExplorer = segue.destination as? PhrasesExplorerViewController {
-            let viewModel = PhrasesExplorerViewModel(phrases: ciHuiGameData.phrases, amount: 50)
+            let viewModel = PhrasesExplorerViewModel(phrases: ciHuiGameData.phrases)
             phrasesExplorer.segueWith(viewModel)
         } else if let phraseVC = segue.destination as? PhraseViewController {
             let phrase = ciHuiGameData.phrases.randomGenerator.next()

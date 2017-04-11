@@ -2,6 +2,7 @@ import RealmSwift
 
 /// The ViewModel for the level selector part.
 class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
+    private var realm: Realm
     /// The Levels object that manages the level objects
     private var levels: Levels
     /// Default levels as a level array
@@ -15,14 +16,13 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
     /// The defaults levels in the game.
     var defaultLevels: [GameInfo] {
         return rawDefaultLevels.map { level in
-            // TODO: Get the actual UUIDs
-            GameInfo(uuid: "A", levelName: level.name, gameType: level.gameType, gameMode: level.gameMode)
+            GameInfo(uuid: level.uuid, levelName: level.name, gameType: level.gameType, gameMode: level.gameMode)
         }
     }
     /// The custom levels in the game.
     var customLevels: [GameInfo] {
         return rawCustomLevels.map { level in
-            GameInfo(uuid: "A", levelName: level.name, gameType: level.gameType, gameMode: level.gameMode)
+            GameInfo(uuid: level.uuid, levelName: level.name, gameType: level.gameType, gameMode: level.gameMode)
         }
     }
 
@@ -30,6 +30,7 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
         guard let realm = try? Realm() else {
             fatalError("Cannot create Realm")
         }
+        self.realm = realm
         levels = Levels(realm: realm)
     }
 
@@ -37,9 +38,8 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
     ///
     /// - Parameter gameInfo: the game info
     func deleteLevel(from gameInfo: GameInfo) {
-        // TODO: Get UUID
-        guard let level = rawCustomLevels.first(where: { $0.name == gameInfo.uuid }),
-              ((try? levels.deleteLevel(level)) != nil) else {
+        let level = getLevel(from: gameInfo.uuid, inArray: rawCustomLevels)
+        guard (try? levels.deleteLevel(level)) != nil else {
             assertionFailure("Cannot delete level, somehow")
             return
         }
@@ -49,28 +49,17 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
     ///
     /// - Parameter gameInfo: the game info to be passed
     func getPhraseExplorerViewModel(from gameInfo: GameInfo) -> PhrasesExplorerViewModel {
-        // TODO: Get UUID
-        guard let level = rawCustomLevels.first(where: { $0.name == gameInfo.uuid }) else {
-            fatalError("Cannot get level, somehow")
-        }
-
-        // TODO
-        return PhrasesExplorerViewModel(phrases: level.phrases, amount: 3)
+        let level = getLevel(from: gameInfo.uuid, inArray: rawCustomLevels)
+        return PhrasesExplorerViewModel(phrases: level.phrases)
     }
 
     /// Play the game 
     ///
     /// - Parameter gameInfo: the game info to be passed
     func playGame(from gameInfo: GameInfo) -> BaseViewModelProtocol {
-        guard let gameManager = try? GameManager() else {
-            fatalError("Error with Realm")
-        }
-
-        // TODO: Get UUID
-        guard let level = rawCustomLevels.first(where: { $0.name == gameInfo.uuid }) else {
-            fatalError("Cannot get level, somehow")
-        }
-        let gameData = gameManager.createGame(fromLevel: level)
+        let gameManager = GameManager(realm: realm)
+        let gameData = gameManager.createGame(fromLevel: getLevel(from: gameInfo.uuid,
+                                                                  inArray: rawDefaultLevels + rawCustomLevels))
 
         switch (gameInfo.gameMode, gameInfo.gameType) {
         case (.sliding, .chengYu):
@@ -90,5 +79,16 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
         default:
             fatalError("Game mode & game type combination not found")
         }
+    }
+
+    /// Get a level from the given UUID
+    ///
+    /// - Parameter uuid: the UUID to be searched
+    /// - Returns: the level from the UUID
+    private func getLevel(from uuid: String, inArray array: [Level]) -> Level {
+        guard let level = array.first(where: { $0.uuid == uuid }) else {
+            fatalError("Level does not exist")
+        }
+        return level
     }
 }
