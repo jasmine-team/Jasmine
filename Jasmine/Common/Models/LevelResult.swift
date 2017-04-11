@@ -8,10 +8,13 @@ class LevelResult: Object {
     private(set) dynamic var score: Int = 0
     private dynamic var rawGameResult: String = ""
 
+    private(set) dynamic var level: Level?
+
     let phrases = List<Phrase>()
 
-    convenience init(gameData: GameData) {
+    convenience init(level: Level, gameData: GameData) {
         self.init()
+        self.level = level
         phrases.append(objectsIn: gameData.phrasesTested)
         score = gameData.score
 

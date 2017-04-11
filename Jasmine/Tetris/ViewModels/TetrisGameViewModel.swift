@@ -86,7 +86,7 @@ class TetrisGameViewModel {
     }
 
     private func checkForMatchingPhrase(at coordinate: Coordinate, rowWise: Bool) -> Set<Coordinate>? {
-        let phraseLen = gameData.phrases.phraseLength
+        let phraseLen = gameData.phrases[0].chinese.count
         let rowOrCol = rowWise ? coordinate.col : coordinate.row
         let startIndex = max(0, rowOrCol - phraseLen + 1)
         let endIndex = min((rowWise ? gridData.numColumns : gridData.numRows) - phraseLen, rowOrCol)

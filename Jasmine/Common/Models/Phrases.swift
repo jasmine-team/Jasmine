@@ -15,18 +15,14 @@ class Phrases {
     }()
 
     fileprivate var phrases: List<Phrase>
-    let phraseLength: Int
 
     /// Creates an encapsulated list of phrases for usage outside of models
     ///
     /// - Parameters:
     ///   - phrases: realm list of phrases
     init(realm: Realm? = nil, _ phrases: List<Phrase>) {
+        assert(!phrases.isEmpty, "Phrases is empty!")
         self.phrases = phrases
-        guard let firstPhrase = phrases.first else {
-            fatalError("Phrases is empty")
-        }
-        self.phraseLength = firstPhrase.chinese.count
     }
 
     /// Creates a copy of the phrase
@@ -63,15 +59,6 @@ class Phrases {
     }
 
     /// MARK: Helper functions
-
-    /// Creates a predicate that filters based on character count
-    ///
-    /// - Parameter count: numebr of characters for the chinese phrase
-    /// - Returns: a string that follows NSPredicate format
-    private var chineseLengthPredicate: String {
-        return "rawChinese LIKE '\(String(repeating: "?", count: phraseLength))'"
-    }
-
     /// Returns result after applying result predicate to realm db
     /// Note: Will only result 0 or 1 result since chinese is guaranteed to be unique
     ///
