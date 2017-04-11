@@ -52,7 +52,7 @@ class HomeScreenViewController: UIViewController {
                                                             rows: GameConstants.Sliding.rows))
             }
         } else if let phrasesExplorer = segue.destination as? PhrasesExplorerViewController {
-            let viewModel = PhrasesExplorerViewModel(phrases: ciHuiGameData.phrases, amount: 50)
+            let viewModel = PhrasesExplorerViewModel(phrases: ciHuiGameData.phrases)
 
             if (sender as? UIButton) === phrasesWithSelectButton {
                 phrasesExplorer.segueWith(viewModel, isMarkable: true)

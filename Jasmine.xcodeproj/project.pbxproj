@@ -21,6 +21,7 @@
 		502A29761E927B790024336A /* ChengYuSlidingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29731E927B790024336A /* ChengYuSlidingViewModelTests.swift */; };
 		502A29771E927B790024336A /* CiHuiSlidingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29741E927B790024336A /* CiHuiSlidingViewModelTests.swift */; };
 		502A297D1E927D580024336A /* GridViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A297C1E927D580024336A /* GridViewModelTests.swift */; };
+		502C7F171E9BA8CC00D14727 /* LevelSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C7F161E9BA8CC00D14727 /* LevelSelectorViewModel.swift */; };
 		5047D0A11E932C7600DD96BA /* TetrisGameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5047D0A01E932C7600DD96BA /* TetrisGameViewModelTests.swift */; };
 		5048F3C71E9BD63900B379F0 /* PhrasesDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5048F3C61E9BD63900B379F0 /* PhrasesDetailTableViewController.swift */; };
 		5048F3C91E9BD7FD00B379F0 /* PhrasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5048F3C81E9BD7FD00B379F0 /* PhrasesTableViewController.swift */; };
@@ -171,6 +172,7 @@
 		502A29731E927B790024336A /* ChengYuSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSlidingViewModelTests.swift; sourceTree = "<group>"; };
 		502A29741E927B790024336A /* CiHuiSlidingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiSlidingViewModelTests.swift; sourceTree = "<group>"; };
 		502A297C1E927D580024336A /* GridViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewModelTests.swift; sourceTree = "<group>"; };
+		502C7F161E9BA8CC00D14727 /* LevelSelectorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectorViewModel.swift; sourceTree = "<group>"; };
 		5047D0A01E932C7600DD96BA /* TetrisGameViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewModelTests.swift; sourceTree = "<group>"; };
 		5048F3C61E9BD63900B379F0 /* PhrasesDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesDetailTableViewController.swift; sourceTree = "<group>"; };
 		5048F3C81E9BD7FD00B379F0 /* PhrasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesTableViewController.swift; sourceTree = "<group>"; };
@@ -406,10 +408,10 @@
 		50989DC41E6D8B16009A86C8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A27CA52F1E9BBE650002614C /* RandomGenerator.swift */,
 				DF409FDC1E84147400389976 /* CountDownTimer.swift */,
 				DF409FDD1E84147400389976 /* Prebundler.swift */,
 				A2187E6B1E7510B60033FC5B /* Random.swift */,
+				A27CA52F1E9BBE650002614C /* RandomGenerator.swift */,
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
 				DF409FDE1E84147400389976 /* TimerStatus.swift */,
 			);
@@ -426,6 +428,7 @@
 				DFE1113B1E98BD4300F8860E /* GameMode.swift */,
 				DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */,
 				509894A21E6E6CAE00FC9CF3 /* GameType.swift */,
+				A2FF839C1E9C9D1800677FA2 /* JasmineManager.swift */,
 				A2FF83931E9A536F00677FA2 /* Level.swift */,
 				DF40F9E11E9676C1001EAAA8 /* LevelResult.swift */,
 				A2FF83941E9A536F00677FA2 /* Levels.swift */,
@@ -433,7 +436,6 @@
 				DF2155191E8E234D005A0927 /* Phrases.swift */,
 				DF409FE41E8414B000389976 /* Player.swift */,
 				50AE3A751E8B93D3005EC944 /* TextGrid.swift */,
-				A2FF839C1E9C9D1800677FA2 /* JasmineManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -932,6 +934,7 @@
 			children = (
 				50B0C0701E9A02C800D3D420 /* GameInfo.swift */,
 				50B0C06E1E99FF7A00D3D420 /* LevelSelectorViewModelProtocol.swift */,
+				502C7F161E9BA8CC00D14727 /* LevelSelectorViewModel.swift */,
 				DFE111471E98BDA900F8860E /* PhraseViewModel.swift */,
 				DFF45A7D1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift */,
 			);
@@ -1203,6 +1206,7 @@
 				50B0C0711E9A02C800D3D420 /* GameInfo.swift in Sources */,
 				DFBE8F3B1E9526BE0036CCC6 /* DraggableSquareGridViewController.swift in Sources */,
 				DF2155211E8E237F005A0927 /* SlidingViewModelProtocol.swift in Sources */,
+				502C7F171E9BA8CC00D14727 /* LevelSelectorViewModel.swift in Sources */,
 				DFBE8F7C1E9527F70036CCC6 /* GameDescriptorProtocol.swift in Sources */,
 				509036E01E937CB9006548DE /* SwappingGameViewController.swift in Sources */,
 				A2FF83971E9A536F00677FA2 /* Levels.swift in Sources */,
