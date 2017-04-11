@@ -40,7 +40,7 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
     func deleteLevel(from gameInfo: GameInfo) {
         let level = getLevel(from: gameInfo.uuid, inArray: rawCustomLevels)
         guard (try? levels.deleteLevel(level)) != nil else {
-            assertionFailure("Cannot delete level, somehow")
+            assertionFailure("Cannot delete level")
             return
         }
     }
