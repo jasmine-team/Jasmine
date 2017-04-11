@@ -20,7 +20,7 @@ class Level: Object {
     private let rawPhrases = List<Phrase>()
 
     override static func primaryKey() -> String? {
-        return "rawChinese"
+        return "uuid"
     }
     /// MARK: non-persisted properties
 
