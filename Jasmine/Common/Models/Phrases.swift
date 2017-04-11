@@ -21,6 +21,7 @@ class Phrases {
     /// - Parameters:
     ///   - phrases: realm list of phrases
     init(realm: Realm? = nil, _ phrases: List<Phrase>) {
+        assert(!phrases.isEmpty, "Phrases is empty!")
         self.phrases = phrases
     }
 
