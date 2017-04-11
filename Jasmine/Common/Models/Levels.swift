@@ -98,7 +98,7 @@ class Levels {
     /// - Parameter level: level to be deleted
     /// - Throws: Error if failed to delete data
     func deleteLevel(_ level: Level) throws {
-        if !rawCustomLevels.contains(level) {
+        guard rawCustomLevels.contains(level) else {
             assertionFailure("Cannot delete original levels")
             return
         }
