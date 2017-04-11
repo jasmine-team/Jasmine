@@ -6,6 +6,8 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet private weak var swappingCiHuiButton: UIButton!
     @IBOutlet private weak var slidingChengYuButton: UIButton!
     @IBOutlet private weak var slidingCiHuiButton: UIButton!
+    @IBOutlet private weak var phrasesWithSelectButton: UIButton!
+    @IBOutlet private weak var phrasesWithInfoButton: UIButton!
 
     var realm: Realm!
     var levels: Levels!
@@ -50,8 +52,13 @@ class HomeScreenViewController: UIViewController {
                                                             rows: GameConstants.Sliding.rows))
             }
         } else if let phrasesExplorer = segue.destination as? PhrasesExplorerViewController {
-            let viewModel = PhrasesExplorerViewModel(phrases: ciHuiGameData.phrases)
-            phrasesExplorer.segueWith(viewModel)
+            let viewModel = PhrasesExplorerViewModel(phrases: ciHuiGameData.phrases, amount: 50)
+
+            if (sender as? UIButton) === phrasesWithSelectButton {
+                phrasesExplorer.segueWith(viewModel, isMarkable: true)
+            } else if (sender as? UIButton) === phrasesWithInfoButton {
+                phrasesExplorer.segueWith(viewModel, isMarkable: false)
+            }
         } else if let phraseVC = segue.destination as? PhraseViewController {
             let phrase = ciHuiGameData.phrases.randomGenerator.next()
             phraseVC.segueWith(PhraseViewModel(phrase: phrase))
