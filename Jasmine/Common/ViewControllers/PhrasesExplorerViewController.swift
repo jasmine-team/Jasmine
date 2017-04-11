@@ -9,16 +9,24 @@ class PhrasesExplorerViewController: UIViewController {
     private var isMarkable: Bool!
 
     override func viewDidLoad() {
+        super.viewDidLoad()
+        setupPhrasesTable()
+        searchController = UISearchController(searchResultsController: phrasesTable)
+        showPhrasesTable()
+    }
+
+    private func setupPhrasesTable() {
         if isMarkable == true {
             phrasesTable = PhrasesSelectionTableViewController()
         } else {
             phrasesTable = PhrasesDetailTableViewController()
         }
-
         phrasesTable.viewModel = viewModel
-        searchController = UISearchController(searchResultsController: phrasesTable)
+    }
 
+    private func showPhrasesTable() {
         addChildViewController(phrasesTable)
+        phrasesTable.view.frame = phrasesTableView.frame
         phrasesTableView.addSubview(phrasesTable.view)
         phrasesTable.didMove(toParentViewController: self)
     }

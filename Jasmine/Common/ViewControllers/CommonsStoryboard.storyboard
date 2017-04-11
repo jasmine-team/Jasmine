@@ -64,15 +64,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ncI-bH-3db" firstAttribute="top" secondItem="f9C-Gv-dVr" secondAttribute="bottom" id="1t2-K0-Uhh"/>
+                            <constraint firstItem="f9C-Gv-dVr" firstAttribute="top" secondItem="KVZ-Pg-UvA" secondAttribute="bottom" id="6rd-mc-Iwf"/>
                             <constraint firstAttribute="trailing" secondItem="KVZ-Pg-UvA" secondAttribute="trailing" id="C9v-MX-5Do"/>
+                            <constraint firstItem="f9C-Gv-dVr" firstAttribute="leading" secondItem="1mp-X2-ZcW" secondAttribute="leading" id="EAi-GY-hEF"/>
                             <constraint firstItem="f9C-Gv-dVr" firstAttribute="top" secondItem="KVZ-Pg-UvA" secondAttribute="bottom" id="GV8-Us-GgF"/>
                             <constraint firstItem="fRz-oO-Zb3" firstAttribute="top" secondItem="1mp-X2-ZcW" secondAttribute="top" id="JOX-Z8-mHt"/>
+                            <constraint firstItem="ncI-bH-3db" firstAttribute="top" secondItem="f9C-Gv-dVr" secondAttribute="bottom" id="NOP-2z-5Rx"/>
                             <constraint firstAttribute="trailing" secondItem="f9C-Gv-dVr" secondAttribute="trailing" id="Qzp-yC-yjJ"/>
                             <constraint firstItem="f9C-Gv-dVr" firstAttribute="leading" secondItem="1mp-X2-ZcW" secondAttribute="leading" id="R0O-iM-vrs"/>
                             <constraint firstItem="KVZ-Pg-UvA" firstAttribute="top" secondItem="fRz-oO-Zb3" secondAttribute="bottom" id="VKR-Jh-8bc"/>
                             <constraint firstAttribute="trailing" secondItem="fRz-oO-Zb3" secondAttribute="trailing" id="bwa-Oi-s9u"/>
                             <constraint firstItem="KVZ-Pg-UvA" firstAttribute="leading" secondItem="1mp-X2-ZcW" secondAttribute="leading" id="cOS-gq-Vlw"/>
                             <constraint firstItem="fRz-oO-Zb3" firstAttribute="leading" secondItem="1mp-X2-ZcW" secondAttribute="leading" id="caJ-dw-3Pl"/>
+                            <constraint firstAttribute="trailing" secondItem="f9C-Gv-dVr" secondAttribute="trailing" id="nIz-AN-Ero"/>
                         </constraints>
                     </view>
                     <connections>
