@@ -21,6 +21,18 @@ class HomeScreenViewController: UIViewController {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        let gameCenter = GameCenter(realm: realm)
+        let gameManager = GameManager(realm: realm)
+        gameCenter.achieve()
+
+//        var testGameData = gameManager.createGame(fromLevel: levels.original[3])
+//        testGameData.gameStatus = .endedWithWon
+//        try? gameManager.saveGame(result: testGameData)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let gameManager = GameManager(realm: realm)
         // Refer to levels.csv

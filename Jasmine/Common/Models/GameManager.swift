@@ -18,7 +18,9 @@ class GameManager {
     /// - Parameter difficulty: difficulty of the game
     /// - Returns: game data containing relevant phrases and difficulty
     func createGame(fromLevel level: Level) -> GameData {
-        assert(currentLevel == nil, "A game is still ongoing, have you saved the game?")
+        // TODO: Remove when integrating
+        // assert(currentLevel == nil, "A game is still ongoing, have you saved the game?")
+        currentLevel = level
         let gameData = GameData(name: level.name,
                                 phrases: level.phrases,
                                 difficulty: level.difficulty)
@@ -35,6 +37,8 @@ class GameManager {
         try realm.write {
             realm.add(finalResult)
         }
+        print("saving")
+        self.currentLevel = nil
     }
 
 }
