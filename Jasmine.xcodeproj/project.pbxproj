@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		005D4DDE1E9418F500E8DD0B /* Matrix+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D4DDD1E9418F500E8DD0B /* Matrix+Equatable.swift */; };
+		007B69181E9CEB70002FE500 /* LevelDesignerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B69171E9CEB70002FE500 /* LevelDesignerViewModel.swift */; };
 		00C6006F1E9B2F99006BA74A /* LevelDesignerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C6006E1E9B2F99006BA74A /* LevelDesignerStoryboard.storyboard */; };
 		00C600711E9B2FD0006BA74A /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C600701E9B2FD0006BA74A /* LevelDesignerViewController.swift */; };
 		00C600731E9B636E006BA74A /* LevelsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C600721E9B636E006BA74A /* LevelsError.swift */; };
@@ -161,6 +162,7 @@
 
 /* Begin PBXFileReference section */
 		005D4DDD1E9418F500E8DD0B /* Matrix+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Matrix+Equatable.swift"; sourceTree = "<group>"; };
+		007B69171E9CEB70002FE500 /* LevelDesignerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewModel.swift; sourceTree = "<group>"; };
 		00C6006E1E9B2F99006BA74A /* LevelDesignerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LevelDesignerStoryboard.storyboard; sourceTree = "<group>"; };
 		00C600701E9B2FD0006BA74A /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		00C600721E9B636E006BA74A /* LevelsError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelsError.swift; sourceTree = "<group>"; };
@@ -332,10 +334,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		007B69161E9CE90D002FE500 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				007B69171E9CEB70002FE500 /* LevelDesignerViewModel.swift */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
 		00C6006C1E9B2F66006BA74A /* LevelDesigner */ = {
 			isa = PBXGroup;
 			children = (
 				00C6006D1E9B2F7E006BA74A /* ViewControllers */,
+				007B69161E9CE90D002FE500 /* ViewModels */,
 			);
 			name = LevelDesigner;
 			sourceTree = "<group>";
@@ -1274,6 +1285,7 @@
 				DF7CF7711E7E9E3500C6979A /* CGRect+Arithmetic.swift in Sources */,
 				DF944C2D1E84EF250037437C /* UIView+Shadows.swift in Sources */,
 				DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */,
+				007B69181E9CEB70002FE500 /* LevelDesignerViewModel.swift in Sources */,
 				502A296D1E926DCA0024336A /* BaseSlidingViewModel.swift in Sources */,
 				005D4DDE1E9418F500E8DD0B /* Matrix+Equatable.swift in Sources */,
 				DF409FDF1E84147400389976 /* CountDownTimer.swift in Sources */,
