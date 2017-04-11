@@ -152,7 +152,7 @@ class TetrisGameViewController: UIViewController {
     /// - Postcondition: This tile will have been checked if it can land on the top row.
     private func releaseNewTile() {
         guard !tetrisGameAreaView.hasFallingTile,
-              landTileIfNecessary(at: viewModel.fallingTileStartCoordinate) else {
+              !landTileIfNecessary(at: viewModel.fallingTileStartCoordinate) else {
             return
         }
 
@@ -188,7 +188,8 @@ class TetrisGameViewController: UIViewController {
     ///
     /// - Parameter coordinate: the coordinate of the cell in the grid where the tile can land right onto.
     /// - Returns: true if the landing is permitted.
-    @discardableResult private func landTileIfNecessary(at coordinate: Coordinate) -> Bool {
+    @discardableResult
+    private func landTileIfNecessary(at coordinate: Coordinate) -> Bool {
         guard viewModel.canLandTile(at: coordinate) else {
             return false
         }
