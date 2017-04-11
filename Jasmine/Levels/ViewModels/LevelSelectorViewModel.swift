@@ -13,16 +13,23 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
     private var rawCustomLevels: [Level] {
         return levels.custom
     }
+
+    /// A delegate for the view controller to conform, and the view model to call.
+    weak var delegate: LevelSelectorViewControllerDelegate?
+
     /// The defaults levels in the game.
     var defaultLevels: [GameInfo] {
         return rawDefaultLevels.map { level in
-            GameInfo(uuid: level.uuid, levelName: level.name, gameType: level.gameType, gameMode: level.gameMode)
+            GameInfo(uuid: level.uuid, levelName: level.name, gameType: level.gameType,
+                     gameMode: level.gameMode, isEditable: false)
         }
     }
+
     /// The custom levels in the game.
     var customLevels: [GameInfo] {
         return rawCustomLevels.map { level in
-            GameInfo(uuid: level.uuid, levelName: level.name, gameType: level.gameType, gameMode: level.gameMode)
+            GameInfo(uuid: level.uuid, levelName: level.name, gameType: level.gameType,
+                     gameMode: level.gameMode, isEditable: true)
         }
     }
 
@@ -75,9 +82,9 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
             return CiHuiSwappingViewModel(time: GameConstants.Swapping.time,
                                           gameData: gameData, numberOfPhrases: GameConstants.Swapping.rows)
         case (.tetris, .chengYu):
+            fallthrough
+        case (.tetris, .ciHui):
             return TetrisGameViewModel(gameData: gameData)
-        default:
-            fatalError("Game mode & game type combination not found")
         }
     }
 

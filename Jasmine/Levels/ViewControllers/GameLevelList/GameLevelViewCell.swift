@@ -32,7 +32,7 @@ class GameLevelViewCell: UICollectionViewCell {
 
     /// Helper method that retrieves the appropriate view based on identifier.
     private func retrieveView<T: UIView>(withIdentifier identifier: String) -> T {
-        let possibleView = subviews.first { $0.restorationIdentifier == identifier }
+        let possibleView = self.allSubviews.first { $0.restorationIdentifier == identifier }
         guard let foundView = possibleView as? T else {
             fatalError("View with identifier: \(identifier) not found.")
         }

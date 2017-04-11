@@ -23,7 +23,7 @@ class LevelImportViewController: UIViewController {
 
         } else if let phrasesExplorerView = segue.destination as? PhrasesExplorerViewController {
             let phrasesExplorerViewModel = viewModel.getPhraseExplorerViewModel(from: selectedLevel)
-            phrasesExplorerView.segueWith(phrasesExplorerViewModel)
+            phrasesExplorerView.segueWith(phrasesExplorerViewModel, isMarkable: false)
         }
     }
 
@@ -47,7 +47,7 @@ class LevelImportViewController: UIViewController {
 
     @IBAction private func onDonePressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true) {
-            self.onSelectedLevelsReturned?(self.viewModel.markedLevels)
+            self.onMarkedLevelsReturned?(self.viewModel.markedLevels)
         }
     }
 

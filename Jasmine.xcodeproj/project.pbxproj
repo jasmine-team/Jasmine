@@ -90,6 +90,7 @@
 		DF76B0B41E9D18C400BCC751 /* PhrasesSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF76B0B31E9D18C400BCC751 /* PhrasesSelectionTableViewController.swift */; };
 		DF76B0B81E9D196600BCC751 /* LevelSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF76B0B71E9D196600BCC751 /* LevelSelectorViewModel.swift */; };
 		DF76B0BA1E9D198700BCC751 /* RandomGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF76B0B91E9D198700BCC751 /* RandomGeneratorTests.swift */; };
+		DF76B0BC1E9D242F00BCC751 /* UIView+AllSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF76B0BB1E9D242F00BCC751 /* UIView+AllSubviews.swift */; };
 		DF7CF7711E7E9E3500C6979A /* CGRect+Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF76F1E7E9E3500C6979A /* CGRect+Arithmetic.swift */; };
 		DF7CF7721E7E9E3500C6979A /* IndexPath+Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */; };
 		DF7CF7801E7E9EED00C6979A /* SquareTileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF77E1E7E9EED00C6979A /* SquareTileViewCell.swift */; };
@@ -255,6 +256,7 @@
 		DF76B0B31E9D18C400BCC751 /* PhrasesSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesSelectionTableViewController.swift; sourceTree = "<group>"; };
 		DF76B0B71E9D196600BCC751 /* LevelSelectorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelSelectorViewModel.swift; path = ViewModels/LevelSelectorViewModel.swift; sourceTree = "<group>"; };
 		DF76B0B91E9D198700BCC751 /* RandomGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomGeneratorTests.swift; sourceTree = "<group>"; };
+		DF76B0BB1E9D242F00BCC751 /* UIView+AllSubviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AllSubviews.swift"; sourceTree = "<group>"; };
 		DF7CF76F1E7E9E3500C6979A /* CGRect+Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Arithmetic.swift"; sourceTree = "<group>"; };
 		DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+Coordinate.swift"; sourceTree = "<group>"; };
 		DF7CF77E1E7E9EED00C6979A /* SquareTileViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareTileViewCell.swift; sourceTree = "<group>"; };
@@ -742,6 +744,7 @@
 				DF2052C71E8BDD5A00D66B0B /* UIImageView+Animation.swift */,
 				DF2155261E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift */,
 				DF944C2C1E84EF250037437C /* UIView+Shadows.swift */,
+				DF76B0BB1E9D242F00BCC751 /* UIView+AllSubviews.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1285,6 +1288,7 @@
 				50989DE71E6D8BBD009A86C8 /* AppDelegate.swift in Sources */,
 				507194F11E8E1512002A6BC0 /* TetrisGameViewModelProtocol.swift in Sources */,
 				507AC1931E90AA830033B4E6 /* SquareTileView.swift in Sources */,
+				DF76B0BC1E9D242F00BCC751 /* UIView+AllSubviews.swift in Sources */,
 				DFA8B69B1E9899A4002D81CF /* SimpleStartGameViewController.swift in Sources */,
 				DFE1113C1E98BD4300F8860E /* GameMode.swift in Sources */,
 				DF0452561E9C5E5E00C3F1B1 /* LevelImportViewController.swift in Sources */,

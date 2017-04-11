@@ -3,7 +3,7 @@ import Foundation
 struct GameInfo {
 
     /// The unique identifier of this level game.
-    let uuid: UUID
+    let uuid: String
 
     /// The level name of this level game.
     let levelName: String

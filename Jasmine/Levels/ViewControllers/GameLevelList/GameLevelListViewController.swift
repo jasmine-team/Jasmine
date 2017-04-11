@@ -60,7 +60,7 @@ class GameLevelListViewController: UIViewController {
     // MARK: Interfacing Methods
     /// Reloads all the data in this view.
     func reloadAllData() {
-        helperReloadLevels(at: allIndices)
+        gameLevelListCollection.reloadSections(IndexSet(integer: 0))
     }
 
     /// Reloads data at the specified index.
@@ -90,9 +90,7 @@ class GameLevelListViewController: UIViewController {
 
     // MARK: Helper Methods
     private func helperReloadLevels(at indices: Set<IndexPath>) {
-        gameLevelListCollection.performBatchUpdates({
-            self.gameLevelListCollection.reloadItems(at: Array(indices))
-        }, completion: nil)
+        self.gameLevelListCollection.reloadItems(at: Array(indices))
     }
 }
 

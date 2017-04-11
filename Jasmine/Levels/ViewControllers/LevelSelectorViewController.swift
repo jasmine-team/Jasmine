@@ -18,7 +18,13 @@ class LevelSelectorViewController: UIViewController {
     fileprivate var levelCollection: GameLevelListViewController!
 
     // MARK: Properties
-    fileprivate var viewModel: LevelSelectorViewModelProtocol!
+    /// Provides a view model for this view. By default a full LevelSelectorViewModel is used in this
+    /// case. Dependency injection can be attained by calling `segueWith(...)`.
+    fileprivate lazy var viewModel: LevelSelectorViewModelProtocol = {
+        let viewModel = LevelSelectorViewModel()
+        viewModel.delegate = self
+        return viewModel
+    }()
 
     fileprivate var selectedLevel: GameInfo!
 
@@ -55,7 +61,7 @@ class LevelSelectorViewController: UIViewController {
 
         } else if let phrasesExplorerView = segue.destination as? PhrasesExplorerViewController {
             let phrasesExplorerViewModel = viewModel.getPhraseExplorerViewModel(from: selectedLevel)
-            phrasesExplorerView.segueWith(phrasesExplorerViewModel)
+            phrasesExplorerView.segueWith(phrasesExplorerViewModel, isMarkable: false)
         }
     }
 
@@ -64,11 +70,11 @@ class LevelSelectorViewController: UIViewController {
     /// - Parameter viewModel: the view model of this view controller class.
     func segueWith(_ viewModel: LevelSelectorViewModelProtocol) {
         self.viewModel = viewModel
+        self.viewModel.delegate = self
     }
 
     fileprivate func segueToEditLevelView(forLevel level: GameInfo) {
         self.selectedLevel = level
-        // TODO: Segue to edit screen.
     }
 
     fileprivate func segueToPhrasesExplorerView(forLevel level: GameInfo) {
