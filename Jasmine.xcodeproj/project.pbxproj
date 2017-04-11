@@ -53,6 +53,8 @@
 		A2187E6C1E7510B60033FC5B /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E6B1E7510B60033FC5B /* Random.swift */; };
 		A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E711E751C930033FC5B /* Sequence+Extensions.swift */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
+		A26FACC31E9CCD4400144E94 /* GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26FACC21E9CCD4400144E94 /* GameCenter.swift */; };
+		A26FACC51E9CCF2F00144E94 /* JasmineManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26FACC41E9CCF2F00144E94 /* JasmineManagerTests.swift */; };
 		A27B6E541E90B33400825AF3 /* RealmIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B6E531E90B33400825AF3 /* RealmIntegrationTests.swift */; };
 		A27CA52E1E9BBE230002614C /* Collection+RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CA52D1E9BBE230002614C /* Collection+RandomGenerator.swift */; };
 		A27CA5301E9BBE650002614C /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CA52F1E9BBE650002614C /* RandomGenerator.swift */; };
@@ -206,6 +208,8 @@
 		A260C6271E6AB30400782103 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A260C6311E6AB30400782103 /* JasmineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JasmineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6371E6AB30400782103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A26FACC21E9CCD4400144E94 /* GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenter.swift; sourceTree = "<group>"; };
+		A26FACC41E9CCF2F00144E94 /* JasmineManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JasmineManagerTests.swift; sourceTree = "<group>"; };
 		A27B6E531E90B33400825AF3 /* RealmIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmIntegrationTests.swift; sourceTree = "<group>"; };
 		A27CA52D1E9BBE230002614C /* Collection+RandomGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+RandomGenerator.swift"; sourceTree = "<group>"; };
 		A27CA52F1E9BBE650002614C /* RandomGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomGenerator.swift; sourceTree = "<group>"; };
@@ -408,6 +412,7 @@
 				A2187E6B1E7510B60033FC5B /* Random.swift */,
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
 				DF409FDE1E84147400389976 /* TimerStatus.swift */,
+				A26FACC21E9CCD4400144E94 /* GameCenter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -531,6 +536,7 @@
 				DF409FF61E84160C00389976 /* PlayerTests.swift */,
 				A27B6E531E90B33400825AF3 /* RealmIntegrationTests.swift */,
 				50AE3A771E8BE020005EC944 /* TextGridTests.swift */,
+				A26FACC41E9CCF2F00144E94 /* JasmineManagerTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1190,6 +1196,7 @@
 				507AC1951E90AAB00033B4E6 /* TetrisGameViewModel.swift in Sources */,
 				DFBE8F781E9527F70036CCC6 /* GameStatisticsViewController.swift in Sources */,
 				A27CA5301E9BBE650002614C /* RandomGenerator.swift in Sources */,
+				A26FACC31E9CCD4400144E94 /* GameCenter.swift in Sources */,
 				DF40F9E21E9676C1001EAAA8 /* LevelResult.swift in Sources */,
 				DF9918D61E92B6A3004E599B /* CiHuiSwappingViewModel.swift in Sources */,
 				DF9918DC1E92B6D6004E599B /* SlidingGameViewController.swift in Sources */,
@@ -1267,6 +1274,7 @@
 				50717AC31E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift in Sources */,
 				50AE3A781E8BE020005EC944 /* TextGridTests.swift in Sources */,
 				502A29711E9275770024336A /* Array+EquatableTests.swift in Sources */,
+				A26FACC51E9CCF2F00144E94 /* JasmineManagerTests.swift in Sources */,
 				502A29771E927B790024336A /* CiHuiSlidingViewModelTests.swift in Sources */,
 				502A29751E927B790024336A /* BaseSlidingViewModelTests.swift in Sources */,
 				50B7A8B51E9393530052E9E2 /* BaseSwappingViewModelTests.swift in Sources */,
