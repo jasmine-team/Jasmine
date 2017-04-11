@@ -35,15 +35,16 @@ class PhrasesExplorerViewModelTests: RealmTestCase {
 
     func testSearch() {
         let phraseTuple = viewModel.get(at: 0)
-        let chineses = phraseTuple.chinese.characters.map { String($0) }
-
-        for text in chineses {
-            viewModel.search(keyword: text)
-            XCTAssert(viewModel.rowsShown > 0)
-            let phraseTuple = viewModel.get(at: 0)
-
-            XCTAssertEqual(phraseTuple.chinese, chineses.joined())
-            XCTAssertFalse(phraseTuple.selected)
+        guard let firstChinese = phraseTuple.chinese.characters.first else {
+            XCTFail("Chinese database error")
+            return
         }
+
+        viewModel.search(keyword: String(firstChinese))
+        XCTAssert(viewModel.rowsShown > 0)
+        let phrase = viewModel.get(at: 0)
+
+        XCTAssertEqual(phraseTuple.chinese, phrase.chinese)
+        XCTAssertFalse(phraseTuple.selected)
     }
 }
