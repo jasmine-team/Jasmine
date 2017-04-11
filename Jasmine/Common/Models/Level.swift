@@ -2,6 +2,9 @@ import RealmSwift
 
 /// Represents a data for a level, has history of game results, is immutable
 class Level: Object {
+    
+    /// Unique identifier for every level to be differentiated
+    dynamic private(set) var uuid: String = UUID().uuidString
 
     dynamic private(set) var name: String = "Untitled Level"
     // difficulty of the level, higher means more difficult
@@ -12,9 +15,13 @@ class Level: Object {
     private dynamic var rawGameType: String = GameType.ciHui.rawValue
     private dynamic var rawGameMode: String = GameMode.swapping.rawValue
 
-    private let history = List<LevelResult>()
+    /// Accessible by other model classes
+    let history = LinkingObjects(fromType: LevelResult.self, property: "level")
     private let rawPhrases = List<Phrase>()
 
+    override static func primaryKey() -> String? {
+        return "uuid"
+    }
     /// MARK: non-persisted properties
 
     /// GameType of level, returns cihui by default
@@ -42,25 +49,6 @@ class Level: Object {
 
     override static func ignoredProperties() -> [String] {
         return ["gameType", "gameMode", "phrases"]
-    }
-    
-    /// Adds result to history
-    ///
-    /// - Parameter result: result of game to be added to history
-    /// - Throws: throws error if unable to save
-    func addResult(_ result: LevelResult) throws {
-        try realm?.write {
-            history.append(result)
-        }
-    }
-    
-    /// Resets game history
-    ///
-    /// - Throws: throws error if unable to save
-    func resetAll() throws {
-        try realm?.write {
-            history.removeAll()
-        }
     }
 
 }
