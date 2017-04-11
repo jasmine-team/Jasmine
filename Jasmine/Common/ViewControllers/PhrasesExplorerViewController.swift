@@ -36,6 +36,7 @@ class PhrasesExplorerViewController: UIViewController {
     /// Injects the required data before opening this view.
     ///
     /// - Parameter viewModel: the view model of this class.
+    /// - Parameter isMarkable: tells the VC whether the view can be marked (given checkmark) or not.
     func segueWith(_ viewModel: PhrasesExplorerViewModel, isMarkable: Bool) {
         self.viewModel = viewModel
         self.isMarkable = isMarkable
