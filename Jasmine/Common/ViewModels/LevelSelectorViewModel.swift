@@ -15,15 +15,11 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
     }
     /// The defaults levels in the game.
     var defaultLevels: [GameInfo] {
-        return rawDefaultLevels.map { level in
-            GameInfo(uuid: level.uuid, levelName: level.name, gameType: level.gameType, gameMode: level.gameMode)
-        }
+        return rawDefaultLevels.map { level in GameInfo.constructGameInfo(from: level) }
     }
     /// The custom levels in the game.
     var customLevels: [GameInfo] {
-        return rawCustomLevels.map { level in
-            GameInfo(uuid: level.uuid, levelName: level.name, gameType: level.gameType, gameMode: level.gameMode)
-        }
+        return rawCustomLevels.map { level in GameInfo.constructGameInfo(from: level) }
     }
 
     init() {

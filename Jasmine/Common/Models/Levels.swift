@@ -20,7 +20,7 @@ class Levels {
     /// Returns the next available default name (append numeric to `defaultName`) to save as
     /// If none is available (used up all integers), returns `defaultName` with 0 appended
     var nextAvailableDefaultName: String {
-        for i in 0...Int.max {
+        for i in 1...Int.max {
             let name = String(format: Levels.defaultName, i)
             if !levelNameExists(name) {
                 return name
