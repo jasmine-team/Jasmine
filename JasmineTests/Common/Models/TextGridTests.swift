@@ -141,7 +141,7 @@ class TextGridTests: XCTestCase {
         let initialGrid = [["a", "b"], ["c", "d"]]
         let grid = TextGrid(fromInitialGrid: initialGrid)
         guard let texts = grid.getTexts(at: [Coordinate(row: 1, col: 0), Coordinate(row: 1, col: 1)]) else {
-            XCTAssert(false, "Failed to get texts")
+            XCTFail("Failed to get texts")
             return
         }
         XCTAssertEqual(texts, ["c", "d"], "Retrieved wrong texts")
@@ -158,7 +158,7 @@ class TextGridTests: XCTestCase {
         let initialGrid = [["a", "b"], ["c", "d"]]
         let grid = TextGrid(fromInitialGrid: initialGrid)
         guard let texts = grid.getConcatenatedTexts(at: [Coordinate(row: 1, col: 0), Coordinate(row: 1, col: 1)]) else {
-            XCTAssert(false, "Failed to get texts")
+            XCTFail("Failed to get texts")
             return
         }
         XCTAssertEqual(texts, "cd", "Retrieved wrong texts")
@@ -169,7 +169,7 @@ class TextGridTests: XCTestCase {
         let grid = TextGrid(fromInitialGrid: initialGrid)
         guard let texts = grid.getConcatenatedTexts(at: [Coordinate(row: 1, col: 0), Coordinate(row: 1, col: 1)],
                                                     separatedBy: "x") else {
-            XCTAssert(false, "Failed to get texts")
+            XCTFail("Failed to get texts")
             return
         }
         XCTAssertEqual(texts, "cxd", "Retrieved wrong texts")

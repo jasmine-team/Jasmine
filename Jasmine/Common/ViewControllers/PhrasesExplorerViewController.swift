@@ -4,7 +4,7 @@ class PhrasesExplorerViewController: UIViewController {
 
     @IBOutlet private weak var phrasesTableView: UIView!
     fileprivate var phrasesTable: PhrasesTableViewController!
-    fileprivate var viewModel: PhrasesExplorerViewModel!
+    fileprivate(set) var viewModel: PhrasesExplorerViewModel!
     private var searchController: UISearchController!
     private var isMarkable: Bool!
 
