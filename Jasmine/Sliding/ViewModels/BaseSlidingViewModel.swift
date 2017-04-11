@@ -95,7 +95,7 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
 
         // In the sliding game, it is enough to have (rows - 1) rows correct
         if highlightedCoordinates.count == gridData.count - GameConstants.Sliding.columns {
-            score += max(Score.win + Int(timeRemaining * Score.multiplierFromTime) -
+            score += max(Score.win + Int(round(timeRemaining * Score.multiplierFromTime)) -
                 moves * Score.multiplierFromMoves, 0)
             gameStatus = .endedWithWon
         }
