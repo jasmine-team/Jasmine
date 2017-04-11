@@ -32,8 +32,9 @@ class RealmIntegrationTests: XCTestCase {
         gameTypes.forEach { _ in
             let level = levels.original[0]
             let gameData = factory.createGame(fromLevel: level)
-            XCTAssertNotNil(gameData.phrases.next(), "Game data does not contain phrases")
-            XCTAssertEqual(gameData.phrases.next(count: 5).count, 5, "Incorrect amount of phrases")
+            XCTAssertNotNil(gameData.phrases.randomGenerator.next(), "Game data does not contain phrases")
+            let phrases = gameData.phrases.randomGenerator.next(count: 5)
+            XCTAssertEqual(phrases.count, 5, "Incorrect amount of phrases")
         }
     }
 

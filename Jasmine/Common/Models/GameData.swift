@@ -22,9 +22,4 @@ struct GameData {
     /// Set of phrases tested in the game
     var phrasesTested: Set<Phrase> = []
 
-    /// List of phrases seen by user
-    var phrasesSeen: [Phrase] {
-        return Array(phrasesTested)
-    }
-
 }
