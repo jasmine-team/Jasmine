@@ -37,19 +37,22 @@ enum Constants {
         }
 
         enum Background: String {
-            static let allValues = [greenStar, dogDays]
-            static let defaultPlaylist = [greenStar, dogDays]
+            static let allValues = [greenStar, dogDays, grid]
+            static let defaultPlaylist = [greenStar, dogDays, grid]
 
             case greenStar = "green_star.mp3"
             case dogDays = "dog_days.mp3"
+            case grid = "grid.mp3"
         }
 
         enum Effect: String {
             /// Enable max of 5 effect sounds to be played at the same time
             static let concurrentLimit = 5
-            static let allValues = [grid]
+            static let allValues = [pop, lose, win]
 
-            case grid = "grid.mp3"
+            case pop = "pop.wav"
+            case lose = "lose.wav"
+            case win = "win.wav"
         }
     }
 
