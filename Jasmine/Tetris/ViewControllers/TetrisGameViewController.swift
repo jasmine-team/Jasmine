@@ -150,7 +150,6 @@ class TetrisGameViewController: UIViewController {
     // MARK: - Game State and Actions
     private func releaseNewTile() {
         guard !tetrisGameAreaView.hasFallingTile else {
-            assertionFailure("Current tile still falling! Cannot release a new tile for falling!")
             return
         }
         tetrisGameAreaView.setFallingTile(withData: viewModel.fallingTileText,
