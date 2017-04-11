@@ -25,36 +25,15 @@ class GameManager {
         return gameData
     }
 
-    func saveGame(result: GameData) {
+    func saveGame(result: GameData) throws {
         guard let currentLevel = currentLevel else {
             assertionFailure("No game ongoing, failed to save")
             return
         }
-        let finalResult = LevelResult(gameData: result) // convert game data to LevelResult
-        do {
-            try currentLevel.addResult(finalResult)
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-    }
-
-    /// MARK: Helper functions
-
-    /// Creates a predicate that filters based on character count
-    ///
-    /// - Parameter count: numebr of characters for the chinese phrase
-    /// - Returns: a string that follows NSPredicate format
-    private func filterChinesePredicate(ofLength count: Int) -> String {
-        return "rawChinese LIKE '\(String(repeating: "?", count: count))'"
-    }
-
-    // Returns the length of phrases for the specified game type
-    private func lengthOf(type: GameType) -> Int {
-        switch type {
-        case .chengYu:
-            return 4
-        case .ciHui:
-            return 2
+        // convert game data to LevelResult
+        let finalResult = LevelResult(level: currentLevel, gameData: result)
+        try realm.write {
+            realm.add(finalResult)
         }
     }
 
