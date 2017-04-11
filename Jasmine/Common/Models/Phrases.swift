@@ -3,16 +3,12 @@ import RealmSwift
 /// Phrases contains list of phrases for a particular difficulty
 class Phrases {
 
-    private lazy var allRawPhrases: Results<Phrase> = {
-        if let realm = self.phrases.first?.realm {
+    private var allRawPhrases: Results<Phrase> {
+        if let realm = phrases.first?.realm {
             return realm.objects(Phrase.self)
         }
-        do {
-            return try Realm().objects(Phrase.self)
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-    }()
+        return try? Realm().objects(Phrase.self) ?? fatalError(error.localizedDescription)
+    }
 
     fileprivate var phrases: List<Phrase>
     let phraseLength: Int
