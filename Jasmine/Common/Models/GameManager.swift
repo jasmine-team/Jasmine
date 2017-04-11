@@ -13,22 +13,14 @@ class GameManager {
         self.realm = realm
     }
 
-    /// Initialize manager with default realm instance
-    ///
-    /// - Throws: realm initialization errors
-    convenience init() throws {
-        self.init(realm: try Realm())
-    }
-
     /// Creates game data with the indicated difficulty
     ///
     /// - Parameter difficulty: difficulty of the game
     /// - Returns: game data containing relevant phrases and difficulty
     func createGame(fromLevel level: Level) -> GameData {
         assert(currentLevel == nil, "A game is still ongoing, have you saved the game?")
-        let gamePhrases = Phrases(level.phrases, isShuffled: true)
         let gameData = GameData(name: level.name,
-                                phrases: gamePhrases,
+                                phrases: level.phrases,
                                 difficulty: level.difficulty)
         return gameData
     }

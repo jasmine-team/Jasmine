@@ -16,7 +16,8 @@ class PhrasesExplorerViewModel {
     weak var viewControllerDelegate: PhrasesExplorerViewController?
 
     init(phrases: Phrases, amount: Int) {
-        allPhrasesWithSelection = phrases.next(count: amount).map { ($0, false) }
+        let listOfPhrases = phrases.randomGenerator.next(count: amount)
+        allPhrasesWithSelection = listOfPhrases.map { ($0, false) }
         rowIndices = Array(0..<amount)
     }
 
