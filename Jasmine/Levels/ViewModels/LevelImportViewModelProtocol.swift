@@ -6,6 +6,9 @@ protocol LevelImportViewModelProtocol {
     /// The custom levels in the game.
     var customLevels: [GameInfo] { get }
 
+    /// Gets a list of levels that are marked.
+    var markedLevels: [GameInfo] { get }
+
     /// Get the phrase explorer VM from the game info
     ///
     /// - Parameter gameInfo: the game info to be passed

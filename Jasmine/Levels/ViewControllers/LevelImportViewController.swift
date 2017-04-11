@@ -37,6 +37,20 @@ class LevelImportViewController: UIViewController {
         performSegue(withIdentifier: LevelImportViewController.segueToPhrasesExplorer, sender: nil)
     }
 
+    // MARK: Listeners
+    /// Implements this listener to return a set of levels that are marked (or selected) with this view.
+    var onMarkedLevelsReturned: (([GameInfo]) -> Void)?
+
+    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction private func onDonePressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true) {
+            self.onSelectedLevelsReturned?(self.viewModel.markedLevels)
+        }
+    }
+
     // MARK: Helper Methods
     /// Helper method that returns the appropriate level (default or custom) depending on
     /// `isDefaultLevels`.
