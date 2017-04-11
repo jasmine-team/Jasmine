@@ -3,9 +3,10 @@ import RealmSwift
 /// Phrases contains list of phrases for a particular difficulty
 class Phrases {
 
-    static let all: Phrases = Phrases(List(allRawPhrases))
-
-    private static let allRawPhrases: Results<Phrase> = {
+    private lazy var allRawPhrases: Results<Phrase> = {
+        if let realm = self.phrases.first?.realm {
+            return realm.objects(Phrase.self)
+        }
         do {
             return try Realm().objects(Phrase.self)
         } catch {
@@ -77,7 +78,7 @@ class Phrases {
     /// - Parameter chinese: chinese word
     /// - Returns: result of phrase
     private func filter(chinese: String) -> Results<Phrase> {
-        return Phrases.allRawPhrases.filter("rawChinese == '\(chinese)'")
+        return allRawPhrases.filter("rawChinese == '\(chinese)'")
     }
 
 }

@@ -13,13 +13,6 @@ class GameManager {
         self.realm = realm
     }
 
-    /// Initialize manager with default realm instance
-    ///
-    /// - Throws: realm initialization errors
-    convenience init() throws {
-        self.init(realm: try Realm())
-    }
-
     /// Creates game data with the indicated difficulty
     ///
     /// - Parameter difficulty: difficulty of the game

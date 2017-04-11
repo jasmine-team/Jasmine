@@ -22,10 +22,7 @@ class HomeScreenViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let gameManager = try? GameManager() else {
-            fatalError("Error with Realm")
-        }
-
+        let gameManager = GameManager(realm: realm)
         // Refer to levels.csv
         let chengYuGameData = gameManager.createGame(fromLevel: levels.original[3])
         let ciHuiGameData = gameManager.createGame(fromLevel: levels.original[0])
