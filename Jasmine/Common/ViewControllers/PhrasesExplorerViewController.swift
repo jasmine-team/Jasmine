@@ -6,10 +6,10 @@ class PhrasesExplorerViewController: UIViewController {
     fileprivate var phrasesTable: PhrasesTableViewController!
     fileprivate var viewModel: PhrasesExplorerViewModel!
     private var searchController: UISearchController!
-    private var selectTableMode: Bool!
+    private var isMarkable: Bool!
 
     override func viewDidLoad() {
-        if selectTableMode == true {
+        if isMarkable == true {
             phrasesTable = PhrasesSelectionTableViewController()
         } else {
             phrasesTable = PhrasesDetailTableViewController()
@@ -36,9 +36,9 @@ class PhrasesExplorerViewController: UIViewController {
     /// Injects the required data before opening this view.
     ///
     /// - Parameter viewModel: the view model of this class.
-    func segueWith(_ viewModel: PhrasesExplorerViewModel, selectTableMode: Bool) {
+    func segueWith(_ viewModel: PhrasesExplorerViewModel, isMarkable: Bool) {
         self.viewModel = viewModel
-        self.selectTableMode = selectTableMode
+        self.isMarkable = isMarkable
     }
 }
 
