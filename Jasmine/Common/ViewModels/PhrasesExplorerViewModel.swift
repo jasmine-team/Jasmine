@@ -77,7 +77,10 @@ class PhrasesExplorerViewModel {
     /// - Parameter phrases: the phrases
     func importPhrases(with phrases: Phrases) {
         for phrase in phrases {
-            allPhrasesWithSelection.first(where: { $0.phrase == phrase })?.selected = true
+            guard let idx = allPhrasesWithSelection.index(where: { $0.phrase == phrase }) else {
+                continue
+            }
+            allPhrasesWithSelection[idx].selected = true
         }
     }
 }
