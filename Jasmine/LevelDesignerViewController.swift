@@ -25,7 +25,14 @@ class LevelDesignerViewController: UIViewController {
     private static let selectPhrasesButtonText = "Select phrases (%d currently)"
     @IBOutlet private var selectPhrasesButton: UIButton!
 
-    var viewModel: LevelDesignerViewModel!
+    private var viewModel: LevelDesignerViewModel!
+
+    /// Feeds in the appropriate data for the use of seguing into this view.
+    ///
+    /// - Parameter viewModel: the level designer view model required to use this view
+    func segueWith(_ viewModel: LevelDesignerViewModel) {
+        self.viewModel = viewModel
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
