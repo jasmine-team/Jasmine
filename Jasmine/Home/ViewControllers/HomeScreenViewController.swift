@@ -58,9 +58,9 @@ class HomeScreenViewController: UIViewController {
             let viewModel = PhrasesExplorerViewModel(phrases: ciHuiGameData.phrases, amount: 50)
 
             if (sender as? UIButton) === phrasesWithSelectButton {
-                phrasesExplorer.segueWith(viewModel, selectTableMode: true)
+                phrasesExplorer.segueWith(viewModel, isMarkable: true)
             } else if (sender as? UIButton) === phrasesWithInfoButton {
-                phrasesExplorer.segueWith(viewModel, selectTableMode: false)
+                phrasesExplorer.segueWith(viewModel, isMarkable: false)
             }
         } else if let phraseVC = segue.destination as? PhraseViewController {
             let phrase = ciHuiGameData.phrases.next()
