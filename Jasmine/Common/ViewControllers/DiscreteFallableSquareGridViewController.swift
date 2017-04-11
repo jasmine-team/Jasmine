@@ -87,7 +87,7 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
         guard let fallingTile = fallingTile else {
             return
         }
-        snapDetachedTile(fallingTile) {
+        snapDetachedTile(fallingTile, toCoordinate: coordinate) {
             self.reattachDetachedTile(fallingTile)
             self.onFallingTileLanded?(coordinate)
         }

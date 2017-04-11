@@ -69,12 +69,6 @@ class SettingsViewController: UIViewController {
         return true
     }
 
-    private func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(alertController, animated: true)
-    }
-
     // MARK: Theme
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
