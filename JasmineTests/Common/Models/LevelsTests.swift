@@ -43,7 +43,7 @@ class LevelsTests: RealmTestCase {
         XCTAssertEqual(latestLevel.name, name, "Name not persisted")
         XCTAssertEqual(latestLevel.gameType, gameType, "Game type not persisted")
         XCTAssertEqual(latestLevel.gameMode, gameMode, "Game mode not persisted")
-        XCTAssertEqual(latestLevel.phrases.toArray(), phrases, "Phrases not persisted")
+        XCTAssertEqual(Array(latestLevel.phrases), phrases, "Phrases not persisted")
     }
 
     func testDeleteLevel() {
