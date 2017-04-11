@@ -16,7 +16,8 @@ class PhrasesExplorerViewModel {
     weak var viewControllerDelegate: PhrasesExplorerViewController?
 
     init(phrases: Phrases, amount: Int) {
-        allPhrasesWithSelection = phrases.next(count: amount).map { ($0, false) }
+        let listOfPhrases = phrases.randomGenerator.next(count: amount)
+        allPhrasesWithSelection = listOfPhrases.map { ($0, false) }
         rowIndices = Array(0..<amount)
     }
 
@@ -44,12 +45,22 @@ class PhrasesExplorerViewModel {
     ///
     /// - Parameter keyword: the keyword for search
     func search(keyword: String) {
+        guard keyword != "" else {
+            reset()
+            return
+        }
+
         let keyword = keyword.lowercased()
         rowIndices = []
         for (idx, (phrase: phrase, selected: _)) in allPhrasesWithSelection.enumerated() {
-            if [phrase.pinyin, phrase.chinese].flatMap({ $0 }).contains(where: { $0 == keyword }) {
+            for txt in [phrase.pinyin.joined(), phrase.chinese.joined(), phrase.english] where txt.hasPrefix(keyword) {
                 rowIndices.append(idx)
             }
         }
+    }
+
+    /// Resets the table from search.
+    func reset() {
+        rowIndices = Array(0..<allPhrasesWithSelection.count)
     }
 }
