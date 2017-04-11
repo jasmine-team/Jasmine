@@ -61,7 +61,7 @@ class GameLevelListViewController: UIViewController {
 
     /// Notifies that the menu of a particular level has been opened.
     @IBAction func onLevelMenuSelected(_ sender: UIButton) {
-        let tappedLocation = sender.convert(sender.center, to: gameLevelListCollection)
+        let tappedLocation = sender.convert(sender.bounds.center, to: gameLevelListCollection)
         guard let indexPath = gameLevelListCollection.indexPathForItem(at: tappedLocation) else {
             return
         }
