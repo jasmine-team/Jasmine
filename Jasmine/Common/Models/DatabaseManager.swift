@@ -3,15 +3,14 @@ import RealmSwift
 /// A singleton database accessor to get instances of data
 class DatabaseManager {
 
-    static let sharedInstance: DatabaseManager {
+    static let sharedInstance: DatabaseManager = {
         do {
             let realm = try Realm()
             return DatabaseManager(realm: realm)
         } catch {
-            fatalError(error.localisedDescription)
+            fatalError(error.localizedDescription)
         }
-        return DatabaseManager(realm: )
-    }
+    }()
 
     private let realm: Realm
     private let gameManager: GameManager
@@ -37,7 +36,7 @@ class DatabaseManager {
         allCiHui = fetch.ciHui
         allChengYu = fetch.chengYu
 
-        self.player = player
+        self.player = DatabaseManager.getPlayer(realm: realm)
     }
 
     private static func getPhrases(realm: Realm) -> (all: Phrases, ciHui: Phrases, chengYu: Phrases) {
@@ -57,8 +56,12 @@ class DatabaseManager {
             return player
         }
         let player = Player()
-        try realm.write {
-            realm.add(player)
+        do {
+            try realm.write {
+                realm.add(player)
+            }
+        } catch {
+            print(error.localizedDescription)
         }
         return player
     }
