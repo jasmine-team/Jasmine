@@ -29,17 +29,19 @@ class Player: Object {
     dynamic fileprivate(set) var flappyPlayCount: Int = 0
     dynamic fileprivate(set) var gridPlayCount: Int = 0
     dynamic fileprivate(set) var tetrisPlayCount: Int = 0
+
 }
 
-extension Player {
+// MARK: - Helper
+fileprivate extension Player {
 
-    fileprivate func incrementTotalScore(from oldValue: Int, to newValue: Int) {
+    func incrementTotalScore(from oldValue: Int, to newValue: Int) {
         let difference = newValue - oldValue
         assert(difference >= 0, "Score may only be incremented!")
         totalScore += difference
     }
 
-    fileprivate func incrementPlayCount(variable: inout Int) {
+    func incrementPlayCount(variable: inout Int) {
         variable += 1
         totalPlayCount += 1
     }

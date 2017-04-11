@@ -6,6 +6,7 @@ class GameCenter {
 
     let realm: Realm
     let results: Results<LevelResult>
+    let player: Player
     private var resultsNotifier: NotificationToken?
 
     init(realm: Realm) {

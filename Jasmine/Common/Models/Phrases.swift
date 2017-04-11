@@ -20,9 +20,9 @@ class Phrases {
     ///
     /// - Parameters:
     ///   - phrases: realm list of phrases
-    init(realm: Realm? = nil, _ phrases: List<Phrase>) {
+    init(realm: Realm? = nil, _ phrases: AnyRealmCollection<Phrase>) {
         assert(!phrases.isEmpty, "Phrases is empty!")
-        self.phrases = phrases
+        self.phrases = List(phrases)
     }
 
     /// Creates a copy of the phrase
