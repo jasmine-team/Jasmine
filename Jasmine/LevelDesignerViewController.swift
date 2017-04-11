@@ -4,13 +4,22 @@ class LevelDesignerViewController: UIViewController {
 
     @IBOutlet private var levelNameField: UITextField!
 
+    @IBOutlet private var gameModeControl: UISegmentedControl!
+    @IBOutlet private var gameTypeControl: UISegmentedControl!
+
     /// The order of the game mode on the gameModeControl
     private static let gameModeOrder: [GameMode] = [.tetris, .sliding, .swapping]
-    @IBOutlet private var gameModeControl: UISegmentedControl!
-
     /// The order of the game type on the gameTypeControl
     private static let gameTypeOrder: [GameType] = [.chengYu, .ciHui]
-    @IBOutlet private var gameTypeControl: UISegmentedControl!
+
+    /// Gets the currently selected game mode
+    var selectedGameMode: GameMode {
+        return LevelDesignerViewController.gameModeOrder[gameModeControl.selectedSegmentIndex]
+    }
+    /// Gets the currently selected game type
+    var selectedGameType: GameType {
+        return LevelDesignerViewController.gameTypeOrder[gameTypeControl.selectedSegmentIndex]
+    }
 
     /// The formatted text for the select phrases button, with %d representing the phrases count
     private static let selectPhrasesButtonText = "Select phrases (%d currently)"
@@ -25,13 +34,13 @@ class LevelDesignerViewController: UIViewController {
 
     /// Set the controls and texts to display based on the level to edit
     private func setDataFromLevelToEdit() {
-        guard let gameInfo = viewModel.gameInfo else {
+        guard let levelInEditInfo = viewModel.levelInEditInfo else {
             return
         }
-        levelNameField.text = gameInfo.levelName
+        levelNameField.text = levelInEditInfo.levelName
 
-        guard let gameModeIndex = LevelDesignerViewController.gameModeOrder.index(of: gameInfo.gameMode),
-              let gameTypeIndex = LevelDesignerViewController.gameTypeOrder.index(of: gameInfo.gameType) else {
+        guard let gameModeIndex = LevelDesignerViewController.gameModeOrder.index(of: levelInEditInfo.gameMode),
+              let gameTypeIndex = LevelDesignerViewController.gameTypeOrder.index(of: levelInEditInfo.gameType) else {
             fatalError("Unable to get game mode/type index")
         }
         gameModeControl.selectedSegmentIndex = gameModeIndex
@@ -40,16 +49,22 @@ class LevelDesignerViewController: UIViewController {
         updateSelectPhrasesButtonText()
     }
 
+    /// Updates the select phrases button text based on the phrases count for the currently selected game type
     private func updateSelectPhrasesButtonText() {
         let buttonText = String(format: LevelDesignerViewController.selectPhrasesButtonText,
-                                viewModel.selectedPhrasesCount)
+                                viewModel.getSelectedPhrasesCount(gameType: selectedGameType))
         selectPhrasesButton.setTitle(buttonText, for: .normal)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let phrasesExplorerViewController = segue.destination as? PhrasesExplorerViewController {
             // TODO : initialize VM and set selected phrases (waiting for Phrases and PhrasesExplorerViewModel update)
+            updateSelectPhrasesButtonText()
         }
+    }
+
+    @IBAction private func onGameTypeControlPressed(_ segmentedControl: UISegmentedControl) {
+        updateSelectPhrasesButtonText()
     }
 
     /// Saves the game and dismiss the view if successfully saved
@@ -74,14 +89,11 @@ class LevelDesignerViewController: UIViewController {
     ///
     /// - Returns: true if successfully saved
     private func saveLevel() -> Bool {
-        let gameMode = LevelDesignerViewController.gameModeOrder[gameModeControl.selectedSegmentIndex]
-        let gameType = LevelDesignerViewController.gameTypeOrder[gameTypeControl.selectedSegmentIndex]
-
         do {
-            try viewModel.saveLevel(name: levelNameField.text, gameType: gameType, gameMode: gameMode)
+            try viewModel.saveLevel(name: levelNameField.text, gameType: selectedGameType, gameMode: selectedGameMode)
             return true
         } catch LevelsError.duplicateLevelName(let name) {
-            showOverwriteAlert(name: name, gameType: gameType, gameMode: gameMode)
+            showOverwriteAlert(name: name, gameType: selectedGameType, gameMode: selectedGameMode)
         } catch {
             showError(error)
         }

@@ -75,6 +75,9 @@
                                     <segment title="Cheng yu"/>
                                     <segment title="Ci hui"/>
                                 </segments>
+                                <connections>
+                                    <action selector="onGameTypeControlPressed:" destination="5nd-jc-deS" eventType="valueChanged" id="qTX-WM-CCr"/>
+                                </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Untitled" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mnr-89-Poz">
                                 <rect key="frame" x="70" y="105" width="213" height="30"/>
