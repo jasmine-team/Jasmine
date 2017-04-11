@@ -11,6 +11,7 @@
 		0CF9D2BB3EBC822ACB7FF766 /* Pods_Jasmine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */; };
 		4EA886212AABEB7ED888C04C /* Pods_JasmineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */; };
 		5007FD121E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007FD111E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift */; };
+		5023AF321E9D0A8F00C7BFA6 /* LevelImportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023AF311E9D0A8F00C7BFA6 /* LevelImportViewModel.swift */; };
 		502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342761E77F5F200D2FE09 /* FlappyViewModelProtocol.swift */; };
 		502A29651E925A190024336A /* Array+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A29641E925A190024336A /* Array+Equatable.swift */; };
 		502A296D1E926DCA0024336A /* BaseSlidingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A296A1E926DCA0024336A /* BaseSlidingViewModel.swift */; };
@@ -163,6 +164,7 @@
 		3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasmine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
 		5007FD111E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightedUpdateDelegateMock.swift; sourceTree = "<group>"; };
+		5023AF311E9D0A8F00C7BFA6 /* LevelImportViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelImportViewModel.swift; sourceTree = "<group>"; };
 		502A29641E925A190024336A /* Array+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Equatable.swift"; sourceTree = "<group>"; };
 		502A296A1E926DCA0024336A /* BaseSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSlidingViewModel.swift; sourceTree = "<group>"; };
 		502A296B1E926DCA0024336A /* ChengYuSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSlidingViewModel.swift; sourceTree = "<group>"; };
@@ -933,6 +935,7 @@
 			isa = PBXGroup;
 			children = (
 				50B0C0701E9A02C800D3D420 /* GameInfo.swift */,
+				5023AF311E9D0A8F00C7BFA6 /* LevelImportViewModel.swift */,
 				50B0C06E1E99FF7A00D3D420 /* LevelSelectorViewModelProtocol.swift */,
 				502C7F161E9BA8CC00D14727 /* LevelSelectorViewModel.swift */,
 				DFE111471E98BDA900F8860E /* PhraseViewModel.swift */,
@@ -1200,6 +1203,7 @@
 				DFBE8F781E9527F70036CCC6 /* GameStatisticsViewController.swift in Sources */,
 				5048F3C91E9BD7FD00B379F0 /* PhrasesTableViewController.swift in Sources */,
 				A27CA5301E9BBE650002614C /* RandomGenerator.swift in Sources */,
+				5023AF321E9D0A8F00C7BFA6 /* LevelImportViewModel.swift in Sources */,
 				DF40F9E21E9676C1001EAAA8 /* LevelResult.swift in Sources */,
 				DF9918D61E92B6A3004E599B /* CiHuiSwappingViewModel.swift in Sources */,
 				DF9918DC1E92B6D6004E599B /* SlidingGameViewController.swift in Sources */,

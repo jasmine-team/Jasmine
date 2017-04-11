@@ -2,6 +2,7 @@ import RealmSwift
 
 /// The ViewModel for the level selector part.
 class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
+    /// The Realm database of this view model
     private var realm: Realm
     /// The Levels object that manages the level objects
     private var levels: Levels

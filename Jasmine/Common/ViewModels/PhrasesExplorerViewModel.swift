@@ -71,4 +71,13 @@ class PhrasesExplorerViewModel {
         let index = rowIndices[row]
         return PhraseViewModel(phrase: allPhrasesWithSelection[index].phrase)
     }
+
+    /// Import phrases. Makes every phrase in the phrases be selected.
+    ///
+    /// - Parameter phrases: the phrases
+    func importPhrases(with phrases: Phrases) {
+        for phrase in phrases {
+            allPhrasesWithSelection.first(where: { $0.phrase == phrase })?.selected = true
+        }
+    }
 }
