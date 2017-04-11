@@ -16,5 +16,4 @@ protocol LevelImportViewModelProtocol {
 
     /// Returns true if the level should be marked, false otherwise.
     func isLevelMarked(for gameInfo: GameInfo) -> Bool
-
 }
