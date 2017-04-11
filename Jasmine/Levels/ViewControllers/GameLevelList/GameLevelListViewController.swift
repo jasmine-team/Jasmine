@@ -9,6 +9,7 @@ class GameLevelListViewController: UIViewController {
     private static let customLevelsIndex = 1
 
     fileprivate static let cellHeight: CGFloat = 74
+    fileprivate static let maxCellWidth: CGFloat = 360
 
     // MARK: Layout
     @IBOutlet private weak var levelsCategoriesToggle: UISegmentedControl!
@@ -38,6 +39,13 @@ class GameLevelListViewController: UIViewController {
         return Set((0..<numItems).map { IndexPath(item: $0, section: 0) })
     }
 
+    fileprivate lazy var cellSize: CGSize = {
+        let width = min(self.gameLevelListCollection.bounds.width,
+                        GameLevelListViewController.maxCellWidth)
+        let height = GameLevelListViewController.cellHeight
+        return CGSize(width: width, height: height)
+    }()
+
     // MARK: Segue Methods
     /// Supply this view with a data delegate.
     func segueWith(delegate: GameLevelListViewDelegate) {
@@ -65,7 +73,8 @@ class GameLevelListViewController: UIViewController {
         guard let indexPath = gameLevelListCollection.indexPathForItem(at: tappedLocation) else {
             return
         }
-        delegate?.notifyOpenMenuForLevel(fromDefault: isShowingDefaultLevels, at: indexPath.item)
+        delegate?.notifyOpenMenuForLevel(fromDefault: isShowingDefaultLevels, at: indexPath.item,
+                                         withView: sender)
     }
 
     // MARK: Interfacing Methods
@@ -111,7 +120,6 @@ extension GameLevelListViewController: UICollectionViewDataSource {
     /// Feed in the number of levels to display.
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-
         return delegate?.getNumberOfLevels(fromDefault: isShowingDefaultLevels) ?? 0
     }
 
@@ -152,9 +160,6 @@ extension GameLevelListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        return CGSize(width: gameLevelListCollection.bounds.width,
-                      height: GameLevelListViewController.cellHeight)
+        return cellSize
     }
-
 }

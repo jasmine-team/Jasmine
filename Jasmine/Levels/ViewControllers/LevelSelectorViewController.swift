@@ -91,7 +91,7 @@ class LevelSelectorViewController: UIViewController {
     }
 
     /// Builds an actionsheet depending on the type of level being fed.
-    fileprivate func buildActionSheet(forLevel level: GameInfo) -> UIAlertController {
+    fileprivate func buildActionSheet(forLevel level: GameInfo, andView view: UIView) -> UIAlertController {
         let actionSheetController = UIAlertController(title: level.levelName, message: nil,
                                                       preferredStyle: .actionSheet)
 
@@ -121,6 +121,7 @@ class LevelSelectorViewController: UIViewController {
             title: LevelSelectorViewController.actionSheetCancel, style: .cancel, handler: nil)
         actionSheetController.addAction(cancelAction)
 
+        actionSheetController.popoverPresentationController?.sourceView = view
         return actionSheetController
     }
 }
@@ -161,9 +162,9 @@ extension LevelSelectorViewController: GameLevelListViewDelegate {
     }
 
     /// Notifies the user of this view controller to open the list of menu for the specified level.
-    func notifyOpenMenuForLevel(fromDefault isDefaultLevels: Bool, at index: Int) {
+    func notifyOpenMenuForLevel(fromDefault isDefaultLevels: Bool, at index: Int, withView view: UIView) {
         self.selectedLevel = getLevels(fromDefault: isDefaultLevels)[index]
-        let actionSheet = buildActionSheet(forLevel: selectedLevel)
+        let actionSheet = buildActionSheet(forLevel: selectedLevel, andView: view)
         self.present(actionSheet, animated: true, completion: nil)
     }
 }

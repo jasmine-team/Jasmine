@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 protocol GameLevelListViewDelegate: class {
 
@@ -22,5 +22,5 @@ protocol GameLevelListViewDelegate: class {
     func notifyLevelSelected(fromDefault isDefaultLevels: Bool, at index: Int)
 
     /// Notifies the user of this view controller to open the list of menu for the specified level.
-    func notifyOpenMenuForLevel(fromDefault isDefaultLevels: Bool, at index: Int)
+    func notifyOpenMenuForLevel(fromDefault isDefaultLevels: Bool, at index: Int, withView view: UIView)
 }
