@@ -193,7 +193,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Select Levels" id="T5S-R4-7oj">
+                                    <navigationItem title="Import Levels" id="T5S-R4-7oj">
                                         <barButtonItem key="leftBarButtonItem" title="BACK" id="XNV-3s-fy2">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </barButtonItem>
@@ -221,6 +221,9 @@
                             <constraint firstItem="BK9-ZU-b0B" firstAttribute="leading" secondItem="4tg-4x-lGT" secondAttribute="leading" id="zNO-YD-1m0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="9hv-Ep-FLn" kind="show" identifier="SegueToPhrasesExplorer" id="ygO-hQ-gGc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eSX-lu-0nj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -248,12 +251,12 @@
                 <viewControllerPlaceholder storyboardName="CommonsStoryboard" referencedIdentifier="PhrasesExplorerViewController" id="9hv-Ep-FLn" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Njt-fb-HsE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="500" y="-40"/>
+            <point key="canvasLocation" x="112" y="578"/>
         </scene>
-        <!--SlidingGameViewController-->
+        <!--SlidingGameViewContoller-->
         <scene sceneID="xd3-hB-ztw">
             <objects>
-                <viewControllerPlaceholder storyboardName="SlidingGameStoryboard" referencedIdentifier="SlidingGameViewController" id="NXA-aA-ypY" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SlidingGameStoryboard" referencedIdentifier="SlidingGameViewContoller" id="NXA-aA-ypY" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nAD-gd-PMq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="446" y="-236"/>
@@ -371,6 +374,7 @@
         <image name="icon-menu" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ygO-hQ-gGc"/>
         <segue reference="sQK-wM-js2"/>
     </inferredMetricsTieBreakers>
 </document>

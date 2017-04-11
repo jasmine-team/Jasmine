@@ -5,6 +5,8 @@ class LevelImportViewController: UIViewController {
     // MARK: Constants
     private static let actionSheetPhrases = "View Phrases"
 
+    fileprivate static let segueToPhrasesExplorer = "SegueToPhrasesExplorer"
+
     // MARK: Layouts
     fileprivate var levelCollectionView: GameLevelListViewController!
 
@@ -30,6 +32,11 @@ class LevelImportViewController: UIViewController {
         self.viewModel = viewModel
     }
 
+    fileprivate func segueToPhrasesExplorerView(forLevel level: GameInfo) {
+        self.selectedLevel = level
+        performSegue(withIdentifier: LevelImportViewController.segueToPhrasesExplorer, sender: nil)
+    }
+
     // MARK: Helper Methods
     /// Helper method that returns the appropriate level (default or custom) depending on
     /// `isDefaultLevels`.
@@ -47,6 +54,8 @@ class LevelImportViewController: UIViewController {
             self.segueToPhrasesExplorerView(forLevel: level)
         }
         actionSheetController.addAction(phrasesAction)
+
+        return actionSheetController
     }
 }
 
