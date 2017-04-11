@@ -7,6 +7,11 @@ class PhrasesTableViewController: UITableViewController {
     /// The ViewModel of this ViewController
     var viewModel: PhrasesExplorerViewModel!
 
+    override func viewDidLoad() {
+        tableView.register(UITableViewCell.self,
+                           forCellReuseIdentifier: PhrasesTableViewController.cellIdentifier)
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.rowsShown
     }
@@ -27,13 +32,15 @@ class PhrasesTableViewController: UITableViewController {
         return cell
     }
 
-    /// Executed when rows of the table is selected
-    ///
-    /// - Parameters:
-    ///   - tableView: the table view
-    ///   - indexPath: the index path selected
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.toggle(at: indexPath.row)
-        tableView.reloadRows(at: [indexPath], with: .none)
+    func showPhraseView(phraseAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "CommonsStoryboard", bundle: nil)
+        guard let phraseVC = storyboard.instantiateViewController(
+            withIdentifier: "PhraseViewController") as? PhraseViewController else {
+                assertionFailure("Can't segue to PhraseView")
+                return
+        }
+
+        phraseVC.segueWith(viewModel.getPhraseViewModel(at: indexPath.row))
+        present(phraseVC, animated: true, completion: nil)
     }
 }
