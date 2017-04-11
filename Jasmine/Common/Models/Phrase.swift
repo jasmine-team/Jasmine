@@ -12,9 +12,12 @@ class Phrase: Object {
     private dynamic var rawPinyin: String = ""
     private(set) dynamic var english: String = ""
 
-    /// Meaning of the word in english
+    // Meaning of the word in english / chinese
     private(set) dynamic var englishMeaning: String = ""
     private(set) dynamic var chineseMeaning: String = ""
+    
+    // Example usage of the word in chinese
+    private(set) dynamic var chineseExample: String = ""
 
     override static func primaryKey() -> String? {
         return "rawChinese"
