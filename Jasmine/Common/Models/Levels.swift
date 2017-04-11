@@ -42,6 +42,10 @@ class Levels {
     ///   - phrases: list of phrases to level
     /// - Throws: Error if failed to add data or level name already exists
     func addCustomLevel(name: String?, gameType: GameType, gameMode: GameMode, phrases: [Phrase]) throws {
+        guard !phrases.isEmpty else {
+            throw LevelsError.noPhraseSelected
+        }
+
         let name = try getValidName(name)
         guard !levelNameExists(name) else {
             throw LevelsError.duplicateLevelName(name)

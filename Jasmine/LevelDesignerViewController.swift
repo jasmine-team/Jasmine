@@ -16,6 +16,8 @@ class LevelDesignerViewController: UIViewController {
     private static let selectPhrasesButtonText = "Select phrases (%d currently)"
     @IBOutlet private var selectPhrasesButton: UIButton!
 
+    private(set) var viewModel: LevelDesignerViewModel?
+
     /// The levels data to add to or update. To be set by LevelSelectionViewController
     var levels: Levels?
     /// The level under edit. To be set by LevelSelectionViewController
@@ -57,20 +59,26 @@ class LevelDesignerViewController: UIViewController {
         }
     }
 
-    // TODO : wait for level select VC to be implemented and segue to it
+    /// Saves the game and dismiss the view if successfully saved
     @IBAction private func onSaveAndCloseButtonPressed(_ button: UIButton) {
-        saveGame()
+        if saveGame() {
+            dismiss(animated: true)
+        }
     }
 
     // TODO : create helper for game initialization with the given game mode/type
     @IBAction private func onSaveAndPlayButtonPressed(_ button: UIButton) {
-        saveGame()
+        if saveGame() {
+
+        }
     }
 
     // TODO : set phrases for levels call (waiting for Phrases and PhrasesExplorerViewModel update)
     /// Saves the game, default name will be used if no name is given in text field. 
     /// Asks for overwrite if necessary.
-    private func saveGame() {
+    ///
+    /// - Returns: true if successfully saved
+    private func saveGame() -> Bool {
         let gameMode = LevelDesignerViewController.gameModeOrder[gameModeControl.selectedSegmentIndex]
         let gameType = LevelDesignerViewController.gameTypeOrder[gameTypeControl.selectedSegmentIndex]
 
@@ -79,11 +87,13 @@ class LevelDesignerViewController: UIViewController {
                 try levels?.deleteLevel(levelToEdit)
             }
             try levels?.addCustomLevel(name: levelNameField.text, gameType: gameType, gameMode: gameMode, phrases: [])
+            return true
         } catch LevelsError.duplicateLevelName(let name) {
             showOverwriteAlert(name: name, gameType: gameType, gameMode: gameMode, phrases: [])
         } catch {
             showError(error)
         }
+        return false
     }
 
     /// Shows an overwrite alert. If overwrite is selected, level with name `name` will be overwritten

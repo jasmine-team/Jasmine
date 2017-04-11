@@ -2,6 +2,9 @@ import UIKit
 
 extension UIViewController {
 
+    private static let cancelActionText = "Cancel"
+    private static let errorControllerTitle = "Error"
+
     /// Returns an alert controller with cancel button
     ///
     /// - Parameters:
@@ -10,7 +13,7 @@ extension UIViewController {
     /// - Returns: UIAlertController with cancel button
     func getAlertControllerWithCancel(title: String, message: String? = nil) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alertController.addAction(UIAlertAction(title: UIViewController.cancelActionText, style: .cancel))
         return alertController
     }
 
@@ -28,6 +31,6 @@ extension UIViewController {
     /// - Parameters:
     ///   - error: the error to show
     func showError(_ error: Error) {
-        showAlert(title: "Error", message: error.localizedDescription)
+        showAlert(title: UIViewController.errorControllerTitle, message: error.localizedDescription)
     }
 }
