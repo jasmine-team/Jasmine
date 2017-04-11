@@ -149,9 +149,11 @@ class TetrisGameViewController: UIViewController {
 
     // MARK: - Game State and Actions
     /// Releases a new tile at the top row for falling.
+    /// - Precondition: This method is only available if the game is `inProgress`.
     /// - Postcondition: This tile will have been checked if it can land on the top row.
     private func releaseNewTile() {
-        guard !tetrisGameAreaView.hasFallingTile,
+        guard viewModel.gameStatus == .inProgress,
+              !tetrisGameAreaView.hasFallingTile,
               !landTileIfNecessary(at: viewModel.fallingTileStartCoordinate) else {
             return
         }
