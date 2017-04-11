@@ -37,14 +37,15 @@ def translate_api_query(phrase, from_lang='cmn', to_lang='eng'):
     })
     try:
         response = get_json(TRANSLATE_API_URL, query)
+        print(response)
         answer = response['tuc'][0]
         meaning = next(meaning for meaning in answer['meanings'] if meaning['language'] == 'en')
         return {
-            'english': answer['phrase']['text'],
-            'chinese': phrase,
+            'english': answer.get('phrase', {}).get('text', '-'),
+            'rawChinese': phrase,
             'englishMeaning': meaning['text']
         }
-    except (IndexError, TypeError):
+    except Exception:
         return None
 
 def chinese_dict_api_query(phrase):
@@ -55,13 +56,14 @@ def chinese_dict_api_query(phrase):
     })
     try:
         response = get_json(CHINESE_DICT_API_URL, query)
+        print(response)
         answer = response['result']
         return {
-            'chinese': phrase,
-            'pinyin': answer['pinyin'],
-            'chineseMeaning': answer['content']
+            'rawPinyin': answer['pinyin'],
+            'chineseMeaning': answer['content'],
+            'chineseExample': answer['example']
         }
-    except (IndexError, TypeError):
+    except Exception:
         return None
 
 def cheng_yu_api_query(phrase):
@@ -71,37 +73,48 @@ def cheng_yu_api_query(phrase):
         'chengyu': phrase,
     })
     try:
-        response = get_json(CHINESE_DICT_API_URL, query)
+        response = get_json(CHENG_YU_API_URL, query)
         print(response)
         answer = response['result']
         return {
-            'chinese': phrase,
-            'pinyin': answer['pronounce'],
-            'chineseMeaning': answer['content']
+            'rawPinyin': answer['pronounce'],
+            'chineseMeaning': answer['content'],
+            'chineseExample': answer['example']
         }
-    except (IndexError, TypeError):
+    except Exception:
         return None
 
 def fill_row(row):
     """Forms a row of data for the phrase in chinese"""
-    if len(row['chinese']) == 4:
+    phrase = row['rawChinese']
+    if not row['english']:
+        data = translate_api_query(phrase)
+        if data:
+            row.update(data)
+    if row['rawPinyin']:
+        return row
+    elif len(phrase) == 4:
         endpoint = cheng_yu_api_query
-    else:
+    elif len(phrase) == 2:
         endpoint = chinese_dict_api_query
-    data = endpoint(row['chinese'])
+    else:
+        return row
+    data = endpoint(phrase)
     if data:
-        new_row = {**row, **data}
-        return new_row
+        row.update(data)
     return row
 
 def update_csv():
     """Reads csv and inputs new api data into it"""
-    with open(CSV_FILE_PATH, 'r+') as csvfile:
+    fieldnames = []
+    new_rows = []
+    with open(CSV_FILE_PATH, 'r') as csvfile:
         reader = csv.DictReader(csvfile)
         new_rows = [fill_row(row) for row in reader]
-        for row in new_rows:
-            print(row)
-        writer = csv.DictWriter(csvfile, fieldnames=reader.fieldnames)
+        fieldnames = reader.fieldnames
+    with open(CSV_FILE_PATH, 'w') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
         writer.writerows(new_rows)
 
 def main():
