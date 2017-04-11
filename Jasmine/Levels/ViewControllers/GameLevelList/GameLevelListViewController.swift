@@ -8,10 +8,12 @@ class GameLevelListViewController: UIViewController {
     private static let builtInLevelsIndex = 0
     private static let customLevelsIndex = 1
 
+    fileprivate static let cellHeight: CGFloat = 74
+
     // MARK: Layout
     @IBOutlet private weak var levelsCategoriesToggle: UISegmentedControl!
 
-    @IBOutlet private weak var gameLevelListCollection: UICollectionView!
+    @IBOutlet fileprivate weak var gameLevelListCollection: UICollectionView!
 
     // MARK: Properties
     /// Specifies a delegate to read the data from.
@@ -55,6 +57,15 @@ class GameLevelListViewController: UIViewController {
             return
         }
         delegate?.notifyLevelSelected(fromDefault: isShowingDefaultLevels, at: indexPath.item)
+    }
+
+    /// Notifies that the menu of a particular level has been opened.
+    @IBAction func onLevelMenuSelected(_ sender: UIButton) {
+        let tappedLocation = sender.convert(sender.center, to: gameLevelListCollection)
+        guard let indexPath = gameLevelListCollection.indexPathForItem(at: tappedLocation) else {
+            return
+        }
+        delegate?.notifyOpenMenuForLevel(fromDefault: isShowingDefaultLevels, at: indexPath.item)
     }
 
     // MARK: Interfacing Methods
@@ -132,4 +143,18 @@ extension GameLevelListViewController: UICollectionViewDataSource {
         levelCell.isMarked = isMarked
         return levelCell
     }
+}
+
+// MARK: - Cell Size
+extension GameLevelListViewController: UICollectionViewDelegateFlowLayout {
+
+    /// Sets the size of level cell so that it fits a single row.
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(width: gameLevelListCollection.bounds.width,
+                      height: GameLevelListViewController.cellHeight)
+    }
+
 }
