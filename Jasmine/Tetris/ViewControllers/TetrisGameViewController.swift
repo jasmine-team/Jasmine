@@ -161,9 +161,7 @@ class TetrisGameViewController: UIViewController {
 
         tetrisGameAreaView.setFallingTile(withData: tileText, toCoord: tileCoord)
         updateUpcomingAndFallingTiles()
-        guard !landTileIfNecessary(at: tileCoord) else {
-            return
-        }
+        tryLandTile(at: tileCoord)
     }
 
     /// Drops the falling tile to the lowest unoccupied cell in the same column.
@@ -186,7 +184,7 @@ class TetrisGameViewController: UIViewController {
         guard let coord = tetrisGameAreaView.fallingTileCoord else {
             return
         }
-        landTileIfNecessary(at: coord)
+        tryLandTile(at: coord)
     }
 
     /// Lands the tile at the specified coordinate if it is able to.
@@ -194,7 +192,7 @@ class TetrisGameViewController: UIViewController {
     /// - Parameter coordinate: the coordinate of the cell in the grid where the tile can land right onto.
     /// - Returns: true if the landing is permitted.
     @discardableResult
-    private func landTileIfNecessary(at coordinate: Coordinate) -> Bool {
+    private func tryLandTile(at coordinate: Coordinate) -> Bool {
         guard viewModel.canLandTile(at: coordinate) else {
             return false
         }
