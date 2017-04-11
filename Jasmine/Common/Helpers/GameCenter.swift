@@ -6,11 +6,11 @@ class GameCenter {
 
     let realm: Realm
     let results: Results<LevelResult>
-    let player: Player
     private var resultsNotifier: NotificationToken?
 
-    init(realm: Realm) {
+    init(realm: Realm, player: Player) {
         self.realm = realm
+        self.player = player
         results = realm.objects(LevelResult.self)
         attachListeners()
     }

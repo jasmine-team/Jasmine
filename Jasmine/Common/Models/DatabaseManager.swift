@@ -30,25 +30,19 @@ class DatabaseManager {
         self.realm = realm
         gameManager = GameManager(realm: realm)
         levels = Levels(realm: realm)
-
-        let fetch = DatabaseManager.getPhrases(realm: realm)
-        allPhrases = fetch.all
-        allCiHui = fetch.ciHui
-        allChengYu = fetch.chengYu
+        
+        let allPhrasesResult = realm.objects(Phrase.self)
+        allPhrases = Phrases(List(allPhrasesResult))
+        allCiHui = DatabaseManager.filter(phrases: allPhrasesResult, ofType: .ciHui)
+        allChengYu = DatabaseManager.filter(phrases: allPhrasesResult, ofType: .chengYu)
 
         self.player = DatabaseManager.getPlayer(realm: realm)
     }
 
-    private static func getPhrases(realm: Realm) -> (all: Phrases, ciHui: Phrases, chengYu: Phrases) {
-        let allPhrasesResult = realm.objects(Phrase.self)
-        let ciHui = allPhrasesResult.filter(DatabaseManager.getChinesePredicate(gameType: .ciHui))
-        let chengYu = allPhrasesResult.filter(DatabaseManager.getChinesePredicate(gameType: .chengYu))
-        return (all: Phrases(allPhrasesResult), ciHui: Phrases(ciHui), chengYu: Phrases(chengYu))
-    }
-
-    private static func getChinesePredicate(gameType: GameType) -> String {
+    private static func filter(phrases: Results<Phrase>, ofType gameType: GameType) -> Phrases {
         let count = gameType == .ciHui ? 2 : 4
-        return "rawChinese LIKE '\(String(repeating: "?", count: count))'"
+        let predicate = "rawChinese LIKE '\(String(repeating: "?", count: count))'"
+        return Phrases(List(phrases.filter(predicate)))
     }
 
     private static func getPlayer(realm: Realm) -> Player {
