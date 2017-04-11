@@ -86,9 +86,9 @@ class GameOverViewController: UIViewController {
 
     private func playGameOverSound() {
         if gameDesriptor.gameStatus == .endedWithLost {
-            SoundService.sharedInstance.play(Constants.Sound.Effect.lose)
+            SoundService.sharedInstance.play(.lose)
         } else if gameDesriptor.gameStatus == .endedWithWon {
-            SoundService.sharedInstance.play(Constants.Sound.Effect.win)
+            SoundService.sharedInstance.play(.win)
         }
     }
 
