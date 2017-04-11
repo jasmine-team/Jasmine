@@ -3,32 +3,30 @@ import RealmSwift
 /// Phrases contains list of phrases for a particular difficulty
 class Phrases {
 
-    private lazy var allPhrases: AnyRealmCollection<Phrase> = {
-        guard let realm = self.phrases.first?.realm else {
-            assertionFailure("Failed to instantiate" +
-                "Did you call phrases through Level or PlayerManager?")
-            return AnyRealmCollection(self.phrases)
+    private lazy var allRawPhrases: Results<Phrase> = {
+        if let realm = self.phrases.first?.realm {
+            return realm.objects(Phrase.self)
         }
-        return AnyRealmCollection(realm.objects(Phrase.self))
+        do {
+            return try Realm().objects(Phrase.self)
+        } catch {
+            fatalError(error.localizedDescription)
+        }
     }()
 
-    private var phrases: List<Phrase>
-    private var range: [Int] = []
-    let isShuffled: Bool
+    fileprivate var phrases: List<Phrase>
     let phraseLength: Int
 
-    /// Creates an encapsulated list of phrases for usage outside of models 
+    /// Creates an encapsulated list of phrases for usage outside of models
     ///
     /// - Parameters:
     ///   - phrases: realm list of phrases
-    ///   - isShuffled: whether retrieval of this list should be shuffled
-    init(realm: Realm? = nil, _ phrases: List<Phrase>, isShuffled: Bool = false) {
+    init(realm: Realm? = nil, _ phrases: List<Phrase>) {
         self.phrases = phrases
         guard let firstPhrase = phrases.first else {
             fatalError("Phrases is empty")
         }
         self.phraseLength = firstPhrase.chinese.count
-        self.isShuffled = isShuffled
     }
 
     /// Creates a copy of the phrase
@@ -36,40 +34,8 @@ class Phrases {
     /// - Parameters:
     ///   - phrases: original phrases object
     ///   - isShuffled: option to change between shuffled, unshuffled versions
-    convenience init(_ phrases: Phrases, isShuffled: Bool = false) {
-        self.init(phrases.phrases, isShuffled: isShuffled)
-    }
-
-    /// Returns a list of phrases
-    ///
-    /// - Parameter length: length of resulting array
-    /// - Returns: An array of Phrase
-    func next(count: Int) -> [Phrase] {
-        return (0..<count).map { _ in
-            self.next()
-        }
-    }
-
-    /// Returns the next phrase, non-exhaustively.
-    ///
-    /// - Returns: Phrase
-    func next() -> Phrase {
-        if range.isEmpty {
-            range = Array(0..<phrases.count)
-        }
-        if isShuffled {
-            range.shuffle()
-        }
-        let nextIndex = range.removeFirst()
-        return self.phrases[nextIndex]
-    }
-
-    /// Converts underlying collection to an array.
-    /// NOTE: This process is inefficient, i.e. don't use this unless you need to
-    ///
-    /// - Returns: Array of phrase
-    func toArray() -> [Phrase] {
-        return Array(phrases)
+    convenience init(_ phrases: Phrases) {
+        self.init(phrases.phrases)
     }
 
     /// Checks if the chinese text is a valid chinese phrase, must be exact match
@@ -96,18 +62,6 @@ class Phrases {
         return filter(chinese: chinese).first
     }
 
-    /// Returns a valid phrase, rolls over if out of bounds
-    ///
-    /// - Parameter index: index of the phrase
-    subscript(index: Int) -> Phrase {
-        return phrases[index % phrases.count]
-    }
-
-    /// Returns the phrases count
-    var count: Int {
-        return phrases.count
-    }
-
     /// MARK: Helper functions
 
     /// Creates a predicate that filters based on character count
@@ -124,7 +78,32 @@ class Phrases {
     /// - Parameter chinese: chinese word
     /// - Returns: result of phrase
     private func filter(chinese: String) -> Results<Phrase> {
-        return allPhrases.filter("rawChinese == '\(chinese)'")
+        return allRawPhrases.filter("rawChinese == '\(chinese)'")
+    }
+
+}
+
+extension Phrases: Collection {
+
+    var startIndex: Int {
+        return 0
+    }
+
+    var endIndex: Int {
+        return phrases.count
+    }
+
+    /// Returns the phrases count
+    var count: Int {
+        return phrases.count
+    }
+
+    func index(after: Int) -> Int {
+        return after + 1
+    }
+
+    subscript(position: Int) -> Phrase {
+        return self.phrases[position]
     }
 
 }
