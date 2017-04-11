@@ -70,17 +70,17 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
 
         switch (gameInfo.gameMode, gameInfo.gameType) {
         case (.sliding, .chengYu):
-            return ChengYuSlidingViewModel(time: GameConstants.Sliding.time,
-                                           gameData: gameData, rows: GameConstants.Sliding.rows)
+            return ChengYuSlidingViewModel(
+                time: GameConstants.Sliding.time, gameData: gameData, rows: GameConstants.Sliding.rows)
         case (.sliding, .ciHui):
-            return CiHuiSlidingViewModel(time: GameConstants.Sliding.time,
-                                         gameData: gameData, rows: GameConstants.Sliding.rows)
+            return CiHuiSlidingViewModel(
+                time: GameConstants.Sliding.time, gameData: gameData, rows: GameConstants.Sliding.rows)
         case (.swapping, .chengYu):
-            return ChengYuSwappingViewModel(time: GameConstants.Swapping.time,
-                                            gameData: gameData, numberOfPhrases: GameConstants.Swapping.rows)
+            return ChengYuSwappingViewModel(
+                time: GameConstants.Swapping.time, gameData: gameData, numberOfPhrases: GameConstants.Swapping.rows)
         case (.swapping, .ciHui):
-            return CiHuiSwappingViewModel(time: GameConstants.Swapping.time,
-                                          gameData: gameData, numberOfPhrases: GameConstants.Swapping.rows)
+            return CiHuiSwappingViewModel(
+                time: GameConstants.Swapping.time, gameData: gameData, numberOfPhrases: GameConstants.Swapping.rows)
         case (.tetris, .chengYu):
             fallthrough
         case (.tetris, .ciHui):
