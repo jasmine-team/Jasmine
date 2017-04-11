@@ -54,11 +54,15 @@
 		A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E711E751C930033FC5B /* Sequence+Extensions.swift */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
 		A27B6E541E90B33400825AF3 /* RealmIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B6E531E90B33400825AF3 /* RealmIntegrationTests.swift */; };
+		A27CA52E1E9BBE230002614C /* Collection+RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CA52D1E9BBE230002614C /* Collection+RandomGenerator.swift */; };
+		A27CA5301E9BBE650002614C /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27CA52F1E9BBE650002614C /* RandomGenerator.swift */; };
 		A2FF83951E9A536F00677FA2 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF83921E9A536F00677FA2 /* GameManager.swift */; };
 		A2FF83961E9A536F00677FA2 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF83931E9A536F00677FA2 /* Level.swift */; };
 		A2FF83971E9A536F00677FA2 /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF83941E9A536F00677FA2 /* Levels.swift */; };
 		A2FF839A1E9A538800677FA2 /* GameManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF83981E9A538800677FA2 /* GameManagerTests.swift */; };
 		A2FF839B1E9A538800677FA2 /* LevelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF83991E9A538800677FA2 /* LevelsTests.swift */; };
+		A2FF839D1E9C9D1800677FA2 /* JasmineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF839C1E9C9D1800677FA2 /* JasmineManager.swift */; };
+		A2FF839F1E9CA26000677FA2 /* RandomGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF839E1E9CA26000677FA2 /* RandomGeneratorTests.swift */; };
 		DF2052C81E8BDD5A00D66B0B /* UIImageView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2052C71E8BDD5A00D66B0B /* UIImageView+Animation.swift */; };
 		DF2155181E8E2335005A0927 /* PhrasesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2155171E8E2335005A0927 /* PhrasesTests.swift */; };
 		DF21551A1E8E234D005A0927 /* Phrases.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2155191E8E234D005A0927 /* Phrases.swift */; };
@@ -203,11 +207,15 @@
 		A260C6311E6AB30400782103 /* JasmineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JasmineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A260C6371E6AB30400782103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A27B6E531E90B33400825AF3 /* RealmIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmIntegrationTests.swift; sourceTree = "<group>"; };
+		A27CA52D1E9BBE230002614C /* Collection+RandomGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+RandomGenerator.swift"; sourceTree = "<group>"; };
+		A27CA52F1E9BBE650002614C /* RandomGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomGenerator.swift; sourceTree = "<group>"; };
 		A2FF83921E9A536F00677FA2 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		A2FF83931E9A536F00677FA2 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		A2FF83941E9A536F00677FA2 /* Levels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
 		A2FF83981E9A538800677FA2 /* GameManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManagerTests.swift; sourceTree = "<group>"; };
 		A2FF83991E9A538800677FA2 /* LevelsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelsTests.swift; sourceTree = "<group>"; };
+		A2FF839C1E9C9D1800677FA2 /* JasmineManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JasmineManager.swift; sourceTree = "<group>"; };
+		A2FF839E1E9CA26000677FA2 /* RandomGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomGeneratorTests.swift; sourceTree = "<group>"; };
 		B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JasmineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF6F46CAE49685937742BCB /* Pods-JasmineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2052C71E8BDD5A00D66B0B /* UIImageView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animation.swift"; sourceTree = "<group>"; };
@@ -394,6 +402,7 @@
 		50989DC41E6D8B16009A86C8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A27CA52F1E9BBE650002614C /* RandomGenerator.swift */,
 				DF409FDC1E84147400389976 /* CountDownTimer.swift */,
 				DF409FDD1E84147400389976 /* Prebundler.swift */,
 				A2187E6B1E7510B60033FC5B /* Random.swift */,
@@ -420,6 +429,7 @@
 				DF2155191E8E234D005A0927 /* Phrases.swift */,
 				DF409FE41E8414B000389976 /* Player.swift */,
 				50AE3A751E8B93D3005EC944 /* TextGrid.swift */,
+				A2FF839C1E9C9D1800677FA2 /* JasmineManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -504,6 +514,7 @@
 			children = (
 				DF409FF01E8415F400389976 /* CountDownTimerTest.swift */,
 				50717ABF1E7BD944005A2FE5 /* RandomTests.swift */,
+				A2FF839E1E9CA26000677FA2 /* RandomGeneratorTests.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -690,6 +701,7 @@
 		DF7CF76E1E7E9E2B00C6979A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A27CA52D1E9BBE230002614C /* Collection+RandomGenerator.swift */,
 				DFE111391E98BD3300F8860E /* AVAudioPlayer+Extensions.swift */,
 				502A29641E925A190024336A /* Array+Equatable.swift */,
 				DF9918C51E92B65F004E599B /* CGPoint+Arithmetic.swift */,
@@ -1169,6 +1181,7 @@
 				DFBE8F731E9527F70036CCC6 /* GameStatusUpdateDelegate.swift in Sources */,
 				DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */,
 				DF9918D51E92B6A3004E599B /* ChengYuSwappingViewModel.swift in Sources */,
+				A2FF839D1E9C9D1800677FA2 /* JasmineManager.swift in Sources */,
 				A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */,
 				DF2052C81E8BDD5A00D66B0B /* UIImageView+Animation.swift in Sources */,
 				502A296E1E926DCA0024336A /* ChengYuSlidingViewModel.swift in Sources */,
@@ -1176,6 +1189,7 @@
 				502A29651E925A190024336A /* Array+Equatable.swift in Sources */,
 				507AC1951E90AAB00033B4E6 /* TetrisGameViewModel.swift in Sources */,
 				DFBE8F781E9527F70036CCC6 /* GameStatisticsViewController.swift in Sources */,
+				A27CA5301E9BBE650002614C /* RandomGenerator.swift in Sources */,
 				DF40F9E21E9676C1001EAAA8 /* LevelResult.swift in Sources */,
 				DF9918D61E92B6A3004E599B /* CiHuiSwappingViewModel.swift in Sources */,
 				DF9918DC1E92B6D6004E599B /* SlidingGameViewController.swift in Sources */,
@@ -1201,6 +1215,7 @@
 				DF9918C61E92B65F004E599B /* CGPoint+Arithmetic.swift in Sources */,
 				50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */,
 				DFE1114A1E98BDC500F8860E /* GameConstants.swift in Sources */,
+				A27CA52E1E9BBE230002614C /* Collection+RandomGenerator.swift in Sources */,
 				DF2155271E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift in Sources */,
 				50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */,
 				509894A31E6E6CAE00FC9CF3 /* GameType.swift in Sources */,
@@ -1262,6 +1277,7 @@
 				DF9918E31E92B730004E599B /* DirectionTests.swift in Sources */,
 				50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */,
 				DF2155181E8E2335005A0927 /* PhrasesTests.swift in Sources */,
+				A2FF839F1E9CA26000677FA2 /* RandomGeneratorTests.swift in Sources */,
 				50717AC01E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift in Sources */,
 				DF40F9E41E967708001EAAA8 /* PhraseTests.swift in Sources */,
 				DFE111521E98BE4000F8860E /* AVAudioPlayer+ExtensionsTest.swift in Sources */,
