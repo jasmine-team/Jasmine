@@ -63,4 +63,13 @@ class PhrasesExplorerViewModel {
     func reset() {
         rowIndices = Array(0..<allPhrasesWithSelection.count)
     }
+
+    /// Returns the PhraseViewModel associated with the given row (index of the table).
+    ///
+    /// - Parameter row: the row that is pressed
+    /// - Returns: the phrase VM to be segued with (to the PhraseVC)
+    func getPhraseViewModel(at row: Int) -> PhraseViewModel {
+        let index = rowIndices[row]
+        return PhraseViewModel(phrase: allPhrasesWithSelection[index].phrase)
+    }
 }

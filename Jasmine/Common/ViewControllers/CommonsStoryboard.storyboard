@@ -1,47 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Phrases Table View Controller-->
-        <scene sceneID="GrK-mD-DZq">
-            <objects>
-                <tableViewController id="YwC-7G-uNS" customClass="PhrasesTableViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wvh-d5-fhH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhrasesTableCell" id="rC7-54-CIb">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rC7-54-CIb" id="1Lg-EX-XlK">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="YwC-7G-uNS" id="4Mx-57-tUb"/>
-                            <outlet property="delegate" destination="YwC-7G-uNS" id="gtN-K9-KhI"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3WA-gZ-GPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-463" y="885"/>
-        </scene>
         <!--Phrases Explorer View Controller-->
         <scene sceneID="cAS-lR-SW1">
             <objects>
@@ -89,25 +59,29 @@
                             </searchBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9C-Gv-dVr">
                                 <rect key="frame" x="0.0" y="108" width="375" height="559"/>
-                                <connections>
-                                    <segue destination="YwC-7G-uNS" kind="embed" id="MNr-G6-CZu"/>
-                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ncI-bH-3db" firstAttribute="top" secondItem="f9C-Gv-dVr" secondAttribute="bottom" id="1t2-K0-Uhh"/>
+                            <constraint firstItem="f9C-Gv-dVr" firstAttribute="top" secondItem="KVZ-Pg-UvA" secondAttribute="bottom" id="6rd-mc-Iwf"/>
                             <constraint firstAttribute="trailing" secondItem="KVZ-Pg-UvA" secondAttribute="trailing" id="C9v-MX-5Do"/>
+                            <constraint firstItem="f9C-Gv-dVr" firstAttribute="leading" secondItem="1mp-X2-ZcW" secondAttribute="leading" id="EAi-GY-hEF"/>
                             <constraint firstItem="f9C-Gv-dVr" firstAttribute="top" secondItem="KVZ-Pg-UvA" secondAttribute="bottom" id="GV8-Us-GgF"/>
                             <constraint firstItem="fRz-oO-Zb3" firstAttribute="top" secondItem="1mp-X2-ZcW" secondAttribute="top" id="JOX-Z8-mHt"/>
+                            <constraint firstItem="ncI-bH-3db" firstAttribute="top" secondItem="f9C-Gv-dVr" secondAttribute="bottom" id="NOP-2z-5Rx"/>
                             <constraint firstAttribute="trailing" secondItem="f9C-Gv-dVr" secondAttribute="trailing" id="Qzp-yC-yjJ"/>
                             <constraint firstItem="f9C-Gv-dVr" firstAttribute="leading" secondItem="1mp-X2-ZcW" secondAttribute="leading" id="R0O-iM-vrs"/>
                             <constraint firstItem="KVZ-Pg-UvA" firstAttribute="top" secondItem="fRz-oO-Zb3" secondAttribute="bottom" id="VKR-Jh-8bc"/>
                             <constraint firstAttribute="trailing" secondItem="fRz-oO-Zb3" secondAttribute="trailing" id="bwa-Oi-s9u"/>
                             <constraint firstItem="KVZ-Pg-UvA" firstAttribute="leading" secondItem="1mp-X2-ZcW" secondAttribute="leading" id="cOS-gq-Vlw"/>
                             <constraint firstItem="fRz-oO-Zb3" firstAttribute="leading" secondItem="1mp-X2-ZcW" secondAttribute="leading" id="caJ-dw-3Pl"/>
+                            <constraint firstAttribute="trailing" secondItem="f9C-Gv-dVr" secondAttribute="trailing" id="nIz-AN-Ero"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="phrasesTableView" destination="f9C-Gv-dVr" id="Jxk-1k-Dd0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxV-6g-0cO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
