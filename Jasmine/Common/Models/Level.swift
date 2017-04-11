@@ -43,9 +43,9 @@ class Level: Object {
     }
 
     /// All phrases for this level
-    var phrases: Phrases {
+    lazy private(set) var phrases: Phrases = {
         return Phrases(self.rawPhrases)
-    }
+    }()
 
     override static func ignoredProperties() -> [String] {
         return ["gameType", "gameMode", "phrases"]
