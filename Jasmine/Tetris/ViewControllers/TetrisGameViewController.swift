@@ -123,7 +123,7 @@ class TetrisGameViewController: UIViewController {
         } else if direction == .southwards {
             dropFallingTile()
         }
-
+        SoundService.sharedInstance.play(.snap)
     }
 
     /// Moves the falling tile with respect to the position of the falling tile when the user taps
@@ -145,6 +145,7 @@ class TetrisGameViewController: UIViewController {
             let direction: Direction = touchedPosition.x > tileCenter.x ? .eastwards : .westwards
             tetrisGameAreaView.shiftFallingTile(towards: direction)
         }
+        SoundService.sharedInstance.play(.snap)
     }
 
     // MARK: - Game State and Actions
@@ -260,6 +261,7 @@ extension TetrisGameViewController {
     fileprivate func animate(destroyTilesAt coordinates: Set<Coordinate>) {
         coordinates.flatMap { self.tetrisGameAreaView.getCell(at: $0) }
             .forEach { $0.animateExplosion() }
+        SoundService.sharedInstance.play(.pop)
     }
 
     /// Shifts the content of the tiles from Coordinate `from` to Coordinate `to`
