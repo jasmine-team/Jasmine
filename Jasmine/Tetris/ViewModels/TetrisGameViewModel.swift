@@ -37,9 +37,13 @@ class TetrisGameViewModel {
     // Stores the current index of `nextTexts` for the new upcoming tile
     private var nextTextIndex: Int = 0
 
+    /// Generator that exhaust all phrases before repeating the phrases
+    private let phraseGenerator: RandomGenerator<Phrases>
+
     /// Populate upcomingTiles and set listeners for the timer
     required init(gameData: GameData) {
         self.gameData = gameData
+        phraseGenerator = gameData.phrases.randomGenerator
         populateUpcomingTiles()
         setNextFallingTile()
         setTimerListener()
@@ -86,7 +90,9 @@ class TetrisGameViewModel {
     }
 
     private func checkForMatchingPhrase(at coordinate: Coordinate, rowWise: Bool) -> Set<Coordinate>? {
-        let phraseLen = gameData.phrases[0].chinese.count
+        guard let phraseLen = gameData.phrases.first?.chinese.count else {
+            fatalError("No phrases found")
+        }
         let rowOrCol = rowWise ? coordinate.col : coordinate.row
         let startIndex = max(0, rowOrCol - phraseLen + 1)
         let endIndex = min((rowWise ? gridData.numColumns : gridData.numRows) - phraseLen, rowOrCol)
@@ -97,7 +103,7 @@ class TetrisGameViewModel {
             }
             if let phrase = isPhraseValid(at: coordinates) {
                 // TODO: Fix this animation problem
-                return Set(coordinates) // .union(gridData.getCoordinates(containing: Set(phrase)))
+                return Set(coordinates).union(gridData.getCoordinates(containing: Set(phrase)))
             }
         }
 
@@ -185,7 +191,7 @@ class TetrisGameViewModel {
     /// Returns `Constants.Game.Tetris.upcomingPhrasesCount` number of new phrases and add them to the phrases tested
     private func getNewTexts() -> [String] {
         let count = GameConstants.Tetris.upcomingPhrasesCount
-        let newPhrases = gameData.phrases.randomGenerator.next(count: count)
+        let newPhrases = phraseGenerator.next(count: count)
         phrasesTested.formUnion(newPhrases)
         return newPhrases.map { $0.chinese }.flatMap { $0 }
     }
