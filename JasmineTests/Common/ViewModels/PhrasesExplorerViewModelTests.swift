@@ -33,6 +33,8 @@ class PhrasesExplorerViewModelTests: RealmTestCase {
     }
 
     func testSearch() {
+        let originalCount = viewModel.rowsShown
+
         let phraseTuple = viewModel.get(at: 0)
         guard let firstChinese = phraseTuple.chinese.characters.first else {
             XCTFail("Chinese database error")
@@ -41,9 +43,35 @@ class PhrasesExplorerViewModelTests: RealmTestCase {
 
         viewModel.search(keyword: String(firstChinese))
         XCTAssert(viewModel.rowsShown > 0)
-        let phrase = viewModel.get(at: 0)
 
+        let phrase = viewModel.get(at: 0)
         XCTAssertEqual(phraseTuple.chinese, phrase.chinese)
         XCTAssertFalse(phraseTuple.selected)
+
+        viewModel.search(keyword: "")
+        XCTAssertEqual(originalCount, viewModel.rowsShown)
+    }
+
+    func testReset() {
+        let originalCount = viewModel.rowsShown
+
+        let phraseTuple = viewModel.get(at: 0)
+        guard let firstChinese = phraseTuple.chinese.characters.first else {
+            XCTFail("Chinese database error")
+            return
+        }
+
+        viewModel.search(keyword: String(firstChinese))
+
+        viewModel.reset()
+        XCTAssertEqual(originalCount, viewModel.rowsShown)
+    }
+
+    func testgetPhraseViewModel() {
+        let phraseTuple = viewModel.get(at: 0)
+        let phraseViewModel = viewModel.getPhraseViewModel(at: 0)
+
+        XCTAssertEqual(phraseViewModel.english, phraseTuple.english)
+        XCTAssertEqual(phraseViewModel.hanZi, phraseTuple.chinese)
     }
 }

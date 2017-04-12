@@ -11,4 +11,15 @@ class SequenceExtensionsTests: XCTestCase {
         XCTAssertFalse([1, 1, 3].isAllSame, "The array [1, 1, 3] should not all has same")
         XCTAssertFalse([1, 2, 3].isAllSame, "The array [1, 1, 3] should not all has same")
     }
+
+    func testIsAllTrue() {
+        let emptyArray: [Int] = []
+
+        XCTAssert([2, 4, 6].isAllTrue(predicate: { $0 % 2 == 0 }))
+        XCTAssertFalse([2, 4, 5].isAllTrue(predicate: { $0 % 2 == 0 }))
+        XCTAssertFalse([2, 3, 5].isAllTrue(predicate: { $0 % 2 == 0 }))
+        XCTAssertFalse([1, 3, 5].isAllTrue(predicate: { $0 % 2 == 0 }))
+        XCTAssert(emptyArray.isAllTrue(predicate: { $0 % 2 == 0 }))
+        XCTAssert([2].isAllTrue(predicate: { $0 % 2 == 0 }))
+    }
 }

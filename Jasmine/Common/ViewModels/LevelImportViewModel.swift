@@ -15,15 +15,11 @@ class LevelImportViewModel {
     }
     /// The defaults levels in the game.
     var defaultLevels: [GameInfo] {
-        return rawDefaultLevels.map { level in
-            GameInfo(uuid: level.uuid, levelName: level.name, gameType: level.gameType, gameMode: level.gameMode)
-        }
+        return rawDefaultLevels.map { level in GameInfo.from(level: level) }
     }
     /// The custom levels in the game.
     var customLevels: [GameInfo] {
-        return rawCustomLevels.map { level in
-            GameInfo(uuid: level.uuid, levelName: level.name, gameType: level.gameType, gameMode: level.gameMode)
-        }
+        return rawCustomLevels.map { level in GameInfo.from(level: level) }
     }
 
     /// The previous view model (phrases explorer) before this view model.
@@ -42,9 +38,8 @@ class LevelImportViewModel {
     /// Get the phrase explorer VM from the game info
     ///
     /// - Parameter gameInfo: the game info to be passed
-    func getPhraseExplorerViewModel(from gameInfo: GameInfo) -> PhrasesExplorerViewModel {
-        let level = getLevel(from: gameInfo.uuid, inArray: rawCustomLevels)
-        return PhrasesExplorerViewModel(phrases: level.phrases)
+    func getPhraseExplorerViewModel(from index: Int) -> PhrasesExplorerViewModel {
+        return PhrasesExplorerViewModel(phrases: rawCustomLevels[index].phrases)
     }
 
     /// Import phrases from a given level.
@@ -55,16 +50,5 @@ class LevelImportViewModel {
         let phrases = level.phrases
         previousViewModel.importPhrases(with: phrases)
         return previousViewModel
-    }
-
-    /// Get a level from the given UUID
-    ///
-    /// - Parameter uuid: the UUID to be searched
-    /// - Returns: the level from the UUID
-    private func getLevel(from uuid: String, inArray array: [Level]) -> Level {
-        guard let level = array.first(where: { $0.uuid == uuid }) else {
-            fatalError("Level does not exist")
-        }
-        return level
     }
 }
