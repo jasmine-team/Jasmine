@@ -10,9 +10,7 @@ class LevelDesignerViewModel {
         guard let levelInEdit = levelInEdit else {
             return nil
         }
-        return GameInfo(levelName: levelInEdit.name,
-                        gameType: levelInEdit.gameType, gameMode: levelInEdit.gameMode,
-                        isEditable: !levelInEdit.isReadOnly)
+        return GameInfo.from(level: levelInEdit)
     }
 
     /// Stores the phrases for each game type

@@ -88,7 +88,7 @@ class GameLevelListViewController: UIViewController {
         guard isShowingDefaultLevels == isDefault else {
             return
         }
-        helperReloadLevels(at: [IndexPath(item: index, section: 0)])
+        self.gameLevelListCollection.reloadItems(at: [IndexPath(item: index, section: 0)])
     }
 
     /// Marks a level by placing a tick next to the level cell.
@@ -106,11 +106,6 @@ class GameLevelListViewController: UIViewController {
             return
         }
         cell.isMarked = isSelected
-    }
-
-    // MARK: Helper Methods
-    private func helperReloadLevels(at indices: Set<IndexPath>) {
-        self.gameLevelListCollection.reloadItems(at: Array(indices))
     }
 }
 
