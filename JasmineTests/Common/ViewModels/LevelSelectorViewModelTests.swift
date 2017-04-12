@@ -26,14 +26,14 @@ class LevelSelectorViewModelTests: RealmTestCase {
     }
 
     func testProperties() {
-        XCTAssertEqual([GameInfo.constructGameInfo(from: test1)],
+        XCTAssertEqual([GameInfo.from(level: test1)],
                        viewModel.defaultLevels)
-        XCTAssertEqual([GameInfo.constructGameInfo(from: test2), GameInfo.constructGameInfo(from: test3)],
+        XCTAssertEqual([GameInfo.from(level: test2), GameInfo.from(level: test3)],
                        viewModel.customLevels)
     }
 
     func testDeleteLevel() {
-        viewModel.deleteLevel(from: GameInfo.constructGameInfo(from: test2))
+        viewModel.deleteCustomLevel(fromRow: 0)
         XCTAssertEqual([test3.name], viewModel.customLevels.map { $0.levelName })
     }
 }

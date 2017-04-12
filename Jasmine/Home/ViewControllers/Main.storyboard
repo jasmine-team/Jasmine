@@ -333,10 +333,10 @@
             </objects>
             <point key="canvasLocation" x="1301" y="1241"/>
         </scene>
-        <!--LevelSelectionViewController-->
+        <!--LevelSelectorViewController-->
         <scene sceneID="W8j-9p-cbB">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="LevelSelectionStoryboard" storyboardName="LevelSelectionStoryboard" referencedIdentifier="LevelSelectionViewController" id="ka7-Kp-EOJ" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="LevelSelectionStoryboard" referencedIdentifier="LevelSelectorViewController" id="ka7-Kp-EOJ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="bFD-pg-1KR"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M4w-TR-JJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
