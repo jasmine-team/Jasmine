@@ -79,8 +79,8 @@
 		DF409FFB1E84225200389976 /* TetrisGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FFA1E84225200389976 /* TetrisGameViewController.swift */; };
 		DF40F9E21E9676C1001EAAA8 /* LevelResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40F9E11E9676C1001EAAA8 /* LevelResult.swift */; };
 		DF40F9E41E967708001EAAA8 /* PhraseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40F9E31E967708001EAAA8 /* PhraseTests.swift */; };
+		DF51BC651E9DCA16008B075C /* LevelSelectorViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF51BC641E9DCA16008B075C /* LevelSelectorViewModelProtocol.swift */; };
 		DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */; };
-		DF6DDC581E9BF99F00FACAB5 /* LevelSelectorViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6DDC571E9BF99F00FACAB5 /* LevelSelectorViewModelProtocol.swift */; };
 		DF6DDC5B1E9BF9BA00FACAB5 /* LevelSelectorViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6DDC5A1E9BF9BA00FACAB5 /* LevelSelectorViewControllerDelegate.swift */; };
 		DF6DDC5D1E9BF9C200FACAB5 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6DDC5C1E9BF9C200FACAB5 /* GameInfo.swift */; };
 		DF76B0AA1E9D184900BCC751 /* Collection+RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF76B0A91E9D184900BCC751 /* Collection+RandomGenerator.swift */; };
@@ -250,8 +250,8 @@
 		DF409FFA1E84225200389976 /* TetrisGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewController.swift; sourceTree = "<group>"; };
 		DF40F9E11E9676C1001EAAA8 /* LevelResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelResult.swift; sourceTree = "<group>"; };
 		DF40F9E31E967708001EAAA8 /* PhraseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseTests.swift; sourceTree = "<group>"; };
+		DF51BC641E9DCA16008B075C /* LevelSelectorViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelSelectorViewModelProtocol.swift; path = ViewModels/LevelSelectorViewModelProtocol.swift; sourceTree = "<group>"; };
 		DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TetrisStoryboard.storyboard; sourceTree = "<group>"; };
-		DF6DDC571E9BF99F00FACAB5 /* LevelSelectorViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelSelectorViewModelProtocol.swift; path = ../Sliding/ViewModels/LevelSelectorViewModelProtocol.swift; sourceTree = "<group>"; };
 		DF6DDC5A1E9BF9BA00FACAB5 /* LevelSelectorViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectorViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DF6DDC5C1E9BF9C200FACAB5 /* GameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameInfo.swift; path = Models/GameInfo.swift; sourceTree = "<group>"; };
 		DF76B0A91E9D184900BCC751 /* Collection+RandomGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+RandomGenerator.swift"; sourceTree = "<group>"; };
@@ -734,7 +734,7 @@
 			isa = PBXGroup;
 			children = (
 				DF76B0B71E9D196600BCC751 /* LevelSelectorViewModel.swift */,
-				DF6DDC571E9BF99F00FACAB5 /* LevelSelectorViewModelProtocol.swift */,
+				DF51BC641E9DCA16008B075C /* LevelSelectorViewModelProtocol.swift */,
 				DF0452571E9C612100C3F1B1 /* LevelImportViewModelProtocol.swift */,
 			);
 			name = ViewModels;
@@ -1267,7 +1267,6 @@
 				DFBE8F401E95272B0036CCC6 /* SquareGridViewController.swift in Sources */,
 				502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */,
 				DF76B0C41E9D557700BCC751 /* LevelDesignerViewController.swift in Sources */,
-				DF6DDC581E9BF99F00FACAB5 /* LevelSelectorViewModelProtocol.swift in Sources */,
 				DFE1113A1E98BD3300F8860E /* AVAudioPlayer+Extensions.swift in Sources */,
 				DF7CF7721E7E9E3500C6979A /* IndexPath+Coordinate.swift in Sources */,
 				50AE3A761E8B93D3005EC944 /* TextGrid.swift in Sources */,
@@ -1322,6 +1321,7 @@
 				DF2155271E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift in Sources */,
 				50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */,
 				509894A31E6E6CAE00FC9CF3 /* GameType.swift in Sources */,
+				DF51BC651E9DCA16008B075C /* LevelSelectorViewModelProtocol.swift in Sources */,
 				DFE1114C1E98BDDC00F8860E /* ProfileViewController.swift in Sources */,
 				502A296F1E926DCA0024336A /* CiHuiSlidingViewModel.swift in Sources */,
 				DF2155251E8E3F25005A0927 /* Direction.swift in Sources */,
