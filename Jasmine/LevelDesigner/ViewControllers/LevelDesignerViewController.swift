@@ -63,19 +63,26 @@ class LevelDesignerViewController: UIViewController {
         selectPhrasesButton.setTitle(buttonText, for: .normal)
     }
 
-    func done(_ phrases: [Phrase]) {
+    // TODO : figure out how explorer vc tell designer vc it has been dismissed 
+    func notifyPhraseSelected(_ phrases: Set<Phrase>) {
         viewModel.selectedPhrases[selectedGameType] = phrases
         updateSelectPhrasesButtonText()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let phrasesExplorerViewController = segue.destination as? PhrasesExplorerViewController {
-
-            // TODO: refactor this to VM
-
-            let phrasesExplorerViewModel = PhrasesExplorerViewModel(phrases: Storage.sharedInstance.allPhrases,
+            let phrasesExplorerViewModel = PhrasesExplorerViewModel(phrases: phrasesForSelectedGameType,
                                                selectedPhrases: viewModel.selectedPhrases[selectedGameType])
             phrasesExplorerViewController.segueWith(phrasesExplorerViewModel, isMarkable: true, viewController: self)
+        }
+    }
 
+    /// Returns all the phrases in the database for the selected game type
+    private var phrasesForSelectedGameType: Phrases {
+        switch selectedGameType {
+        case .chengYu:
+            return Storage.sharedInstance.allChengYu
+        case .ciHui:
+            return Storage.sharedInstance.allCiHui
         }
     }
 
@@ -111,7 +118,6 @@ class LevelDesignerViewController: UIViewController {
         } catch LevelsError.duplicateLevelName(let name) {
             showOverwriteAlert(name: name, gameType: selectedGameType, gameMode: selectedGameMode)
         } catch {
-            print("errpr")
             showError(error)
         }
         return false

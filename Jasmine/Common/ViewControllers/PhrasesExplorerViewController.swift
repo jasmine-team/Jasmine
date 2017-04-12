@@ -35,7 +35,7 @@ class PhrasesExplorerViewController: UIViewController {
     weak var viewController: LevelDesignerViewController?
     /// Dismisses this current screen when "Back" button is pressed.
     @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
-        viewController?.done(viewModel.selectedPhrases)
+        viewController?.notifyPhraseSelected(viewModel.selectedPhrases)
         self.dismiss(animated: true, completion: nil)
     }
 

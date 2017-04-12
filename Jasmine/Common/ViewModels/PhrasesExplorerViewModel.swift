@@ -4,8 +4,8 @@ class PhrasesExplorerViewModel {
     /// The phrases inside this ViewModel
     private var allPhrasesWithSelection: [(phrase: Phrase, selected: Bool)]
 
-    var selectedPhrases: [Phrase] {
-        return allPhrasesWithSelection.filter { $0.selected }.map { $0.phrase }
+    var selectedPhrases: Set<Phrase> {
+        return Set(allPhrasesWithSelection.filter { $0.selected }.map { $0.phrase })
     }
 
     /// The indices of allPhrasesWithSelection that are shown to the user.
@@ -19,18 +19,11 @@ class PhrasesExplorerViewModel {
     /// The ViewController that contains this ViewModel
     weak var viewControllerDelegate: PhrasesExplorerViewController?
 
-    init(phrases: Phrases, selectedPhrases: [Phrase]? = nil) {
-        allPhrasesWithSelection = phrases.map { ($0, false) }
+    init(phrases: Phrases, selectedPhrases: Set<Phrase>? = nil) {
+        allPhrasesWithSelection = phrases.map { phrase in
+            (phrase, selectedPhrases?.contains(phrase) ?? false)
+        }
         rowIndices = Array(0..<phrases.count)
-
-        guard let selectedPhrases = selectedPhrases else {
-            return
-        }
-
-        for (idx, selectedPhrase) in selectedPhrases.enumerated() {
-                allPhrasesWithSelection[idx] = (phrase: selectedPhrase, selected: true)
-
-        }
     }
 
     /// Gets the Chinese string and selected status of the given row.
