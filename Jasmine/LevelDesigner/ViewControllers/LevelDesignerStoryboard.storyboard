@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBS-Ug-QFA">
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBS-Ug-QFA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="5sg-BW-71v"/>
@@ -31,13 +32,15 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Level designer" id="b2Y-pH-ApV">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="dt9-gQ-072">
+                                    <navigationItem title="Design A Level" id="b2Y-pH-ApV">
+                                        <barButtonItem key="leftBarButtonItem" title="BACK" id="dt9-gQ-072">
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="onBackButtonPressed:" destination="5nd-jc-deS" id="ka9-G3-Zc8"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" id="DWe-cl-9X5">
+                                        <barButtonItem key="rightBarButtonItem" title="SAVE" id="DWe-cl-9X5">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <action selector="onSaveButtonPressed:" destination="5nd-jc-deS" id="21C-fN-OtH"/>
                                             </connections>
@@ -45,67 +48,113 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oot-T4-X7V">
-                                <rect key="frame" x="16" y="143" width="130" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="n5B-08-4UZ">
-                                <rect key="frame" x="67" y="192" width="219" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Tetris"/>
-                                    <segment title="Slide"/>
-                                    <segment title="Swap"/>
-                                </segments>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZv-GG-Vir">
-                                <rect key="frame" x="16" y="228" width="130" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IbR-mM-iJr">
-                                <rect key="frame" x="64" y="285" width="219" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Cheng yu"/>
-                                    <segment title="Ci hui"/>
-                                </segments>
-                                <connections>
-                                    <action selector="onGameTypeControlPressed:" destination="5nd-jc-deS" eventType="valueChanged" id="qTX-WM-CCr"/>
-                                </connections>
-                            </segmentedControl>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Untitled" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mnr-89-Poz">
-                                <rect key="frame" x="70" y="105" width="213" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-gN-qUf">
-                                <rect key="frame" x="16" y="64" width="130" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLH-s7-Why">
-                                <rect key="frame" x="22" y="425" width="303" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Select phrases (0)">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="bMn-KP-I36" kind="show" id="BoJ-Y6-ZEp"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="XDN-rq-sQA">
+                                <rect key="frame" x="16" y="80" width="343" height="257.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6eV-Ww-54A">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="58.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEVEL NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-gN-qUf">
+                                                <rect key="frame" x="0.0" y="0.0" width="99.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Untitled" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mnr-89-Poz">
+                                                <rect key="frame" x="0.0" y="28.5" width="343" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Mnr-89-Poz" firstAttribute="leading" secondItem="6eV-Ww-54A" secondAttribute="leading" id="D62-tV-DpE"/>
+                                            <constraint firstItem="Mnr-89-Poz" firstAttribute="leading" secondItem="6eV-Ww-54A" secondAttribute="leading" id="SNA-r2-X2n"/>
+                                            <constraint firstAttribute="trailing" secondItem="Mnr-89-Poz" secondAttribute="trailing" id="smw-2Y-8KO"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SLn-Uc-Tl7">
+                                        <rect key="frame" x="0.0" y="82.5" width="343" height="56.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME MODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oot-T4-X7V">
+                                                <rect key="frame" x="0.0" y="0.0" width="99" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="n5B-08-4UZ">
+                                                <rect key="frame" x="0.0" y="28.5" width="343" height="29"/>
+                                                <segments>
+                                                    <segment title="TETRIS"/>
+                                                    <segment title="SLIDING"/>
+                                                    <segment title="SWAPPING"/>
+                                                </segments>
+                                                <color key="tintColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            </segmentedControl>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="n5B-08-4UZ" firstAttribute="leading" secondItem="SLn-Uc-Tl7" secondAttribute="leading" id="ZqT-GW-6Qr"/>
+                                            <constraint firstAttribute="trailing" secondItem="n5B-08-4UZ" secondAttribute="trailing" id="yeN-s6-YfH"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TIf-Om-c5p">
+                                        <rect key="frame" x="0.0" y="163" width="343" height="94.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME TYPE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZv-GG-Vir">
+                                                <rect key="frame" x="0.0" y="0.0" width="91.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IbR-mM-iJr">
+                                                <rect key="frame" x="0.0" y="28.5" width="343" height="29"/>
+                                                <segments>
+                                                    <segment title="CHENG YU"/>
+                                                    <segment title="CI HUI"/>
+                                                </segments>
+                                                <color key="tintColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="onGameTypeControlPressed:" destination="5nd-jc-deS" eventType="valueChanged" id="qTX-WM-CCr"/>
+                                                </connections>
+                                            </segmentedControl>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLH-s7-Why">
+                                                <rect key="frame" x="0.0" y="64.5" width="343" height="30"/>
+                                                <color key="backgroundColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Select phrases (0)">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="bMn-KP-I36" kind="show" id="BoJ-Y6-ZEp"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="IbR-mM-iJr" secondAttribute="trailing" id="CGE-64-H10"/>
+                                            <constraint firstAttribute="trailing" secondItem="rLH-s7-Why" secondAttribute="trailing" id="LIj-jz-RgJ"/>
+                                            <constraint firstItem="rLH-s7-Why" firstAttribute="leading" secondItem="TIf-Om-c5p" secondAttribute="leading" id="SrC-94-QUI"/>
+                                            <constraint firstItem="IbR-mM-iJr" firstAttribute="leading" secondItem="TIf-Om-c5p" secondAttribute="leading" id="xDF-Mh-0od"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="SLn-Uc-Tl7" firstAttribute="leading" secondItem="XDN-rq-sQA" secondAttribute="leading" id="ErZ-j4-z3h"/>
+                                    <constraint firstAttribute="trailing" secondItem="SLn-Uc-Tl7" secondAttribute="trailing" id="ISv-Wd-Ukd"/>
+                                    <constraint firstAttribute="trailing" secondItem="TIf-Om-c5p" secondAttribute="trailing" id="QoQ-XN-xo8"/>
+                                    <constraint firstAttribute="trailing" secondItem="6eV-Ww-54A" secondAttribute="trailing" id="Zi3-ME-AHR"/>
+                                    <constraint firstItem="6eV-Ww-54A" firstAttribute="leading" secondItem="XDN-rq-sQA" secondAttribute="leading" id="aQM-up-gxg"/>
+                                    <constraint firstItem="TIf-Om-c5p" firstAttribute="leading" secondItem="XDN-rq-sQA" secondAttribute="leading" id="pM3-pU-qKB"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="XDN-rq-sQA" secondAttribute="trailing" id="EVZ-oc-M9b"/>
+                            <constraint firstItem="XDN-rq-sQA" firstAttribute="leading" secondItem="8F0-pw-uXS" secondAttribute="leadingMargin" id="VuK-RE-Cd8"/>
+                            <constraint firstItem="cBS-Ug-QFA" firstAttribute="leading" secondItem="8F0-pw-uXS" secondAttribute="leading" id="ews-aM-ESY"/>
+                            <constraint firstAttribute="trailing" secondItem="cBS-Ug-QFA" secondAttribute="trailing" id="hwS-z2-vnB"/>
+                            <constraint firstItem="cBS-Ug-QFA" firstAttribute="top" secondItem="8F0-pw-uXS" secondAttribute="top" id="nNh-fh-NX8"/>
+                            <constraint firstItem="XDN-rq-sQA" firstAttribute="top" secondItem="cBS-Ug-QFA" secondAttribute="bottom" constant="16" id="zkG-6h-TDY"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="gameModeControl" destination="n5B-08-4UZ" id="Tmg-fd-bhj"/>
@@ -124,7 +173,7 @@
                 <viewControllerPlaceholder storyboardName="CommonsStoryboard" referencedIdentifier="PhrasesExplorerViewController" id="bMn-KP-I36" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vca-0H-C3r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="621" y="134"/>
+            <point key="canvasLocation" x="635" y="211"/>
         </scene>
     </scenes>
 </document>

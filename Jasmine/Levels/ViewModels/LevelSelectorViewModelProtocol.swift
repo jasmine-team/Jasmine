@@ -23,6 +23,18 @@ protocol LevelSelectorViewModelProtocol {
     /// - Returns: the PhraseExplorerVM to be segued into, containing the phrases
     func getPhraseExplorerViewModel(fromRow row: Int, isDefault: Bool) -> PhrasesExplorerViewModel
 
+    /// Get the level designer VM from the game info
+    ///
+    /// - Parameters:
+    ///   - row: the row number that is pressed
+    ///   - isDefault: whether the level is from the default levels or custom levels
+    /// - Returns: the LevelDesignerVM to be segued into
+    func getLevelDesignerViewModel(fromRow row: Int, isDefault: Bool) -> LevelDesignerViewModel
+
+    /// Get the level designer VM without the game info
+    /// - Returns: the LevelDesignerVM to be segued into
+    func getLevelDesignerViewModel() -> LevelDesignerViewModel
+
     /// Play the game
     ///
     /// - Parameters:

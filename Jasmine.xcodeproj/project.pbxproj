@@ -491,7 +491,6 @@
 		50989DC81E6D8B16009A86C8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A2FF83A01E9E07A400677FA2 /* Storage.swift */,
 				DFB342701E77EB6700D2FE09 /* Coordinate.swift */,
 				DF2155241E8E3F25005A0927 /* Direction.swift */,
 				50989DC51E6D8B16009A86C8 /* GameData.swift */,
@@ -505,6 +504,7 @@
 				50989DC71E6D8B16009A86C8 /* Phrase.swift */,
 				DF2155191E8E234D005A0927 /* Phrases.swift */,
 				DF409FE41E8414B000389976 /* Player.swift */,
+				A2FF83A01E9E07A400677FA2 /* Storage.swift */,
 				50AE3A751E8B93D3005EC944 /* TextGrid.swift */,
 			);
 			path = Models;
