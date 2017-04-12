@@ -44,11 +44,13 @@ class LevelDesignerViewModel {
             try levels.deleteLevel(levelInEdit)
         }
         // TODO : change [] to selectedPhrases[gameType]
-        try levels.addCustomLevel(name: name, gameType: gameType, gameMode: gameMode, phrases: [])
+        try levels.addCustomLevel(name: name, gameType: gameType, gameMode: gameMode,
+                                  phrases: selectedPhrases[gameType]!)
     }
 
     // TODO : change [] to selectedPhrases[gameType]
     func updateCustomLevel(name: String, gameType: GameType, gameMode: GameMode) throws {
-        try levels.updateCustomLevel(name: name, gameType: gameType, gameMode: gameMode, phrases: [])
+        try levels.updateCustomLevel(name: name, gameType: gameType, gameMode: gameMode,
+                                     phrases: selectedPhrases[gameType]!)
     }
 }

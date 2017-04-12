@@ -111,6 +111,7 @@ class LevelDesignerViewController: UIViewController {
         } catch LevelsError.duplicateLevelName(let name) {
             showOverwriteAlert(name: name, gameType: selectedGameType, gameMode: selectedGameMode)
         } catch {
+            print("errpr")
             showError(error)
         }
         return false
