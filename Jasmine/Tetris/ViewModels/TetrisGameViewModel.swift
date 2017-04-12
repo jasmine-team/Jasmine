@@ -157,7 +157,6 @@ class TetrisGameViewModel {
         for phrase in phrasesTested {
             let texts = phrase.chinese
             if texts.contains(failedText) {
-                currentScore = max(0, currentScore - GameConstants.Tetris.scoreIncrement)
                 return texts
             }
         }
