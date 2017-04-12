@@ -67,7 +67,7 @@ enum GameConstants {
         static let columns = 8
 
         /// Total time allowed
-        static let totalTime: TimeInterval = 80
+        static let totalTime: TimeInterval = 60
 
         static let upcomingTilesCount = 4
 
