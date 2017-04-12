@@ -30,17 +30,12 @@ class LevelImportViewModel: LevelImportViewModelProtocol {
         return markedDefaultLevelRows.map { defaultLevels[$0] } + markedCustomLevelRows.map { customLevels[$0] }
     }
 
-    /// The previous view model (phrases explorer) before this view model.
-    let previousViewModel: PhrasesExplorerViewModel
-
     init(phraseExplorerViewModel: PhrasesExplorerViewModel) {
         guard let realm = try? Realm() else {
             fatalError("Cannot create Realm")
         }
         self.realm = realm
         levels = Levels(realm: realm)
-
-        previousViewModel = phraseExplorerViewModel
     }
 
     /// Get the phrase explorer VM from the game info
