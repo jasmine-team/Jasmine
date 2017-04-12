@@ -14,13 +14,13 @@ class LevelDesignerViewModel {
     }
 
     /// Stores the phrases for each game type
-    private(set) var selectedPhrases: [GameType: Phrases] = [:]
+    var selectedPhrases: [GameType: [Phrase]] = [:]
 
     init(levels: Levels, levelToEdit: Level? = nil) {
         self.levels = levels
         self.levelInEdit = levelToEdit
         if let levelToEdit = levelToEdit {
-            self.selectedPhrases[levelToEdit.gameType] = levelToEdit.phrases
+            self.selectedPhrases[levelToEdit.gameType] = Array(levelToEdit.phrases)
         }
     }
 

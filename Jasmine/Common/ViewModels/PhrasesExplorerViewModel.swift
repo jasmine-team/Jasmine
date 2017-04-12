@@ -4,6 +4,10 @@ class PhrasesExplorerViewModel {
     /// The phrases inside this ViewModel
     private var allPhrasesWithSelection: [(phrase: Phrase, selected: Bool)]
 
+    var selectedPhrases: [Phrase] {
+        return allPhrasesWithSelection.filter { $0.selected }.map { $0.phrase }
+    }
+
     /// The indices of allPhrasesWithSelection that are shown to the user.
     private var rowIndices: [Int]
 
@@ -15,7 +19,7 @@ class PhrasesExplorerViewModel {
     /// The ViewController that contains this ViewModel
     weak var viewControllerDelegate: PhrasesExplorerViewController?
 
-    init(phrases: Phrases, selectedPhrases: Phrases? = nil) {
+    init(phrases: Phrases, selectedPhrases: [Phrase]? = nil) {
         allPhrasesWithSelection = phrases.map { ($0, false) }
         rowIndices = Array(0..<phrases.count)
 
@@ -23,10 +27,9 @@ class PhrasesExplorerViewModel {
             return
         }
 
-        for selectedPhrase in selectedPhrases {
-            for (idx, phrase) in allPhrasesWithSelection.enumerated() where phrase.phrase == selectedPhrase {
-                allPhrasesWithSelection[idx] = (phrase: phrase.phrase, selected: true)
-            }
+        for (idx, selectedPhrase) in selectedPhrases.enumerated() {
+                allPhrasesWithSelection[idx] = (phrase: selectedPhrase, selected: true)
+
         }
     }
 
