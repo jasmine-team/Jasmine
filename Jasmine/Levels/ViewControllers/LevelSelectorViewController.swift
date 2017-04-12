@@ -8,6 +8,7 @@ class LevelSelectorViewController: UIViewController {
     ]
 
     fileprivate static let segueToPhrasesExplorer = "SegueToPhrasesExplorer"
+    fileprivate static let segueToLevelDesigner = "SegueToLevelDesigner"
 
     private static let actionSheetEdit = "Edit Level"
     private static let actionSheetPhrases = "View Phrases"
@@ -30,6 +31,7 @@ class LevelSelectorViewController: UIViewController {
 
     // MARK: View Controller Lifecycle
     /// Override method that helps to segue into the appropriate views.
+    /// - Postcondition: The `selectedLevel` property will be cleared after execution.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let levelCollection = segue.destination as? GameLevelListViewController {
             self.levelCollection = levelCollection
@@ -62,7 +64,12 @@ class LevelSelectorViewController: UIViewController {
         } else if let phrasesExplorerView = segue.destination as? PhrasesExplorerViewController {
             let phrasesExplorerViewModel = viewModel.getPhraseExplorerViewModel(from: selectedLevel)
             phrasesExplorerView.segueWith(phrasesExplorerViewModel, isMarkable: false)
+
+        } else if let levelDesignerView = segue.destination as? LevelDesignerViewController {
+            // let levelDesignerViewModel = LevelDesignerViewModel(levels: <#T##Levels#>)
         }
+
+        self.selectedLevel = nil
     }
 
     /// Segues into this view with the appropriate data specified below.
@@ -75,6 +82,7 @@ class LevelSelectorViewController: UIViewController {
 
     fileprivate func segueToEditLevelView(forLevel level: GameInfo) {
         self.selectedLevel = level
+        performSegue(withIdentifier: LevelSelectorViewController.segueToLevelDesigner, sender: nil)
     }
 
     fileprivate func segueToPhrasesExplorerView(forLevel level: GameInfo) {

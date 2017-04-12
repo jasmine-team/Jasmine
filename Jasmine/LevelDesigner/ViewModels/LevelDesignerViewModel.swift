@@ -11,7 +11,8 @@ class LevelDesignerViewModel {
             return nil
         }
         return GameInfo(uuid: levelInEdit.uuid, levelName: levelInEdit.name,
-                        gameType: levelInEdit.gameType, gameMode: levelInEdit.gameMode)
+                        gameType: levelInEdit.gameType, gameMode: levelInEdit.gameMode,
+                        isEditable: !levelInEdit.isReadOnly)
     }
 
     /// Stores the phrases for each game type
