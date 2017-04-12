@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             migrationBlock: { _, oldSchemaVersion in _ = oldSchemaVersion }
         )
 
-       // SoundService.sharedInstance.play(.dogDays)
+        SoundService.sharedInstance.play(.dogDays)
         return true
     }
 
