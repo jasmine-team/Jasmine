@@ -118,24 +118,41 @@ class TetrisGameViewModel {
         return gameData.phrases.contains(chinese: phrase.joined()) ? phrase : nil
     }
 
-    /// Shifts all the tiles above `coordinates` 1 row down.
-    /// Starts from the row right above the coordinates so that it can break once an empty tile is encountered
+    /// Shifts all the tiles above `coordinates` down until it lands
     ///
     /// - Returns: array of coordinates shifted from `from` to `to`
     private func shiftDownTiles(_ coordinates: Set<Coordinate>) -> [(from: Coordinate, to: Coordinate)] {
         var shiftedTiles: [(from: Coordinate, to: Coordinate)] = []
-        for coordinate in coordinates {
-            for row in (0..<coordinate.row).reversed() {
-                let currentCoordinate = Coordinate(row: row, col: coordinate.col)
+        for (col, bottomMostRow) in getBottomMostRows(coordinates) {
+            var shiftedCount = 0
+            for row in (0..<bottomMostRow).reversed() {
+                let currentCoordinate = Coordinate(row: row, col: col)
                 guard gridData.hasText(at: currentCoordinate) else {
-                    break
+                    continue
                 }
-                let newCoordinate = currentCoordinate.nextRow
+                let newCoordinate = Coordinate(row: bottomMostRow - shiftedCount, col: col)
+                shiftedCount += 1
                 gridData.swap(currentCoordinate, newCoordinate)
                 shiftedTiles.append((from: currentCoordinate, to: newCoordinate))
             }
         }
         return shiftedTiles
+    }
+
+    /// Returns a dictionary of the bottom most row for a given column in `coordinates`
+    ///
+    /// - Parameter coordinates: the coordinates to search for 
+    /// - Returns: A dictionary with a col in `coordinates` as key 
+    ///            and the bottom most row associated with the col in `coordinates` as value
+    private func getBottomMostRows(_ coordinates: Set<Coordinate>) -> [Int: Int] {
+        var columnToBottomMostRow: [Int: Int] = [:]
+        for coordinate in coordinates {
+            if let lowest = columnToBottomMostRow[coordinate.col], coordinate.row >= lowest {
+                continue
+            }
+            columnToBottomMostRow[coordinate.col] = coordinate.row
+        }
+        return columnToBottomMostRow
     }
 
     /// Returns the next text for a new upcoming tile.
