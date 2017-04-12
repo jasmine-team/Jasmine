@@ -15,9 +15,17 @@ class PhrasesExplorerViewModel {
     /// The ViewController that contains this ViewModel
     weak var viewControllerDelegate: PhrasesExplorerViewController?
 
-    init(phrases: Phrases) {
+    init(phrases: Phrases, selectedPhrases: Phrases? = nil) {
         allPhrasesWithSelection = phrases.map { ($0, false) }
         rowIndices = Array(0..<phrases.count)
+
+        if let selectedPhrases = selectedPhrases {
+            for selectedPhrase in selectedPhrases {
+                for (idx, phrase) in allPhrasesWithSelection.enumerated() where phrase.phrase == selectedPhrase {
+                    allPhrasesWithSelection[idx] = (phrase: phrase.phrase, selected: true)
+                }
+            }
+        }
     }
 
     /// Gets the Chinese string and selected status of the given row.
