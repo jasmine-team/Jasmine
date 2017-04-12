@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		005D4DDE1E9418F500E8DD0B /* Matrix+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D4DDD1E9418F500E8DD0B /* Matrix+Equatable.swift */; };
 		007B69181E9CEB70002FE500 /* LevelDesignerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B69171E9CEB70002FE500 /* LevelDesignerViewModel.swift */; };
+		007B691A1E9DC32F002FE500 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B69191E9DC32F002FE500 /* GameKit.framework */; };
+		007B691C1E9DC535002FE500 /* UIViewController+GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B691B1E9DC535002FE500 /* UIViewController+GameCenter.swift */; };
 		00C6006F1E9B2F99006BA74A /* LevelDesignerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00C6006E1E9B2F99006BA74A /* LevelDesignerStoryboard.storyboard */; };
 		00C600711E9B2FD0006BA74A /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C600701E9B2FD0006BA74A /* LevelDesignerViewController.swift */; };
 		00C600731E9B636E006BA74A /* LevelsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C600721E9B636E006BA74A /* LevelsError.swift */; };
@@ -166,6 +168,8 @@
 /* Begin PBXFileReference section */
 		005D4DDD1E9418F500E8DD0B /* Matrix+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Matrix+Equatable.swift"; sourceTree = "<group>"; };
 		007B69171E9CEB70002FE500 /* LevelDesignerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewModel.swift; sourceTree = "<group>"; };
+		007B69191E9DC32F002FE500 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		007B691B1E9DC535002FE500 /* UIViewController+GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+GameCenter.swift"; sourceTree = "<group>"; };
 		00C6006E1E9B2F99006BA74A /* LevelDesignerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LevelDesignerStoryboard.storyboard; sourceTree = "<group>"; };
 		00C600701E9B2FD0006BA74A /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		00C600721E9B636E006BA74A /* LevelsError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelsError.swift; sourceTree = "<group>"; };
@@ -326,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CF9D2BB3EBC822ACB7FF766 /* Pods_Jasmine.framework in Frameworks */,
+				007B691A1E9DC32F002FE500 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +374,7 @@
 		4F925529F1FCEF5E5A4CE750 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				007B69191E9DC32F002FE500 /* GameKit.framework */,
 				3488CBDFD470562B328D58A2 /* Pods_Jasmine.framework */,
 				B1302F74452DAF05FDF7A169 /* Pods_JasmineTests.framework */,
 				5DD6CEB80211B4DBEFC5D5D3 /* Pods_JasmineUITests.framework */,
@@ -759,6 +765,7 @@
 				DF2155261E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift */,
 				DF944C2C1E84EF250037437C /* UIView+Shadows.swift */,
 				00C600741E9B78DB006BA74A /* UIVIewController+Alert.swift */,
+				007B691B1E9DC535002FE500 /* UIViewController+GameCenter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1039,6 +1046,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = QX6E2SX99X;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 					A260C6301E6AB30400782103 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1221,6 +1233,7 @@
 				DFBE8F401E95272B0036CCC6 /* SquareGridViewController.swift in Sources */,
 				00C600731E9B636E006BA74A /* LevelsError.swift in Sources */,
 				502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */,
+				007B691C1E9DC535002FE500 /* UIViewController+GameCenter.swift in Sources */,
 				50B0C06F1E99FF7A00D3D420 /* LevelSelectorViewModelProtocol.swift in Sources */,
 				DFE1113A1E98BD3300F8860E /* AVAudioPlayer+Extensions.swift in Sources */,
 				DF7CF7721E7E9E3500C6979A /* IndexPath+Coordinate.swift in Sources */,
@@ -1461,7 +1474,7 @@
 				DEVELOPMENT_TEAM = QX6E2SX99X;
 				INFOPLIST_FILE = "$(SRCROOT)/Jasmine/Common/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.Jasmine;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.Jasmine.Jasmine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1476,7 +1489,7 @@
 				DEVELOPMENT_TEAM = QX6E2SX99X;
 				INFOPLIST_FILE = "$(SRCROOT)/Jasmine/Common/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.Jasmine;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.Jasmine.Jasmine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
