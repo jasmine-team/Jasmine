@@ -48,11 +48,11 @@ enum Constants {
         enum Effect: String {
             /// Enable max of 5 effect sounds to be played at the same time
             static let concurrentLimit = 5
-            static let allValues = [pop, lose, win]
+            static let allValues = [pop, bounce, snap]
 
             case pop = "pop.wav"
-            case lose = "lose.wav"
-            case win = "win.wav"
+            case bounce = "bounce.wav"
+            case snap = "snap.wav"
         }
     }
 

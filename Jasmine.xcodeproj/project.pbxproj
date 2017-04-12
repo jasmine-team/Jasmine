@@ -84,6 +84,9 @@
 		DF409FFB1E84225200389976 /* TetrisGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FFA1E84225200389976 /* TetrisGameViewController.swift */; };
 		DF40F9E21E9676C1001EAAA8 /* LevelResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40F9E11E9676C1001EAAA8 /* LevelResult.swift */; };
 		DF40F9E41E967708001EAAA8 /* PhraseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40F9E31E967708001EAAA8 /* PhraseTests.swift */; };
+		DF51BC681E9E154B008B075C /* bounce.wav in Resources */ = {isa = PBXBuildFile; fileRef = DF51BC661E9E154B008B075C /* bounce.wav */; };
+		DF51BC691E9E154B008B075C /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = DF51BC671E9E154B008B075C /* pop.wav */; };
+		DF51BC6B1E9E163D008B075C /* snap.wav in Resources */ = {isa = PBXBuildFile; fileRef = DF51BC6A1E9E163D008B075C /* snap.wav */; };
 		DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */; };
 		DF7CF7711E7E9E3500C6979A /* CGRect+Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF76F1E7E9E3500C6979A /* CGRect+Arithmetic.swift */; };
 		DF7CF7721E7E9E3500C6979A /* IndexPath+Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */; };
@@ -101,9 +104,6 @@
 		DF9918DC1E92B6D6004E599B /* SlidingGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9918D91E92B6D6004E599B /* SlidingGameViewController.swift */; };
 		DF9918E11E92B71A004E599B /* CGPoint+ArithmeticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9918E01E92B71A004E599B /* CGPoint+ArithmeticTests.swift */; };
 		DF9918E31E92B730004E599B /* DirectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9918E21E92B730004E599B /* DirectionTests.swift */; };
-		DF9950CA1E9CD863007D750B /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = DF9950C91E9CD863007D750B /* pop.wav */; };
-		DF9950CC1E9CD8F0007D750B /* lose.wav in Resources */ = {isa = PBXBuildFile; fileRef = DF9950CB1E9CD8F0007D750B /* lose.wav */; };
-		DF9950CE1E9CDA09007D750B /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = DF9950CD1E9CDA09007D750B /* win.wav */; };
 		DFA8B69B1E9899A4002D81CF /* SimpleStartGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8B69A1E9899A4002D81CF /* SimpleStartGameViewController.swift */; };
 		DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342701E77EB6700D2FE09 /* Coordinate.swift */; };
 		DFBE8F1F1E951FC00036CCC6 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F1D1E951FC00036CCC6 /* HomeScreenViewController.swift */; };
@@ -243,6 +243,9 @@
 		DF409FFA1E84225200389976 /* TetrisGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewController.swift; sourceTree = "<group>"; };
 		DF40F9E11E9676C1001EAAA8 /* LevelResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelResult.swift; sourceTree = "<group>"; };
 		DF40F9E31E967708001EAAA8 /* PhraseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseTests.swift; sourceTree = "<group>"; };
+		DF51BC661E9E154B008B075C /* bounce.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bounce.wav; sourceTree = "<group>"; };
+		DF51BC671E9E154B008B075C /* pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop.wav; sourceTree = "<group>"; };
+		DF51BC6A1E9E163D008B075C /* snap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snap.wav; sourceTree = "<group>"; };
 		DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TetrisStoryboard.storyboard; sourceTree = "<group>"; };
 		DF7CF76F1E7E9E3500C6979A /* CGRect+Arithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Arithmetic.swift"; sourceTree = "<group>"; };
 		DF7CF7701E7E9E3500C6979A /* IndexPath+Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+Coordinate.swift"; sourceTree = "<group>"; };
@@ -260,9 +263,6 @@
 		DF9918D91E92B6D6004E599B /* SlidingGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingGameViewController.swift; sourceTree = "<group>"; };
 		DF9918E01E92B71A004E599B /* CGPoint+ArithmeticTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+ArithmeticTests.swift"; sourceTree = "<group>"; };
 		DF9918E21E92B730004E599B /* DirectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionTests.swift; sourceTree = "<group>"; };
-		DF9950C91E9CD863007D750B /* pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop.wav; sourceTree = "<group>"; };
-		DF9950CB1E9CD8F0007D750B /* lose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lose.wav; sourceTree = "<group>"; };
-		DF9950CD1E9CDA09007D750B /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
 		DFA8B69A1E9899A4002D81CF /* SimpleStartGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleStartGameViewController.swift; sourceTree = "<group>"; };
 		DFB342701E77EB6700D2FE09 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		DFB342761E77F5F200D2FE09 /* FlappyViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -920,9 +920,9 @@
 		DFE1113D1E98BD5D00F8860E /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				DF9950CD1E9CDA09007D750B /* win.wav */,
-				DF9950CB1E9CD8F0007D750B /* lose.wav */,
-				DF9950C91E9CD863007D750B /* pop.wav */,
+				DF51BC6A1E9E163D008B075C /* snap.wav */,
+				DF51BC661E9E154B008B075C /* bounce.wav */,
+				DF51BC671E9E154B008B075C /* pop.wav */,
 				DFE1113E1E98BD5D00F8860E /* dog_days.mp3 */,
 				DFE1113F1E98BD5D00F8860E /* green_star.mp3 */,
 				DFE111401E98BD5D00F8860E /* grid.mp3 */,
@@ -1033,13 +1033,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF9950CC1E9CD8F0007D750B /* lose.wav in Resources */,
+				DF51BC691E9E154B008B075C /* pop.wav in Resources */,
 				DFE111421E98BD5D00F8860E /* green_star.mp3 in Resources */,
 				DFBE8F801E9528100036CCC6 /* CommonsStoryboard.storyboard in Resources */,
-				DF9950CA1E9CD863007D750B /* pop.wav in Resources */,
 				DF9918DB1E92B6D6004E599B /* SlidingGameStoryboard.storyboard in Resources */,
 				DFBE8F771E9527F70036CCC6 /* GameElements.storyboard in Resources */,
 				DF409FEC1E8415AB00389976 /* prebundled.realm in Resources */,
+				DF51BC6B1E9E163D008B075C /* snap.wav in Resources */,
 				A260C6281E6AB30400782103 /* Assets.xcassets in Resources */,
 				DFE111411E98BD5D00F8860E /* dog_days.mp3 in Resources */,
 				DFBE8F201E951FC00036CCC6 /* Main.storyboard in Resources */,
@@ -1047,8 +1047,8 @@
 				DFBE8F251E9520450036CCC6 /* LevelSelectionStoryboard.storyboard in Resources */,
 				DF9918D31E92B6A3004E599B /* SwappingStoryboard.storyboard in Resources */,
 				DFE111431E98BD5D00F8860E /* grid.mp3 in Resources */,
+				DF51BC681E9E154B008B075C /* bounce.wav in Resources */,
 				DF2321581E961CA300417ED2 /* ProfileStoryboard.storyboard in Resources */,
-				DF9950CE1E9CDA09007D750B /* win.wav in Resources */,
 				DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */,
 				DFBE8F821E9528370036CCC6 /* LaunchScreen.storyboard in Resources */,
 			);

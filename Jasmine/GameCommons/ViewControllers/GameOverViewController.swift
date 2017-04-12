@@ -55,11 +55,6 @@ class GameOverViewController: UIViewController {
         loadGameDescriptionsToUi()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        playGameOverSound()
-    }
-
     /// Dismisses this view controller, and the previous game view controller.
     @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
         self.presentingViewController?.presentingViewController?
@@ -81,14 +76,6 @@ class GameOverViewController: UIViewController {
 
         } else {
             assertionFailure("Game must be concluded in order to view this screen.")
-        }
-    }
-
-    private func playGameOverSound() {
-        if gameDesriptor.gameStatus == .endedWithLost {
-            SoundService.sharedInstance.play(.lose)
-        } else if gameDesriptor.gameStatus == .endedWithWon {
-            SoundService.sharedInstance.play(.win)
         }
     }
 

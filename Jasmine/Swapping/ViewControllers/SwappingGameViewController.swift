@@ -143,6 +143,8 @@ fileprivate extension SwappingGameViewController {
         guard let draggingTile = draggingTile else {
             return
         }
+        SoundService.sharedInstance.play(.snap)
+
         guard let landedCoord = squareGridViewController.getCoordinate(at: position),
               viewModel.swapTiles(draggingTile.originalCoord, and: landedCoord) else {
             handleTileFailedLanding()
