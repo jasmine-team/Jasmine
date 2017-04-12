@@ -19,11 +19,13 @@ class PhrasesExplorerViewModel {
         allPhrasesWithSelection = phrases.map { ($0, false) }
         rowIndices = Array(0..<phrases.count)
 
-        if let selectedPhrases = selectedPhrases {
-            for selectedPhrase in selectedPhrases {
-                for (idx, phrase) in allPhrasesWithSelection.enumerated() where phrase.phrase == selectedPhrase {
-                    allPhrasesWithSelection[idx] = (phrase: phrase.phrase, selected: true)
-                }
+        guard let selectedPhrases = selectedPhrases else {
+            return
+        }
+
+        for selectedPhrase in selectedPhrases {
+            for (idx, phrase) in allPhrasesWithSelection.enumerated() where phrase.phrase == selectedPhrase {
+                allPhrasesWithSelection[idx] = (phrase: phrase.phrase, selected: true)
             }
         }
     }
