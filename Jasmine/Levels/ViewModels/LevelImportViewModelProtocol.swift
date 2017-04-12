@@ -11,12 +11,15 @@ protocol LevelImportViewModelProtocol {
 
     /// Get the phrase explorer VM from the game info
     ///
-    /// - Parameter gameInfo: the game info to be passed
-    func getPhraseExplorerViewModel(from gameInfo: GameInfo) -> PhrasesExplorerViewModel
+    /// - Parameters:
+    ///   - row: the row number that is pressed
+    ///   - isDefault: whether the level is from the default levels or custom levels
+    /// - Returns: the PhraseExplorerVM to be segued into, containing the phrases
+    func getPhraseExplorerViewModel(fromRow row: Int, isDefault: Bool) -> PhrasesExplorerViewModel
 
     /// Toggle whether the level is marked, or not.
-    func toggleLevelMarked(for gameInfo: GameInfo) -> Bool
+    func toggleLevelMarked(fromRow row: Int, isDefault: Bool) -> Bool
 
     /// Returns true if the level should be marked, false otherwise.
-    func isLevelMarked(for gameInfo: GameInfo) -> Bool
+    func isLevelMarked(fromRow row: Int, isDefault: Bool) -> Bool
 }
