@@ -63,6 +63,7 @@
 		50A270411E9DF4080083A700 /* LevelDesignerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50A270401E9DF4080083A700 /* LevelDesignerStoryboard.storyboard */; };
 		50A270431E9DF44A0083A700 /* RandomGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A270421E9DF44A0083A700 /* RandomGeneratorTests.swift */; };
 		50A270451E9DF5160083A700 /* GameInfo+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A270441E9DF5160083A700 /* GameInfo+Equatable.swift */; };
+		50A270471E9E1B840083A700 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A270461E9E1B840083A700 /* AboutViewController.swift */; };
 		50AE3A761E8B93D3005EC944 /* TextGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE3A751E8B93D3005EC944 /* TextGrid.swift */; };
 		50AE3A781E8BE020005EC944 /* TextGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AE3A771E8BE020005EC944 /* TextGridTests.swift */; };
 		50B7A8B51E9393530052E9E2 /* BaseSwappingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B7A8B41E9393530052E9E2 /* BaseSwappingViewModelTests.swift */; };
@@ -238,6 +239,7 @@
 		50A270401E9DF4080083A700 /* LevelDesignerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LevelDesignerStoryboard.storyboard; sourceTree = "<group>"; };
 		50A270421E9DF44A0083A700 /* RandomGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomGeneratorTests.swift; sourceTree = "<group>"; };
 		50A270441E9DF5160083A700 /* GameInfo+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameInfo+Equatable.swift"; sourceTree = "<group>"; };
+		50A270461E9E1B840083A700 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		50AE3A751E8B93D3005EC944 /* TextGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextGrid.swift; sourceTree = "<group>"; };
 		50AE3A771E8BE020005EC944 /* TextGridTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextGridTests.swift; sourceTree = "<group>"; };
 		50B7A8B41E9393530052E9E2 /* BaseSwappingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSwappingViewModelTests.swift; sourceTree = "<group>"; };
@@ -898,6 +900,7 @@
 		DFBE8F1C1E951E5C0036CCC6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				50A270461E9E1B840083A700 /* AboutViewController.swift */,
 				DFE111531E99133F00F8860E /* FallingFlowersViewController.swift */,
 				506473411E9DD6AB00ACB183 /* HomeScreenViewController.swift */,
 				DFBE8F1E1E951FC00036CCC6 /* Main.storyboard */,
@@ -1345,6 +1348,7 @@
 				A2FF83A11E9E07A400677FA2 /* Storage.swift in Sources */,
 				A2FF83A41E9E0A7700677FA2 /* ProfileQueryContainer.swift in Sources */,
 				506473541E9DF2BC00ACB183 /* UIViewController+Alert.swift in Sources */,
+				50A270471E9E1B840083A700 /* AboutViewController.swift in Sources */,
 				50989DDC1E6D8B16009A86C8 /* SoundService.swift in Sources */,
 				DFE1114A1E98BDC500F8860E /* GameConstants.swift in Sources */,
 				DF2155271E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift in Sources */,
