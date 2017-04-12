@@ -20,7 +20,7 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
     /// The defaults levels in the game.
     var defaultLevels: [GameInfo] {
         return rawDefaultLevels.map { level in
-            GameInfo(uuid: level.uuid, levelName: level.name, gameType: level.gameType,
+            GameInfo(levelName: level.name, gameType: level.gameType,
                      gameMode: level.gameMode, isEditable: false)
         }
     }
@@ -28,7 +28,7 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
     /// The custom levels in the game.
     var customLevels: [GameInfo] {
         return rawCustomLevels.map { level in
-            GameInfo(uuid: level.uuid, levelName: level.name, gameType: level.gameType,
+            GameInfo(levelName: level.name, gameType: level.gameType,
                      gameMode: level.gameMode, isEditable: true)
         }
     }
@@ -44,31 +44,33 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
     /// Deletes the custom level
     ///
     /// - Parameter gameInfo: the game info
-    func deleteLevel(from gameInfo: GameInfo) {
-        let level = getLevel(from: gameInfo.uuid, inArray: rawCustomLevels)
+    func deleteCustomLevel(fromRow row: Int) {
+        let level = rawCustomLevels[row]
         guard (try? levels.deleteLevel(level)) != nil else {
             assertionFailure("Cannot delete level")
             return
         }
+
+        delegate?.reloadAllLevels()
     }
 
     /// Get the phrase explorer VM from the game info
     ///
     /// - Parameter gameInfo: the game info to be passed
-    func getPhraseExplorerViewModel(from gameInfo: GameInfo) -> PhrasesExplorerViewModel {
-        let level = getLevel(from: gameInfo.uuid, inArray: rawCustomLevels)
+    func getPhraseExplorerViewModel(fromRow row: Int, isDefault: Bool) -> PhrasesExplorerViewModel {
+        let level = isDefault ? rawDefaultLevels[row] : rawCustomLevels[row]
         return PhrasesExplorerViewModel(phrases: level.phrases)
     }
 
     /// Play the game 
     ///
     /// - Parameter gameInfo: the game info to be passed
-    func playGame(from gameInfo: GameInfo) -> BaseViewModelProtocol {
+    func playGame(fromRow row: Int, isDefault: Bool) -> BaseViewModelProtocol {
+        let level = isDefault ? rawDefaultLevels[row] : rawCustomLevels[row]
         let gameManager = GameManager(realm: realm)
-        let gameData = gameManager.createGame(fromLevel: getLevel(from: gameInfo.uuid,
-                                                                  inArray: rawDefaultLevels + rawCustomLevels))
+        let gameData = gameManager.createGame(fromLevel: level)
 
-        switch (gameInfo.gameMode, gameInfo.gameType) {
+        switch (level.gameMode, level.gameType) {
         case (.sliding, .chengYu):
             return ChengYuSlidingViewModel(
                 time: GameConstants.Sliding.time, gameData: gameData, rows: GameConstants.Sliding.rows)
@@ -86,16 +88,5 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
         case (.tetris, .ciHui):
             return TetrisGameViewModel(gameData: gameData)
         }
-    }
-
-    /// Get a level from the given UUID
-    ///
-    /// - Parameter uuid: the UUID to be searched
-    /// - Returns: the level from the UUID
-    private func getLevel(from uuid: String, inArray array: [Level]) -> Level {
-        guard let level = array.first(where: { $0.uuid == uuid }) else {
-            fatalError("Level does not exist")
-        }
-        return level
     }
 }

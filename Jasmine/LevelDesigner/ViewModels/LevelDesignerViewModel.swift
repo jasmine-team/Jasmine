@@ -10,7 +10,7 @@ class LevelDesignerViewModel {
         guard let levelInEdit = levelInEdit else {
             return nil
         }
-        return GameInfo(uuid: levelInEdit.uuid, levelName: levelInEdit.name,
+        return GameInfo(levelName: levelInEdit.name,
                         gameType: levelInEdit.gameType, gameMode: levelInEdit.gameMode,
                         isEditable: !levelInEdit.isReadOnly)
     }

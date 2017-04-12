@@ -12,16 +12,22 @@ protocol LevelSelectorViewModelProtocol {
 
     /// Deletes the custom level
     ///
-    /// - Parameter gameInfo: the game info
-    func deleteLevel(from gameInfo: GameInfo)
+    /// - Parameter row: the row number
+    func deleteCustomLevel(fromRow row: Int)
 
     /// Get the phrase explorer VM from the game info
     ///
-    /// - Parameter gameInfo: the game info to be passed
-    func getPhraseExplorerViewModel(from gameInfo: GameInfo) -> PhrasesExplorerViewModel
+    /// - Parameters:
+    ///   - row: the row number that is pressed
+    ///   - isDefault: whether the level is from the default levels or custom levels
+    /// - Returns: the PhraseExplorerVM to be segued into, containing the phrases
+    func getPhraseExplorerViewModel(fromRow row: Int, isDefault: Bool) -> PhrasesExplorerViewModel
 
-    /// Play the game 
+    /// Play the game
     ///
-    /// - Parameter gameInfo: the game info to be passed
-    func playGame(from gameInfo: GameInfo) -> BaseViewModelProtocol
+    /// - Parameters:
+    ///   - row: the row number that is pressed
+    ///   - isDefault: whether the level is from the default levels or custom levels
+    /// - Returns: the VM to be segued into and played
+    func playGame(fromRow row: Int, isDefault: Bool) -> BaseViewModelProtocol
 }
