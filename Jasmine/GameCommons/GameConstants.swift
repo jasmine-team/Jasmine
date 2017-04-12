@@ -2,14 +2,6 @@ import Foundation
 
 // swiftlint:disable nesting
 enum GameConstants {
-    static let availableGames: [(GameMode, GameType)] = [
-        (.sliding, .ciHui),
-        (.sliding, .chengYu),
-        (.swapping, .ciHui),
-        (.swapping, .chengYu),
-        (.tetris, .chengYu)
-    ]
-
     static let timeInterval: TimeInterval = 0.1
 
     enum Swapping {
@@ -80,11 +72,11 @@ enum GameConstants {
         static let upcomingTilesCount = 4
 
         /// Number of distinct phrases in the upcoming tiles pool
-        static let upcomingPhrasesCount = 2
+        static let upcomingPhrasesCount = 1
 
         static let tileFallInterval: TimeInterval = 0.5
 
-        static let scoreIncrement = 1
+        static let scoreIncrement = 100
     }
 
     enum GameOver {

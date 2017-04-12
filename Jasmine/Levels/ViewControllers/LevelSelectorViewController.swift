@@ -27,10 +27,10 @@ class LevelSelectorViewController: UIViewController {
         return viewModel
     }()
 
-    fileprivate var selectedLevelRow: Int!
-    fileprivate var selectedLevelIsDefault: Bool!
+    fileprivate var selectedLevel: (isDefault: Bool, row: Int)!
+
     fileprivate var selectedLevelGameInfo: GameInfo {
-        return getLevel(fromDefault: selectedLevelIsDefault, at: selectedLevelRow)
+        return getLevel(fromDefault: selectedLevel.isDefault, at: selectedLevel.row)
     }
 
     // MARK: View Controller Lifecycle
@@ -43,8 +43,8 @@ class LevelSelectorViewController: UIViewController {
 
         } else if let swappingGameView = segue.destination as? SwappingGameViewController {
             guard let swappingViewModel = viewModel
-                      .playGame(fromRow: selectedLevelRow,
-                                isDefault: selectedLevelIsDefault) as? SwappingViewModelProtocol else {
+                      .playGame(fromRow: selectedLevel.row, isDefault: selectedLevel.isDefault)
+                      as? SwappingViewModelProtocol else {
                 assertionFailure("Incorrect view model provided to Swapping VC.")
                 return
             }
@@ -52,8 +52,8 @@ class LevelSelectorViewController: UIViewController {
 
         } else if let slidingGameView = segue.destination as? SlidingGameViewController {
             guard let slidingViewModel = viewModel
-                      .playGame(fromRow: selectedLevelRow,
-                                isDefault: selectedLevelIsDefault) as? SlidingViewModelProtocol else {
+                      .playGame(fromRow: selectedLevel.row, isDefault: selectedLevel.isDefault)
+                      as? SlidingViewModelProtocol else {
                 assertionFailure("Incorrect view model provided to Sliding VC.")
                 return
             }
@@ -61,24 +61,29 @@ class LevelSelectorViewController: UIViewController {
 
         } else if let tetrisGameView = segue.destination as? TetrisGameViewController {
             guard let tetrisViewModel = viewModel
-                      .playGame(fromRow: selectedLevelRow,
-                                isDefault: selectedLevelIsDefault) as? TetrisGameViewModelProtocol else {
+                      .playGame(fromRow: selectedLevel.row, isDefault: selectedLevel.isDefault)
+                      as? TetrisGameViewModelProtocol else {
                 assertionFailure("Incorrect view model provided to Tetris VC.")
                 return
             }
             tetrisGameView.segueWith(tetrisViewModel)
 
         } else if let phrasesExplorerView = segue.destination as? PhrasesExplorerViewController {
-            let phrasesExplorerViewModel = viewModel.getPhraseExplorerViewModel(fromRow: selectedLevelRow,
-                                                                                isDefault: selectedLevelIsDefault)
+            let phrasesExplorerViewModel = viewModel
+                .getPhraseExplorerViewModel(fromRow: selectedLevel.row,
+                                            isDefault: selectedLevel.isDefault)
             phrasesExplorerView.segueWith(phrasesExplorerViewModel, isMarkable: false)
 
         } else if let levelDesignerView = segue.destination as? LevelDesignerViewController {
-            // let levelDesignerViewModel = LevelDesignerViewModel(levels: <#T##Levels#>)
+            if let selectedLevel = selectedLevel {
+                levelDesignerView.segueWith(viewModel
+                    .getLevelDesignerViewModel(fromRow: selectedLevel.row, isDefault: selectedLevel.isDefault))
+            } else {
+                levelDesignerView.segueWith(viewModel.getLevelDesignerViewModel())
+            }
         }
 
-        self.selectedLevelRow = nil
-        self.selectedLevelIsDefault = nil
+        self.selectedLevel = nil
     }
 
     /// Segues into this view with the appropriate data specified below.
@@ -90,14 +95,12 @@ class LevelSelectorViewController: UIViewController {
     }
 
     fileprivate func segueToEditLevelView(forCustomLevelRow row: Int) {
-        selectedLevelRow = row
-        selectedLevelIsDefault = false
+        self.selectedLevel = (isDefault: false, row: row)
         performSegue(withIdentifier: LevelSelectorViewController.segueToLevelDesigner, sender: nil)
     }
 
     fileprivate func segueToPhrasesExplorerView(forLevelRow row: Int, isDefault: Bool) {
-        selectedLevelRow = row
-        selectedLevelIsDefault = isDefault
+        self.selectedLevel = (isDefault, row)
         performSegue(withIdentifier: LevelSelectorViewController.segueToPhrasesExplorer, sender: nil)
     }
 
@@ -112,6 +115,7 @@ class LevelSelectorViewController: UIViewController {
     /// Builds an actionsheet depending on the type of level being fed.
     fileprivate func buildActionSheet(fromDefault isDefaultLevel: Bool, at index: Int,
                                       withView view: UIView) -> UIAlertController {
+
         let level = getLevel(fromDefault: isDefaultLevel, at: index)
         let actionSheetController = UIAlertController(title: level.levelName, message: nil,
                                                       preferredStyle: .actionSheet)
@@ -174,8 +178,7 @@ extension LevelSelectorViewController: GameLevelListViewDelegate {
 
     /// Notifies the user of this view controller that a level has been selected.
     func notifyLevelSelected(fromDefault isDefaultLevels: Bool, at index: Int) {
-        self.selectedLevelRow = index
-        self.selectedLevelIsDefault = isDefaultLevels
+        self.selectedLevel = (isDefaultLevels, index)
         guard let segueIdentifier = LevelSelectorViewController
                   .segueToGameIdentifier[selectedLevelGameInfo.gameMode] else {
             return
@@ -184,7 +187,8 @@ extension LevelSelectorViewController: GameLevelListViewDelegate {
     }
 
     /// Notifies the user of this view controller to open the list of menu for the specified level.
-    func notifyOpenMenuForLevel(fromDefault isDefaultLevels: Bool, at index: Int, withView view: UIView) {
+    func notifyOpenMenuForLevel(fromDefault isDefaultLevels: Bool, at index: Int,
+                                withView view: UIView) {
         let actionSheet = buildActionSheet(fromDefault: isDefaultLevels, at: index, withView: view)
         self.present(actionSheet, animated: true, completion: nil)
     }

@@ -22,7 +22,7 @@ class LevelDesignerViewController: UIViewController {
     }
 
     /// The formatted text for the select phrases button, with %d representing the phrases count
-    private static let selectPhrasesButtonText = "Select phrases (%d currently)"
+    private static let selectPhrasesButtonText = "SELECT PHRASES (%d)"
     @IBOutlet private var selectPhrasesButton: UIButton!
 
     private var viewModel: LevelDesignerViewModel!
@@ -63,10 +63,19 @@ class LevelDesignerViewController: UIViewController {
         selectPhrasesButton.setTitle(buttonText, for: .normal)
     }
 
+    func done(_ phrases: [Phrase]) {
+        viewModel.selectedPhrases[selectedGameType] = phrases
+        updateSelectPhrasesButtonText()
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let phrasesExplorerViewController = segue.destination as? PhrasesExplorerViewController {
-            // TODO : initialize VM and set selected phrases (waiting for Phrases and PhrasesExplorerViewModel update)
-            updateSelectPhrasesButtonText()
+
+            // TODO: refactor this to VM
+
+            let phrasesExplorerViewModel = PhrasesExplorerViewModel(phrases: Storage.sharedInstance.allPhrases,
+                                               selectedPhrases: viewModel.selectedPhrases[selectedGameType])
+            phrasesExplorerViewController.segueWith(phrasesExplorerViewModel, isMarkable: true, viewController: self)
+
         }
     }
 
@@ -102,6 +111,7 @@ class LevelDesignerViewController: UIViewController {
         } catch LevelsError.duplicateLevelName(let name) {
             showOverwriteAlert(name: name, gameType: selectedGameType, gameMode: selectedGameMode)
         } catch {
+            print("errpr")
             showError(error)
         }
         return false

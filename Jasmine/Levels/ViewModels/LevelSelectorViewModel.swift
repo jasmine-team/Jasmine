@@ -55,15 +55,32 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
     ///
     /// - Parameter gameInfo: the game info to be passed
     func getPhraseExplorerViewModel(fromRow row: Int, isDefault: Bool) -> PhrasesExplorerViewModel {
-        let level = isDefault ? rawDefaultLevels[row] : rawCustomLevels[row]
+        let level = getLevel(isDefault: isDefault, withRow: row)
         return PhrasesExplorerViewModel(phrases: level.phrases)
+    }
+
+    /// Get the level designer VM from the game info
+    ///
+    /// - Parameters:
+    ///   - row: the row number that is pressed
+    ///   - isDefault: whether the level is from the default levels or custom levels
+    /// - Returns: the LevelDesignerVM to be segued into
+    func getLevelDesignerViewModel(fromRow row: Int, isDefault: Bool) -> LevelDesignerViewModel {
+        let level = getLevel(isDefault: isDefault, withRow: row)
+        return LevelDesignerViewModel(levels: levels, levelToEdit: level)
+    }
+
+    /// Get the level designer VM without the game info
+    /// - Returns: the LevelDesignerVM to be segued into
+    func getLevelDesignerViewModel() -> LevelDesignerViewModel {
+        return LevelDesignerViewModel(levels: levels)
     }
 
     /// Play the game 
     ///
     /// - Parameter gameInfo: the game info to be passed
     func playGame(fromRow row: Int, isDefault: Bool) -> BaseViewModelProtocol {
-        let level = isDefault ? rawDefaultLevels[row] : rawCustomLevels[row]
+        let level = getLevel(isDefault: isDefault, withRow: row)
         let gameManager = GameManager(realm: realm)
         let gameData = gameManager.createGame(fromLevel: level)
 
@@ -85,5 +102,9 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
         case (.tetris, .ciHui):
             return TetrisGameViewModel(gameData: gameData)
         }
+    }
+
+    private func getLevel(isDefault: Bool, withRow row: Int) -> Level {
+        return isDefault ? rawDefaultLevels[row] : rawCustomLevels[row]
     }
 }
