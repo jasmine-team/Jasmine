@@ -22,7 +22,7 @@ class LevelDesignerViewController: UIViewController {
     }
 
     /// The formatted text for the select phrases button, with %d representing the phrases count
-    private static let selectPhrasesButtonText = "Select phrases (%d currently)"
+    private static let selectPhrasesButtonText = "SELECT PHRASES (%d)"
     @IBOutlet private var selectPhrasesButton: UIButton!
 
     private var viewModel: LevelDesignerViewModel!
@@ -65,6 +65,8 @@ class LevelDesignerViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let phrasesExplorerViewController = segue.destination as? PhrasesExplorerViewController {
+
+            // phrasesExplorerViewController.segueWith(<#T##viewModel: PhrasesExplorerViewModel##PhrasesExplorerViewModel#>, isMarkable: true)
             // TODO : initialize VM and set selected phrases (waiting for Phrases and PhrasesExplorerViewModel update)
             updateSelectPhrasesButtonText()
         }
