@@ -12,7 +12,8 @@ class TetrisGameViewModelTests: RealmTestCase {
     private let gameStatusUpdateDelegateMock = GameStatusUpdateDelegateMock()
     private let timeUpdateDelegateMock = TimeUpdateDelegateMock()
 
-    private let iterations = 100
+    /// Number of iterations to run for tests with random element
+    private let iterations = 50
 
     override func setUp() {
         super.setUp()
@@ -26,10 +27,12 @@ class TetrisGameViewModelTests: RealmTestCase {
     }
 
     func testInit() {
-        XCTAssert(testPhrases.sorted { $0.joined() > $1.joined() } ==
-                  viewModel.phrasesTested.map { $0.chinese }
-                                         .sorted { $0.joined() > $1.joined() },
-                  "ViewModel phrasesTested on init is not correct")
+        for _ in 0..<iterations {
+            XCTAssert(testPhrases.sorted { $0.joined() > $1.joined() } ==
+                      viewModel.phrasesTested.map { $0.chinese }
+                                             .sorted { $0.joined() > $1.joined() },
+                      "ViewModel phrasesTested on init is not correct")
+        }
         XCTAssertEqual(viewModel.currentScore, 0,
                        "ViewModel currentScore on init is not zero")
         XCTAssertEqual(viewModel.totalTimeAllowed, GameConstants.Tetris.totalTime,
