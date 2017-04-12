@@ -57,4 +57,11 @@ class LevelsTests: RealmTestCase {
         XCTAssertNotNil(try? levels.resetAll())
         XCTAssertTrue(levels.custom.isEmpty, "All custom levels are not erased")
     }
+
+    func testNextAvailableDefaultName() {
+        for i in 1...10 {
+            XCTAssertEqual("Untitled Level \(i)", levels.nextAvailableDefaultName)
+            save(Level(value: ["name": "Untitled Level \(i)", "isReadOnly": false]))
+        }
+    }
 }
