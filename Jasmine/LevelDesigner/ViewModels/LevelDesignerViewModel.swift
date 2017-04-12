@@ -14,13 +14,13 @@ class LevelDesignerViewModel {
     }
 
     /// Stores the phrases for each game type
-    private(set) var selectedPhrases: [GameType: Phrases] = [:]
+    var selectedPhrases: [GameType: [Phrase]] = [:]
 
     init(levels: Levels, levelToEdit: Level? = nil) {
         self.levels = levels
         self.levelInEdit = levelToEdit
         if let levelToEdit = levelToEdit {
-            self.selectedPhrases[levelToEdit.gameType] = levelToEdit.phrases
+            self.selectedPhrases[levelToEdit.gameType] = Array(levelToEdit.phrases)
         }
     }
 
@@ -44,11 +44,13 @@ class LevelDesignerViewModel {
             try levels.deleteLevel(levelInEdit)
         }
         // TODO : change [] to selectedPhrases[gameType]
-        try levels.addCustomLevel(name: name, gameType: gameType, gameMode: gameMode, phrases: [])
+        try levels.addCustomLevel(name: name, gameType: gameType, gameMode: gameMode,
+                                  phrases: selectedPhrases[gameType]!)
     }
 
     // TODO : change [] to selectedPhrases[gameType]
     func updateCustomLevel(name: String, gameType: GameType, gameMode: GameMode) throws {
-        try levels.updateCustomLevel(name: name, gameType: gameType, gameMode: gameMode, phrases: [])
+        try levels.updateCustomLevel(name: name, gameType: gameType, gameMode: gameMode,
+                                     phrases: selectedPhrases[gameType]!)
     }
 }

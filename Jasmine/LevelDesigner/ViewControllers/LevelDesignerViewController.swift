@@ -63,13 +63,19 @@ class LevelDesignerViewController: UIViewController {
         selectPhrasesButton.setTitle(buttonText, for: .normal)
     }
 
+    func done(_ phrases: [Phrase]) {
+        viewModel.selectedPhrases[selectedGameType] = phrases
+        updateSelectPhrasesButtonText()
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let phrasesExplorerViewController = segue.destination as? PhrasesExplorerViewController {
 
             // TODO: refactor this to VM
-            let viewModel = PhrasesExplorerViewModel(phrases: Storage.sharedInstance.allPhrases)
-            phrasesExplorerViewController.segueWith(viewModel, isMarkable: true)
-            updateSelectPhrasesButtonText()
+
+            let phrasesExplorerViewModel = PhrasesExplorerViewModel(phrases: Storage.sharedInstance.allPhrases,
+                                               selectedPhrases: viewModel.selectedPhrases[selectedGameType])
+            phrasesExplorerViewController.segueWith(phrasesExplorerViewModel, isMarkable: true, viewController: self)
+
         }
     }
 
@@ -105,6 +111,7 @@ class LevelDesignerViewController: UIViewController {
         } catch LevelsError.duplicateLevelName(let name) {
             showOverwriteAlert(name: name, gameType: selectedGameType, gameMode: selectedGameMode)
         } catch {
+            print("errpr")
             showError(error)
         }
         return false

@@ -32,8 +32,10 @@ class PhrasesExplorerViewController: UIViewController {
         phrasesTable.didMove(toParentViewController: self)
     }
 
+    weak var viewController: LevelDesignerViewController?
     /// Dismisses this current screen when "Back" button is pressed.
     @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
+        viewController?.done(viewModel.selectedPhrases)
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -46,9 +48,11 @@ class PhrasesExplorerViewController: UIViewController {
     ///
     /// - Parameter viewModel: the view model of this class.
     /// - Parameter isMarkable: tells the VC whether the view can be marked (given checkmark) or not.
-    func segueWith(_ viewModel: PhrasesExplorerViewModel, isMarkable: Bool) {
+    func segueWith(_ viewModel: PhrasesExplorerViewModel, isMarkable: Bool,
+                   viewController: LevelDesignerViewController? = nil) {
         self.viewModel = viewModel
         self.isMarkable = isMarkable
+        self.viewController = viewController
     }
 }
 
