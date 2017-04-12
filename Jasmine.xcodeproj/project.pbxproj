@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		005D4DDE1E9418F500E8DD0B /* Matrix+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D4DDD1E9418F500E8DD0B /* Matrix+Equatable.swift */; };
 		007B69201E9E0EAF002FE500 /* UIViewController+GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B691F1E9E0EAF002FE500 /* UIViewController+GameCenter.swift */; };
+		007B69221E9E18B1002FE500 /* ProfileQueryContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B69211E9E18B1002FE500 /* ProfileQueryContainerTests.swift */; };
 		5007FD121E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007FD111E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift */; };
 		5023AF321E9D0A8F00C7BFA6 /* LevelImportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023AF311E9D0A8F00C7BFA6 /* LevelImportViewModel.swift */; };
 		502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342761E77F5F200D2FE09 /* FlappyViewModelProtocol.swift */; };
@@ -78,7 +79,6 @@
 		A2FF839B1E9A538800677FA2 /* LevelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF83991E9A538800677FA2 /* LevelsTests.swift */; };
 		A2FF83A11E9E07A400677FA2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF83A01E9E07A400677FA2 /* Storage.swift */; };
 		A2FF83A41E9E0A7700677FA2 /* ProfileQueryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF83A31E9E0A7700677FA2 /* ProfileQueryContainer.swift */; };
-		A2FF83A81E9E0C3F00677FA2 /* ProfileQueryContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FF83A71E9E0C3F00677FA2 /* ProfileQueryContainerTests.swift */; };
 		DF0452561E9C5E5E00C3F1B1 /* LevelImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0452551E9C5E5E00C3F1B1 /* LevelImportViewController.swift */; };
 		DF0452581E9C612100C3F1B1 /* LevelImportViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0452571E9C612100C3F1B1 /* LevelImportViewModelProtocol.swift */; };
 		DF2052C81E8BDD5A00D66B0B /* UIImageView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2052C71E8BDD5A00D66B0B /* UIImageView+Animation.swift */; };
@@ -183,6 +183,7 @@
 /* Begin PBXFileReference section */
 		005D4DDD1E9418F500E8DD0B /* Matrix+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Matrix+Equatable.swift"; sourceTree = "<group>"; };
 		007B691F1E9E0EAF002FE500 /* UIViewController+GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+GameCenter.swift"; sourceTree = "<group>"; };
+		007B69211E9E18B1002FE500 /* ProfileQueryContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileQueryContainerTests.swift; path = Profile/Models/ProfileQueryContainerTests.swift; sourceTree = "<group>"; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
 		5007FD111E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightedUpdateDelegateMock.swift; sourceTree = "<group>"; };
 		5023AF311E9D0A8F00C7BFA6 /* LevelImportViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelImportViewModel.swift; path = ../../Common/ViewModels/LevelImportViewModel.swift; sourceTree = "<group>"; };
@@ -254,7 +255,6 @@
 		A2FF83991E9A538800677FA2 /* LevelsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelsTests.swift; sourceTree = "<group>"; };
 		A2FF83A01E9E07A400677FA2 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A2FF83A31E9E0A7700677FA2 /* ProfileQueryContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileQueryContainer.swift; sourceTree = "<group>"; };
-		A2FF83A71E9E0C3F00677FA2 /* ProfileQueryContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileQueryContainerTests.swift; sourceTree = "<group>"; };
 		BE2522EBDDDAAB18363E8278 /* Pods_Jasmine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jasmine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF6F46CAE49685937742BCB /* Pods-JasmineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JasmineTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JasmineTests/Pods-JasmineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF0452551E9C5E5E00C3F1B1 /* LevelImportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelImportViewController.swift; sourceTree = "<group>"; };
@@ -746,7 +746,7 @@
 		A2FF83A61E9E0C1F00677FA2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A2FF83A71E9E0C3F00677FA2 /* ProfileQueryContainerTests.swift */,
+				007B69211E9E18B1002FE500 /* ProfileQueryContainerTests.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1413,8 +1413,8 @@
 				502A29711E9275770024336A /* Array+EquatableTests.swift in Sources */,
 				502A29771E927B790024336A /* CiHuiSlidingViewModelTests.swift in Sources */,
 				502A29751E927B790024336A /* BaseSlidingViewModelTests.swift in Sources */,
-				A2FF83A81E9E0C3F00677FA2 /* ProfileQueryContainerTests.swift in Sources */,
 				50B7A8B51E9393530052E9E2 /* BaseSwappingViewModelTests.swift in Sources */,
+				007B69221E9E18B1002FE500 /* ProfileQueryContainerTests.swift in Sources */,
 				DFF45A821E99E46000DFD3D9 /* PhraseViewModelTests.swift in Sources */,
 				509036DD1E937C4C006548DE /* ChengYuSwappingViewModelTests.swift in Sources */,
 				509036D51E937BFB006548DE /* GameStatusUpdateDelegateMock.swift in Sources */,
