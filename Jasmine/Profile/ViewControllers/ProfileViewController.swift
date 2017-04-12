@@ -1,55 +1,62 @@
-import UIKit
 import GameKit
 
 class ProfileViewController: UIViewController {
 
-    @IBAction func showAchievements(_ sender: UIButton) {
-        segueToGameCenter(.achievements)
+    @IBOutlet private var playerNameLabel: UILabel!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setPlayerNameLabel()
     }
 
-    @IBAction func showLeaderboards(_ sender: UIButton) {
-        segueToGameCenter(.leaderboards)
-    }
-
-}
-
-// Delegate to dismiss the GC controller
-extension ProfileViewController: GKGameCenterControllerDelegate {
-
-    /// Show game center controller with a specific state
-    ///
-    /// - Parameter viewState: enum state of the game center view controller
-    func segueToGameCenter(_ viewState: GKGameCenterViewControllerState) {
+    /// Sets the player name label text if user is authenticated
+    private func setPlayerNameLabel() {
         let localPlayer = GKLocalPlayer.localPlayer()
-        if localPlayer.isAuthenticated {
-            helperPresent(viewState)
-            return  // early return, no need to authenticate
+        guard localPlayer.isAuthenticated else {
+            return
         }
-        localPlayer.authenticateHandler = { viewController, error in
-            if let viewController = viewController {
-                // 1. Show login if player is not logged in
-                self.present(viewController, animated: true)
-            } else if localPlayer.isAuthenticated {
-                self.helperPresent(viewState)
-            } else {
-                // Game center is disabled for user
-                return
-            }
+        playerNameLabel.text = localPlayer.alias
+    }
+
+    @IBAction private func showAchievements(_ sender: UIButton) {
+        segueTo(.achievements)
+    }
+
+    @IBAction private func showLeaderboards(_ sender: UIButton) {
+        segueTo(.leaderboards)
+    }
+
+    /// Performs user authentication and segue to the game center with the screen associated with `viewState`
+    ///
+    /// - Parameter viewState: the screen associated with it to display
+    private func segueTo(_ viewState: GKGameCenterViewControllerState) {
+        if GKLocalPlayer.localPlayer().isAuthenticated {
+            presentGameCenter(viewState)
+            return
+        }
+        guard !showGKSignInInstruction() else {
+            return
+        }
+
+        setGKAuthHandler {
+            self.presentGameCenter(viewState)
+            self.setPlayerNameLabel()
         }
     }
 
-    /// Helper function to show the game center view controller screen
+    /// Presents the game center with the screen associated with `viewState`
     ///
-    /// - Parameter viewState: view state to show
-    func helperPresent(_ viewState: GKGameCenterViewControllerState) {
+    /// - Parameter viewState: the screen associated with it to display
+    private func presentGameCenter(_ viewState: GKGameCenterViewControllerState) {
         let gameCenterViewController = GKGameCenterViewController()
         gameCenterViewController.gameCenterDelegate = self
         gameCenterViewController.viewState = viewState
-        self.present(gameCenterViewController, animated: true, completion: nil)
+        self.present(gameCenterViewController, animated: true)
     }
+}
 
+extension ProfileViewController: GKGameCenterControllerDelegate {
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated: true)
     }
-
 }
