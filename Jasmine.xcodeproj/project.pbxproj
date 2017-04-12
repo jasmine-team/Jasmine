@@ -180,7 +180,7 @@
 		005D4DDD1E9418F500E8DD0B /* Matrix+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Matrix+Equatable.swift"; sourceTree = "<group>"; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
 		5007FD111E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightedUpdateDelegateMock.swift; sourceTree = "<group>"; };
-		5023AF311E9D0A8F00C7BFA6 /* LevelImportViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelImportViewModel.swift; sourceTree = "<group>"; };
+		5023AF311E9D0A8F00C7BFA6 /* LevelImportViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelImportViewModel.swift; path = ../../Common/ViewModels/LevelImportViewModel.swift; sourceTree = "<group>"; };
 		502A29641E925A190024336A /* Array+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Equatable.swift"; sourceTree = "<group>"; };
 		502A296A1E926DCA0024336A /* BaseSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSlidingViewModel.swift; sourceTree = "<group>"; };
 		502A296B1E926DCA0024336A /* ChengYuSlidingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuSlidingViewModel.swift; sourceTree = "<group>"; };
@@ -751,6 +751,7 @@
 		DF6DDC591E9BF9A900FACAB5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5023AF311E9D0A8F00C7BFA6 /* LevelImportViewModel.swift */,
 				DF0452571E9C612100C3F1B1 /* LevelImportViewModelProtocol.swift */,
 				506473471E9DF0E500ACB183 /* LevelSelectorViewModel.swift */,
 				506473491E9DF14500ACB183 /* LevelSelectorViewModelProtocol.swift */,
@@ -1012,7 +1013,6 @@
 		DFE111461E98BDA900F8860E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				5023AF311E9D0A8F00C7BFA6 /* LevelImportViewModel.swift */,
 				DFE111471E98BDA900F8860E /* PhraseViewModel.swift */,
 				DFF45A7D1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift */,
 			);

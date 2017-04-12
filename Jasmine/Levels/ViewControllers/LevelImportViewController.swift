@@ -13,7 +13,8 @@ class LevelImportViewController: UIViewController {
     // MARK: Properties
     fileprivate var viewModel: LevelImportViewModelProtocol!
 
-    fileprivate var selectedLevel: GameInfo!
+    fileprivate var selectedLevelRow: Int!
+    fileprivate var selectedLevelIsDefault: Bool!
 
     // MARK: Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -22,7 +23,8 @@ class LevelImportViewController: UIViewController {
             self.levelCollectionView.segueWith(delegate: self)
 
         } else if let phrasesExplorerView = segue.destination as? PhrasesExplorerViewController {
-            let phrasesExplorerViewModel = viewModel.getPhraseExplorerViewModel(from: selectedLevel)
+            let phrasesExplorerViewModel = viewModel.getPhraseExplorerViewModel(fromRow: selectedLevelRow,
+                                                                                isDefault: selectedLevelIsDefault)
             phrasesExplorerView.segueWith(phrasesExplorerViewModel, isMarkable: false)
         }
     }
@@ -32,8 +34,9 @@ class LevelImportViewController: UIViewController {
         self.viewModel = viewModel
     }
 
-    fileprivate func segueToPhrasesExplorerView(forLevel level: GameInfo) {
-        self.selectedLevel = level
+    fileprivate func segueToPhrasesExplorerView(forLevelRow row: Int, isDefault: Bool) {
+        selectedLevelRow = row
+        selectedLevelIsDefault = isDefault
         performSegue(withIdentifier: LevelImportViewController.segueToPhrasesExplorer, sender: nil)
     }
 
@@ -60,12 +63,14 @@ class LevelImportViewController: UIViewController {
     }
 
     /// Builds an actionsheet depending on the type of level being fed.
-    fileprivate func buildActionSheet(forLevel level: GameInfo, andView view: UIView) -> UIAlertController {
+    fileprivate func buildActionSheet(fromDefault isDefaultLevel: Bool, at index: Int,
+                                      withView view: UIView) -> UIAlertController {
+        let level = getLevel(fromDefault: isDefaultLevel, at: index)
         let actionSheetController = UIAlertController(title: level.levelName, message: nil,
                                                       preferredStyle: .actionSheet)
         let phrasesAction = UIAlertAction(
         title: LevelImportViewController.actionSheetPhrases, style: .default) { _ in
-            self.segueToPhrasesExplorerView(forLevel: level)
+            self.segueToPhrasesExplorerView(forLevelRow: index, isDefault: isDefaultLevel)
         }
 
         actionSheetController.addAction(phrasesAction)
@@ -94,21 +99,18 @@ extension LevelImportViewController: GameLevelListViewDelegate {
 
     /// Asks the user of this view controller if the level should be mark as selected.
     func shouldMarkAsSelected(fromDefault isDefaultLevels: Bool, at index: Int) -> Bool {
-        let level = getLevels(fromDefault: isDefaultLevels)[index]
-        return viewModel.isLevelMarked(for: level)
+        return viewModel.isLevelMarked(fromRow: index, isDefault: isDefaultLevels)
     }
 
     /// Notifies the user of this view controller that a level has been selected.
     func notifyLevelSelected(fromDefault isDefaultLevels: Bool, at index: Int) {
-        selectedLevel = getLevels(fromDefault: isDefaultLevels)[index]
-        let shouldMark = viewModel.toggleLevelMarked(for: selectedLevel)
+        let shouldMark = viewModel.toggleLevelMarked(fromRow: index, isDefault: isDefaultLevels)
         levelCollectionView.markLevel(fromDefault: isDefaultLevels, at: index, asSelected: shouldMark)
     }
 
     /// Notifies the user of this view controller to open the list of menu for the specified level.
     func notifyOpenMenuForLevel(fromDefault isDefaultLevels: Bool, at index: Int, withView view: UIView) {
-        selectedLevel = getLevels(fromDefault: isDefaultLevels)[index]
-        let actionSheet = buildActionSheet(forLevel: selectedLevel, andView: view)
+        let actionSheet = buildActionSheet(fromDefault: isDefaultLevels, at: index, withView: view)
         self.present(actionSheet, animated: true, completion: nil)
     }
 }
