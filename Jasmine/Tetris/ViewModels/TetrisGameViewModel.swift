@@ -96,6 +96,7 @@ class TetrisGameViewModel {
                 rowWise ? Coordinate(row: coordinate.row, col: $0) : Coordinate(row: $0, col: coordinate.col)
             }
             if let phrase = isPhraseValid(at: coordinates) {
+                // TODO: Fix this animation problem
                 return Set(coordinates) // .union(gridData.getCoordinates(containing: Set(phrase)))
             }
         }
