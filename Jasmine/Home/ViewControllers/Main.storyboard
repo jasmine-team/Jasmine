@@ -132,8 +132,8 @@
         <!--PhraseViewController-->
         <scene sceneID="4M4-bA-S8x">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zt0-G3-AcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardIdentifier="CommonsStoryboard" storyboardName="CommonsStoryboard" referencedIdentifier="PhraseViewController" id="rYh-KJ-YNp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zt0-G3-AcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="776" y="346"/>
         </scene>
@@ -258,6 +258,9 @@
                                         <state key="normal" title="ABOUT">
                                             <color key="titleColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="zAi-Zv-vyv" kind="show" id="LNl-ql-QTt"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcO-UB-C9p">
                                         <rect key="frame" x="0.0" y="165" width="200" height="45"/>
@@ -333,6 +336,66 @@
             </objects>
             <point key="canvasLocation" x="1301" y="1241"/>
         </scene>
+        <!--About View Controller-->
+        <scene sceneID="5Bd-R0-Wb8">
+            <objects>
+                <viewController id="zAi-Zv-vyv" customClass="AboutViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7sr-cW-YDD"/>
+                        <viewControllerLayoutGuide type="bottom" id="H6H-ez-3si"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GmG-CC-sE7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3p0-X0-gHd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="nMS-Me-eIs"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="About Us" id="JB8-RA-qj7">
+                                        <barButtonItem key="leftBarButtonItem" title="BACK" id="LD0-xZ-aG1">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="onBackPressed:" destination="zAi-Zv-vyv" id="v6p-Tz-0Fd"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAG-02-EnO">
+                                <rect key="frame" x="16" y="64" width="343" height="308"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="308" id="Few-EV-hzr"/>
+                                </constraints>
+                                <string key="text">This game Jasmine is created for the module NUS CS3217: Software Engineering for Modern Application Platforms.
+
+Our team members are: - Herbert Ilhan Tanujaya - Li Kai - Wang Riwu - Wang Xien Dong</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3p0-X0-gHd" firstAttribute="top" secondItem="GmG-CC-sE7" secondAttribute="top" id="2aK-OQ-EMd"/>
+                            <constraint firstAttribute="trailing" secondItem="3p0-X0-gHd" secondAttribute="trailing" id="GNB-xz-Ox5"/>
+                            <constraint firstItem="FAG-02-EnO" firstAttribute="top" secondItem="3p0-X0-gHd" secondAttribute="bottom" id="SK8-AS-XZ0"/>
+                            <constraint firstItem="3p0-X0-gHd" firstAttribute="leading" secondItem="GmG-CC-sE7" secondAttribute="leading" id="mIQ-SL-izQ"/>
+                            <constraint firstItem="FAG-02-EnO" firstAttribute="trailing" secondItem="GmG-CC-sE7" secondAttribute="trailingMargin" id="pKg-Hc-q9k"/>
+                            <constraint firstItem="FAG-02-EnO" firstAttribute="leading" secondItem="GmG-CC-sE7" secondAttribute="leadingMargin" id="vkD-lo-u9e"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4FK-HD-l6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1613.5999999999999" y="126.38680659670166"/>
+        </scene>
         <!--LevelSelectorViewController-->
         <scene sceneID="W8j-9p-cbB">
             <objects>
@@ -370,6 +433,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQU-0x-huR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1516" y="797"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ElX-aq-dXR">
+            <objects>
+                <viewController id="WPM-4t-wyW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yPR-Gb-bUI"/>
+                        <viewControllerLayoutGuide type="bottom" id="VhZ-zq-hZl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pU5-SA-Cr6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uhD-7V-jyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>
