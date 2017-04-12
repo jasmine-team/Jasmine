@@ -5,7 +5,7 @@ enum LevelsError: LocalizedError {
     case duplicateLevelName(String)
     case noPhraseSelected
 
-    var errorDescription: String {
+    var errorDescription: String? {
         switch self {
         case .duplicateLevelName(let name):
             return "Duplicate level name: " + name
