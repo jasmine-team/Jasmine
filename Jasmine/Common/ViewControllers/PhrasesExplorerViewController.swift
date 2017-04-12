@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class PhrasesExplorerViewController: UIViewController {
 
@@ -26,8 +27,8 @@ class PhrasesExplorerViewController: UIViewController {
 
     private func showPhrasesTable() {
         addChildViewController(phrasesTable)
-        phrasesTable.view.frame = phrasesTableView.frame
         phrasesTableView.addSubview(phrasesTable.view)
+        phrasesTable.view.snp.makeConstraints { $0.edges.equalToSuperview() }
         phrasesTable.didMove(toParentViewController: self)
     }
 
