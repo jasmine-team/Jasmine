@@ -151,6 +151,7 @@ class TetrisGameViewModel {
     ///
     /// - Returns: a phrase containing that text from the phrase tested set
     private func getFailedTexts() -> [String]? {
+        return nil
         guard let failedText = gridData.texts.subtracting(nextTexts).first else {
             return nil
         }
