@@ -21,6 +21,8 @@ class LevelImportViewModel: LevelImportViewModelProtocol {
     var customLevels: [GameInfo] {
         return rawCustomLevels.map { level in GameInfo.from(level: level) }
     }
+
+    // TODO: Don't store index, store some representation of levels instead
     /// The indices of the default levels that are marked
     private var markedDefaultLevelRows: Set<Int> = []
     /// The indices of the custom levels that are marked
