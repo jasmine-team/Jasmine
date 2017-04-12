@@ -125,16 +125,17 @@ class TetrisGameViewModelTests: RealmTestCase {
     }
 
     func testDestroyTiles() {
+        let testWords = testPhrases.flatMap { $0 }
+        XCTAssertGreaterThanOrEqual(viewModel.gridData.numColumns, testWords.count, "Not enough columns to test")
+
         for _ in 0..<iterations {
             let viewModel = TetrisGameViewModel(gameData: gameData)
             viewModel.scoreDelegate = scoreUpdateDelegateMock
-
             let scoreUpdatedCount = scoreUpdateDelegateMock.scoreUpdatedCount
 
             var landedCoordinates: Set<Coordinate> = []
             var destroyedAndShiftedTiles: [(destroyedTiles: Set<Coordinate>,
                                             shiftedTiles: [(from: Coordinate, to: Coordinate)])] = []
-            let testWords = testPhrases.flatMap { $0 }
             for _ in 0..<testWords.count {
                 guard let columnToLand = testWords.index(of: viewModel.fallingTileText) else {
                     XCTFail("Falling tile text is invalid")
@@ -152,36 +153,69 @@ class TetrisGameViewModelTests: RealmTestCase {
         }
     }
 
-    // TODO : fix this and uncomment
-//    func testDestroyTilesWithTextMatchingMatchedPhrase() {
-//        for _ in 0..<100 {
-//            print()
-//            print()
-//
-//            let viewModel = TetrisGameViewModel(gameData: gameData)
-//
-//            let testWords = testPhrases.flatMap { $0 }
-//            for _ in 0..<testWords.count - 1 {
-//                let startCoordinate = Coordinate(row: Coordinate.origin.row, col: viewModel.gridData.numColumns - 1)
-//                let landingCoordinate = viewModel.getLandingCoordinate(from: startCoordinate)
-//                _ = viewModel.landTile(at: landingCoordinate)
-//            }
-//            let landingCoordinate = Coordinate(row: viewModel.gridData.numRows - 1,
-//                                               col: viewModel.gridData.numColumns - 2)
-//            _ = viewModel.landTile(at: landingCoordinate)
-//
-//            for _ in 0..<testWords.count {
-//                guard let columnToLand = testWords.index(of: viewModel.fallingTileText) else {
-//                    XCTFail("Falling tile text is invalid")
-//                    return
-//                }
-//                let landingCoordinate = Coordinate(row: viewModel.gridData.numRows - 1, col: columnToLand)
-//                _ = viewModel.landTile(at: landingCoordinate)
-//            }
-//            let texts = viewModel.gridData.texts
-//            XCTAssert(texts.isEmpty, "Failed to destroy tiles: \(texts)")
-//        }
-//    }
+    private func landTileFrom(column: Int, viewModel: TetrisGameViewModel) {
+        let startCoordinate = Coordinate(row: Coordinate.origin.row, col: column)
+        let landingCoordinate = viewModel.getLandingCoordinate(from: startCoordinate)
+        _ = viewModel.landTile(at: landingCoordinate)
+    }
+
+    private func landAllTiles(testWords: [String], viewModel: TetrisGameViewModel) {
+        for _ in 0..<testWords.count {
+            guard let columnToLand = testWords.index(of: viewModel.fallingTileText) else {
+                XCTFail("Falling tile text is invalid")
+                return
+            }
+            landTileFrom(column: columnToLand, viewModel: viewModel)
+        }
+    }
+
+    func testDestroyTilesWithTextMatchingMatchedPhrase() {
+        let testWords = testPhrases.flatMap { $0 }
+        XCTAssertGreaterThanOrEqual(viewModel.gridData.numColumns, testWords.count, "Not enough columns to test")
+        XCTAssertGreaterThanOrEqual(viewModel.gridData.numRows, testWords.count + 2, "Not enough columns to test")
+
+        for _ in 0..<iterations {
+            let viewModel = TetrisGameViewModel(gameData: gameData)
+
+            for _ in 0..<testWords.count {
+                landTileFrom(column: viewModel.gridData.numColumns - 1, viewModel: viewModel)
+            }
+
+            landAllTiles(testWords: testWords, viewModel: viewModel)
+            let tilesLeft = viewModel.gridData.texts.count
+            XCTAssert([0, 4, 8].contains(tilesLeft), "Failed to destroy tiles: \(tilesLeft)")
+        }
+    }
+
+    func testShiftDownTiles() {
+        let testWords = testPhrases.flatMap { $0 }
+        XCTAssertGreaterThanOrEqual(viewModel.gridData.numColumns, testWords.count, "Not enough columns to test")
+        XCTAssertGreaterThanOrEqual(viewModel.gridData.numRows, testWords.count + 2, "Not enough columns to test")
+
+        for _ in 0..<iterations {
+            let viewModel = TetrisGameViewModel(gameData: gameData)
+
+            guard let columnToLand = testWords.index(of: viewModel.fallingTileText) else {
+                XCTFail("Falling tile text is invalid")
+                return
+            }
+            for _ in 0..<testWords.count {
+                landTileFrom(column: columnToLand, viewModel: viewModel)
+            }
+
+            landAllTiles(testWords: testWords, viewModel: viewModel)
+
+            for row in 0..<(viewModel.gridData.numRows - 1) {
+                guard viewModel.gridData[Coordinate(row: row, col: columnToLand)] != nil else {
+                    continue
+                }
+                for remainingRow in (row + 1)..<viewModel.gridData.numRows {
+                    XCTAssertNotNil(viewModel.gridData[Coordinate(row: remainingRow, col: columnToLand)],
+                                    "Tiles not shifted properly")
+                }
+            }
+        }
+    }
 
     func testGameEndWhenTopRowOccupied() {
         for _ in 0..<iterations {
@@ -190,7 +224,6 @@ class TetrisGameViewModelTests: RealmTestCase {
             while !viewModel.gridData.hasText(at: startCoordinate) && viewModel.gameStatus != .endedWithLost {
                 let landingCoordinate = viewModel.getLandingCoordinate(from: startCoordinate)
                 _ = viewModel.landTile(at: landingCoordinate)
-                print(viewModel.gameStatus, landingCoordinate)
             }
             XCTAssertEqual(viewModel.gameStatus, .endedWithLost, "Game did not end when top row occupied")
         }
