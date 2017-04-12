@@ -51,6 +51,7 @@ class GameOverViewController: UIViewController {
 
     // MARK: - View Controller Lifecycle
     override func viewDidLoad() {
+        super.viewDidLoad()
         loadGameDescriptionsToUi()
     }
 
