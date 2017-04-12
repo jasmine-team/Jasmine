@@ -29,7 +29,6 @@ class SoundService: NSObject {
 
     private override init() {
         super.init()
-        return // TODO : uncomment after everything done
         for background in Background.allValues {
             do {
                 let player = try AVAudioPlayer(filename: background.rawValue)
