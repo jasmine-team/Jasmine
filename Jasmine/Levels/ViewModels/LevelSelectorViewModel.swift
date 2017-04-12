@@ -27,7 +27,7 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
 
     /// The custom levels in the game.
     var customLevels: [GameInfo] {
-        return rawCustomLevels.map { level in GameInfo.from(level) }
+        return rawCustomLevels.map { level in GameInfo.from(level: level) }
     }
 
     init() {
