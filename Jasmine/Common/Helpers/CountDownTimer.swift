@@ -37,7 +37,8 @@ class CountDownTimer {
     /// Stops the countdown timer
     func stopTimer() {
         guard let timer = timer else {
-            fatalError("Timer is stopped when it has not started")
+            assertionFailure("Timer is stopped when it has not started")
+            return
         }
 
         timer.invalidate()

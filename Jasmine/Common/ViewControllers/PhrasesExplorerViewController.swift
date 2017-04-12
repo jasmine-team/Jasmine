@@ -1,10 +1,36 @@
 import UIKit
+import SnapKit
 
 class PhrasesExplorerViewController: UIViewController {
 
+    @IBOutlet private weak var phrasesTableView: UIView!
     fileprivate var phrasesTable: PhrasesTableViewController!
-    fileprivate var viewModel: PhrasesExplorerViewModel!
+    fileprivate(set) var viewModel: PhrasesExplorerViewModel!
     private var searchController: UISearchController!
+    private var isMarkable: Bool!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupPhrasesTable()
+        searchController = UISearchController(searchResultsController: phrasesTable)
+        showPhrasesTable()
+    }
+
+    private func setupPhrasesTable() {
+        if isMarkable == true {
+            phrasesTable = PhrasesSelectionTableViewController()
+        } else {
+            phrasesTable = PhrasesDetailTableViewController()
+        }
+        phrasesTable.viewModel = viewModel
+    }
+
+    private func showPhrasesTable() {
+        addChildViewController(phrasesTable)
+        phrasesTableView.addSubview(phrasesTable.view)
+        phrasesTable.view.snp.makeConstraints { $0.edges.equalToSuperview() }
+        phrasesTable.didMove(toParentViewController: self)
+    }
 
     /// Dismisses this current screen when "Back" button is pressed.
     @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
@@ -19,16 +45,10 @@ class PhrasesExplorerViewController: UIViewController {
     /// Injects the required data before opening this view.
     ///
     /// - Parameter viewModel: the view model of this class.
-    func segueWith(_ viewModel: PhrasesExplorerViewModel) {
+    /// - Parameter isMarkable: tells the VC whether the view can be marked (given checkmark) or not.
+    func segueWith(_ viewModel: PhrasesExplorerViewModel, isMarkable: Bool) {
         self.viewModel = viewModel
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let table = segue.destination as? PhrasesTableViewController {
-            phrasesTable = table
-            phrasesTable.viewModel = viewModel
-            searchController = UISearchController(searchResultsController: phrasesTable)
-        }
+        self.isMarkable = isMarkable
     }
 }
 

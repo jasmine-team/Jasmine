@@ -149,16 +149,23 @@ class TetrisGameViewController: UIViewController {
     }
 
     // MARK: - Game State and Actions
+    /// Releases a new tile at the top row for falling.
+    /// - Precondition: This method is only available if the game is not ended.
+    /// - Postcondition: This tile will have been checked if it can land on the top row.
     private func releaseNewTile() {
-        guard !tetrisGameAreaView.hasFallingTile else {
-            assertionFailure("Current tile still falling! Cannot release a new tile for falling!")
+        guard !tetrisGameAreaView.hasFallingTile,
+              !viewModel.gameStatus.hasGameEnded,
+              let tileText = viewModel.fallingTileText else {
             return
         }
-        tetrisGameAreaView.setFallingTile(withData: viewModel.fallingTileText,
-                                          toCoord: viewModel.fallingTileStartCoordinate)
+        let tileCoord = viewModel.fallingTileStartCoordinate
+
+        tetrisGameAreaView.setFallingTile(withData: tileText, toCoord: tileCoord)
         updateUpcomingAndFallingTiles()
+        tryLandTile(at: tileCoord)
     }
 
+    /// Drops the falling tile to the lowest unoccupied cell in the same column.
     private func dropFallingTile() {
         guard let initCoord = tetrisGameAreaView.fallingTileCoord else {
             return
@@ -167,19 +174,34 @@ class TetrisGameViewController: UIViewController {
         tetrisGameAreaView.shiftFallingTile(to: finalCoord)
     }
 
+    /// Updates the current falling tile and the upcoming tiles with new data.
     private func updateUpcomingAndFallingTiles() {
         tetrisGameAreaView.fallingTile?.text = viewModel.fallingTileText
         tetrisUpcomingTilesView.reload(gridData: upcomingTiles, withAnimation: true)
     }
 
+    /// Tells this view controller that the tile has shifted to a new position.
     private func notifyTileHasRepositioned() {
-        guard let coord = tetrisGameAreaView.fallingTileCoord,
-              viewModel.canLandTile(at: coord) else {
+        guard let coord = tetrisGameAreaView.fallingTileCoord else {
             return
         }
-        tetrisGameAreaView.landFallingTile(at: coord)
+        tryLandTile(at: coord)
     }
 
+    /// Lands the tile at the specified coordinate if it is able to.
+    ///
+    /// - Parameter coordinate: the coordinate of the cell in the grid where the tile can land right onto.
+    /// - Returns: true if the landing is permitted.
+    @discardableResult
+    private func tryLandTile(at coordinate: Coordinate) -> Bool {
+        guard viewModel.canLandTile(at: coordinate) else {
+            return false
+        }
+        tetrisGameAreaView.landFallingTile(at: coordinate)
+        return true
+    }
+
+    /// Tells this view controller that the tile has landed successfully.
     private func notifyTileHasLanded(at coordinate: Coordinate) {
         let destroyedAndShiftedTiles = viewModel.landTile(at: coordinate)
         animate(removeAll: destroyedAndShiftedTiles)

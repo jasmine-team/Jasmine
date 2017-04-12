@@ -55,7 +55,7 @@ class BaseSwappingViewModel: GridViewModel, SwappingViewModelProtocol {
         }
 
         if highlightedCoordinates.count == gridData.count {
-            score += max(Score.win + Int(timeRemaining * Score.multiplierFromTime) -
+            score += max(Score.win + Int(round(timeRemaining * Score.multiplierFromTime)) -
                 moves * Score.multiplierFromMoves, 0)
             gameStatus = .endedWithWon
         }
