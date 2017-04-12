@@ -1,22 +1,22 @@
-/// The ViewModel for the level selector part.
-protocol LevelSelectorViewModelProtocol {
+protocol LevelImportViewModelProtocol {
+
     /// The defaults levels in the game.
     var defaultLevels: [GameInfo] { get }
+
     /// The custom levels in the game.
     var customLevels: [GameInfo] { get }
 
-    /// Deletes the custom level
-    ///
-    /// - Parameter gameInfo: the game info
-    func deleteLevel(from gameInfo: GameInfo)
+    /// Gets a list of levels that are marked.
+    var markedLevels: [GameInfo] { get }
 
     /// Get the phrase explorer VM from the game info
     ///
     /// - Parameter gameInfo: the game info to be passed
     func getPhraseExplorerViewModel(from gameInfo: GameInfo) -> PhrasesExplorerViewModel
 
-    /// Play the game 
-    ///
-    /// - Parameter gameInfo: the game info to be passed
-    func playGame(from gameInfo: GameInfo) -> BaseViewModelProtocol
+    /// Toggle whether the level is marked, or not.
+    func toggleLevelMarked(for gameInfo: GameInfo) -> Bool
+
+    /// Returns true if the level should be marked, false otherwise.
+    func isLevelMarked(for gameInfo: GameInfo) -> Bool
 }
