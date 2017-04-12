@@ -149,6 +149,7 @@ fileprivate extension SlidingGameViewController {
             slidingGridView.snapDetachedTile(movingTile.tile, toCoordinate: coord) {
                 self.slidingGridView.reattachDetachedTile(movingTile.tile)
             }
+            SoundService.sharedInstance.play(.snap)
         }
 
         guard let endingCoord = slidingGridView.getCoordinate(at: movingTile.tile.center),
