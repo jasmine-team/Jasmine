@@ -17,5 +17,12 @@ class ArrayEquatableTests: XCTestCase {
         XCTAssert(intArray != intNilArray, "Array equals not correct")
         XCTAssert(intArray != emptyArray, "Array equals not correct")
         XCTAssert(intArray != longArray, "Array equals not correct")
+        XCTAssert(intOptionalArray == intArray, "Array equals not correct")
+        XCTAssert(!(intNilArray == intArray), "Array equals not correct")
+        XCTAssert(!(emptyArray == intArray), "Array equals not correct")
+        XCTAssert(!(longArray == intArray), "Array equals not correct")
+        XCTAssert(intNilArray != intArray, "Array equals not correct")
+        XCTAssert(emptyArray != intArray, "Array equals not correct")
+        XCTAssert(longArray != intArray, "Array equals not correct")
     }
 }
