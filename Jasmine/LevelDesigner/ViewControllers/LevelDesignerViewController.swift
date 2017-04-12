@@ -72,7 +72,10 @@ class LevelDesignerViewController: UIViewController {
 
             // TODO: refactor this to VM
 
-            let phrasesExplorerViewModel = PhrasesExplorerViewModel(phrases: Storage.sharedInstance.allPhrases,
+            let phrases = (selectedGameType == .chengYu) ? Storage.sharedInstance.allChengYu :
+                Storage.sharedInstance.allCiHui
+
+            let phrasesExplorerViewModel = PhrasesExplorerViewModel(phrases: phrases,
                                                selectedPhrases: viewModel.selectedPhrases[selectedGameType])
             phrasesExplorerViewController.segueWith(phrasesExplorerViewModel, isMarkable: true, viewController: self)
 
