@@ -34,6 +34,7 @@
 		5064733C1E9D7D7C00ACB183 /* LevelSelectorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5064733B1E9D7D7C00ACB183 /* LevelSelectorViewModelTests.swift */; };
 		5064733E1E9D7F8500ACB183 /* GameInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5064733D1E9D7F8500ACB183 /* GameInfoTests.swift */; };
 		506473401E9DD3BD00ACB183 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5064733F1E9DD3BD00ACB183 /* Level.swift */; };
+		506473421E9DD6AB00ACB183 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506473411E9DD6AB00ACB183 /* HomeScreenViewController.swift */; };
 		50717AC01E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50717ABE1E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift */; };
 		50717AC11E7BD944005A2FE5 /* RandomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50717ABF1E7BD944005A2FE5 /* RandomTests.swift */; };
 		50717AC31E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50717AC21E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift */; };
@@ -114,7 +115,6 @@
 		DF9918E31E92B730004E599B /* DirectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9918E21E92B730004E599B /* DirectionTests.swift */; };
 		DFA8B69B1E9899A4002D81CF /* SimpleStartGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8B69A1E9899A4002D81CF /* SimpleStartGameViewController.swift */; };
 		DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342701E77EB6700D2FE09 /* Coordinate.swift */; };
-		DFBE8F1F1E951FC00036CCC6 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F1D1E951FC00036CCC6 /* HomeScreenViewController.swift */; };
 		DFBE8F201E951FC00036CCC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBE8F1E1E951FC00036CCC6 /* Main.storyboard */; };
 		DFBE8F251E9520450036CCC6 /* LevelSelectionStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBE8F241E9520450036CCC6 /* LevelSelectionStoryboard.storyboard */; };
 		DFBE8F3A1E9526BE0036CCC6 /* DiscreteFallableSquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F311E9526BE0036CCC6 /* DiscreteFallableSquareGridViewController.swift */; };
@@ -194,6 +194,7 @@
 		5064733B1E9D7D7C00ACB183 /* LevelSelectorViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectorViewModelTests.swift; sourceTree = "<group>"; };
 		5064733D1E9D7F8500ACB183 /* GameInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInfoTests.swift; sourceTree = "<group>"; };
 		5064733F1E9DD3BD00ACB183 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		506473411E9DD6AB00ACB183 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		50717ABE1E7BD944005A2FE5 /* MutableCollection+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MutableCollection+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		50717ABF1E7BD944005A2FE5 /* RandomTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomTests.swift; sourceTree = "<group>"; };
 		50717AC21E7BD9D5005A2FE5 /* Sequence+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+ExtensionsTests.swift"; sourceTree = "<group>"; };
@@ -281,7 +282,6 @@
 		DFA8B69A1E9899A4002D81CF /* SimpleStartGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleStartGameViewController.swift; sourceTree = "<group>"; };
 		DFB342701E77EB6700D2FE09 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		DFB342761E77F5F200D2FE09 /* FlappyViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyViewModelProtocol.swift; sourceTree = "<group>"; };
-		DFBE8F1D1E951FC00036CCC6 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		DFBE8F1E1E951FC00036CCC6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DFBE8F241E9520450036CCC6 /* LevelSelectionStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LevelSelectionStoryboard.storyboard; sourceTree = "<group>"; };
 		DFBE8F311E9526BE0036CCC6 /* DiscreteFallableSquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscreteFallableSquareGridViewController.swift; sourceTree = "<group>"; };
@@ -802,7 +802,7 @@
 			isa = PBXGroup;
 			children = (
 				DFE111531E99133F00F8860E /* FallingFlowersViewController.swift */,
-				DFBE8F1D1E951FC00036CCC6 /* HomeScreenViewController.swift */,
+				506473411E9DD6AB00ACB183 /* HomeScreenViewController.swift */,
 				DFBE8F1E1E951FC00036CCC6 /* Main.storyboard */,
 			);
 			path = ViewControllers;
@@ -1189,7 +1189,6 @@
 				DFBE8F791E9527F70036CCC6 /* BaseViewModelProtocol.swift in Sources */,
 				DFBE8F3A1E9526BE0036CCC6 /* DiscreteFallableSquareGridViewController.swift in Sources */,
 				DF2321561E961A6900417ED2 /* GameOverViewController.swift in Sources */,
-				DFBE8F1F1E951FC00036CCC6 /* HomeScreenViewController.swift in Sources */,
 				DFBE8F401E95272B0036CCC6 /* SquareGridViewController.swift in Sources */,
 				00C600731E9B636E006BA74A /* LevelsError.swift in Sources */,
 				502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */,
@@ -1246,6 +1245,7 @@
 				DF2155271E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift in Sources */,
 				50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */,
 				509894A31E6E6CAE00FC9CF3 /* GameType.swift in Sources */,
+				506473421E9DD6AB00ACB183 /* HomeScreenViewController.swift in Sources */,
 				DFE1114C1E98BDDC00F8860E /* ProfileViewController.swift in Sources */,
 				502A296F1E926DCA0024336A /* CiHuiSlidingViewModel.swift in Sources */,
 				DF2155251E8E3F25005A0927 /* Direction.swift in Sources */,
