@@ -49,7 +49,7 @@
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="XDN-rq-sQA">
-                                <rect key="frame" x="16" y="80" width="343" height="257.5"/>
+                                <rect key="frame" x="16" y="80" width="343" height="295.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6eV-Ww-54A">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="58.5"/>
@@ -98,7 +98,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TIf-Om-c5p">
-                                        <rect key="frame" x="0.0" y="163" width="343" height="94.5"/>
+                                        <rect key="frame" x="0.0" y="163" width="343" height="132.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME TYPE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZv-GG-Vir">
                                                 <rect key="frame" x="0.0" y="0.0" width="91.5" height="20.5"/>
@@ -125,6 +125,16 @@
                                                 </state>
                                                 <connections>
                                                     <segue destination="bMn-KP-I36" kind="show" id="BoJ-Y6-ZEp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0r-LO-tVy">
+                                                <rect key="frame" x="0.0" y="102.5" width="231" height="30"/>
+                                                <color key="backgroundColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="IMPORT PHRASES FROM LEVELS">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onImportButtonPressed:" destination="5nd-jc-deS" eventType="touchUpInside" id="RuA-i8-GqR"/>
                                                 </connections>
                                             </button>
                                         </subviews>
