@@ -41,7 +41,7 @@ class Levels {
     ///   - gameMode: game mode of level
     ///   - phrases: list of phrases to level
     /// - Throws: Error if failed to add data or level name already exists
-    func addCustomLevel(name: String?, gameType: GameType, gameMode: GameMode, phrases: [Phrase]) throws {
+    func addCustomLevel(name: String?, gameType: GameType, gameMode: GameMode, phrases: Set<Phrase>) throws {
         guard !phrases.isEmpty else {
             throw LevelsError.noPhraseSelected
         }
@@ -115,7 +115,7 @@ class Levels {
     ///   - gameMode: the updated game mode
     ///   - phrases: the updated phrases
     /// - Throws: Error if failed to add data
-    func updateCustomLevel(name: String, gameType: GameType, gameMode: GameMode, phrases: [Phrase]) throws {
+    func updateCustomLevel(name: String, gameType: GameType, gameMode: GameMode, phrases: Set<Phrase>) throws {
         guard let level = getLevel(name: name) else {
             fatalError("Unable to find level with name \(name)")
         }

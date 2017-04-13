@@ -32,7 +32,7 @@ class LevelsTests: RealmTestCase {
         let name = "test"
         let gameType: GameType = .ciHui
         let gameMode: GameMode = .sliding
-        let phrases = [Phrase(value: ["rawChinese": "x y"])]
+        let phrases: Set<Phrase> = [Phrase(value: ["rawChinese": "x y"])]
 
         XCTAssertNotNil(try? levels.addCustomLevel(name: name, gameType: gameType,
                                                    gameMode: gameMode, phrases: phrases))
@@ -43,7 +43,7 @@ class LevelsTests: RealmTestCase {
         XCTAssertEqual(latestLevel.name, name, "Name not persisted")
         XCTAssertEqual(latestLevel.gameType, gameType, "Game type not persisted")
         XCTAssertEqual(latestLevel.gameMode, gameMode, "Game mode not persisted")
-        XCTAssertEqual(Array(latestLevel.phrases), phrases, "Phrases not persisted")
+        XCTAssertEqual(Set(latestLevel.phrases), phrases, "Phrases not persisted")
     }
 
     func testDeleteLevel() {
