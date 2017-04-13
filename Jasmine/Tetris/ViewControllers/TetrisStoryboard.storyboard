@@ -11,50 +11,72 @@
     </dependencies>
     <scenes>
         <!--Discrete Fallable Square Grid View Controller-->
-        <scene sceneID="KaK-2e-8h7">
+        <scene sceneID="Yfl-nN-rBP">
             <objects>
-                <viewController id="4Oq-id-eCE" customClass="DiscreteFallableSquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="INd-ZT-zgV"/>
-                        <viewControllerLayoutGuide type="bottom" id="8t1-Lj-Zzl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5zt-Cb-aGG">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="399"/>
+                <collectionViewController id="53x-w8-Je5" customClass="DiscreteFallableSquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="F6i-71-Qmd">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="343" height="399"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pFs-F6-KFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TQh-03-q0h">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aK6-oc-aS3">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="53x-w8-Je5" id="dyc-hv-86z"/>
+                            <outlet property="delegate" destination="53x-w8-Je5" id="x8P-zi-AOU"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tWy-Sm-j7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-158" y="849"/>
+            <point key="canvasLocation" x="-192" y="973"/>
         </scene>
         <!--Square Grid View Controller-->
-        <scene sceneID="t1o-aH-0OC">
+        <scene sceneID="xqf-4o-YTB">
             <objects>
-                <viewController id="RSU-zj-Keu" customClass="SquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lV4-5t-hoC"/>
-                        <viewControllerLayoutGuide type="bottom" id="YmJ-tj-2Vo"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Yow-Pe-xhz">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="64"/>
+                <collectionViewController id="mPa-es-pmk" customClass="SquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="23e-TJ-dLi">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="48"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="343" height="64"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="V6C-vL-diE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ch4-Yv-mm1">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Fvl-et-LLs">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="mPa-es-pmk" id="hDe-x6-pQb"/>
+                            <outlet property="delegate" destination="mPa-es-pmk" id="kJI-dr-4HW"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ncH-qI-r3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="210" y="590"/>
+            <point key="canvasLocation" x="468" y="810"/>
         </scene>
         <!--SimpleStartGameViewController-->
         <scene sceneID="xTd-P3-p4I">
@@ -83,7 +105,7 @@
                                     <outletCollection property="gestureRecognizers" destination="foD-TI-dgZ" appends="YES" id="chf-Mb-uuL"/>
                                     <outletCollection property="gestureRecognizers" destination="5Rf-XV-Nsb" appends="YES" id="SNu-n8-Go0"/>
                                     <outletCollection property="gestureRecognizers" destination="rgY-ND-0k5" appends="YES" id="SwR-aB-lHK"/>
-                                    <segue destination="4Oq-id-eCE" kind="embed" id="mD0-vD-TBv"/>
+                                    <segue destination="53x-w8-Je5" kind="embed" id="HQL-hp-xd0"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJA-n4-ff2" userLabel="Game Statistics View">
@@ -102,7 +124,7 @@
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="clz-3h-Xvc" appends="YES" id="GYd-jE-f0p"/>
-                                    <segue destination="RSU-zj-Keu" kind="embed" id="awe-DI-mk0"/>
+                                    <segue destination="mPa-es-pmk" kind="embed" id="1v7-zC-mKo"/>
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPCOMING TILES (TAP TO SWITCH)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5z-y8-XQq" userLabel="Tetris Upcoming Tiles Label">

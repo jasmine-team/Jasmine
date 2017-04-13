@@ -79,7 +79,7 @@
                                     <constraint firstAttribute="width" constant="240" id="hSR-D4-CMB"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="EI1-em-TmQ" kind="embed" id="apN-EF-J5R"/>
+                                    <segue destination="sM6-t1-yMO" kind="embed" id="Q2M-iF-ZnO"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -269,22 +269,38 @@
             <point key="canvasLocation" x="794" y="380"/>
         </scene>
         <!--Selectable Square Grid View Controller-->
-        <scene sceneID="9P0-fp-edA">
+        <scene sceneID="b11-sI-s5g">
             <objects>
-                <viewController id="EI1-em-TmQ" customClass="SelectableSquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sGR-nE-KfD"/>
-                        <viewControllerLayoutGuide type="bottom" id="eYS-BR-dhc"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mQ4-5p-ofG">
+                <collectionViewController id="sM6-t1-yMO" customClass="SelectableSquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="e3g-Sz-gyY">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="295"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bbo-Sq-XVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Y6o-Zc-Bvg">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lFm-er-g4u">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="sM6-t1-yMO" id="EsM-iX-8fZ"/>
+                            <outlet property="delegate" destination="sM6-t1-yMO" id="Ls6-V4-ejf"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tab-Y8-Ken" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="862" y="615"/>
+            <point key="canvasLocation" x="854" y="809"/>
         </scene>
     </scenes>
 </document>
