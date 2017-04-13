@@ -30,24 +30,25 @@ class LevelDesignerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDataFromLevelToEdit()
+        updateSelectPhrasesButtonText()
     }
-    
+
     /// Feeds in the appropriate data for the use of seguing into this view.
     ///
     /// - Parameter viewModel: the level designer view model required to use this view
     func segueWith(_ viewModel: LevelDesignerViewModel) {
         self.viewModel = viewModel
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let phrasesExplorerViewController = segue.destination as? PhrasesExplorerViewController {
             let phrasesExplorerViewModel = PhrasesExplorerViewModel(phrases: phrasesForSelectedGameType,
                                                selectedPhrases: viewModel.selectedPhrases[selectedGameType])
-            phrasesExplorerViewController.segueWith(phrasesExplorerViewModel, isMarkable: true, 
+            phrasesExplorerViewController.segueWith(phrasesExplorerViewModel, isMarkable: true,
                                                     onDismiss: updateSelectedPhrases)
         }
     }
-    
+
     /// Updates the selected phrases for the currently selected game type with `phrases` retrieved from phrase explorer
     ///
     /// - Parameter phrases: the selected phrases to update to
@@ -69,8 +70,6 @@ class LevelDesignerViewController: UIViewController {
         }
         gameModeControl.selectedSegmentIndex = gameModeIndex
         gameTypeControl.selectedSegmentIndex = gameTypeIndex
-
-        updateSelectPhrasesButtonText()
     }
 
     /// Updates the select phrases button text based on the phrases count for the currently selected game type
