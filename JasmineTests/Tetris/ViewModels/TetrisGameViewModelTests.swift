@@ -185,8 +185,7 @@ class TetrisGameViewModelTests: RealmTestCase {
             }
 
             landAllTiles(testWords: testWords, viewModel: viewModel)
-            let tilesLeft = viewModel.gridData.texts.count
-            XCTAssert([0, 4, 8].contains(tilesLeft), "Failed to destroy tiles: \(tilesLeft)")
+            XCTAssertLessThanOrEqual(viewModel.gridData.texts.count, testWords.count, "Failed to destroy tiles")
         }
     }
 
@@ -209,12 +208,12 @@ class TetrisGameViewModelTests: RealmTestCase {
             landAllTiles(testWords: testWords, viewModel: viewModel)
 
             for row in 0..<(viewModel.gridData.numRows - 1) {
-                guard viewModel.gridData[Coordinate(row: row, col: columnToLand)] != nil else {
+                guard viewModel.gridData.hasText(at :Coordinate(row: row, col: columnToLand)) else {
                     continue
                 }
                 for remainingRow in (row + 1)..<viewModel.gridData.numRows {
-                    XCTAssertNotNil(viewModel.gridData[Coordinate(row: remainingRow, col: columnToLand)],
-                                    "Tiles not shifted properly")
+                    XCTAssert(viewModel.gridData.hasText(at: Coordinate(row: remainingRow, col: columnToLand)),
+                              "Tiles not shifted properly")
                 }
             }
         }

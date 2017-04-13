@@ -102,7 +102,6 @@ class TetrisGameViewModel {
                 rowWise ? Coordinate(row: coordinate.row, col: $0) : Coordinate(row: $0, col: coordinate.col)
             }
             if let phrase = isPhraseValid(at: coordinates) {
-                // TODO: Fix this animation problem
                 return Set(coordinates).union(gridData.getCoordinates(containing: Set(phrase)))
             }
         }
@@ -132,6 +131,7 @@ class TetrisGameViewModel {
                 }
                 let newCoordinate = Coordinate(row: bottomMostRow - shiftedCount, col: col)
                 shiftedCount += 1
+                assert(!gridData.hasText(at: newCoordinate), "Coordinate to shift to is already occupied")
                 gridData.swap(currentCoordinate, newCoordinate)
                 shiftedTiles.append((from: currentCoordinate, to: newCoordinate))
             }
@@ -147,7 +147,8 @@ class TetrisGameViewModel {
     private func getBottomMostRows(_ coordinates: Set<Coordinate>) -> [Int: Int] {
         var columnToBottomMostRow: [Int: Int] = [:]
         for coordinate in coordinates {
-            if let lowest = columnToBottomMostRow[coordinate.col], coordinate.row >= lowest {
+            if let previousBottomMost = columnToBottomMostRow[coordinate.col],
+               previousBottomMost >= coordinate.row {
                 continue
             }
             columnToBottomMostRow[coordinate.col] = coordinate.row
