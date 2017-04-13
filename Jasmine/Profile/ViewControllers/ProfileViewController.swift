@@ -4,9 +4,22 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet private var playerNameLabel: UILabel!
 
+    private static let weeklyStreakGridSpacing: CGFloat = 0
+    private static let weeklyStreakNumRows = 4
+    private static let weeklyStreakNumCols = 13
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setPlayerNameLabel()
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let squareGridViewController = segue.destination as? SquareGridViewController {
+            squareGridViewController.segueWith(numRow: ProfileViewController.weeklyStreakNumRows,
+                                               numCol: ProfileViewController.weeklyStreakNumCols,
+                                               withSpace: ProfileViewController.weeklyStreakGridSpacing)
+        }
+
     }
 
     /// Sets the player name label text if user is authenticated
