@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 
 /// A view controller that stores a grid of square cells.
-class SquareGridViewController: UIViewController {
+class SquareGridViewController: UICollectionViewController {
 
     // MARK: Constants
     fileprivate static let cellIdentifier = "Square Text View Cell"
@@ -10,8 +10,14 @@ class SquareGridViewController: UIViewController {
     fileprivate static let standardCellSpacing = CGFloat(8.0)
 
     // MARK: Layouts
-    fileprivate let gridCollectionView
-        = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    /// Gets the stored collection view in this square grid view controller.
+    /// - Note: If no collection view is found in this view controller, the app will crash.
+    var gridCollectionView: UICollectionView {
+        guard let collectionView = self.collectionView else {
+            fatalError("A grid collection must be instantiated and attached.")
+        }
+        return collectionView
+    }
 
     // MARK: Properties
     /// Caches the database that is used to display onto the collection view in this view controller.
@@ -238,9 +244,9 @@ class SquareGridViewController: UIViewController {
         gridCollectionView.isScrollEnabled = isScrollable
         gridCollectionView.clipsToBounds = shouldClipToBounds
         gridCollectionView.backgroundColor = UIColor.clear
-        gridCollectionView.register(
-            SquareTileViewCell.self,
-            forCellWithReuseIdentifier: SquareGridViewController.cellIdentifier)
+        gridCollectionView
+            .register(SquareTileViewCell.self,
+                      forCellWithReuseIdentifier: SquareGridViewController.cellIdentifier)
 
         view.addSubview(gridCollectionView)
         gridCollectionView.snp.makeConstraints { $0.edges.equalToSuperview() }
@@ -252,23 +258,23 @@ class SquareGridViewController: UIViewController {
 }
 
 // MARK: - Collection View Data Source
-extension SquareGridViewController: UICollectionViewDataSource {
+extension SquareGridViewController {
 
     /// Tells the collection view the number of rows to display.
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return numRows
     }
 
     /// Tells the collection view the number of cells in a row to display.
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 numberOfItemsInSection section: Int) -> Int {
         return numCols
     }
 
     /// Feeds the data to the collection view, and at the same time, save the frame of the 
     /// collection view cell.
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let reusableCell = collectionView
             .dequeueReusableCell(withReuseIdentifier: SquareGridViewController.cellIdentifier,
