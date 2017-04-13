@@ -193,7 +193,6 @@ class TetrisGameViewModelTests: RealmTestCase {
             while !viewModel.gridData.hasText(at: startCoordinate) && viewModel.gameStatus != .endedWithLost {
                 let landingCoordinate = viewModel.getLandingCoordinate(from: startCoordinate)
                 _ = viewModel.landTile(at: landingCoordinate)
-                print(viewModel.gameStatus, landingCoordinate)
             }
             XCTAssertEqual(viewModel.gameStatus, .endedWithLost, "Game did not end when top row occupied")
         }
