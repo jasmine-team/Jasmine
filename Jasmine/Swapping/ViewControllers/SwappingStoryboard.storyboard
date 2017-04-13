@@ -120,7 +120,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <containerView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6tN-hq-EbR">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6tN-hq-EbR">
                                 <rect key="frame" x="0.0" y="268" width="375" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="Lg5-Cy-tpX"/>

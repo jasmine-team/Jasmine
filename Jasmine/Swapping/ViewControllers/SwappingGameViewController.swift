@@ -10,8 +10,6 @@ class SwappingGameViewController: UIViewController {
 
     fileprivate static let highlightDelay = 0.3
 
-    fileprivate static let startGameText = "DRAG TO START"
-
     // MARK: Layouts
     fileprivate var squareGridViewController: DraggableSquareGridViewController!
 
@@ -50,7 +48,7 @@ class SwappingGameViewController: UIViewController {
 
         } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
             self.gameStartView = gameStartView
-            gameStartView.segueWith(viewModel, startGameText: SwappingGameViewController.startGameText)
+            gameStartView.segueWith(viewModel, onScreenDismissed: startGameIfPossible)
         }
     }
 
