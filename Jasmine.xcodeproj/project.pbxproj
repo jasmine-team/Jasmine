@@ -89,7 +89,6 @@
 		DF2155251E8E3F25005A0927 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2155241E8E3F25005A0927 /* Direction.swift */; };
 		DF2155271E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2155261E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift */; };
 		DF2155291E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2155281E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift */; };
-		DF2321541E961A4100417ED2 /* SelectableSquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2321531E961A4100417ED2 /* SelectableSquareGridViewController.swift */; };
 		DF2321561E961A6900417ED2 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2321551E961A6900417ED2 /* GameOverViewController.swift */; };
 		DF2321581E961CA300417ED2 /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF2321571E961CA300417ED2 /* ProfileStoryboard.storyboard */; };
 		DF409FDB1E84145800389976 /* UIApplication+isFirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF409FDA1E84145800389976 /* UIApplication+isFirstLaunch.swift */; };
@@ -135,9 +134,6 @@
 		DFB342711E77EB6700D2FE09 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342701E77EB6700D2FE09 /* Coordinate.swift */; };
 		DFBE8F201E951FC00036CCC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBE8F1E1E951FC00036CCC6 /* Main.storyboard */; };
 		DFBE8F251E9520450036CCC6 /* LevelSelectionStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBE8F241E9520450036CCC6 /* LevelSelectionStoryboard.storyboard */; };
-		DFBE8F3A1E9526BE0036CCC6 /* DiscreteFallableSquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F311E9526BE0036CCC6 /* DiscreteFallableSquareGridViewController.swift */; };
-		DFBE8F3B1E9526BE0036CCC6 /* DraggableSquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F321E9526BE0036CCC6 /* DraggableSquareGridViewController.swift */; };
-		DFBE8F401E95272B0036CCC6 /* SquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F3F1E95272B0036CCC6 /* SquareGridViewController.swift */; };
 		DFBE8F731E9527F70036CCC6 /* GameStatusUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F651E9527F70036CCC6 /* GameStatusUpdateDelegate.swift */; };
 		DFBE8F741E9527F70036CCC6 /* HighlightedUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F661E9527F70036CCC6 /* HighlightedUpdateDelegate.swift */; };
 		DFBE8F751E9527F70036CCC6 /* ScoreUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE8F671E9527F70036CCC6 /* ScoreUpdateDelegate.swift */; };
@@ -153,6 +149,11 @@
 		DFBE8F801E9528100036CCC6 /* CommonsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBE8F7F1E9528100036CCC6 /* CommonsStoryboard.storyboard */; };
 		DFBE8F821E9528370036CCC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBE8F811E9528370036CCC6 /* LaunchScreen.storyboard */; };
 		DFBE8F881E9533510036CCC6 /* SettingsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBE8F871E9533510036CCC6 /* SettingsStoryboard.storyboard */; };
+		DFCD85A71E9E909500B10486 /* DiscreteFallableSquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD85A31E9E909500B10486 /* DiscreteFallableSquareGridViewController.swift */; };
+		DFCD85A81E9E909500B10486 /* DraggableSquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD85A41E9E909500B10486 /* DraggableSquareGridViewController.swift */; };
+		DFCD85A91E9E909500B10486 /* SelectableSquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD85A51E9E909500B10486 /* SelectableSquareGridViewController.swift */; };
+		DFCD85AA1E9E909500B10486 /* SquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD85A61E9E909500B10486 /* SquareGridViewController.swift */; };
+		DFCD85AC1E9E90AC00B10486 /* SquareGridDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD85AB1E9E90AC00B10486 /* SquareGridDataDelegate.swift */; };
 		DFE1113A1E98BD3300F8860E /* AVAudioPlayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE111391E98BD3300F8860E /* AVAudioPlayer+Extensions.swift */; };
 		DFE1113C1E98BD4300F8860E /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE1113B1E98BD4300F8860E /* GameMode.swift */; };
 		DFE111411E98BD5D00F8860E /* dog_days.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DFE1113E1E98BD5D00F8860E /* dog_days.mp3 */; };
@@ -271,7 +272,6 @@
 		DF2155241E8E3F25005A0927 /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		DF2155261E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISwipeGestureRecognizerDirection+Direction.swift"; sourceTree = "<group>"; };
 		DF2155281E8E4401005A0927 /* UISwipeGestureRecognizerDirection+DirectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISwipeGestureRecognizerDirection+DirectionTests.swift"; sourceTree = "<group>"; };
-		DF2321531E961A4100417ED2 /* SelectableSquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableSquareGridViewController.swift; sourceTree = "<group>"; };
 		DF2321551E961A6900417ED2 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		DF2321571E961CA300417ED2 /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
 		DF409FDA1E84145800389976 /* UIApplication+isFirstLaunch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+isFirstLaunch.swift"; sourceTree = "<group>"; };
@@ -319,9 +319,6 @@
 		DFB342761E77F5F200D2FE09 /* FlappyViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlappyViewModelProtocol.swift; sourceTree = "<group>"; };
 		DFBE8F1E1E951FC00036CCC6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DFBE8F241E9520450036CCC6 /* LevelSelectionStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LevelSelectionStoryboard.storyboard; sourceTree = "<group>"; };
-		DFBE8F311E9526BE0036CCC6 /* DiscreteFallableSquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscreteFallableSquareGridViewController.swift; sourceTree = "<group>"; };
-		DFBE8F321E9526BE0036CCC6 /* DraggableSquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableSquareGridViewController.swift; sourceTree = "<group>"; };
-		DFBE8F3F1E95272B0036CCC6 /* SquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareGridViewController.swift; sourceTree = "<group>"; };
 		DFBE8F651E9527F70036CCC6 /* GameStatusUpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatusUpdateDelegate.swift; sourceTree = "<group>"; };
 		DFBE8F661E9527F70036CCC6 /* HighlightedUpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightedUpdateDelegate.swift; sourceTree = "<group>"; };
 		DFBE8F671E9527F70036CCC6 /* ScoreUpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreUpdateDelegate.swift; sourceTree = "<group>"; };
@@ -337,6 +334,11 @@
 		DFBE8F7F1E9528100036CCC6 /* CommonsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommonsStoryboard.storyboard; sourceTree = "<group>"; };
 		DFBE8F811E9528370036CCC6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFBE8F871E9533510036CCC6 /* SettingsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsStoryboard.storyboard; sourceTree = "<group>"; };
+		DFCD85A31E9E909500B10486 /* DiscreteFallableSquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscreteFallableSquareGridViewController.swift; sourceTree = "<group>"; };
+		DFCD85A41E9E909500B10486 /* DraggableSquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableSquareGridViewController.swift; sourceTree = "<group>"; };
+		DFCD85A51E9E909500B10486 /* SelectableSquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableSquareGridViewController.swift; sourceTree = "<group>"; };
+		DFCD85A61E9E909500B10486 /* SquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareGridViewController.swift; sourceTree = "<group>"; };
+		DFCD85AB1E9E90AC00B10486 /* SquareGridDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareGridDataDelegate.swift; sourceTree = "<group>"; };
 		DFE111391E98BD3300F8860E /* AVAudioPlayer+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Extensions.swift"; sourceTree = "<group>"; };
 		DFE1113B1E98BD4300F8860E /* GameMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
 		DFE1113E1E98BD5D00F8860E /* dog_days.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog_days.mp3; sourceTree = "<group>"; };
@@ -957,17 +959,14 @@
 		DFBE8F2B1E9526BE0036CCC6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DFCD85A21E9E909500B10486 /* SquareGrid */,
 				DFBE8F7F1E9528100036CCC6 /* CommonsStoryboard.storyboard */,
-				DFBE8F311E9526BE0036CCC6 /* DiscreteFallableSquareGridViewController.swift */,
-				DFBE8F321E9526BE0036CCC6 /* DraggableSquareGridViewController.swift */,
 				DFBE8F811E9528370036CCC6 /* LaunchScreen.storyboard */,
 				DFE111441E98BD7E00F8860E /* PhraseViewController.swift */,
 				DF76B0AF1E9D188500BCC751 /* PhrasesDetailTableViewController.swift */,
 				DFF45A791E99E41000DFD3D9 /* PhrasesExplorerViewController.swift */,
 				DF76B0B31E9D18C400BCC751 /* PhrasesSelectionTableViewController.swift */,
 				DFF45A7B1E99E41700DFD3D9 /* PhrasesTableViewController.swift */,
-				DF2321531E961A4100417ED2 /* SelectableSquareGridViewController.swift */,
-				DFBE8F3F1E95272B0036CCC6 /* SquareGridViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1041,6 +1040,18 @@
 				DFE1114D1E98BDEC00F8860E /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DFCD85A21E9E909500B10486 /* SquareGrid */ = {
+			isa = PBXGroup;
+			children = (
+				DFCD85A31E9E909500B10486 /* DiscreteFallableSquareGridViewController.swift */,
+				DFCD85A41E9E909500B10486 /* DraggableSquareGridViewController.swift */,
+				DFCD85A51E9E909500B10486 /* SelectableSquareGridViewController.swift */,
+				DFCD85A61E9E909500B10486 /* SquareGridViewController.swift */,
+				DFCD85AB1E9E90AC00B10486 /* SquareGridDataDelegate.swift */,
+			);
+			path = SquareGrid;
 			sourceTree = "<group>";
 		};
 		DFE1113D1E98BD5D00F8860E /* Sounds */ = {
@@ -1302,9 +1313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFBE8F791E9527F70036CCC6 /* BaseViewModelProtocol.swift in Sources */,
-				DFBE8F3A1E9526BE0036CCC6 /* DiscreteFallableSquareGridViewController.swift in Sources */,
 				DF2321561E961A6900417ED2 /* GameOverViewController.swift in Sources */,
-				DFBE8F401E95272B0036CCC6 /* SquareGridViewController.swift in Sources */,
 				5064734C1E9DF24200ACB183 /* LevelDesignerViewController.swift in Sources */,
 				502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */,
 				DFE1113A1E98BD3300F8860E /* AVAudioPlayer+Extensions.swift in Sources */,
@@ -1318,11 +1327,13 @@
 				DF76B0AC1E9D185800BCC751 /* RandomGenerator.swift in Sources */,
 				DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */,
 				DF6DDC5B1E9BF9BA00FACAB5 /* LevelSelectorViewControllerDelegate.swift in Sources */,
+				DFCD85A81E9E909500B10486 /* DraggableSquareGridViewController.swift in Sources */,
 				DF76B0B01E9D188500BCC751 /* PhrasesDetailTableViewController.swift in Sources */,
 				5064734E1E9DF26000ACB183 /* GameLevelViewCell.swift in Sources */,
 				DF9918D51E92B6A3004E599B /* ChengYuSwappingViewModel.swift in Sources */,
 				A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */,
 				DF2052C81E8BDD5A00D66B0B /* UIImageView+Animation.swift in Sources */,
+				DFCD85AA1E9E909500B10486 /* SquareGridViewController.swift in Sources */,
 				DF8593781E9B6056005B3647 /* LevelSelectorViewController.swift in Sources */,
 				502A296E1E926DCA0024336A /* ChengYuSlidingViewModel.swift in Sources */,
 				DFBE8F7A1E9527F70036CCC6 /* GridViewModel.swift in Sources */,
@@ -1334,14 +1345,12 @@
 				DF9918D61E92B6A3004E599B /* CiHuiSwappingViewModel.swift in Sources */,
 				DF9918DC1E92B6D6004E599B /* SlidingGameViewController.swift in Sources */,
 				506473451E9DEFBB00ACB183 /* UIView+AllSubviews.swift in Sources */,
-				DFBE8F3B1E9526BE0036CCC6 /* DraggableSquareGridViewController.swift in Sources */,
 				DF2155211E8E237F005A0927 /* SlidingViewModelProtocol.swift in Sources */,
 				DFBE8F7C1E9527F70036CCC6 /* GameDescriptorProtocol.swift in Sources */,
 				509036E01E937CB9006548DE /* SwappingGameViewController.swift in Sources */,
 				A2FF83971E9A536F00677FA2 /* Levels.swift in Sources */,
 				DF6DDC5D1E9BF9C200FACAB5 /* GameInfo.swift in Sources */,
 				DFBE8F751E9527F70036CCC6 /* ScoreUpdateDelegate.swift in Sources */,
-				DF2321541E961A4100417ED2 /* SelectableSquareGridViewController.swift in Sources */,
 				DFE111541E99133F00F8860E /* FallingFlowersViewController.swift in Sources */,
 				DF9918D41E92B6A3004E599B /* BaseSwappingViewModel.swift in Sources */,
 				A2FF83951E9A536F00677FA2 /* GameManager.swift in Sources */,
@@ -1366,6 +1375,8 @@
 				DF2155271E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift in Sources */,
 				50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */,
 				509894A31E6E6CAE00FC9CF3 /* GameType.swift in Sources */,
+				DFCD85AC1E9E90AC00B10486 /* SquareGridDataDelegate.swift in Sources */,
+				DFCD85A71E9E909500B10486 /* DiscreteFallableSquareGridViewController.swift in Sources */,
 				506473421E9DD6AB00ACB183 /* HomeScreenViewController.swift in Sources */,
 				DFE1114C1E98BDDC00F8860E /* ProfileViewController.swift in Sources */,
 				007B69201E9E0EAF002FE500 /* UIViewController+GameCenter.swift in Sources */,
@@ -1392,6 +1403,7 @@
 				50989DE41E6D8B16009A86C8 /* FlappyViewModel.swift in Sources */,
 				DFBE8F7D1E9527F70036CCC6 /* ScoreDescriptorProtocol.swift in Sources */,
 				DF7CF7711E7E9E3500C6979A /* CGRect+Arithmetic.swift in Sources */,
+				DFCD85A91E9E909500B10486 /* SelectableSquareGridViewController.swift in Sources */,
 				DF8593821E9B6B4C005B3647 /* GameLevelListViewDelegate.swift in Sources */,
 				DF76B0B41E9D18C400BCC751 /* PhrasesSelectionTableViewController.swift in Sources */,
 				DF944C2D1E84EF250037437C /* UIView+Shadows.swift in Sources */,
