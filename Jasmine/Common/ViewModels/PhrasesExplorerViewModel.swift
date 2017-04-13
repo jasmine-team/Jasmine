@@ -18,7 +18,7 @@ class PhrasesExplorerViewModel {
 
     /// The ViewController that contains this ViewModel
     weak var viewControllerDelegate: PhrasesExplorerViewController?
-
+    
     init(phrases: Phrases, selectedPhrases: Set<Phrase>? = nil) {
         allPhrasesWithSelection = phrases.map { phrase in
             (phrase, selectedPhrases?.contains(phrase) ?? false)
