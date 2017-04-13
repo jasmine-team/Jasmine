@@ -115,10 +115,10 @@ class LevelDesignerViewController: UIViewController {
     }
 
     // TODO : implement this
-    @IBAction func onImportButtonPressed(_ sender: UIButton) {
-    
+    @IBAction private func onImportButtonPressed(_ sender: UIButton) {
+
     }
-    
+
     /// Saves the game, default name will be used if no name is given in text field. 
     /// Asks for overwrite if necessary.
     ///
