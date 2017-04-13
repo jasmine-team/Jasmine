@@ -153,7 +153,6 @@
 		DFCD85A81E9E909500B10486 /* DraggableSquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD85A41E9E909500B10486 /* DraggableSquareGridViewController.swift */; };
 		DFCD85A91E9E909500B10486 /* SelectableSquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD85A51E9E909500B10486 /* SelectableSquareGridViewController.swift */; };
 		DFCD85AA1E9E909500B10486 /* SquareGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD85A61E9E909500B10486 /* SquareGridViewController.swift */; };
-		DFCD85AC1E9E90AC00B10486 /* SquareGridDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD85AB1E9E90AC00B10486 /* SquareGridDataDelegate.swift */; };
 		DFE1113A1E98BD3300F8860E /* AVAudioPlayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE111391E98BD3300F8860E /* AVAudioPlayer+Extensions.swift */; };
 		DFE1113C1E98BD4300F8860E /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE1113B1E98BD4300F8860E /* GameMode.swift */; };
 		DFE111411E98BD5D00F8860E /* dog_days.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DFE1113E1E98BD5D00F8860E /* dog_days.mp3 */; };
@@ -338,7 +337,6 @@
 		DFCD85A41E9E909500B10486 /* DraggableSquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableSquareGridViewController.swift; sourceTree = "<group>"; };
 		DFCD85A51E9E909500B10486 /* SelectableSquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableSquareGridViewController.swift; sourceTree = "<group>"; };
 		DFCD85A61E9E909500B10486 /* SquareGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareGridViewController.swift; sourceTree = "<group>"; };
-		DFCD85AB1E9E90AC00B10486 /* SquareGridDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareGridDataDelegate.swift; sourceTree = "<group>"; };
 		DFE111391E98BD3300F8860E /* AVAudioPlayer+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Extensions.swift"; sourceTree = "<group>"; };
 		DFE1113B1E98BD4300F8860E /* GameMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
 		DFE1113E1E98BD5D00F8860E /* dog_days.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog_days.mp3; sourceTree = "<group>"; };
@@ -1049,7 +1047,6 @@
 				DFCD85A41E9E909500B10486 /* DraggableSquareGridViewController.swift */,
 				DFCD85A51E9E909500B10486 /* SelectableSquareGridViewController.swift */,
 				DFCD85A61E9E909500B10486 /* SquareGridViewController.swift */,
-				DFCD85AB1E9E90AC00B10486 /* SquareGridDataDelegate.swift */,
 			);
 			path = SquareGrid;
 			sourceTree = "<group>";
@@ -1375,7 +1372,6 @@
 				DF2155271E8E4331005A0927 /* UISwipeGestureRecognizerDirection+Direction.swift in Sources */,
 				50989DDB1E6D8B16009A86C8 /* Constants.swift in Sources */,
 				509894A31E6E6CAE00FC9CF3 /* GameType.swift in Sources */,
-				DFCD85AC1E9E90AC00B10486 /* SquareGridDataDelegate.swift in Sources */,
 				DFCD85A71E9E909500B10486 /* DiscreteFallableSquareGridViewController.swift in Sources */,
 				506473421E9DD6AB00ACB183 /* HomeScreenViewController.swift in Sources */,
 				DFE1114C1E98BDDC00F8860E /* ProfileViewController.swift in Sources */,

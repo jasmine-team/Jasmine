@@ -13,10 +13,10 @@ class SquareGridViewController: UICollectionViewController {
     /// Gets the stored collection view in this square grid view controller.
     /// - Note: If no collection view is found in this view controller, the app will crash.
     var gridCollectionView: UICollectionView {
-        guard let collection = self.collectionView else {
+        guard let collectionView = self.collectionView else {
             fatalError("A grid collection must be instantiated and attached.")
         }
-        return collection
+        return collectionView
     }
 
     // MARK: Properties
