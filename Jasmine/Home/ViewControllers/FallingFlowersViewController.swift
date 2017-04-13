@@ -10,6 +10,12 @@ class FallingFlowersViewController: UIViewController {
     private static let flowerSizeMin = 20.0
     private static let flowerSizeMax = 60.0
 
+    private static let parallaxMin = 50.0
+    private static let parallaxMax = 50.0
+
+    private static let rotateRange = Double.pi / 6
+    private static let animationDelay = 2.0
+
     // MARK: Animation Properties
     private var animator: UIDynamicAnimator!
     private var collisionBehaviour: UICollisionBehavior!
@@ -51,7 +57,9 @@ class FallingFlowersViewController: UIViewController {
     private func generateFlower() {
         let flower = UIImageView(image: #imageLiteral(resourceName: "flower-coloured"))
         flower.frame = CGRect(center: flowerSource, size: flowerSize)
-        flower.addParallexEffect(offset: CGFloat(Random.double(from: 50, toInclusive: 100)))
+        let randomFloat = Random.double(from: FallingFlowersViewController.parallaxMin,
+                                        toInclusive: FallingFlowersViewController.parallaxMax)
+        flower.addParallexEffect(offset: CGFloat(randomFloat))
 
         view.addSubview(flower)
         collisionBehaviour.addItem(flower)
@@ -59,13 +67,13 @@ class FallingFlowersViewController: UIViewController {
     }
 
     private func runAnimator() {
-        let range = Double.pi / 6
-        let delay = 2.0
-        let randomAngle = CGFloat(Random.double(from: -range, toInclusive: range))
+        let range = FallingFlowersViewController.rotateRange
+        let delay = FallingFlowersViewController.animationDelay
         generator.next(count: 30).forEach { item in
             UIView.animate(withDuration: 3,
                            delay: Random.double(from: .leastNonzeroMagnitude, toInclusive: delay),
                            animations: {
+                            let randomAngle = CGFloat(Random.double(from: -range, toInclusive: range))
                             item.transform = CGAffineTransform(rotationAngle: randomAngle)
             })
         }
