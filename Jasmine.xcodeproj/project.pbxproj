@@ -10,6 +10,7 @@
 		005D4DDE1E9418F500E8DD0B /* Matrix+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D4DDD1E9418F500E8DD0B /* Matrix+Equatable.swift */; };
 		007B69201E9E0EAF002FE500 /* UIViewController+GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B691F1E9E0EAF002FE500 /* UIViewController+GameCenter.swift */; };
 		007B69221E9E18B1002FE500 /* ProfileQueryContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B69211E9E18B1002FE500 /* ProfileQueryContainerTests.swift */; };
+		007B69261E9F36B0002FE500 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B69251E9F36B0002FE500 /* GameKit.framework */; };
 		5007FD121E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007FD111E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift */; };
 		5023AF321E9D0A8F00C7BFA6 /* LevelImportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5023AF311E9D0A8F00C7BFA6 /* LevelImportViewModel.swift */; };
 		502669031E7D6C6A00112291 /* FlappyViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB342761E77F5F200D2FE09 /* FlappyViewModelProtocol.swift */; };
@@ -188,6 +189,7 @@
 		005D4DDD1E9418F500E8DD0B /* Matrix+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Matrix+Equatable.swift"; sourceTree = "<group>"; };
 		007B691F1E9E0EAF002FE500 /* UIViewController+GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+GameCenter.swift"; sourceTree = "<group>"; };
 		007B69211E9E18B1002FE500 /* ProfileQueryContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileQueryContainerTests.swift; path = Profile/Models/ProfileQueryContainerTests.swift; sourceTree = "<group>"; };
+		007B69251E9F36B0002FE500 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
 		5007FD111E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightedUpdateDelegateMock.swift; sourceTree = "<group>"; };
 		5023AF311E9D0A8F00C7BFA6 /* LevelImportViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelImportViewModel.swift; path = ../../Common/ViewModels/LevelImportViewModel.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E87AEB22E83891CB6ABE587 /* Pods_Jasmine.framework in Frameworks */,
+				007B69261E9F36B0002FE500 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +413,7 @@
 		2656D984709DF75B0D322347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				007B69251E9F36B0002FE500 /* GameKit.framework */,
 				BE2522EBDDDAAB18363E8278 /* Pods_Jasmine.framework */,
 				EFA7CF50780AC3BFAA0B1685 /* Pods_JasmineTests.framework */,
 			);
@@ -1132,6 +1136,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = QX6E2SX99X;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 					A260C6301E6AB30400782103 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1574,7 +1583,7 @@
 				DEVELOPMENT_TEAM = QX6E2SX99X;
 				INFOPLIST_FILE = "$(SRCROOT)/Jasmine/Common/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.Jasmine;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.Jasmine.Jasmine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1588,7 +1597,7 @@
 				DEVELOPMENT_TEAM = QX6E2SX99X;
 				INFOPLIST_FILE = "$(SRCROOT)/Jasmine/Common/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.Jasmine;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.Jasmine.Jasmine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

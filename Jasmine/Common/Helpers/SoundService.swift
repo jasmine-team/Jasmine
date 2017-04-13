@@ -32,8 +32,6 @@ class SoundService: NSObject {
         for background in Background.allValues {
             do {
                 let player = try AVAudioPlayer(filename: background.rawValue)
-                player.prepareToPlay()
-                player.delegate = self
                 backgroundPlayers[background] = player
             } catch {
                 assertionFailure("Could not instantiate background sound")
@@ -41,12 +39,10 @@ class SoundService: NSObject {
         }
         for effect in Effect.allValues {
             effectPlayers[effect] = (0..<Effect.concurrentLimit).flatMap { _ in
-                let player = try? AVAudioPlayer(filename: effect.rawValue)
-                player?.prepareToPlay()
-                player?.delegate = self
-                return player
+                return try? AVAudioPlayer(filename: effect.rawValue)
             }
         }
+        setUpPlayers()
     }
 
     func play(_ sound: Background) {
@@ -79,6 +75,20 @@ class SoundService: NSObject {
         }
     }
 
+    /// Sets delegate to self and buffers all player in background thread
+    private func setUpPlayers() {
+        var allPlayers = effectPlayers.flatMap { $0.value }
+        allPlayers.append(contentsOf: Array(backgroundPlayers.values))
+        for player in allPlayers {
+            player.delegate = self
+        }
+        DispatchQueue.global(qos: .background).async {
+            for player in allPlayers {
+                player.prepareToPlay()
+            }
+        }
+    }
+
     fileprivate var isBackgroundPlaying: Bool {
         let playing = backgroundPlayers.filter {
             $0.value.isPlaying
@@ -94,7 +104,7 @@ extension SoundService: AVAudioPlayerDelegate {
         }
 
         // ignore if other background sound is playing
-        if isBackgroundPlaying == true {
+        if isBackgroundPlaying {
             return
         }
         let nextSound = Background.defaultPlaylist.shuffled().first(where: { sound in
