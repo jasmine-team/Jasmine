@@ -3,7 +3,7 @@ import UIKit
 class SimpleStartGameViewController: UIViewController {
 
     // MARK: Layout
-    @IBOutlet fileprivate weak var gameInstructionLabel: UILabel!
+    @IBOutlet private weak var gameInstructionLabel: UILabel!
 
     private var gameDescriptor: GameDescriptorProtocol!
 
@@ -31,7 +31,7 @@ class SimpleStartGameViewController: UIViewController {
 
     // MARK: Listeners and Gestures
     /// Handles the gesture as when the screen is tapped.
-    @IBAction func onStartScreenTapped(_ sender: UITapGestureRecognizer) {
+    @IBAction private func onStartScreenTapped(_ sender: UITapGestureRecognizer) {
         dismissView()
         notifyStartScreenDismissed?()
     }
