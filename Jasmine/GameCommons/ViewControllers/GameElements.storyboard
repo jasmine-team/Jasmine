@@ -135,7 +135,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="eJH-oB-Ech">
-                                <rect key="frame" x="16" y="40" width="343" height="71"/>
+                                <rect key="frame" x="16" y="34" width="343" height="83"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is how a game should play" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Zfp-kH-jVB">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="17"/>
@@ -143,9 +143,9 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="XXXX TO START" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="4B2-ja-Wk3">
-                                        <rect key="frame" x="0.0" y="23" width="343" height="48"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="TAP TO START" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="4B2-ja-Wk3">
+                                        <rect key="frame" x="0.0" y="23" width="343" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -159,11 +159,15 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="eJH-oB-Ech" secondAttribute="trailing" id="B0X-LW-DIe"/>
                             <constraint firstItem="eJH-oB-Ech" firstAttribute="leading" secondItem="MZ7-IM-ZyO" secondAttribute="leadingMargin" id="EL7-LG-UJ3"/>
                             <constraint firstItem="eJH-oB-Ech" firstAttribute="centerY" secondItem="MZ7-IM-ZyO" secondAttribute="centerY" id="rf5-DH-CZH"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Khw-3y-PWf" appends="YES" id="r1q-95-S70"/>
+                        </connections>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -172,10 +176,14 @@
                     <size key="freeformSize" width="375" height="150"/>
                     <connections>
                         <outlet property="gameInstructionLabel" destination="Zfp-kH-jVB" id="ZFM-Pd-Znw"/>
-                        <outlet property="gameStartActionLabel" destination="4B2-ja-Wk3" id="Nvy-2C-c9e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1xo-sK-agc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Khw-3y-PWf">
+                    <connections>
+                        <action selector="onStartScreenTapped:" destination="JBL-F3-ecd" id="qz9-Kw-mDt"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-820" y="123"/>
         </scene>

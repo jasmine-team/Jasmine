@@ -42,7 +42,7 @@ class SlidingGameViewController: UIViewController {
 
         } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
             self.gameStartView = gameStartView
-            gameStartView.segueWith(viewModel, startGameText: SlidingGameViewController.startGameText)
+            gameStartView.segueWith(viewModel, onScreenDismissed: startGameIfPossible)
         }
     }
 
