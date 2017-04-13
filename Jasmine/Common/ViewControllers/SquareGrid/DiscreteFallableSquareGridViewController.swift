@@ -14,9 +14,7 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
     // MARK: - Properties
     /// Gets the current falling tiles. Empty implies that no tile is falling currently.
     var fallingTile: SquareTileView? {
-        get {
-            return detachedTiles.first
-        }
+        return detachedTiles.first
     }
 
     /// Returns true if there is a falling tile.

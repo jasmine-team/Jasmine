@@ -10,8 +10,6 @@ class TetrisGameViewController: UIViewController {
 
     fileprivate static let segueDelay = 0.5
 
-    fileprivate static let startGameText = "SWIPE TO START"
-
     /// Denotes the delay in animation between explosion and falling.
     fileprivate static let animationDelay = 0.5
 
@@ -64,7 +62,7 @@ class TetrisGameViewController: UIViewController {
 
         } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
             self.gameStartView = gameStartView
-            gameStartView.segueWith(viewModel, startGameText: TetrisGameViewController.startGameText)
+            gameStartView.segueWith(viewModel, onScreenDismissed: startGameIfPossible)
         }
     }
 
