@@ -147,6 +147,8 @@ class TetrisGameViewModel {
     private func getBottomMostRows(_ coordinates: Set<Coordinate>) -> [Int: Int] {
         var columnToBottomMostRow: [Int: Int] = [:]
         for coordinate in coordinates {
+            // Execute `continue` if the optional is non-nil and greater than coordinate.row
+            // Can't use guard as `continue` should not be executed if the optional is nil
             if let previousBottomMost = columnToBottomMostRow[coordinate.col],
                previousBottomMost >= coordinate.row {
                 continue
