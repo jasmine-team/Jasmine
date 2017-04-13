@@ -10,8 +10,6 @@ class SlidingGameViewController: UIViewController {
 
     fileprivate static let highlightDelay = 0.2
 
-    fileprivate static let startGameText = "SLIDE TO START"
-
     // MARK: - Layouts
     fileprivate var gameStatisticsView: GameStatisticsViewController!
 
@@ -42,7 +40,7 @@ class SlidingGameViewController: UIViewController {
 
         } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
             self.gameStartView = gameStartView
-            gameStartView.segueWith(viewModel, startGameText: SlidingGameViewController.startGameText)
+            gameStartView.segueWith(viewModel, onScreenDismissed: startGameIfPossible)
         }
     }
 

@@ -153,8 +153,8 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <containerView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6h1-GZ-CAv">
-                                <rect key="frame" x="0.0" y="268.5" width="375" height="130"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6h1-GZ-CAv">
+                                <rect key="frame" x="0.0" y="268" width="375" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="zLx-yv-8Ux"/>
                                 </constraints>

@@ -1,5 +1,4 @@
 import UIKit
-import SnapKit
 
 /// A view controller that stores a grid of square cells.
 class SquareGridViewController: UICollectionViewController {
