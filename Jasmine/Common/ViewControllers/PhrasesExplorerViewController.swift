@@ -43,7 +43,7 @@ class PhrasesExplorerViewController: UIViewController {
 
     /// Dismisses this current screen without saving when "Back" button is pressed.
     /// Asks for conformation if selected phrases has been modified
-    @IBAction func onBackButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction private func onBackButtonPressed(_ sender: UIBarButtonItem) {
         if viewModel.hasChangedSelectedPhrases {
             showExitWithoutSavingAlert()
         } else {
@@ -53,11 +53,11 @@ class PhrasesExplorerViewController: UIViewController {
     }
 
     /// Dismisses this current screen and executes the callback when "Save" button is pressed.
-    @IBAction func onSaveButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction private func onSaveButtonPressed(_ sender: UIBarButtonItem) {
         onSaveCallBack?(viewModel.selectedPhrases)
         self.dismiss(animated: true)
     }
-   
+
     /// Injects the required data before opening this view.
     ///
     /// - Parameters:
