@@ -10,8 +10,6 @@ class SlidingGameViewController: UIViewController {
 
     fileprivate static let highlightDelay = 0.2
 
-    fileprivate static let startGameText = "SLIDE TO START"
-
     // MARK: - Layouts
     fileprivate var gameStatisticsView: GameStatisticsViewController!
 
