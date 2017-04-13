@@ -11,7 +11,7 @@ class PhrasesExplorerViewController: UIViewController {
 
     /// Callback to execute when the explorer view is dismissed, 
     /// passes the selected phrases to the callback function
-    private var onDismiss: ((Set<Phrase>) -> ())?
+    private var onDismiss: ((Set<Phrase>) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +54,7 @@ class PhrasesExplorerViewController: UIViewController {
     /// - Parameter onDismiss: callback to execute when this view is dismissed, 
     ///                        passes the selected phrases to the callback function
     func segueWith(_ viewModel: PhrasesExplorerViewModel, isMarkable: Bool,
-                   onDismiss: ((Set<Phrase>) -> ())? = nil) {
+                   onDismiss: ((Set<Phrase>) -> Void)? = nil) {
         self.viewModel = viewModel
         self.isMarkable = isMarkable
         self.onDismiss = onDismiss
