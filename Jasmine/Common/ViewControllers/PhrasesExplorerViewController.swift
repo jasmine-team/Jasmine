@@ -9,6 +9,10 @@ class PhrasesExplorerViewController: UIViewController {
     private var searchController: UISearchController!
     private var isMarkable: Bool!
 
+    /// Callback to execute when the explorer view is dismissed, 
+    /// passes the selected phrases to the callback function
+    private var onDismiss: ((Set<Phrase>) -> Void)?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPhrasesTable()
@@ -32,10 +36,9 @@ class PhrasesExplorerViewController: UIViewController {
         phrasesTable.didMove(toParentViewController: self)
     }
 
-    weak var viewController: LevelDesignerViewController?
-    /// Dismisses this current screen when "Back" button is pressed.
+    /// Dismisses this current screen and executes the callback when "Back" button is pressed.
     @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
-        viewController?.done(viewModel.selectedPhrases)
+        onDismiss?(viewModel.selectedPhrases)
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -48,11 +51,13 @@ class PhrasesExplorerViewController: UIViewController {
     ///
     /// - Parameter viewModel: the view model of this class.
     /// - Parameter isMarkable: tells the VC whether the view can be marked (given checkmark) or not.
+    /// - Parameter onDismiss: callback to execute when this view is dismissed, 
+    ///                        passes the selected phrases to the callback function
     func segueWith(_ viewModel: PhrasesExplorerViewModel, isMarkable: Bool,
-                   viewController: LevelDesignerViewController? = nil) {
+                   onDismiss: ((Set<Phrase>) -> Void)? = nil) {
         self.viewModel = viewModel
         self.isMarkable = isMarkable
-        self.viewController = viewController
+        self.onDismiss = onDismiss
     }
 }
 

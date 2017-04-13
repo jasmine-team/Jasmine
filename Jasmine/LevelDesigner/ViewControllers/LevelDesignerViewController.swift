@@ -27,6 +27,12 @@ class LevelDesignerViewController: UIViewController {
 
     private var viewModel: LevelDesignerViewModel!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setDataFromLevelToEdit()
+        updateSelectPhrasesButtonText()
+    }
+
     /// Feeds in the appropriate data for the use of seguing into this view.
     ///
     /// - Parameter viewModel: the level designer view model required to use this view
@@ -34,9 +40,21 @@ class LevelDesignerViewController: UIViewController {
         self.viewModel = viewModel
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setDataFromLevelToEdit()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let phrasesExplorerViewController = segue.destination as? PhrasesExplorerViewController {
+            let phrasesExplorerViewModel = PhrasesExplorerViewModel(phrases: phrasesForSelectedGameType,
+                                               selectedPhrases: viewModel.selectedPhrases[selectedGameType])
+            phrasesExplorerViewController.segueWith(phrasesExplorerViewModel, isMarkable: true,
+                                                    onDismiss: updateSelectedPhrases)
+        }
+    }
+
+    /// Updates the selected phrases for the currently selected game type with `phrases` retrieved from phrase explorer
+    ///
+    /// - Parameter phrases: the selected phrases to update to
+    private func updateSelectedPhrases(_ phrases: Set<Phrase>) {
+        viewModel.selectedPhrases[selectedGameType] = phrases
+        updateSelectPhrasesButtonText()
     }
 
     /// Set the controls and texts to display based on the level to edit
@@ -52,8 +70,6 @@ class LevelDesignerViewController: UIViewController {
         }
         gameModeControl.selectedSegmentIndex = gameModeIndex
         gameTypeControl.selectedSegmentIndex = gameTypeIndex
-
-        updateSelectPhrasesButtonText()
     }
 
     /// Updates the select phrases button text based on the phrases count for the currently selected game type
@@ -63,19 +79,13 @@ class LevelDesignerViewController: UIViewController {
         selectPhrasesButton.setTitle(buttonText, for: .normal)
     }
 
-    func done(_ phrases: [Phrase]) {
-        viewModel.selectedPhrases[selectedGameType] = phrases
-        updateSelectPhrasesButtonText()
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let phrasesExplorerViewController = segue.destination as? PhrasesExplorerViewController {
-
-            // TODO: refactor this to VM
-
-            let phrasesExplorerViewModel = PhrasesExplorerViewModel(phrases: Storage.sharedInstance.allPhrases,
-                                               selectedPhrases: viewModel.selectedPhrases[selectedGameType])
-            phrasesExplorerViewController.segueWith(phrasesExplorerViewModel, isMarkable: true, viewController: self)
-
+    /// Returns all the phrases in the database for the selected game type
+    private var phrasesForSelectedGameType: Phrases {
+        switch selectedGameType {
+        case .chengYu:
+            return Storage.sharedInstance.allChengYu
+        case .ciHui:
+            return Storage.sharedInstance.allCiHui
         }
     }
 
@@ -111,7 +121,6 @@ class LevelDesignerViewController: UIViewController {
         } catch LevelsError.duplicateLevelName(let name) {
             showOverwriteAlert(name: name, gameType: selectedGameType, gameMode: selectedGameMode)
         } catch {
-            print("errpr")
             showError(error)
         }
         return false
