@@ -67,7 +67,6 @@ class SwappingGameViewController: UIViewController {
     ///
     /// Note that if the game status is not in progress, results in no-op.
     @IBAction private func onTilesDragged(_ sender: UIPanGestureRecognizer) {
-        startGameIfPossible()
         guard viewModel.gameStatus == .inProgress else {
             return
         }
@@ -115,6 +114,7 @@ fileprivate extension SwappingGameViewController {
     /// - Parameter position: location where the tile is selected.
     fileprivate func handleTileSelected(at position: CGPoint) {
         guard draggingTile == nil,
+              squareGridViewController.detachedTiles.isEmpty,
               let coordTouched = squareGridViewController.getCoordinate(at: position),
               let detachedCell = squareGridViewController.detachTile(fromCoord: coordTouched) else {
             return
@@ -156,9 +156,9 @@ fileprivate extension SwappingGameViewController {
         guard let tile = draggingTile else {
             return
         }
+        self.draggingTile = nil
         squareGridViewController.snapDetachedTile(tile.view, toCoordinate: tile.originalCoord) {
             self.squareGridViewController.reattachDetachedTile(tile.view)
-            self.draggingTile = nil
         }
     }
 
@@ -207,7 +207,6 @@ extension SwappingGameViewController: GameStatusUpdateDelegate {
             return
         }
         viewModel.startGame()
-        gameStartView.view.isHidden = true
     }
 }
 
