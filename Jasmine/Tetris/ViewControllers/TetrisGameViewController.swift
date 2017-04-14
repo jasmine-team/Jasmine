@@ -238,6 +238,10 @@ extension TetrisGameViewController {
     fileprivate func animate(
         removeAll coords: [(destroyedTiles: Set<Coordinate>, shiftedTiles: [(from: Coordinate, to: Coordinate)])]) {
 
+        guard !coords.isEmpty else {
+            return
+        }
+
         var count = 0.0
         for (destroyedTiles, shiftedTiles) in coords {
             DispatchQueue.main
@@ -252,6 +256,11 @@ extension TetrisGameViewController {
                 }
             count += 1.0
         }
+
+        DispatchQueue.main
+            .asyncAfter(deadline: .now() + TetrisGameViewController.animationDelay * count) {
+                self.tetrisGameAreaView.reload(gridData: self.viewModel.gridData, withAnimation: true)
+            }
     }
 
     /// Ask the view controller to animate the destruction of tiles at the specified coordinates.
