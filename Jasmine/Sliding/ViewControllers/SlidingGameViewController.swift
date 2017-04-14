@@ -68,7 +68,6 @@ class SlidingGameViewController: UIViewController {
 
     /// Handles the gesture where the user drags the tile to an empty slot.
     @IBAction private func onTilesDragged(_ sender: UIPanGestureRecognizer) {
-        startGameIfPossible()
         guard viewModel.gameStatus == .inProgress else {
             return
         }
@@ -209,7 +208,6 @@ extension SlidingGameViewController: GameStatusUpdateDelegate {
             return
         }
         viewModel.startGame()
-        gameStartView.view.isHidden = true
     }
 }
 
