@@ -156,9 +156,9 @@ fileprivate extension SwappingGameViewController {
         guard let tile = draggingTile else {
             return
         }
+        self.draggingTile = nil
         squareGridViewController.snapDetachedTile(tile.view, toCoordinate: tile.originalCoord) {
             self.squareGridViewController.reattachDetachedTile(tile.view)
-            self.draggingTile = nil
         }
     }
 
