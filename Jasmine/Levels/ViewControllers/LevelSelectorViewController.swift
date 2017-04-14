@@ -99,8 +99,8 @@ class LevelSelectorViewController: UIViewController {
         self.viewModel.delegate = self
     }
 
-    fileprivate func segueToEditLevelView(forCustomLevelRow row: Int) {
-        self.selectedLevel = (isDefault: false, row: row)
+    fileprivate func segueToEditLevelView(isDefault: Bool, row: Int) {
+        self.selectedLevel = (isDefault: isDefault, row: row)
         performSegue(withIdentifier: LevelSelectorViewController.segueToLevelDesigner, sender: nil)
     }
 
@@ -131,13 +131,12 @@ class LevelSelectorViewController: UIViewController {
         }
         actionSheetController.addAction(phrasesAction)
 
-        if level.isEditable {
-            let editAction = UIAlertAction(
-                title: LevelSelectorViewController.actionSheetEdit, style: .default) { _ in
-                    self.segueToEditLevelView(forCustomLevelRow: index)
-            }
-            actionSheetController.addAction(editAction)
+        // Original level will also have the edit option, which saves to custom level after edit.
+        let editAction = UIAlertAction(
+            title: LevelSelectorViewController.actionSheetEdit, style: .default) { _ in
+                self.segueToEditLevelView(isDefault: isDefaultLevel, row: index)
         }
+        actionSheetController.addAction(editAction)
 
         if level.isEditable {
             let deleteAction = UIAlertAction(
