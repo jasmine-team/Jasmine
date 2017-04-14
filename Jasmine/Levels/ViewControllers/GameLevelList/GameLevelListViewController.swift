@@ -30,6 +30,7 @@ class GameLevelListViewController: UIViewController {
             levelsCategoriesToggle.selectedSegmentIndex
                 = newValue ? GameLevelListViewController.builtInLevelsIndex
                            : GameLevelListViewController.customLevelsIndex
+            reloadAllData()
         }
     }
 
