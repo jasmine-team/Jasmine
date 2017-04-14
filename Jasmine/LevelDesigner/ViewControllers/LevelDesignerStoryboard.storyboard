@@ -142,7 +142,7 @@
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="onImportButtonPressed:" destination="5nd-jc-deS" eventType="touchUpInside" id="RuA-i8-GqR"/>
+                                                    <segue destination="xMp-Al-I6e" kind="show" id="Qih-Ru-jg0"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -193,7 +193,15 @@
                 <viewControllerPlaceholder storyboardName="CommonsStoryboard" referencedIdentifier="PhrasesExplorerViewController" id="bMn-KP-I36" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vca-0H-C3r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="635" y="211"/>
+            <point key="canvasLocation" x="643" y="150"/>
+        </scene>
+        <!--LevelImportViewController-->
+        <scene sceneID="85n-Wb-qmG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LevelSelectionStoryboard" referencedIdentifier="LevelImportViewController" id="xMp-Al-I6e" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QK3-v7-mOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="621" y="259"/>
         </scene>
     </scenes>
 </document>

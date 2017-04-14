@@ -30,8 +30,10 @@ class LevelImportViewController: UIViewController {
     }
 
     /// Opens this view controller by injecting this view model protocol
-    func segueWith(_ viewModel: LevelImportViewModelProtocol) {
+    func segueWith(_ viewModel: LevelImportViewModelProtocol,
+                   onMarkedLevelsReturned callback: (([GameInfo]) -> Void)?) {
         self.viewModel = viewModel
+        self.onMarkedLevelsReturned = callback
     }
 
     fileprivate func segueToPhrasesExplorerView(forLevelRow row: Int, isDefault: Bool) {
