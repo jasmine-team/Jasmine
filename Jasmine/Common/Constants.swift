@@ -14,6 +14,8 @@ enum Constants {
 
         static let tilesFont = UIFont(name: "HelveticaNeue-Light", size: 30.0)
         static let cellsBackground = UIColor(hexString: "c2d1cc")
+
+        static let gridSnappingDuration = 0.2
     }
 
     enum Graphics {

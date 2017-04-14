@@ -5,7 +5,7 @@ import UIKit
 class DraggableSquareGridViewController: SquareGridViewController {
 
     // MARK: Constants
-    private static let snappingDuration = 0.2
+    private static let snappingDuration = Constants.Theme.gridSnappingDuration
 
     // MARK: Properties
     /// Gets all the tiles in this collection view.
