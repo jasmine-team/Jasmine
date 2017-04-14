@@ -40,5 +40,7 @@ class SimpleStartGameViewController: UIViewController {
     private func dismissView() {
         self.view.superview?.isHidden = true
         self.view.isHidden = true
+        self.view.superview?.isUserInteractionEnabled = false
+        self.view.isUserInteractionEnabled = false
     }
 }

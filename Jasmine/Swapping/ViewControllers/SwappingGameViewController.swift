@@ -67,7 +67,6 @@ class SwappingGameViewController: UIViewController {
     ///
     /// Note that if the game status is not in progress, results in no-op.
     @IBAction private func onTilesDragged(_ sender: UIPanGestureRecognizer) {
-        startGameIfPossible()
         guard viewModel.gameStatus == .inProgress else {
             return
         }
@@ -207,7 +206,6 @@ extension SwappingGameViewController: GameStatusUpdateDelegate {
             return
         }
         viewModel.startGame()
-        gameStartView.view.isHidden = true
     }
 }
 
