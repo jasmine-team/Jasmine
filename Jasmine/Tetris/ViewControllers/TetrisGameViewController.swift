@@ -259,7 +259,7 @@ extension TetrisGameViewController {
 
         DispatchQueue.main
             .asyncAfter(deadline: .now() + TetrisGameViewController.animationDelay * count) {
-                self.tetrisGameAreaView.reload(gridData: self.viewModel.gridData, withAnimation: true)
+                self.tetrisGameAreaView.reload(gridData: self.viewModel.gridData, withAnimation: false)
             }
     }
 
