@@ -22,14 +22,13 @@ class LevelImportViewModel: LevelImportViewModelProtocol {
         return rawCustomLevels.map { level in GameInfo.from(level: level) }
     }
 
-    // TODO: Don't store index, store some representation of levels instead
-    /// The indices of the default levels that are marked
-    private var markedDefaultLevelRows: Set<Int> = []
-    /// The indices of the custom levels that are marked
-    private var markedCustomLevelRows: Set<Int> = []
+    /// The default levels that are marked
+    private var markedDefaultLevelRows: Set<Level> = []
+    /// The custom levels that are marked
+    private var markedCustomLevelRows: Set<Level> = []
     /// Gets a list of levels that are marked.
     var markedLevels: [GameInfo] {
-        return markedDefaultLevelRows.map { defaultLevels[$0] } + markedCustomLevelRows.map { customLevels[$0] }
+        return markedDefaultLevelRows.union(markedCustomLevelRows).map { GameInfo.from(level: $0) }
     }
 
     init(phraseExplorerViewModel: PhrasesExplorerViewModel) {
@@ -50,17 +49,20 @@ class LevelImportViewModel: LevelImportViewModelProtocol {
 
     /// Returns true if the level should be marked, false otherwise.
     func isLevelMarked(fromRow row: Int, isDefault: Bool) -> Bool {
-        return isDefault ? markedDefaultLevelRows.contains(row) : markedCustomLevelRows.contains(row)
+        return isDefault ? markedDefaultLevelRows.contains { $0 == rawDefaultLevels[row] }
+                         : markedCustomLevelRows.contains { $0 == rawCustomLevels[row] }
     }
 
     /// Toggle whether the level is marked, or not.
     func toggleLevelMarked(fromRow row: Int, isDefault: Bool) -> Bool {
+        let level = isDefault ? rawDefaultLevels[row] : rawCustomLevels[row]
         var levels = isDefault ? markedDefaultLevelRows : markedCustomLevelRows
-        if levels.contains(row) {
-            levels.remove(row)
+        if levels.contains(level) {
+            levels.remove(level)
+            return false
         } else {
-            levels.insert(row)
+            levels.insert(level)
+            return true
         }
-        return levels.contains(row)
     }
 }
