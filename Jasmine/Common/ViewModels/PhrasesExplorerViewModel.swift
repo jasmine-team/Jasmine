@@ -19,7 +19,16 @@ class PhrasesExplorerViewModel {
     /// The ViewController that contains this ViewModel
     weak var viewControllerDelegate: PhrasesExplorerViewController?
 
+    /// The initially selected phrases passed to the VM
+    private var initialPhrases: Set<Phrase>?
+    /// Indicates if currently selected phrases is different from initial phrases passed to the VM.
+    /// Used to check if it's necessary to warn the user about exit without savings
+    var hasChangedSelectedPhrases: Bool {
+        return (initialPhrases ?? []) != selectedPhrases
+    }
+
     init(phrases: Phrases, selectedPhrases: Set<Phrase>? = nil) {
+        initialPhrases = selectedPhrases
         allPhrasesWithSelection = phrases.map { phrase in
             (phrase, selectedPhrases?.contains(phrase) ?? false)
         }

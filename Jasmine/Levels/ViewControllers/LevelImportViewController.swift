@@ -25,7 +25,7 @@ class LevelImportViewController: UIViewController {
         } else if let phrasesExplorerView = segue.destination as? PhrasesExplorerViewController {
             let phrasesExplorerViewModel = viewModel.getPhraseExplorerViewModel(fromRow: selectedLevelRow,
                                                                                 isDefault: selectedLevelIsDefault)
-            phrasesExplorerView.segueWith(phrasesExplorerViewModel, isMarkable: false)
+            phrasesExplorerView.segueWith(phrasesExplorerViewModel)
         }
     }
 

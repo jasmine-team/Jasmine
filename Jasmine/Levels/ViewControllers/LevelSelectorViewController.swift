@@ -72,14 +72,19 @@ class LevelSelectorViewController: UIViewController {
             let phrasesExplorerViewModel = viewModel
                 .getPhraseExplorerViewModel(fromRow: selectedLevel.row,
                                             isDefault: selectedLevel.isDefault)
-            phrasesExplorerView.segueWith(phrasesExplorerViewModel, isMarkable: false)
+            phrasesExplorerView.segueWith(phrasesExplorerViewModel)
 
         } else if let levelDesignerView = segue.destination as? LevelDesignerViewController {
+            let levelDesignerViewModel: LevelDesignerViewModel
             if let selectedLevel = selectedLevel {
-                levelDesignerView.segueWith(viewModel
-                    .getLevelDesignerViewModel(fromRow: selectedLevel.row, isDefault: selectedLevel.isDefault))
+                levelDesignerViewModel = viewModel.getLevelDesignerViewModel(fromRow: selectedLevel.row,
+                                                                             isDefault: selectedLevel.isDefault)
             } else {
-                levelDesignerView.segueWith(viewModel.getLevelDesignerViewModel())
+                levelDesignerViewModel = viewModel.getLevelDesignerViewModel()
+            }
+
+            levelDesignerView.segueWith(levelDesignerViewModel) {
+                self.levelCollection.isShowingDefaultLevels = false
             }
         }
 
