@@ -13,9 +13,7 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
 
     // MARK: - Properties
     /// Gets the current falling tiles. Empty implies that no tile is falling currently.
-    var fallingTile: SquareTileView? {
-        return detachedTiles.first
-    }
+    var fallingTile: SquareTileView?
 
     /// Returns true if there is a falling tile.
     var hasFallingTile: Bool {
@@ -73,7 +71,8 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
         guard !hasFallingTile else {
             return
         }
-        guard addDetachedTile(withData: data, toCoord: coordinate) != nil else {
+        self.fallingTile = addDetachedTile(withData: data, toCoord: coordinate)
+        guard fallingTile != nil else {
             assertionFailure("A tile has failed to generate at \(coordinate)")
             return
         }
@@ -85,8 +84,9 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
         guard let fallingTile = fallingTile else {
             return
         }
-        snapDetachedTile(fallingTile, toCoordinate: coordinate) {
-            self.reattachDetachedTile(fallingTile)
+        self.fallingTile = nil
+        self.snapDetachedTile(fallingTile, toCoordinate: coordinate) {
+            self.reattachDetachedTile(fallingTile, to: coordinate)
             self.onFallingTileLanded?(coordinate)
         }
     }
@@ -99,17 +99,6 @@ class DiscreteFallableSquareGridViewController: DraggableSquareGridViewControlle
             return
         }
         snapDetachedTile(fallingTile, towards: direction) {
-            self.onFallingTileRepositioned?()
-        }
-    }
-
-    /// Shifts the falling tile to the specified coordinate.
-    /// - Parameter coordinate: the coordinate where the falling tile should shift to.
-    func shiftFallingTile(to coordinate: Coordinate) {
-        guard let fallingTile = fallingTile else {
-            return
-        }
-        snapDetachedTile(fallingTile, toCoordinate: coordinate) {
             self.onFallingTileRepositioned?()
         }
     }
