@@ -203,7 +203,7 @@ class TetrisGameViewController: UIViewController {
     /// Tells this view controller that the tile has landed successfully.
     private func notifyTileHasLanded(at coordinate: Coordinate) {
         let destroyedAndShiftedTiles = viewModel.landTile(at: coordinate)
-        animate(removeAll: destroyedAndShiftedTiles)
+        animate(removeAll: destroyedAndShiftedTiles, onComplete: nil)
         releaseNewTile()
     }
 
@@ -235,10 +235,13 @@ extension TetrisGameViewController {
     /// order as governed by the coords array.
     ///
     /// - Parameter coords: the list of coordinates to perform destroy and then shift in order.
+    /// - Parameter callback: the method that will be called when the animation ends.
     fileprivate func animate(
-        removeAll coords: [(destroyedTiles: Set<Coordinate>, shiftedTiles: [(from: Coordinate, to: Coordinate)])]) {
+        removeAll coords: [(destroyedTiles: Set<Coordinate>, shiftedTiles: [(from: Coordinate, to: Coordinate)])],
+        onComplete callback: (() -> Void)?) {
 
         guard !coords.isEmpty else {
+            callback?()
             return
         }
 
@@ -260,6 +263,7 @@ extension TetrisGameViewController {
         DispatchQueue.main
             .asyncAfter(deadline: .now() + TetrisGameViewController.animationDelay * count) {
                 self.tetrisGameAreaView.reload(gridData: self.viewModel.gridData, withAnimation: false)
+                callback?()
             }
     }
 
