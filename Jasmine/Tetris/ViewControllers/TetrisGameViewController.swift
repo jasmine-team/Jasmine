@@ -170,7 +170,7 @@ class TetrisGameViewController: UIViewController {
             return
         }
         let finalCoord = viewModel.getLandingCoordinate(from: initCoord)
-        tetrisGameAreaView.shiftFallingTile(to: finalCoord)
+        tetrisGameAreaView.landFallingTile(at: finalCoord)
     }
 
     /// Updates the current falling tile and the upcoming tiles with new data.
