@@ -43,7 +43,6 @@ extension UIViewController {
         }
         alert.addAction(action)
         present(alert, animated: true)
-
     }
 
     /// Displays an error pop up with a cancel button
