@@ -99,7 +99,8 @@ class TetrisGameViewController: UIViewController {
     /// Switches the content of the falling tile with the latest upcoming tile when any tile in the
     /// list of upcoming tile is tapped.
     @IBAction private func onUpcomingTilesTouched(_ sender: UITapGestureRecognizer) {
-        guard tetrisGameAreaView.hasFallingTile,
+        guard viewModel.gameStatus == .inProgress,
+              tetrisGameAreaView.hasFallingTile,
               let coord = tetrisUpcomingTilesView
                   .getCoordinate(at: sender.location(in: tetrisUpcomingTilesView.view)) else {
             return
@@ -110,8 +111,8 @@ class TetrisGameViewController: UIViewController {
 
     /// Moves the falling tile when the view is swiped to a particular direction.
     @IBAction private func onTilesSwiped(_ sender: UISwipeGestureRecognizer) {
-        startGameIfPossible()
-        guard tetrisGameAreaView.hasFallingTile else {
+        guard viewModel.gameStatus == .inProgress,
+              tetrisGameAreaView.hasFallingTile else {
             return
         }
 
@@ -127,8 +128,8 @@ class TetrisGameViewController: UIViewController {
     /// Moves the falling tile with respect to the position of the falling tile when the user taps
     /// on the grid.
     @IBAction private func onTilesTapped(_ sender: UITapGestureRecognizer) {
-        startGameIfPossible()
-        guard let tileFrame = tetrisGameAreaView.fallingTile?.frame else {
+        guard viewModel.gameStatus == .inProgress,
+              let tileFrame = tetrisGameAreaView.fallingTile?.frame else {
             return
         }
 
@@ -298,7 +299,6 @@ extension TetrisGameViewController: GameStatusUpdateDelegate {
             return
         }
         viewModel.startGame()
-        gameStartView.view.isHidden = true
         tetrisGameAreaView.startFallingTiles(with: GameConstants.Tetris.tileFallInterval)
     }
 }
