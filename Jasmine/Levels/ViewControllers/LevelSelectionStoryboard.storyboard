@@ -19,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="7fA-1a-Xfh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ax7-I2-bsu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="D27-9J-LfR">
-                                <rect key="frame" x="10" y="52" width="355" height="502"/>
+                                <rect key="frame" x="10" y="52" width="355" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GEb-ul-fzT">
                                     <size key="itemSize" width="336" height="74"/>
@@ -181,7 +181,7 @@
         <!--Level Import View Controller-->
         <scene sceneID="BfO-L7-6Ga">
             <objects>
-                <viewController id="9wZ-YH-6LY" customClass="LevelImportViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LevelImportViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9wZ-YH-6LY" customClass="LevelImportViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HTh-Yc-Tzr"/>
                         <viewControllerLayoutGuide type="bottom" id="tBN-tw-kU4"/>
@@ -352,8 +352,8 @@
         <image name="icon-menu" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cwi-nj-NvM"/>
         <segue reference="Bf5-OL-vR9"/>
-        <segue reference="jPy-cZ-L7Q"/>
+        <segue reference="sQK-wM-js2"/>
+        <segue reference="ygO-hQ-gGc"/>
     </inferredMetricsTieBreakers>
 </document>
