@@ -23,7 +23,12 @@ class LevelImportViewModel: LevelImportViewModelProtocol {
     }
 
     /// The set of marked levels.
-    private(set) var markedLevels: Set<Level> = []
+    private var markedLevelsSet: Set<Level> = []
+
+    /// THe list of marked levels.
+    var markedLevels: [GameInfo] {
+        return markedLevelsSet.map { GameInfo.from(level: $0) }
+    }
 
     init() {
         guard let realm = try? Realm() else {
@@ -44,17 +49,17 @@ class LevelImportViewModel: LevelImportViewModelProtocol {
     /// Returns true if the level should be marked, false otherwise.
     func isLevelMarked(fromRow row: Int, isDefault: Bool) -> Bool {
         let level = isDefault ? rawDefaultLevels[row] : rawCustomLevels[row]
-        return markedLevels.contains(level)
+        return markedLevelsSet.contains(level)
     }
 
     /// Toggle whether the level is marked, or not.
     func toggleLevelMarked(fromRow row: Int, isDefault: Bool) -> Bool {
         let level = isDefault ? rawDefaultLevels[row] : rawCustomLevels[row]
-        if markedLevels.contains(level) {
-            markedLevels.remove(level)
+        if markedLevelsSet.contains(level) {
+            markedLevelsSet.remove(level)
             return false
         } else {
-            markedLevels.insert(level)
+            markedLevelsSet.insert(level)
             return true
         }
     }
