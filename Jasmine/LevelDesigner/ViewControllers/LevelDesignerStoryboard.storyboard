@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,7 +27,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="5sg-BW-71v"/>
                                 </constraints>
-                                <color key="barTintColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.15101002156734467" green="0.56891876459121704" blue="0.43715286254882812" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
@@ -48,11 +48,11 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="XDN-rq-sQA">
-                                <rect key="frame" x="16" y="80" width="343" height="295.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="XDN-rq-sQA">
+                                <rect key="frame" x="16" y="80" width="343" height="343.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6eV-Ww-54A">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="58.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="6eV-Ww-54A">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="62.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEVEL NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-gN-qUf">
                                                 <rect key="frame" x="0.0" y="0.0" width="99.5" height="20.5"/>
@@ -61,7 +61,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Untitled" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mnr-89-Poz">
-                                                <rect key="frame" x="0.0" y="28.5" width="343" height="30"/>
+                                                <rect key="frame" x="0.0" y="32.5" width="343" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -73,8 +73,8 @@
                                             <constraint firstAttribute="trailing" secondItem="Mnr-89-Poz" secondAttribute="trailing" id="smw-2Y-8KO"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SLn-Uc-Tl7">
-                                        <rect key="frame" x="0.0" y="82.5" width="343" height="56.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="SLn-Uc-Tl7">
+                                        <rect key="frame" x="0.0" y="94.5" width="343" height="60.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME MODE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oot-T4-X7V">
                                                 <rect key="frame" x="0.0" y="0.0" width="99" height="20.5"/>
@@ -83,7 +83,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="n5B-08-4UZ">
-                                                <rect key="frame" x="0.0" y="28.5" width="343" height="29"/>
+                                                <rect key="frame" x="0.0" y="32.5" width="343" height="29"/>
                                                 <segments>
                                                     <segment title="TETRIS"/>
                                                     <segment title="SLIDING"/>
@@ -97,8 +97,8 @@
                                             <constraint firstAttribute="trailing" secondItem="n5B-08-4UZ" secondAttribute="trailing" id="yeN-s6-YfH"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TIf-Om-c5p">
-                                        <rect key="frame" x="0.0" y="163" width="343" height="132.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="TIf-Om-c5p">
+                                        <rect key="frame" x="0.0" y="187" width="343" height="156.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME TYPE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZv-GG-Vir">
                                                 <rect key="frame" x="0.0" y="0.0" width="91.5" height="20.5"/>
@@ -107,7 +107,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IbR-mM-iJr">
-                                                <rect key="frame" x="0.0" y="28.5" width="343" height="29"/>
+                                                <rect key="frame" x="0.0" y="32.5" width="343" height="29"/>
                                                 <segments>
                                                     <segment title="CHENG YU"/>
                                                     <segment title="CI HUI"/>
@@ -118,8 +118,12 @@
                                                 </connections>
                                             </segmentedControl>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLH-s7-Why">
-                                                <rect key="frame" x="0.0" y="64.5" width="343" height="30"/>
+                                                <rect key="frame" x="0.0" y="72.5" width="343" height="36"/>
                                                 <color key="backgroundColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="zbc-VB-Qsx"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="SELECT PHRASES (0)">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -128,8 +132,12 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0r-LO-tVy">
-                                                <rect key="frame" x="0.0" y="102.5" width="231" height="30"/>
+                                                <rect key="frame" x="0.0" y="120.5" width="343" height="36"/>
                                                 <color key="backgroundColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="t6q-Yb-E0n"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="IMPORT PHRASES FROM LEVELS">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -139,7 +147,9 @@
                                             </button>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="e0r-LO-tVy" secondAttribute="trailing" id="AJB-d2-BvW"/>
                                             <constraint firstAttribute="trailing" secondItem="IbR-mM-iJr" secondAttribute="trailing" id="CGE-64-H10"/>
+                                            <constraint firstItem="e0r-LO-tVy" firstAttribute="leading" secondItem="TIf-Om-c5p" secondAttribute="leading" id="JsO-yx-I8J"/>
                                             <constraint firstAttribute="trailing" secondItem="rLH-s7-Why" secondAttribute="trailing" id="LIj-jz-RgJ"/>
                                             <constraint firstItem="rLH-s7-Why" firstAttribute="leading" secondItem="TIf-Om-c5p" secondAttribute="leading" id="SrC-94-QUI"/>
                                             <constraint firstItem="IbR-mM-iJr" firstAttribute="leading" secondItem="TIf-Om-c5p" secondAttribute="leading" id="xDF-Mh-0od"/>
