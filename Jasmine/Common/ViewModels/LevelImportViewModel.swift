@@ -22,16 +22,15 @@ class LevelImportViewModel: LevelImportViewModelProtocol {
         return rawCustomLevels.map { level in GameInfo.from(level: level) }
     }
 
-    /// The default levels that are marked
-    private var markedDefaultLevelRows: Set<Level> = []
-    /// The custom levels that are marked
-    private var markedCustomLevelRows: Set<Level> = []
-    /// Gets a list of levels that are marked.
+    /// The set of marked levels.
+    private var markedLevelsSet: Set<Level> = []
+
+    /// THe list of marked levels.
     var markedLevels: [GameInfo] {
-        return markedDefaultLevelRows.union(markedCustomLevelRows).map { GameInfo.from(level: $0) }
+        return markedLevelsSet.map { GameInfo.from(level: $0) }
     }
 
-    init(phraseExplorerViewModel: PhrasesExplorerViewModel) {
+    init() {
         guard let realm = try? Realm() else {
             fatalError("Cannot create Realm")
         }
@@ -49,19 +48,18 @@ class LevelImportViewModel: LevelImportViewModelProtocol {
 
     /// Returns true if the level should be marked, false otherwise.
     func isLevelMarked(fromRow row: Int, isDefault: Bool) -> Bool {
-        return isDefault ? markedDefaultLevelRows.contains { $0 == rawDefaultLevels[row] }
-                         : markedCustomLevelRows.contains { $0 == rawCustomLevels[row] }
+        let level = isDefault ? rawDefaultLevels[row] : rawCustomLevels[row]
+        return markedLevelsSet.contains(level)
     }
 
     /// Toggle whether the level is marked, or not.
     func toggleLevelMarked(fromRow row: Int, isDefault: Bool) -> Bool {
         let level = isDefault ? rawDefaultLevels[row] : rawCustomLevels[row]
-        var levels = isDefault ? markedDefaultLevelRows : markedCustomLevelRows
-        if levels.contains(level) {
-            levels.remove(level)
+        if markedLevelsSet.contains(level) {
+            markedLevelsSet.remove(level)
             return false
         } else {
-            levels.insert(level)
+            markedLevelsSet.insert(level)
             return true
         }
     }
