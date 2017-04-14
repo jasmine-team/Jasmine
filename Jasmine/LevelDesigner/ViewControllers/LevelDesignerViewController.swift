@@ -54,6 +54,9 @@ class LevelDesignerViewController: UIViewController {
             let phrasesExplorerViewModel = PhrasesExplorerViewModel(phrases: phrasesForSelectedGameType,
                                                selectedPhrases: viewModel.selectedPhrases[selectedGameType])
             phrasesExplorerViewController.segueWith(phrasesExplorerViewModel, onSaveCallBack: updateSelectedPhrases)
+
+        } else if let levelImporterView = segue.destination as? LevelImportViewController {
+            levelImporterView.segueWith(LevelImportViewModel(), onMarkedLevelsReturned: onLevelsImported)
         }
     }
 
@@ -114,9 +117,10 @@ class LevelDesignerViewController: UIViewController {
         showExitWithoutSavingAlert()
     }
 
-    // TODO : implement this
-    @IBAction private func onImportButtonPressed(_ sender: UIButton) {
-
+    private func onLevelsImported(_ levels: [GameInfo]) {
+        // TODO: save this to the list of selecte phrases.
+        print("selected!")
+        print(levels)
     }
 
     /// Saves the game, default name will be used if no name is given in text field. 

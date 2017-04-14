@@ -6,7 +6,7 @@ protocol LevelImportViewModelProtocol {
     /// The custom levels in the game.
     var customLevels: [GameInfo] { get }
 
-    /// Gets a list of levels that are marked.
+    /// Gets a list of levels that are marked (not sorted)
     var markedLevels: [GameInfo] { get }
 
     /// Get the phrase explorer VM from the game info
