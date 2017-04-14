@@ -115,6 +115,7 @@ fileprivate extension SwappingGameViewController {
     /// - Parameter position: location where the tile is selected.
     fileprivate func handleTileSelected(at position: CGPoint) {
         guard draggingTile == nil,
+              squareGridViewController.detachedTiles.isEmpty,
               let coordTouched = squareGridViewController.getCoordinate(at: position),
               let detachedCell = squareGridViewController.detachTile(fromCoord: coordTouched) else {
             return
