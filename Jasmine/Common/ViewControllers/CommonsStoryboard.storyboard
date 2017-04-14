@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -38,13 +38,13 @@
                                         <barButtonItem key="leftBarButtonItem" title="BACK" id="Ulq-dO-dWO">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
-                                                <action selector="onBackPressed:" destination="PWD-mm-Vqa" id="JkV-MW-fER"/>
+                                                <action selector="onBackButtonPressed:" destination="PWD-mm-Vqa" id="E19-aI-Q5g"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="IMPORT" id="oSv-T7-Scb">
-                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <barButtonItem key="rightBarButtonItem" title="SAVE" id="yOL-rn-LIL">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
-                                                <action selector="onImportPressed:" destination="PWD-mm-Vqa" id="x6S-h6-fM9"/>
+                                                <action selector="onSaveButtonPressed:" destination="PWD-mm-Vqa" id="A87-yl-cjZ"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -76,6 +76,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="explorerNavigationItem" destination="OHB-Pz-Qmo" id="Prt-RW-817"/>
                         <outlet property="phrasesTableView" destination="f9C-Gv-dVr" id="Jxk-1k-Dd0"/>
                     </connections>
                 </viewController>

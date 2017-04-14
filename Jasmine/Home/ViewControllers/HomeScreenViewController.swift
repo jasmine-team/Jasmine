@@ -55,9 +55,9 @@ class HomeScreenViewController: UIViewController {
             let viewModel = PhrasesExplorerViewModel(phrases: ciHuiGameData.phrases)
 
             if (sender as? UIButton) === phrasesWithSelectButton {
-                phrasesExplorer.segueWith(viewModel, isMarkable: true)
+                phrasesExplorer.segueWith(viewModel, onSaveCallBack: { print($0) })
             } else if (sender as? UIButton) === phrasesWithInfoButton {
-                phrasesExplorer.segueWith(viewModel, isMarkable: false)
+                phrasesExplorer.segueWith(viewModel)
             }
         } else if let phraseVC = segue.destination as? PhraseViewController {
             let phrase = ciHuiGameData.phrases.randomGenerator.next()
