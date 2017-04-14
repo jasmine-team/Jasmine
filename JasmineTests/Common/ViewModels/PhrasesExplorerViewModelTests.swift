@@ -52,6 +52,16 @@ class PhrasesExplorerViewModelTests: RealmTestCase {
         XCTAssertEqual(originalCount, viewModel.rowsShown)
     }
 
+    func testSearchDiacritics() {
+        guard let pinyin = phrases.first?.pinyin.first?.applyingTransform(.stripDiacritics, reverse: false) else {
+            XCTFail("Pinyin retrieval error")
+            return
+        }
+
+        viewModel.search(keyword: String(pinyin))
+        XCTAssert(viewModel.rowsShown > 0)
+    }
+
     func testReset() {
         let originalCount = viewModel.rowsShown
 

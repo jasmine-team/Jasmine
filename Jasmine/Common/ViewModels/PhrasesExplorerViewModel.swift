@@ -18,8 +18,17 @@ class PhrasesExplorerViewModel {
 
     /// The ViewController that contains this ViewModel
     weak var viewControllerDelegate: PhrasesExplorerViewController?
-    
+
+    /// The initially selected phrases passed to the VM
+    private var initialPhrases: Set<Phrase>?
+    /// Indicates if currently selected phrases is different from initial phrases passed to the VM.
+    /// Used to check if it's necessary to warn the user about exit without savings
+    var hasChangedSelectedPhrases: Bool {
+        return (initialPhrases ?? []) != selectedPhrases
+    }
+
     init(phrases: Phrases, selectedPhrases: Set<Phrase>? = nil) {
+        initialPhrases = selectedPhrases
         allPhrasesWithSelection = phrases.map { phrase in
             (phrase, selectedPhrases?.contains(phrase) ?? false)
         }
@@ -58,7 +67,12 @@ class PhrasesExplorerViewModel {
         let keyword = keyword.lowercased()
         rowIndices = []
         for (idx, (phrase: phrase, selected: _)) in allPhrasesWithSelection.enumerated() {
-            for txt in [phrase.pinyin.joined(), phrase.chinese.joined(), phrase.english] where txt.hasPrefix(keyword) {
+            guard let pinyin = phrase.pinyin.joined().applyingTransform(.stripDiacritics, reverse: false) else {
+                assertionFailure("Diacritics cannot be stripped. Swift failure")
+                continue
+            }
+
+            for txt in [pinyin, phrase.chinese.joined(), phrase.english] where txt.hasPrefix(keyword) {
                 rowIndices.append(idx)
             }
         }

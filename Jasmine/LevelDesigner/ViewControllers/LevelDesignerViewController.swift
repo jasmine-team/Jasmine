@@ -25,7 +25,13 @@ class LevelDesignerViewController: UIViewController {
     private static let selectPhrasesButtonText = "SELECT PHRASES (%d)"
     @IBOutlet private var selectPhrasesButton: UIButton!
 
+    /// Title of the alert to show when saving to an existing level name
+    private static let levelNameExistsAlertTitle = "Level name already exists"
+    /// Text for the overwrite action when asking to overwrite an existing level name
+    private static let overwriteActionText = "Overwrite"
+
     private var viewModel: LevelDesignerViewModel!
+    private var onSaveCallBack: (() -> Void)!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,17 +41,19 @@ class LevelDesignerViewController: UIViewController {
 
     /// Feeds in the appropriate data for the use of seguing into this view.
     ///
-    /// - Parameter viewModel: the level designer view model required to use this view
-    func segueWith(_ viewModel: LevelDesignerViewModel) {
+    /// - Parameters:
+    ///   - viewModel: the level designer view model required to use this view
+    ///   - onSaveCallBack: Callback to be executed after saving
+    func segueWith(_ viewModel: LevelDesignerViewModel, onSaveCallBack: @escaping () -> Void) {
         self.viewModel = viewModel
+        self.onSaveCallBack = onSaveCallBack
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let phrasesExplorerViewController = segue.destination as? PhrasesExplorerViewController {
             let phrasesExplorerViewModel = PhrasesExplorerViewModel(phrases: phrasesForSelectedGameType,
                                                selectedPhrases: viewModel.selectedPhrases[selectedGameType])
-            phrasesExplorerViewController.segueWith(phrasesExplorerViewModel, isMarkable: true,
-                                                    onDismiss: updateSelectedPhrases)
+            phrasesExplorerViewController.segueWith(phrasesExplorerViewModel, onSaveCallBack: updateSelectedPhrases)
         }
     }
 
@@ -96,18 +104,19 @@ class LevelDesignerViewController: UIViewController {
     /// Saves the game and dismiss the view if successfully saved
     @IBAction private func onSaveButtonPressed(_ sender: UIBarButtonItem) {
         if saveLevel() {
+            onSaveCallBack()
             dismiss(animated: true)
         }
     }
 
     /// Warns the user if they want to leave without saving, dismiss the view if conformed
     @IBAction private func onBackButtonPressed(_ sender: UIBarButtonItem) {
-        let leaveWithoutSavingAlert = getAlertControllerWithCancel(title: "Leave without saving?")
-        let conformLeaveAction = UIAlertAction(title: "Yes", style: .destructive) { _ in
-            self.dismiss(animated: true)
-        }
-        leaveWithoutSavingAlert.addAction(conformLeaveAction)
-        present(leaveWithoutSavingAlert, animated: true)
+        showExitWithoutSavingAlert()
+    }
+
+    // TODO : implement this
+    @IBAction private func onImportButtonPressed(_ sender: UIButton) {
+
     }
 
     /// Saves the game, default name will be used if no name is given in text field. 
@@ -133,15 +142,14 @@ class LevelDesignerViewController: UIViewController {
     ///   - gameType: the updated GameType
     ///   - gameMode: the updated GameMode
     private func showOverwriteAlert(name: String, gameType: GameType, gameMode: GameMode) {
-        let levelNameExistsAlert = getAlertControllerWithCancel(title: "Level name already exists")
-        let overwriteAction = UIAlertAction(title: "Overwrite", style: .destructive) { _ in
+        showAlert(title: LevelDesignerViewController.levelNameExistsAlertTitle,
+                  actionText: LevelDesignerViewController.overwriteActionText) {
             do {
                 try self.viewModel.updateCustomLevel(name: name, gameType: gameType, gameMode: gameMode)
+                self.dismiss(animated: true)
             } catch {
                 self.showError(error)
             }
         }
-        levelNameExistsAlert.addAction(overwriteAction)
-        present(levelNameExistsAlert, animated: true)
     }
 }

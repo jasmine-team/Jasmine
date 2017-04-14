@@ -3,29 +3,34 @@ import SnapKit
 
 class PhrasesExplorerViewController: UIViewController {
 
-    @IBOutlet private weak var phrasesTableView: UIView!
+    @IBOutlet private var explorerNavigationItem: UINavigationItem!
+    @IBOutlet private var phrasesTableView: UIView!
     fileprivate var phrasesTable: PhrasesTableViewController!
-    fileprivate(set) var viewModel: PhrasesExplorerViewModel!
+    fileprivate var viewModel: PhrasesExplorerViewModel!
     private var searchController: UISearchController!
-    private var isMarkable: Bool!
 
-    /// Callback to execute when the explorer view is dismissed, 
-    /// passes the selected phrases to the callback function
-    private var onDismiss: ((Set<Phrase>) -> Void)?
+    /// Callback to execute when the save button is pressed. 
+    /// Passes the selected phrases to the callback function
+    private var onSaveCallBack: ((Set<Phrase>) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideSaveButtonIfSaveNotSet()
         setupPhrasesTable()
         searchController = UISearchController(searchResultsController: phrasesTable)
         showPhrasesTable()
     }
 
-    private func setupPhrasesTable() {
-        if isMarkable == true {
-            phrasesTable = PhrasesSelectionTableViewController()
-        } else {
-            phrasesTable = PhrasesDetailTableViewController()
+    /// Hides the save button on the navigation panel if not markable
+    private func hideSaveButtonIfSaveNotSet() {
+        if onSaveCallBack == nil {
+            explorerNavigationItem.rightBarButtonItem = nil
         }
+    }
+
+    private func setupPhrasesTable() {
+        phrasesTable = (onSaveCallBack == nil) ? PhrasesDetailTableViewController() :
+                                                 PhrasesSelectionTableViewController()
         phrasesTable.viewModel = viewModel
     }
 
@@ -36,28 +41,33 @@ class PhrasesExplorerViewController: UIViewController {
         phrasesTable.didMove(toParentViewController: self)
     }
 
-    /// Dismisses this current screen and executes the callback when "Back" button is pressed.
-    @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
-        onDismiss?(viewModel.selectedPhrases)
-        self.dismiss(animated: true, completion: nil)
+    /// Dismisses this current screen without saving when "Back" button is pressed.
+    /// Asks for conformation if selected phrases has been modified
+    @IBAction private func onBackButtonPressed(_ sender: UIBarButtonItem) {
+        if viewModel.hasChangedSelectedPhrases {
+            showExitWithoutSavingAlert()
+        } else {
+            self.dismiss(animated: true)
+        }
+
     }
 
-    /// Displays the level selection screen upon import pressed.
-    @IBAction func onImportPressed(_ sender: UIBarButtonItem) {
-        // TODO: Complete this when level import is done.
+    /// Dismisses this current screen and executes the callback when "Save" button is pressed.
+    @IBAction private func onSaveButtonPressed(_ sender: UIBarButtonItem) {
+        onSaveCallBack?(viewModel.selectedPhrases)
+        self.dismiss(animated: true)
     }
 
     /// Injects the required data before opening this view.
     ///
-    /// - Parameter viewModel: the view model of this class.
-    /// - Parameter isMarkable: tells the VC whether the view can be marked (given checkmark) or not.
-    /// - Parameter onDismiss: callback to execute when this view is dismissed, 
-    ///                        passes the selected phrases to the callback function
-    func segueWith(_ viewModel: PhrasesExplorerViewModel, isMarkable: Bool,
-                   onDismiss: ((Set<Phrase>) -> Void)? = nil) {
+    /// - Parameters:
+    ///   - viewModel: the view model of this class.
+    ///   - onSaveCallBack: Callback to execute when the save button is pressed. 
+    ///                     Passes the selected phrases to the callback function.
+    ///                     Phrases are selectable only if this is set.
+    func segueWith(_ viewModel: PhrasesExplorerViewModel, onSaveCallBack: ((Set<Phrase>) -> Void)? = nil) {
         self.viewModel = viewModel
-        self.isMarkable = isMarkable
-        self.onDismiss = onDismiss
+        self.onSaveCallBack = onSaveCallBack
     }
 }
 
