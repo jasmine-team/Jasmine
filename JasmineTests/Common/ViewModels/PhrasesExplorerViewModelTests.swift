@@ -2,8 +2,9 @@ import XCTest
 @testable import Jasmine
 
 class PhrasesExplorerViewModelTests: RealmTestCase {
-    var phrases: Phrases!
-    var viewModel: PhrasesExplorerViewModel!
+
+    private var phrases: Phrases!
+    private var viewModel: PhrasesExplorerViewModel!
 
     override func setUp() {
         super.setUp()
@@ -111,14 +112,14 @@ class PhrasesExplorerViewModelTests: RealmTestCase {
         }
         let viewModel3 = PhrasesExplorerViewModel(phrases: phrases, selectedPhrases: [phrase])
         viewModel3.toggle(at: 0)
-        XCTAssertFalse(viewModel3.hasChangedSelectedPhrases)
-        viewModel3.toggle(at: 1)
-        XCTAssert(viewModel3.hasChangedSelectedPhrases)
-        viewModel3.toggle(at: 0)
         XCTAssert(viewModel3.hasChangedSelectedPhrases)
         viewModel3.toggle(at: 1)
         XCTAssert(viewModel3.hasChangedSelectedPhrases)
         viewModel3.toggle(at: 0)
+        XCTAssert(viewModel3.hasChangedSelectedPhrases)
+        viewModel3.toggle(at: 1)
         XCTAssertFalse(viewModel3.hasChangedSelectedPhrases)
+        viewModel3.toggle(at: 0)
+        XCTAssert(viewModel3.hasChangedSelectedPhrases)
     }
 }
