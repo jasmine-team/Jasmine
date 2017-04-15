@@ -14,7 +14,7 @@
         <scene sceneID="Yfl-nN-rBP">
             <objects>
                 <collectionViewController id="53x-w8-Je5" customClass="DiscreteFallableSquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="F6i-71-Qmd">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="F6i-71-Qmd">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,7 +48,7 @@
         <scene sceneID="xqf-4o-YTB">
             <objects>
                 <collectionViewController id="mPa-es-pmk" customClass="SquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="23e-TJ-dLi">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="23e-TJ-dLi">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="48"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -146,9 +146,6 @@
                                     <navigationItem title="Tetris Game Title" id="R5p-HH-gxO">
                                         <barButtonItem key="leftBarButtonItem" title="BACK" width="35" id="YXs-Km-Pak">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="onBackPressed:" destination="QxJ-8P-SqZ" id="Ba4-ZR-qCE"/>
-                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>

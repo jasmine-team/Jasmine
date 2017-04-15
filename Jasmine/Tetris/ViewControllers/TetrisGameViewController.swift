@@ -1,14 +1,10 @@
 import UIKit
 
 /// View Controller implementation for Tetris Game.
-class TetrisGameViewController: UIViewController {
+class TetrisGameViewController: BaseGameViewController {
 
     // MARK: - Constants
     private static let cellSpace: CGFloat = 2.0
-
-    fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
-
-    fileprivate static let segueDelay = 0.5
 
     /// Denotes the delay in animation between explosion and falling.
     fileprivate static let animationDelay = 0.5
@@ -34,10 +30,9 @@ class TetrisGameViewController: UIViewController {
     // MARK: View Controller Lifecycles
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setFirstUpcomingTileStyle()
-        setGameDescriptions()
-        setTheme()
+        super.setLayout(navigationBar: navigationBar)
 
+        setFirstUpcomingTileStyle()
         if viewModel.gameStatus == .notStarted {
             releaseNewTile()
         }
@@ -45,24 +40,15 @@ class TetrisGameViewController: UIViewController {
 
     // MARK: Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
         if let tetrisGridView = segue.destination as? DiscreteFallableSquareGridViewController {
             self.tetrisGameAreaView = tetrisGridView
             helperSegueIntoTetrisGridView()
 
         } else if let upcomingView = segue.destination as? SquareGridViewController {
-            upcomingView.segueWith(upcomingTiles)
             self.tetrisUpcomingTilesView = upcomingView
-
-        } else if let statisticsView = segue.destination as? GameStatisticsViewController {
-            statisticsView.segueWith(time: viewModel, score: viewModel)
-            self.gameStatisticsView = statisticsView
-
-        } else if let gameOverView = segue.destination as? GameOverViewController {
-            gameOverView.segueWith(viewModel)
-
-        } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
-            self.gameStartView = gameStartView
-            gameStartView.segueWith(viewModel, onScreenDismissed: startGameIfPossible)
+            self.tetrisUpcomingTilesView.segueWith(upcomingTiles)
         }
     }
 
@@ -86,16 +72,11 @@ class TetrisGameViewController: UIViewController {
     ///
     /// - Parameter viewModel: the game engine required to play this game.
     func segueWith(_ viewModel: TetrisGameViewModelProtocol) {
+        super.segueWith(viewModel)
         self.viewModel = viewModel
-        self.viewModel.gameStatusDelegate = self
     }
 
     // MARK: Gestures and Listeners
-    /// Dismisses this view when the back button is pressed.
-    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
-    }
-
     /// Switches the content of the falling tile with the latest upcoming tile when any tile in the
     /// list of upcoming tile is tapped.
     @IBAction private func onUpcomingTilesTouched(_ sender: UITapGestureRecognizer) {
@@ -213,18 +194,6 @@ class TetrisGameViewController: UIViewController {
             tile.shouldHighlight = true
         }
     }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
-    private func setTheme() {
-        navigationBar.backgroundColor = Constants.Theme.mainColorDark
-    }
-
-    private func setGameDescriptions() {
-        navigationBar.topItem?.title = viewModel.gameTitle
-    }
 }
 
 extension TetrisGameViewController {
@@ -291,27 +260,24 @@ extension TetrisGameViewController {
     }
 }
 
-// MARK: - Game Status
-extension TetrisGameViewController: GameStatusUpdateDelegate {
+// MARK: - Game Status Override
+extension TetrisGameViewController {
 
     /// Tells the implementor of the delegate that the game status has been updated.
-    func gameStatusDidUpdate() {
+    override func gameStatusDidUpdate() {
         guard viewModel.gameStatus.hasGameEnded else {
             return
         }
-
+        super.gameStatusDidUpdate()
         tetrisGameAreaView.pauseFallingTiles()
-        DispatchQueue.main.asyncAfter(deadline: .now() + TetrisGameViewController.segueDelay) {
-            self.performSegue(withIdentifier: TetrisGameViewController.segueToGameOverView,
-                              sender: nil)
-        }
     }
 
-    fileprivate func startGameIfPossible() {
+    /// Starts the game if the game status is not started.
+    override func startGameIfPossible() {
         guard viewModel.gameStatus == .notStarted else {
             return
         }
-        viewModel.startGame()
+        super.startGameIfPossible()
         tetrisGameAreaView.startFallingTiles(with: GameConstants.Tetris.tileFallInterval)
     }
 }
