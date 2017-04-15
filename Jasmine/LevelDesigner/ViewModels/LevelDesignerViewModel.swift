@@ -33,6 +33,20 @@ class LevelDesignerViewModel {
         return selectedPhrases[gameType]?.count ?? 0
     }
 
+    /// Adds all the phrases in levels associated with `levelInfos` to the selected phrases. 
+    ///
+    /// - Parameter levelInfos: Levels to import the phrases from
+    /// - Precondition: Levels must be of the same game type
+    func addToSelectedPhrases(from levelInfos: [GameInfo]) {
+        guard let gameType = levelInfos.first?.gameType else {
+            return
+        }
+        assert(levelInfos.map { $0.gameType }.isAllSame, "Selected levels do not have the same game type")
+        // Can't use formUnion on dict directly as it might be nil
+        selectedPhrases[gameType] = levels.getPhrasesFromLevels(names: levelInfos.map { $0.levelName })
+                                          .union(selectedPhrases[gameType] ?? [])
+    }
+
     /// Saves the level with the given game stats
     ///
     /// - Parameters:

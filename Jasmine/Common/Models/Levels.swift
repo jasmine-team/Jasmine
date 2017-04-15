@@ -4,8 +4,8 @@ class Levels {
 
     private static let difficultyKey = "difficulty"
 
-    weak var realm: Realm!
-    weak var delegate: LevelsDelegate?
+    private var realm: Realm!
+    private weak var delegate: LevelsDelegate?
 
     private lazy var rawCustomLevels: Results<Level> = self.filterIsReadOnly(bool: false)
 
@@ -19,10 +19,10 @@ class Levels {
     private static let defaultName = "Untitled Level %d"
     /// Returns the next available default name (append numeric to `defaultName`) to save as
     /// If none is available (used up all integers), returns `defaultName` with 0 appended
-    var nextAvailableDefaultName: String {
+    private var nextAvailableDefaultName: String {
         for i in 1...Int.max {
             let name = String(format: Levels.defaultName, i)
-            if !levelNameExists(name) {
+            if !customLevelNameExists(name) {
                 return name
             }
         }
@@ -31,6 +31,20 @@ class Levels {
 
     init(realm: Realm) {
         self.realm = realm
+    }
+
+    /// Gets all the phrases in the levels with names `names`.
+    ///
+    /// - Parameter names: Names of the level to retrieve the phrases
+    /// - Returns: Set of all phrases in levels with names `name`
+    /// - Precondition: The levels with names `names` must exist
+    func getPhrasesFromLevels(names: [String]) -> Set<Phrase> {
+        return names.reduce(Set<Phrase>()) { phrases, name in
+            guard let level = getLevel(name: name) else {
+                fatalError("Unable to get level with name \(name)")
+            }
+            return phrases.union(level.phrases)
+        }
     }
 
     /// Adds the level with indicated settings
@@ -47,7 +61,7 @@ class Levels {
         }
 
         let name = try getValidName(name)
-        guard !levelNameExists(name) else {
+        guard !customLevelNameExists(name) else {
             throw LevelsError.duplicateLevelName(name)
         }
         let level = Level(value: [
@@ -61,45 +75,12 @@ class Levels {
         }
     }
 
-    /// Returns a valid name with whitespaces trimmed
+    /// Deletes the level `level` from the custom levels. Do nothing if it's not in custom levels.
     ///
-    /// - Parameter name: original name
-    /// - Returns: name with whitespace trimmed, default if no name passed or trimmed name is empty
-    /// - Throws: LevelsError.duplicateLevelName if name already exists
-    private func getValidName(_ name: String?) throws -> String {
-        var trimmedName = name?.trimmingCharacters(in: .whitespaces)
-        trimmedName = (trimmedName?.isEmpty ?? true) ? nil : trimmedName
-        let name = trimmedName ?? nextAvailableDefaultName
-
-        guard !levelNameExists(name) else {
-            throw LevelsError.duplicateLevelName(name)
-        }
-        return name
-    }
-
-    /// Checks if the level name already exists
-    ///
-    /// - Parameter name: the level name to check
-    /// - Returns: true if the level name already exists
-    func levelNameExists(_ name: String) -> Bool {
-        return getLevel(name: name) != nil
-    }
-
-    /// Gets the level with the given level name
-    ///
-    /// - Parameter name: the level name to search for
-    /// - Returns: the level associated with the name, nil if no such level
-    private func getLevel(name: String) -> Level? {
-        return custom.first { $0.name == name }
-    }
-
-    /// Deletes the indicated level
-    ///
-    /// - Parameter level: level to be deleted
+    /// - Parameter level: custom level to be deleted
     /// - Throws: Error if failed to delete data
     func deleteLevel(_ level: Level) throws {
         guard rawCustomLevels.contains(level) else {
-            assertionFailure("Cannot delete original levels")
             return
         }
         try realm.write {
@@ -116,8 +97,8 @@ class Levels {
     ///   - phrases: the updated phrases
     /// - Throws: Error if failed to add data
     func updateCustomLevel(name: String, gameType: GameType, gameMode: GameMode, phrases: Set<Phrase>) throws {
-        guard let level = getLevel(name: name) else {
-            fatalError("Unable to find level with name \(name)")
+        guard let level = getCustomLevel(name: name) else {
+            fatalError("Unable to get level with name \(name)")
         }
         try deleteLevel(level)
         try addCustomLevel(name: name, gameType: gameType, gameMode: gameMode, phrases: phrases)
@@ -140,7 +121,7 @@ class Levels {
             .sorted(byKeyPath: Levels.difficultyKey)
     }
 
-    lazy var token: NotificationToken = self.rawCustomLevels.addNotificationBlock { changes in
+    private lazy var token: NotificationToken = self.rawCustomLevels.addNotificationBlock { changes in
         switch changes {
         case .initial:
             return
@@ -152,6 +133,63 @@ class Levels {
         }
     }
 
+    /// Gets the level with name `name` in `levels`
+    ///
+    /// - Parameters:
+    ///   - name: name of the level to search for
+    ///   - levels: the levels to search in
+    /// - Returns: the level with name `name` in `levels`, nil if it doesn't exist
+    private func getLevel(name: String, from levels: [Level]) -> Level? {
+        return levels.first { $0.name == name }
+    }
+
+    /// Gets the level (either custom or original) with the given level name. 
+    ///
+    /// - Parameter name: the level name to search for
+    /// - Returns: the level associated with the name, nil if it doesn't exist
+    private func getLevel(name: String) -> Level? {
+        return getCustomLevel(name: name) ?? getOriginalLevel(name: name)
+    }
+
+    /// Gets the custom level with the given level name
+    ///
+    /// - Parameter name: the custom level name to search for
+    /// - Returns: the custom level associated with the name, nil if it doesn't exist
+    private func getCustomLevel(name: String) -> Level? {
+        return getLevel(name: name, from: custom)
+    }
+
+    /// Gets the original level with the given level name
+    ///
+    /// - Parameter name: the original level name to search for
+    /// - Returns: the original level associated with the name, nil if it doesn't exist
+    private func getOriginalLevel(name: String) -> Level? {
+        return getLevel(name: name, from: original)
+    }
+
+    /// Checks if the custom level name already exists
+    ///
+    /// - Parameter name: the custom level name to check
+    /// - Returns: true if the custom level name already exists
+    private func customLevelNameExists(_ name: String) -> Bool {
+        return getCustomLevel(name: name) != nil
+    }
+
+    /// Returns a valid name with whitespaces trimmed
+    ///
+    /// - Parameter name: original name
+    /// - Returns: name with whitespace trimmed, default if no name passed or trimmed name is empty
+    /// - Throws: LevelsError.duplicateLevelName if custom level name already exists
+    private func getValidName(_ name: String?) throws -> String {
+        var trimmedName = name?.trimmingCharacters(in: .whitespaces)
+        trimmedName = (trimmedName?.isEmpty ?? true) ? nil : trimmedName
+        let name = trimmedName ?? nextAvailableDefaultName
+
+        guard !customLevelNameExists(name) else {
+            throw LevelsError.duplicateLevelName(name)
+        }
+        return name
+    }
 }
 
 protocol LevelsDelegate: class {
