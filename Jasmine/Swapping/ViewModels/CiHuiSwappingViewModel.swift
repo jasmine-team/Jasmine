@@ -18,34 +18,13 @@ class CiHuiSwappingViewModel: BaseSwappingViewModel {
             tiles += (hanzi + pinyin)
         }
 
-        super.init(time: time, gameData: gameData, tiles: tiles,
+        super.init(time: time, gameData: gameData, gameType: .ciHui, tiles: tiles,
                    rows: numberOfPhrases, columns: GameConstants.Swapping.columns)
 
         gameTitle = GameConstants.Swapping.CiHui.gameTitle
         gameInstruction = GameConstants.Swapping.CiHui.gameInstruction
 
         phrasesTested = Set(phrases)
-    }
-
-    /// Returns if and only if the game is won, that is:
-    /// every row/column contains the cihui and the respective pinyin.
-    override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
-        let firstHalfCoordinates = Array(line[0..<(line.count / 2)])
-        let secondHalfCoordinates = Array(line[(line.count / 2)..<line.count])
-
-        let possibleArrangements = [
-            (firstHalfCoordinates, secondHalfCoordinates),
-            (secondHalfCoordinates, firstHalfCoordinates)
-        ]
-        for (first, second) in possibleArrangements {
-            if let text = gridData.getConcatenatedTexts(at: first),
-               let phrase = gameData.phrases.first(whereChinese: text),
-               let pinyin = gridData.getTexts(at: second),
-               phrase.pinyin == pinyin {
-                return true
-            }
-        }
-        return false
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to slide

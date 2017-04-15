@@ -13,7 +13,7 @@ class BaseSwappingViewModelTests: RealmTestCase {
     override func setUp() {
         super.setUp()
         self.gameData = createGameData(difficulty: 1, type: .ciHui)
-        viewModel = BaseSwappingViewModel(time: time, gameData: gameData,
+        viewModel = BaseSwappingViewModel(time: time, gameData: gameData, gameType: .chengYu,
                                           tiles: ["a", "b", "c", "d"], rows: rows, columns: columns)
     }
 
