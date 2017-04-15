@@ -39,6 +39,14 @@ class TetrisGameViewModel {
 
     let gameData: GameData
 
+    /// Returns the length of a phrase in phrases from game data
+    private var phraseLength: Int {
+        guard let phraseLen = gameData.phrases.first?.chinese.count else {
+            fatalError("No phrases found")
+        }
+        return phraseLen
+    }
+
     // Stores the pool of upcoming texts shuffled randomly to pick from for the new pcoming tile
     private var nextTexts: [String] = []
     // Stores the current index of `nextTexts` for the new upcoming tile
@@ -49,6 +57,7 @@ class TetrisGameViewModel {
 
     /// Populate upcomingTiles and set listeners for the timer
     required init(gameData: GameData) {
+        assert(gameData.phrases.map { $0.chinese.count }.isAllSame, "Phrases are not of equal length")
         self.gameData = gameData
         phraseGenerator = gameData.phrases.randomGenerator
         populateUpcomingTiles()
@@ -57,7 +66,7 @@ class TetrisGameViewModel {
     }
 
     private func populateUpcomingTiles() {
-        for _ in 0..<GameConstants.Tetris.upcomingTilesCount {
+        for _ in 0..<phraseLength {
             upcomingTiles.append(getNextText())
         }
     }
@@ -97,9 +106,7 @@ class TetrisGameViewModel {
     }
 
     private func checkForMatchingPhrase(at coordinate: Coordinate, rowWise: Bool) -> Set<Coordinate>? {
-        guard let phraseLen = gameData.phrases.first?.chinese.count else {
-            fatalError("No phrases found")
-        }
+        let phraseLen = phraseLength
         let rowOrCol = rowWise ? coordinate.col : coordinate.row
         let startIndex = max(0, rowOrCol - phraseLen + 1)
         let endIndex = min((rowWise ? gridData.numColumns : gridData.numRows) - phraseLen, rowOrCol)
