@@ -97,10 +97,10 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
         case (.swapping, .ciHui):
             return CiHuiSwappingViewModel(
                 time: GameConstants.Swapping.time, gameData: gameData, numberOfPhrases: GameConstants.Swapping.rows)
-        case (.tetris, .chengYu):
-            fallthrough
-        case (.tetris, .ciHui):
+        case (.tetris, _):
             return TetrisGameViewModel(gameData: gameData)
+        default:
+            fatalError("Game not available")
         }
     }
 

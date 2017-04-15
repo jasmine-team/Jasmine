@@ -25,15 +25,6 @@ class ChengYuSlidingViewModel: BaseSlidingViewModel {
         phrasesTested = Set(validPhrases)
     }
 
-    /// Returns true if and only if the given line is valid (i.e. forms a Chengyu)
-    override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
-        guard let text = gridData.getConcatenatedTexts(at: line),
-              gameData.phrases.contains(chinese: text) else {
-            return false
-        }
-        return true
-    }
-
     /// Tells the Game Engine View Model that the user from the View Controller attempts to slide
     /// the tile.
     ///
