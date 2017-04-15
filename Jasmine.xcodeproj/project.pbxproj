@@ -71,6 +71,7 @@
 		50F191BF1E7AE04500EE9A75 /* CoordinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */; };
 		808D14A38A84896750A27A01 /* Pods_JasmineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA7CF50780AC3BFAA0B1685 /* Pods_JasmineTests.framework */; };
 		8E87AEB22E83891CB6ABE587 /* Pods_Jasmine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2522EBDDDAAB18363E8278 /* Pods_Jasmine.framework */; };
+		A2017E221EA2951800346D61 /* GameCenterNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2017E211EA2951800346D61 /* GameCenterNotifier.swift */; };
 		A2187E6C1E7510B60033FC5B /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E6B1E7510B60033FC5B /* Random.swift */; };
 		A2187E721E751C930033FC5B /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187E711E751C930033FC5B /* Sequence+Extensions.swift */; };
 		A260C6281E6AB30400782103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A260C6271E6AB30400782103 /* Assets.xcassets */; };
@@ -252,6 +253,7 @@
 		50AE3A771E8BE020005EC944 /* TextGridTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextGridTests.swift; sourceTree = "<group>"; };
 		50B7A8B41E9393530052E9E2 /* BaseSwappingViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSwappingViewModelTests.swift; sourceTree = "<group>"; };
 		50F191BE1E7AE04500EE9A75 /* CoordinateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateTests.swift; sourceTree = "<group>"; };
+		A2017E211EA2951800346D61 /* GameCenterNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterNotifier.swift; sourceTree = "<group>"; };
 		A2187E6B1E7510B60033FC5B /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		A2187E711E751C930033FC5B /* Sequence+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		A260C61D1E6AB30400782103 /* Jasmine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jasmine.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -494,6 +496,7 @@
 				DF76B0AB1E9D185800BCC751 /* RandomGenerator.swift */,
 				50989DC31E6D8B16009A86C8 /* SoundService.swift */,
 				DF409FDE1E84147400389976 /* TimerStatus.swift */,
+				A2017E211EA2951800346D61 /* GameCenterNotifier.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1368,6 +1371,7 @@
 				A2FF83971E9A536F00677FA2 /* Levels.swift in Sources */,
 				DF6DDC5D1E9BF9C200FACAB5 /* GameInfo.swift in Sources */,
 				DFBE8F751E9527F70036CCC6 /* ScoreUpdateDelegate.swift in Sources */,
+				A2017E221EA2951800346D61 /* GameCenterNotifier.swift in Sources */,
 				DFE111541E99133F00F8860E /* FallingFlowersViewController.swift in Sources */,
 				DF9918D41E92B6A3004E599B /* BaseSwappingViewModel.swift in Sources */,
 				A2FF83951E9A536F00677FA2 /* GameManager.swift in Sources */,
