@@ -5,6 +5,8 @@ class LevelImportViewModel: LevelImportViewModelProtocol {
     private var realm: Realm
     /// The Levels object that manages the level objects
     private var levels: Levels
+    /// The game type that should be displayed
+    private var displayedType: GameType?
     /// Default levels as a level array
     private var rawDefaultLevels: [Level] {
         return levels.original
@@ -15,11 +17,15 @@ class LevelImportViewModel: LevelImportViewModelProtocol {
     }
     /// The defaults levels in the game.
     var defaultLevels: [GameInfo] {
-        return rawDefaultLevels.map { level in GameInfo.from(level: level) }
+        return rawDefaultLevels
+            .map { level in GameInfo.from(level: level) }
+            .filter { $0.gameType == displayedType }
     }
     /// The custom levels in the game.
     var customLevels: [GameInfo] {
-        return rawCustomLevels.map { level in GameInfo.from(level: level) }
+        return rawCustomLevels
+            .map { level in GameInfo.from(level: level) }
+            .filter { $0.gameType == displayedType }
     }
 
     /// The set of marked levels.
@@ -30,12 +36,13 @@ class LevelImportViewModel: LevelImportViewModelProtocol {
         return markedLevelsSet.map { GameInfo.from(level: $0) }
     }
 
-    init() {
+    init(withType type: GameType? = nil) {
         guard let realm = try? Realm() else {
             fatalError("Cannot create Realm")
         }
         self.realm = realm
         levels = Levels(realm: realm)
+        displayedType = type
     }
 
     /// Get the phrase explorer VM from the game info
