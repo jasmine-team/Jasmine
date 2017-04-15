@@ -1,7 +1,9 @@
 import UIKit
 import AVFoundation
 
-class PhraseViewController: UIViewController {
+class PhraseViewController: JasmineViewController {
+
+    fileprivate static let viewTitle = "Dictionary"
 
     fileprivate static let backgroundAudioWhileTts: Float = 0.1
 
@@ -9,6 +11,7 @@ class PhraseViewController: UIViewController {
     @IBOutlet private weak var pinYinLabel: UILabel!
     @IBOutlet private weak var englishLabel: UILabel!
     @IBOutlet fileprivate weak var speechButton: UIButton!
+    @IBOutlet private weak var navigationBar: UINavigationBar!
 
     private let synthesizer = AVSpeechSynthesizer()
     private var viewModel: PhraseViewModel!
@@ -19,6 +22,8 @@ class PhraseViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+        super.setLayout(navigationBar: navigationBar,
+                        withTitle: PhraseViewController.viewTitle)
         synthesizer.delegate = self
         displayText()
     }
@@ -28,11 +33,6 @@ class PhraseViewController: UIViewController {
     /// - Parameter viewModel: the view model of this class.
     func segueWith(_ viewModel: PhraseViewModel) {
         self.viewModel = viewModel
-    }
-
-    /// Dismisses this current screen when "Back" button is pressed.
-    @IBAction func onBackPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true)
     }
 
     private func displayText() {

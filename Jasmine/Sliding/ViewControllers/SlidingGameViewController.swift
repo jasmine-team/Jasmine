@@ -1,21 +1,10 @@
 import UIKit
 
 /// View Controller implementation for Sliding Grid Game.
-class SlidingGameViewController: UIViewController {
-
-    // MARK: - Constants
-    fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
-
-    fileprivate static let segueDelay = 0.5
-
-    fileprivate static let highlightDelay = 0.2
+class SlidingGameViewController: BaseGridGameViewController {
 
     // MARK: - Layouts
-    fileprivate var gameStatisticsView: GameStatisticsViewController!
-
     fileprivate var slidingGridView: DraggableSquareGridViewController!
-
-    fileprivate var gameStartView: SimpleStartGameViewController!
 
     @IBOutlet fileprivate weak var navigationBar: UINavigationBar!
 
@@ -27,45 +16,29 @@ class SlidingGameViewController: UIViewController {
 
     // MARK: - Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
         if let slidingGridView = segue.destination as? DraggableSquareGridViewController {
-            slidingGridView.segueWith(viewModel.gridData)
             self.slidingGridView = slidingGridView
-
-        } else if let gameStatisticsView = segue.destination as? GameStatisticsViewController {
-            gameStatisticsView.segueWith(time: viewModel, score: viewModel)
-            self.gameStatisticsView = gameStatisticsView
-
-        } else if let gameOverView = segue.destination as? GameOverViewController {
-            gameOverView.segueWith(viewModel)
-
-        } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
-            self.gameStartView = gameStartView
-            gameStartView.segueWith(viewModel, onScreenDismissed: startGameIfPossible)
         }
-    }
-
-    // MARK: - View Controller Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setTheme()
-        setGameDescriptions()
     }
 
     /// Injects the required data before opening this view.
     ///
     /// - Parameter viewModel: the view model of this class.
     func segueWith(_ viewModel: SlidingViewModelProtocol) {
+        super.segueWith(viewModel)
         self.viewModel = viewModel
-        self.viewModel.gameStatusDelegate = self
-        self.viewModel.highlightedDelegate = self
+    }
+
+    // MARK: View Controller Lifecycle
+    /// Loads this current view and set the appropriate layout in the super views.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        super.setLayout(navigationBar: navigationBar)
     }
 
     // MARK: Gestures and Listeners
-    /// Dismisses this current screen when "Back" button is pressed.
-    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true)
-    }
-
     /// Handles the gesture where the user drags the tile to an empty slot.
     @IBAction private func onTilesDragged(_ sender: UIPanGestureRecognizer) {
         guard viewModel.gameStatus == .inProgress else {
@@ -83,19 +56,6 @@ class SlidingGameViewController: UIViewController {
         default:
             break
         }
-    }
-
-    // MARK: Theming
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
-    private func setTheme() {
-        navigationBar.backgroundColor = Constants.Theme.mainColorDark
-    }
-
-    private func setGameDescriptions() {
-        navigationBar.topItem?.title = viewModel.gameTitle
     }
 }
 
@@ -186,43 +146,5 @@ fileprivate extension SlidingGameViewController {
         let westX = getCenter(from: destination[.westwards]).x
 
         return CGRect(minX: westX, maxX: eastX, minY: northY, maxY: southY)
-    }
-}
-
-// MARK: - Game Status
-extension SlidingGameViewController: GameStatusUpdateDelegate {
-
-    /// Tells the implementor of the delegate that the game status has been updated.
-    func gameStatusDidUpdate() {
-        guard viewModel.gameStatus.hasGameEnded else {
-            return
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + SlidingGameViewController.segueDelay) {
-            self.performSegue(withIdentifier: SlidingGameViewController.segueToGameOverView,
-                              sender: nil)
-        }
-    }
-
-    fileprivate func startGameIfPossible() {
-        guard viewModel.gameStatus == .notStarted else {
-            return
-        }
-        viewModel.startGame()
-    }
-}
-
-extension SlidingGameViewController: HighlightedUpdateDelegate {
-
-    /// Tells the implementor of the delegate that the highlighted coordinates have been changed.
-    func highlightedCoordinatesDidUpdate() {
-        let highlightedCoords = viewModel.highlightedCoordinates
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + SlidingGameViewController.highlightDelay) {
-            for coord in self.slidingGridView.allCoordinates {
-                self.slidingGridView.tileProperties[coord] = { tile in
-                    tile.shouldHighlight = highlightedCoords.contains(coord)
-                }
-            }
-        }
     }
 }
