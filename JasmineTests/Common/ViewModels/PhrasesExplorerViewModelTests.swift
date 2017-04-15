@@ -77,11 +77,48 @@ class PhrasesExplorerViewModelTests: RealmTestCase {
         XCTAssertEqual(originalCount, viewModel.rowsShown)
     }
 
-    func testgetPhraseViewModel() {
+    func testGetPhraseViewModel() {
         let phraseTuple = viewModel.get(at: 0)
         let phraseViewModel = viewModel.getPhraseViewModel(at: 0)
 
         XCTAssertEqual(phraseViewModel.english, phraseTuple.english)
         XCTAssertEqual(phraseViewModel.hanZi, phraseTuple.chinese)
+    }
+
+    func testHasChangedSelectedPhrases() {
+        viewModel.toggle(at: 0)
+        XCTAssert(viewModel.hasChangedSelectedPhrases)
+        viewModel.toggle(at: 1)
+        XCTAssert(viewModel.hasChangedSelectedPhrases)
+        viewModel.toggle(at: 0)
+        XCTAssert(viewModel.hasChangedSelectedPhrases)
+        viewModel.toggle(at: 1)
+        XCTAssertFalse(viewModel.hasChangedSelectedPhrases)
+
+        let viewModel2 = PhrasesExplorerViewModel(phrases: phrases, selectedPhrases: nil)
+        viewModel2.toggle(at: 0)
+        XCTAssert(viewModel2.hasChangedSelectedPhrases)
+        viewModel2.toggle(at: 1)
+        XCTAssert(viewModel2.hasChangedSelectedPhrases)
+        viewModel2.toggle(at: 0)
+        XCTAssert(viewModel2.hasChangedSelectedPhrases)
+        viewModel2.toggle(at: 1)
+        XCTAssertFalse(viewModel2.hasChangedSelectedPhrases)
+
+        guard let phrase = phrases.first else {
+            XCTFail("Phrases error")
+            return
+        }
+        let viewModel3 = PhrasesExplorerViewModel(phrases: phrases, selectedPhrases: [phrase])
+        viewModel3.toggle(at: 0)
+        XCTAssertFalse(viewModel3.hasChangedSelectedPhrases)
+        viewModel3.toggle(at: 1)
+        XCTAssert(viewModel3.hasChangedSelectedPhrases)
+        viewModel3.toggle(at: 0)
+        XCTAssert(viewModel3.hasChangedSelectedPhrases)
+        viewModel3.toggle(at: 1)
+        XCTAssert(viewModel3.hasChangedSelectedPhrases)
+        viewModel3.toggle(at: 0)
+        XCTAssertFalse(viewModel3.hasChangedSelectedPhrases)
     }
 }
