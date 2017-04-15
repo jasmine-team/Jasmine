@@ -13,7 +13,8 @@ class GridViewModelTests: RealmTestCase {
         let time: TimeInterval = 10
         let tiles = ["a", "b", "c", nil]
 
-        let viewModel = GridViewModel(time: time, gameData: gameData, tiles: tiles, rows: 2, columns: 2)
+        let viewModel = GridViewModel(time: time, gameData: gameData, gameType: .chengYu,
+                                      tiles: tiles, rows: 2, columns: 2)
 
         XCTAssertEqual(0, viewModel.currentScore,
                        "ViewModel currentScore not correct on init")
@@ -35,7 +36,8 @@ class GridViewModelTests: RealmTestCase {
         let time: TimeInterval = 3
         let tiles = ["a", "b", "c", nil]
 
-        let viewModel = GridViewModel(time: time, gameData: gameData, tiles: tiles, rows: 2, columns: 2)
+        let viewModel = GridViewModel(time: time, gameData: gameData, gameType: .chengYu,
+                                      tiles: tiles, rows: 2, columns: 2)
 
         viewModel.startGame()
         RunLoop.current.run(until: Date(timeIntervalSinceNow: time + 1))

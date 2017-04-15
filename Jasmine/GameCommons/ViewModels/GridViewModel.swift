@@ -58,6 +58,9 @@ class GridViewModel: GridViewModelProtocol {
     /// There is no word count limit, but should be concise.
     var gameInstruction: String = ""
 
+    /// The game type. To be overriden.
+    var gameType: GameType
+
     /// Initializes the grid VM.
     ///
     /// - Parameters:
@@ -66,7 +69,7 @@ class GridViewModel: GridViewModelProtocol {
     ///   - tiles: the tiles in the game, will be shuffled
     ///   - rows: number of rows
     ///   - columns: number of columns
-    init(time: TimeInterval, gameData: GameData, tiles: [String?], rows: Int, columns: Int) {
+    init(time: TimeInterval, gameData: GameData, gameType: GameType, tiles: [String?], rows: Int, columns: Int) {
         assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
         assert(tiles.count == rows * columns, "Number of tiles should equal numRows * numColumns")
         assert(gameData.phrases.map { $0.chinese.count }.isAllSame, "Phrases are not of equal length")
@@ -79,6 +82,7 @@ class GridViewModel: GridViewModelProtocol {
         }
 
         self.gameData = gameData
+        self.gameType = gameType
         gridData = TextGrid(fromInitialGrid: grid)
 
         timer = CountDownTimer(totalTimeAllowed: time)
@@ -108,8 +112,35 @@ class GridViewModel: GridViewModelProtocol {
         }
     }
 
-    /// Returns true if and only if the given line is valid. To be overriden.
+    /// Returns true if and only if the given line is valid.
+    /// By default, this means that the characters concatenated from the coordinates are in the database.
+    /// For cihui, the row/column contains the cihui and the respective pinyin.
     func lineIsCorrect(_ line: [Coordinate]) -> Bool {
-        fatalError("Classes subclassing GridViewModel need to override lineIsCorrect")
+        let gameType: GameType = self.gameType
+        switch gameType {
+        case .ciHui:
+            let firstHalfCoordinates = Array(line[0..<(line.count / 2)])
+            let secondHalfCoordinates = Array(line[(line.count / 2)..<line.count])
+
+            let possibleArrangements = [
+                (firstHalfCoordinates, secondHalfCoordinates),
+                (secondHalfCoordinates, firstHalfCoordinates)
+            ]
+            for (first, second) in possibleArrangements {
+                if let text = gridData.getConcatenatedTexts(at: first),
+                    let phrase = gameData.phrases.first(whereChinese: text),
+                    let pinyin = gridData.getTexts(at: second),
+                    phrase.pinyin == pinyin {
+                    return true
+                }
+            }
+            return false
+        default:
+            guard let text = gridData.getConcatenatedTexts(at: line),
+                  gameData.phrases.contains(chinese: text) else {
+                return false
+            }
+            return true
+        }
     }
 }
