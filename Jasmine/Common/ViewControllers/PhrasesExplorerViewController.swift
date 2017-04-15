@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class PhrasesExplorerViewController: UIViewController {
+class PhrasesExplorerViewController: JasmineViewController {
 
     @IBOutlet private var explorerNavigationItem: UINavigationItem!
     @IBOutlet private var phrasesTableView: UIView!
