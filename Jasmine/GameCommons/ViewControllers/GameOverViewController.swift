@@ -61,7 +61,7 @@ class GameOverViewController: JasmineViewController {
     /// Dismisses this view controller, and the previous game view controller.
     override func onDismissPressed() {
         self.presentingViewController?.presentingViewController?
-            .dismiss(animated: true, completion: nil)
+            .dismiss(animated: true)
     }
 
     // MARK: - Helper Methods

@@ -1,27 +1,35 @@
 class LevelDesignerViewModel {
 
-    /// The levels data to add to or update. To be set by LevelSelectionViewController
+    /// The levels data to add to or update
     private let levels: Levels
-    /// The level under edit. To be set by LevelSelectionViewController
-    private let levelInEdit: Level?
+    /// The level under edit and whether it should be cloned
+    private let levelInEdit: (level: Level, cloneLevel: Bool)?
 
     /// Returns a GameInfo object representing the levelInEdit data to display on VC
     var levelInEditInfo: GameInfo? {
         guard let levelInEdit = levelInEdit else {
             return nil
         }
-        return GameInfo.from(level: levelInEdit)
+        return GameInfo.from(level: levelInEdit.level)
     }
 
     /// Stores the phrases for each game type,
     /// so that selected phrases are not lost when the user switches game type 
     var selectedPhrases: [GameType: Set<Phrase>] = [:]
 
-    init(levels: Levels, levelToEdit: Level? = nil) {
+    /// Initialize the VM with levels and optionally info for a selected level.
+    /// An optional tuple is chosen over overloading 
+    /// as it allows `selectedLevel` and `cloneLevel` to be `let` constants
+    ///
+    /// - Parameters:
+    ///   - levels: levels model to manage the stored levels
+    ///   - selectedLevelInfo: a tuple containing the selected level 
+    ///                        and whether the level should be cloned or replaced on save.
+    init(levels: Levels, selectedLevelInfo: (level: Level, cloneLevel: Bool)? = nil) {
         self.levels = levels
-        self.levelInEdit = levelToEdit
-        if let levelToEdit = levelToEdit {
-            self.selectedPhrases[levelToEdit.gameType] = Set(levelToEdit.phrases)
+        levelInEdit = selectedLevelInfo
+        if let levelInEdit = levelInEdit {
+            selectedPhrases[levelInEdit.level.gameType] = Set(levelInEdit.level.phrases)
         }
     }
 
@@ -55,8 +63,9 @@ class LevelDesignerViewModel {
     ///   - gameMode: game mode of the level
     /// - Throws: error if failed to save
     func saveLevel(name: String?, gameType: GameType, gameMode: GameMode) throws {
-        if let levelInEdit = levelInEdit {
-            try levels.deleteLevel(levelInEdit)
+        if let levelInEdit = levelInEdit,
+           !levelInEdit.cloneLevel {
+            try levels.deleteLevel(levelInEdit.level)
         }
         try levels.addCustomLevel(name: name, gameType: gameType, gameMode: gameMode,
                                   phrases: selectedPhrases[gameType] ?? [])

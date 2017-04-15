@@ -113,7 +113,7 @@ class SquareGridViewController: UICollectionViewController {
 
     /// Readjusts layout (such as cell size) upon auto-rotate.
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        gridCollectionView.performBatchUpdates(gridCollectionView.reloadData, completion: nil)
+        gridCollectionView.performBatchUpdates(gridCollectionView.reloadData)
     }
 
     // MARK: - Segue Methods
