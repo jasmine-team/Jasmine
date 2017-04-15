@@ -7,6 +7,13 @@ class TetrisGameViewModel {
     weak var timeDelegate: TimeUpdateDelegate?
     weak var gameStatusDelegate: GameStatusUpdateDelegate?
 
+    var gameTitle: String {
+        fatalError("Game title not overriden")
+    }
+    var gameInstruction: String {
+        fatalError("Game instruction not overriden")
+    }
+
     /// Provides a list of phrases that is being tested in this game.
     private(set) var phrasesTested: Set<Phrase> = []
 
@@ -30,7 +37,7 @@ class TetrisGameViewModel {
     fileprivate(set) var upcomingTiles: [String] = []
     fileprivate(set) var fallingTileText: String!
 
-    private let gameData: GameData
+    let gameData: GameData
 
     /// Returns the length of a phrase in phrases from game data
     private var phraseLength: Int {
@@ -297,15 +304,5 @@ extension TetrisGameViewModel: TimeDescriptorProtocol {
 
     var totalTimeAllowed: TimeInterval {
         return timer.totalTimeAllowed
-    }
-}
-
-extension TetrisGameViewModel: GameDescriptorProtocol {
-    // TODO : should be set from gameData instead
-    var gameTitle: String {
-        return GameConstants.Tetris.gameTitle
-    }
-    var gameInstruction: String {
-        return GameConstants.Tetris.gameInstruction
     }
 }

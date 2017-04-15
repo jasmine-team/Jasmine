@@ -1,6 +1,14 @@
 import Foundation
 
 class ChengYuSlidingViewModel: BaseSlidingViewModel {
+
+    override var gameTitle: String {
+        return String(format: GameConstants.Sliding.ChengYu.gameTitle, gameData.name)
+    }
+    override var gameInstruction: String {
+        return GameConstants.Sliding.ChengYu.gameInstruction
+    }
+
     /// Initializes the game
     ///
     /// - Parameters:
@@ -16,9 +24,6 @@ class ChengYuSlidingViewModel: BaseSlidingViewModel {
 
         super.init(time: time, gameData: gameData, gameType: .chengYu,
                    tiles: tilesExceptLast, rows: rows, columns: GameConstants.Sliding.columns)
-
-        gameTitle = GameConstants.Sliding.ChengYu.gameTitle
-        gameInstruction = GameConstants.Sliding.ChengYu.gameInstruction
 
         var validPhrases = phrases
         validPhrases.removeLast()
