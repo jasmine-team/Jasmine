@@ -17,7 +17,7 @@
                 <viewControllerPlaceholder storyboardName="GameElements" referencedIdentifier="SimpleStartGameViewController" id="Leh-3h-TI8" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m4B-xW-XgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="16" y="482"/>
+            <point key="canvasLocation" x="351" y="644"/>
         </scene>
         <!--Sliding Game View Controller-->
         <scene sceneID="WBw-hF-Yq1">
@@ -73,9 +73,6 @@
                                     <navigationItem title="Sliding Game Title" id="yBU-LY-YCc">
                                         <barButtonItem key="leftBarButtonItem" title="BACK" width="35" id="46u-oQ-3zi">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="onBackPressed:" destination="39S-vZ-Zyw" id="BtU-R3-TVc"/>
-                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -152,7 +149,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZy-Kl-Yeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="700" y="391"/>
+            <point key="canvasLocation" x="734" y="424"/>
         </scene>
     </scenes>
 </document>

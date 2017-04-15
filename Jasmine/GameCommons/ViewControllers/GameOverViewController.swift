@@ -1,8 +1,10 @@
 import UIKit
 
-class GameOverViewController: UIViewController {
+class GameOverViewController: JasmineViewController {
 
     // MARK: - Constants
+    private static let viewTitle = "Game Results"
+
     private static let tileSpace: CGFloat = 8.0
     private static let tileSize = CGSize(width: 232, height: 80)
     private static let segueToPhraseView = "PhraseViewController"
@@ -19,11 +21,8 @@ class GameOverViewController: UIViewController {
     fileprivate var gameDesriptor: GameDescriptorProtocol!
 
     fileprivate var displayedPhases: [Phrase]!
-    private var selectedPhrase: Phrase!
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+    private var selectedPhrase: Phrase!
 
     // MARK: - Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -52,11 +51,15 @@ class GameOverViewController: UIViewController {
     // MARK: - View Controller Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.setLayout(navigationBar: navigationBar,
+                        withTitle: GameOverViewController.viewTitle)
+
         loadGameDescriptionsToUi()
     }
 
+    // MARK: - Override methods
     /// Dismisses this view controller, and the previous game view controller.
-    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
+    override func onDismissPressed() {
         self.presentingViewController?.presentingViewController?
             .dismiss(animated: true, completion: nil)
     }
