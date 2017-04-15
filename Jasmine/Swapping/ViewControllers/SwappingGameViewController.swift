@@ -87,7 +87,7 @@ class SwappingGameViewController: UIViewController {
 
     /// Quit this screen when the back button is pressed.
     @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 
     // MARK: Theming

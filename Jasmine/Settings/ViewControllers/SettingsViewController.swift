@@ -29,7 +29,7 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
 
     /// If user is signed in, display instruction to sign out.
