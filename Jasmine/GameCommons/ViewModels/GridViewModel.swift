@@ -69,6 +69,7 @@ class GridViewModel: GridViewModelProtocol {
     init(time: TimeInterval, gameData: GameData, tiles: [String?], rows: Int, columns: Int) {
         assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
         assert(tiles.count == rows * columns, "Number of tiles should equal numRows * numColumns")
+        assert(gameData.phrases.map { $0.chinese.count }.isAllSame, "Phrases are not of equal length")
 
         let shuffledTiles = tiles.shuffled()
         let grid = (0..<rows).map { row in
