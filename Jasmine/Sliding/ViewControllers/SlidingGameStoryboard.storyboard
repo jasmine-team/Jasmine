@@ -73,9 +73,6 @@
                                     <navigationItem title="Sliding Game Title" id="yBU-LY-YCc">
                                         <barButtonItem key="leftBarButtonItem" title="BACK" width="35" id="46u-oQ-3zi">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="onBackPressed:" destination="39S-vZ-Zyw" id="BtU-R3-TVc"/>
-                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>

@@ -3,13 +3,6 @@ import UIKit
 /// View Controller implementation for Swapping Game.
 class SwappingGameViewController: BaseGridGameViewController {
 
-    // MARK: - Constants
-    fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
-
-    fileprivate static let segueDelay = 0.5
-
-    fileprivate static let highlightDelay = 0.3
-
     // MARK: Layouts
     fileprivate var squareGridViewController: DraggableSquareGridViewController!
 
@@ -38,6 +31,13 @@ class SwappingGameViewController: BaseGridGameViewController {
         self.viewModel = viewModel
     }
 
+    // MARK: View Controller Lifecycle
+    /// Loads this current view and set the appropriate layout in the super views.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        super.setLayout(navigationBar: navigationBar)
+    }
+
     // MARK: - Gesture Recognisers and Listeners
     /// Listens to a drag gesture and handles the operation of dragging a tile, and dropping it
     /// to another location.
@@ -60,11 +60,6 @@ class SwappingGameViewController: BaseGridGameViewController {
         default:
             handleTileFailedLanding()
         }
-    }
-
-    /// Quit this screen when the back button is pressed.
-    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
     }
 }
 

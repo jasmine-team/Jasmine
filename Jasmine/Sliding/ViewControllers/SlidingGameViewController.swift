@@ -31,12 +31,14 @@ class SlidingGameViewController: BaseGridGameViewController {
         self.viewModel = viewModel
     }
 
-    // MARK: Gestures and Listeners
-    /// Dismisses this current screen when "Back" button is pressed.
-    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+    // MARK: View Controller Lifecycle
+    /// Loads this current view and set the appropriate layout in the super views.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        super.setLayout(navigationBar: navigationBar)
     }
 
+    // MARK: Gestures and Listeners
     /// Handles the gesture where the user drags the tile to an empty slot.
     @IBAction private func onTilesDragged(_ sender: UIPanGestureRecognizer) {
         guard viewModel.gameStatus == .inProgress else {

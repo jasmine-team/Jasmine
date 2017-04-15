@@ -30,8 +30,9 @@ class TetrisGameViewController: BaseGameViewController {
     // MARK: View Controller Lifecycles
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setFirstUpcomingTileStyle()
+        super.setLayout(navigationBar: navigationBar)
 
+        setFirstUpcomingTileStyle()
         if viewModel.gameStatus == .notStarted {
             releaseNewTile()
         }
