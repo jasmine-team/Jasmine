@@ -1,13 +1,9 @@
 import UIKit
 
 /// View Controller implementation for Sliding Grid Game.
-class SlidingGameViewController: UIViewController {
+class SlidingGameViewController: BaseGameViewController {
 
     // MARK: - Constants
-    fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
-
-    fileprivate static let segueDelay = 0.5
-
     fileprivate static let highlightDelay = 0.2
 
     // MARK: - Layouts
@@ -186,28 +182,6 @@ fileprivate extension SlidingGameViewController {
         let westX = getCenter(from: destination[.westwards]).x
 
         return CGRect(minX: westX, maxX: eastX, minY: northY, maxY: southY)
-    }
-}
-
-// MARK: - Game Status
-extension SlidingGameViewController: GameStatusUpdateDelegate {
-
-    /// Tells the implementor of the delegate that the game status has been updated.
-    func gameStatusDidUpdate() {
-        guard viewModel.gameStatus.hasGameEnded else {
-            return
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + SlidingGameViewController.segueDelay) {
-            self.performSegue(withIdentifier: SlidingGameViewController.segueToGameOverView,
-                              sender: nil)
-        }
-    }
-
-    fileprivate func startGameIfPossible() {
-        guard viewModel.gameStatus == .notStarted else {
-            return
-        }
-        viewModel.startGame()
     }
 }
 

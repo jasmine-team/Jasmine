@@ -1,7 +1,7 @@
 import UIKit
 
 /// View Controller implementation for Swapping Game.
-class SwappingGameViewController: UIViewController {
+class SwappingGameViewController: BaseGameViewController {
 
     // MARK: - Constants
     fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
@@ -56,6 +56,8 @@ class SwappingGameViewController: UIViewController {
     ///
     /// - Parameter viewModel: the game engine required to play this game.
     func segueWith(_ viewModel: SwappingViewModelProtocol) {
+        super.segueWith(viewModel)
+
         self.viewModel = viewModel
         self.viewModel.gameStatusDelegate = self
         self.viewModel.highlightedDelegate = self
@@ -91,10 +93,6 @@ class SwappingGameViewController: UIViewController {
     }
 
     // MARK: Theming
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
     private func setTheme() {
         navigationBar.backgroundColor = Constants.Theme.mainColorDark
     }
@@ -185,28 +183,6 @@ fileprivate extension SwappingGameViewController {
         squareGridViewController.snapDetachedTile(endingView, toCoordinate: startingCoord) {
             self.squareGridViewController.reattachDetachedTile(endingView)
         }
-    }
-}
-
-// MARK: - Game Status
-extension SwappingGameViewController: GameStatusUpdateDelegate {
-
-    /// Tells the implementor of the delegate that the game status has been updated.
-    func gameStatusDidUpdate() {
-        guard viewModel.gameStatus.hasGameEnded else {
-            return
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + SwappingGameViewController.segueDelay) {
-            self.performSegue(withIdentifier: SwappingGameViewController.segueToGameOverView,
-                              sender: nil)
-        }
-    }
-
-    fileprivate func startGameIfPossible() {
-        guard viewModel.gameStatus == .notStarted else {
-            return
-        }
-        viewModel.startGame()
     }
 }
 

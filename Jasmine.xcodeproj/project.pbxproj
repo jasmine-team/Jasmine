@@ -168,6 +168,8 @@
 		DFE111521E98BE4000F8860E /* AVAudioPlayer+ExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE111511E98BE4000F8860E /* AVAudioPlayer+ExtensionsTest.swift */; };
 		DFE111541E99133F00F8860E /* FallingFlowersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE111531E99133F00F8860E /* FallingFlowersViewController.swift */; };
 		DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */; };
+		DFE85F731EA26DC7007C44C4 /* JasmineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE85F721EA26DC7007C44C4 /* JasmineViewController.swift */; };
+		DFE85F751EA26EC1007C44C4 /* BaseGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE85F741EA26EC1007C44C4 /* BaseGameViewController.swift */; };
 		DFF45A7A1E99E41000DFD3D9 /* PhrasesExplorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF45A791E99E41000DFD3D9 /* PhrasesExplorerViewController.swift */; };
 		DFF45A7C1E99E41700DFD3D9 /* PhrasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF45A7B1E99E41700DFD3D9 /* PhrasesTableViewController.swift */; };
 		DFF45A7E1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF45A7D1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift */; };
@@ -353,6 +355,8 @@
 		DFE111511E98BE4000F8860E /* AVAudioPlayer+ExtensionsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+ExtensionsTest.swift"; sourceTree = "<group>"; };
 		DFE111531E99133F00F8860E /* FallingFlowersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FallingFlowersViewController.swift; sourceTree = "<group>"; };
 		DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
+		DFE85F721EA26DC7007C44C4 /* JasmineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JasmineViewController.swift; sourceTree = "<group>"; };
+		DFE85F741EA26EC1007C44C4 /* BaseGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGameViewController.swift; sourceTree = "<group>"; };
 		DFF45A791E99E41000DFD3D9 /* PhrasesExplorerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesExplorerViewController.swift; sourceTree = "<group>"; };
 		DFF45A7B1E99E41700DFD3D9 /* PhrasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesTableViewController.swift; sourceTree = "<group>"; };
 		DFF45A7D1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesExplorerViewModel.swift; sourceTree = "<group>"; };
@@ -969,6 +973,7 @@
 				DFF45A791E99E41000DFD3D9 /* PhrasesExplorerViewController.swift */,
 				DF76B0B31E9D18C400BCC751 /* PhrasesSelectionTableViewController.swift */,
 				DFF45A7B1E99E41700DFD3D9 /* PhrasesTableViewController.swift */,
+				DFE85F721EA26DC7007C44C4 /* JasmineViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -991,6 +996,7 @@
 				DF2321551E961A6900417ED2 /* GameOverViewController.swift */,
 				DFBE8F6A1E9527F70036CCC6 /* GameStatisticsViewController.swift */,
 				DFA8B69A1E9899A4002D81CF /* SimpleStartGameViewController.swift */,
+				DFE85F741EA26EC1007C44C4 /* BaseGameViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1328,6 +1334,7 @@
 				50989DDD1E6D8B16009A86C8 /* GameData.swift in Sources */,
 				DF409FDB1E84145800389976 /* UIApplication+isFirstLaunch.swift in Sources */,
 				DF7CF7801E7E9EED00C6979A /* SquareTileViewCell.swift in Sources */,
+				DFE85F731EA26DC7007C44C4 /* JasmineViewController.swift in Sources */,
 				DFBE8F731E9527F70036CCC6 /* GameStatusUpdateDelegate.swift in Sources */,
 				506473481E9DF0E500ACB183 /* LevelSelectorViewModel.swift in Sources */,
 				DF76B0AC1E9D185800BCC751 /* RandomGenerator.swift in Sources */,
@@ -1346,6 +1353,7 @@
 				502A29651E925A190024336A /* Array+Equatable.swift in Sources */,
 				507AC1951E90AAB00033B4E6 /* TetrisGameViewModel.swift in Sources */,
 				DFBE8F781E9527F70036CCC6 /* GameStatisticsViewController.swift in Sources */,
+				DFE85F751EA26EC1007C44C4 /* BaseGameViewController.swift in Sources */,
 				5023AF321E9D0A8F00C7BFA6 /* LevelImportViewModel.swift in Sources */,
 				DF40F9E21E9676C1001EAAA8 /* LevelResult.swift in Sources */,
 				DF9918D61E92B6A3004E599B /* CiHuiSwappingViewModel.swift in Sources */,

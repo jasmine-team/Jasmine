@@ -1,14 +1,10 @@
 import UIKit
 
 /// View Controller implementation for Tetris Game.
-class TetrisGameViewController: UIViewController {
+class TetrisGameViewController: BaseGameViewController {
 
     // MARK: - Constants
     private static let cellSpace: CGFloat = 2.0
-
-    fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
-
-    fileprivate static let segueDelay = 0.5
 
     /// Denotes the delay in animation between explosion and falling.
     fileprivate static let animationDelay = 0.5
@@ -292,26 +288,23 @@ extension TetrisGameViewController {
 }
 
 // MARK: - Game Status
-extension TetrisGameViewController: GameStatusUpdateDelegate {
+extension TetrisGameViewController {
 
     /// Tells the implementor of the delegate that the game status has been updated.
-    func gameStatusDidUpdate() {
+    override func gameStatusDidUpdate() {
         guard viewModel.gameStatus.hasGameEnded else {
             return
         }
-
+        super.gameStatusDidUpdate()
         tetrisGameAreaView.pauseFallingTiles()
-        DispatchQueue.main.asyncAfter(deadline: .now() + TetrisGameViewController.segueDelay) {
-            self.performSegue(withIdentifier: TetrisGameViewController.segueToGameOverView,
-                              sender: nil)
-        }
     }
 
-    fileprivate func startGameIfPossible() {
+    /// Starts the game if the game status is not started.
+    override func startGameIfPossible() {
         guard viewModel.gameStatus == .notStarted else {
             return
         }
-        viewModel.startGame()
+        super.startGameIfPossible()
         tetrisGameAreaView.startFallingTiles(with: GameConstants.Tetris.tileFallInterval)
     }
 }
