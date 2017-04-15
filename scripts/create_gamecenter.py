@@ -2,7 +2,7 @@
 This script reads levels.csv and outputs a leaderboards format suitable for upload
 """
 import csv
-from pathlib import Path, PurePath
+from pathlib import Path
 
 # scripts folder
 PWD = Path(__file__).parent
@@ -44,19 +44,55 @@ def fill_header(leaderboards):
                 <game_center>
                     <achievements>
                         <achievement position="1">
-                            <achievement_id>test.first</achievement_id>
-                            <reference_name>First Game \o/</reference_name>
-                            <points>1</points>
+                            <achievement_id>combined.playcount.bronze</achievement_id>
+                            <reference_name>Total Playcount (10)</reference_name>
+                            <points>10</points>
                             <hidden>false</hidden>
                             <locales>
                                 <locale name="en-US">
-                                    <title>First Game Played</title>
-                                    <before_earned_description>Try it~</before_earned_description>
-                                    <after_earned_description>Welcome to Jasmine!</after_earned_description>
+                                    <title>Total Playcount</title>
+                                    <before_earned_description>Play 10 games</before_earned_description>
+                                    <after_earned_description>10 games, addicted yet?</after_earned_description>
                                     <achievement_after_earned_image>
-                                        <size>76443</size>
-                                        <file_name>test.png</file_name>
-                                        <checksum type="md5">f5246f93bb957b7b004aa42c91133f38</checksum>
+                                        <size>100071</size>
+                                        <file_name>flower-blue.png</file_name>
+                                        <checksum type="md5">58740aed62f57b7721da2089f7030d68</checksum>
+                                    </achievement_after_earned_image>
+                                </locale>
+                            </locales>
+                        </achievement>
+                        <achievement position="2">
+                            <achievement_id>combined.playcount.silver</achievement_id>
+                            <reference_name>Total Playcount (100)</reference_name>
+                            <points>20</points>
+                            <hidden>true</hidden>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Total Playcount</title>
+                                    <before_earned_description>Play 100 games</before_earned_description>
+                                    <after_earned_description>100 games, nice!</after_earned_description>
+                                    <achievement_after_earned_image>
+                                        <size>91814</size>
+                                        <file_name>flower-purple.png</file_name>
+                                        <checksum type="md5">aa5984b97fb472dc11fdc7a6f75c07e7</checksum>
+                                    </achievement_after_earned_image>
+                                </locale>
+                            </locales>
+                        </achievement>
+                        <achievement position="3">
+                            <achievement_id>combined.playcount.gold</achievement_id>
+                            <reference_name>Total Playcount (1000)</reference_name>
+                            <points>40</points>
+                            <hidden>true</hidden>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Total Playcount</title>
+                                    <before_earned_description>Play 1000 games</before_earned_description>
+                                    <after_earned_description>1000 games, a true master!</after_earned_description>
+                                    <achievement_after_earned_image>
+                                        <size>99257</size>
+                                        <file_name>flower-gold.png</file_name>
+                                        <checksum type="md5">f70b6fb950514333e2a4968b4cde1358</checksum>
                                     </achievement_after_earned_image>
                                 </locale>
                             </locales>
@@ -64,14 +100,12 @@ def fill_header(leaderboards):
                     </achievements>
                     <leaderboards>
                         <leaderboard default="true" position="1">
-                            <leaderboard_id>single.leaderboard.1</leaderboard_id>
-                            <reference_name>Leaderboard 1</reference_name>
+                            <leaderboard_id>combined.all</leaderboard_id>
+                            <reference_name>Total Scores</reference_name>
                             <sort_ascending>false</sort_ascending>
-                            <score_range_min>0</score_range_min>
-                            <score_range_max>1000000</score_range_max>
                             <locales>
                                 <locale name="en-US">
-                                    <title>Me, Family and Friends</title>
+                                    <title>Total Scores</title>
                                     <formatter_suffix>points</formatter_suffix>
                                     <formatter_suffix_singular>point</formatter_suffix_singular>
                                     <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
@@ -89,9 +123,10 @@ def fill_header(leaderboards):
 def fill_leaderboard(pos, level):
     """Takes in a level and creates a xml config"""
     return '''\
-                        <leaderboard position="{pos}">
+                        <leaderboard position="{index}">
                             <leaderboard_id>single.leaderboard.{pos}</leaderboard_id>
                             <reference_name>Leaderboard {pos}</reference_name>
+                            <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
                             <sort_ascending>false</sort_ascending>
                             <score_range_min>0</score_range_min>
                             <score_range_max>1000000</score_range_max>
@@ -104,7 +139,7 @@ def fill_leaderboard(pos, level):
                                 </locale>
                             </locales>
                         </leaderboard>
-    '''.format(pos=pos + 2, level=level).rstrip()
+    '''.format(index=pos + 2, pos=pos + 1, level=level).rstrip()
 
 def create_metadata():
     """Reads csv and inputs new game center data into it"""
