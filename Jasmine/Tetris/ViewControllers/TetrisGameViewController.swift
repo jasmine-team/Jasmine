@@ -31,8 +31,6 @@ class TetrisGameViewController: BaseGameViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setFirstUpcomingTileStyle()
-        setGameDescriptions()
-        setTheme()
 
         if viewModel.gameStatus == .notStarted {
             releaseNewTile()
@@ -41,24 +39,15 @@ class TetrisGameViewController: BaseGameViewController {
 
     // MARK: Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
         if let tetrisGridView = segue.destination as? DiscreteFallableSquareGridViewController {
             self.tetrisGameAreaView = tetrisGridView
             helperSegueIntoTetrisGridView()
 
         } else if let upcomingView = segue.destination as? SquareGridViewController {
-            upcomingView.segueWith(upcomingTiles)
             self.tetrisUpcomingTilesView = upcomingView
-
-        } else if let statisticsView = segue.destination as? GameStatisticsViewController {
-            statisticsView.segueWith(time: viewModel, score: viewModel)
-            self.gameStatisticsView = statisticsView
-
-        } else if let gameOverView = segue.destination as? GameOverViewController {
-            gameOverView.segueWith(viewModel)
-
-        } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
-            self.gameStartView = gameStartView
-            gameStartView.segueWith(viewModel, onScreenDismissed: startGameIfPossible)
+            self.tetrisUpcomingTilesView.segueWith(upcomingTiles)
         }
     }
 
@@ -82,8 +71,8 @@ class TetrisGameViewController: BaseGameViewController {
     ///
     /// - Parameter viewModel: the game engine required to play this game.
     func segueWith(_ viewModel: TetrisGameViewModelProtocol) {
+        super.segueWith(viewModel)
         self.viewModel = viewModel
-        self.viewModel.gameStatusDelegate = self
     }
 
     // MARK: Gestures and Listeners
@@ -209,18 +198,6 @@ class TetrisGameViewController: BaseGameViewController {
             tile.shouldHighlight = true
         }
     }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
-    private func setTheme() {
-        navigationBar.backgroundColor = Constants.Theme.mainColorDark
-    }
-
-    private func setGameDescriptions() {
-        navigationBar.topItem?.title = viewModel.gameTitle
-    }
 }
 
 extension TetrisGameViewController {
@@ -287,7 +264,7 @@ extension TetrisGameViewController {
     }
 }
 
-// MARK: - Game Status
+// MARK: - Game Status Override
 extension TetrisGameViewController {
 
     /// Tells the implementor of the delegate that the game status has been updated.

@@ -1,27 +1,24 @@
-//
-//  JasmineViewController.swift
-//  Jasmine
-//
-//  Created by Xien Dong on 15/4/17.
-//  Copyright © 2017 nus.cs3217. All rights reserved.
-//
-
 import UIKit
 
+/// The base view controller class that contains a navigation bar.
 class JasmineViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: Layouts
+    fileprivate var navigationBar: UINavigationBar!
 
-        // Do any additional setup after loading the view.
+    // MARK: Layout Setters
+    func setLayout(navigationBar: UINavigationBar, withTitle title: String?) {
+        self.navigationBar = navigationBar
+        self.navigationBar.topItem?.title = title
+        setThemeForNavigationBar()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: Theme
+    func setThemeForNavigationBar() {
+        self.navigationBar.backgroundColor = Constants.Theme.mainColorDark
+        self.navigationBar.isTranslucent = false
     }
 
-    // MARK: Default Styling
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }

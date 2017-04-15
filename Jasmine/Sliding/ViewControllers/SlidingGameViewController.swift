@@ -7,11 +7,7 @@ class SlidingGameViewController: BaseGameViewController {
     fileprivate static let highlightDelay = 0.2
 
     // MARK: - Layouts
-    fileprivate var gameStatisticsView: GameStatisticsViewController!
-
     fileprivate var slidingGridView: DraggableSquareGridViewController!
-
-    fileprivate var gameStartView: SimpleStartGameViewController!
 
     @IBOutlet fileprivate weak var navigationBar: UINavigationBar!
 
@@ -23,36 +19,21 @@ class SlidingGameViewController: BaseGameViewController {
 
     // MARK: - Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
         if let slidingGridView = segue.destination as? DraggableSquareGridViewController {
-            slidingGridView.segueWith(viewModel.gridData)
             self.slidingGridView = slidingGridView
-
-        } else if let gameStatisticsView = segue.destination as? GameStatisticsViewController {
-            gameStatisticsView.segueWith(time: viewModel, score: viewModel)
-            self.gameStatisticsView = gameStatisticsView
-
-        } else if let gameOverView = segue.destination as? GameOverViewController {
-            gameOverView.segueWith(viewModel)
-
-        } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
-            self.gameStartView = gameStartView
-            gameStartView.segueWith(viewModel, onScreenDismissed: startGameIfPossible)
+            self.slidingGridView.segueWith(viewModel.gridData)
         }
-    }
-
-    // MARK: - View Controller Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setTheme()
-        setGameDescriptions()
     }
 
     /// Injects the required data before opening this view.
     ///
     /// - Parameter viewModel: the view model of this class.
     func segueWith(_ viewModel: SlidingViewModelProtocol) {
+        super.segueWith(viewModel)
+
         self.viewModel = viewModel
-        self.viewModel.gameStatusDelegate = self
         self.viewModel.highlightedDelegate = self
     }
 
@@ -79,19 +60,6 @@ class SlidingGameViewController: BaseGameViewController {
         default:
             break
         }
-    }
-
-    // MARK: Theming
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
-    private func setTheme() {
-        navigationBar.backgroundColor = Constants.Theme.mainColorDark
-    }
-
-    private func setGameDescriptions() {
-        navigationBar.topItem?.title = viewModel.gameTitle
     }
 }
 

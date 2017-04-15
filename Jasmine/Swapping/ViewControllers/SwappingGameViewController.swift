@@ -13,42 +13,21 @@ class SwappingGameViewController: BaseGameViewController {
     // MARK: Layouts
     fileprivate var squareGridViewController: DraggableSquareGridViewController!
 
-    fileprivate var statisticsViewController: GameStatisticsViewController!
-
     @IBOutlet private weak var navigationBar: UINavigationBar!
-
-    fileprivate var gameStartView: SimpleStartGameViewController!
 
     fileprivate var draggingTile: (view: SquareTileView, originalCoord: Coordinate)?
 
     // MARK: Game Properties
     fileprivate var viewModel: SwappingViewModelProtocol!
 
-    // MARK: View Controller Lifecycles
-    /// Set its theme after the view controller `viewDidLoad` is called.
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setTheme()
-        setGameDescriptions()
-    }
-
     // MARK: Segue methods
     /// Method that manages the seguing to other view controllers from this view controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
         if let squareSwappingView = segue.destination as? DraggableSquareGridViewController {
             squareSwappingView.segueWith(viewModel.gridData)
             self.squareGridViewController = squareSwappingView
-
-        } else if let statisticsView = segue.destination as? GameStatisticsViewController {
-            statisticsView.segueWith(time: viewModel, score: viewModel)
-            self.statisticsViewController = statisticsView
-
-        } else if let gameOverView = segue.destination as? GameOverViewController {
-            gameOverView.segueWith(viewModel)
-
-        } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
-            self.gameStartView = gameStartView
-            gameStartView.segueWith(viewModel, onScreenDismissed: startGameIfPossible)
         }
     }
 
@@ -59,7 +38,6 @@ class SwappingGameViewController: BaseGameViewController {
         super.segueWith(viewModel)
 
         self.viewModel = viewModel
-        self.viewModel.gameStatusDelegate = self
         self.viewModel.highlightedDelegate = self
     }
 
@@ -90,15 +68,6 @@ class SwappingGameViewController: BaseGameViewController {
     /// Quit this screen when the back button is pressed.
     @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
-    }
-
-    // MARK: Theming
-    private func setTheme() {
-        navigationBar.backgroundColor = Constants.Theme.mainColorDark
-    }
-
-    private func setGameDescriptions() {
-        navigationBar.topItem?.title = viewModel.gameTitle
     }
 }
 
