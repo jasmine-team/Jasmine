@@ -1,54 +1,25 @@
 import UIKit
 
 /// View Controller implementation for Swapping Game.
-class SwappingGameViewController: UIViewController {
-
-    // MARK: - Constants
-    fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
-
-    fileprivate static let segueDelay = 0.5
-
-    fileprivate static let highlightDelay = 0.3
+class SwappingGameViewController: BaseGridGameViewController {
 
     // MARK: Layouts
     fileprivate var squareGridViewController: DraggableSquareGridViewController!
 
-    fileprivate var statisticsViewController: GameStatisticsViewController!
-
     @IBOutlet private weak var navigationBar: UINavigationBar!
-
-    fileprivate var gameStartView: SimpleStartGameViewController!
 
     fileprivate var draggingTile: (view: SquareTileView, originalCoord: Coordinate)?
 
     // MARK: Game Properties
     fileprivate var viewModel: SwappingViewModelProtocol!
 
-    // MARK: View Controller Lifecycles
-    /// Set its theme after the view controller `viewDidLoad` is called.
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setTheme()
-        setGameDescriptions()
-    }
-
     // MARK: Segue methods
     /// Method that manages the seguing to other view controllers from this view controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
         if let squareSwappingView = segue.destination as? DraggableSquareGridViewController {
-            squareSwappingView.segueWith(viewModel.gridData)
             self.squareGridViewController = squareSwappingView
-
-        } else if let statisticsView = segue.destination as? GameStatisticsViewController {
-            statisticsView.segueWith(time: viewModel, score: viewModel)
-            self.statisticsViewController = statisticsView
-
-        } else if let gameOverView = segue.destination as? GameOverViewController {
-            gameOverView.segueWith(viewModel)
-
-        } else if let gameStartView = segue.destination as? SimpleStartGameViewController {
-            self.gameStartView = gameStartView
-            gameStartView.segueWith(viewModel, onScreenDismissed: startGameIfPossible)
         }
     }
 
@@ -56,9 +27,15 @@ class SwappingGameViewController: UIViewController {
     ///
     /// - Parameter viewModel: the game engine required to play this game.
     func segueWith(_ viewModel: SwappingViewModelProtocol) {
+        super.segueWith(viewModel)
         self.viewModel = viewModel
-        self.viewModel.gameStatusDelegate = self
-        self.viewModel.highlightedDelegate = self
+    }
+
+    // MARK: View Controller Lifecycle
+    /// Loads this current view and set the appropriate layout in the super views.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        super.setLayout(navigationBar: navigationBar)
     }
 
     // MARK: - Gesture Recognisers and Listeners
@@ -83,24 +60,6 @@ class SwappingGameViewController: UIViewController {
         default:
             handleTileFailedLanding()
         }
-    }
-
-    /// Quit this screen when the back button is pressed.
-    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
-
-    // MARK: Theming
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
-    private func setTheme() {
-        navigationBar.backgroundColor = Constants.Theme.mainColorDark
-    }
-
-    private func setGameDescriptions() {
-        navigationBar.topItem?.title = viewModel.gameTitle
     }
 }
 
@@ -184,44 +143,6 @@ fileprivate extension SwappingGameViewController {
         }
         squareGridViewController.snapDetachedTile(endingView, toCoordinate: startingCoord) {
             self.squareGridViewController.reattachDetachedTile(endingView)
-        }
-    }
-}
-
-// MARK: - Game Status
-extension SwappingGameViewController: GameStatusUpdateDelegate {
-
-    /// Tells the implementor of the delegate that the game status has been updated.
-    func gameStatusDidUpdate() {
-        guard viewModel.gameStatus.hasGameEnded else {
-            return
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + SwappingGameViewController.segueDelay) {
-            self.performSegue(withIdentifier: SwappingGameViewController.segueToGameOverView,
-                              sender: nil)
-        }
-    }
-
-    fileprivate func startGameIfPossible() {
-        guard viewModel.gameStatus == .notStarted else {
-            return
-        }
-        viewModel.startGame()
-    }
-}
-
-extension SwappingGameViewController: HighlightedUpdateDelegate {
-
-    /// Tells the implementor of the delegate that the highlighted coordinates have been changed.
-    func highlightedCoordinatesDidUpdate() {
-        let highlightedCoords = viewModel.highlightedCoordinates
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + SwappingGameViewController.highlightDelay) {
-            for coord in self.squareGridViewController.allCoordinates {
-                self.squareGridViewController.tileProperties[coord] = { tile in
-                    tile.shouldHighlight = highlightedCoords.contains(coord)
-                }
-            }
         }
     }
 }
