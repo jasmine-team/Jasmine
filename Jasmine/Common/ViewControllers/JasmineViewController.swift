@@ -1,6 +1,7 @@
 import UIKit
 
 /// The base view controller class that contains a navigation bar.
+/// - Note: to make use of the "BACK" button, requires a "BACK" button on the left bar button item.
 class JasmineViewController: UIViewController {
 
     // MARK: Constants
@@ -15,6 +16,7 @@ class JasmineViewController: UIViewController {
     fileprivate var navigationBar: UINavigationBar!
 
     // MARK: Layout Setters
+    /// Sets the navigation bar with a title, and the dismiss method.
     func setLayout(navigationBar: UINavigationBar, withTitle title: String?) {
         self.navigationBar = navigationBar
         self.navigationBar.topItem?.title = title
@@ -22,13 +24,14 @@ class JasmineViewController: UIViewController {
         setDismissButtonForNavigationBar()
     }
 
+    /// Dismiss this view controller when the "BACK" button is pressed on the nav bar.
     @objc
-    func dismissViewController() {
+    func onDismissPressed() {
         self.dismiss(animated: true)
     }
 
     // MARK: Helper Methods
-    func setThemeForNavigationBar() {
+    private func setThemeForNavigationBar() {
         self.navigationBar.backgroundColor = Constants.Theme.mainColorDark
         self.navigationBar.isTranslucent = false
     }
@@ -39,7 +42,7 @@ class JasmineViewController: UIViewController {
                 barItem.title == JasmineViewController.backLabel else {
                     return
             }
-            barItem.action = #selector(dismissViewController)
+            barItem.action = #selector(onDismissPressed)
         }
     }
 

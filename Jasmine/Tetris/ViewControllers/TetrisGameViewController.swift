@@ -77,11 +77,6 @@ class TetrisGameViewController: BaseGameViewController {
     }
 
     // MARK: Gestures and Listeners
-    /// Dismisses this view when the back button is pressed.
-    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
-    }
-
     /// Switches the content of the falling tile with the latest upcoming tile when any tile in the
     /// list of upcoming tile is tapped.
     @IBAction private func onUpcomingTilesTouched(_ sender: UITapGestureRecognizer) {
