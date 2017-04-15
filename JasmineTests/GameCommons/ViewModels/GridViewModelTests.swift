@@ -46,4 +46,30 @@ class GridViewModelTests: RealmTestCase {
                                    accuracy: 0.01, "Time remaining not correct")
         XCTAssertEqual(time, viewModel.totalTimeAllowed, "Total time allowed not correct")
     }
+
+    func testScoreDidUpdate() {
+        let time: TimeInterval = 3
+        let tiles = ["a", "b", "c", nil]
+
+        let viewModel = GridViewModel(time: time, gameData: gameData, gameType: .chengYu,
+                                      tiles: tiles, rows: 2, columns: 2)
+
+        let delegate = ScoreUpdateDelegateMock()
+        viewModel.scoreDelegate = delegate
+        viewModel.currentScore = 100
+        XCTAssertEqual(1, delegate.scoreUpdatedCount)
+    }
+
+    func testHighlightedDidUpdate() {
+        let time: TimeInterval = 3
+        let tiles = ["a", "b", "c", nil]
+
+        let viewModel = GridViewModel(time: time, gameData: gameData, gameType: .chengYu,
+                                      tiles: tiles, rows: 2, columns: 2)
+
+        let delegate = HighlightedUpdateDelegateMock()
+        viewModel.highlightedDelegate = delegate
+        viewModel.highlightedCoordinates = [Coordinate(row: 0, col: 0)]
+        XCTAssertEqual(1, delegate.highlightedUpdated)
+    }
 }
