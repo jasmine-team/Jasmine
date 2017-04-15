@@ -2,16 +2,18 @@
 This script reads levels.csv and outputs a leaderboards format suitable for upload
 """
 import csv
-from pathlib import Path
+from pathlib import Path, PurePath
 
+# scripts folder
+PWD = Path(__file__).parent
 # CSV file to read from
 CSV_FILE_NAME = 'Level.csv'
 # CSV file to read from
-XML_FILE_NAME = '1223383989.itmsp/metadata.xml'
+XML_FILE_NAME = 'metadata.xml'
 # CSV file path
-CSV_FILE_PATH = Path().parent.joinpath(CSV_FILE_NAME)
+CSV_FILE_PATH = PWD.parent.joinpath(CSV_FILE_NAME)
 # Write path
-XML_FILE_PATH = Path().joinpath(XML_FILE_NAME)
+XML_FILE_PATH = PWD.joinpath('1223383989.itmsp', XML_FILE_NAME)
 
 def fill_header(leaderboards):
     """Fills in xml config header"""
@@ -62,23 +64,22 @@ def fill_header(leaderboards):
                     </achievements>
                     <leaderboards>
                         <leaderboard default="true" position="1">
-                            <leaderboard_id>Total</leaderboard_id>
-                            <reference_name>Total Board</reference_name>
-                            <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
+                            <leaderboard_id>single.leaderboard.1</leaderboard_id>
+                            <reference_name>Leaderboard 1</reference_name>
                             <sort_ascending>false</sort_ascending>
                             <score_range_min>0</score_range_min>
-                            <score_range_max>1000000000</score_range_max>
+                            <score_range_max>1000000</score_range_max>
                             <locales>
                                 <locale name="en-US">
-                                    <title>Test</title>
-                                    <formatter_suffix>Points</formatter_suffix>
-                                    <formatter_suffix_singular>Point</formatter_suffix_singular>
+                                    <title>Me, Family and Friends</title>
+                                    <formatter_suffix>points</formatter_suffix>
+                                    <formatter_suffix_singular>point</formatter_suffix_singular>
                                     <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
                                 </locale>
                             </locales>
                         </leaderboard>
 {}
-                    <leaderboards>
+                    </leaderboards>
                 </game_center>
             </software_metadata>
         </software>
@@ -91,7 +92,6 @@ def fill_leaderboard(pos, level):
                         <leaderboard position="{pos}">
                             <leaderboard_id>single.leaderboard.{pos}</leaderboard_id>
                             <reference_name>Leaderboard {pos}</reference_name>
-                            <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
                             <sort_ascending>false</sort_ascending>
                             <score_range_min>0</score_range_min>
                             <score_range_max>1000000</score_range_max>

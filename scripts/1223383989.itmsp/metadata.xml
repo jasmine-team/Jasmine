@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <package version="software5.5" xmlns="http://apple.com/itunes/importer">
-    <!-- This document was generated on Apr 14, 2017 11:20:27 AM for riwu0730@gmail.com <riwu0730@gmail.com>. -->
+    <!-- This document was generated on Apr 14, 2017 12:00:29 PM for riwu0730@gmail.com <riwu0730@gmail.com>. -->
     <!-- NOTE: metadata_token is generated on lookup.  Modifying the value of this will result in an import error -->
-    <metadata_token>1492194026957-47ead9baf79b527e672638be0d9ff52ead3e3ad57ce500e089406fd61904a39e</metadata_token>
+    <metadata_token>1492196428808-556eed701062258c0794a82c52c0c0450779f330254cff2be640c887c84e6c76</metadata_token>
     <provider>QX6E2SX99X</provider>
     <team_id>QX6E2SX99X</team_id>
     <software>
@@ -44,44 +44,14 @@
                 </achievements>
                 <leaderboards>
                     <leaderboard default="true" position="1">
-                        <leaderboard_id>Test</leaderboard_id>
-                        <reference_name>Test Board</reference_name>
-                        <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
-                        <sort_ascending>false</sort_ascending>
-                        <score_range_min>0</score_range_min>
-                        <score_range_max>1</score_range_max>
-                        <locales>
-                            <locale name="en-US">
-                                <title>Test</title>
-                                <formatter_suffix>Points</formatter_suffix>
-                                <formatter_suffix_singular>Point</formatter_suffix_singular>
-                                <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
-                            </locale>
-                        </locales>
-                    </leaderboard>
-                    <leaderboard position="2">
                         <leaderboard_id>single.leaderboard.1</leaderboard_id>
                         <reference_name>Leaderboard 1</reference_name>
-                        <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
                         <sort_ascending>false</sort_ascending>
                         <score_range_min>0</score_range_min>
-                        <score_range_max>1000000</score_range_max>
+                        <score_range_max>88</score_range_max>
                         <locales>
                             <locale name="en-US">
                                 <title>Me, Family and Friends</title>
-                                <formatter_suffix>points</formatter_suffix>
-                                <formatter_suffix_singular>point</formatter_suffix_singular>
-                                <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
-                            </locale>
-                        </locales>
-                    </leaderboard>
-                    <leaderboard position="3">
-                        <leaderboard_id>combined.all</leaderboard_id>
-                        <reference_name>All Scores</reference_name>
-                        <sort_ascending>false</sort_ascending>
-                        <locales>
-                            <locale name="en-US">
-                                <title>All Scores</title>
                                 <formatter_suffix>points</formatter_suffix>
                                 <formatter_suffix_singular>point</formatter_suffix_singular>
                                 <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
