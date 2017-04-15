@@ -170,6 +170,7 @@
 		DFE7B2DE1E78EBB200FA27B7 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */; };
 		DFE85F731EA26DC7007C44C4 /* JasmineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE85F721EA26DC7007C44C4 /* JasmineViewController.swift */; };
 		DFE85F751EA26EC1007C44C4 /* BaseGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE85F741EA26EC1007C44C4 /* BaseGameViewController.swift */; };
+		DFE85F771EA27998007C44C4 /* BaseGridGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE85F761EA27998007C44C4 /* BaseGridGameViewController.swift */; };
 		DFF45A7A1E99E41000DFD3D9 /* PhrasesExplorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF45A791E99E41000DFD3D9 /* PhrasesExplorerViewController.swift */; };
 		DFF45A7C1E99E41700DFD3D9 /* PhrasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF45A7B1E99E41700DFD3D9 /* PhrasesTableViewController.swift */; };
 		DFF45A7E1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF45A7D1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift */; };
@@ -357,6 +358,7 @@
 		DFE7B2DD1E78EBB200FA27B7 /* GameStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
 		DFE85F721EA26DC7007C44C4 /* JasmineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JasmineViewController.swift; sourceTree = "<group>"; };
 		DFE85F741EA26EC1007C44C4 /* BaseGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGameViewController.swift; sourceTree = "<group>"; };
+		DFE85F761EA27998007C44C4 /* BaseGridGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGridGameViewController.swift; sourceTree = "<group>"; };
 		DFF45A791E99E41000DFD3D9 /* PhrasesExplorerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesExplorerViewController.swift; sourceTree = "<group>"; };
 		DFF45A7B1E99E41700DFD3D9 /* PhrasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesTableViewController.swift; sourceTree = "<group>"; };
 		DFF45A7D1E99E42E00DFD3D9 /* PhrasesExplorerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhrasesExplorerViewModel.swift; sourceTree = "<group>"; };
@@ -997,6 +999,7 @@
 				DFBE8F6A1E9527F70036CCC6 /* GameStatisticsViewController.swift */,
 				DFA8B69A1E9899A4002D81CF /* SimpleStartGameViewController.swift */,
 				DFE85F741EA26EC1007C44C4 /* BaseGameViewController.swift */,
+				DFE85F761EA27998007C44C4 /* BaseGridGameViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1406,6 +1409,7 @@
 				DFE1113C1E98BD4300F8860E /* GameMode.swift in Sources */,
 				DF0452561E9C5E5E00C3F1B1 /* LevelImportViewController.swift in Sources */,
 				DFBE8F7E1E9527F70036CCC6 /* TimeDescriptorProtocol.swift in Sources */,
+				DFE85F771EA27998007C44C4 /* BaseGridGameViewController.swift in Sources */,
 				5064734A1E9DF14500ACB183 /* LevelSelectorViewModelProtocol.swift in Sources */,
 				DF409FFB1E84225200389976 /* TetrisGameViewController.swift in Sources */,
 				506473461E9DEFBB00ACB183 /* Collection+RandomGenerator.swift in Sources */,

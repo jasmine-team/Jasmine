@@ -1,16 +1,16 @@
 import UIKit
 
 /// Sets the base game view controller for all the view controller class.
+/// - Note:
+///   - The storyboard must contain:
+///     - A segue to game over screen with "SegueToGameOverViewController" identifier
+///     - A `SimpleStartGameViewController` view
+///     - A `GameOverViewController` view.
 class BaseGameViewController: JasmineViewController {
 
     // MARK: Constants
     fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
     fileprivate static let segueDelay = 0.5
-
-    // MARK: Layouts
-    fileprivate var statisticsViewController: GameStatisticsViewController!
-
-    fileprivate var gameStartView: SimpleStartGameViewController!
 
     // MARK: Properties
     fileprivate var baseViewModel: BaseViewModelProtocol!
@@ -36,19 +36,18 @@ class BaseGameViewController: JasmineViewController {
     }
 
     // MARK: Layout setters
+    /// Sets the navigation bar properties given from the child class.
     func setLayout(navigationBar: UINavigationBar) {
         super.setLayout(navigationBar: navigationBar, withTitle: baseViewModel.gameTitle)
     }
 
     private func setLayout(gameStartView: SimpleStartGameViewController,
                            onScreenDismissed callback: @escaping () -> Void) {
-        self.gameStartView = gameStartView
-        self.gameStartView.segueWith(baseViewModel, onScreenDismissed: callback)
+        gameStartView.segueWith(baseViewModel, onScreenDismissed: callback)
     }
 
     private func setLayout(statisticsView: GameStatisticsViewController) {
-        self.statisticsViewController = statisticsView
-        self.statisticsViewController.segueWith(time: baseViewModel, score: baseViewModel)
+        statisticsView.segueWith(time: baseViewModel, score: baseViewModel)
     }
 }
 

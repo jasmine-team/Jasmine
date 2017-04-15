@@ -1,7 +1,7 @@
 import UIKit
 
 /// View Controller implementation for Swapping Game.
-class SwappingGameViewController: BaseGameViewController {
+class SwappingGameViewController: BaseGridGameViewController {
 
     // MARK: - Constants
     fileprivate static let segueToGameOverView = "SegueToGameOverViewController"
@@ -26,7 +26,6 @@ class SwappingGameViewController: BaseGameViewController {
         super.prepare(for: segue, sender: sender)
 
         if let squareSwappingView = segue.destination as? DraggableSquareGridViewController {
-            squareSwappingView.segueWith(viewModel.gridData)
             self.squareGridViewController = squareSwappingView
         }
     }
@@ -36,9 +35,7 @@ class SwappingGameViewController: BaseGameViewController {
     /// - Parameter viewModel: the game engine required to play this game.
     func segueWith(_ viewModel: SwappingViewModelProtocol) {
         super.segueWith(viewModel)
-
         self.viewModel = viewModel
-        self.viewModel.highlightedDelegate = self
     }
 
     // MARK: - Gesture Recognisers and Listeners
@@ -151,22 +148,6 @@ fileprivate extension SwappingGameViewController {
         }
         squareGridViewController.snapDetachedTile(endingView, toCoordinate: startingCoord) {
             self.squareGridViewController.reattachDetachedTile(endingView)
-        }
-    }
-}
-
-extension SwappingGameViewController: HighlightedUpdateDelegate {
-
-    /// Tells the implementor of the delegate that the highlighted coordinates have been changed.
-    func highlightedCoordinatesDidUpdate() {
-        let highlightedCoords = viewModel.highlightedCoordinates
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + SwappingGameViewController.highlightDelay) {
-            for coord in self.squareGridViewController.allCoordinates {
-                self.squareGridViewController.tileProperties[coord] = { tile in
-                    tile.shouldHighlight = highlightedCoords.contains(coord)
-                }
-            }
         }
     }
 }

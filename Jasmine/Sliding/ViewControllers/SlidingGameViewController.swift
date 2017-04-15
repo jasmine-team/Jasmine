@@ -1,10 +1,7 @@
 import UIKit
 
 /// View Controller implementation for Sliding Grid Game.
-class SlidingGameViewController: BaseGameViewController {
-
-    // MARK: - Constants
-    fileprivate static let highlightDelay = 0.2
+class SlidingGameViewController: BaseGridGameViewController {
 
     // MARK: - Layouts
     fileprivate var slidingGridView: DraggableSquareGridViewController!
@@ -23,7 +20,6 @@ class SlidingGameViewController: BaseGameViewController {
 
         if let slidingGridView = segue.destination as? DraggableSquareGridViewController {
             self.slidingGridView = slidingGridView
-            self.slidingGridView.segueWith(viewModel.gridData)
         }
     }
 
@@ -32,9 +28,7 @@ class SlidingGameViewController: BaseGameViewController {
     /// - Parameter viewModel: the view model of this class.
     func segueWith(_ viewModel: SlidingViewModelProtocol) {
         super.segueWith(viewModel)
-
         self.viewModel = viewModel
-        self.viewModel.highlightedDelegate = self
     }
 
     // MARK: Gestures and Listeners
@@ -150,21 +144,5 @@ fileprivate extension SlidingGameViewController {
         let westX = getCenter(from: destination[.westwards]).x
 
         return CGRect(minX: westX, maxX: eastX, minY: northY, maxY: southY)
-    }
-}
-
-extension SlidingGameViewController: HighlightedUpdateDelegate {
-
-    /// Tells the implementor of the delegate that the highlighted coordinates have been changed.
-    func highlightedCoordinatesDidUpdate() {
-        let highlightedCoords = viewModel.highlightedCoordinates
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + SlidingGameViewController.highlightDelay) {
-            for coord in self.slidingGridView.allCoordinates {
-                self.slidingGridView.tileProperties[coord] = { tile in
-                    tile.shouldHighlight = highlightedCoords.contains(coord)
-                }
-            }
-        }
     }
 }
