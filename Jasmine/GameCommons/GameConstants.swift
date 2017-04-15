@@ -2,17 +2,22 @@ import Foundation
 
 // swiftlint:disable nesting
 enum GameConstants {
+
+    /// Used to specify the level name in game title
+    static let formatSpecifierForString = "%@"
+
+    /// The time interval to run at for the game clock
     static let timeInterval: TimeInterval = 0.1
 
     enum Swapping {
         enum CiHui {
-            static let gameTitle = "Ci Hui (词汇) Swapping Game"
+            static let gameTitle = formatSpecifierForString + ": Ci Hui (词汇) Swapping Game"
             static let gameInstruction = "Match the Chinese characters with their Pinyins " +
                                          "by putting them in one row/column."
         }
 
         enum ChengYu {
-            static let gameTitle = "Cheng Yu (成语) Swapping Game"
+            static let gameTitle = formatSpecifierForString + ": Cheng Yu (成语) Swapping Game"
             static let gameInstruction = "Match the Cheng Yus by putting them in one row/column."
         }
 
@@ -30,13 +35,13 @@ enum GameConstants {
 
     enum Sliding {
         enum CiHui {
-            static let gameTitle = "Ci Hui (词汇) Sliding Game"
+            static let gameTitle = formatSpecifierForString + ": Ci Hui (词汇) Sliding Game"
             static let gameInstruction = "Match the Chinese characters with their Pinyins " +
                                          "by putting them in one row/column."
         }
 
         enum ChengYu {
-            static let gameTitle = "Cheng Yu (成语) Sliding Game"
+            static let gameTitle = formatSpecifierForString + ": Cheng Yu (成语) Sliding Game"
             static let gameInstruction = "Match the Cheng Yus by putting them in one row/column."
         }
 
@@ -53,13 +58,15 @@ enum GameConstants {
     }
 
     enum Tetris {
-        enum ChengYu {
-            static let gameTitle = "Tetris Cheng Yu"
-            static let gameInstruction = "Form Cheng Yu in a row or column to destroy the blocks"
+        enum CiHui {
+            static let gameTitle = formatSpecifierForString + ": Ci Hui (词汇) Tetris Game"
+            static let gameInstruction = "Form Ci Hui from left to right or top to bottom to destroy the blocks"
         }
 
-        static let gameTitle = "Tetris game"
-        static let gameInstruction = "Form phrases in a row or column to destroy the blocks"
+        enum ChengYu {
+            static let gameTitle = formatSpecifierForString + ": Cheng Yu (成语) Tetris Game"
+            static let gameInstruction = "Form Cheng Yu from left to right or top to bottom to destroy the blocks"
+        }
 
         /// Number of rows on the grid
         static let rows = 12

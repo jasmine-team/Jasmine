@@ -28,10 +28,6 @@ class BaseSlidingViewModelTests: RealmTestCase {
                        "ViewModel timeRemaining on init is not correct")
         XCTAssertEqual(GameStatus.notStarted, viewModel.gameStatus,
                        "ViewModel gameStatus on init is not correct")
-        XCTAssertEqual("", viewModel.gameTitle,
-                       "ViewModel gameTitle on init is not correct")
-        XCTAssertEqual("", viewModel.gameInstruction,
-                       "ViewModel gameInstruction on init is not correct")
 
         let gridData = viewModel.gridData
         XCTAssert(["a", nil].contains { $0 == gridData[Coordinate(row: 0, col: 0)] },
