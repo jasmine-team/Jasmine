@@ -10,22 +10,22 @@ class LevelImportViewModel: LevelImportViewModelProtocol {
     /// Default levels as a level array
     private var rawDefaultLevels: [Level] {
         return levels.original
+            .filter { $0.gameType == displayedType }
     }
     /// Custom levels as a level array
     private var rawCustomLevels: [Level] {
         return levels.custom
+            .filter { $0.gameType == displayedType }
     }
     /// The defaults levels in the game.
     var defaultLevels: [GameInfo] {
         return rawDefaultLevels
             .map { level in GameInfo.from(level: level) }
-            .filter { $0.gameType == displayedType }
     }
     /// The custom levels in the game.
     var customLevels: [GameInfo] {
         return rawCustomLevels
             .map { level in GameInfo.from(level: level) }
-            .filter { $0.gameType == displayedType }
     }
 
     /// The set of marked levels.
