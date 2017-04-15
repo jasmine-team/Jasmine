@@ -75,13 +75,12 @@ class Levels {
         }
     }
 
-    /// Deletes the indicated level
+    /// Deletes the level `level` from the custom levels. Do nothing if it's not in custom levels.
     ///
-    /// - Parameter level: level to be deleted
+    /// - Parameter level: custom level to be deleted
     /// - Throws: Error if failed to delete data
     func deleteLevel(_ level: Level) throws {
         guard rawCustomLevels.contains(level) else {
-            assertionFailure("Cannot delete original levels")
             return
         }
         try realm.write {

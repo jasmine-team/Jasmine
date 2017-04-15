@@ -13,8 +13,8 @@ class BaseSlidingViewModelTests: RealmTestCase {
     override func setUp() {
         super.setUp()
         self.gameData = createGameData(difficulty: 1, type: .ciHui)
-        viewModel = BaseSlidingViewModel(time: time, gameData: gameData, tiles: ["a", nil],
-                                         rows: rows, columns: columns)
+        viewModel = BaseSlidingViewModel(time: time, gameData: gameData, gameType: .chengYu,
+                                         tiles: ["a", nil], rows: rows, columns: columns)
     }
 
     func testInit() {
@@ -58,8 +58,8 @@ class BaseSlidingViewModelTests: RealmTestCase {
         let columns = 4
 
         for _ in 0..<3 { // do this 3 times due to randomness
-            let viewModel = BaseSlidingViewModel(time: time, gameData: gameData, tiles: grid,
-                                                 rows: rows, columns: columns)
+            let viewModel = BaseSlidingViewModel(time: time, gameData: gameData, gameType: .chengYu,
+                                                 tiles: grid, rows: rows, columns: columns)
             let gridData = viewModel.gridData
 
             for row in 0..<rows {
@@ -108,8 +108,8 @@ class BaseSlidingViewModelTests: RealmTestCase {
         let rows = 4
         let columns = 4
 
-        let viewModel = BaseSlidingViewModel(time: time, gameData: gameData, tiles: grid,
-                                             rows: rows, columns: columns)
+        let viewModel = BaseSlidingViewModel(time: time, gameData: gameData, gameType: .chengYu,
+                                             tiles: grid, rows: rows, columns: columns)
 
         let gridData = viewModel.gridData
 
