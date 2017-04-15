@@ -14,8 +14,8 @@ class ChengYuSlidingViewModel: BaseSlidingViewModel {
             (idx == tiles.count - 1) ? nil : tile
         }
 
-        super.init(time: time, gameData: gameData, tiles: tilesExceptLast,
-                   rows: rows, columns: GameConstants.Sliding.columns)
+        super.init(time: time, gameData: gameData, gameType: .chengYu,
+                   tiles: tilesExceptLast, rows: rows, columns: GameConstants.Sliding.columns)
 
         gameTitle = GameConstants.Sliding.ChengYu.gameTitle
         gameInstruction = GameConstants.Sliding.ChengYu.gameInstruction

@@ -10,22 +10,13 @@ class ChengYuSwappingViewModel: BaseSwappingViewModel {
     init(time: TimeInterval, gameData: GameData, numberOfPhrases: Int) {
         let phrases = gameData.phrases.randomGenerator.next(count: numberOfPhrases)
         let tiles = phrases.flatMap { $0.chinese }
-        super.init(time: time, gameData: gameData, tiles: tiles,
+        super.init(time: time, gameData: gameData, gameType: .chengYu, tiles: tiles,
                    rows: numberOfPhrases, columns: GameConstants.Swapping.columns)
 
         gameTitle = GameConstants.Swapping.ChengYu.gameTitle
         gameInstruction = GameConstants.Swapping.ChengYu.gameInstruction
 
         phrasesTested = Set(phrases)
-    }
-
-    /// Returns if and only if the game is won, that is: every row is a valid Chengyu.
-    override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
-        guard let text = gridData.getConcatenatedTexts(at: line),
-              gameData.phrases.contains(chinese: text) else {
-            return false
-        }
-        return true
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to slide
