@@ -117,10 +117,15 @@ class LevelDesignerViewController: UIViewController {
         showExitWithoutSavingAlert()
     }
 
+    /// Saves the imported levels to selected phrases
+    ///
+    /// - Parameter levels: levels that have been imported
+    /// - Precondition: `levels` must all have the same game type as the currently selected game type
     private func onLevelsImported(_ levels: [GameInfo]) {
-        // TODO: save this to the list of selecte phrases.
-        print("selected!")
-        print(levels)
+        assert(levels.first { $0.gameType != selectedGameType } == nil, 
+               "Imported levels are not of the same game type as selected game type")
+        viewModel.addToSelectedPhrases(from: levels)
+        updateSelectPhrasesButtonText()
     }
 
     /// Saves the game, default name will be used if no name is given in text field. 
