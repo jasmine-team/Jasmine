@@ -53,10 +53,14 @@ class GridViewModel: GridViewModelProtocol {
 
     /// Provide a brief title for this game. Note that this title should be able to fit within the
     /// width of the display.
-    var gameTitle: String = ""
+    var levelName: String {
+        return gameData.name
+    }
     /// Provide of a brief description of its objectives and how this game is played.
     /// There is no word count limit, but should be concise.
-    var gameInstruction: String = ""
+    var gameInstruction: String {
+        fatalError("Game instruction not overriden")
+    }
 
     /// The game type. To be overriden.
     var gameType: GameType
@@ -72,6 +76,7 @@ class GridViewModel: GridViewModelProtocol {
     init(time: TimeInterval, gameData: GameData, gameType: GameType, tiles: [String?], rows: Int, columns: Int) {
         assert(rows > 0 && columns > 0, "Number of rows and columns should be more than 0")
         assert(tiles.count == rows * columns, "Number of tiles should equal numRows * numColumns")
+        assert(gameData.phrases.map { $0.chinese.count }.isAllSame, "Phrases are not of equal length")
 
         let shuffledTiles = tiles.shuffled()
         let grid = (0..<rows).map { row in
