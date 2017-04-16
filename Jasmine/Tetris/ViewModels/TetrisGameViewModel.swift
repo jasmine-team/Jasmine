@@ -7,8 +7,8 @@ class TetrisGameViewModel {
     weak var timeDelegate: TimeUpdateDelegate?
     weak var gameStatusDelegate: GameStatusUpdateDelegate?
 
-    var gameTitle: String {
-        fatalError("Game title not overriden")
+    var levelName: String {
+        return gameData.name
     }
     var gameInstruction: String {
         fatalError("Game instruction not overriden")

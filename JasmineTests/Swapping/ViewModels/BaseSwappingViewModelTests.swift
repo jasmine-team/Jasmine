@@ -33,6 +33,7 @@ class BaseSwappingViewModelTests: RealmTestCase {
                        "ViewModel timeRemaining on init is not correct")
         XCTAssertEqual(GameStatus.notStarted, viewModel.gameStatus,
                        "ViewModel gameStatus on init is not correct")
+        XCTAssertEqual(viewModel.levelName, gameData.name, "ViewModel level name on init is not correct")
 
         let gridData = viewModel.gridData
         for (row, col) in [(0, 0), (0, 1), (1, 0), (1, 1)] {

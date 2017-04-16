@@ -2,9 +2,6 @@ import Foundation
 
 class ChengYuSwappingViewModel: BaseSwappingViewModel {
 
-    override var gameTitle: String {
-        return String(format: GameConstants.Swapping.ChengYu.gameTitle, gameData.name)
-    }
     override var gameInstruction: String {
         return GameConstants.Swapping.ChengYu.gameInstruction
     }

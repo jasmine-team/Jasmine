@@ -66,7 +66,7 @@ class GameOverViewController: JasmineViewController {
 
     // MARK: - Helper Methods
     private func loadGameDescriptionsToUi() {
-        self.navigationBar.topItem?.title = gameDesriptor.gameTitle
+        self.navigationBar.topItem?.title = gameDesriptor.levelName
         self.scoreLabel.text = "\(gameDesriptor.currentScore)"
 
         if gameDesriptor.gameStatus == .endedWithWon {

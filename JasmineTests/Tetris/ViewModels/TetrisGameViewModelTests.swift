@@ -41,8 +41,7 @@ class TetrisGameViewModelTests: RealmTestCase {
                        "ViewModel timer on init is not correct")
         XCTAssertEqual(viewModel.gameStatus, GameStatus.notStarted,
                        "ViewModel gameStatus on init is not correct")
-        XCTAssertEqual(viewModel.gameTitle, String(format: GameConstants.Tetris.ChengYu.gameTitle, gameData.name),
-                       "ViewModel gameTitle on init is not correct")
+        XCTAssertEqual(viewModel.levelName, gameData.name, "ViewModel level name on init is not correct")
         XCTAssertEqual(viewModel.gameInstruction, GameConstants.Tetris.ChengYu.gameInstruction,
                        "ViewModel gameInstruction on init is not correct")
         XCTAssert(Set(testPhrases.flatMap { $0 }).isSuperset(of: viewModel.upcomingTiles),
