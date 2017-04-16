@@ -59,7 +59,8 @@ class LevelDesignerViewController: JasmineViewController {
             phrasesExplorerViewController.segueWith(phrasesExplorerViewModel, onSaveCallBack: updateSelectedPhrases)
 
         } else if let levelImporterView = segue.destination as? LevelImportViewController {
-            levelImporterView.segueWith(LevelImportViewModel(), onMarkedLevelsReturned: onLevelsImported)
+            levelImporterView.segueWith(LevelImportViewModel(withType: selectedGameType),
+                                        onMarkedLevelsReturned: onLevelsImported)
         }
     }
 
