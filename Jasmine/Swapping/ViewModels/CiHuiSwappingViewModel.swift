@@ -2,9 +2,6 @@ import Foundation
 
 class CiHuiSwappingViewModel: BaseSwappingViewModel {
 
-    override var gameTitle: String {
-        return String(format: GameConstants.Swapping.CiHui.gameTitle, gameData.name)
-    }
     override var gameInstruction: String {
         return GameConstants.Swapping.CiHui.gameInstruction
     }

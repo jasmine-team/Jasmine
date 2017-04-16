@@ -2,9 +2,6 @@ import Foundation
 
 class CiHuiSlidingViewModel: BaseSlidingViewModel {
 
-    override var gameTitle: String {
-        return String(format: GameConstants.Sliding.CiHui.gameTitle, gameData.name)
-    }
     override var gameInstruction: String {
         return GameConstants.Sliding.CiHui.gameInstruction
     }

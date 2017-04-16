@@ -2,9 +2,6 @@ import Foundation
 
 class ChengYuSlidingViewModel: BaseSlidingViewModel {
 
-    override var gameTitle: String {
-        return String(format: GameConstants.Sliding.ChengYu.gameTitle, gameData.name)
-    }
     override var gameInstruction: String {
         return GameConstants.Sliding.ChengYu.gameInstruction
     }

@@ -53,8 +53,8 @@ class GridViewModel: GridViewModelProtocol {
 
     /// Provide a brief title for this game. Note that this title should be able to fit within the
     /// width of the display.
-    var gameTitle: String {
-        fatalError("Game title not overriden")
+    var levelName: String {
+        return gameData.name
     }
     /// Provide of a brief description of its objectives and how this game is played.
     /// There is no word count limit, but should be concise.
