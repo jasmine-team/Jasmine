@@ -11,6 +11,7 @@
 		007B69201E9E0EAF002FE500 /* UIViewController+GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B691F1E9E0EAF002FE500 /* UIViewController+GameCenter.swift */; };
 		007B69221E9E18B1002FE500 /* ProfileQueryContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B69211E9E18B1002FE500 /* ProfileQueryContainerTests.swift */; };
 		007B69261E9F36B0002FE500 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B69251E9F36B0002FE500 /* GameKit.framework */; };
+		009B4E011EA3292100FEE074 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B4E001EA3292100FEE074 /* ProfileViewModel.swift */; };
 		009B4DFC1EA29ED100FEE074 /* ChengYuTetrisGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B4DFB1EA29ED100FEE074 /* ChengYuTetrisGameViewModel.swift */; };
 		009B4DFE1EA29EEC00FEE074 /* CiHuiTetrisGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B4DFD1EA29EEC00FEE074 /* CiHuiTetrisGameViewModel.swift */; };
 		5007FD121E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007FD111E94D3C4003F0A24 /* HighlightedUpdateDelegateMock.swift */; };
@@ -195,6 +196,7 @@
 		007B691F1E9E0EAF002FE500 /* UIViewController+GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+GameCenter.swift"; sourceTree = "<group>"; };
 		007B69211E9E18B1002FE500 /* ProfileQueryContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileQueryContainerTests.swift; sourceTree = "<group>"; };
 		007B69251E9F36B0002FE500 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		009B4E001EA3292100FEE074 /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		009B4DFB1EA29ED100FEE074 /* ChengYuTetrisGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuTetrisGameViewModel.swift; sourceTree = "<group>"; };
 		009B4DFD1EA29EEC00FEE074 /* CiHuiTetrisGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiTetrisGameViewModel.swift; sourceTree = "<group>"; };
 		35434779D1F24DD64383DF65 /* Pods-Jasmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jasmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jasmine/Pods-Jasmine.debug.xcconfig"; sourceTree = "<group>"; };
@@ -400,6 +402,14 @@
 				5064734F1E9DF28300ACB183 /* LevelDesignerViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		009B4DFF1EA3290400FEE074 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				009B4E001EA3292100FEE074 /* ProfileViewModel.swift */,
+			);
+			name = ViewModels;
 			sourceTree = "<group>";
 		};
 		00C6006C1E9B2F66006BA74A /* LevelDesigner */ = {
@@ -1012,6 +1022,7 @@
 			isa = PBXGroup;
 			children = (
 				A2FF83A21E9E0A5F00677FA2 /* Models */,
+				009B4DFF1EA3290400FEE074 /* ViewModels */,
 				DFBE8F271E9520BB0036CCC6 /* ViewControllers */,
 			);
 			path = Profile;
@@ -1320,7 +1331,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6C30C7D33289147D19E045E9 /* [CP] Copy Pods Resources */ = {
@@ -1350,7 +1361,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		9ED476CC4CBB26CACB5925AC /* [CP] Embed Pods Frameworks */ = {
@@ -1460,6 +1471,7 @@
 				DFCD85A71E9E909500B10486 /* DiscreteFallableSquareGridViewController.swift in Sources */,
 				DFE1114C1E98BDDC00F8860E /* ProfileViewController.swift in Sources */,
 				007B69201E9E0EAF002FE500 /* UIViewController+GameCenter.swift in Sources */,
+				009B4E011EA3292100FEE074 /* ProfileViewModel.swift in Sources */,
 				502A296F1E926DCA0024336A /* CiHuiSlidingViewModel.swift in Sources */,
 				DF2155251E8E3F25005A0927 /* Direction.swift in Sources */,
 				DF409FE51E8414B000389976 /* Player.swift in Sources */,
