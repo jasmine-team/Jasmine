@@ -5,7 +5,7 @@ import CoreMotion
 class FallingFlowersViewController: UIViewController {
 
     // MARK: Constants
-    private static let spawnCount = 180
+    private static let flowerDensity = 0.000_3    // per mm
 
     private static let flowerSizeMin = 20.0
     private static let flowerSizeMax = 60.0
@@ -13,16 +13,12 @@ class FallingFlowersViewController: UIViewController {
     private static let parallaxMin = 50.0
     private static let parallaxMax = 50.0
 
-    private static let rotateRange = Double.pi / 6
-    private static let animationDelay = 2.0
-
     // MARK: Animation Properties
     private var animator: UIDynamicAnimator!
     private var collisionBehaviour: UICollisionBehavior!
 
     // MARK: Generator Properties
-    private var flowers: [UIImageView] = []
-    private var generator: RandomGenerator<[UIImageView]>!
+    private var hasSpawned = false
 
     private var flowerSize: CGSize {
         let width = Random.double(from: FallingFlowersViewController.flowerSizeMin,
@@ -42,14 +38,16 @@ class FallingFlowersViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if flowers.isEmpty {
+        if !hasSpawned {
             startAnimation()
 
-            for _ in 0..<FallingFlowersViewController.spawnCount {
+            let area = Double(view.bounds.height * view.bounds.width)
+            let count = Int(area * FallingFlowersViewController.flowerDensity)
+
+            for _ in 0..<count {
                 generateFlower()
             }
-            generator = flowers.randomGenerator
-            runAnimator()
+            hasSpawned = true
         }
     }
 
@@ -63,21 +61,6 @@ class FallingFlowersViewController: UIViewController {
 
         view.addSubview(flower)
         collisionBehaviour.addItem(flower)
-        flowers.append(flower)
-    }
-
-    private func runAnimator() {
-        let range = FallingFlowersViewController.rotateRange
-        let delay = FallingFlowersViewController.animationDelay
-        generator.next(count: 30).forEach { item in
-            UIView.animate(withDuration: 3,
-                           delay: Random.double(from: .leastNonzeroMagnitude, toInclusive: delay),
-                           animations: {
-                            let randomAngle = CGFloat(Random.double(from: -range, toInclusive: range))
-                            item.transform = CGAffineTransform(rotationAngle: randomAngle)
-            })
-        }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay, execute: runAnimator)
     }
 
     // MARK: Animation Methods
