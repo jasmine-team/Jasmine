@@ -1,9 +1,13 @@
 import RealmSwift
 
-class ProfileQueryContainer {
+class ResultsQueryContainer {
 
     let realm: Realm
     let levelResults: Results<LevelResult>
+
+    let slidingResults: Results<LevelResult>
+    let tetrisResults: Results<LevelResult>
+    let swappingResults: Results<LevelResult>
 
     /// Initialize manager with realm instance, useful for testing
     ///
@@ -11,6 +15,10 @@ class ProfileQueryContainer {
     init(realm: Realm) {
         self.realm = realm
         levelResults = realm.objects(LevelResult.self)
+
+        slidingResults = levelResults.filter("level.rawGameMode = 'sliding'")
+        tetrisResults = levelResults.filter("level.rawGameMode = 'tetris'")
+        swappingResults = levelResults.filter("level.rawGameMode = 'swapping'")
     }
 
     /// Initiates the query container with a default realm
