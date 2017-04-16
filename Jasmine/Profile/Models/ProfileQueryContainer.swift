@@ -20,14 +20,14 @@ class ProfileQueryContainer {
         self.init(realm: try Realm())
     }
 
-    /// Returns times played between the two days
+    /// Returns times played between the two dates
     ///
     /// - Parameters:
     ///   - startDate: start date inclusive
-    ///   - endDate: end date inclusive
-    /// - Returns: number of times played in this week
-    func timesPlayed(between startDate: Date, and endDate: Date) -> Int {
-        let predicate = NSPredicate(format: "timePlayed >= %@ AND timePlayed =< %@",
+    ///   - endDate: end date exclusive
+    /// - Returns: number of times played between `startDate` and `endDate`
+    func timesPlayed(from startDate: Date, toExclusive endDate: Date) -> Int {
+        let predicate = NSPredicate(format: "timePlayed >= %@ AND timePlayed < %@",
                                     argumentArray: [startDate, endDate])
         return levelResults.filter(predicate).count
     }
