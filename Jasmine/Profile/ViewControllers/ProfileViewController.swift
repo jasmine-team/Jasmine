@@ -3,10 +3,11 @@ import GameKit
 class ProfileViewController: JasmineViewController {
 
     @IBOutlet private var playerNameLabel: UILabel!
-
+    @IBOutlet private var dailyStreakFlower: UIImageView!
     @IBOutlet private weak var navigationBar: UINavigationBar!
+    private var weeklyStreakGrid: SquareGridViewController!
 
-    private static let weeklyStreakGridSpacing: CGFloat = 0
+    private static let weeklyStreakGridSpacing: CGFloat = 2.0
     private static let weeklyStreakNumRows = 4
     private static let weeklyStreakNumCols = 13
 
@@ -14,6 +15,8 @@ class ProfileViewController: JasmineViewController {
         super.viewDidLoad()
         super.setLayout(navigationBar: navigationBar)
         setPlayerNameLabel()
+        setDailyStreak()
+        setWeeklyStreak()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -21,6 +24,7 @@ class ProfileViewController: JasmineViewController {
             squareGridViewController.segueWith(numRow: ProfileViewController.weeklyStreakNumRows,
                                                numCol: ProfileViewController.weeklyStreakNumCols,
                                                withSpace: ProfileViewController.weeklyStreakGridSpacing)
+            weeklyStreakGrid = squareGridViewController
         }
     }
 
@@ -31,6 +35,22 @@ class ProfileViewController: JasmineViewController {
             return
         }
         playerNameLabel.text = localPlayer.alias
+    }
+
+    /// Sets the number of flowers for daily streak.
+    private func setDailyStreak() {
+        // TODO: Complete this code.
+        let days = 4
+        dailyStreakFlower.image = Constants.Graphics.Petals.frames[days]
+    }
+
+    private func setWeeklyStreak() {
+        // TODO: Complete this code. This is how you specify a theme for a partiular cell.
+        // Most likely have to convert coordinate to an index.
+        weeklyStreakGrid.cellProperties[Coordinate.origin] = { cell in
+            cell.backgroundColor = Constants.Theme.mainColor
+            cell.alpha = 0.5 // TODO: Alpha can be = numDaysCompleted / 7.0
+        }
     }
 
     @IBAction private func showAchievements(_ sender: UIButton) {

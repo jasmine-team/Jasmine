@@ -7,12 +7,13 @@ class LevelSelectorViewController: JasmineViewController {
         .sliding: "SegueToSlidingGame", .swapping: "SegueToSwappingGame", .tetris: "SegueToTetrisGame"
     ]
 
-    fileprivate static let segueToPhrasesExplorer = "SegueToPhrasesExplorer"
-    fileprivate static let segueToLevelDesigner = "SegueToLevelDesigner"
+    private static let segueToPhrasesExplorer = "SegueToPhrasesExplorer"
+    private static let segueToLevelDesigner = "SegueToLevelDesigner"
 
-    private static let actionSheetEdit = "Edit Level"
     private static let actionSheetPhrases = "View Phrases"
+    private static let actionSheetEdit = "Edit Level"
     private static let actionSheetDelete = "Delete Level"
+    private static let actionSheetClone = "Clone"
     private static let actionSheetCancel = "Cancel"
 
     // MARK: Layouts
@@ -23,13 +24,15 @@ class LevelSelectorViewController: JasmineViewController {
     // MARK: Properties
     /// Provides a view model for this view. By default a full LevelSelectorViewModel is used in this
     /// case. Dependency injection can be attained by calling `segueWith(...)`.
-    fileprivate lazy var viewModel: LevelSelectorViewModelProtocol = {
+    private lazy var viewModel: LevelSelectorViewModelProtocol = {
         let viewModel = LevelSelectorViewModel()
         viewModel.delegate = self
         return viewModel
     }()
 
     fileprivate var selectedLevel: (isDefault: Bool, row: Int)!
+    /// Indicates whether the level should be cloned. Initialized in `segueToEditLevelView`.
+    private var cloneLevel: Bool!
 
     fileprivate var selectedLevelGameInfo: GameInfo {
         return getLevel(fromDefault: selectedLevel.isDefault, at: selectedLevel.row)
@@ -86,7 +89,8 @@ class LevelSelectorViewController: JasmineViewController {
             let levelDesignerViewModel: LevelDesignerViewModel
             if let selectedLevel = selectedLevel {
                 levelDesignerViewModel = viewModel.getLevelDesignerViewModel(fromRow: selectedLevel.row,
-                                                                             isDefault: selectedLevel.isDefault)
+                                                                             isDefault: selectedLevel.isDefault,
+                                                                             cloneLevel: cloneLevel)
             } else {
                 levelDesignerViewModel = viewModel.getLevelDesignerViewModel()
             }
@@ -107,13 +111,14 @@ class LevelSelectorViewController: JasmineViewController {
         self.viewModel.delegate = self
     }
 
-    fileprivate func segueToEditLevelView(isDefault: Bool, row: Int) {
-        self.selectedLevel = (isDefault: isDefault, row: row)
+    private func segueToLevelDesigner(isDefault: Bool, row: Int, cloneLevel: Bool) {
+        selectedLevel = (isDefault: isDefault, row: row)
+        self.cloneLevel = cloneLevel
         performSegue(withIdentifier: LevelSelectorViewController.segueToLevelDesigner, sender: nil)
     }
 
-    fileprivate func segueToPhrasesExplorerView(forLevelRow row: Int, isDefault: Bool) {
-        self.selectedLevel = (isDefault, row)
+    private func segueToPhrasesExplorer(forLevelRow row: Int, isDefault: Bool) {
+        selectedLevel = (isDefault, row)
         performSegue(withIdentifier: LevelSelectorViewController.segueToPhrasesExplorer, sender: nil)
     }
 
@@ -133,29 +138,35 @@ class LevelSelectorViewController: JasmineViewController {
         let actionSheetController = UIAlertController(title: level.levelName, message: nil,
                                                       preferredStyle: .actionSheet)
 
-        let phrasesAction = UIAlertAction(
-            title: LevelSelectorViewController.actionSheetPhrases, style: .default) { _ in
-                self.segueToPhrasesExplorerView(forLevelRow: index, isDefault: isDefaultLevel)
+        let phrasesAction = UIAlertAction(title: LevelSelectorViewController.actionSheetPhrases,
+                                          style: .default) { _ in
+            self.segueToPhrasesExplorer(forLevelRow: index, isDefault: isDefaultLevel)
         }
         actionSheetController.addAction(phrasesAction)
 
-        // Original level will also have the edit option, which saves to custom level after edit.
-        let editAction = UIAlertAction(
-            title: LevelSelectorViewController.actionSheetEdit, style: .default) { _ in
-                self.segueToEditLevelView(isDefault: isDefaultLevel, row: index)
+        if level.isEditable {
+            let editAction = UIAlertAction(title: LevelSelectorViewController.actionSheetEdit,
+                                           style: .default) { _ in
+                self.segueToLevelDesigner(isDefault: isDefaultLevel, row: index, cloneLevel: false)
+            }
+            actionSheetController.addAction(editAction)
         }
-        actionSheetController.addAction(editAction)
+
+        let cloneAction = UIAlertAction(title: LevelSelectorViewController.actionSheetClone,
+                                        style: .default) { _ in
+            self.segueToLevelDesigner(isDefault: isDefaultLevel, row: index, cloneLevel: true)
+        }
+        actionSheetController.addAction(cloneAction)
 
         if level.isEditable {
-            let deleteAction = UIAlertAction(
-                title: LevelSelectorViewController.actionSheetDelete, style: .destructive) { _ in
-                    self.viewModel.deleteCustomLevel(fromRow: index)
+            let deleteAction = UIAlertAction(title: LevelSelectorViewController.actionSheetDelete,
+                                             style: .destructive) { _ in
+                self.viewModel.deleteCustomLevel(fromRow: index)
             }
             actionSheetController.addAction(deleteAction)
         }
 
-        let cancelAction = UIAlertAction(
-            title: LevelSelectorViewController.actionSheetCancel, style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: LevelSelectorViewController.actionSheetCancel, style: .cancel)
         actionSheetController.addAction(cancelAction)
 
         actionSheetController.popoverPresentationController?.sourceView = view
@@ -202,7 +213,7 @@ extension LevelSelectorViewController: GameLevelListViewDelegate {
     func notifyOpenMenuForLevel(fromDefault isDefaultLevels: Bool, at index: Int,
                                 withView view: UIView) {
         let actionSheet = buildActionSheet(fromDefault: isDefaultLevels, at: index, withView: view)
-        self.present(actionSheet, animated: true, completion: nil)
+        self.present(actionSheet, animated: true)
     }
 }
 

@@ -73,8 +73,8 @@ class LevelImportViewController: JasmineViewController {
         let level = getLevel(fromDefault: isDefaultLevel, at: index)
         let actionSheetController = UIAlertController(title: level.levelName, message: nil,
                                                       preferredStyle: .actionSheet)
-        let phrasesAction = UIAlertAction(
-        title: LevelImportViewController.actionSheetPhrases, style: .default) { _ in
+        let phrasesAction = UIAlertAction(title: LevelImportViewController.actionSheetPhrases,
+                                          style: .default) { _ in
             self.segueToPhrasesExplorerView(forLevelRow: index, isDefault: isDefaultLevel)
         }
 
@@ -116,6 +116,6 @@ extension LevelImportViewController: GameLevelListViewDelegate {
     /// Notifies the user of this view controller to open the list of menu for the specified level.
     func notifyOpenMenuForLevel(fromDefault isDefaultLevels: Bool, at index: Int, withView view: UIView) {
         let actionSheet = buildActionSheet(fromDefault: isDefaultLevels, at: index, withView: view)
-        self.present(actionSheet, animated: true, completion: nil)
+        self.present(actionSheet, animated: true)
     }
 }

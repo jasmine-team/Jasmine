@@ -1,6 +1,11 @@
 import Foundation
 
 class ChengYuSwappingViewModel: BaseSwappingViewModel {
+
+    override var gameInstruction: String {
+        return GameConstants.Swapping.ChengYu.gameInstruction
+    }
+
     /// Initializes the game
     ///
     /// - Parameters:
@@ -12,9 +17,6 @@ class ChengYuSwappingViewModel: BaseSwappingViewModel {
         let tiles = phrases.flatMap { $0.chinese }
         super.init(time: time, gameData: gameData, gameType: .chengYu, tiles: tiles,
                    rows: numberOfPhrases, columns: GameConstants.Swapping.columns)
-
-        gameTitle = GameConstants.Swapping.ChengYu.gameTitle
-        gameInstruction = GameConstants.Swapping.ChengYu.gameInstruction
 
         phrasesTested = Set(phrases)
     }
