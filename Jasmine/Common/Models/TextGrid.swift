@@ -27,7 +27,7 @@ struct TextGrid {
     /// Initializes a TextGrid, given the initial grid.
     ///
     /// - Parameters:
-    ///   - initialGrid: the initial grid. The CharacterGrid will read from this grid.
+    ///   - initialGrid: the initial grid. The TextGrid will read from this grid.
     init(fromInitialGrid initialGrid: [[String?]]) {
         let numRows = initialGrid.count
         let numColumns = initialGrid.first?.count ?? 0
@@ -138,7 +138,7 @@ struct TextGrid {
     /// - Parameter coordinate: the coordinate to be determined
     /// - Returns: true if and only if the coordinate is inside the grid
     func isInBounds(coordinate: Coordinate) -> Bool {
-        return (0..<numRows ~= coordinate.row) && (0..<numColumns ~= coordinate.col)
+        return coordinate.isWithin(numRows: numRows, numCols: numColumns)
     }
 
     /// Gets the coordinates in the grid that has the text in the `texts` set

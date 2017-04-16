@@ -28,8 +28,9 @@ protocol LevelSelectorViewModelProtocol {
     /// - Parameters:
     ///   - row: the row number that is pressed
     ///   - isDefault: whether the level is from the default levels or custom levels
+    ///   - cloneLevel: Whether the level should be cloned or replaced
     /// - Returns: the LevelDesignerVM to be segued into
-    func getLevelDesignerViewModel(fromRow row: Int, isDefault: Bool) -> LevelDesignerViewModel
+    func getLevelDesignerViewModel(fromRow row: Int, isDefault: Bool, cloneLevel: Bool) -> LevelDesignerViewModel
 
     /// Get the level designer VM without the game info
     /// - Returns: the LevelDesignerVM to be segued into

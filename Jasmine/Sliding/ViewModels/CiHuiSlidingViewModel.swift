@@ -1,6 +1,11 @@
 import Foundation
 
 class CiHuiSlidingViewModel: BaseSlidingViewModel {
+
+    override var gameInstruction: String {
+        return GameConstants.Sliding.CiHui.gameInstruction
+    }
+
     /// Initializes the game
     ///
     /// - Parameters:
@@ -23,9 +28,6 @@ class CiHuiSlidingViewModel: BaseSlidingViewModel {
 
         super.init(time: time, gameData: gameData, gameType: .ciHui,
                    tiles: tilesExceptLast, rows: rows, columns: GameConstants.Sliding.columns)
-
-        gameTitle = GameConstants.Sliding.CiHui.gameTitle
-        gameInstruction = GameConstants.Sliding.CiHui.gameInstruction
 
         var validPhrases = phrases
         validPhrases.removeLast()
