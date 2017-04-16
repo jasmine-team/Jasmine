@@ -2,6 +2,8 @@ import GameKit
 
 class SettingsViewController: JasmineViewController {
 
+    @IBOutlet private var backgroundMusicSlider: UISlider!
+    @IBOutlet private var soundEffectsSlider: UISlider!
     @IBOutlet private var signInButton: UIButton!
 
     @IBOutlet private weak var navigationBar: UINavigationBar!
@@ -12,6 +14,7 @@ class SettingsViewController: JasmineViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         super.setLayout(navigationBar: navigationBar)
+        setSliderPosition()
         setSignInButtonText()
     }
 
@@ -21,6 +24,12 @@ class SettingsViewController: JasmineViewController {
                           SettingsViewController.signOutLabel :
                           SettingsViewController.signInLabel
         signInButton.setTitle(buttonTitle, for: .normal)
+    }
+
+    /// Sets the position of the background music and sound effects sliders according to the their current volumes
+    private func setSliderPosition() {
+        backgroundMusicSlider.value = SoundService.sharedInstance.backgroundVolume
+        soundEffectsSlider.value = SoundService.sharedInstance.effectVolume
     }
 
     @IBAction private func onBackgroundMusicSliderPressed(_ slider: UISlider) {
