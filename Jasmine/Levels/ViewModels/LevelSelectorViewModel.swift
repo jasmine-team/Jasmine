@@ -2,9 +2,9 @@ import RealmSwift
 
 /// The ViewModel for the level selector part.
 class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
-    private var realm: Realm
+
     /// The Levels object that manages the level objects
-    private var levels: Levels
+    private let levels: Levels = Storage.sharedInstance.levels
     /// Default levels as a level array
     private var rawDefaultLevels: [Level] {
         return levels.original
@@ -28,14 +28,6 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
     /// The custom levels in the game.
     var customLevels: [GameInfo] {
         return rawCustomLevels.map { level in GameInfo.from(level: level) }
-    }
-
-    init() {
-        guard let realm = try? Realm() else {
-            fatalError("Cannot create Realm")
-        }
-        self.realm = realm
-        levels = Levels(realm: realm)
     }
 
     /// Deletes the custom level
@@ -82,7 +74,7 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
     /// - Parameter gameInfo: the game info to be passed
     func playGame(fromRow row: Int, isDefault: Bool) -> BaseViewModelProtocol {
         let level = getLevel(isDefault: isDefault, withRow: row)
-        let gameManager = GameManager(realm: realm)
+        let gameManager = Storage.sharedInstance.gameManager
         let gameData = gameManager.createGame(fromLevel: level)
 
         switch (level.gameMode, level.gameType) {

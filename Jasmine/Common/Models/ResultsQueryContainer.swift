@@ -4,7 +4,7 @@ class ResultsQueryContainer {
 
     let realm: Realm
     let levelResults: Results<LevelResult>
-    
+
     let slidingResults: Results<LevelResult>
     let tetrisResults: Results<LevelResult>
     let swappingResults: Results<LevelResult>
@@ -15,25 +15,20 @@ class ResultsQueryContainer {
     init(realm: Realm) {
         self.realm = realm
         levelResults = realm.objects(LevelResult.self)
-        
-        slidingResults = levelResults.filter("ANY level.gameMode = 'sliding'")
-        tetrisResults = levelResults.filter("ANY level.gameMode = 'tetris'")
-        swappingResults = levelResults.filter("ANY level.gameMode = 'swapping'")
+
+        slidingResults = levelResults.filter("level.rawGameMode = 'sliding'")
+        tetrisResults = levelResults.filter("level.rawGameMode = 'tetris'")
+        swappingResults = levelResults.filter("level.rawGameMode = 'swapping'")
     }
-    
+
     /// Initiates the query container with a default realm
     ///
     /// - Throws: realm error if unable to initialize
     convenience init() throws {
         self.init(realm: try Realm())
     }
-<<<<<<< HEAD:Jasmine/Common/Models/ResultsQueryContainer.swift
-    
-    /// Returns times played between the two days
-=======
 
     /// Returns times played between the two dates
->>>>>>> origin/master:Jasmine/Profile/Models/ProfileQueryContainer.swift
     ///
     /// - Parameters:
     ///   - startDate: start date inclusive
@@ -44,5 +39,5 @@ class ResultsQueryContainer {
                                     argumentArray: [startDate, endDate])
         return levelResults.filter(predicate).count
     }
-    
+
 }

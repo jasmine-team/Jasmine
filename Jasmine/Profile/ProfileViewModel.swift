@@ -8,7 +8,7 @@ class ProfileViewModel {
     /// The number of days in a week for the current calendar
     let numOfDaysInAWeek: Int
 
-    private let profileQuery: ProfileQueryContainer
+    private let resultsQuery: ResultsQueryContainer
 
     /// Number of weeks to count for the weekly streak
     private let numWeeksToCount: Int
@@ -19,7 +19,7 @@ class ProfileViewModel {
     private let startOfWeek: Date
 
     init(numWeeksToCount: Int) throws {
-        profileQuery = try ProfileQueryContainer()
+        resultsQuery = try ResultsQueryContainer()
         self.numWeeksToCount = numWeeksToCount
 
         currentDate = Date()
@@ -56,7 +56,7 @@ class ProfileViewModel {
     private func getDailyStreakCount(startOfTheWeek: Date) -> Int {
         return (0..<numOfDaysInAWeek).filter { dayCount in
             let startDate = startOfTheWeek + dayCount.day
-            let timesPlayed = profileQuery.timesPlayed(from: startDate, toExclusive: startDate + 1.day)
+            let timesPlayed = resultsQuery.timesPlayed(from: startDate, toExclusive: startDate + 1.day)
             return timesPlayed >= ProfileViewModel.minGamesPerDay
         }.count
     }

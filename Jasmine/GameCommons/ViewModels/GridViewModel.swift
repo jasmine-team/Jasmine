@@ -43,13 +43,19 @@ class GridViewModel: GridViewModelProtocol {
         didSet {
             gameStatusDelegate?.gameStatusDidUpdate()
 
-            if gameStatus == .endedWithWon {
-                timer.stopTimer()
+            guard gameStatus == .endedWithWon else {
+                return
             }
+            timer.stopTimer()
+            gameData.gameStatus = .endedWithWon
+            gameData.phrasesTested = phrasesTested
+            gameData.score = currentScore
+            let gameManager = Storage.sharedInstance.gameManager
+            gameManager.saveGame(result: gameData)
         }
     }
     /// The game data of this game.
-    let gameData: GameData
+    var gameData: GameData
 
     /// Provide a brief title for this game. Note that this title should be able to fit within the
     /// width of the display.
