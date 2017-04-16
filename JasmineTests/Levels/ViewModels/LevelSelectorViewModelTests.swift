@@ -22,7 +22,8 @@ class LevelSelectorViewModelTests: RealmTestCase {
         originalLevels.forEach(save)
         customLevels.forEach(save)
 
-        viewModel = LevelSelectorViewModel()
+        let levels = Levels(realm: realm)
+        viewModel = LevelSelectorViewModel(levels: levels)
     }
 
     func testProperties() {
