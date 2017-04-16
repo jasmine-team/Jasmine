@@ -110,6 +110,7 @@
 		DF51BC6B1E9E163D008B075C /* snap.wav in Resources */ = {isa = PBXBuildFile; fileRef = DF51BC6A1E9E163D008B075C /* snap.wav */; };
 		DF6320081E7424A500AA9B50 /* TetrisStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */; };
 		DF6584FB1EA3A0BA00785093 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6584FA1EA3A0BA00785093 /* HelpViewController.swift */; };
+		DF6585011EA3A69F00785093 /* WhiteStatusBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6585001EA3A69F00785093 /* WhiteStatusBarViewController.swift */; };
 		DF6DDC5B1E9BF9BA00FACAB5 /* LevelSelectorViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6DDC5A1E9BF9BA00FACAB5 /* LevelSelectorViewControllerDelegate.swift */; };
 		DF6DDC5D1E9BF9C200FACAB5 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6DDC5C1E9BF9C200FACAB5 /* GameInfo.swift */; };
 		DF76B0AC1E9D185800BCC751 /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF76B0AB1E9D185800BCC751 /* RandomGenerator.swift */; };
@@ -300,6 +301,7 @@
 		DF51BC6A1E9E163D008B075C /* snap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snap.wav; sourceTree = "<group>"; };
 		DF6320071E7424A500AA9B50 /* TetrisStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TetrisStoryboard.storyboard; sourceTree = "<group>"; };
 		DF6584FA1EA3A0BA00785093 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		DF6585001EA3A69F00785093 /* WhiteStatusBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteStatusBarViewController.swift; sourceTree = "<group>"; };
 		DF6DDC5A1E9BF9BA00FACAB5 /* LevelSelectorViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectorViewControllerDelegate.swift; sourceTree = "<group>"; };
 		DF6DDC5C1E9BF9C200FACAB5 /* GameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
 		DF76B0AB1E9D185800BCC751 /* RandomGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomGenerator.swift; sourceTree = "<group>"; };
@@ -1042,6 +1044,7 @@
 				DF76B0B31E9D18C400BCC751 /* PhrasesSelectionTableViewController.swift */,
 				DFF45A7B1E99E41700DFD3D9 /* PhrasesTableViewController.swift */,
 				DFE85F721EA26DC7007C44C4 /* JasmineViewController.swift */,
+				DF6585001EA3A69F00785093 /* WhiteStatusBarViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1465,6 +1468,7 @@
 				DFCD85A71E9E909500B10486 /* DiscreteFallableSquareGridViewController.swift in Sources */,
 				DFE1114C1E98BDDC00F8860E /* ProfileViewController.swift in Sources */,
 				007B69201E9E0EAF002FE500 /* UIViewController+GameCenter.swift in Sources */,
+				DF6585011EA3A69F00785093 /* WhiteStatusBarViewController.swift in Sources */,
 				009B4E011EA3292100FEE074 /* ProfileViewModel.swift in Sources */,
 				502A296F1E926DCA0024336A /* CiHuiSlidingViewModel.swift in Sources */,
 				A2017E2C1EA3AF7000346D61 /* GameCenterNotifier.swift in Sources */,

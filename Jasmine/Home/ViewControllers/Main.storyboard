@@ -15,7 +15,7 @@
         <!--Profile-->
         <scene sceneID="Yj8-SC-wqm">
             <objects>
-                <viewController id="cqH-cK-nvp" sceneMemberID="viewController">
+                <viewController id="cqH-cK-nvp" customClass="WhiteStatusBarViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FRU-sS-Zij"/>
                         <viewControllerLayoutGuide type="bottom" id="2sS-j8-r77"/>
@@ -48,7 +48,7 @@
         <!--Levels-->
         <scene sceneID="Mq1-C8-s4U">
             <objects>
-                <viewController id="Rng-e6-PxE" sceneMemberID="viewController">
+                <viewController id="Rng-e6-PxE" customClass="WhiteStatusBarViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ln6-0i-eqa"/>
                         <viewControllerLayoutGuide type="bottom" id="JrQ-r5-nqi"/>
