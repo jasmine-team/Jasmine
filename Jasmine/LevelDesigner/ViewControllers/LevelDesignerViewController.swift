@@ -56,7 +56,8 @@ class LevelDesignerViewController: UIViewController {
             phrasesExplorerViewController.segueWith(phrasesExplorerViewModel, onSaveCallBack: updateSelectedPhrases)
 
         } else if let levelImporterView = segue.destination as? LevelImportViewController {
-            levelImporterView.segueWith(LevelImportViewModel(), onMarkedLevelsReturned: onLevelsImported)
+            levelImporterView.segueWith(LevelImportViewModel(withType: selectedGameType),
+                                        onMarkedLevelsReturned: onLevelsImported)
         }
     }
 
@@ -122,7 +123,7 @@ class LevelDesignerViewController: UIViewController {
     /// - Parameter levels: levels that have been imported
     /// - Precondition: `levels` must all have the same game type as the currently selected game type
     private func onLevelsImported(_ levels: [GameInfo]) {
-        assert(levels.first { $0.gameType != selectedGameType } == nil, 
+        assert(levels.first { $0.gameType != selectedGameType } == nil,
                "Imported levels are not of the same game type as selected game type")
         viewModel.addToSelectedPhrases(from: levels)
         updateSelectPhrasesButtonText()
