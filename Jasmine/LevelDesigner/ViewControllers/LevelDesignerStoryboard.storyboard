@@ -35,9 +35,6 @@
                                     <navigationItem title="Design A Level" id="b2Y-pH-ApV">
                                         <barButtonItem key="leftBarButtonItem" title="BACK" id="dt9-gQ-072">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="onBackButtonPressed:" destination="5nd-jc-deS" id="ka9-G3-Zc8"/>
-                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="SAVE" id="DWe-cl-9X5">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -180,6 +177,7 @@
                         <outlet property="gameModeControl" destination="n5B-08-4UZ" id="Tmg-fd-bhj"/>
                         <outlet property="gameTypeControl" destination="IbR-mM-iJr" id="03F-HE-ay5"/>
                         <outlet property="levelNameField" destination="Mnr-89-Poz" id="wJv-Qz-N10"/>
+                        <outlet property="navigationBar" destination="cBS-Ug-QFA" id="YVo-W9-aKD"/>
                         <outlet property="selectPhrasesButton" destination="rLH-s7-Why" id="C7A-Gg-Wfq"/>
                     </connections>
                 </viewController>

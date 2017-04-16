@@ -1,6 +1,6 @@
 import UIKit
 
-class LevelImportViewController: UIViewController {
+class LevelImportViewController: JasmineViewController {
 
     // MARK: Constants
     private static let actionSheetPhrases = "View Phrases"
@@ -9,6 +9,7 @@ class LevelImportViewController: UIViewController {
 
     // MARK: Layouts
     fileprivate var levelCollectionView: GameLevelListViewController!
+    @IBOutlet private weak var navigationBar: UINavigationBar!
 
     // MARK: Properties
     fileprivate var viewModel: LevelImportViewModelProtocol!
@@ -42,13 +43,15 @@ class LevelImportViewController: UIViewController {
         performSegue(withIdentifier: LevelImportViewController.segueToPhrasesExplorer, sender: nil)
     }
 
+    // MARK: View Controller Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        super.setLayout(navigationBar: navigationBar)
+    }
+
     // MARK: Listeners
     /// Implements this listener to return a set of levels that are marked (or selected) with this view.
     var onMarkedLevelsReturned: (([GameInfo]) -> Void)?
-
-    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
-    }
 
     @IBAction private func onDonePressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true) {

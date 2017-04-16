@@ -17,11 +17,14 @@ class JasmineViewController: UIViewController {
 
     // MARK: Layout Setters
     /// Sets the navigation bar with a title, and the dismiss method.
-    func setLayout(navigationBar: UINavigationBar, withTitle title: String?) {
+    func setLayout(navigationBar: UINavigationBar, withTitle title: String? = nil) {
         self.navigationBar = navigationBar
-        self.navigationBar.topItem?.title = title
         setThemeForNavigationBar()
         setDismissButtonForNavigationBar()
+
+        if let title = title {
+            self.navigationBar.topItem?.title = title
+        }
     }
 
     /// Dismiss this view controller when the "BACK" button is pressed on the nav bar.

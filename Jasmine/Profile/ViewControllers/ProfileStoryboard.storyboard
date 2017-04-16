@@ -160,6 +160,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="navigationBar" destination="DVn-ns-ZkY" id="xVz-EV-Sb7"/>
                         <outlet property="playerNameLabel" destination="0du-YB-64q" id="HNg-Qc-mB0"/>
                     </connections>
                 </viewController>
@@ -171,7 +172,7 @@
         <scene sceneID="Fff-xR-XAj">
             <objects>
                 <collectionViewController id="Qxc-MQ-qqq" customClass="SquareGridViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="5lK-1x-Vl8">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="5lK-1x-Vl8">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

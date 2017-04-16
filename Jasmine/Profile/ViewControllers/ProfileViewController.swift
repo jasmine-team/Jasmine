@@ -1,8 +1,10 @@
 import GameKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: JasmineViewController {
 
     @IBOutlet private var playerNameLabel: UILabel!
+
+    @IBOutlet private weak var navigationBar: UINavigationBar!
 
     private static let weeklyStreakGridSpacing: CGFloat = 0
     private static let weeklyStreakNumRows = 4
@@ -10,6 +12,7 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.setLayout(navigationBar: navigationBar)
         setPlayerNameLabel()
     }
 
@@ -19,7 +22,6 @@ class ProfileViewController: UIViewController {
                                                numCol: ProfileViewController.weeklyStreakNumCols,
                                                withSpace: ProfileViewController.weeklyStreakGridSpacing)
         }
-
     }
 
     /// Sets the player name label text if user is authenticated
