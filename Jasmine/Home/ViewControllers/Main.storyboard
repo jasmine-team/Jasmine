@@ -6,145 +6,12 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Debug-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeScreenViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eKS-sV-Lr3">
-                                <rect key="frame" x="71" y="213.5" width="233" height="240"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nil-Gc-zGo">
-                                        <rect key="frame" x="0.0" y="0.0" width="233" height="30"/>
-                                        <state key="normal" title="Open Swapping Chengyu Game"/>
-                                        <connections>
-                                            <segue destination="n7s-Ck-n8c" kind="show" id="odq-fT-zOs"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvu-uL-ORH">
-                                        <rect key="frame" x="0.0" y="30" width="233" height="30"/>
-                                        <state key="normal" title="Open Swapping Cihui Game"/>
-                                        <connections>
-                                            <segue destination="n7s-Ck-n8c" kind="show" id="ttU-OF-6vh"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iq-Ac-1yh">
-                                        <rect key="frame" x="0.0" y="60" width="233" height="30"/>
-                                        <state key="normal" title="Open Tetris Game"/>
-                                        <connections>
-                                            <segue destination="CTx-JF-hEy" kind="show" id="teM-ew-Hcb"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDQ-IQ-GqK">
-                                        <rect key="frame" x="0.0" y="90" width="233" height="30"/>
-                                        <state key="normal" title="Open Sliding Chengyu Game"/>
-                                        <connections>
-                                            <segue destination="8ZU-Hu-mvm" kind="show" id="MN3-qC-tx6"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hhd-Gn-BwK">
-                                        <rect key="frame" x="0.0" y="120" width="233" height="30"/>
-                                        <state key="normal" title="Open Sliding Cihui Game"/>
-                                        <connections>
-                                            <segue destination="8ZU-Hu-mvm" kind="show" id="djo-h3-zHX"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pQ-1T-20y">
-                                        <rect key="frame" x="0.0" y="150" width="233" height="30"/>
-                                        <state key="normal" title="Phrases Explorer With Select"/>
-                                        <connections>
-                                            <segue destination="4Cz-aW-33f" kind="show" id="kwm-v0-aGq"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sl2-Co-6ct">
-                                        <rect key="frame" x="0.0" y="180" width="233" height="30"/>
-                                        <state key="normal" title="Phrases Explorer With Phrase Info"/>
-                                        <connections>
-                                            <segue destination="4Cz-aW-33f" kind="show" id="6eB-CR-JTH"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gp-IY-vsy">
-                                        <rect key="frame" x="0.0" y="210" width="233" height="30"/>
-                                        <state key="normal" title="Open Phrase"/>
-                                        <connections>
-                                            <segue destination="rYh-KJ-YNp" kind="show" id="RG9-Ac-fGg"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="eKS-sV-Lr3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E9k-4T-tsJ"/>
-                            <constraint firstItem="eKS-sV-Lr3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Gso-5n-fSy"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Debug" id="mm0-Ag-qnB"/>
-                    <connections>
-                        <outlet property="phrasesWithInfoButton" destination="Sl2-Co-6ct" id="wgA-87-lby"/>
-                        <outlet property="phrasesWithSelectButton" destination="4pQ-1T-20y" id="Ti8-Dy-l9k"/>
-                        <outlet property="slidingChengYuButton" destination="oDQ-IQ-GqK" id="c8Y-Ws-9rI"/>
-                        <outlet property="slidingCiHuiButton" destination="Hhd-Gn-BwK" id="lCN-eT-pld"/>
-                        <outlet property="swappingChengYuButton" destination="nil-Gc-zGo" id="sUZ-RF-Tlh"/>
-                        <outlet property="swappingCiHuiButton" destination="qvu-uL-ORH" id="g8b-qY-NZc"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="62" y="126"/>
-        </scene>
-        <!--SwappingGameViewController-->
-        <scene sceneID="a8W-Oz-04v">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SwappingStoryboard" referencedIdentifier="SwappingGameViewController" id="n7s-Ck-n8c" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WeS-BJ-Okb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="816" y="74"/>
-        </scene>
-        <!--TetrisGameViewController-->
-        <scene sceneID="aKU-oO-5kC">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Tetris Game View Controller" storyboardName="TetrisStoryboard" referencedIdentifier="TetrisGameViewController" id="CTx-JF-hEy" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Nw-2l-f4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="798" y="141"/>
-        </scene>
-        <!--SlidingGameViewContoller-->
-        <scene sceneID="61E-hi-Ljp">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SlidingGameStoryboard" referencedIdentifier="SlidingGameViewContoller" id="8ZU-Hu-mvm" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e9M-vg-btE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="798" y="206"/>
-        </scene>
-        <!--PhraseViewController-->
-        <scene sceneID="4M4-bA-S8x">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="CommonsStoryboard" storyboardName="CommonsStoryboard" referencedIdentifier="PhraseViewController" id="rYh-KJ-YNp" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zt0-G3-AcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="776" y="346"/>
-        </scene>
-        <!--PhrasesExplorerViewController-->
-        <scene sceneID="L8I-Hn-bVq">
-            <objects>
-                <viewControllerPlaceholder storyboardName="CommonsStoryboard" referencedIdentifier="PhrasesExplorerViewController" id="4Cz-aW-33f" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XmM-vH-bBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="797" y="280"/>
-        </scene>
         <!--Profile-->
         <scene sceneID="Yj8-SC-wqm">
             <objects>
@@ -211,10 +78,688 @@
             </objects>
             <point key="canvasLocation" x="522" y="1583"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="zpH-nH-lCs">
+            <objects>
+                <viewController id="ks0-DZ-xJ5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6gW-Bp-ttH"/>
+                        <viewControllerLayoutGuide type="bottom" id="zAM-CE-ejV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9wq-oY-Vd8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRK-7j-7xj">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="BLd-bd-Wkw"/>
+                                    <constraint firstAttribute="height" constant="64" id="SlP-9A-bb8"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="How To Play" id="geD-ER-dxW">
+                                        <barButtonItem key="leftBarButtonItem" title="BACK" id="xeR-7f-F0w">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="52i-ci-8RH">
+                                <rect key="frame" x="20" y="84" width="335" height="746.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="7lz-iZ-UPh">
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="96.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INTRODUCTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="of0-Eg-t1l">
+                                                <rect key="frame" x="104" y="0.0" width="123" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYI-NR-Ve9">
+                                                <rect key="frame" x="0.0" y="24.5" width="331" height="72"/>
+                                                <string key="text">In Jasmine, there is a combination of game type (Swapping, Sliding, Tetris) and game mode (Cheng Yu, Ci Hui). Read through each game to find out more.</string>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="DYI-NR-Ve9" secondAttribute="trailing" id="9xa-UE-vRv"/>
+                                            <constraint firstItem="DYI-NR-Ve9" firstAttribute="leading" secondItem="7lz-iZ-UPh" secondAttribute="leading" id="Wsk-ea-UJO"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="x9M-xv-T6r">
+                                        <rect key="frame" x="0.0" y="112.5" width="335" height="60.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GENERAL GAME PLAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYq-U3-tVH">
+                                                <rect key="frame" x="83.5" y="0.0" width="168.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Form valid phrases (either Cheng Yu or Ci Hui) from top to bottom or from left to right." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PwQ-Lc-8wH">
+                                                <rect key="frame" x="7.5" y="24.5" width="320.5" height="36"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="WTl-XQ-LKi">
+                                        <rect key="frame" x="0.0" y="189" width="335" height="78.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWAPPING GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uA-Yb-KEy">
+                                                <rect key="frame" x="100" y="0.0" width="135.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1D-NY-X1A">
+                                                <rect key="frame" x="12" y="24.5" width="311.5" height="54"/>
+                                                <string key="text">Drag a tile and drop it on another tile to swap them. Score will be computed based on time remaining and number of swaps performed.</string>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="LUP-dX-Rh4">
+                                        <rect key="frame" x="0.0" y="283.5" width="335" height="164.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHENG YU (成语) SWAPPING GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obt-Fl-jBB">
+                                                <rect key="frame" x="31" y="0.0" width="273.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swapping-cheng-yu" translatesAutoresizingMaskIntoConstraints="NO" id="V0F-Dz-MeI">
+                                                <rect key="frame" x="0.0" y="24.5" width="335" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="HUg-Cc-2o2"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The objective of this game is to form 4 rows or columns of Cheng Yus (4 characters)." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDy-Og-WAc">
+                                                <rect key="frame" x="6.5" y="128.5" width="322.5" height="36"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="FYs-58-CW1">
+                                        <rect key="frame" x="0.0" y="464" width="335" height="282.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CI HUI (词汇) SWAPPING GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fy2-UZ-WWg">
+                                                <rect key="frame" x="49" y="0.0" width="237" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swapping-ci-hui" translatesAutoresizingMaskIntoConstraints="NO" id="GIg-C8-J83">
+                                                <rect key="frame" x="0.0" y="24.5" width="335" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="hFY-uk-Fzp"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYS-Fw-riv">
+                                                <rect key="frame" x="3" y="228.5" width="329.5" height="54"/>
+                                                <string key="text">The objective of this game is to form a Ci Hui (2 characters) on one side and its associated phonics (pinyin) on the other side.</string>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="LUP-dX-Rh4" secondAttribute="trailing" id="0do-y8-Vf8"/>
+                                    <constraint firstAttribute="trailing" secondItem="x9M-xv-T6r" secondAttribute="trailing" id="3ZF-I8-H6u"/>
+                                    <constraint firstAttribute="trailing" secondItem="WTl-XQ-LKi" secondAttribute="trailing" id="FJz-iD-kLT"/>
+                                    <constraint firstItem="LUP-dX-Rh4" firstAttribute="leading" secondItem="52i-ci-8RH" secondAttribute="leading" id="IaT-Rm-VE8"/>
+                                    <constraint firstItem="x9M-xv-T6r" firstAttribute="leading" secondItem="52i-ci-8RH" secondAttribute="leading" id="l5d-Jr-XWq"/>
+                                    <constraint firstItem="WTl-XQ-LKi" firstAttribute="leading" secondItem="52i-ci-8RH" secondAttribute="leading" id="pcZ-tl-Oxm"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="52i-ci-8RH" firstAttribute="leading" secondItem="9wq-oY-Vd8" secondAttribute="leading" constant="20" id="7aQ-Vn-plA"/>
+                            <constraint firstAttribute="trailing" secondItem="ZRK-7j-7xj" secondAttribute="trailing" id="8p3-Xo-hPh"/>
+                            <constraint firstItem="ZRK-7j-7xj" firstAttribute="top" secondItem="9wq-oY-Vd8" secondAttribute="top" id="MUV-Oa-29Y"/>
+                            <constraint firstAttribute="trailing" secondItem="52i-ci-8RH" secondAttribute="trailing" constant="20" id="NJe-Xh-PMe"/>
+                            <constraint firstItem="ZRK-7j-7xj" firstAttribute="leading" secondItem="9wq-oY-Vd8" secondAttribute="leading" id="dIB-QF-Q6h"/>
+                            <constraint firstItem="52i-ci-8RH" firstAttribute="top" secondItem="ZRK-7j-7xj" secondAttribute="bottom" constant="20" id="uhA-YA-9Da"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="1000"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Np-cd-eIs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4348" y="1226"/>
+        </scene>
+        <!--Help View Controller-->
+        <scene sceneID="42k-Ld-u6g">
+            <objects>
+                <viewController id="2of-1y-ds6" customClass="HelpViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hbw-XL-Em3"/>
+                        <viewControllerLayoutGuide type="bottom" id="HmJ-2I-CN6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hK4-g9-GCA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zE-7b-EMb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="cX0-cA-3BX"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="64" id="fvY-XF-xrT"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="ueb-UY-sc5"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.15101002159999999" green="0.56891876460000002" blue="0.43715286250000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="How To Play" id="PhQ-82-MT1">
+                                        <barButtonItem key="leftBarButtonItem" title="BACK" id="ya6-Di-oQU">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1K-Em-bi6">
+                                <rect key="frame" x="16" y="64" width="343" height="1936"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="sI0-4i-QPu">
+                                        <rect key="frame" x="0.0" y="20" width="343" height="1395.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Qv0-e7-Hhj">
+                                                <rect key="frame" x="0.0" y="0.0" width="331" height="96.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INTRODUCTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJb-p5-gno">
+                                                        <rect key="frame" x="100" y="0.0" width="131.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAE-YS-KrS">
+                                                        <rect key="frame" x="0.0" y="24.5" width="331" height="72"/>
+                                                        <string key="text">In Jasmine, there is a combination of game type (Swapping, Sliding, Tetris) and game mode (Cheng Yu, Ci Hui). Read through each game to find out more.</string>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="sAE-YS-KrS" secondAttribute="trailing" id="1DI-3L-8rV"/>
+                                                    <constraint firstItem="sAE-YS-KrS" firstAttribute="leading" secondItem="Qv0-e7-Hhj" secondAttribute="leading" id="W2c-OW-tK6"/>
+                                                    <constraint firstItem="sAE-YS-KrS" firstAttribute="leading" secondItem="Qv0-e7-Hhj" secondAttribute="leading" id="dgt-4i-XnC"/>
+                                                    <constraint firstAttribute="trailing" secondItem="sAE-YS-KrS" secondAttribute="trailing" id="gbS-oi-xh4"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qtO-XZ-LLL">
+                                                <rect key="frame" x="0.0" y="112.5" width="343" height="60.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GENERAL GAME PLAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tby-Ep-ARE">
+                                                        <rect key="frame" x="81.5" y="0.0" width="180" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Form valid phrases (either Cheng Yu or Ci Hui) from top to bottom or from left to right." lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y95-wA-J9P">
+                                                        <rect key="frame" x="0.0" y="24.5" width="343" height="36"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="Y95-wA-J9P" secondAttribute="trailing" id="7cy-Vh-ibU"/>
+                                                    <constraint firstItem="Y95-wA-J9P" firstAttribute="leading" secondItem="qtO-XZ-LLL" secondAttribute="leading" id="ae3-uK-5eK"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="otE-LF-eAn">
+                                                <rect key="frame" x="0.0" y="189" width="343" height="78.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWAPPING GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mF7-eQ-TJO">
+                                                        <rect key="frame" x="99" y="0.0" width="145" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RJ-pg-jTr">
+                                                        <rect key="frame" x="0.0" y="24.5" width="343" height="54"/>
+                                                        <string key="text">Drag a tile and drop it on another tile to swap them. Score will be computed based on time remaining and number of swaps performed.</string>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="3RJ-pg-jTr" secondAttribute="trailing" id="NJJ-Ua-1g1"/>
+                                                    <constraint firstItem="3RJ-pg-jTr" firstAttribute="leading" secondItem="otE-LF-eAn" secondAttribute="leading" id="pLv-E3-lzf"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="cpn-9a-LSj">
+                                                <rect key="frame" x="0.0" y="283.5" width="343" height="164.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHENG YU (成语) SWAPPING GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKA-ZJ-PN7">
+                                                        <rect key="frame" x="35" y="0.0" width="273.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                        <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swapping-cheng-yu" translatesAutoresizingMaskIntoConstraints="NO" id="7ui-2P-8oh">
+                                                        <rect key="frame" x="0.0" y="24.5" width="343" height="100"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="100" id="xI5-8h-Ril"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The objective of this game is to form 4 rows or columns of Cheng Yus (4 characters)." lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dee-xV-Qz9">
+                                                        <rect key="frame" x="0.0" y="128.5" width="343" height="36"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Dee-xV-Qz9" firstAttribute="leading" secondItem="cpn-9a-LSj" secondAttribute="leading" id="woA-Y2-mLY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Dee-xV-Qz9" secondAttribute="trailing" id="yeq-rP-z20"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="9fg-Q7-3dR">
+                                                <rect key="frame" x="0.0" y="464" width="343" height="282.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CI HUI (词汇) SWAPPING GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Niy-1n-uQq">
+                                                        <rect key="frame" x="53" y="0.0" width="237" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                        <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swapping-ci-hui" translatesAutoresizingMaskIntoConstraints="NO" id="QEV-M6-jJp">
+                                                        <rect key="frame" x="0.0" y="24.5" width="343" height="200"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="200" id="MYs-wo-eUA"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSe-Gf-FlZ">
+                                                        <rect key="frame" x="0.0" y="228.5" width="343" height="54"/>
+                                                        <string key="text">The objective of this game is to form a Ci Hui (2 characters) on one side and its associated phonics (pinyin) on the other side.</string>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="SSe-Gf-FlZ" firstAttribute="leading" secondItem="9fg-Q7-3dR" secondAttribute="leading" id="HDe-li-Zuw"/>
+                                                    <constraint firstAttribute="trailing" secondItem="SSe-Gf-FlZ" secondAttribute="trailing" id="sjX-ZU-m5U"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="T2v-bt-kIX">
+                                                <rect key="frame" x="0.0" y="762.5" width="343" height="96.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SLIDING GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwI-Yx-z2u">
+                                                        <rect key="frame" x="110.5" y="0.0" width="122" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDl-ZB-EL2">
+                                                        <rect key="frame" x="0.0" y="24.5" width="343" height="72"/>
+                                                        <string key="text">Slide any neighbouring tile onto the empty tile. You only need to form 3 rows or columns to win. Score will be computed based on time remaining and number of slides performed.  </string>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="uDl-ZB-EL2" firstAttribute="leading" secondItem="T2v-bt-kIX" secondAttribute="leading" id="28O-Dq-Z11"/>
+                                                    <constraint firstAttribute="trailing" secondItem="uDl-ZB-EL2" secondAttribute="trailing" id="PP7-hE-8dV"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3Yk-DK-B4C">
+                                                <rect key="frame" x="0.0" y="875" width="343" height="42.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHENG YU (成语) SLIDING GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zub-bm-Nmv">
+                                                        <rect key="frame" x="45.5" y="0.0" width="252" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                        <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Form 3 rows or columns of Cheng Yu." lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9y-Xc-hDX">
+                                                        <rect key="frame" x="0.0" y="24.5" width="343" height="18"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="l9y-Xc-hDX" firstAttribute="leading" secondItem="3Yk-DK-B4C" secondAttribute="leading" id="o96-xe-qFO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="l9y-Xc-hDX" secondAttribute="trailing" id="pag-RT-69E"/>
+                                                    <constraint firstItem="l9y-Xc-hDX" firstAttribute="leading" secondItem="3Yk-DK-B4C" secondAttribute="leading" id="vgM-9K-50o"/>
+                                                    <constraint firstAttribute="trailing" secondItem="l9y-Xc-hDX" secondAttribute="trailing" id="ykY-LR-I4g"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="6Df-QZ-o2W">
+                                                <rect key="frame" x="0.0" y="933.5" width="343" height="42.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CI HUI (词汇) SLIDING GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Er-42-u53">
+                                                        <rect key="frame" x="64" y="0.0" width="215.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                        <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Form 3 rows or columns of Ci Hui and Pin Yin pair." lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdT-QJ-aBI">
+                                                        <rect key="frame" x="0.0" y="24.5" width="343" height="18"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="HdT-QJ-aBI" secondAttribute="trailing" id="CNM-k0-uWY"/>
+                                                    <constraint firstItem="HdT-QJ-aBI" firstAttribute="leading" secondItem="6Df-QZ-o2W" secondAttribute="leading" id="OOj-Sa-lBb"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1YW-Or-CzE">
+                                                <rect key="frame" x="0.0" y="992" width="343" height="250.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TETRIS GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKF-Ka-hxn">
+                                                        <rect key="frame" x="115" y="0.0" width="113.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xd-TU-DmD">
+                                                        <rect key="frame" x="0.0" y="28.5" width="343" height="72"/>
+                                                        <string key="text">Similar to well known tetris, form a Cheng Yu or Ci Hui by arranging the tiles from left to right, or top to bottom. Correctly formed tiles will be destroyed.</string>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5p-D9-xbC">
+                                                        <rect key="frame" x="0.0" y="108.5" width="343" height="54"/>
+                                                        <string key="text">You may shift a falling tile leftwards/rightwards by swiping leftwards/rightwards or tapping the left/right side of the falling tile.</string>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You may land a tile instantly by swiping downwards or tapping underneath the block." lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jfe-yj-AIL">
+                                                        <rect key="frame" x="0.0" y="170.5" width="343" height="36"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You may switch the falling block by tapping the upcoming blocks." lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhK-CE-dFV">
+                                                        <rect key="frame" x="0.0" y="214.5" width="343" height="36"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="0Xd-TU-DmD" firstAttribute="leading" secondItem="1YW-Or-CzE" secondAttribute="leading" id="Joi-aw-n41"/>
+                                                    <constraint firstAttribute="trailing" secondItem="e5p-D9-xbC" secondAttribute="trailing" id="RT8-vo-mUU"/>
+                                                    <constraint firstItem="Jfe-yj-AIL" firstAttribute="leading" secondItem="1YW-Or-CzE" secondAttribute="leading" id="TKa-UL-0qp"/>
+                                                    <constraint firstItem="qhK-CE-dFV" firstAttribute="leading" secondItem="1YW-Or-CzE" secondAttribute="leading" id="Zrp-RR-gow"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Jfe-yj-AIL" secondAttribute="trailing" id="agb-5E-T9R"/>
+                                                    <constraint firstAttribute="trailing" secondItem="0Xd-TU-DmD" secondAttribute="trailing" id="cMo-mu-RVy"/>
+                                                    <constraint firstAttribute="trailing" secondItem="qhK-CE-dFV" secondAttribute="trailing" id="qWh-zd-fcg"/>
+                                                    <constraint firstItem="e5p-D9-xbC" firstAttribute="leading" secondItem="1YW-Or-CzE" secondAttribute="leading" id="rCi-r2-8R6"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="MGt-1H-g8S">
+                                                <rect key="frame" x="0.0" y="1258.5" width="343" height="60.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHENG YU (成语) TETRIS GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqu-Eb-fyB">
+                                                        <rect key="frame" x="49.5" y="0.0" width="244" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                        <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Form 4 characters from left to right, or top to bottom." lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ubv-ig-iMt">
+                                                        <rect key="frame" x="0.0" y="24.5" width="343" height="36"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Ubv-ig-iMt" firstAttribute="leading" secondItem="MGt-1H-g8S" secondAttribute="leading" id="5UC-U4-rcd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Ubv-ig-iMt" secondAttribute="trailing" id="L9k-Is-m9W"/>
+                                                    <constraint firstItem="Ubv-ig-iMt" firstAttribute="leading" secondItem="MGt-1H-g8S" secondAttribute="leading" id="LZw-yy-eBI"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Ubv-ig-iMt" secondAttribute="trailing" id="ldC-Ev-gsT"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="5sd-18-8NB">
+                                                <rect key="frame" x="0.0" y="1335" width="343" height="60.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CI HUI (词汇) TETRIS GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73z-NE-6tn">
+                                                        <rect key="frame" x="68" y="0.0" width="207" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                        <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Form 2 characters from left to right, or top to bottom." lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kB-1U-QXv">
+                                                        <rect key="frame" x="0.0" y="24.5" width="343" height="36"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="6kB-1U-QXv" firstAttribute="leading" secondItem="5sd-18-8NB" secondAttribute="leading" id="5hj-iS-fsF"/>
+                                                    <constraint firstAttribute="trailing" secondItem="6kB-1U-QXv" secondAttribute="trailing" id="TeM-U9-Z98"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="otE-LF-eAn" secondAttribute="trailing" id="1yT-LK-a6y"/>
+                                            <constraint firstItem="5sd-18-8NB" firstAttribute="leading" secondItem="sI0-4i-QPu" secondAttribute="leading" id="6vY-tl-18d"/>
+                                            <constraint firstItem="3Yk-DK-B4C" firstAttribute="leading" secondItem="sI0-4i-QPu" secondAttribute="leading" id="AIx-5A-4tM"/>
+                                            <constraint firstAttribute="trailing" secondItem="5sd-18-8NB" secondAttribute="trailing" id="BBz-Rn-sKa"/>
+                                            <constraint firstItem="6Df-QZ-o2W" firstAttribute="leading" secondItem="sI0-4i-QPu" secondAttribute="leading" id="EeH-zq-wIp"/>
+                                            <constraint firstAttribute="trailing" secondItem="MGt-1H-g8S" secondAttribute="trailing" id="Jct-32-1mT"/>
+                                            <constraint firstItem="1YW-Or-CzE" firstAttribute="leading" secondItem="sI0-4i-QPu" secondAttribute="leading" id="NZg-Hd-wOT"/>
+                                            <constraint firstAttribute="trailing" secondItem="1YW-Or-CzE" secondAttribute="trailing" id="Qng-sj-WqJ"/>
+                                            <constraint firstItem="cpn-9a-LSj" firstAttribute="leading" secondItem="sI0-4i-QPu" secondAttribute="leading" id="R3V-s3-Pam"/>
+                                            <constraint firstAttribute="trailing" secondItem="T2v-bt-kIX" secondAttribute="trailing" id="Squ-Y9-SYj"/>
+                                            <constraint firstAttribute="trailing" secondItem="cpn-9a-LSj" secondAttribute="trailing" id="aBj-c1-Oub"/>
+                                            <constraint firstItem="MGt-1H-g8S" firstAttribute="leading" secondItem="sI0-4i-QPu" secondAttribute="leading" id="cAj-ag-V6u"/>
+                                            <constraint firstAttribute="trailing" secondItem="qtO-XZ-LLL" secondAttribute="trailing" id="h2L-MB-0O1"/>
+                                            <constraint firstItem="otE-LF-eAn" firstAttribute="leading" secondItem="sI0-4i-QPu" secondAttribute="leading" id="hbE-dq-bCn"/>
+                                            <constraint firstAttribute="trailing" secondItem="3Yk-DK-B4C" secondAttribute="trailing" id="qag-oQ-3iB"/>
+                                            <constraint firstItem="qtO-XZ-LLL" firstAttribute="leading" secondItem="sI0-4i-QPu" secondAttribute="leading" id="qo8-j9-yPE"/>
+                                            <constraint firstAttribute="trailing" secondItem="6Df-QZ-o2W" secondAttribute="trailing" id="x1t-ZZ-i5W"/>
+                                            <constraint firstItem="T2v-bt-kIX" firstAttribute="leading" secondItem="sI0-4i-QPu" secondAttribute="leading" id="yE8-IJ-wf5"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="sI0-4i-QPu" firstAttribute="top" secondItem="z1K-Em-bi6" secondAttribute="top" constant="20" id="HtT-Ma-84g"/>
+                                    <constraint firstAttribute="bottom" secondItem="sI0-4i-QPu" secondAttribute="bottom" constant="20" id="Zs9-aB-XBM"/>
+                                    <constraint firstItem="sI0-4i-QPu" firstAttribute="width" secondItem="z1K-Em-bi6" secondAttribute="width" id="cjn-Za-fa6"/>
+                                    <constraint firstItem="sI0-4i-QPu" firstAttribute="leading" secondItem="z1K-Em-bi6" secondAttribute="leading" id="l3W-5K-7iL"/>
+                                    <constraint firstAttribute="trailing" secondItem="sI0-4i-QPu" secondAttribute="trailing" id="wOz-nt-PE7"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="z1K-Em-bi6" firstAttribute="top" secondItem="2zE-7b-EMb" secondAttribute="bottom" id="KL1-iP-eqE"/>
+                            <constraint firstItem="HmJ-2I-CN6" firstAttribute="top" secondItem="z1K-Em-bi6" secondAttribute="bottom" id="WP0-NV-9dT"/>
+                            <constraint firstItem="2zE-7b-EMb" firstAttribute="leading" secondItem="hK4-g9-GCA" secondAttribute="leading" id="f9O-KW-zLd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z1K-Em-bi6" secondAttribute="trailing" id="lMT-Re-bjn"/>
+                            <constraint firstItem="2zE-7b-EMb" firstAttribute="top" secondItem="hK4-g9-GCA" secondAttribute="top" id="pKa-Ad-qG7"/>
+                            <constraint firstAttribute="trailing" secondItem="2zE-7b-EMb" secondAttribute="trailing" id="pkK-E6-2i1"/>
+                            <constraint firstItem="z1K-Em-bi6" firstAttribute="leading" secondItem="hK4-g9-GCA" secondAttribute="leadingMargin" id="rSh-vd-Ibz"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="2000"/>
+                    <connections>
+                        <outlet property="navigationBar" destination="2zE-7b-EMb" id="l51-WS-rgA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vH7-MN-jax" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2543" y="381"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="I98-Px-fHY">
+            <objects>
+                <viewController id="Bxv-Xf-v2J" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jaq-F2-v1h"/>
+                        <viewControllerLayoutGuide type="bottom" id="wid-wX-jZy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eel-A7-Mam">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="WpI-MX-Hwb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="728.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="vLe-hJ-csY">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="78.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INTRODUCTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qS-Fp-Ii5">
+                                                <rect key="frame" x="126" y="0.0" width="123" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kK-vs-aWV">
+                                                <rect key="frame" x="0.0" y="24.5" width="375" height="54"/>
+                                                <string key="text">In Jasmine, there is a combination of game type (Swapping, Sliding, Tetris) and game mode (Cheng Yu, Ci Hui). Read through each game to find out more.</string>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="0kK-vs-aWV" firstAttribute="leading" secondItem="vLe-hJ-csY" secondAttribute="leading" id="Sm5-ur-7n7"/>
+                                            <constraint firstAttribute="trailing" secondItem="0kK-vs-aWV" secondAttribute="trailing" id="e2M-27-NrC"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="apa-c4-mtQ">
+                                        <rect key="frame" x="0.0" y="94.5" width="375" height="60.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GENERAL GAME PLAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIe-D3-d9R">
+                                                <rect key="frame" x="103.5" y="0.0" width="168.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Form valid phrases (either Cheng Yu or Ci Hui) from top to bottom or from left to right." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gd-aT-0Eu">
+                                                <rect key="frame" x="9.5" y="24.5" width="356.5" height="36"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="puB-Eb-4oz">
+                                        <rect key="frame" x="0.0" y="171" width="375" height="78.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWAPPING GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDL-1U-M5y">
+                                                <rect key="frame" x="120" y="0.0" width="135.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwK-Lg-Du4">
+                                                <rect key="frame" x="4.5" y="24.5" width="366.5" height="54"/>
+                                                <string key="text">Drag a tile and drop it on another tile to swap them. Score will be computed based on time remaining and number of swaps performed.</string>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="IAl-40-3MV">
+                                        <rect key="frame" x="0.0" y="265.5" width="375" height="164.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHENG YU (成语) SWAPPING GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CG-o8-hNv">
+                                                <rect key="frame" x="51" y="0.0" width="273.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swapping-cheng-yu" translatesAutoresizingMaskIntoConstraints="NO" id="7dJ-KN-9xL">
+                                                <rect key="frame" x="0.0" y="24.5" width="375" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="180-Xv-Mpw"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The objective of this game is to form 4 rows or columns of Cheng Yus (4 characters)." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmc-Jg-hxJ">
+                                                <rect key="frame" x="26.5" y="128.5" width="322.5" height="36"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="wuD-7a-erx">
+                                        <rect key="frame" x="0.0" y="446" width="375" height="282.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CI HUI (词汇) SWAPPING GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7M-Qm-0Vy">
+                                                <rect key="frame" x="69" y="0.0" width="237" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swapping-ci-hui" translatesAutoresizingMaskIntoConstraints="NO" id="FN9-65-oiw">
+                                                <rect key="frame" x="0.0" y="24.5" width="375" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="aZM-C5-84u"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOQ-ze-g6v">
+                                                <rect key="frame" x="12" y="228.5" width="351" height="54"/>
+                                                <string key="text">The objective of this game is to form a Ci Hui (2 characters) on one side and its associated phonics (pinyin) on the other side.</string>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="apa-c4-mtQ" secondAttribute="trailing" id="EIt-Lr-eDE"/>
+                                    <constraint firstAttribute="trailing" secondItem="IAl-40-3MV" secondAttribute="trailing" id="W1L-MN-Ba9"/>
+                                    <constraint firstItem="puB-Eb-4oz" firstAttribute="leading" secondItem="WpI-MX-Hwb" secondAttribute="leading" id="ZBc-9a-VxR"/>
+                                    <constraint firstItem="apa-c4-mtQ" firstAttribute="leading" secondItem="WpI-MX-Hwb" secondAttribute="leading" id="Zqi-t0-IAN"/>
+                                    <constraint firstAttribute="trailing" secondItem="puB-Eb-4oz" secondAttribute="trailing" id="boy-CR-Sd6"/>
+                                    <constraint firstItem="IAl-40-3MV" firstAttribute="leading" secondItem="WpI-MX-Hwb" secondAttribute="leading" id="t2y-Fn-jo9"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WpI-MX-Hwb" firstAttribute="leading" secondItem="eel-A7-Mam" secondAttribute="leading" id="fTg-ao-wgh"/>
+                            <constraint firstAttribute="trailing" secondItem="WpI-MX-Hwb" secondAttribute="trailing" id="suX-bT-hn0"/>
+                            <constraint firstItem="WpI-MX-Hwb" firstAttribute="top" secondItem="eel-A7-Mam" secondAttribute="top" id="xfi-JY-xLK"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i8P-Io-cGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4349" y="415"/>
+        </scene>
         <!--Home-->
         <scene sceneID="Nel-Uo-A3s">
             <objects>
-                <viewController id="V3l-Bo-jgy" sceneMemberID="viewController">
+                <viewController id="V3l-Bo-jgy" customClass="HomeViewController" customModule="Jasmine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WSa-Je-HwQ"/>
                         <viewControllerLayoutGuide type="bottom" id="40Y-VW-xVG"/>
@@ -244,6 +789,9 @@
                                         <state key="normal" title="PLAY">
                                             <color key="titleColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onPlayPressed:" destination="V3l-Bo-jgy" eventType="touchUpInside" id="oAs-lM-N8q"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwx-Q3-Qbp">
                                         <rect key="frame" x="0.0" y="55" width="200" height="45"/>
@@ -251,6 +799,9 @@
                                         <state key="normal" title="HELP">
                                             <color key="titleColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="2of-1y-ds6" kind="show" id="5ts-3J-j5J"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVG-8k-YOe">
                                         <rect key="frame" x="0.0" y="110" width="200" height="45"/>
@@ -311,6 +862,7 @@
         <scene sceneID="DER-yx-s8u">
             <objects>
                 <tabBarController id="fdz-8j-kDQ" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" id="hoV-me-ZHc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -321,7 +873,6 @@
                         <segue destination="V3l-Bo-jgy" kind="relationship" relationship="viewControllers" id="TWJ-40-PAW"/>
                         <segue destination="Rng-e6-PxE" kind="relationship" relationship="viewControllers" id="oz2-uB-ONO"/>
                         <segue destination="cqH-cK-nvp" kind="relationship" relationship="viewControllers" id="Als-bi-P5c"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="mQ5-cA-khq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qPc-Wy-L85" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -334,7 +885,7 @@
                 <viewControllerPlaceholder storyboardName="SettingsStoryboard" referencedIdentifier="SettingsViewController" id="eid-4f-5c7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thF-rc-tPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1301" y="1241"/>
+            <point key="canvasLocation" x="1143" y="1242"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="5Bd-R0-Wb8">
@@ -361,36 +912,65 @@
                                     <navigationItem title="About Us" id="JB8-RA-qj7">
                                         <barButtonItem key="leftBarButtonItem" title="BACK" id="LD0-xZ-aG1">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <action selector="onBackPressed:" destination="zAi-Zv-vyv" id="v6p-Tz-0Fd"/>
-                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAG-02-EnO">
-                                <rect key="frame" x="16" y="64" width="343" height="308"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="308" id="Few-EV-hzr"/>
-                                </constraints>
-                                <string key="text">This game Jasmine is created for the module NUS CS3217: Software Engineering for Modern Application Platforms.
-
-Our team members are: - Herbert Ilhan Tanujaya - Li Kai - Wang Riwu - Wang Xien Dong</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Inf-Zt-jb0">
+                                <rect key="frame" x="0.0" y="84" width="375" height="261.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app-banner" translatesAutoresizingMaskIntoConstraints="NO" id="RiH-gF-LoL">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="RiH-gF-LoL" secondAttribute="height" multiplier="15:4" id="0tU-Oc-ham"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developed for CS3217 with Love 💕" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58J-sz-25J">
+                                        <rect key="frame" x="35.5" y="116" width="304.5" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wIu-tS-HAF">
+                                        <rect key="frame" x="97" y="155" width="181.5" height="106.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM MEMBERS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GvT-tl-p0b">
+                                                <rect key="frame" x="26.5" y="0.0" width="128" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                <color key="textColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAG-02-EnO">
+                                                <rect key="frame" x="0.0" y="20.5" width="181.5" height="86"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Herbert Ilhan Tanujaya Li Kai Wang Riwu Wang Xien Dong">
+                                                        <attributes>
+                                                            <font key="NSFont" size="18" name=".AppleSystemUIFont"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="3p0-X0-gHd" firstAttribute="top" secondItem="GmG-CC-sE7" secondAttribute="top" id="2aK-OQ-EMd"/>
                             <constraint firstAttribute="trailing" secondItem="3p0-X0-gHd" secondAttribute="trailing" id="GNB-xz-Ox5"/>
-                            <constraint firstItem="FAG-02-EnO" firstAttribute="top" secondItem="3p0-X0-gHd" secondAttribute="bottom" id="SK8-AS-XZ0"/>
+                            <constraint firstAttribute="trailing" secondItem="Inf-Zt-jb0" secondAttribute="trailing" id="Jr3-uB-Vm8"/>
+                            <constraint firstItem="Inf-Zt-jb0" firstAttribute="top" secondItem="3p0-X0-gHd" secondAttribute="bottom" constant="20" id="ZJM-M3-CXU"/>
+                            <constraint firstItem="Inf-Zt-jb0" firstAttribute="leading" secondItem="GmG-CC-sE7" secondAttribute="leading" id="dQy-6T-qkh"/>
                             <constraint firstItem="3p0-X0-gHd" firstAttribute="leading" secondItem="GmG-CC-sE7" secondAttribute="leading" id="mIQ-SL-izQ"/>
-                            <constraint firstItem="FAG-02-EnO" firstAttribute="trailing" secondItem="GmG-CC-sE7" secondAttribute="trailingMargin" id="pKg-Hc-q9k"/>
-                            <constraint firstItem="FAG-02-EnO" firstAttribute="leading" secondItem="GmG-CC-sE7" secondAttribute="leadingMargin" id="vkD-lo-u9e"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="navigationBar" destination="3p0-X0-gHd" id="xqc-OT-Deg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4FK-HD-l6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -432,24 +1012,7 @@ Our team members are: - Herbert Ilhan Tanujaya - Li Kai - Wang Riwu - Wa
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQU-0x-huR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1516" y="797"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="ElX-aq-dXR">
-            <objects>
-                <viewController id="WPM-4t-wyW" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yPR-Gb-bUI"/>
-                        <viewControllerLayoutGuide type="bottom" id="VhZ-zq-hZl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pU5-SA-Cr6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uhD-7V-jyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="1783" y="1053"/>
         </scene>
     </scenes>
     <resources>
@@ -460,10 +1023,7 @@ Our team members are: - Herbert Ilhan Tanujaya - Li Kai - Wang Riwu - Wa
         <image name="icon-home-small-selected" width="32" height="32"/>
         <image name="icon-user-small" width="32" height="32"/>
         <image name="icon-user-small-selected" width="32" height="32"/>
+        <image name="swapping-cheng-yu" width="1150" height="333"/>
+        <image name="swapping-ci-hui" width="2244" height="1274"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="kwm-v0-aGq"/>
-        <segue reference="ttU-OF-6vh"/>
-        <segue reference="djo-h3-zHX"/>
-    </inferredMetricsTieBreakers>
 </document>

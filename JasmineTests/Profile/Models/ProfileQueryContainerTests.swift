@@ -11,8 +11,8 @@ class ProfileQueryContainerTests: RealmTestCase {
         results.forEach(save)
 
         let queryContainer = ProfileQueryContainer(realm: realm)
-        let result = queryContainer.timesPlayed(between: Date(timeIntervalSinceNow: -1_000),
-                                                and: Date(timeIntervalSinceNow: 1_000))
+        let result = queryContainer.timesPlayed(from: Date(timeIntervalSinceNow: -1_000),
+                                                toExclusive: Date(timeIntervalSinceNow: 1_000))
         XCTAssertEqual(result, results.count, "result not found")
     }
 
@@ -23,8 +23,8 @@ class ProfileQueryContainerTests: RealmTestCase {
         results.forEach(save)
 
         let queryContainer = ProfileQueryContainer(realm: realm)
-        let result = queryContainer.timesPlayed(between: Date(timeIntervalSinceNow: 1_000),
-                                                and: Date(timeIntervalSinceNow: 2_000))
+        let result = queryContainer.timesPlayed(from: Date(timeIntervalSinceNow: 1_000),
+                                                toExclusive: Date(timeIntervalSinceNow: 2_000))
         XCTAssertEqual(result, 0, "result was found when there is none")
     }
 

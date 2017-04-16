@@ -27,15 +27,20 @@ class ResultsQueryContainer {
     convenience init() throws {
         self.init(realm: try Realm())
     }
+<<<<<<< HEAD:Jasmine/Common/Models/ResultsQueryContainer.swift
     
     /// Returns times played between the two days
+=======
+
+    /// Returns times played between the two dates
+>>>>>>> origin/master:Jasmine/Profile/Models/ProfileQueryContainer.swift
     ///
     /// - Parameters:
     ///   - startDate: start date inclusive
-    ///   - endDate: end date inclusive
-    /// - Returns: number of times played in this week
-    func timesPlayed(between startDate: Date, and endDate: Date) -> Int {
-        let predicate = NSPredicate(format: "timePlayed >= %@ AND timePlayed =< %@",
+    ///   - endDate: end date exclusive
+    /// - Returns: number of times played between `startDate` and `endDate`
+    func timesPlayed(from startDate: Date, toExclusive endDate: Date) -> Int {
+        let predicate = NSPredicate(format: "timePlayed >= %@ AND timePlayed < %@",
                                     argumentArray: [startDate, endDate])
         return levelResults.filter(predicate).count
     }

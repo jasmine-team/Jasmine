@@ -1,11 +1,12 @@
 import UIKit
 
-class LevelDesignerViewController: UIViewController {
+class LevelDesignerViewController: JasmineViewController {
 
     @IBOutlet private var levelNameField: UITextField!
 
     @IBOutlet private var gameModeControl: UISegmentedControl!
     @IBOutlet private var gameTypeControl: UISegmentedControl!
+    @IBOutlet private weak var navigationBar: UINavigationBar!
 
     /// The order of the game mode on the gameModeControl
     private static let gameModeOrder: [GameMode] = [.tetris, .sliding, .swapping]
@@ -35,6 +36,8 @@ class LevelDesignerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.setLayout(navigationBar: navigationBar)
+
         setDataFromLevelToEdit()
         updateSelectPhrasesButtonText()
     }
@@ -56,7 +59,8 @@ class LevelDesignerViewController: UIViewController {
             phrasesExplorerViewController.segueWith(phrasesExplorerViewModel, onSaveCallBack: updateSelectedPhrases)
 
         } else if let levelImporterView = segue.destination as? LevelImportViewController {
-            levelImporterView.segueWith(LevelImportViewModel(), onMarkedLevelsReturned: onLevelsImported)
+            levelImporterView.segueWith(LevelImportViewModel(withType: selectedGameType),
+                                        onMarkedLevelsReturned: onLevelsImported)
         }
     }
 
@@ -113,7 +117,7 @@ class LevelDesignerViewController: UIViewController {
     }
 
     /// Warns the user if they want to leave without saving, dismiss the view if conformed
-    @IBAction private func onBackButtonPressed(_ sender: UIBarButtonItem) {
+    override func onDismissPressed() {
         showExitWithoutSavingAlert()
     }
 
@@ -122,7 +126,7 @@ class LevelDesignerViewController: UIViewController {
     /// - Parameter levels: levels that have been imported
     /// - Precondition: `levels` must all have the same game type as the currently selected game type
     private func onLevelsImported(_ levels: [GameInfo]) {
-        assert(levels.first { $0.gameType != selectedGameType } == nil, 
+        assert(levels.first { $0.gameType != selectedGameType } == nil,
                "Imported levels are not of the same game type as selected game type")
         viewModel.addToSelectedPhrases(from: levels)
         updateSelectPhrasesButtonText()

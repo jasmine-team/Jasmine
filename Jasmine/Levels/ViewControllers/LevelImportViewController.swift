@@ -1,14 +1,16 @@
 import UIKit
 
-class LevelImportViewController: UIViewController {
+class LevelImportViewController: JasmineViewController {
 
     // MARK: Constants
     private static let actionSheetPhrases = "View Phrases"
+    private static let actionSheetCancel = "Cancel"
 
     fileprivate static let segueToPhrasesExplorer = "SegueToPhrasesExplorer"
 
     // MARK: Layouts
     fileprivate var levelCollectionView: GameLevelListViewController!
+    @IBOutlet private weak var navigationBar: UINavigationBar!
 
     // MARK: Properties
     fileprivate var viewModel: LevelImportViewModelProtocol!
@@ -42,13 +44,15 @@ class LevelImportViewController: UIViewController {
         performSegue(withIdentifier: LevelImportViewController.segueToPhrasesExplorer, sender: nil)
     }
 
+    // MARK: View Controller Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        super.setLayout(navigationBar: navigationBar)
+    }
+
     // MARK: Listeners
     /// Implements this listener to return a set of levels that are marked (or selected) with this view.
     var onMarkedLevelsReturned: (([GameInfo]) -> Void)?
-
-    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true)
-    }
 
     @IBAction private func onDonePressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true) {
@@ -74,8 +78,12 @@ class LevelImportViewController: UIViewController {
                                           style: .default) { _ in
             self.segueToPhrasesExplorerView(forLevelRow: index, isDefault: isDefaultLevel)
         }
-
         actionSheetController.addAction(phrasesAction)
+
+        let cancelAction = UIAlertAction(title: LevelImportViewController.actionSheetCancel,
+                                         style: .cancel)
+        actionSheetController.addAction(cancelAction)
+
         actionSheetController.popoverPresentationController?.sourceView = view
         return actionSheetController
     }
