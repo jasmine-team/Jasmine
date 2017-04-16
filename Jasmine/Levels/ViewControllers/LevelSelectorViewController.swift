@@ -1,6 +1,6 @@
 import UIKit
 
-class LevelSelectorViewController: UIViewController {
+class LevelSelectorViewController: JasmineViewController {
 
     // MARK: Constants
     fileprivate static let segueToGameIdentifier: [GameMode: String] = [
@@ -18,6 +18,8 @@ class LevelSelectorViewController: UIViewController {
 
     // MARK: Layouts
     fileprivate var levelCollection: GameLevelListViewController!
+
+    @IBOutlet private weak var navigationBar: UINavigationBar!
 
     // MARK: Properties
     /// Provides a view model for this view. By default a full LevelSelectorViewModel is used in this
@@ -37,6 +39,12 @@ class LevelSelectorViewController: UIViewController {
     }
 
     // MARK: View Controller Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        super.setLayout(navigationBar: navigationBar)
+    }
+
+    // MARK: Segue Methods
     /// Override method that helps to segue into the appropriate views.
     /// - Postcondition: The `selectedLevel` property will be cleared after execution.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

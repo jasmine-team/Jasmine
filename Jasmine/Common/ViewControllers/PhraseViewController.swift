@@ -3,8 +3,6 @@ import AVFoundation
 
 class PhraseViewController: JasmineViewController {
 
-    fileprivate static let viewTitle = "Dictionary"
-
     fileprivate static let backgroundAudioWhileTts: Float = 0.1
 
     @IBOutlet private weak var hanZiLabel: UILabel!
@@ -22,8 +20,7 @@ class PhraseViewController: JasmineViewController {
     }
 
     override func viewDidLoad() {
-        super.setLayout(navigationBar: navigationBar,
-                        withTitle: PhraseViewController.viewTitle)
+        super.setLayout(navigationBar: navigationBar)
         synthesizer.delegate = self
         displayText()
     }

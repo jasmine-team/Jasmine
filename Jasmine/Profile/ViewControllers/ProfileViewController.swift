@@ -1,12 +1,11 @@
 import GameKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: JasmineViewController {
 
     @IBOutlet private var playerNameLabel: UILabel!
-
-    private var weeklyStreakGrid: SquareGridViewController!
-
     @IBOutlet private var dailyStreakFlower: UIImageView!
+    @IBOutlet private weak var navigationBar: UINavigationBar!
+    private var weeklyStreakGrid: SquareGridViewController!
 
     private static let weeklyStreakGridSpacing: CGFloat = 2.0
     private static let weeklyStreakMinAlpha: CGFloat = 0.1
@@ -18,6 +17,7 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.setLayout(navigationBar: navigationBar)
 
         initializeViewModel()
         setPlayerNameLabel()

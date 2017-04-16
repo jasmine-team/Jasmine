@@ -5,16 +5,19 @@ class PhrasesExplorerViewController: JasmineViewController {
 
     @IBOutlet private var explorerNavigationItem: UINavigationItem!
     @IBOutlet private var phrasesTableView: UIView!
+    @IBOutlet private weak var navigationBar: UINavigationBar!
     fileprivate var phrasesTable: PhrasesTableViewController!
     fileprivate var viewModel: PhrasesExplorerViewModel!
     private var searchController: UISearchController!
 
-    /// Callback to execute when the save button is pressed. 
+    /// Callback to execute when the save button is pressed.
     /// Passes the selected phrases to the callback function
     private var onSaveCallBack: ((Set<Phrase>) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.setLayout(navigationBar: navigationBar)
+
         hideSaveButtonIfSaveNotSet()
         setupPhrasesTable()
         searchController = UISearchController(searchResultsController: phrasesTable)
@@ -43,13 +46,12 @@ class PhrasesExplorerViewController: JasmineViewController {
 
     /// Dismisses this current screen without saving when "Back" button is pressed.
     /// Asks for conformation if selected phrases has been modified
-    @IBAction private func onBackButtonPressed(_ sender: UIBarButtonItem) {
+    override func onDismissPressed() {
         if viewModel.hasChangedSelectedPhrases {
             showExitWithoutSavingAlert()
         } else {
             self.dismiss(animated: true)
         }
-
     }
 
     /// Dismisses this current screen and executes the callback when "Save" button is pressed.

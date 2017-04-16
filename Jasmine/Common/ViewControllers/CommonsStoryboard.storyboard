@@ -37,9 +37,6 @@
                                     <navigationItem title="Phrases Explorer" id="OHB-Pz-Qmo">
                                         <barButtonItem key="leftBarButtonItem" title="BACK" id="Ulq-dO-dWO">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <action selector="onBackButtonPressed:" destination="PWD-mm-Vqa" id="E19-aI-Q5g"/>
-                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="SAVE" id="yOL-rn-LIL">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -77,6 +74,7 @@
                     </view>
                     <connections>
                         <outlet property="explorerNavigationItem" destination="OHB-Pz-Qmo" id="Prt-RW-817"/>
+                        <outlet property="navigationBar" destination="fRz-oO-Zb3" id="YZc-YH-oNP"/>
                         <outlet property="phrasesTableView" destination="f9C-Gv-dVr" id="Jxk-1k-Dd0"/>
                     </connections>
                 </viewController>

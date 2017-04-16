@@ -1,14 +1,17 @@
 import GameKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: JasmineViewController {
 
     @IBOutlet private var signInButton: UIButton!
+
+    @IBOutlet private weak var navigationBar: UINavigationBar!
 
     private static let signInLabel = "SIGN IN"
     private static let signOutLabel = "SIGN OUT"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.setLayout(navigationBar: navigationBar)
         setSignInButtonText()
     }
 
@@ -26,10 +29,6 @@ class SettingsViewController: UIViewController {
 
     @IBAction private func onSoundEffectsSliderPressed(_ slider: UISlider) {
         SoundService.sharedInstance.effectVolume = slider.value
-    }
-
-    @IBAction private func onBackPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true)
     }
 
     /// If user is signed in, display instruction to sign out.

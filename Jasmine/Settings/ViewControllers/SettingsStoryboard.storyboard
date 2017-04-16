@@ -35,9 +35,6 @@
                                     <navigationItem title="Settings" id="SDe-1T-vTg">
                                         <barButtonItem key="leftBarButtonItem" title="BACK" id="jTL-k3-eL3">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <action selector="onBackPressed:" destination="pnc-EG-hbf" id="ITY-eq-Ff6"/>
-                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -128,6 +125,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="navigationBar" destination="3X9-Zk-bKI" id="SYp-i5-4iz"/>
                         <outlet property="signInButton" destination="2He-kT-kJM" id="pFz-0q-3Hf"/>
                     </connections>
                 </viewController>

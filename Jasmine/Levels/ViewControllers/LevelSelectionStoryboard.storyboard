@@ -19,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="7fA-1a-Xfh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ax7-I2-bsu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="D27-9J-LfR">
-                                <rect key="frame" x="10" y="52" width="355" height="551"/>
+                                <rect key="frame" x="10" y="52" width="355" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GEb-ul-fzT">
                                     <size key="itemSize" width="336" height="74"/>
@@ -204,9 +204,6 @@
                                     <navigationItem title="Import Levels" id="T5S-R4-7oj">
                                         <barButtonItem key="leftBarButtonItem" title="BACK" id="XNV-3s-fy2">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="onBackPressed:" destination="9wZ-YH-6LY" id="9fi-cO-r8G"/>
-                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="DONE" id="yJW-Ah-F27">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -236,6 +233,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="navigationBar" destination="BK9-ZU-b0B" id="EZT-yk-jcX"/>
                         <segue destination="9hv-Ep-FLn" kind="show" identifier="SegueToPhrasesExplorer" id="ygO-hQ-gGc"/>
                     </connections>
                 </viewController>
@@ -335,6 +333,7 @@
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
+                        <outlet property="navigationBar" destination="c94-s4-pJC" id="fvI-Ga-1vh"/>
                         <segue destination="9P3-ir-krG" kind="show" identifier="SegueToTetrisGame" id="GxO-Gp-3Vt"/>
                         <segue destination="M3n-s0-qwR" kind="show" identifier="SegueToSwappingGame" id="ZtB-WK-kJc"/>
                         <segue destination="NXA-aA-ypY" kind="show" identifier="SegueToSlidingGame" id="3jU-xG-Hc2"/>
@@ -353,7 +352,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Bf5-OL-vR9"/>
-        <segue reference="sQK-wM-js2"/>
-        <segue reference="ygO-hQ-gGc"/>
+        <segue reference="Cwi-nj-NvM"/>
+        <segue reference="jPy-cZ-L7Q"/>
     </inferredMetricsTieBreakers>
 </document>
