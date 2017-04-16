@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -125,8 +125,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundMusicSlider" destination="itB-8b-VZh" id="mjB-d3-jNd"/>
                         <outlet property="navigationBar" destination="3X9-Zk-bKI" id="SYp-i5-4iz"/>
                         <outlet property="signInButton" destination="2He-kT-kJM" id="pFz-0q-3Hf"/>
+                        <outlet property="soundEffectsSlider" destination="3gV-GK-Ix4" id="fd8-Jw-ENc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7N2-J1-xdN" userLabel="First Responder" sceneMemberID="firstResponder"/>
