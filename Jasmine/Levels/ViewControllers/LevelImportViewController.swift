@@ -4,6 +4,7 @@ class LevelImportViewController: UIViewController {
 
     // MARK: Constants
     private static let actionSheetPhrases = "View Phrases"
+    private static let actionSheetCancel = "Cancel"
 
     fileprivate static let segueToPhrasesExplorer = "SegueToPhrasesExplorer"
 
@@ -74,8 +75,12 @@ class LevelImportViewController: UIViewController {
                                           style: .default) { _ in
             self.segueToPhrasesExplorerView(forLevelRow: index, isDefault: isDefaultLevel)
         }
-
         actionSheetController.addAction(phrasesAction)
+
+        let cancelAction = UIAlertAction(title: LevelImportViewController.actionSheetCancel,
+                                         style: .cancel)
+        actionSheetController.addAction(cancelAction)
+
         actionSheetController.popoverPresentationController?.sourceView = view
         return actionSheetController
     }
