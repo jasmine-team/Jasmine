@@ -5,9 +5,8 @@ import Foundation
 protocol GameDescriptorProtocol: TimeDescriptorProtocol, ScoreDescriptorProtocol {
 
     // MARK: - Game Properties
-    /// Provide a brief title for this game. Note that this title should be able to fit within the
-    /// width of the display.
-    var gameTitle: String { get }
+    /// Returns the level name for this game. 
+    var levelName: String { get }
 
     /// Provide of a brief description of its objectives and how this game is played.
     /// There is no word count limit, but should be concise.

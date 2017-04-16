@@ -16,10 +16,8 @@ class CiHuiSlidingViewModelTests: RealmTestCase {
                        "ViewModel timeRemaining on init is not correct")
         XCTAssertEqual(GameStatus.notStarted, viewModel.gameStatus,
                        "ViewModel gameStatus on init is not correct")
-        XCTAssertEqual("Ci Hui (词汇) Sliding Game", viewModel.gameTitle,
-                       "ViewModel gameTitle on init is not correct")
-        XCTAssertEqual("Match the Chinese characters with their Pinyins by putting them in one row/column.",
-                       viewModel.gameInstruction,
+        XCTAssertEqual(viewModel.levelName, gameData.name, "ViewModel level name on init is not correct")
+        XCTAssertEqual(viewModel.gameInstruction, GameConstants.Sliding.CiHui.gameInstruction,
                        "ViewModel gameInstruction on init is not correct")
     }
 }

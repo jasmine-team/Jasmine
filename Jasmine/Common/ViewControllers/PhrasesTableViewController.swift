@@ -41,6 +41,6 @@ class PhrasesTableViewController: UITableViewController {
         }
 
         phraseVC.segueWith(viewModel.getPhraseViewModel(at: indexPath.row))
-        present(phraseVC, animated: true, completion: nil)
+        present(phraseVC, animated: true)
     }
 }

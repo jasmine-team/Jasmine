@@ -16,10 +16,8 @@ class ChengYuSlidingViewModelTests: RealmTestCase {
                        "ViewModel timeRemaining on init is not correct")
         XCTAssertEqual(GameStatus.notStarted, viewModel.gameStatus,
                        "ViewModel gameStatus on init is not correct")
-        XCTAssertEqual("Cheng Yu (成语) Sliding Game", viewModel.gameTitle,
-                       "ViewModel gameTitle on init is not correct")
-        XCTAssertEqual("Match the Cheng Yus by putting them in one row/column.",
-                       viewModel.gameInstruction,
+        XCTAssertEqual(viewModel.levelName, gameData.name, "ViewModel level name on init is not correct")
+        XCTAssertEqual(viewModel.gameInstruction, GameConstants.Sliding.ChengYu.gameInstruction,
                        "ViewModel gameInstruction on init is not correct")
     }
 }
