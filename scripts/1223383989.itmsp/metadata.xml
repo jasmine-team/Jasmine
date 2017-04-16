@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <package version="software5.5" xmlns="http://apple.com/itunes/importer">
+        <!-- This document was generated on Apr 14, 2017 9:52:53 AM for riwu0730@gmail.com <riwu0730@gmail.com>. -->
+        <!-- NOTE: metadata_token is generated on lookup.  Modifying the value of this will result in an import error -->
+        <metadata_token>1492188773217-767d828689288dc95dd92cd927c4db897e21357143e3bfa9df0617c4af0af025</metadata_token>
+        <provider>QX6E2SX99X</provider>
+        <team_id>QX6E2SX99X</team_id>
+        <software>
+            <!--Apple ID: 1223383989-->
+            <vendor_id>nus.cs3217.Jasmine.Jasmine</vendor_id>
+            <read_only_info>
+                <read_only_value key="apple-id">1223383989</read_only_value>
+            </read_only_info>
+            <software_metadata app_platform="ios">
+                <versions>
+                    <version string="1.0">
+                        <locales>
+                            <locale name="en-GB">
+                                <title>Jasmine</title>
+                            </locale>
+                        </locales>
+                    </version>
+                </versions>
+                <game_center>
+                    <achievements>
+                        <achievement position="1">
+                            <achievement_id>combined.playcount.bronze</achievement_id>
+                            <reference_name>Total Playcount (10)</reference_name>
+                            <points>10</points>
+                            <hidden>false</hidden>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Total Playcount</title>
+                                    <before_earned_description>Play 10 games</before_earned_description>
+                                    <after_earned_description>10 games, addicted yet?</after_earned_description>
+                                    <achievement_after_earned_image>
+                                        <size>100071</size>
+                                        <file_name>flower-blue.png</file_name>
+                                        <checksum type="md5">58740aed62f57b7721da2089f7030d68</checksum>
+                                    </achievement_after_earned_image>
+                                </locale>
+                            </locales>
+                        </achievement>
+                        <achievement position="2">
+                            <achievement_id>combined.playcount.silver</achievement_id>
+                            <reference_name>Total Playcount (100)</reference_name>
+                            <points>20</points>
+                            <hidden>true</hidden>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Total Playcount</title>
+                                    <before_earned_description>Play 100 games</before_earned_description>
+                                    <after_earned_description>100 games, nice!</after_earned_description>
+                                    <achievement_after_earned_image>
+                                        <size>91814</size>
+                                        <file_name>flower-purple.png</file_name>
+                                        <checksum type="md5">aa5984b97fb472dc11fdc7a6f75c07e7</checksum>
+                                    </achievement_after_earned_image>
+                                </locale>
+                            </locales>
+                        </achievement>
+                        <achievement position="3">
+                            <achievement_id>combined.playcount.gold</achievement_id>
+                            <reference_name>Total Playcount (1000)</reference_name>
+                            <points>40</points>
+                            <hidden>true</hidden>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Total Playcount</title>
+                                    <before_earned_description>Play 1000 games</before_earned_description>
+                                    <after_earned_description>1000 games, a true master!</after_earned_description>
+                                    <achievement_after_earned_image>
+                                        <size>99257</size>
+                                        <file_name>flower-gold.png</file_name>
+                                        <checksum type="md5">f70b6fb950514333e2a4968b4cde1358</checksum>
+                                    </achievement_after_earned_image>
+                                </locale>
+                            </locales>
+                        </achievement>
+                    </achievements>
+                    <leaderboards>
+                        <leaderboard default="true" position="1">
+                            <leaderboard_id>combined.all</leaderboard_id>
+                            <reference_name>Total Scores</reference_name>
+                            <sort_ascending>false</sort_ascending>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Total Scores</title>
+                                    <formatter_suffix>points</formatter_suffix>
+                                    <formatter_suffix_singular>point</formatter_suffix_singular>
+                                    <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
+                                </locale>
+                            </locales>
+                        </leaderboard>
+                        <leaderboard position="2">
+                            <leaderboard_id>single.leaderboard.1</leaderboard_id>
+                            <reference_name>Leaderboard 1</reference_name>
+                            <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
+                            <sort_ascending>false</sort_ascending>
+                            <score_range_min>0</score_range_min>
+                            <score_range_max>1000000</score_range_max>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Me, Family and Friends</title>
+                                    <formatter_suffix>points</formatter_suffix>
+                                    <formatter_suffix_singular>point</formatter_suffix_singular>
+                                    <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
+                                </locale>
+                            </locales>
+                        </leaderboard>
+                        <leaderboard position="3">
+                            <leaderboard_id>single.leaderboard.2</leaderboard_id>
+                            <reference_name>Leaderboard 2</reference_name>
+                            <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
+                            <sort_ascending>false</sort_ascending>
+                            <score_range_min>0</score_range_min>
+                            <score_range_max>1000000</score_range_max>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Time</title>
+                                    <formatter_suffix>points</formatter_suffix>
+                                    <formatter_suffix_singular>point</formatter_suffix_singular>
+                                    <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
+                                </locale>
+                            </locales>
+                        </leaderboard>
+                        <leaderboard position="4">
+                            <leaderboard_id>single.leaderboard.3</leaderboard_id>
+                            <reference_name>Leaderboard 3</reference_name>
+                            <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
+                            <sort_ascending>false</sort_ascending>
+                            <score_range_min>0</score_range_min>
+                            <score_range_max>1000000</score_range_max>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>People</title>
+                                    <formatter_suffix>points</formatter_suffix>
+                                    <formatter_suffix_singular>point</formatter_suffix_singular>
+                                    <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
+                                </locale>
+                            </locales>
+                        </leaderboard>
+                        <leaderboard position="5">
+                            <leaderboard_id>single.leaderboard.4</leaderboard_id>
+                            <reference_name>Leaderboard 4</reference_name>
+                            <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
+                            <sort_ascending>false</sort_ascending>
+                            <score_range_min>0</score_range_min>
+                            <score_range_max>1000000</score_range_max>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Places and Things</title>
+                                    <formatter_suffix>points</formatter_suffix>
+                                    <formatter_suffix_singular>point</formatter_suffix_singular>
+                                    <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
+                                </locale>
+                            </locales>
+                        </leaderboard>
+                        <leaderboard position="6">
+                            <leaderboard_id>single.leaderboard.5</leaderboard_id>
+                            <reference_name>Leaderboard 5</reference_name>
+                            <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
+                            <sort_ascending>false</sort_ascending>
+                            <score_range_min>0</score_range_min>
+                            <score_range_max>1000000</score_range_max>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Pronouns and etc</title>
+                                    <formatter_suffix>points</formatter_suffix>
+                                    <formatter_suffix_singular>point</formatter_suffix_singular>
+                                    <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
+                                </locale>
+                            </locales>
+                        </leaderboard>
+                        <leaderboard position="7">
+                            <leaderboard_id>single.leaderboard.6</leaderboard_id>
+                            <reference_name>Leaderboard 6</reference_name>
+                            <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
+                            <sort_ascending>false</sort_ascending>
+                            <score_range_min>0</score_range_min>
+                            <score_range_max>1000000</score_range_max>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>More pronouns</title>
+                                    <formatter_suffix>points</formatter_suffix>
+                                    <formatter_suffix_singular>point</formatter_suffix_singular>
+                                    <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
+                                </locale>
+                            </locales>
+                        </leaderboard>
+                        <leaderboard position="8">
+                            <leaderboard_id>single.leaderboard.7</leaderboard_id>
+                            <reference_name>Leaderboard 7</reference_name>
+                            <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
+                            <sort_ascending>false</sort_ascending>
+                            <score_range_min>0</score_range_min>
+                            <score_range_max>1000000</score_range_max>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Common phrases</title>
+                                    <formatter_suffix>points</formatter_suffix>
+                                    <formatter_suffix_singular>point</formatter_suffix_singular>
+                                    <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
+                                </locale>
+                            </locales>
+                        </leaderboard>
+                        <leaderboard position="9">
+                            <leaderboard_id>single.leaderboard.8</leaderboard_id>
+                            <reference_name>Leaderboard 8</reference_name>
+                            <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
+                            <sort_ascending>false</sort_ascending>
+                            <score_range_min>0</score_range_min>
+                            <score_range_max>1000000</score_range_max>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Common cheng yus</title>
+                                    <formatter_suffix>points</formatter_suffix>
+                                    <formatter_suffix_singular>point</formatter_suffix_singular>
+                                    <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
+                                </locale>
+                            </locales>
+                        </leaderboard>
+                        <leaderboard position="10">
+                            <leaderboard_id>single.leaderboard.9</leaderboard_id>
+                            <reference_name>Leaderboard 9</reference_name>
+                            <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
+                            <sort_ascending>false</sort_ascending>
+                            <score_range_min>0</score_range_min>
+                            <score_range_max>1000000</score_range_max>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Uncommon cheng yus</title>
+                                    <formatter_suffix>points</formatter_suffix>
+                                    <formatter_suffix_singular>point</formatter_suffix_singular>
+                                    <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
+                                </locale>
+                            </locales>
+                        </leaderboard>
+                        <leaderboard position="11">
+                            <leaderboard_id>single.leaderboard.10</leaderboard_id>
+                            <reference_name>Leaderboard 10</reference_name>
+                            <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
+                            <sort_ascending>false</sort_ascending>
+                            <score_range_min>0</score_range_min>
+                            <score_range_max>1000000</score_range_max>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Rare cheng yus</title>
+                                    <formatter_suffix>points</formatter_suffix>
+                                    <formatter_suffix_singular>point</formatter_suffix_singular>
+                                    <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
+                                </locale>
+                            </locales>
+                        </leaderboard>
+                        <leaderboard position="12">
+                            <leaderboard_id>single.leaderboard.11</leaderboard_id>
+                            <reference_name>Leaderboard 11</reference_name>
+                            <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
+                            <sort_ascending>false</sort_ascending>
+                            <score_range_min>0</score_range_min>
+                            <score_range_max>1000000</score_range_max>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Rarer cheng yus</title>
+                                    <formatter_suffix>points</formatter_suffix>
+                                    <formatter_suffix_singular>point</formatter_suffix_singular>
+                                    <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
+                                </locale>
+                            </locales>
+                        </leaderboard>
+                        <leaderboard position="13">
+                            <leaderboard_id>single.leaderboard.12</leaderboard_id>
+                            <reference_name>Leaderboard 12</reference_name>
+                            <aggregate_parent_leaderboard>combined.all</aggregate_parent_leaderboard>
+                            <sort_ascending>false</sort_ascending>
+                            <score_range_min>0</score_range_min>
+                            <score_range_max>1000000</score_range_max>
+                            <locales>
+                                <locale name="en-US">
+                                    <title>Impossible</title>
+                                    <formatter_suffix>points</formatter_suffix>
+                                    <formatter_suffix_singular>point</formatter_suffix_singular>
+                                    <formatter_type>INTEGER_COMMA_SEPARATOR</formatter_type>
+                                </locale>
+                            </locales>
+                        </leaderboard>
+                    </leaderboards>
+                </game_center>
+            </software_metadata>
+        </software>
+    </package>
