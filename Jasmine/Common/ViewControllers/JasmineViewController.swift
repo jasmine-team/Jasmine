@@ -48,5 +48,4 @@ class JasmineViewController: UIViewController {
             barItem.action = #selector(onDismissPressed)
         }
     }
-
 }
