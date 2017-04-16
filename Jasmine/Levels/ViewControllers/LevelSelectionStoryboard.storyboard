@@ -86,9 +86,9 @@
                                                             </constraints>
                                                         </stackView>
                                                         <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="LevelMenuButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnK-Dx-6NW">
-                                                            <rect key="frame" x="296" y="8" width="32" height="32"/>
+                                                            <rect key="frame" x="286" y="8" width="42" height="42"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="32" id="gmv-fd-F1W"/>
+                                                                <constraint firstAttribute="height" constant="42" id="gmv-fd-F1W"/>
                                                                 <constraint firstAttribute="width" secondItem="hnK-Dx-6NW" secondAttribute="height" id="lqo-fE-tjk"/>
                                                             </constraints>
                                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -98,7 +98,7 @@
                                                             </connections>
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="CheckImage" image="icon-check" translatesAutoresizingMaskIntoConstraints="NO" id="wzt-bL-Ctm">
-                                                            <rect key="frame" x="264" y="8" width="32" height="32"/>
+                                                            <rect key="frame" x="244" y="8" width="42" height="42"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="wzt-bL-Ctm" secondAttribute="height" id="pBR-Ou-d79"/>
                                                             </constraints>
