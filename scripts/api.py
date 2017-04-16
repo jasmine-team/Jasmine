@@ -16,8 +16,10 @@ CHINESE_DICT_API_URL = 'https://api.jisuapi.com/cidian/word'
 CHENG_YU_API_URL = 'https://api.jisuapi.com/chengyu/detail'
 # CSV file to read and write to
 CSV_FILE_NAME = 'Phrase.csv'
+# scripts folder
+PWD = Path(__file__).parent
 # CSV file path
-CSV_FILE_PATH = Path().parent.joinpath(CSV_FILE_NAME)
+CSV_FILE_PATH = PWD.parent.joinpath(CSV_FILE_NAME)
 
 def get_json(url, query):
     """Returns json content from a request"""

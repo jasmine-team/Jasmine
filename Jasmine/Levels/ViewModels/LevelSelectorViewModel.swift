@@ -64,10 +64,11 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
     /// - Parameters:
     ///   - row: the row number that is pressed
     ///   - isDefault: whether the level is from the default levels or custom levels
+    ///   - cloneLevel: Whether the level should be cloned or replaced
     /// - Returns: the LevelDesignerVM to be segued into
-    func getLevelDesignerViewModel(fromRow row: Int, isDefault: Bool) -> LevelDesignerViewModel {
+    func getLevelDesignerViewModel(fromRow row: Int, isDefault: Bool, cloneLevel: Bool) -> LevelDesignerViewModel {
         let level = getLevel(isDefault: isDefault, withRow: row)
-        return LevelDesignerViewModel(levels: levels, levelToEdit: level)
+        return LevelDesignerViewModel(levels: levels, selectedLevelInfo: (level: level, cloneLevel: cloneLevel))
     }
 
     /// Get the level designer VM without the game info
@@ -98,9 +99,9 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
             return CiHuiSwappingViewModel(
                 time: GameConstants.Swapping.time, gameData: gameData, numberOfPhrases: GameConstants.Swapping.rows)
         case (.tetris, .chengYu):
-            fallthrough
+            return ChengYuTetrisGameViewModel(gameData: gameData)
         case (.tetris, .ciHui):
-            return TetrisGameViewModel(gameData: gameData)
+            return CiHuiTetrisGameViewModel(gameData: gameData)
         }
     }
 

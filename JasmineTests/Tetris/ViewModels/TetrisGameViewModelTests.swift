@@ -20,7 +20,7 @@ class TetrisGameViewModelTests: RealmTestCase {
         let phrases = testPhrases.map { Phrase(value: ["rawChinese": $0.joined()]) }
         phrases.forEach(save)
         gameData = createGameData(phrases: phrases, difficulty: 1, type: .chengYu)
-        viewModel = TetrisGameViewModel(gameData: gameData)
+        viewModel = ChengYuTetrisGameViewModel(gameData: gameData)
         viewModel.timeDelegate = timeUpdateDelegateMock
         viewModel.scoreDelegate = scoreUpdateDelegateMock
         viewModel.gameStatusDelegate = gameStatusUpdateDelegateMock
@@ -41,9 +41,8 @@ class TetrisGameViewModelTests: RealmTestCase {
                        "ViewModel timer on init is not correct")
         XCTAssertEqual(viewModel.gameStatus, GameStatus.notStarted,
                        "ViewModel gameStatus on init is not correct")
-        XCTAssertEqual(viewModel.gameTitle, GameConstants.Tetris.gameTitle,
-                       "ViewModel gameTitle on init is not correct")
-        XCTAssertEqual(viewModel.gameInstruction, GameConstants.Tetris.gameInstruction,
+        XCTAssertEqual(viewModel.levelName, gameData.name, "ViewModel level name on init is not correct")
+        XCTAssertEqual(viewModel.gameInstruction, GameConstants.Tetris.ChengYu.gameInstruction,
                        "ViewModel gameInstruction on init is not correct")
         XCTAssert(Set(testPhrases.flatMap { $0 }).isSuperset(of: viewModel.upcomingTiles),
                        "ViewModel upcomingTiles on init is not correct")

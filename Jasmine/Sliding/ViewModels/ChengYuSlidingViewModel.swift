@@ -1,6 +1,11 @@
 import Foundation
 
 class ChengYuSlidingViewModel: BaseSlidingViewModel {
+
+    override var gameInstruction: String {
+        return GameConstants.Sliding.ChengYu.gameInstruction
+    }
+
     /// Initializes the game
     ///
     /// - Parameters:
@@ -17,21 +22,9 @@ class ChengYuSlidingViewModel: BaseSlidingViewModel {
         super.init(time: time, gameData: gameData, gameType: .chengYu,
                    tiles: tilesExceptLast, rows: rows, columns: GameConstants.Sliding.columns)
 
-        gameTitle = GameConstants.Sliding.ChengYu.gameTitle
-        gameInstruction = GameConstants.Sliding.ChengYu.gameInstruction
-
         var validPhrases = phrases
         validPhrases.removeLast()
         phrasesTested = Set(validPhrases)
-    }
-
-    /// Returns true if and only if the given line is valid (i.e. forms a Chengyu)
-    override func lineIsCorrect(_ line: [Coordinate]) -> Bool {
-        guard let text = gridData.getConcatenatedTexts(at: line),
-              gameData.phrases.contains(chinese: text) else {
-            return false
-        }
-        return true
     }
 
     /// Tells the Game Engine View Model that the user from the View Controller attempts to slide
