@@ -14,7 +14,14 @@ Team members:
 ## Generating phrases
 
 1. First copy the secrets file: `cd scripts && cp secrets.example.py secrets.py `
-2. Set up environment variables or change within `secrets.py` file
+1. Set up environment variables or change within `secrets.py` file
 1. Run `python3 api.py` to populate csv file
 1. Download [Realm browser](https://itunes.apple.com/sg/app/realm-browser/id1007457278?mt=12) and import csv to turn it into realm file.
 1. Replace realm file in `Jasmine/Common/prebundled.realm` with new realm file
+
+## Uploading game center details
+
+1. Find iTMS, usually in `/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/itms`
+1. run `iTMSTransporter -m upload -u <user> -p <password> -f <path>/Jasmine/scripts` to upload
+
+> run `iTMSTransporter -m lookupMetadata -u <user> -p <password> -apple_id 1223383989 -destination <path>/Jasmine/scripts` to download metadata

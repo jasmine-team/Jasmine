@@ -1,21 +1,13 @@
-name,difficulty,rawGameType,rawGameMode
-Level 1,1,ciHui,swapping
-Level 2,2,ciHui,tetris
-Level 3,3,ciHui,sliding
-Level 4,4,chengYu,swapping
-Level 5,5,chengYu,tetris
-Level 6,6,chengYu,swapping
-Level 7,7,ciHui,swapping
-Level 8,8,ciHui,tetris
-Level 9,9,ciHui,sliding
-Level 10,10,chengYu,swapping
-Level 11,11,chengYu,tetris
-Level 12,12,chengYu,sliding
-Level 13,13,ciHui,swapping
-Level 14,14,ciHui,tetris
-Level 15,15,ciHui,sliding
-Level 16,16,chengYu,swapping
-Level 17,17,chengYu,tetris
-Level 18,18,chengYu,sliding
-Level 19,19,chengYu,swapping
-Level 20,20,chengYu,swapping
+uuid,name,difficulty,isReadOnly,rawGameType,rawGameMode
+EE8A0045-4B64-4840-855D-584C283FBE1F,"Me, Family and Friends",0,true,ciHui,swapping
+2E2B48CB-86AA-4282-AD2C-C101725ABF64,Time,1,true,ciHui,tetris
+ACBB7310-9675-40CD-9648-64370AAA5636,People,2,true,ciHui,sliding
+1F1A29F1-D9CF-4230-891C-DFF50163A8A1,Places and Things,3,true,ciHui,swapping
+56D652F2-7830-48D7-8BDD-167C8732BBD3,Pronouns and etc,4,true,ciHui,tetris
+0C5C3D44-283A-4AFB-B565-71AEC2300761,More pronouns,5,true,ciHui,swapping
+743F7E5B-E153-4C95-91C4-4CCC57775996,Common phrases,6,true,ciHui,swapping
+D19B6C57-F889-42C0-A264-8B0774270679,Common cheng yus,7,true,chengYu,tetris
+FA91D15B-8378-4336-97B3-C8273A744F56,Uncommon cheng yus,8,true,chengYu,sliding
+D765F062-0756-40B9-945F-09DE77048D70,Rare cheng yus,9,true,chengYu,swapping
+BE63227C-24FA-4FC2-B1A6-D31C68F01001,Rarer cheng yus,10,true,chengYu,tetris
+C711E82C-32F4-4A0F-8081-B06F17DD2797,Impossible,11,true,chengYu,sliding

@@ -38,7 +38,7 @@ class BaseGameViewController: JasmineViewController {
     // MARK: Layout setters
     /// Sets the navigation bar properties given from the child class.
     func setLayout(navigationBar: UINavigationBar) {
-        super.setLayout(navigationBar: navigationBar, withTitle: baseViewModel.gameTitle)
+        super.setLayout(navigationBar: navigationBar, withTitle: baseViewModel.levelName)
     }
 
     private func setLayout(gameStartView: SimpleStartGameViewController,

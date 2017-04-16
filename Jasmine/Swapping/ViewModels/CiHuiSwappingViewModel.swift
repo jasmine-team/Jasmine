@@ -1,6 +1,11 @@
 import Foundation
 
 class CiHuiSwappingViewModel: BaseSwappingViewModel {
+
+    override var gameInstruction: String {
+        return GameConstants.Swapping.CiHui.gameInstruction
+    }
+
     /// Initializes the game
     ///
     /// - Parameters:
@@ -20,9 +25,6 @@ class CiHuiSwappingViewModel: BaseSwappingViewModel {
 
         super.init(time: time, gameData: gameData, gameType: .ciHui, tiles: tiles,
                    rows: numberOfPhrases, columns: GameConstants.Swapping.columns)
-
-        gameTitle = GameConstants.Swapping.CiHui.gameTitle
-        gameInstruction = GameConstants.Swapping.CiHui.gameInstruction
 
         phrasesTested = Set(phrases)
     }

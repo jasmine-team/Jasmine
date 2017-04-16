@@ -25,11 +25,6 @@ class GridViewModelTests: RealmTestCase {
             XCTAssert(tiles.contains { $0 == value },
                       "ViewModel gridData not correct on init")
         }
-
-        XCTAssertEqual("", viewModel.gameTitle,
-                       "ViewModel gameTitle not correct on init")
-        XCTAssertEqual("", viewModel.gameInstruction,
-                       "ViewModel gameInstruction not correct on init")
     }
 
     func testStartGame() {
