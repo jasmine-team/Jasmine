@@ -13,7 +13,7 @@ class Storage {
     }()
 
     private let realm: Realm
-    private let gameManager: GameManager
+    let gameManager: GameManager
 
     /// Levels instance of task
     let levels: Levels
@@ -22,9 +22,6 @@ class Storage {
     let allPhrases: Phrases
     let allCiHui: Phrases
     let allChengYu: Phrases
-
-    /// Single player instance, should be created if not existing
-    let player: Player
 
     private init(realm: Realm) {
         self.realm = realm
@@ -35,29 +32,12 @@ class Storage {
         allPhrases = Phrases(List(allPhrasesResult))
         allCiHui = Storage.filter(phrases: allPhrasesResult, ofType: .ciHui)
         allChengYu = Storage.filter(phrases: allPhrasesResult, ofType: .chengYu)
-
-        self.player = Storage.getPlayer(realm: realm)
     }
 
     private static func filter(phrases: Results<Phrase>, ofType gameType: GameType) -> Phrases {
         let count = gameType == .ciHui ? 2 : 4
         let predicate = "rawChinese LIKE '\(String(repeating: "?", count: count))'"
         return Phrases(List(phrases.filter(predicate)))
-    }
-
-    private static func getPlayer(realm: Realm) -> Player {
-        if let player = realm.objects(Player.self).first {
-            return player
-        }
-        let player = Player()
-        do {
-            try realm.write {
-                realm.add(player)
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
-        return player
     }
 
 }
