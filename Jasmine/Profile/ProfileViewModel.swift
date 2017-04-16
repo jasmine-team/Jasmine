@@ -56,8 +56,8 @@ class ProfileViewModel {
     private func getDailyStreakCount(startOfTheWeek: Date) -> Int {
         return (0..<numOfDaysInAWeek).filter { dayCount in
             let startDate = startOfTheWeek + dayCount.day
-            let timesPlayed = profileQuery.timesPlayed(between: startDate, and: startDate + 1.day)
+            let timesPlayed = profileQuery.timesPlayed(from: startDate, toExclusive: startDate + 1.day)
             return timesPlayed >= ProfileViewModel.minGamesPerDay
-            }.count
+        }.count
     }
 }
