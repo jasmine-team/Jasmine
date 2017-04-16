@@ -3,6 +3,8 @@ import RealmSwift
 /// Phrase model to store strings of various languages, read-only except for timeSeen
 class Phrase: Object {
 
+    private static let rawPinyinDelimiter = " "
+    
     /// Rank of the frequency of word in practice, higher means more difficult
     // -1 for invalid rank, realm doesn't support init without defaults
     private dynamic var rank: Int = -1
@@ -30,7 +32,7 @@ class Phrase: Object {
         }
     }
     var pinyin: [String] {
-        return rawPinyin.components(separatedBy: " ")
+        return rawPinyin.components(separatedBy: Phrase.rawPinyinDelimiter)
     }
 
     override static func ignoredProperties() -> [String] {
