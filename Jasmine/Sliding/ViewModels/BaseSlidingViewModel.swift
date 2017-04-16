@@ -71,27 +71,7 @@ class BaseSlidingViewModel: GridViewModel, SlidingViewModelProtocol {
 
     /// Check what happens when game is won. If game is won, change game status and add score.
     func checkCorrectTiles() {
-        var highlightedCoordinates: Set<Coordinate> = []
-        var score = 0
-
-        for row in 0..<gridData.numRows {
-            let rowTiles = (0..<gridData.numColumns).map { column in Coordinate(row: row, col: column) }
-            if lineIsCorrect(rowTiles) {
-                highlightedCoordinates.formUnion(rowTiles)
-                score += Score.line
-            }
-        }
-        for column in 0..<gridData.numColumns {
-            let columnTiles = (0..<gridData.numRows).map { row in Coordinate(row: row, col: column) }
-            if lineIsCorrect(columnTiles) {
-                highlightedCoordinates.formUnion(columnTiles)
-                score += Score.line
-            }
-        }
-
-        if self.highlightedCoordinates != highlightedCoordinates {
-            self.highlightedCoordinates = highlightedCoordinates
-        }
+        var score = checkCorrectTiles(scoreForLine: Score.line)
 
         // In the sliding game, it is enough to have (rows - 1) rows correct
         if highlightedCoordinates.count == gridData.count - GameConstants.Sliding.columns {
