@@ -4,7 +4,7 @@ import RealmSwift
 class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
 
     /// The Levels object that manages the level objects
-    private let levels: Levels = Storage.sharedInstance.levels
+    private let levels: Levels
     /// Default levels as a level array
     private var rawDefaultLevels: [Level] {
         return levels.original
@@ -28,6 +28,10 @@ class LevelSelectorViewModel: LevelSelectorViewModelProtocol {
     /// The custom levels in the game.
     var customLevels: [GameInfo] {
         return rawCustomLevels.map { level in GameInfo.from(level: level) }
+    }
+
+    init(levels: Levels = Storage.sharedInstance.levels) {
+        self.levels = levels
     }
 
     /// Deletes the custom level

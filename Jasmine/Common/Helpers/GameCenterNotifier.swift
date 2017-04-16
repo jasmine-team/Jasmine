@@ -60,7 +60,6 @@ class GameCenterNotifier {
 
     func updateFor(result: LevelResult) {
         guard let level = result.level else {
-            assertionFailure("Level was not attached")
             return
         }
         updateTotalPlaycount()

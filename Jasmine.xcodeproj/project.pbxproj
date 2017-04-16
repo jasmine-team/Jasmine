@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		005D4DDE1E9418F500E8DD0B /* Matrix+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D4DDD1E9418F500E8DD0B /* Matrix+Equatable.swift */; };
 		007B69201E9E0EAF002FE500 /* UIViewController+GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B691F1E9E0EAF002FE500 /* UIViewController+GameCenter.swift */; };
-		007B69221E9E18B1002FE500 /* ProfileQueryContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B69211E9E18B1002FE500 /* ProfileQueryContainerTests.swift */; };
+		007B69221E9E18B1002FE500 /* ResultsQueryContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007B69211E9E18B1002FE500 /* ResultsQueryContainerTests.swift */; };
 		007B69261E9F36B0002FE500 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B69251E9F36B0002FE500 /* GameKit.framework */; };
 		009B4DFC1EA29ED100FEE074 /* ChengYuTetrisGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B4DFB1EA29ED100FEE074 /* ChengYuTetrisGameViewModel.swift */; };
 		009B4DFE1EA29EEC00FEE074 /* CiHuiTetrisGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B4DFD1EA29EEC00FEE074 /* CiHuiTetrisGameViewModel.swift */; };
@@ -195,7 +195,7 @@
 /* Begin PBXFileReference section */
 		005D4DDD1E9418F500E8DD0B /* Matrix+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Matrix+Equatable.swift"; sourceTree = "<group>"; };
 		007B691F1E9E0EAF002FE500 /* UIViewController+GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+GameCenter.swift"; sourceTree = "<group>"; };
-		007B69211E9E18B1002FE500 /* ProfileQueryContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileQueryContainerTests.swift; sourceTree = "<group>"; };
+		007B69211E9E18B1002FE500 /* ResultsQueryContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsQueryContainerTests.swift; sourceTree = "<group>"; };
 		007B69251E9F36B0002FE500 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		009B4DFB1EA29ED100FEE074 /* ChengYuTetrisGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChengYuTetrisGameViewModel.swift; sourceTree = "<group>"; };
 		009B4DFD1EA29EEC00FEE074 /* CiHuiTetrisGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CiHuiTetrisGameViewModel.swift; sourceTree = "<group>"; };
@@ -292,7 +292,6 @@
 		DF409FE91E8415AB00389976 /* prebundled.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = prebundled.realm; sourceTree = "<group>"; };
 		DF409FEE1E8415E000389976 /* UIApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationTests.swift; sourceTree = "<group>"; };
 		DF409FF01E8415F400389976 /* CountDownTimerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownTimerTest.swift; sourceTree = "<group>"; };
-		DF409FF61E84160C00389976 /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 		DF409FFA1E84225200389976 /* TetrisGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TetrisGameViewController.swift; sourceTree = "<group>"; };
 		DF40F9E11E9676C1001EAAA8 /* LevelResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelResult.swift; sourceTree = "<group>"; };
 		DF40F9E31E967708001EAAA8 /* PhraseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseTests.swift; sourceTree = "<group>"; };
@@ -692,7 +691,6 @@
 				A2FF83991E9A538800677FA2 /* LevelsTests.swift */,
 				DF40F9E31E967708001EAAA8 /* PhraseTests.swift */,
 				DF2155171E8E2335005A0927 /* PhrasesTests.swift */,
-				DF409FF61E84160C00389976 /* PlayerTests.swift */,
 				A27B6E531E90B33400825AF3 /* RealmIntegrationTests.swift */,
 				50AE3A771E8BE020005EC944 /* TextGridTests.swift */,
 			);
@@ -831,7 +829,7 @@
 		A2FF83A61E9E0C1F00677FA2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				007B69211E9E18B1002FE500 /* ProfileQueryContainerTests.swift */,
+				007B69211E9E18B1002FE500 /* ResultsQueryContainerTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1531,7 +1529,7 @@
 				502A29771E927B790024336A /* CiHuiSlidingViewModelTests.swift in Sources */,
 				502A29751E927B790024336A /* BaseSlidingViewModelTests.swift in Sources */,
 				50B7A8B51E9393530052E9E2 /* BaseSwappingViewModelTests.swift in Sources */,
-				007B69221E9E18B1002FE500 /* ProfileQueryContainerTests.swift in Sources */,
+				007B69221E9E18B1002FE500 /* ResultsQueryContainerTests.swift in Sources */,
 				DFF45A821E99E46000DFD3D9 /* PhraseViewModelTests.swift in Sources */,
 				509036DD1E937C4C006548DE /* ChengYuSwappingViewModelTests.swift in Sources */,
 				509036D51E937BFB006548DE /* GameStatusUpdateDelegateMock.swift in Sources */,
