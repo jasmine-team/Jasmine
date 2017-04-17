@@ -4,7 +4,7 @@ This game is built as a native iOS application. The app has been submitted to th
 #### How To Use The App
 
 ##### Launching The App
-1. At the device home screen, tap our app icon ![](https://i.imgur.com/z8OgkHF.png =20x).
+1. At the device home screen, tap our app icon <img src="https://i.imgur.com/z8OgkHF.png" width=20>.
 2. You will be presented with the home screen of our app. 
 Press "PLAY" to choose a level.
 3. On the level selection screen, tap on the level that you wish to play.
@@ -31,12 +31,12 @@ For the Ci Hui game type for swapping and sliding game mode, we combine the Ci H
 2. Score will be computed based on time remaining and number of swaps performed.
 
 ##### Cheng Yu (成语) Swapping Game
-![](https://i.imgur.com/SSmkxY7.jpg =450x)
+<img src="https://i.imgur.com/SSmkxY7.jpg" width=450>
 
 Form 4 rows or columns of Cheng Yu.
 
 ##### Ci Hui (词汇) Swapping Game 
-![](https://i.imgur.com/P7jER7p.png =450x)
+<img src="https://i.imgur.com/P7jER7p.png" width=450>
 
 Form 4 rows or columns of phrases containing a Ci Hui on one side and its associated Pin Yin on the other side.
 
@@ -70,7 +70,7 @@ Form a row or column of Cheng Yu to destroy the tiles.
 Form a row or column of Ci Hui to destroy the tiles.
 
 #### Game Over
-![](https://i.imgur.com/NzLZFqu.png =380x)
+<img src="https://i.imgur.com/NzLZFqu.png" width=380>
 1. Each game has a timer. Game ends when the time runs out or when the winning condition is achieved.
 2. For the Tetris game, there is no winning condition. Score as many points as you can before the time runs out!
 3. On the Game Over screen, you can review the list of phrases that you have encountered.
