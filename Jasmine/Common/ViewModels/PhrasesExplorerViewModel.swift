@@ -47,12 +47,25 @@ class PhrasesExplorerViewModel {
                 selected: phraseWithSelection.selected)
     }
 
+    /// Sets the phrase at `row` to `setToSelected`
+    ///
+    /// - Parameters:
+    ///   - row: the row to set
+    ///   - setToSelected: whether it should be set to selected
+    /// - Returns: true if toggled (original selection status is not equal to `setToSelected`)
+    @discardableResult func toggle(at row: Int, setToSelected: Bool) -> Bool {
+        let toggledIndex = rowIndices[row]
+        let isSelected = allPhrasesWithSelection[toggledIndex].selected
+        allPhrasesWithSelection[toggledIndex].selected = setToSelected
+        return isSelected != setToSelected
+    }
+
     /// Toggles the index given at the indices selected, i.e. remove if it exists, insert if not.
     ///
     /// - Parameter row: the row to be toggled
     func toggle(at row: Int) {
-        let toggledIndex = rowIndices[row]
-        allPhrasesWithSelection[toggledIndex].selected = !allPhrasesWithSelection[toggledIndex].selected
+        let isSelected = allPhrasesWithSelection[rowIndices[row]].selected
+        toggle(at: row, setToSelected: !isSelected)
     }
 
     /// Searches with the given keyword. Updates rowIndices
