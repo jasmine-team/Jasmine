@@ -35,6 +35,7 @@ class PhrasesExplorerViewController: JasmineViewController {
         }
         isScrollableDivider.frame.origin.x = PhrasesSelectionTableViewController.scrollDividerBeforeRatio *
                                              phrasesTable.tableView.frame.maxX
+        isScrollableDivider.frame.size.height = phrasesTable.tableView.frame.size.height
     }
 
     /// Hides the save button on the navigation panel if not markable
