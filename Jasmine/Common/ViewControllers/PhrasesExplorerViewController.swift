@@ -3,6 +3,7 @@ import SnapKit
 
 class PhrasesExplorerViewController: JasmineViewController {
 
+    @IBOutlet private var isScrollableDivider: UIView!
     @IBOutlet private var explorerNavigationItem: UINavigationItem!
     @IBOutlet private var phrasesTableView: UIView!
     @IBOutlet private weak var navigationBar: UINavigationBar!
@@ -22,6 +23,18 @@ class PhrasesExplorerViewController: JasmineViewController {
         setupPhrasesTable()
         searchController = UISearchController(searchResultsController: phrasesTable)
         showPhrasesTable()
+        setScrollableDivider()
+    }
+
+    /// Sets the position of the scrollable divider. Hide it if not selectable.
+    /// Regions before the divider will be scrollable and regions after the divider will be multi-select.
+    private func setScrollableDivider() {
+        guard onSaveCallBack != nil else {
+            isScrollableDivider.isHidden = true
+            return
+        }
+        isScrollableDivider.frame.origin.x = PhrasesSelectionTableViewController.scrollDividerBeforeRatio *
+                                             phrasesTable.tableView.frame.maxX
     }
 
     /// Hides the save button on the navigation panel if not markable
