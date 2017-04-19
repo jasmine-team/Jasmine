@@ -10,11 +10,12 @@ Team members:
 - [Wang Riwu](https://github.com/riwu)
 - [Wang Xien Dong](https://github.com/xdrawks)
 
+The app is available on both iPhone and iPad.  
+Get it at https://itunes.apple.com/sg/app/id1223383989
+
 # [Documentation](https://github.com/jasmine-team/Jasmine/blob/master/Documentation.md)
 
 # User Manual
-This game is built as a native iOS application. The app has been submitted to the app store and is currently undergoing review by Apple. A link to the app will be added as soon as the app is successfully published.
-
 #### How To Use The App
 
 ##### Launching The App
