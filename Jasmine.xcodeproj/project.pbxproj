@@ -413,6 +413,7 @@
 				009B4E001EA3292100FEE074 /* ProfileViewModel.swift */,
 			);
 			name = ViewModels;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		00C6006C1E9B2F66006BA74A /* LevelDesigner */ = {
@@ -482,9 +483,9 @@
 		50989DB91E6D8B16009A86C8 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				507AC1941E90AAB00033B4E6 /* TetrisGameViewModel.swift */,
 				009B4DFB1EA29ED100FEE074 /* ChengYuTetrisGameViewModel.swift */,
 				009B4DFD1EA29EEC00FEE074 /* CiHuiTetrisGameViewModel.swift */,
+				507AC1941E90AAB00033B4E6 /* TetrisGameViewModel.swift */,
 				507194F01E8E1512002A6BC0 /* TetrisGameViewModelProtocol.swift */,
 			);
 			path = ViewModels;
@@ -502,8 +503,8 @@
 		50989DC41E6D8B16009A86C8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A2017E2B1EA3AF7000346D61 /* GameCenterNotifier.swift */,
 				DF409FDC1E84147400389976 /* CountDownTimer.swift */,
+				A2017E2B1EA3AF7000346D61 /* GameCenterNotifier.swift */,
 				506473511E9DF29E00ACB183 /* LevelsError.swift */,
 				DF409FDD1E84147400389976 /* Prebundler.swift */,
 				A2187E6B1E7510B60033FC5B /* Random.swift */,
@@ -517,7 +518,6 @@
 		50989DC81E6D8B16009A86C8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A2017E291EA3A98F00346D61 /* ResultsQueryContainer.swift */,
 				DFB342701E77EB6700D2FE09 /* Coordinate.swift */,
 				DF2155241E8E3F25005A0927 /* Direction.swift */,
 				50989DC51E6D8B16009A86C8 /* GameData.swift */,
@@ -530,6 +530,7 @@
 				A2FF83941E9A536F00677FA2 /* Levels.swift */,
 				50989DC71E6D8B16009A86C8 /* Phrase.swift */,
 				DF2155191E8E234D005A0927 /* Phrases.swift */,
+				A2017E291EA3A98F00346D61 /* ResultsQueryContainer.swift */,
 				A2FF83A01E9E07A400677FA2 /* Storage.swift */,
 				50AE3A751E8B93D3005EC944 /* TextGrid.swift */,
 			);
@@ -985,9 +986,9 @@
 			children = (
 				50A270461E9E1B840083A700 /* AboutViewController.swift */,
 				DFE111531E99133F00F8860E /* FallingFlowersViewController.swift */,
-				DFBE8F1E1E951FC00036CCC6 /* Main.storyboard */,
-				DFE85F781EA28E96007C44C4 /* HomeViewController.swift */,
 				DF6584FA1EA3A0BA00785093 /* HelpViewController.swift */,
+				DFE85F781EA28E96007C44C4 /* HomeViewController.swift */,
+				DFBE8F1E1E951FC00036CCC6 /* Main.storyboard */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1017,8 +1018,8 @@
 		DFBE8F261E9520AF0036CCC6 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				009B4DFF1EA3290400FEE074 /* ViewModels */,
 				DFBE8F271E9520BB0036CCC6 /* ViewControllers */,
+				009B4DFF1EA3290400FEE074 /* ViewModels */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1037,13 +1038,13 @@
 			children = (
 				DFCD85A21E9E909500B10486 /* SquareGrid */,
 				DFBE8F7F1E9528100036CCC6 /* CommonsStoryboard.storyboard */,
+				DFE85F721EA26DC7007C44C4 /* JasmineViewController.swift */,
 				DFBE8F811E9528370036CCC6 /* LaunchScreen.storyboard */,
 				DFE111441E98BD7E00F8860E /* PhraseViewController.swift */,
 				DF76B0AF1E9D188500BCC751 /* PhrasesDetailTableViewController.swift */,
 				DFF45A791E99E41000DFD3D9 /* PhrasesExplorerViewController.swift */,
 				DF76B0B31E9D18C400BCC751 /* PhrasesSelectionTableViewController.swift */,
 				DFF45A7B1E99E41700DFD3D9 /* PhrasesTableViewController.swift */,
-				DFE85F721EA26DC7007C44C4 /* JasmineViewController.swift */,
 				DF6585001EA3A69F00785093 /* WhiteStatusBarViewController.swift */,
 			);
 			path = ViewControllers;
@@ -1063,12 +1064,12 @@
 			isa = PBXGroup;
 			children = (
 				DFBE8F641E9527F70036CCC6 /* Delegates */,
+				DFE85F741EA26EC1007C44C4 /* BaseGameViewController.swift */,
+				DFE85F761EA27998007C44C4 /* BaseGridGameViewController.swift */,
 				DFBE8F691E9527F70036CCC6 /* GameElements.storyboard */,
 				DF2321551E961A6900417ED2 /* GameOverViewController.swift */,
 				DFBE8F6A1E9527F70036CCC6 /* GameStatisticsViewController.swift */,
 				DFA8B69A1E9899A4002D81CF /* SimpleStartGameViewController.swift */,
-				DFE85F741EA26EC1007C44C4 /* BaseGameViewController.swift */,
-				DFE85F761EA27998007C44C4 /* BaseGridGameViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
