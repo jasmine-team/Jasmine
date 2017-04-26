@@ -60,19 +60,14 @@ class TetrisGameViewModel {
         assert(gameData.phrases.map { $0.chinese.count }.isAllSame, "Phrases are not of equal length")
         self.gameData = gameData
         phraseGenerator = gameData.phrases.randomGenerator
-        populateUpcomingTiles()
         setNextFallingTile()
         setTimerListener()
     }
 
-    private func populateUpcomingTiles() {
-        for _ in 0..<phraseLength {
+    fileprivate func setNextFallingTile() {
+        for _ in upcomingTiles.count...phraseLength {
             upcomingTiles.append(getNextText())
         }
-    }
-
-    fileprivate func setNextFallingTile() {
-        upcomingTiles.append(getNextText())
         fallingTileText = upcomingTiles.removeFirst()
     }
 
@@ -116,7 +111,8 @@ class TetrisGameViewModel {
                 rowWise ? Coordinate(row: coordinate.row, col: $0) : Coordinate(row: $0, col: coordinate.col)
             }
             if let phrase = isPhraseValid(at: coordinates) {
-                return Set(coordinates).union(gridData.getCoordinates(containing: Set(phrase)))
+                clearUpcomingTiles(containing: phrase)
+                return Set(coordinates).union(gridData.getCoordinates(containing: phrase))
             }
         }
 
@@ -124,11 +120,18 @@ class TetrisGameViewModel {
     }
 
     /// Gets the tile texts at `coordinates` and check if it is a valid phrase
-    private func isPhraseValid(at coordinates: [Coordinate]) -> [String]? {
+    private func isPhraseValid(at coordinates: [Coordinate]) -> Set<String>? {
         guard let phrase = gridData.getTexts(at: coordinates) else {
             return nil
         }
-        return gameData.phrases.contains(chinese: phrase.joined()) ? phrase : nil
+        return gameData.phrases.contains(chinese: phrase.joined()) ? Set(phrase) : nil
+    }
+
+    private func clearUpcomingTiles(containing phrase: Set<String>) {
+        upcomingTiles = upcomingTiles.filter { !phrase.contains($0) }
+        for i in (nextTextIndex..<nextTexts.count).reversed() where phrase.contains(nextTexts[i]) {
+            nextTexts.remove(at: i)
+        }
     }
 
     /// Shifts all the tiles above `coordinates` down until it lands
@@ -174,8 +177,10 @@ class TetrisGameViewModel {
 
     /// Returns the next text for a new upcoming tile.
     /// if current text pool is exhausted, a new text pool will be generated and randomly shuffled
+    /// nextTextIndex is used instead of simply popping elements from `nextTexts` 
+    /// as `nextTexts` has to be kept in memory for use in `getFailedTexts`
     private func getNextText() -> String {
-        if nextTextIndex == nextTexts.count {
+        if nextTextIndex >= nextTexts.count {
             nextTextIndex = 0
             nextTexts = (getFailedTexts() ?? getNewTexts()).shuffled()
         }
@@ -270,13 +275,14 @@ extension TetrisGameViewModel: TetrisGameViewModelProtocol {
     func landTile(at coordinate: Coordinate) -> [(destroyedTiles: Set<Coordinate>,
                                                   shiftedTiles: [(from: Coordinate, to: Coordinate)])] {
         gridData[coordinate] = fallingTileText
-        setNextFallingTile()
 
         let destroyedAndShiftedTiles = destroyAndShiftTiles(landedAt: coordinate)
 
         if destroyedAndShiftedTiles.isEmpty {
             checkIfGameOver(landedAt: coordinate)
         }
+
+        setNextFallingTile()
 
         return destroyedAndShiftedTiles
     }
