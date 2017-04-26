@@ -25,9 +25,21 @@ class TetrisGameViewModel {
 
     fileprivate let timer = CountDownTimer(totalTimeAllowed: GameConstants.Tetris.totalTime)
 
+    var gameData: GameData
+
     fileprivate(set) var gameStatus = GameStatus.notStarted {
         didSet {
             gameStatusDelegate?.gameStatusDidUpdate()
+
+            guard gameStatus == .endedWithWon else {
+                return
+            }
+            timer.stopTimer()
+            gameData.gameStatus = .endedWithWon
+            gameData.phrasesTested = phrasesTested
+            gameData.score = currentScore
+            let gameManager = Storage.sharedInstance.gameManager
+            gameManager.saveGame(result: gameData)
         }
     }
 
@@ -36,8 +48,6 @@ class TetrisGameViewModel {
 
     fileprivate(set) var upcomingTiles: [String] = []
     fileprivate(set) var fallingTileText: String!
-
-    let gameData: GameData
 
     /// Returns the length of a phrase in phrases from game data
     private var phraseLength: Int {
@@ -79,9 +89,8 @@ class TetrisGameViewModel {
                 self.timeDelegate?.timeDidUpdate()
             case .tick:
                 self.timeDelegate?.timeDidUpdate()
-            case .finish:
-                self.gameStatus = .endedWithLost
-            case .stop:
+            case .finish,
+                 .stop:
                 self.gameStatus = .endedWithWon
             }
         }
