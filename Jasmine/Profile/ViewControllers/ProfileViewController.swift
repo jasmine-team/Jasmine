@@ -18,8 +18,12 @@ class ProfileViewController: JasmineViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         super.setLayout(navigationBar: navigationBar)
-
         initializeViewModel()
+    }
+
+    /// View is never dismissed, hence view updates must be called here instead of `viewDidLoad`
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setPlayerNameLabel()
         setDailyStreak()
         setWeeklyStreak()
