@@ -85,7 +85,7 @@ class PhrasesExplorerViewModel {
                 continue
             }
 
-            for txt in [pinyin, phrase.chinese.joined(), phrase.english] where txt.hasPrefix(keyword) {
+            for txt in [pinyin, phrase.chinese.joined(), phrase.english] where txt.contains(keyword) {
                 rowIndices.append(idx)
             }
         }
