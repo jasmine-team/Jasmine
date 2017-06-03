@@ -153,4 +153,30 @@ class GridViewModel: GridViewModelProtocol {
             return true
         }
     }
+
+    func checkCorrectTiles(scoreForLine: Int) -> Int {
+        var highlightedCoordinates: Set<Coordinate> = []
+        var score = 0
+
+        for row in 0..<gridData.numRows {
+            let rowTiles = (0..<gridData.numColumns).map { column in Coordinate(row: row, col: column) }
+            if lineIsCorrect(rowTiles) {
+                highlightedCoordinates.formUnion(rowTiles)
+                score += scoreForLine
+            }
+        }
+        for column in 0..<gridData.numColumns {
+            let columnTiles = (0..<gridData.numRows).map { row in Coordinate(row: row, col: column) }
+            if lineIsCorrect(columnTiles) {
+                highlightedCoordinates.formUnion(columnTiles)
+                score += scoreForLine
+            }
+        }
+
+        if self.highlightedCoordinates != highlightedCoordinates {
+            self.highlightedCoordinates = highlightedCoordinates
+        }
+
+        return score
+    }
 }
